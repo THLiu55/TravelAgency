@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> login and registration </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/homepage.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light customizenav sticky-top" style="background: linear-gradient(to right,white, rgb(99,185,214)); padding: 10px; border-radius: 5px; ">
+        <a class="navbar-brand" href="#" style="flex-basis: 30%; color: rgb(14, 123, 159);">Travel Agency Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item active">
+              <a class="nav-link test" href="#" style="color: rgb(56, 119, 173); border-radius: 50px;">
+               
+                    Home
+                
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#" style="color: rgb(56, 119, 173);"> Travel Destinations</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle test" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color: rgb(56, 119, 173);">
+                Booking
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" >Acoomodation</a></li>
+                <li><a class="dropdown-item" href="#">Review</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#"style="color: rgb(56, 119, 173);">Tourism Atrraction</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit"  style=" margin-left: 20px;">Search</button>
+          </form>
+        </div>
+      </nav>
+      <div class="container1">
+        <!-- show the destinations -->
+        <div class="left">
+        <div class="carousel">
+            <div class="carousel__nav">
+             <span id="moveLeft" class="carousel__arrow">
+                  <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+              <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+          </svg>
+              </span>
+              <span id="moveRight" class="carousel__arrow" >
+                <svg class="carousel__icon"  width="24" height="24" viewBox="0 0 24 24">
+            <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+          </svg>    
+              </span>
+            </div>
+            <div class="carousel-item carousel-item--1">
+              <div class="carousel-item__image"></div>
+              <div class="carousel-item__info">
+                <div class="carousel-item__container">
+                <h2 class="carousel-item__subtitle">The Library </h2>
+                <h1 class="carousel-item__title">Yifu Library</h1>
+                <p class="carousel-item__description">Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing University of Technology.</p>
+                <a href="#" class="carousel-item__btn">Explore the tour</a>
+                  </div>
+              </div>
+            </div>
+            <div class="carousel-item carousel-item--2">
+              <div class="carousel-item__image"></div>
+              <div class="carousel-item__info">
+                <div class="carousel-item__container">
+                <h2 class="carousel-item__subtitle">Tourism Atrraction</h2>
+                <h1 class="carousel-item__title">Temple of Heaven</h1>
+                <p class="carousel-item__description">
+                    The Temple of Heaven is a complex of religious buildings situated in the central Beijing.
+                </p>
+                <a href="#" class="carousel-item__btn">
+                    Explore the tour
+                </a>
+                  </div>
+              </div>
+            </div>
+              <div class="carousel-item carousel-item--3">
+              <div class="carousel-item__image"></div>
+              <div class="carousel-item__info">
+                <div class="carousel-item__container">
+                <h2 class="carousel-item__subtitle">Tropical area</h2>
+                <h1 class="carousel-item__title">The beach</h1>
+                <p class="carousel-item__description">
+                    The beach is very beautiful, the water is very clear, the sand is very white, and the sea is very blue.
+                </p>
+                <a href="#" class="carousel-item__btn">Explore the tour</a>
+                  </div>
+              </div>
+            </div>
+            
+             <div class="carousel-item carousel-item--4">
+              <div class="carousel-item__image"></div>
+              <div class="carousel-item__info">
+                <div class="carousel-item__container">
+                <h2 class="carousel-item__subtitle">Temple</h2>
+                <h1 class="carousel-item__title">Special temple</h1>
+                <p class="carousel-item__description">
+                    Good place to have a temple run.
+                </p>
+                <a href="#" class="carousel-item__btn">Explore the tour</a>
+                  </div>
+              </div>
+            </div>
+            
+           <div class="carousel-item carousel-item--5">
+              <div class="carousel-item__image"></div>
+              <div class="carousel-item__info">
+                <div class="carousel-item__container">
+                <h2 class="carousel-item__subtitle">The white building </h2>
+                <h1 class="carousel-item__title">White building</h1>
+                <p class="carousel-item__description">
+                    White building is white.
+                </p>
+                <a href="#" class="carousel-item__btn">Explore the tour</a>
+                  </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="right">
+
+            <div class="wrapper">
+                <div class="profile-card js-profile-card">
+                  <div class="profile-card__img">
+                    <img src="../static/img/logo.png" alt="profile card">
+                  </div>
+              
+                  <div class="profile-card__cnt js-profile-cnt">
+                    <div class="profile-card__name">We are Travel Agency Name!</div>
+                    <div class="profile-card__txt">Family hold company for <strong>travel</strong></div>
+                    <div class="profile-card-loc">
+                      <span class="profile-card-loc__icon">
+                        <svg class="icon"><use xlink:href="#icon-location"></use></svg>
+                      </span>
+              
+                      <span class="profile-card-loc__txt">
+                        Beijing, China
+                      </span>
+                    </div>
+              
+                    <div class="profile-card-ctr">
+                      <button class="profile-card__button button--blue js-message-btn">Message</button>
+                
+                    </div>
+                  </div>
+              
+                  <div class="profile-card-message js-message">
+                    <form class="profile-card-form">
+                      <div class="profile-card-form__container">
+                        <textarea placeholder="Say something..."></textarea>
+                      </div>
+              
+                      <div class="profile-card-form__bottom">
+                        <button class="profile-card__button button--blue js-message-close">
+                          Send
+                        </button>
+              
+                        <button class="profile-card__button button--gray js-message-close">
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+              
+                    <div class="profile-card__overlay js-message-close"></div>
+                  </div>
+              
+                </div>
+              
+              </div>
+              
+              <svg hidden="hidden">
+              
+                  <symbol id="icon-location" viewBox="0 0 32 32">
+                    <title>location</title>
+                    <path d="M16 31.68c-0.352 0-0.672-0.064-1.024-0.16-0.8-0.256-1.44-0.832-1.824-1.6l-6.784-13.632c-1.664-3.36-1.568-7.328 0.32-10.592 1.856-3.2 4.992-5.152 8.608-5.376h1.376c3.648 0.224 6.752 2.176 8.608 5.376 1.888 3.264 2.016 7.232 0.352 10.592l-6.816 13.664c-0.288 0.608-0.8 1.12-1.408 1.408-0.448 0.224-0.928 0.32-1.408 0.32zM15.392 2.368c-2.88 0.192-5.408 1.76-6.912 4.352-1.536 2.688-1.632 5.92-0.288 8.672l6.816 13.632c0.128 0.256 0.352 0.448 0.64 0.544s0.576 0.064 0.832-0.064c0.224-0.096 0.384-0.288 0.48-0.48l6.816-13.664c1.376-2.752 1.248-5.984-0.288-8.672-1.472-2.56-4-4.128-6.88-4.32h-1.216zM16 17.888c-3.264 0-5.92-2.656-5.92-5.92 0-3.232 2.656-5.888 5.92-5.888s5.92 2.656 5.92 5.92c0 3.264-2.656 5.888-5.92 5.888zM16 8.128c-2.144 0-3.872 1.728-3.872 3.872s1.728 3.872 3.872 3.872 3.872-1.728 3.872-3.872c0-2.144-1.76-3.872-3.872-3.872z"></path>
+                    <path d="M16 32c-0.384 0-0.736-0.064-1.12-0.192-0.864-0.288-1.568-0.928-1.984-1.728l-6.784-13.664c-1.728-3.456-1.6-7.52 0.352-10.912 1.888-3.264 5.088-5.28 8.832-5.504h1.376c3.744 0.224 6.976 2.24 8.864 5.536 1.952 3.36 2.080 7.424 0.352 10.912l-6.784 13.632c-0.32 0.672-0.896 1.216-1.568 1.568-0.48 0.224-0.992 0.352-1.536 0.352zM15.36 0.64h-0.064c-3.488 0.224-6.56 2.112-8.32 5.216-1.824 3.168-1.952 7.040-0.32 10.304l6.816 13.632c0.32 0.672 0.928 1.184 1.632 1.44s1.472 0.192 2.176-0.16c0.544-0.288 1.024-0.736 1.28-1.28l6.816-13.632c1.632-3.264 1.504-7.136-0.32-10.304-1.824-3.104-4.864-5.024-8.384-5.216h-1.312zM16 29.952c-0.16 0-0.32-0.032-0.448-0.064-0.352-0.128-0.64-0.384-0.8-0.704l-6.816-13.664c-1.408-2.848-1.312-6.176 0.288-8.96 1.536-2.656 4.16-4.32 7.168-4.512h1.216c3.040 0.192 5.632 1.824 7.2 4.512 1.6 2.752 1.696 6.112 0.288 8.96l-6.848 13.632c-0.128 0.288-0.352 0.512-0.64 0.64-0.192 0.096-0.384 0.16-0.608 0.16zM15.424 2.688c-2.784 0.192-5.216 1.696-6.656 4.192-1.504 2.592-1.6 5.696-0.256 8.352l6.816 13.632c0.096 0.192 0.256 0.32 0.448 0.384s0.416 0.064 0.608-0.032c0.16-0.064 0.288-0.192 0.352-0.352l6.816-13.664c1.312-2.656 1.216-5.792-0.288-8.352-1.472-2.464-3.904-4-6.688-4.16h-1.152zM16 18.208c-3.424 0-6.24-2.784-6.24-6.24 0-3.424 2.816-6.208 6.24-6.208s6.24 2.784 6.24 6.24c0 3.424-2.816 6.208-6.24 6.208zM16 6.4c-3.072 0-5.6 2.496-5.6 5.6 0 3.072 2.528 5.6 5.6 5.6s5.6-2.496 5.6-5.6c0-3.104-2.528-5.6-5.6-5.6zM16 16.16c-2.304 0-4.16-1.888-4.16-4.16s1.888-4.16 4.16-4.16c2.304 0 4.16 1.888 4.16 4.16s-1.856 4.16-4.16 4.16zM16 8.448c-1.952 0-3.552 1.6-3.552 3.552s1.6 3.552 3.552 3.552c1.952 0 3.552-1.6 3.552-3.552s-1.6-3.552-3.552-3.552z"></path>
+                  </symbol>
+              
+                </defs>
+              </svg>
+
+        </div>
+
+      </div>
+      <div class="cardcontainer1">
+        <div class="container2">
+            <div class="cardcontainer">
+                <div class="displaycardcontainer">
+                    <div>
+                    <a class="areasubtitle" href="#" >Travel destinations</a></div>
+                    <div>
+                    <a class="moretext" href="#" >More >></a></div>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="attractioncontainer">
+    
+            </div>
+            <div class="accomodationcontainer">
+    
+            </div>
+            <div class="reviewcontainer">
+    
+            </div>
+    
+          </div>
+          <div class="container2">
+            <div class="cardcontainer">
+                <div class="displaycardcontainer">
+                    <div>
+                    <a class="areasubtitle" href="#" >Acoomodation</a></div>
+                    <div>
+                    <a class="moretext" href="#" >More >></a></div>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                    <div class="card">
+                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+                        <div class="cardtitle">Library</div>
+                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="attractioncontainer">
+    
+            </div>
+            <div class="accomodationcontainer">
+    
+            </div>
+            <div class="reviewcontainer">
+    
+            </div>
+    
+          </div>
+      </div>
+      <div class="footer">
+        <div class="copyright">
+          <svg class="svg-up" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve"><path fill="#262526" d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z"></path></svg>
+          <i class="fas fa-angle-double-up arrow-up"></i>
+          <ul class="info">
+              <li>&copy; ROSA 2017</li>
+              <li>13 Hanway Square, London</li>
+              <li>Tel: 71494563</li>
+              <li>Handcrafted with love by <a href="#">Pixelgrade</a> Team</li>
+          </ul>
+          <ul class="CTA">
+              <li><a href="#">PERMISSIONS AND COPYRIGHT</a></li>
+              <li><a href="#">CONTACT THE TEAM</a></li>
+          </ul>
+      </div>
+      </div>
+     
+    
+</body>
+
+<!-- jQuery and JavaScript Bundle with Popper -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script  src="../static/js/homepage.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</html>
