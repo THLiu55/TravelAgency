@@ -3,6 +3,6 @@ startvenv.ps1
 .idea
 .vscode
 .github
-.pycache
+__pycache__
 
 venv
