@@ -5,4 +5,11 @@ startvenv.ps1
 .github
 __pycache__
 
+temp.*
+test.*
+
+migrations
+userdata
+
+.env
 venv
