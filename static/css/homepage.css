@@ -704,16 +704,23 @@ transform: translateX(0);
   display: grid;
   width: 100%;
   text-align: center;
+  margin-top: 15%;
+
 }
 .copyright {
   padding: 15px 40px 30px;
-  background-color: #262526;
+  background-color: rgba(156, 216, 236, 0.865);
 }
 .copyright .svg-up {
   top: 0;
   left: 50%;
-  margin-left: -96px;
-  margin-top: -50px;
+  margin-top: -99px;
+  z-index: 999;
+}
+.copyright:hover{
+  transform:translateY(-10px);
+  transform: scale(1.2);
+  transition: 1s;
 }
 .copyright .arrow-up {
   width: 40px;
@@ -726,11 +733,12 @@ transform: translateX(0);
   justify-content: center;
 }
 .copyright li {
-  color: #919191;
+  font-weight: 900;
+  padding: 5px;
+  color: #ffffff;
   font-size: 14px;
 }
 .copyright li:not(:last-of-type):after {
-  content: '•';
   margin: 10px;
 }
 .copyright .CTA {
