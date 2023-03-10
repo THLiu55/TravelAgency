@@ -73,7 +73,7 @@ body {
     }
 
     50% {
-        transform: translateX(-500px);
+        transform: translateX(-33rem);
     }
 
     100% {
@@ -88,7 +88,7 @@ body {
     }
 
     50% {
-        transform: translateX(-500px);
+        transform: translateX(-33rem);
     }
 
     100% {
@@ -148,7 +148,7 @@ body {
     }
 
     50% {
-        transform: translateX(500px);
+        transform: translateX(33rem);
     }
 
     100% {
@@ -175,7 +175,7 @@ body {
     }
 
     50% {
-        transform: translateX(500px);
+        transform: translateX(33rem);
     }
 
     100% {
@@ -190,7 +190,7 @@ body {
     }
 
     50% {
-        transform: translateX(500px);
+        transform: translateX(33rem);
     }
 
     100% {

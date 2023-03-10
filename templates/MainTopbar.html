@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} {% endblock %} </title>
+    <link rel="stylesheet" href="../static/css/topbar.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    {% block csslink %} {% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light customizenav sticky-top" style="background: linear-gradient(to right,white, rgb(99,185,214)); padding: 10px; border-radius: 5px;">
+        <a class="navbar-brand" href="#" style="flex-basis: 30%; color: rgb(14, 123, 159);">Travel Agency Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item active">
+              <a class="nav-link test" href="#" style="color: rgb(56, 119, 173); border-radius: 50px;">
+
+                    Home
+
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#" style="color: rgb(56, 119, 173);"> Travel Destinations</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle test" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color: rgb(56, 119, 173);">
+                Booking
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" >Acoomodation</a></li>
+                <li><a class="dropdown-item" href="#">Review</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#"style="color: rgb(56, 119, 173);">Tourism Atrraction</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit"  style=" margin-left: 20px;">Search</button>
+          </form>
+        </div>
+        <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light" style=" --bs-bg-opacity: 0;">
+        <a class="navbar-brand" href="#">
+     
+      <!-- <button class="btn btn-primary" type="button"  data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas"> -->
+        <img src="../static/image/profile.svg" width="40" height="30" class="d-inline-block align-top" alt="" style="border-radius: 50%;" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas" >
+        
+        
+      <!-- </button> -->
+ 
+      </a>
+</nav>
+    </nav>
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">HI, Username! </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" style="background: linear-gradient(to bottom,white, rgb(211, 233, 239)); ">
+        <ul style="margin-left: 0;padding-left: 0;padding-top: 5%;">
+          <li style="list-style: none;"><a href="#" class="nav-link test" style="font-size: 1.5em;border-radius: 10px; padding: 2%;">Profile</a></li>
+          <li style="list-style: none;"><a href="#" class="nav-link test" style="font-size: 1.5em;border-radius: 10px; padding: 2%;">Order history</a></li>
+          <li style="list-style: none;"><a href="#" class="nav-link test" style="font-size: 1.5em;border-radius: 10px;padding: 2%;">Log out</a></li>
+        </ul>
+       
+      </div>
+    </div>
+      
+    
+
+
+    {% block body %} {% endblock %}
+
+    {% block footer %} {% endblock %}
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+{% block jsLink %} {% endblock %}
+
+</html>
