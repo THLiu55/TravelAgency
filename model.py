@@ -1,4 +1,4 @@
-from app import db
+from exts import db
 
 
 class Customer(db.Model):
