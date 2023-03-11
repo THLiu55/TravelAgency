@@ -207,7 +207,7 @@ h2 {
 .input-group {
     position: relative;
     width: 21rem;
-    margin: 1.1rem 0;
+    margin: 0.8rem 0;
 }
 
 #send-btn-frame{
@@ -310,4 +310,10 @@ h2 {
 
 .sign-link p a:hover {
     text-decoration: underline;
+}
+
+.wrong_error{
+    font-size: 10px;
+    height: 0.8rem;
+    color: #f05924;
 }
