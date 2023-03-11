@@ -12,7 +12,7 @@ body {
 
 .container {
   margin: 0 auto;
-  width: 750px;
+  width: 775px;
   background: #444753;
   border-radius: 5px;
 }
@@ -21,7 +21,7 @@ body {
   width: 260px;
   float: left;
 }
-.people-list .search {
+.people-list .chat-search {
   padding: 20px;
 }
 .people-list input {
