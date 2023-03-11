@@ -163,9 +163,50 @@
         </div>
 
       </div>
+      <div class="containermenu">
+        <ul id="categories" class="clr">
+          <li id="destination">
+            <div >
+              <img src="../static/image/map.svg" alt=""/>
+              <h1>Travel destinations</h1>
+              <p>Pick some popular destinations for travel! </p>
+          </div>
+        </li>
+        <li>
+            <div id="accomodation">
+              <img src="../static/image/hotel.svg" alt=""/>
+              <h1>Accomodation</h1>
+              <p>Ranging from cozy to luxury. </p>
+          </div>
+        </li><li>
+            <div id="attraction">
+              <img src="../static/image/beach.svg" alt=""/>
+              <h1>Tourist attraction</h1>
+              <p>Famous and representative tourist attractions.</p>
+          </div>
+        </li>
+        <li>
+            <div id="Tranportation">
+              <img src="../static/image/plane2.svg" alt=""/>
+              <h1>Tranportation</h1>
+              <p>Train, Plane, bus and everything.</p>
+          </div>
+        </li>
+        <li>
+            <div id="reviews">
+              <img src="../static/image/review.svg" alt=""/>
+              <h1>Reviews</h1>
+              <p>Objective evaluation comes from real customers. </p>
+          </div>
+        </li>
+        <!-- <li class="pusher"></li> -->
+        
+        </ul>
+      </div>
       <div class="cardcontainer1">
         <div class="container2">
-            <div class="cardcontainer">
+          {% include 'homepageCardcontent.html' %}
+            <!-- <div class="cardcontainer">
                 <div class="displaycardcontainer">
                     <div>
                     <a class="areasubtitle" href="#" >Travel destinations</a></div>
@@ -194,7 +235,7 @@
                         <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="attractioncontainer">
     
             </div>
@@ -206,48 +247,7 @@
             </div>
     
           </div>
-          <div class="container2">
-            <div class="cardcontainer">
-                <div class="displaycardcontainer">
-                    <div>
-                    <a class="areasubtitle" href="#" >Acoomodation</a></div>
-                    <div>
-                    <a class="moretext" href="#" >More >></a></div>
-                </div>
-                <div class="cards">
-                    <div class="card">
-                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
-                        <div class="cardtitle">Library</div>
-                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
-                    </div>
-                    <div class="card">
-                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
-                        <div class="cardtitle">Library</div>
-                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
-                    </div>
-                    <div class="card">
-                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
-                        <div class="cardtitle">Library</div>
-                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
-                    </div>
-                    <div class="card">
-                        <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
-                        <div class="cardtitle">Library</div>
-                        <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
-                    </div>
-                </div>
-            </div>
-            <div class="attractioncontainer">
-    
-            </div>
-            <div class="accomodationcontainer">
-    
-            </div>
-            <div class="reviewcontainer">
-    
-            </div>
-    
-          </div>
+          
       </div>
       <div class="footer">
         <div class="copyright">
@@ -269,6 +269,8 @@
 {% block jsLink %}
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script  src="../static/js/homepage.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}

@@ -85,3 +85,36 @@ $(function(){
           card.classList.remove('active');
       });
   });
+
+  // $(document).ready(function(){
+  //   $(".containermenu").click(function () {
+  //       $.ajax({
+  //           url: '/category',
+  //           type: 'post',
+  //           data: {
+  //               "category": $(this).attr('id')
+  //           },
+  //           success: function (data) {
+  //               $(".cardcontainer").html(data);
+  //               // $(".categorydiv").addClass("active");
+  //           }
+  //       })
+  //   })
+  //   })
+
+// use ajax to change the content of the page
+$(document).ready(function(){
+  $(".clr").click(function () {
+      $.ajax({
+          url: '/category',
+          type: 'post',
+          data: {
+              "category": $(this).attr('id')
+          },
+          success: function (data) {
+              $(".cardcontainer").html(data);
+              // $(".categorydiv").addClass("active");
+          }
+      })
+  })
+  })
