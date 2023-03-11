@@ -37,12 +37,12 @@
             <form id="signup-form" method="post">
                 <h2>Sign Up</h2>
                 <div class="input-group">
-                    <input id="signup-username" type="text" required>
+                    <input id="signup-username" oninput="username_listener_sign_up()" type="text" required>
                     <label for="signup-username">Username</label>
                     <div class="wrong_error" id="username_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-email" type="text" required>
+                    <input id="signup-email" oninput="email_listener_sign_up()" type="text" required>
                     <label for="signup-email">Email</label>
                     <div id="send-btn-frame">
                         <button type="button" id="send-email-btn" onclick="send_email()" >SEND</button>
@@ -50,17 +50,17 @@
                     <div class="wrong_error" id="email_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-password" type="password" required>
+                    <input id="signup-password" oninput="password_listener_sign_up()" type="password" required>
                     <label for="signup-password">Password</label>
                     <div class="wrong_error" id="password_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-confirm-password" type="password" required>
+                    <input id="signup-confirm-password" oninput="rePassword_listener_sign_up()" type="password" required>
                     <label for="signup-confirm-password">Confirm Password</label>
                     <div class="wrong_error" id="Repassword_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-captcha" type="text" required>
+                    <input id="signup-captcha" oninput="captcha_listener_sign_up()" type="text" required>
                     <label for="signup-captcha">Captcha</label>
                     <div class="wrong_error" id="captcha_error"></div>
                 </div>
