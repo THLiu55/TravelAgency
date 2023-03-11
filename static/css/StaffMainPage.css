@@ -2,13 +2,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 :root {
-  --body-bg-color: #e5f4f9;
+  --body-bg-color: #b89bee;
   --body-color-light: #8b939c;
   --body-font: "Roboto", sans-serif;
-  --page-bg-color: #f2f5f7;
+  --page-bg-color: #9fcff8;
   --body-color: #3d4954;
   --border-color: #b8bec3;
-  --placeholder: #ccd0d2;
 }
 
 * {
@@ -353,7 +352,7 @@ h1 {
 }
 
 .travel-sum {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 14px;
   overflow: hidden;
   display: -webkit-box;
@@ -362,7 +361,7 @@ h1 {
 }
 
 .travel-see {
-  margin-top: 25px;
+  margin-top: 10px;
   text-align: center;
   background-color: #fff;
   color: #fbadaf;
@@ -466,7 +465,8 @@ h1 {
   height: 2px;
   bottom: -17px;
   right: 15px;
-  background-color: #67d4ea;
+  /*background-color: #67d4ea;*/
+  background-color: #efaf89;
   box-shadow: 0px -1px 5px 0px #67d4ea;
 }
 .travel-type:nth-child(2):before {
