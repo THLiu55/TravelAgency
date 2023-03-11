@@ -7,6 +7,7 @@ class Customer(db.Model):
     email = db.Column(db.String(255), unique=True)
     nickname = db.Column(db.String(255))
     password = db.Column(db.String(255))
+    avatarURL = db.Column(db.String(255))
     wallet = db.Column(db.Float)
     orders = db.relationship('Order', backref='customer')
     reviews = db.relationship('Review', backref='customer')
@@ -32,7 +33,7 @@ class Order(db.Model):
     cost = db.Column(db.Float)
     type = db.Column(db.String(255))
     productID = db.Column(db.Integer, db.ForeignKey('products.id'))
-    customerID = db.Column(db.String(255), db.ForeignKey('customers.id'))
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
 
 class Review(db.Model):
@@ -42,7 +43,7 @@ class Review(db.Model):
     rating = db.Column(db.Integer)
     issueTime = db.Column(db.DateTime)
     content = db.Column(db.Text)
-    customerID = db.Column(db.String(255), db.ForeignKey('customers.id'))
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('products.id'))
 
 
@@ -50,9 +51,10 @@ class Product(db.Model):
     __tablename__ = 'products'
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))
     address = db.Column(db.String(255))
     coverURL = db.Column(db.String(255))
-    description = db.Column(db.String(255))
+    description = db.Column(db.Text)
     extraInfo = db.Column(db.Text)
     reviewedNum = db.Column(db.Integer)
     totalStars = db.Column(db.Integer)
