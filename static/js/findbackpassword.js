@@ -14,6 +14,26 @@ const forget_Repassword_error = document.getElementById('forget_Repassword_error
 const signinemail = document.getElementById('signin-email');
 const signinpassword = document.getElementById('signin-password');
 
+// forget email send
+function forget_email_send(){
+    // send the captcha to backend
+    let xhr = new XMLHttpRequest()
+    let fd = new FormData()
+    fd.set("email", forgetpassemail.value)
+    fd.set("captcha", forgetpasscaptcha.value)
+    xhr.open('POST', '/user/findPassword?type=captcha', true)
+    xhr.send(fd)
+
+    // after the email had been sent
+    xhr.onload = function() {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 400) {
+            // display error message
+            forget_captcha_error.innerHTML = "wrong captcha"
+        }
+    }
+}
+
 // reset password
 function resetPassword() {
     // clear all error messages
@@ -51,6 +71,7 @@ function resetPassword() {
 
             // load email and to input area automatically
             signinemail.value = forgetpassemail.value;
+            signinpassword.value = forgetpasscaptcha.value;
         }
     }
 }
