@@ -11,7 +11,7 @@ function delay(milliseconds) {
     });
 }
 
-// count Down for seconds (used in sending email)
+// count Down for seconds (used in sending email) ---- register count down
 async function countDown(seconds) {
     const num_div = document.getElementById('register-count')
     const sending_btn = document.getElementById('register-email-btn')

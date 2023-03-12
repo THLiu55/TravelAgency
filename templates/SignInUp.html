@@ -18,27 +18,31 @@
             <form id="forgetpassword-form" method="post">
                 <h2>Change Password</h2>
                 <div class="input-group">
-                    <input id="forgetpass-email" type="text" required>
+                    <input id="forgetpass-email" oninput="forget_email_listener()" type="text" required>
                     <label for="forgetpass-email">Email</label>
                     <div class="send-btn-frame">
-                        <button type="button" class="send-email-btn" onclick="send_email()" >
-                            <div id="count">SEND</div>
+                        <button type="button" id="forget-email-btn" class="send-email-btn" onclick="send_email()" >
+                            <div id="forget-count">SEND</div>
                         </button>
                     </div>
+                    <div class="wrong_error" id="forget_email_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="forgetpass-captcha" type="text" required>
+                    <input id="forgetpass-captcha" oninput="forget_captcha_listener()"  type="text" required>
                     <label for="forgetpass-captcha">Captcha</label>
+                    <div class="wrong_error" id="forget_captcha_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="forgetpass-password" type="password" required>
+                    <input id="forgetpass-password" oninput="forget_password_listener()" maxlength="20" type="password" required>
                     <label for="forgetpass-password">Reset Password</label>
+                    <div class="wrong_error" id="forget_password_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="forgetpass-repassword" type="password" required>
+                    <input id="forgetpass-repassword" oninput="forget_re_password_listener()" maxlength="20" type="password" required>
                     <label for="forgetpass-repassword">Confirm Password</label>
+                    <div class="wrong_error" id="forget_Repassword_error"></div>
                 </div>
-                <button type="submit" class="btn" onclick="">Reset</button>
+                <button type="button" class="btn" onclick="resetPassword()">Reset</button>
                 <div class="sign-link">
                     <p><a href="#" class="goback-link">Go Back</a></p>
                 </div>
@@ -69,7 +73,7 @@
             <form id="signup-form" method="post">
                 <h2>Sign Up</h2>
                 <div class="input-group">
-                    <input id="signup-username" oninput="username_listener_sign_up()" type="text" required>
+                    <input id="signup-username" oninput="username_listener_sign_up()" type="text" maxlength="15" required>
                     <label for="signup-username">Username</label>
                     <div class="wrong_error" id="username_error"></div>
                 </div>
@@ -84,12 +88,12 @@
                     <div class="wrong_error" id="email_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-password" oninput="password_listener_sign_up()" type="password" required>
+                    <input id="signup-password" oninput="password_listener_sign_up()" maxlength="20" type="password" required>
                     <label for="signup-password">Password</label>
                     <div class="wrong_error" id="password_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-confirm-password" oninput="rePassword_listener_sign_up()" type="password" required>
+                    <input id="signup-confirm-password" oninput="rePassword_listener_sign_up()" maxlength="20" type="password" required>
                     <label for="signup-confirm-password">Confirm Password</label>
                     <div class="wrong_error" id="Repassword_error"></div>
                 </div>
@@ -114,7 +118,7 @@
                     <label for="signin-email">Email</label>
                 </div>
                 <div class="input-group">
-                    <input id="signin-password" type="password" required>
+                    <input id="signin-password" maxlength="20" type="password" required>
                     <label for="signin-password">Password</label>
                 </div>
                 <div class="forgot-pass">
@@ -135,5 +139,6 @@
 
 <script type="text/javascript" src="../static/js/loginutils.js"></script>
 <script type="text/javascript" src="../static/js/loginlogic.js"></script>
+<script type="text/javascript" src="../static/js/findbackpassword.js"></script>
 
 </html>
