@@ -8,35 +8,82 @@ from generate_hash import check_hash_time, get_hash_time
 bp = Blueprint("customer", __name__, url_prefix="/")
 
 
-@bp.route('/', methods=['GET','POST'])
+@bp.route('/', methods=['GET', 'POST'])
+def homepage():
+    return render_template("SignInUp.html")
+
+
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'GET':
-        return render_template("SignInUp.html")
+    customer_email = request.form.get('signin-email')
+    customer_password = request.form.get('signin-password')
+    customer = Customer.query.filter_by(email=customer_email).first()
+    if check_password_hash(customer.password, customer_password):
+        return jsonify({'code': 200})
     else:
-        customer_email = request.form.get('staff-name')
-        customer_password = request.form.get('staff-password')
-        return render_template("SignInUp.html")
+        return jsonify({'message', 'The email address does not match the password'})
 
 
 @bp.route('/register', methods=['POST'])
 def register():
-    captcha_number = request.form.get('')
-    email = request.form.get('email')
-    if captcha_number == check_hash_time(email, captcha_number):
-        pass
-
-
-    return
+    email = request.values.get('signup-email')
+    captcha_number = request.form.get('signup-captcha')
+    if not check_hash_time(email, captcha_number):
+        return jsonify({'code': 400, 'message': 'captcha wrong'})
+    password = request.form.get('signup-password')
+    nickname = request.form.get('signup-username')
+    new_customer = Customer()
+    new_customer.email = email
+    new_customer.nickname = nickname
+    new_customer.password = generate_password_hash(password)
+    db.session.add(new_customer)
+    db.session.commit()
+    return jsonify({'code': 200})
 
 
 @bp.route('/captcha', methods=['POST'])
 def captcha():
     email = request.values.get("email")
+    if Customer.query.filter_by(email=email).first():
+        return jsonify({"code": '400', 'msg': 'registered email'})
     captcha_number = get_hash_time(email)
-    message = Message(subject="Verify Code",
-                      recipients=[email],
-                      body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
-                           f"\nIgnore it please if this is not your own operation"
-                      )
+    message = Message(
+        sender=('Travel Agency', '316710519@qq.com'),
+        subject="Verify Code",
+        recipients=[email],
+        body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
+             f"\nIgnore it please if this is not your own operation"
+    )
     mail.send(message)
     return jsonify({"code": 200})
+
+
+@bp.route('/recaptcha', methods=['POST'])
+def recaptcha():
+    email = request.form.get("email")
+    if not Customer.query.filter_by(email=email).first():
+        return jsonify({"code": 401})
+    captcha_number = get_hash_time(email)
+    message = Message(
+        sender=('Travel Agency', '316710519@qq.com'),
+        subject="Verify Code",
+        recipients=[email],
+        body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
+             f"\nIgnore it please if this is not your own operation"
+    )
+    mail.send(message)
+    return jsonify({"code": 200})
+
+
+@bp.route('/user/findPassword', methods=['POST'])
+def resetPassword():
+    email = request.form.get('email')
+    captcha_number = request.form.get('captcha')
+    if not check_hash_time(email, captcha_number):
+        return jsonify({'code': 400, 'message': 'captcha wrong'})
+    password = request.form.get('password')
+    customer = Customer.query.filter_by(email=email).first()
+    customer.password = generate_password_hash(password)
+    db.session.commit()
+    return jsonify({'code': 200})
+

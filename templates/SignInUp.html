@@ -18,17 +18,17 @@
             <form id="forgetpassword-form" method="post">
                 <h2>Change Password</h2>
                 <div class="input-group">
-                    <input id="forgetpass-email" oninput="forget_email_listener()" type="text" required>
+                    <input id="forgetpass-email" name="forgetpass-email" oninput="forget_email_listener()" type="text" required>
                     <label for="forgetpass-email">Email</label>
                     <div class="send-btn-frame">
                         <button type="button" id="forget-email-btn" class="send-email-btn" onclick="forget_email_send()" >
                             <div id="forget-count">SEND</div>
                         </button>
                     </div>
-                    <div class="wrong_error" id="forget_email_error"></div>
+
                 </div>
                 <div class="input-group">
-                    <input id="forgetpass-captcha" oninput="forget_captcha_listener()"  type="text" required>
+                    <input id="forgetpass-captcha" name="forgetpass-captcha" oninput="forget_captcha_listener()"  type="text" required>
                     <label for="forgetpass-captcha">Captcha</label>
                     <div class="wrong_error" id="forget_captcha_error"></div>
                 </div>
@@ -73,12 +73,12 @@
             <form id="signup-form" method="post">
                 <h2>Sign Up</h2>
                 <div class="input-group">
-                    <input id="signup-username" oninput="username_listener_sign_up()" type="text" maxlength="15" required>
+                    <input id="signup-username" name="signup-username" oninput="username_listener_sign_up()" type="text" maxlength="15" required>
                     <label for="signup-username">Username</label>
                     <div class="wrong_error" id="username_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-email" oninput="email_listener_sign_up()" type="text" required>
+                    <input id="signup-email" name="signup-email" oninput="email_listener_sign_up()" type="text" required>
                     <label for="signup-email">Email</label>
                     <div class="send-btn-frame">
                         <button type="button" id="register-email-btn" class="send-email-btn" onclick="send_email()" >
@@ -88,7 +88,7 @@
                     <div class="wrong_error" id="email_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-password" oninput="password_listener_sign_up()" maxlength="20" type="password" required>
+                    <input id="signup-password" name="signup-password" oninput="password_listener_sign_up()" maxlength="20" type="password" required>
                     <label for="signup-password">Password</label>
                     <div class="wrong_error" id="password_error"></div>
                 </div>
@@ -98,7 +98,7 @@
                     <div class="wrong_error" id="Repassword_error"></div>
                 </div>
                 <div class="input-group">
-                    <input id="signup-captcha" oninput="captcha_listener_sign_up()" type="text" required>
+                    <input id="signup-captcha" name="signup-captcha" oninput="captcha_listener_sign_up()" type="text" required>
                     <label for="signup-captcha">Captcha</label>
                     <div class="wrong_error" id="captcha_error"></div>
                 </div>

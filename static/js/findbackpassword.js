@@ -21,15 +21,14 @@ function forget_email_send(){
     let fd = new FormData()
     fd.set("email", forgetpassemail.value)
     fd.set("captcha", forgetpasscaptcha.value)
-    xhr.open('POST', '/user/findPassword?type=captcha', true)
+    xhr.open('POST', '/recaptcha', true)
     xhr.send(fd)
 
     // after the email had been sent
     xhr.onload = function() {
         let response = JSON.parse(xhr.responseText)
-        if (response.code === 400) {
-            // display error message
-            forget_captcha_error.innerHTML = "wrong captcha"
+        if (response.code === 401){
+            forget_email_error.innerHTML = "email does not exist"
         }
     }
 }
@@ -55,7 +54,7 @@ function resetPassword() {
     fd.set("email", forgetpassemail.value)
     fd.set("captcha", forgetpasscaptcha.value)
     fd.set("password", password)
-    xhr.open('POST', '/user/findPassword?type=reset', true)
+    xhr.open('POST', '/user/findPassword', true)
     xhr.send(fd)
 
     // after password reset operation
@@ -63,7 +62,7 @@ function resetPassword() {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 400) {
             // display error message
-            forget_email_error.innerHTML = response.message
+            forget_captcha_error.innerHTML = response.message
         } else {
             // go back to login
             wrapper.classList.add('animate-goback');
@@ -81,9 +80,9 @@ function forget_email_listener() {
     email_listener(forgetpassemail, forget_email_error);
 }
 
-function  forget_captcha_listener() {
-    captcha_listener(forgetpasscaptcha, forget_captcha_error);
-}
+// function  forget_captcha_listener() {
+//     captcha_listener(forgetpasscaptcha, forget_captcha_error);
+// }
 
 function forget_password_listener() {
     password_listener(forgetpasspassword, forget_password_error);

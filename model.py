@@ -1,7 +1,8 @@
 from exts import db
+from flask_login import UserMixin
 
 
-class Customer(db.Model):
+class Customer(db.Model, UserMixin):
     __tablename__ = 'customers'
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True)
