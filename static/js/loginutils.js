@@ -14,7 +14,7 @@ function delay(milliseconds) {
 // count Down for seconds (used in sending email)
 async function countDown(seconds) {
     const num_div = document.getElementById('count')
-    const sending_btn = document.getElementById('send-email-btn')
+    const sending_btn = document.getElementById('register-email-btn')
     sending_btn.disabled = true
     sending_btn.style.backgroundColor = '#67a0ff'
     for (let i = seconds; i > 0; i--) {
