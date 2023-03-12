@@ -68,6 +68,17 @@ function send_email(){
     xhr.open('POST', '/captcha', true)
     xhr.send(fd)
 
+    // display error messages
+    xhr.onload = function() {
+        let response = JSON.parse(xhr.responseText)
+        if (response.code === 400) {
+            let msg = response.message
+            email_error.innerHTML = msg;
+        } else if (response.code === 401) {
+            let msg = response.message
+            alert(msg)
+        }
+    }
 }
 
 // sign up
@@ -104,7 +115,7 @@ function SignUp(){
 
     // send registered form to flask backend
     let xhr = new XMLHttpRequest()
-    xhr.open('POST', '/user/login?type=signup', true)
+    xhr.open('POST', '/register', true)
     xhr.setRequestHeader("X-CSRFToken", "{{ register_form.csrf_token._value() }}")
     let form = document.getElementById("sign-up-form")
     const fd = new FormData(form)
