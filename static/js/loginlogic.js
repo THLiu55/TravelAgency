@@ -3,6 +3,8 @@ const signUpLink = document.querySelector('.signUp-link');
 const signInLink = document.querySelector('.signIn-link');
 const staffInLink = document.querySelector('.staffSignIn-link');
 const customerInLink = document.querySelector('.customerSignIn-link');
+const forgetPasswordLink = document.querySelector('.forgetpassword-link');
+const gobackLink = document.querySelector('.goback-link');
 
 // boolean value that represent each input is valid
 let validUserName = false, validPassword = false, validRePassword = false, validEmail = false
@@ -32,6 +34,9 @@ signUpLink.addEventListener('click', () => {
     if (wrapper.classList.contains('animate-staffIn')){
         wrapper.classList.remove('animate-staffIn');
     }
+    if (wrapper.classList.contains('animate-goback')){
+        wrapper.classList.remove('animate-goback');
+    }
     wrapper.classList.add('animate-signIn');
     wrapper.classList.remove('animate-signUp');
 });
@@ -42,6 +47,9 @@ signInLink.addEventListener('click', () => {
 });
 
 staffInLink.addEventListener('click', () => {
+    if (wrapper.classList.contains('animate-goback')){
+        wrapper.classList.remove('animate-goback');
+    }
     wrapper.classList.add('animate-signIn2');
     wrapper.classList.remove('animate-staffIn');
 })
@@ -49,6 +57,22 @@ staffInLink.addEventListener('click', () => {
 customerInLink.addEventListener('click', () => {
     wrapper.classList.add('animate-staffIn');
     wrapper.classList.remove('animate-signIn2');
+})
+
+forgetPasswordLink.addEventListener('click', () => {
+    if (wrapper.classList.contains('animate-staffIn')){
+        wrapper.classList.remove('animate-staffIn');
+    }
+    if (wrapper.classList.contains('animate-signUp')){
+        wrapper.classList.remove('animate-signUp');
+    }
+    wrapper.classList.add('animate-forget');
+    wrapper.classList.remove('animate-goback');
+})
+
+gobackLink.addEventListener('click', () => {
+    wrapper.classList.add('animate-goback');
+    wrapper.classList.remove('animate-forget');
 })
 
 // send email

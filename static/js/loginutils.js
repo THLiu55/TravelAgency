@@ -16,13 +16,13 @@ async function countDown(seconds) {
     const num_div = document.getElementById('count')
     const sending_btn = document.getElementById('send-email-btn')
     sending_btn.disabled = true
-    sending_btn.style.background = 'linear-gradient(#67a0ff, #8edfff)'
+    sending_btn.style.backgroundColor = '#67a0ff'
     for (let i = seconds; i > 0; i--) {
         num_div.innerHTML = i.toString()
         await delay(1000)
     }
     sending_btn.disabled = false
-    sending_btn.style.background = 'linear-gradient(#1a2886, #0268e1)'
+    sending_btn.style.backgroundColor = '#1a2886'
     num_div.innerHTML = "SEND";
 }
 

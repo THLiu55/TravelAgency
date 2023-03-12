@@ -97,6 +97,10 @@ body {
 }
 
 /* sign-in-at-front case */
+/* --forget-password position */
+.wrapper .form-wrapper.forget-password{
+    transform: rotate(0);
+}
 /* --sign-up position */
 .wrapper .form-wrapper.sign-up {
     transform: rotate(7deg);
@@ -116,6 +120,89 @@ body {
 .wrapper.animate-signIn2 .form-wrapper.staff-sign-in{
     animation: animateRotateStaffIn2 1.5s ease-in-out forwards;
     /*animation-delay: .3s;*/
+}
+
+/* forget password mode ---- other forms spread out */
+.wrapper.animate-forget .form-wrapper.sign-in{
+    animation: animateSpread1 1.5s ease-in-out forwards;
+}
+.wrapper.animate-forget .form-wrapper.sign-up{
+    animation: animateSpread2 1.5s ease-in-out forwards;
+}
+.wrapper.animate-forget .form-wrapper.staff-sign-in{
+    animation: animateSpread3 1.5s ease-in-out forwards;
+}
+/* forget password return mode ---- other forms gather */
+.wrapper.animate-goback .form-wrapper.sign-in{
+    animation: animateGather1 1.5s ease-in-out forwards;
+}
+.wrapper.animate-goback .form-wrapper.sign-up{
+    animation: animateGather2 1.5s ease-in-out forwards;
+}
+.wrapper.animate-goback .form-wrapper.staff-sign-in{
+    animation: animateGather3 1.5s ease-in-out forwards;
+}
+
+/* spread animation */
+@keyframes animateSpread1 {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(55rem) translateY(-55rem);
+    }
+}
+
+@keyframes animateSpread2 {
+    0% {
+        transform: rotate(7deg) translateX(0);
+    }
+
+    100% {
+        transform: translateX(-55rem) translateY(-55rem);
+    }
+}
+
+@keyframes animateSpread3 {
+    0% {
+
+        transform: rotate(14deg) translateX(0);
+    }
+
+    100% {
+        transform: translateY(55rem);
+    }
+}
+/* gather animation */
+@keyframes animateGather1 {
+    0% {
+        transform: translateX(55rem) translateY(-55rem);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes animateGather2 {
+    0% {
+        transform: translateX(-55rem) translateY(-55rem);
+    }
+
+    100% {
+        transform: rotate(7deg) translateX(0);
+    }
+}
+@keyframes animateGather3 {
+    0% {
+        transform: translateY(55rem);
+
+    }
+
+    100% {
+        transform: rotate(14deg) translateX(0);
+
+    }
 }
 
 /* sign-up rotate */
@@ -210,16 +297,16 @@ h2 {
     margin: 0.8rem 0;
 }
 
-#send-btn-frame{
+.send-btn-frame{
     position: absolute;
     right: 0;
     top: 1%;
 }
 
-#send-email-btn{
+.send-email-btn{
     height: 2.5rem;
     width: 4rem;
-    background: linear-gradient(#67a0ff, #8edfff);
+    background: #67a0ff;
     font-size: 16px;
     color: #fff;
     font-weight: 500;
@@ -230,8 +317,8 @@ h2 {
     transition: all 0.3s ease;
 }
 
-#send-email-btn:hover{
-    background: linear-gradient(#1a2886, #0268e1);
+.send-email-btn:hover{
+    background: #1a2886;
 }
 
 

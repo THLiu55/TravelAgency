@@ -13,6 +13,38 @@
 
     <div class="wrapper">
 
+        <!--    forget password   -->
+        <div class="form-wrapper forget-password">
+            <form id="forgetpassword-form" method="post">
+                <h2>Change Password</h2>
+                <div class="input-group">
+                    <input id="forgetpass-email" type="text" required>
+                    <label for="forgetpass-email">Email</label>
+                    <div class="send-btn-frame">
+                        <button type="button" class="send-email-btn" onclick="send_email()" >
+                            <div id="count">SEND</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <input id="forgetpass-captcha" type="text" required>
+                    <label for="forgetpass-captcha">Captcha</label>
+                </div>
+                <div class="input-group">
+                    <input id="forgetpass-password" type="password" required>
+                    <label for="forgetpass-password">Reset Password</label>
+                </div>
+                <div class="input-group">
+                    <input id="forgetpass-repassword" type="password" required>
+                    <label for="forgetpass-repassword">Confirm Password</label>
+                </div>
+                <button type="submit" class="btn" onclick="">Reset</button>
+                <div class="sign-link">
+                    <p><a href="#" class="goback-link">Go Back</a></p>
+                </div>
+            </form>
+        </div>
+
         <!--    staff sign in   -->
         <div class="form-wrapper staff-sign-in">
             <form id="staffin-form" method="post">
@@ -44,8 +76,8 @@
                 <div class="input-group">
                     <input id="signup-email" oninput="email_listener_sign_up()" type="text" required>
                     <label for="signup-email">Email</label>
-                    <div id="send-btn-frame">
-                        <button type="button" id="send-email-btn" onclick="send_email()" >
+                    <div class="send-btn-frame">
+                        <button type="button" class="send-email-btn" onclick="send_email()" >
                             <div id="count">SEND</div>
                         </button>
                     </div>
@@ -86,7 +118,7 @@
                     <label for="signin-password">Password</label>
                 </div>
                 <div class="forgot-pass">
-                    <a href="#">Forgot Password?</a>
+                    <a href="#" class="forgetpassword-link">Forgot Password?</a>
                 </div>
                 <button type="button" class="btn" onclick="SignIn()">Login</button>
                 <div class="sign-link">
