@@ -3,7 +3,7 @@ from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail
 from flask_mail import Message
-from generate_hash import check_hash_time, get_hash_time
+from utils.generate_hash import check_hash_time, get_hash_time
 
 bp = Blueprint("customer", __name__, url_prefix="/")
 
