@@ -28,7 +28,7 @@ const login_email = document.getElementById('signin-email');
 const login_password = document.getElementById('signin-password');
 
 // count down
-const num_div = document.getElementById('count')
+const num_div = document.getElementById('register-count')
 
 signUpLink.addEventListener('click', () => {
     if (wrapper.classList.contains('animate-staffIn')){
