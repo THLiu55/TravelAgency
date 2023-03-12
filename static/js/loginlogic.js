@@ -25,6 +25,9 @@ const repassword_error = document.getElementById("Repassword_error");
 const login_email = document.getElementById('signin-email');
 const login_password = document.getElementById('signin-password');
 
+// count down
+const num_div = document.getElementById('count')
+
 signUpLink.addEventListener('click', () => {
     if (wrapper.classList.contains('animate-staffIn')){
         wrapper.classList.remove('animate-staffIn');
@@ -61,12 +64,17 @@ function send_email(){
         email_error.innerHTML = "invalid email format"
         return;
     }
+
+    // animation when the email is sent
+    countDown(60, num_div).then(r => {})
+
     // send email
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('email', document.getElementById('signup-email').value)
     xhr.open('POST', '/captcha', true)
     xhr.send(fd)
+
 
     // display error messages
     xhr.onload = function() {
@@ -117,7 +125,7 @@ function SignUp(){
     let xhr = new XMLHttpRequest()
     xhr.open('POST', '/register', true)
     xhr.setRequestHeader("X-CSRFToken", "{{ register_form.csrf_token._value() }}")
-    let form = document.getElementById("sign-up-form")
+    let form = document.getElementById("signup-form")
     const fd = new FormData(form)
     xhr.send(fd)
 

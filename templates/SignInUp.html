@@ -45,7 +45,9 @@
                     <input id="signup-email" oninput="email_listener_sign_up()" type="text" required>
                     <label for="signup-email">Email</label>
                     <div id="send-btn-frame">
-                        <button type="button" id="send-email-btn" onclick="send_email()" >SEND</button>
+                        <button type="button" id="send-email-btn" onclick="send_email()" >
+                            <div id="count">SEND</div>
+                        </button>
                     </div>
                     <div class="wrong_error" id="email_error"></div>
                 </div>

@@ -4,6 +4,28 @@ function checkEmailFormat(email) {
     return reg.test(email)
 }
 
+// delay a second
+function delay(milliseconds) {
+    return new Promise(resolve => {
+        setTimeout(resolve, milliseconds);
+    });
+}
+
+// count Down for seconds (used in sending email)
+async function countDown(seconds) {
+    const num_div = document.getElementById('count')
+    const sending_btn = document.getElementById('send-email-btn')
+    sending_btn.disabled = true
+    sending_btn.style.background = 'linear-gradient(#67a0ff, #8edfff)'
+    for (let i = seconds; i > 0; i--) {
+        num_div.innerHTML = i.toString()
+        await delay(1000)
+    }
+    sending_btn.disabled = false
+    sending_btn.style.background = 'linear-gradient(#1a2886, #0268e1)'
+    num_div.innerHTML = "SEND";
+}
+
 // set input event listeners
 function email_listener(email_input, email_error) {
     // clear the error message
