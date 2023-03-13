@@ -23,7 +23,7 @@ def login():
     if check_password_hash(customer.password, customer_password):
         return jsonify({'code': 200})
     else:
-        return jsonify({'message', 'The email address does not match the password'})
+        return jsonify({'message': 'The email address does not match the password'})
 
 
 @bp.route('/register', methods=['POST'])
