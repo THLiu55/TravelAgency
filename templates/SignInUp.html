@@ -19,19 +19,20 @@
                 <h2>Change Password</h2>
                 <div class="input-group">
                     <input id="forgetpass-email" name="forgetpass-email" oninput="forget_email_listener()" type="text" required>
-                    <label for="forgetpass-email">Email</label>
+                    <label for="forgetpass-email">{{ _("Email") }}</label>
                     <div class="send-btn-frame">
                         <button type="button" id="forget-email-btn" class="send-email-btn" onclick="forget_email_send()" >
-                            <div id="forget-count">SEND</div>
+                            <div id="forget-count">{{ _("SEND") }}</div>
                         </button>
                     </div>
 
                 </div>
                 <div class="input-group">
                     <input id="forgetpass-captcha" name="forgetpass-captcha" oninput="forget_captcha_listener()"  type="text" required>
-                    <label for="forgetpass-captcha">Captcha</label>
+                    <label for="forgetpass-captcha">{{ _("Captcha") }}</label>
                     <div class="wrong_error" id="forget_captcha_error"></div>
                 </div>
+                {# todo: 将文字部分改为 22，25，32 行格式#}
                 <div class="input-group">
                     <input id="forgetpass-password" oninput="forget_password_listener()" maxlength="20" type="password" required>
                     <label for="forgetpass-password">Reset Password</label>

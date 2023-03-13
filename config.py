@@ -43,3 +43,10 @@ MAIL_PASSWORD = "frvicghahgzpbhih"
 MAIL_DEFAULT_SENDER = "316710519@qq.com"
 
 SECRET_KEY = "20020413gzq"  # config secret key
+
+BABEL_DEFAULT_LOCALE = 'zh'
+BABEL_DEFAULT_TIMEZONE = 'UTC'
+LANGUAGES = {
+    'en': 'English',
+    'zh': 'Chinese'
+}

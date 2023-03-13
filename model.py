@@ -63,3 +63,20 @@ class Product(db.Model):
     type = db.Column(db.String(255))
     orders = db.relationship('Order', backref='product')
     reviews = db.relationship('Review', backref='product')
+
+
+# product information in Chinese
+# id here is corresponding to product.id
+class ProductZH(db.Model):
+    __tablename__ = 'products_zh'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(255))
+    address = db.Column(db.String(255))
+    coverURL = db.Column(db.String(255))
+    description = db.Column(db.Text)
+    extraInfo = db.Column(db.Text)
+    reviewedNum = db.Column(db.Integer)
+    totalStars = db.Column(db.Integer)
+    price = db.Column(db.Float)
+    type = db.Column(db.String(255))
