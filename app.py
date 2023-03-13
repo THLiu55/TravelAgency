@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, session, request, make_response, jsonify
 from flask_babel import Babel, gettext as _, refresh
 
@@ -7,16 +9,17 @@ from exts import db, mail
 from flask_migrate import Migrate
 from model import *
 
-
 app = Flask(__name__)
 bp_register(app)
-app.config.from_object(config)
+app.config.from_object(config.DevelopmentConfig)
 app.config['DATABASE'] = 'travelAgency'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:\\SQLite\\travelAgency.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 mail.init_app(app)
 db.init_app(app)
 migrate = Migrate(app, db)
+print(type(os.getenv('MAIL_USE_TLS')))
+
 
 # translations
 babel = Babel(app=app)
@@ -46,9 +49,9 @@ def set_locale():
     return jsonify({"data": "success"})
 
 
-@app.context_processor
-def inject_conf_var():
-    return dict(AVAILABLE_LANGUAGES=app.config['LANGUAGES'], CURRENT_LANGUAGE=session.get('language', request.accept_languages.best_match(app.config['LANGUAGES'].keys())))
+# @app.context_processor
+# def inject_conf_var():
+#     return dict(AVAILABLE_LANGUAGES=app.config['LANGUAGES'], CURRENT_LANGUAGE=session.get('language', request.accept_languages.best_match(app.config['LANGUAGES'].keys())))
 
 
 @app.route('/')
