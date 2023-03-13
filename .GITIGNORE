@@ -13,3 +13,4 @@ userdata
 
 .env
 venv
+venv/
