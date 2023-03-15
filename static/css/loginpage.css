@@ -51,20 +51,20 @@ body {
 /*}*/
 
 /* sign-in position during staff-in state */
-.wrapper.animate-staffIn .form-wrapper.sign-in {
-    transform: rotate(14deg);
-    animation: animateRotateStaffIn .7s ease-in-out forwards;
-    animation-delay: .3s;
-}
+/*.wrapper.animate-staffIn .form-wrapper.sign-in {*/
+/*    transform: rotate(14deg);*/
+/*    animation: animateRotateStaffIn .7s ease-in-out forwards;*/
+/*    animation-delay: .3s;*/
+/*}*/
 
 /* sign in -- sign up exchange */
 .wrapper.animate-signIn .form-wrapper.sign-in {
     animation: animateSignIn 1.5s ease-in-out forwards;
 }
 /* sign in -- staff in exchange */
-.wrapper.animate-signIn2 .form-wrapper.sign-in{
-    animation: animateSignIn2 1.5s ease-in-out forwards;
-}
+/*.wrapper.animate-signIn2 .form-wrapper.sign-in{*/
+/*    animation: animateSignIn2 1.5s ease-in-out forwards;*/
+/*}*/
 
 /* sign-in go back animation when sign-up at front */
 @keyframes animateSignIn {
@@ -106,9 +106,9 @@ body {
     transform: rotate(7deg);
 }
 /* --staff-in position */
-.wrapper .form-wrapper.staff-sign-in{
-    transform: rotate(14deg);
-}
+/*.wrapper .form-wrapper.staff-sign-in{*/
+/*    transform: rotate(14deg);*/
+/*}*/
 
 /* sign-up rotate when sign-in go back*/
 .wrapper.animate-signIn .form-wrapper.sign-up {
@@ -117,10 +117,10 @@ body {
 }
 
 /* staff-in rotate when sign-in go back*/
-.wrapper.animate-signIn2 .form-wrapper.staff-sign-in{
-    animation: animateRotateStaffIn2 1.5s ease-in-out forwards;
-    /*animation-delay: .3s;*/
-}
+/*.wrapper.animate-signIn2 .form-wrapper.staff-sign-in{*/
+/*    animation: animateRotateStaffIn2 1.5s ease-in-out forwards;*/
+/*    !*animation-delay: .3s;*!*/
+/*}*/
 
 /* forget password mode ---- other forms spread out */
 .wrapper.animate-forget .form-wrapper.sign-in{
@@ -129,9 +129,9 @@ body {
 .wrapper.animate-forget .form-wrapper.sign-up{
     animation: animateSpread2 1.5s ease-in-out forwards;
 }
-.wrapper.animate-forget .form-wrapper.staff-sign-in{
-    animation: animateSpread3 1.5s ease-in-out forwards;
-}
+/*.wrapper.animate-forget .form-wrapper.staff-sign-in{*/
+/*    animation: animateSpread3 1.5s ease-in-out forwards;*/
+/*}*/
 /* forget password return mode ---- other forms gather */
 .wrapper.animate-goback .form-wrapper.sign-in{
     animation: animateGather1 1.5s ease-in-out forwards;
@@ -139,9 +139,9 @@ body {
 .wrapper.animate-goback .form-wrapper.sign-up{
     animation: animateGather2 1.5s ease-in-out forwards;
 }
-.wrapper.animate-goback .form-wrapper.staff-sign-in{
-    animation: animateGather3 1.5s ease-in-out forwards;
-}
+/*.wrapper.animate-goback .form-wrapper.staff-sign-in{*/
+/*    animation: animateGather3 1.5s ease-in-out forwards;*/
+/*}*/
 
 /* spread animation */
 @keyframes animateSpread1 {
@@ -218,31 +218,31 @@ body {
 }
 
 /* staff-in rotate */
-@keyframes animateRotateStaffIn {
-    0% {
-        transform: rotate(14deg);
-    }
+/*@keyframes animateRotateStaffIn {*/
+/*    0% {*/
+/*        transform: rotate(14deg);*/
+/*    }*/
 
-    100% {
-        transform: rotate(0);
-        z-index: 1;
-    }
-}
+/*    100% {*/
+/*        transform: rotate(0);*/
+/*        z-index: 1;*/
+/*    }*/
+/*}*/
 
-@keyframes animateRotateStaffIn2 {
-    0% {
-        transform: rotate(14deg) translateX(0);
-    }
+/*@keyframes animateRotateStaffIn2 {*/
+/*    0% {*/
+/*        transform: rotate(14deg) translateX(0);*/
+/*    }*/
 
-    50% {
-        transform: translateX(33rem);
-    }
+/*    50% {*/
+/*        transform: translateX(33rem);*/
+/*    }*/
 
-    100% {
-        transform: rotate(0) translateX(0);
-        z-index: 1;
-    }
-}
+/*    100% {*/
+/*        transform: rotate(0) translateX(0);*/
+/*        z-index: 1;*/
+/*    }*/
+/*}*/
 
 /* sign up -- sign in exchange */
 .wrapper.animate-signUp .form-wrapper.sign-up {
@@ -250,9 +250,9 @@ body {
 }
 
 /* staff in -- sign in exchange */
-.wrapper.animate-staffIn .form-wrapper.staff-sign-in{
-    animation: animateStaffIn 1.5s ease-in-out forwards;
-}
+/*.wrapper.animate-staffIn .form-wrapper.staff-sign-in{*/
+/*    animation: animateStaffIn 1.5s ease-in-out forwards;*/
+/*}*/
 
 /* sign-up go to the front animation when sign-in at back */
 @keyframes animateSignUp {
@@ -270,20 +270,20 @@ body {
     }
 }
 /* staff-in go to the back animation when sign-in at front */
-@keyframes animateStaffIn {
-    0% {
-        transform: translateX(0);
-        z-index: 1;
-    }
+/*@keyframes animateStaffIn {*/
+/*    0% {*/
+/*        transform: translateX(0);*/
+/*        z-index: 1;*/
+/*    }*/
 
-    50% {
-        transform: translateX(33rem);
-    }
+/*    50% {*/
+/*        transform: translateX(33rem);*/
+/*    }*/
 
-    100% {
-        transform: translateX(0) rotate(14deg);
-    }
-}
+/*    100% {*/
+/*        transform: translateX(0) rotate(14deg);*/
+/*    }*/
+/*}*/
 
 h2 {
     font-size: 30px;

@@ -31,9 +31,9 @@ const login_password = document.getElementById('signin-password');
 const num_div = document.getElementById('register-count')
 
 signUpLink.addEventListener('click', () => {
-    if (wrapper.classList.contains('animate-staffIn')){
-        wrapper.classList.remove('animate-staffIn');
-    }
+    // if (wrapper.classList.contains('animate-staffIn')){
+    //     wrapper.classList.remove('animate-staffIn');
+    // }
     if (wrapper.classList.contains('animate-goback')){
         wrapper.classList.remove('animate-goback');
     }
@@ -46,23 +46,23 @@ signInLink.addEventListener('click', () => {
     wrapper.classList.remove('animate-signIn');
 });
 
-staffInLink.addEventListener('click', () => {
-    if (wrapper.classList.contains('animate-goback')){
-        wrapper.classList.remove('animate-goback');
-    }
-    wrapper.classList.add('animate-signIn2');
-    wrapper.classList.remove('animate-staffIn');
-})
+// staffInLink.addEventListener('click', () => {
+//     if (wrapper.classList.contains('animate-goback')){
+//         wrapper.classList.remove('animate-goback');
+//     }
+//     wrapper.classList.add('animate-signIn2');
+//     wrapper.classList.remove('animate-staffIn');
+// })
 
-customerInLink.addEventListener('click', () => {
-    wrapper.classList.add('animate-staffIn');
-    wrapper.classList.remove('animate-signIn2');
-})
+// customerInLink.addEventListener('click', () => {
+//     wrapper.classList.add('animate-staffIn');
+//     wrapper.classList.remove('animate-signIn2');
+// })
 
 forgetPasswordLink.addEventListener('click', () => {
-    if (wrapper.classList.contains('animate-staffIn')){
-        wrapper.classList.remove('animate-staffIn');
-    }
+    // if (wrapper.classList.contains('animate-staffIn')){
+    //     wrapper.classList.remove('animate-staffIn');
+    // }
     if (wrapper.classList.contains('animate-signUp')){
         wrapper.classList.remove('animate-signUp');
     }
