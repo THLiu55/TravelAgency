@@ -1,3 +1,23 @@
+(function() {
+			var emiManage = document.getElementById('emiManage');
+
+			$(emiManage).on('click', function () {
+				var url=__ctx+"/platform/data/cemsData/emiEdit";
+				DialogUtil.open({
+					type:2,
+					content:url,
+					area: ['50%', '50%']
+				});
+			});
+			window.addEventListener("resize", function () {
+				emiManage.resize();
+			});
+		}
+)();
+
+
+
+
 (function(){
   
   var chat = {
