@@ -30,8 +30,8 @@ $(function(){
       
   
       
-      console.log('current '+current);
-      console.log('prev '+prev);
+      // console.log('current '+current);
+      // console.log('prev '+prev);
     }
   });
 
