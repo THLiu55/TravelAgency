@@ -208,7 +208,7 @@ html[data-theme='dark'] {
 /* Fonts */
 @font-face {
   font-family: 'Comfortaa';
-  src: url("../fonts/Comfortaa-Bold.woff2") format("woff2"), url("../fonts/Comfortaa-Bold.woff") format("woff");
+  src: url("../../static/fonts/Comfortaa-Bold.woff2") format("woff2"), url("../../static/fonts/Comfortaa-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -216,7 +216,7 @@ html[data-theme='dark'] {
 
 @font-face {
   font-family: 'Rounded Mplus 1c';
-  src: url("../fonts/RoundedMplus1c-Black.woff2") format("woff2"), url("../fonts/RoundedMplus1c-Black.woff") format("woff");
+  src: url("../../static/fonts/RoundedMplus1c-Black.woff2") format("woff2"), url("../../static/fonts/RoundedMplus1c-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -224,7 +224,7 @@ html[data-theme='dark'] {
 
 @font-face {
   font-family: 'Roboto';
-  src: url("../fonts/Roboto-Bold.woff2") format("woff2"), url("../fonts/Roboto-Bold.woff") format("woff");
+  src: url("../../static/fonts/Roboto-Bold.woff2") format("woff2"), url("../../static/fonts/Roboto-Bold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -232,7 +232,7 @@ html[data-theme='dark'] {
 
 @font-face {
   font-family: 'Roboto';
-  src: url("../fonts/Roboto-Medium.woff2") format("woff2"), url("../fonts/Roboto-Medium.woff") format("woff");
+  src: url("../../static/fonts/Roboto-Medium.woff2") format("woff2"), url("../../static/fonts/Roboto-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -240,7 +240,7 @@ html[data-theme='dark'] {
 
 @font-face {
   font-family: 'Roboto';
-  src: url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff");
+  src: url("../../static/fonts/Roboto-Regular.woff2") format("woff2"), url("../../static/fonts/Roboto-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -248,8 +248,8 @@ html[data-theme='dark'] {
 
 @font-face {
   font-family: 'Material Icons';
-  src: url("../fonts/MaterialIcons/MaterialIcons-Regular.eot");
-  src: url("../fonts/MaterialIcons/MaterialIcons-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/MaterialIcons/MaterialIcons-Regular.woff2") format("woff2"), url("../fonts/MaterialIcons/MaterialIcons-Regular.woff") format("woff"), url("../fonts/MaterialIcons/MaterialIcons-Regular.ttf") format("truetype"), url("../fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular") format("svg");
+  src: url("../../static/fonts/MaterialIcons/MaterialIcons-Regular.eot");
+  src: url("../../static/fonts/MaterialIcons/MaterialIcons-Regular.eot?#iefix") format("embedded-opentype"), url("../../static/fonts/MaterialIcons/MaterialIcons-Regular.woff2") format("woff2"), url("../../static/fonts/MaterialIcons/MaterialIcons-Regular.woff") format("woff"), url("../../static/fonts/MaterialIcons/MaterialIcons-Regular.ttf") format("truetype"), url("../../static/fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
