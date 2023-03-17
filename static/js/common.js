@@ -48,7 +48,7 @@ const triggerEvent = (typeEvent, elem, bubbles = true) => {
         });
     }
 
-    const canceled = !elem.dispatchEvent(event);
+    const Canceled = !elem.dispatchEvent(event);
 };
 
 const themeStyle = (a, b, cssVariable = true) => {
