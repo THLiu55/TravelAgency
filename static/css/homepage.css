@@ -17,11 +17,11 @@ body {
   padding-left: 4%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 60vh;
+    /* height: 60vh; */
     
 }
 .left{
-      
+      margin-top: 5%;
 }
 a:hover{
   color: inherit;
