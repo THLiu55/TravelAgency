@@ -1,0 +1,974 @@
+<!-- <link rel="stylesheet" href="../static/css/bootstrap.min.css"> -->
+<link href="../static/css/all-fontawesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../static/css/flaticon.css">
+<link rel="stylesheet" href="../static/css/animate.min.css">
+<link rel="stylesheet" href="../static/css/magnific-popup.min.css">
+<link rel="stylesheet" href="../static/css/owl.carousel.min.css">
+<link rel="stylesheet" href="../static/css/nice-select.min.css">
+
+<link rel="stylesheet" href="../static/css/generalcustomer.css">
+
+<div class="search-area">
+    <div class="container">
+      <div class="search-wrapper">
+  
+        <div class="search-header">
+          <div class="search-nav">
+            <ul class="nav nav-pills" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-tab-1" data-bs-toggle="pill" data-bs-target="#pills-1"
+                  type="button" role="tab" aria-controls="pills-1" aria-selected="true"><i
+                    class="far fa-plane-departure"></i>Flights</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-tab-2" data-bs-toggle="pill" data-bs-target="#pills-2" type="button"
+                  role="tab" aria-controls="pills-2" aria-selected="false"><i class="far fa-hotel"></i>Hotels</button>
+              </li>
+              
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-tab-4" data-bs-toggle="pill" data-bs-target="#pills-4" type="button"
+                  role="tab" aria-controls="pills-4" aria-selected="false"><i class="far fa-car-building"></i>Holiday
+                  Package</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-tab-5" data-bs-toggle="pill" data-bs-target="#pills-5" type="button"
+                  role="tab" aria-controls="pills-5" aria-selected="false"><i class="far fa-car"></i>Cars</button>
+              </li>
+              <!-- <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-tab-6" data-bs-toggle="pill" data-bs-target="#pills-6" type="button"
+                  role="tab" aria-controls="pills-6" aria-selected="false"><i class="far fa-ship"></i>Cruises</button>
+              </li> -->
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-tab-7" data-bs-toggle="pill" data-bs-target="#pills-7" type="button"
+                  role="tab" aria-controls="pills-7" aria-selected="false"><i
+                    class="far fa-earth-americas"></i>Attractions</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+  
+        <div class="tab-content" id="pills-tabContent">
+  
+          <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-tab-1" tabindex="0">
+            <div class="flight-search">
+              <div class="search-form">
+                <form action="#">
+  
+                  <div class="flight-type">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" checked value="one-way" name="flight-type"
+                        id="flight-type1">
+                      <label class="form-check-label" for="flight-type1">
+                        One Way
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" value="round-way" name="flight-type" id="flight-type2">
+                      <label class="form-check-label" for="flight-type2">
+                        Round Way
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" value="multi-city" name="flight-type"
+                        id="flight-type3">
+                      <label class="form-check-label" for="flight-type3">
+                        Multi City
+                      </label>
+                    </div>
+                  </div>
+  
+  
+                  <div class="flight-search-wrapper">
+                    <div class="flight-search-content">
+  
+                      <div class="flight-search-item">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <label>From</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="from-destination" class="form-control swap-from"
+                                  value="New York">
+                                <i class="fal fa-plane-departure"></i>
+                              </div>
+                              <p>JFK - John F. Kennedy International Airport
+                              </p>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <div class="search-form-swap"><i class="far fa-repeat"></i>
+                              </div>
+                              <label>To</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="to-destination" class="form-control swap-to" value="Los Angeles">
+                                <i class="fal fa-plane-arrival"></i>
+                              </div>
+                              <p>LAX - Los Angeles International Airport</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <div class="search-form-date">
+                                <div class="search-form-journey">
+                                  <label>Journey Date</label>
+                                  <div class="form-group-icon">
+                                    <input type="text" name="journey-date" class="form-control date-picker journey-date">
+                                    <i class="fal fa-calendar-days"></i>
+                                  </div>
+                                  <p class="journey-day-name"></p>
+                                </div>
+                                <div class="search-form-return">
+                                  <label>Return Date</label>
+                                  <div class="form-group-icon">
+                                    <input type="text" name="return-date" class="form-control date-picker return-date">
+                                  </div>
+                                  <p class="return-day-name"></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group dropdown passenger-box">
+                              <div class="passenger-class" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                <label>Passenger, Class</label>
+                                <div class="form-group-icon">
+                                  <div class="passenger-total"><span class="passenger-total-amount">2</span>
+                                    Passenger
+                                  </div>
+                                 
+                                  <i class="fal fa-user-plus"></i>
+                                </div>
+                                <p class="passenger-class-name">Business</p>
+                              </div>
+                              <div class="dropdown-menu dropdown-menu-end" style="z-index: 9999;">
+                                
+                                <div class="dropdown-item">
+                                  <div class="passenger-item">
+                                    <div class="passenger-info">
+                                      <h6>Adults</h6>
+                                      <p>12+ Years</p>
+                                    </div>
+                                    <div class="passenger-qty">
+                                      <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                      <input type="text" name="adult" class="qty-amount passenger-adult" value="2"
+                                        readonly>
+                                      <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="dropdown-item">
+                                  <div class="passenger-item">
+                                    <div class="passenger-info">
+                                      <h6>Children</h6>
+                                      <p>2-12 Years</p>
+                                    </div>
+                                    <div class="passenger-qty">
+                                      <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                      <input type="text" name="children" class="qty-amount passenger-children" value="0"
+                                        readonly>
+                                      <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="dropdown-item">
+                                  <div class="passenger-item">
+                                    <div class="passenger-info">
+                                      <h6>Infant</h6>
+                                      <p>Below 2 Years</p>
+                                    </div>
+                                    <div class="passenger-qty">
+                                      <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                      <input type="text" name="infant" class="qty-amount passenger-infant" value="0"
+                                        readonly>
+                                      <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="dropdown-item">
+                                  <h6 class="mb-3 mt-2">Cabin Class</h6>
+                                  <div class="passenger-class-info">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" value="Economy" name="cabin-class"
+                                        id="cabin-class1">
+                                      <label class="form-check-label" for="cabin-class1">
+                                        Economy
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" checked type="radio" value="Business"
+                                        name="cabin-class" id="cabin-class2">
+                                      <label class="form-check-label" for="cabin-class2">
+                                        Business
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="radio" value="First Class" name="cabin-class"
+                                        id="cabin-class3">
+                                      <label class="form-check-label" for="cabin-class3">
+                                        First Class
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+  
+                      <div class="flight-search-item flight-multicity-item have-to-clone">
+                        <div class="row">
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <label>From</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="from-destination" class="form-control swap-from"
+                                  value="New York">
+                                <i class="fal fa-plane-departure"></i>
+                              </div>
+                              <p>JFK - John F. Kennedy International Airport
+                              </p>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <div class="search-form-swap"><i class="far fa-repeat"></i>
+                              </div>
+                              <label>To</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="to-destination" class="form-control swap-to" value="Los Angeles">
+                                <i class="fal fa-plane-arrival"></i>
+                              </div>
+                              <p>LAX - Los Angeles International Airport</p>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <div class="search-form-date">
+                                <div class="search-form-journey">
+                                  <label>Journey Date</label>
+                                  <div class="form-group-icon">
+                                    <input type="text" name="journey-date" class="form-control date-picker journey-date">
+                                    <i class="fal fa-calendar-days"></i>
+                                  </div>
+                                  <p class="journey-day-name"></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-3">
+                            <div class="form-group">
+                              <div class="multicity-btn">
+                                <i class="fal fa-plus-circle"></i> Add
+                                Another Flight
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+  
+                    </div>
+                    <div class="search-btn">
+                      <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+                    </div>
+                  </div>
+  
+                </form>
+              </div>
+            </div>
+          </div>
+  
+          <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-tab-2" tabindex="0">
+            <div class="hotel-search">
+              <div class="search-form">
+                <form action="#">
+                  <div class="hotel-search-wrapper">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label>Destination</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="destination" class="form-control" value="Reserva Ecologica">
+                            <i class="fal fa-earth-americas"></i>
+                          </div>
+                          <p>Comuna 1, Argentina</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <div class="search-form-date">
+                            <div class="search-form-journey">
+                              <label>Check In</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="journey-date" class="form-control date-picker journey-date">
+                                <i class="fal fa-calendar-days"></i>
+                              </div>
+                              <p class="journey-day-name"></p>
+                            </div>
+                            <div class="search-form-return">
+                              <label>Check Out</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="return-date" class="form-control date-picker return-date">
+                              </div>
+                              <p class="return-day-name"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group dropdown passenger-box">
+                          <div class="passenger-class" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <label>Rooms, Guests</label>
+                            <div class="form-group-icon">
+                              <div class="passenger-total">
+                                <span class="passenger-total-room">2</span> Rooms,
+                                <span class="passenger-total-amount">2</span> Guests
+                              </div>
+                              <i class="fal fa-user-plus"></i>
+                            </div>
+                            <p class="passenger-class-name">Double Room</p>
+                          </div>
+                          <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Adults</h6>
+                                  <p>12+ Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="adult" class="qty-amount passenger-adult" value="2" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Children</h6>
+                                  <p>2-12 Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="children" class="qty-amount passenger-children" value="0"
+                                    readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Infant</h6>
+                                  <p>Below 2 Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="infant" class="qty-amount passenger-infant" value="0" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Rooms</h6>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="room" class="qty-amount passenger-room" value="2" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <h6 class="mb-3 mt-2">Room Type</h6>
+                              <div class="passenger-class-info">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" value="Single Room" name="room-type"
+                                    id="room-type1">
+                                  <label class="form-check-label" for="room-type1">
+                                    Single Room
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" checked type="radio" value="Double Room"
+                                    name="room-type" id="room-type2">
+                                  <label class="form-check-label" for="room-type2">
+                                    Double Room
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" value="Deluxe Room" name="room-type"
+                                    id="room-type3">
+                                  <label class="form-check-label" for="room-type3">
+                                    Deluxe Room
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="search-btn">
+                      <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+  
+          
+  
+          <div class="tab-pane fade" id="pills-4" role="tabpanel" aria-labelledby="pills-tab-4" tabindex="0">
+            <div class="holiday-search">
+              <div class="search-form">
+                <form action="#">
+  
+                  <div class="flight-type">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" checked value="holiday1" name="holiday-type"
+                        id="holiday-type1">
+                      <label class="form-check-label" for="holiday-type1">
+                        Flight + Hotel + Car
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" value="holiday2" name="holiday-type"
+                        id="holiday-type2">
+                      <label class="form-check-label" for="holiday-type2">
+                        Flight + Hotel
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" value="holiday3" name="holiday-type"
+                        id="holiday-type3">
+                      <label class="form-check-label" for="holiday-type3">
+                        Flight + Car
+                      </label>
+                    </div>
+                  </div>
+  
+                  <div class="holiday-search-wrapper">
+                    <div class="flight-search-item">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="form-group">
+                            <label>From</label>
+                            <div class="form-group-icon">
+                              <input type="text" name="from-destination" class="form-control swap-from" value="New York">
+                              <i class="fal fa-plane-departure"></i>
+                            </div>
+                            <p>JFK - John F. Kennedy International Airport
+                            </p>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="form-group">
+                            <div class="search-form-swap"><i class="far fa-repeat"></i>
+                            </div>
+                            <label>To</label>
+                            <div class="form-group-icon">
+                              <input type="text" name="to-destination" class="form-control swap-to" value="Los Angeles">
+                              <i class="fal fa-plane-arrival"></i>
+                            </div>
+                            <p>LAX - Los Angeles International Airport</p>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="form-group">
+                            <div class="search-form-date">
+                              <div class="search-form-journey">
+                                <label>Check In</label>
+                                <div class="form-group-icon">
+                                  <input type="text" name="journey-date" class="form-control date-picker journey-date">
+                                  <i class="fal fa-calendar-days"></i>
+                                </div>
+                                <p class="journey-day-name"></p>
+                              </div>
+                              <div class="search-form-return">
+                                <label>Check Out</label>
+                                <div class="form-group-icon">
+                                  <input type="text" name="return-date" class="form-control date-picker return-date">
+                                </div>
+                                <p class="return-day-name"></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="form-group dropdown passenger-box">
+                            <div class="passenger-class" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                              <label>Rooms, Guests</label>
+                              <div class="form-group-icon">
+                                <div class="passenger-total">
+                                  <span class="passenger-total-room">2</span>
+                                  Rooms,
+                                  <span class="passenger-total-amount">2</span>
+                                  Guests
+                                </div>
+                                <i class="fal fa-user-plus"></i>
+                              </div>
+                              <p class="passenger-class-name">Double Room</p>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-end">
+                              <div class="dropdown-item">
+                                <div class="passenger-item">
+                                  <div class="passenger-info">
+                                    <h6>Adults</h6>
+                                    <p>12+ Years</p>
+                                  </div>
+                                  <div class="passenger-qty">
+                                    <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                    <input type="text" name="adult" class="qty-amount passenger-adult" value="2" readonly>
+                                    <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="dropdown-item">
+                                <div class="passenger-item">
+                                  <div class="passenger-info">
+                                    <h6>Children</h6>
+                                    <p>2-12 Years</p>
+                                  </div>
+                                  <div class="passenger-qty">
+                                    <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                    <input type="text" name="children" class="qty-amount passenger-children" value="0"
+                                      readonly>
+                                    <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="dropdown-item">
+                                <div class="passenger-item">
+                                  <div class="passenger-info">
+                                    <h6>Infant</h6>
+                                    <p>Below 2 Years</p>
+                                  </div>
+                                  <div class="passenger-qty">
+                                    <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                    <input type="text" name="infant" class="qty-amount passenger-infant" value="0"
+                                      readonly>
+                                    <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="dropdown-item">
+                                <div class="passenger-item">
+                                  <div class="passenger-info">
+                                    <h6>Rooms</h6>
+                                  </div>
+                                  <div class="passenger-qty">
+                                    <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                    <input type="text" name="room" class="qty-amount passenger-room" value="2" readonly>
+                                    <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="dropdown-item">
+                                <h6 class="mb-3 mt-2">Room Type</h6>
+                                <div class="passenger-class-info">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="Single Room" name="room-type"
+                                      id="room-type7">
+                                    <label class="form-check-label" for="room-type7">
+                                      Single Room
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" checked type="radio" value="Double Room"
+                                      name="room-type" id="room-type8">
+                                    <label class="form-check-label" for="room-type8">
+                                      Double Room
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="radio" value="Deluxe Room" name="room-type"
+                                      id="room-type9">
+                                    <label class="form-check-label" for="room-type9">
+                                      Deluxe Room
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="search-btn">
+                      <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+  
+          <div class="tab-pane fade" id="pills-5" role="tabpanel" aria-labelledby="pills-tab-5" tabindex="0">
+            <div class="car-search">
+              <div class="search-form">
+                <form action="#">
+                  <div class="car-search-wrapper">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label>Picking Up</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="picking-up" class="form-control" value="New York, United States">
+                            <i class="fal fa-location-dot"></i>
+                          </div>
+                          <p>City, Airport Or Address</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <div class="search-form-date">
+                            <div class="search-form-journey">
+                              <label>Pick Up date</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="pickup-date" class="form-control date-picker journey-date">
+                                <i class="fal fa-calendar-days"></i>
+                              </div>
+                              <p class="journey-day-name"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label>Pick Up Time</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="pick-up-time" class="form-control time-picker" value="11:00 PM">
+                            <i class="fal fa-clock"></i>
+                          </div>
+                          <p>Car Arrival Time</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group mt-lg-4">
+                          <label>Drop Off</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="picking-up" class="form-control" value="New York, United States">
+                            <i class="fal fa-location-dot"></i>
+                          </div>
+                          <p>City, Airport Or Address</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group mt-lg-4">
+                          <div class="search-form-date">
+                            <div class="search-form-journey">
+                              <label>Drop Off date</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="pickup-date" class="form-control date-picker journey-date">
+                                <i class="fal fa-calendar-days"></i>
+                              </div>
+                              <p class="journey-day-name"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group mt-lg-4">
+                          <label>Drop Off Time</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="pick-up-time" class="form-control time-picker" value="11:00 PM">
+                            <i class="fal fa-clock"></i>
+                          </div>
+                          <p>Car Drop Off Time</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="search-btn">
+                      <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+  
+          <!-- <div class="tab-pane fade" id="pills-6" role="tabpanel" aria-labelledby="pills-tab-6" tabindex="0">
+            <div class="cruise-search">
+              <div class="search-form">
+                <form action="#">
+                  <div class="cruise-search-wrapper">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label>Destination</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="destination" class="form-control" value="New York, United States">
+                            <i class="fal fa-earth-americas"></i>
+                          </div>
+                          <p>Where Are You Going?</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <div class="search-form-date">
+                            <div class="search-form-journey">
+                              <label>Journey Date</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="journey-date" class="form-control date-picker journey-date">
+                                <i class="fal fa-calendar-days"></i>
+                              </div>
+                              <p class="journey-day-name"></p>
+                            </div>
+                            <div class="search-form-return">
+                              <label>Return Date</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="return-date" class="form-control date-picker return-date">
+                              </div>
+                              <p class="return-day-name"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group dropdown passenger-box">
+                          <div class="passenger-class" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <label>Travelers</label>
+                            <div class="form-group-icon">
+                              <div class="passenger-total">
+                                <span class="passenger-total-amount">2</span>
+                                Travelers
+                              </div>
+                              <i class="fal fa-user-plus"></i>
+                            </div>
+                            <p class="passenger-class-name">In Cabin</p>
+                          </div>
+                          <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Adults</h6>
+                                  <p>12+ Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="adult" class="qty-amount passenger-adult" value="2" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Children</h6>
+                                  <p>2-12 Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="children" class="qty-amount passenger-children" value="0"
+                                    readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Infant</h6>
+                                  <p>Below 2 Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="infant" class="qty-amount passenger-infant" value="0" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <h6 class="mb-3 mt-2">Cruise Class</h6>
+                              <div class="passenger-class-info">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" value="In Cabin" name="cruise-class"
+                                    id="cruise-class1">
+                                  <label class="form-check-label" for="cruise-class1">
+                                    In Cabin
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" checked type="radio" value="In Chair"
+                                    name="cruise-class" id="cruise-class2">
+                                  <label class="form-check-label" for="cruise-class2">
+                                    In Chair
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" value="In First Class" name="cruise-class"
+                                    id="cruise-class3">
+                                  <label class="form-check-label" for="cruise-class3">
+                                    In First Class
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="search-btn">
+                      <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div> -->
+  
+          <div class="tab-pane fade" id="pills-7" role="tabpanel" aria-labelledby="pills-tab-7" tabindex="0">
+            <div class="tour-search">
+              <div class="search-form">
+                <form action="#">
+                  <div class="tour-search-wrapper">
+                    <div class="row">
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <label>Destination</label>
+                          <div class="form-group-icon">
+                            <input type="text" name="destination" class="form-control" value="New York, United States">
+                            <i class="fal fa-earth-americas"></i>
+                          </div>
+                          <p>Where Are You Going?</p>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group">
+                          <div class="search-form-date">
+                            <div class="search-form-journey">
+                              <label>Journey Date</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="journey-date" class="form-control date-picker journey-date">
+                                <i class="fal fa-calendar-days"></i>
+                              </div>
+                              <p class="journey-day-name"></p>
+                            </div>
+                            <div class="search-form-return">
+                              <label>Return Date</label>
+                              <div class="form-group-icon">
+                                <input type="text" name="return-date" class="form-control date-picker return-date">
+                              </div>
+                              <p class="return-day-name"></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4">
+                        <div class="form-group dropdown passenger-box">
+                          <div class="passenger-class" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <label>Guests</label>
+                            <div class="form-group-icon">
+                              <div class="passenger-total">
+                                
+                                <span class="passenger-total-amount">2</span> Guests
+                              </div>
+                              <i class="fal fa-user-plus"></i>
+                            </div>
+                           
+                          </div>
+                          <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Adults</h6>
+                                  <p>12+ Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="adult" class="qty-amount passenger-adult" value="2" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Children</h6>
+                                  <p>2-12 Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="children" class="qty-amount passenger-children" value="0"
+                                    readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Infant</h6>
+                                  <p>Below 2 Years</p>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="infant" class="qty-amount passenger-infant" value="0" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <div class="passenger-item">
+                                <div class="passenger-info">
+                                  <h6>Rooms</h6>
+                                </div>
+                                <div class="passenger-qty">
+                                  <button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
+                                  <input type="text" name="room" class="qty-amount passenger-room" value="2" readonly>
+                                  <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dropdown-item">
+                              <h6 class="mb-3 mt-2">Room Type</h6>
+                              <div class="passenger-class-info">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" value="Single Room" name="room-type"
+                                    id="room-type10">
+                                  <label class="form-check-label" for="room-type10">
+                                    Single Room
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" checked type="radio" value="Double Room"
+                                    name="room-type" id="room-type11">
+                                  <label class="form-check-label" for="room-type11">
+                                    Double Room
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" value="Deluxe Room" name="room-type"
+                                    id="room-type12">
+                                  <label class="form-check-label" for="room-type12">
+                                    Deluxe Room
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="search-btn">
+                      <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+</body>
