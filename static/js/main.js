@@ -462,7 +462,8 @@ Version         : 1.0
 
 
     // passenger box dropdown
-    $(".passenger-box .dropdown-menu").click(function (e) {
+    $(".passenger-box .dropdown-menu").on("click", function (e) {
+        console.log("okk")
         e.stopPropagation();
     });
 

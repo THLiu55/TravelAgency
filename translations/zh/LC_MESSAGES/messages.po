@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-13 12:03+0800\n"
-"PO-Revision-Date: 2023-03-13 12:03+0800\n"
+"POT-Creation-Date: 2023-03-15 13:27+0800\n"
+"PO-Revision-Date: 2023-03-15 13:28+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
 "Language-Team: zh <LL@li.org>\n"
@@ -18,101 +18,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: templates/SignInUp.html:22
+#: templates/SignInUp.html:19
+msgid "Change Password"
+msgstr "修改密码"
+
+#: templates/SignInUp.html:22 templates/SignInUp.html:83
+#: templates/SignInUp.html:119
 msgid "Email"
 msgstr "电子邮件"
 
-#: templates/SignInUp.html:25
+#: templates/SignInUp.html:25 templates/SignInUp.html:86
 msgid "SEND"
 msgstr "发送"
 
-#: templates/SignInUp.html:32
+#: templates/SignInUp.html:32 templates/SignInUp.html:103
 msgid "Captcha"
 msgstr "验证码"
 
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:2
-msgid "Menu"
-msgstr "菜单"
+#: templates/SignInUp.html:38
+msgid "Reset Password"
+msgstr "重置密码"
 
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:4
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/login_user.html:3
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/send_login.html:3
+#: templates/SignInUp.html:43 templates/SignInUp.html:98
+msgid "Confirm Password"
+msgstr "确认密码"
+
+#: templates/SignInUp.html:46
+msgid "Reset"
+msgstr "重置"
+
+#: templates/SignInUp.html:48
+msgid "Go Back"
+msgstr "回去"
+
+#: templates/SignInUp.html:75 templates/SignInUp.html:106
+#: templates/SignInUp.html:130
+msgid "Sign Up"
+msgstr "注册"
+
+#: templates/SignInUp.html:78
+msgid "Username"
+msgstr "用户名"
+
+#: templates/SignInUp.html:93 templates/SignInUp.html:123
+msgid "Password"
+msgstr "密码"
+
+#: templates/SignInUp.html:108
+msgid "Already have an account?"
+msgstr "已经有帐户？"
+
+#: templates/SignInUp.html:108
+msgid "Sign In"
+msgstr "登录"
+
+#: templates/SignInUp.html:116 templates/SignInUp.html:128
 msgid "Login"
 msgstr "登录"
 
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:6
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/register_user.html:3
-msgid "Register"
-msgstr "注册"
+#: templates/SignInUp.html:126
+msgid "Forgot password?"
+msgstr "忘记密码？"
 
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:9
-msgid "Forgot password"
-msgstr "忘记密码"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:12
-msgid "Confirm account"
-msgstr "确认帐户"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/change_password.html:3
-msgid "Change password"
-msgstr "更改密码"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/forgot_password.html:3
-msgid "Send password reset instructions"
-msgstr "发送密码重置说明"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/reset_password.html:3
-msgid "Reset password"
-msgstr "重置密码"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/send_confirmation.html:3
-msgid "Resend confirmation instructions"
-msgstr "重新发送确认指令"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/change_notice.html:1
-msgid "Your password has been changed."
-msgstr "您的密码已更改。"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/change_notice.html:3
-msgid "If you did not change your password,"
-msgstr "如果您没有更改密码，"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/change_notice.html:3
-msgid "click here to reset it"
-msgstr "单击此处重置它"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
-msgid "Please confirm your email through the link below:"
-msgstr "请通过以下链接确认您的电子邮件："
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/welcome.html:6
-msgid "Confirm my account"
-msgstr "确认我的帐户"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/login_instructions.html:1
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/welcome.html:1
-#, python-format
-msgid "Welcome %(email)s!"
-msgstr "欢迎使用 %(email)s！"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/login_instructions.html:3
-msgid "You can log into your account through the link below:"
-msgstr "您可以通过以下链接登录到您的帐户："
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/login_instructions.html:5
-msgid "Login now"
-msgstr "立即登录"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/reset_instructions.html:1
-msgid "Click here to reset your password"
-msgstr "单击此处重置密码"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/reset_notice.html:1
-msgid "Your password has been reset"
-msgstr "您的密码已重置"
-
-#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/welcome.html:4
-msgid "You can confirm your email through the link below:"
-msgstr "您可以通过以下链接确认您的电子邮件："
+#: templates/SignInUp.html:130
+msgid "Don't have an account?"
+msgstr "没有帐户？"
 
