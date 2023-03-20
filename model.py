@@ -32,6 +32,7 @@ class ActivityOrder(db.Model):
     startTime = db.Column(db.DateTime)
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
