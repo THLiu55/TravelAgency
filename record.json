@@ -1,0 +1,15 @@
+{
+  "Activity": {
+    "category": ["hiking", "biking"],
+    "images": ["url1", "url2"],
+    "star_detail": [100, 21, 111, 444, 1223]
+  },
+
+  "Review": {
+    "content": {
+      "picture_urls": ["url1", "url2", "url3"],
+      "comment": "this is a comment",
+      "video_url": "url"
+    }
+  }
+}

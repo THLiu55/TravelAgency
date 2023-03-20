@@ -8,7 +8,7 @@ class Customer(db.Model, UserMixin):
     email = db.Column(db.String(255), unique=True)
     nickname = db.Column(db.String(255))
     password = db.Column(db.String(255))
-    avatarURL = db.Column(db.String(255))
+    avatarURL = db.Column(db.Text)
     wallet = db.Column(db.Float)
     orders = db.relationship('Order', backref='customer')
     reviews = db.relationship('Review', backref='customer')
@@ -25,58 +25,52 @@ class Message(db.Model):
     senderID = db.Column(db.String(255))
 
 
-class Order(db.Model):
-    __tablename__ = 'orders'
+class ActivityOrder(db.Model):
+    __tablename__ = 'activity_orders'
 
     id = db.Column(db.Integer, primary_key=True)
     startTime = db.Column(db.DateTime)
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
-    type = db.Column(db.String(255))
-    productID = db.Column(db.Integer, db.ForeignKey('products.id'))
+    productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
 
-class Review(db.Model):
-    __tablename__ = 'reviews'
+class ActivityReview(db.Model):
+    __tablename__ = 'activity_reviews'
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Integer)
     issueTime = db.Column(db.DateTime)
     content = db.Column(db.Text)
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
-    productID = db.Column(db.Integer, db.ForeignKey('products.id'))
+    productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
 
 
-class Product(db.Model):
-    __tablename__ = 'products'
-
+class Activity(db.Model):
+    __tablename__ = 'activities'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255))
-    address = db.Column(db.String(255))
-    coverURL = db.Column(db.String(255))
-    description = db.Column(db.Text)
-    extraInfo = db.Column(db.Text)
-    reviewedNum = db.Column(db.Integer)
-    totalStars = db.Column(db.Integer)
+    name = db.Column(db.String(255))
+    category = db.Column(db.Integer)
     price = db.Column(db.Float)
-    type = db.Column(db.String(255))
-    orders = db.relationship('Order', backref='product')
-    reviews = db.relationship('Review', backref='product')
-
-
-# product information in Chinese
-# id here is corresponding to product.id
-class ProductZH(db.Model):
-    __tablename__ = 'products_zh'
-
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255))
-    address = db.Column(db.String(255))
-    coverURL = db.Column(db.String(255))
+    city = db.Column(db.String(255))
+    state = db.Column(db.String(255))
+    zip_code = db.Column(db.Integer)
+    address = db.Column(db.Text)
+    duration = db.Column(db.Integer)
+    group_size = db.Column(db.Integer)
+    start_time = db.Column(db.DateTime)
+    end_time = db.Column(db.DateTime)
+    images = db.Column(db.Text)
     description = db.Column(db.Text)
-    extraInfo = db.Column(db.Text)
-    reviewedNum = db.Column(db.Integer)
-    totalStars = db.Column(db.Integer)
-    price = db.Column(db.Float)
-    type = db.Column(db.String(255))
+    included = db.Column(db.Text)
+    excluded = db.Column(db.Text)
+    openHour = db.Column(db.DateTime)
+    visitHour = db.Column(db.Integer)
+    total_star = db.Column(db.Integer)
+    review_num = db.Column(db.Integer)
+    star_detail = db.Column(db.Text)
+    review = db.relationship('Review', backref='product')
+
+
+
