@@ -4,7 +4,7 @@
  * Copyright (c) 2014, Jason Chen
  * Copyright (c) 2013, salesforce.com
  */
-.ql-container {
+.ql- {
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -12,10 +12,10 @@
   margin: 0px;
   position: relative;
 }
-.ql-container.ql-disabled .ql-tooltip {
+.ql-.ql-disabled .ql-tooltip {
   visibility: hidden;
 }
-.ql-container.ql-disabled .ql-editor ul[data-checked] > li::before {
+.ql-.ql-disabled .ql-editor ul[data-checked] > li::before {
   pointer-events: none;
 }
 .ql-clipboard {

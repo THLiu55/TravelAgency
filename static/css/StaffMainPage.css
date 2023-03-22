@@ -126,7 +126,7 @@ hr {
   opacity: 1;
 }
 
-.container {
+. {
   display: flex;
   max-width: 1100px;
 }
@@ -206,7 +206,7 @@ canvas {
 .sparkline .chart {
   padding: 15px;
 }
-.sparkline .chart-container {
+.sparkline .chart- {
   height: 70px;
 }
 
@@ -456,7 +456,7 @@ nav ul li + .nav-text {
 }
 
 @media (max-width: 1100px) {
-  .container {
+  . {
     width: 800px;
   }
 
@@ -477,11 +477,11 @@ nav ul li + .nav-text {
     padding-top: 100px;
   }
 
-  .container {
+  . {
     width: 575px;
     flex-wrap: wrap;
   }
-  .container > .col {
+  . > .col {
     flex-basis: auto;
   }
 
@@ -536,7 +536,7 @@ nav ul li + .nav-text {
     pointer-events: all;
   }
 
-  .list-container {
+  .list- {
     flex-basis: 100%;
     width: 100%;
   }
@@ -548,7 +548,7 @@ nav ul li + .nav-text {
   }
 }
 @media (max-width: 575px) {
-  .container {
+  . {
     width: 100%;
     min-width: 360px;
   }
