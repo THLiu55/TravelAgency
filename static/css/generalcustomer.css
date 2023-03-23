@@ -955,7 +955,7 @@ nav menu css
     transition: .3s;
     opacity: 1;
     visibility: visible;
-    top: 100%;
+    /* top: 100%; */
     transform: rotateX(0deg);
   }
 
@@ -9613,6 +9613,7 @@ home-3
     box-shadow: 0 0 40px 5px rgb(0 0 0 / 5%);
   }
 }
+
 
 
 

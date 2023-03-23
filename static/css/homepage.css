@@ -12,16 +12,17 @@ body {
 .customizenav{
     box-shadow: 5px 5px 5px lightblue;
 }
-.1{
-  padding-top: 2%;
-  padding-left: 4%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* height: 60vh; */
+.container1{
+  /* padding-top: 2%;
+  padding-left: 4%; */
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    height: 80vh;
     
 }
 .left{
       margin-top: 5%;
+;
 }
 a:hover{
   color: inherit;
@@ -35,7 +36,7 @@ a:hover{
 .test{
     border-radius: 50px;
 }
-.big{
+.bigcontainer{
     margin: auto;
     
     margin-left: 5%;
@@ -45,7 +46,7 @@ a:hover{
 }
 
 .carousel {
-  min-height: 30vh;
+  min-height: 40vh;
   box-shadow: 0px 8px 60px -10px rgb(13 28 39 / 60%);
     width: 100%;
     height: 100%;
@@ -55,6 +56,7 @@ a:hover{
     overflow: hidden;
     border-radius: 20px;
   position: relative;
+  margin: auto;
 }
 
 .carousel-item{
@@ -604,7 +606,7 @@ transform: translateX(0);
   border-radius: 12px;
   transition: all 0.3s;
 }
-.2{
+.container2{
   display: grid;
   background-color: rgba(245, 245, 245, 0.925);
   height: 70vh;
@@ -613,7 +615,7 @@ transform: translateX(0);
   border-radius: 50px;
   box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2);
 }
-.displaycard{
+.displaycardcontainer{
   display: grid;
   grid-template-columns:85% 10%;
   padding-left: 5%;
@@ -625,7 +627,7 @@ transform: translateX(0);
   color: #142029;
   margin: 10px;
 }
-.card{
+.cardcontainer{
   display:grid;
   grid-template-rows: 5% 95%;
 }
@@ -695,7 +697,7 @@ transform: translateX(0);
   transform: scale(1.05);
   transition: 0.5s;
 }
-.card1{
+.cardcontainer1{
   display: grid;
   grid-template-rows: auto;
   grid-gap: 5%;
@@ -749,7 +751,7 @@ transform: translateX(0);
 }
 #categories{
   overflow:hidden;
-  width:90%;
+  /* width:90%; */
   margin:0 auto;
 }
 .clr:after{
@@ -915,7 +917,7 @@ Chat
   z-index: 2;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-  background: rgba(91, 169, 243, 0.5);
+  background: rgb(189 209 228 / 96%);
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
@@ -1168,7 +1170,7 @@ Custom Srollbar
   opacity: 0;
 }
 
-.mCSB_inside > .mCSB_ {
+.mCSB_inside > .mCSB_container{
   margin-right: 0px;
   padding: 0 10px;
 }
