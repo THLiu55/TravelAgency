@@ -1,3 +1,18 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 from flask import Blueprint, render_template, request, jsonify
 from model import *
 from exts import db, mail

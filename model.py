@@ -71,6 +71,9 @@ class Activity(db.Model):
     total_star = db.Column(db.Integer)
     review_num = db.Column(db.Integer)
     star_detail = db.Column(db.Text)
+    contact_name = db.Column(db.String(255))
+    contact_email = db.Column(db.String(255))
+    contact_phone = db.Column(db.String(255))
     review = db.relationship('Review', backref='product')
 
 
