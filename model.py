@@ -56,7 +56,6 @@ class Activity(db.Model):
     price = db.Column(db.Float)
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
-    zip_code = db.Column(db.Integer)
     address = db.Column(db.Text)
     duration = db.Column(db.Integer)
     group_size = db.Column(db.Integer)
