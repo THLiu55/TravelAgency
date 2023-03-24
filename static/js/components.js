@@ -1258,6 +1258,18 @@ ImageUpload.removeItem = (event, items) => {
     element.remove();
 };
 
+ImageUpload.prototype.removeAllItems = function() {
+    const previewImages = document.querySelectorAll('.image-upload__preview-image');
+    previewImages.forEach(previewImage => {
+        const listItem = previewImage.closest('.image-upload__item');
+        if (listItem) {
+            listItem.remove();
+        }
+    });
+    alert("aaaaaaa")
+}
+
+
 function ProfileUpload() {
     this.dropElement = document.querySelectorAll('.js-profile-upload');
 

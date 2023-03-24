@@ -9,7 +9,6 @@ from exts import exts_load_all
 
 from flask_babel import Babel, gettext as _, refresh
 
-
 load_dotenv()
 
 # app config
@@ -49,13 +48,6 @@ def set_locale():
 # @app.context_processor
 # def inject_conf_var():
 #     return dict(AVAILABLE_LANGUAGES=app.config['LANGUAGES'], CURRENT_LANGUAGE=session.get('language', request.accept_languages.best_match(app.config['LANGUAGES'].keys())))
-
-
-@app.route("/")
-def hello_world():  # put application's code here
-    # return render_template("ProductsDetail.html")
-    return render_template("SignInUp.html")
-    # return render_template("Homepage.html")
 
 
 if __name__ == "__main__":

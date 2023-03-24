@@ -2004,67 +2004,66 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-                            <form method="POST">
+                            <form action="{{ url_for('activity.add_activity') }}" method="POST" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="user-profile-card add-listing">
                                         <h4 class="user-profile-card-title">Add Activity</h4>
                                         <div class="col-lg-12">
                                             <div class="add-listing-form">
                                                 <h5 class="mb-4">Basic Information</h5>
-                                                <form action="#">
+{#                                                <form action="#">#}
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>Official Place Name</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="name"
                                                                     placeholder="Enter total rooms">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>Activity Category</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Category</option>
-                                                                    <option value="1">Category 1</option>
-                                                                    <option value="2">Category 2</option>
-                                                                    <option value="3">Category 3</option>
-                                                                    <option value="4">Category 4</option>
-                                                                    <option value="5">Category 5</option>
+                                                                <select class="select" name="category">
+                                                                    <option value="Basic Type">Select Category</option>
+                                                                    <option value="Food & Nightlife">Food & Nightlife</option>
+                                                                    <option value="Hot Air Balloon">Hot Air Balloon</option>
+                                                                    <option value="Mountain Climbing">Mountain Climbing</option>
+                                                                    <option value="Bike Ride">Bike Ride</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>Price</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="price"
                                                                     placeholder="Enter price">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
-                                                            <div class="form-group">
-                                                                <label>Price Currency</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Currency</option>
-                                                                    <option value="1">USD</option>
-                                                                    <option value="2">GBP</option>
-                                                                    <option value="3">EUR</option>
-                                                                    <option value="4">CAD</option>
-                                                                    <option value="5">AUD</option>
-                                                                </select>
-                                                            </div>
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Price Currency</label>#}
+{#                                                                <select class="select">#}
+{#                                                                    <option value="">Select Currency</option>#}
+{#                                                                    <option value="1">USD</option>#}
+{#                                                                    <option value="2">GBP</option>#}
+{#                                                                    <option value="3">EUR</option>#}
+{#                                                                    <option value="4">CAD</option>#}
+{#                                                                    <option value="5">AUD</option>#}
+{#                                                                </select>#}
+{#                                                            </div>#}
                                                         </div>
                                                         <h5 class="my-4">Location</h5>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>City</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="city"
                                                                     placeholder="Enter city">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>State</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="state"
                                                                     placeholder="Enter state">
                                                             </div>
                                                         </div>
@@ -2078,23 +2077,23 @@
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label>Address</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="address"
                                                                     placeholder="Enter address">
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label>Address 2</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter address 2">
-                                                            </div>
-                                                        </div>
+{#                                                        <div class="col-lg-12">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Address 2</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter address 2">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
                                                         <h5 class="my-4">Your Activity Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Duration</label>
-                                                                <select class="select">
+                                                                <select class="select" name="duration">
                                                                     <option value="">Select Duration</option>
                                                                     <option value="1">1 Day</option>
                                                                     <option value="2">2 Days</option>
@@ -2107,34 +2106,34 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Group Size</label>
-                                                                <select class="select" style="padding-left: -14px;margin-left: -15px;">
+                                                                <select class="select" name="group_size" style="padding-left: -14px;margin-left: -15px;">
                                                                     <option value="">Select Group Size</option>
-                                                                    <option value="1">10 People</option>
-                                                                    <option value="2">20 People</option>
-                                                                    <option value="3">30 People</option>
-                                                                    <option value="4">40 People</option>
-                                                                    <option value="5">50 People</option>
+                                                                    <option value="10">10 People</option>
+                                                                    <option value="20">20 People</option>
+                                                                    <option value="30">30 People</option>
+                                                                    <option value="40">40 People</option>
+                                                                    <option value="50">50 People</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Activity Type</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Activity Type</option>
-                                                                    <option value="1">Activity Type 1</option>
-                                                                    <option value="2">Activity Type 2</option>
-                                                                    <option value="3">Activity Type 3</option>
-                                                                    <option value="4">Activity Type 4</option>
-                                                                    <option value="5">Activity Type 5</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
+{#                                                        <div class="col-lg-4">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Activity Type</label>#}
+{#                                                                <select class="select">#}
+{#                                                                    <option value="">Select Activity Type</option>#}
+{#                                                                    <option value="1">Activity Type 1</option>#}
+{#                                                                    <option value="2">Activity Type 2</option>#}
+{#                                                                    <option value="3">Activity Type 3</option>#}
+{#                                                                    <option value="4">Activity Type 4</option>#}
+{#                                                                    <option value="5">Activity Type 5</option>#}
+{#                                                                </select>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>From Date</label>
                                                                 <div class="form-group-icon">
-                                                                    <input type="date" class="form-control date-picker"
+                                                                    <input type="date" class="form-control date-picker" name="start_time"
                                                                         placeholder="MM/DD/YY" style="width: auto;height: 56px;">
                                                                     <i class="far fa-calendar-days"></i>
                                                                 </div>
@@ -2144,33 +2143,33 @@
                                                             <div class="form-group">
                                                                 <label>To Date</label>
                                                                 <div class="form-group-icon">
-                                                                    <input type="date" class="form-control date-picker"
+                                                                    <input type="date" class="form-control date-picker" name="end_time"
                                                                         placeholder="MM/DD/YY" style="width: auto;height: 56px;">
                                                                     <i class="far fa-calendar-days"></i>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Min Age</label>
-                                                                <input type="number" min="0" class="form-control"
-                                                                    placeholder="Enter age" style="width: auto;height: 56px;">
-                                                            </div>
+{#                                                        <div class="col-lg-4">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Min Age</label>#}
+{#                                                                <input type="number" min="0" class="form-control"#}
+{#                                                                    placeholder="Enter age" style="width: auto;height: 56px;">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
                                                         </div>
-                                                        </div>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <label>Pick Up Location</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter pickup location">
-                                                            </div>
-                                                        </div>
+{#                                                        <div class="col-lg-12">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Pick Up Location</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter pickup location">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
                                                         <div class="col-12 form-group form-group--lg">
                                                             <label class="form-label">Product Images</label>
                                                             <div class="image-upload">
                                                                 <div class="image-upload__drop">
-                                                                    <input class="image-upload__input" type="file" name="file_upload"
-                                                                        multiple="multiple" accept="image/png, image/jpeg" />
+                                                                    <input class="image-upload__input" type="file" name="images"
+                                                                         accept="image/png, image/jpeg" multiple >
                                                                     <div class="image-upload__drop-text">
                                                                         <svg class="icon-icon-upload">
                                                                             <use xlink:href="#icon-upload"></use>
@@ -2233,18 +2232,18 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 form-group form-group--lg mb-0">
-                                                            <label class="form-label">Tags</label>
-                                                            <select class="input js-input-tags" multiple="multiple" data-placeholder="">
-                                                                <option value="1" >Food</option>
-                                                                <option value="2" >Hot Air Balloon</option>
-                                                                <option value="3">Mountain Climbing</option>
-                                                                <option value="4" selected="selected">Bike Ride</option>
-                                                                <option value="5">Nightlife</option>
-                                                                <option value="6">Amusement Park</option>
-                                                                <option value="7">City sightseeing</option>
-                                                            </select>
-                                                        </div>
+{#                                                        <div class="col-12 form-group form-group--lg mb-0">#}
+{#                                                            <label class="form-label">Tags</label>#}
+{#                                                            <select class="input js-input-tags" multiple="multiple" data-placeholder="">#}
+{#                                                                <option value="1" >Food</option>#}
+{#                                                                <option value="2" >Hot Air Balloon</option>#}
+{#                                                                <option value="3">Mountain Climbing</option>#}
+{#                                                                <option value="4" selected="selected">Bike Ride</option>#}
+{#                                                                <option value="5">Nightlife</option>#}
+{#                                                                <option value="6">Amusement Park</option>#}
+{#                                                                <option value="7">City sightseeing</option>#}
+{#                                                            </select>#}
+{#                                                        </div>#}
                                                         <!-- <h5 class="my-4">Upload Images</h5>
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
@@ -2262,7 +2261,7 @@
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label>Description</label>
-                                                                <textarea class="form-control"
+                                                                <textarea class="form-control" name="description"
                                                                     placeholder="Write description" cols="30"
                                                                     rows="5"></textarea>
                                                             </div>
@@ -2277,8 +2276,8 @@
                                                         <div>
                                                             <div class="col-6 col-md-3">
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" name="included"
-                                                                        type="checkbox" value="" id="included1" style="-webkit-appearance:checkbox;">
+                                                                    <input class="form-check-input" name="included1"
+                                                                        type="checkbox" value="Airfare" id="included1" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included1">
                                                                         Airfare
                                                                     </label>
@@ -2288,8 +2287,8 @@
                                                         
                                                             <div class="col-6 col-md-3">
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" name="included"
-                                                                        type="checkbox" value="" id="included2" style="-webkit-appearance:checkbox;">
+                                                                    <input class="form-check-input" name="included2"
+                                                                        type="checkbox" value="Local Transportation" id="included2" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included2">
                                                                         Local Transportation
                                                                     </label>
@@ -2299,8 +2298,8 @@
                                                         
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="included"
-                                                                    type="checkbox" value="" id="included3" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="included3"
+                                                                    type="checkbox" value="Accommodation" id="included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included3">
                                                                     Accommodation
                                                                 </label>
@@ -2308,8 +2307,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="included"
-                                                                    type="checkbox" value="" id="included4" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="included4"
+                                                                    type="checkbox" value="Tour Guide" id="included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included4">
                                                                     <span>Tour Guide</span>
                                                                 </label>
@@ -2324,8 +2323,8 @@
                                                         <div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="not-included"
-                                                                    type="checkbox" value="" id="not-included1" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="not-included1"
+                                                                    type="checkbox" value="Entrance Fees" id="not-included1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included1">
                                                                     Entrance Fees
                                                                 </label>
@@ -2333,8 +2332,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="not-included"
-                                                                    type="checkbox" value="" id="not-included2" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="not-included2"
+                                                                    type="checkbox" value="Guide Gratuity" id="not-included2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included2">
                                                                     Guide Gratuity
                                                                 </label>
@@ -2342,8 +2341,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="not-included"
-                                                                    type="checkbox" value="" id="not-included3" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="not-included3"
+                                                                    type="checkbox" value="Lunch" id="not-included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included3">
                                                                     Lunch
                                                                 </label>
@@ -2351,8 +2350,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="not-included"
-                                                                    type="checkbox" value="" id="not-included4" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="not-included4"
+                                                                    type="checkbox" value="Dinner" id="not-included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included4">
                                                                     Dinner
                                                                 </label>
@@ -2369,65 +2368,65 @@
                                                         
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
-                                                                <label>Monday</label>
-                                                                <input type="text" class="form-control" placeholder="Enter Open Hours" style="width: auto; height: 56px;">
+                                                                <label>Open Hour</label>
+                                                                <input type="time" class="form-control" placeholder="Enter Open Hours" name="openHour" style="width: auto; height: 56px;">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3">
                                                             <div class="form-group">
-                                                                <label>Tuesday</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Wednesday</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Thursday</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Friday</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Saturday</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Sunday</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3"  style="width: auto;">
-                                                            <div class="form-group"  style="width: auto;">
                                                                 <label>Visit Hour</label>
-                                                                <select class="select">
-                                                                    <option value="" >Select Visit Hour</option>
-                                                                    <option value="1">1 Hour</option>
-                                                                    <option value="2">1-2 Hours</option>
-                                                                    <option value="3">1-3 Hours</option>
-                                                                    <option value="4">1-4 Hours</option>
-                                                                    <option value="5">More Than 4 Hours</option>
-                                                                </select>
+                                                                <input type="number" class="form-control" name="visitHour" min="0"
+                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
                                                             </div>
                                                         </div>
+{#                                                        <div class="col-lg-3">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Wednesday</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="col-lg-3">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Thursday</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="col-lg-3">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Friday</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="col-lg-3">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Saturday</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="col-lg-3">#}
+{#                                                            <div class="form-group">#}
+{#                                                                <label>Sunday</label>#}
+{#                                                                <input type="text" class="form-control"#}
+{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                        <div class="col-lg-3"  style="width: auto;">#}
+{#                                                            <div class="form-group"  style="width: auto;">#}
+{#                                                                <label>Visit Hour</label>#}
+{#                                                                <select class="select">#}
+{#                                                                    <option value="" >Select Visit Hour</option>#}
+{#                                                                    <option value="1">1 Hour</option>#}
+{#                                                                    <option value="2">1-2 Hours</option>#}
+{#                                                                    <option value="3">1-3 Hours</option>#}
+{#                                                                    <option value="4">1-4 Hours</option>#}
+{#                                                                    <option value="5">More Than 4 Hours</option>#}
+{#                                                                </select>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
                                                     
                                                     </div>
                                                         <h5 class="my-4">Contact Information</h5>
@@ -2435,21 +2434,21 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Name</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="contact_name"
                                                                     placeholder="Enter name">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Email</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="contact_email"
                                                                     placeholder="Enter email">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Phone</label>
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" class="form-control" name="contact_phone"
                                                                     placeholder="Enter phone">
                                                             </div>
                                                         </div>
@@ -2463,13 +2462,13 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="col-lg-12 my-4">
+                                                        <div class="col-lg-12 my-4">
                                                             <button type="submit" class="theme-btn">Submit Your
                                                                 Activity</button>
-                                                        </div> -->
+                                                        </div>
                                                         </div>
                                                     </div>
-                                                </form>
+{#                                                </form>#}
                                             </div>
                                         </div>
                                     </div>
@@ -2482,8 +2481,8 @@
                         <div class="modal__container">
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
-                                    <button class="button button--primary button--block" data-dismiss="modal"
-                                        data-modal="#addProductSuccess"><span class="button__text">Create</span>
+                                    <button class="button button--primary button--block" data-dismiss="modal" type="submit"
+                                        data-modal="#addProductSuccess" onclick="ImageUpload.prototype.removeAllItems()"><span class="button__text">Create</span>
                                     </button>
                                 </div>
                                 <div class="modal__footer-button">

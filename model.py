@@ -10,8 +10,8 @@ class Customer(db.Model, UserMixin):
     password = db.Column(db.String(255))
     avatarURL = db.Column(db.Text)
     wallet = db.Column(db.Float)
-    orders = db.relationship('Order', backref='customer')
-    reviews = db.relationship('Review', backref='customer')
+    orders = db.relationship('ActivityOrder', backref='customer')
+    reviews = db.relationship('ActivityReview', backref='customer')
 
 
 class Message(db.Model):
@@ -73,7 +73,8 @@ class Activity(db.Model):
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
-    review = db.relationship('Review', backref='product')
+    review = db.relationship('ActivityReview', backref='product')
+    orders = db.relationship('ActivityOrder', backref='product')
 
 
 

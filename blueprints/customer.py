@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail
@@ -14,7 +14,8 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 def homepage():
     # return render_template("tour-detail.html")
     #  return render_template("activity-grid.html")
-    return render_template("Homepage.html")
+    # return render_template("Homepage.html")
+    return redirect(url_for('manager.add_activity'))
 
 
 @bp.route('/login', methods=['GET', 'POST'])
