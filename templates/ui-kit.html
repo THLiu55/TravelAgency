@@ -15,30 +15,59 @@
     <meta name="apple-mobile-web-app-title" content="Group7 Admin Dashboard" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../static/css/apexcharts.css" />
-    <link rel="stylesheet" href="../../static/css/tippy/tippy.css" />
-    <link rel="stylesheet" href="../../static/css/flatpickr.min.css" />
-    <link rel="stylesheet" href="../../static/css/select2.min.css" />
-    <link rel="stylesheet" href="../../static/css/quill/quill.snow.css" />
-    <link rel="stylesheet" href="../../static/css/quill/quill.core.css" />
-    <link rel="stylesheet" href="../../static/css/filepond.min.css" />
-    <link rel="stylesheet" href="../../static/css/filepond-plugin-image-preview.min.css" />
-    <link rel="stylesheet" href="../../static/css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../../static/css/style.css" />
-    <link rel="apple-touch-icon" sizes="57x57" href="../../static/img/content/favicons/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="../../static/img/content/favicons/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="../../static/img/content/favicons/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="../../static/img/content/favicons/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="../../static/img/content/favicons/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="../../static/img/content/favicons/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="../../static/img/content/favicons/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="../../static/img/content/favicons/apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="../../static/img/content/favicons/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="../../static/img/content/favicons/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="../../static/img/content/favicons/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="../../static/img/content/favicons/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="../../static/img/content/favicons/favicon-16x16.png" />
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/css/apexcharts.css" />
+    <link rel="stylesheet" href="../static/css/tippy/tippy.css" />
+    <link rel="stylesheet" href="../static/css/flatpickr.min.css" />
+    <link rel="stylesheet" href="../static/css/select2.min.css" />
+    <link rel="stylesheet" href="../static/css/quill/quill.snow.css" />
+    <link rel="stylesheet" href="../static/css/quill/quill.core.css" />
+    <link rel="stylesheet" href="../static/css/filepond.min.css" />
+    <link rel="stylesheet" href="../static/css/filepond-plugin-image-preview.min.css" />
+    <link rel="stylesheet" href="../static/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <style>
+        body {
+              background-color: #E0E0E0;
+          }
+          
+          html[data-theme='dark'] body {
+              background-color: #2D3443;
+          }
+          
+          .section {
+              margin-top: 0;
+              margin-bottom: 3.5rem;
+          }
+          
+          .section__title {
+              margin-bottom: 1.6rem;
+              font-size: 1.75rem;
+          }
+          
+          .dropdown-example .dropdown-items,
+          .dropdown-example .dropdown-emoji {
+              position: relative;
+              display: block;
+              opacity: 1;
+              z-index: initial;
+              visibility: visible;
+              pointer-events: all;
+          }
+    </style>
+    <link rel="apple-touch-icon" sizes="57x57" href="../static/img/content/favicons/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="../static/img/content/favicons/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../static/img/content/favicons/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../static/img/content/favicons/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../static/img/content/favicons/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../static/img/content/favicons/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../static/img/content/favicons/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../static/img/content/favicons/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/img/content/favicons/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="../static/img/content/favicons/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/img/content/favicons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="../static/img/content/favicons/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/img/content/favicons/favicon-16x16.png" />
     <!-- <link rel="manifest" href="../../static/img/content/favicons/manifest.json" />-->
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
@@ -471,16 +500,16 @@
                                 </button>
                                 <div class="lang-menu dropdown-menu">
                                     <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../../static/img/content/flags/us.svg" alt="#" /><span class="lang-menu__text">En</span>
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/us.svg" alt="#" /><span class="lang-menu__text">En</span>
                                     </button>
                                     <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../../static/img/content/flags/gb.svg" alt="#" /><span class="lang-menu__text">Gb</span>
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/gb.svg" alt="#" /><span class="lang-menu__text">Gb</span>
                                     </button>
                                     <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../../static/img/content/flags/ru.svg" alt="#" /><span class="lang-menu__text">Ru</span>
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/ru.svg" alt="#" /><span class="lang-menu__text">Ru</span>
                                     </button>
                                     <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../../static/img/content/flags/cn.svg" alt="#" /><span class="lang-menu__text">Cn</span>
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/cn.svg" alt="#" /><span class="lang-menu__text">Cn</span>
                                     </button>
                                     <div class="lang-menu__separate"></div><a class="lang-menu__button lang-menu__button--all dropdown-menu__item" href="#" tabindex="0">Learn</a>
                                 </div>
@@ -618,7 +647,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-teal">
                                                             <div class="dropdown-menu__item-icon-text">MA</div>
-                                                            <img src="../../static/img/content/humans/item-4.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-4.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal badge-signal--green"></div>
                                                     </div>
@@ -640,7 +669,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-orange-dark">
                                                             <div class="dropdown-menu__item-icon-text">JT</div>
-                                                            <img src="../../static/img/content/humans/item-1.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-1.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal badge-signal--green"></div>
                                                     </div>
@@ -662,7 +691,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-orange">
                                                             <div class="dropdown-menu__item-icon-text">SA</div>
-                                                            <img src="../../static/img/content/humans/item-5.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-5.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal"></div>
                                                     </div>
@@ -684,7 +713,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-red">
                                                             <div class="dropdown-menu__item-icon-text">WS</div>
-                                                            <img src="../../static/img/content/humans/item-6.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-6.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal badge-signal--red"></div>
                                                     </div>
@@ -706,7 +735,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-blue">
                                                             <div class="dropdown-menu__item-icon-text">SA</div>
-                                                            <img src="../../static/img/content/humans/item-5.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-5.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal badge-signal--green"></div>
                                                     </div>
@@ -728,7 +757,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-green">
                                                             <div class="dropdown-menu__item-icon-text">JH</div>
-                                                            <img src="../../static/img/content/humans/item-7.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-7.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal"></div>
                                                     </div>
@@ -750,7 +779,7 @@
                                                     <div class="dropdown-menu__item-left">
                                                         <div class="dropdown-menu__item-icon color-orange">
                                                             <div class="dropdown-menu__item-icon-text">RH</div>
-                                                            <img src="../../static/img/content/humans/item-8.jpg" alt="#" />
+                                                            <img src="../static/img/content/humans/item-8.jpg" alt="#" />
                                                         </div>
                                                         <div class="badge-signal badge-signal--red"></div>
                                                     </div>
@@ -773,7 +802,7 @@
                             <div class="header__profile dropdown">
                                 <a class="header__profile-toggle dropdown__toggle" href="#" data-toggle="dropdown">
                                     <div class="header__profile-image"><span class="header__profile-image-text">MA</span>
-                                        <img src="../../static/img/content/humans/item-4.jpg" alt="#" />
+                                        <img src="../static/img/content/humans/item-4.jpg" alt="#" />
                                     </div>
                                     <div class="header__profile-text"><span>Mark Anderson</span>
                                     </div><span class="icon-arrow-down">
@@ -811,7 +840,7 @@
                 <div class="sidebar__top">
                     <div class="container container--sm">
                         <a class="sidebar__logo" href="index.html">
-                            <img class="sidebar__logo-icon" src="../../static/img/content/logotype.svg" alt="#" width="44" />
+                            <img class="sidebar__logo-icon" src="../static/img/content/logotype.svg" alt="#" width="44" />
                             <div class="sidebar__logo-text">Group7</div>
                         </a>
                     </div>
@@ -847,12 +876,12 @@
                                         </li>
                                         <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History V.2</span></a>
                                         </li>
                                            
                                         <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages V.2</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages V.2</span></a>
                                         </li>
                                         <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
                                         </li>
@@ -910,293 +939,528 @@
             </div>
         </aside>
         <main class="page-content">
-            <div class="container">
-                <div class="page-header">
-                    <h1 class="page-header__title">Account</h1>
-                </div>
-                <div class="page-tools">
-                    <div class="page-tools__breadcrumbs">
-                        <div class="breadcrumbs">
-                            <div class="breadcrumbs__container">
-                                <ol class="breadcrumbs__list">
-                                    <li class="breadcrumbs__item">
-                                        <a class="breadcrumbs__link" href="index.html">
-                                            <svg class="icon-icon-home breadcrumbs__icon">
-                                                <use xlink:href="#icon-home"></use>
-                                            </svg>
-                                            <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
-                                                <use xlink:href="#icon-keyboard-right"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Travel-Booking</span>
-                        <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
-                          <use xlink:href="#icon-keyboard-right"></use>
-                        </svg></a>
-                                    </li>
-                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Account</span>
-                                    </li>
-                                </ol>
-                            </div>
+            <div class="container container--fixed">
+                <section class="section">
+                    <div class="row gutter-bottom-xl">
+                        <div class="col-12 col-lg-6">
+                            <h2 class="section__title">Colors</h2>
+                            <div class="ui-kit-color color-blue" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-teal" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-red" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-green" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-orange" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-orange-dark" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-grey-bg" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-grey" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-grey-dark" style="height: 2rem"></div>
+                            <div class="ui-kit-color color-grey-light" style="height: 2rem"></div>
                         </div>
                     </div>
-                    <div class="page-tools__right">
-                        <div class="page-tools__right-row">
-                            <div class="page-tools__right-item"><a class="button-icon" href="#" data-modal="#accountEdit"><span class="button-icon__icon">
-                      <svg class="icon-icon-task">
-                        <use xlink:href="#icon-task"></use>
-                      </svg></span></a>
-                            </div>
-                            <div class="page-tools__right-item"><a class="button-icon" href="#"><span class="button-icon__icon">
-                      <svg class="icon-icon-trash">
-                        <use xlink:href="#icon-trash"></use>
-                      </svg></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="customer-account">
-                    <div class="customer-account__item-1 customer-profile customer-card card">
-                        <div class="card__wrapper">
-                            <div class="card__container">
-                                <div class="card__body">
-                                    <div class="customer-profile__avatar">
-                                        <svg viewBox="0 0 252 272" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <g filter="url(#filter0_dd)">
-                                                <path d="M55 199H197V221C197 221 153.752 224 126 224C98.248 224 55 221 55 221V199Z" fill="white" />
-                                            </g>
-                                            <g filter="url(#filter1_dd)">
-                                                <path d="M18.235 43.2287C19.2494 23.1848 35.1848 7.24941 55.2287 6.23501C76.8855 5.13899 104.551 4 126 4C147.449 4 175.114 5.13898 196.771 6.23501C216.815 7.24941 232.751 23.1848 233.765 43.2287C234.861 64.8855 236 92.5512 236 114C236 135.449 234.861 163.114 233.765 184.771C232.751 204.815 216.815 220.751 196.771 221.765C175.114 222.861 147.449 224 126 224C104.551 224 76.8855 222.861 55.2287 221.765C35.1848 220.751 19.2494 204.815 18.235 184.771C17.139 163.114 16 135.449 16 114C16 92.5512 17.139 64.8855 18.235 43.2287Z"
-                                                fill="url(#pattern0)" />
-                                            </g>
-                                            <defs>
-                                                <filter id="filter0_dd" x="23" y="183" width="206" height="89" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                                                    <feOffset dy="8" />
-                                                    <feGaussianBlur stdDeviation="8" />
-                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                                                    <feOffset dy="16" />
-                                                    <feGaussianBlur stdDeviation="16" />
-                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                                    <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
-                                                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
-                                                </filter>
-                                                <filter id="filter1_dd" x="0" y="0" width="252" height="252" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                                                    <feOffset dy="12" />
-                                                    <feGaussianBlur stdDeviation="8" />
-                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" />
-                                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
-                                                    <feOffset dy="2" />
-                                                    <feGaussianBlur stdDeviation="2" />
-                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0" />
-                                                    <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow" />
-                                                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow" result="shape" />
-                                                </filter>
-                                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                                                    <use xlink:href="#profileImage" transform="scale(0.00142857)" />
-                                                </pattern>
-                                                <image id="profileImage" width="700" height="700" xlink:href='../../static/img/content/avatar-full.jpg' />
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                    <h4 class="customer-profile__title">Felecia Burke</h4>
-                                    <div class="customer-profile__balance">
-                                        <div class="label label--primary label--lg"><span class="label__icon">
-                          <svg class="icon-icon-wallet">
-                            <use xlink:href="#icon-wallet"></use>
-                          </svg></span> Balance: $5,000</div>
+                </section>
+                <section class="section">
+                    <div class="row gutter-bottom-xl">
+                        <div class="col-auto">
+                            <h2 class="section__title">Dropdowns</h2>
+                            <div class="row gutter-bottom-sm">
+                                <div class="col-auto">
+                                    <div class="dropdown-example">
+                                        <div class="dropdown-items dropdown-items--right">
+                                            <div class="dropdown-items__container">
+                                                <ul class="dropdown-items__list">
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link">Week</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link">Month</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link">Quarter</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link">Year</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link">All Time</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link">Custom</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card__footer">
-                                    <div class="card__container">
-                                        <ul class="customer-profile__address">
-                                            <li>
-                                                <svg class="icon-icon-location">
-                                                    <use xlink:href="#icon-location"></use>
-                                                </svg>Hong Kong, China
-                                            </li>
-                                            <li>
-                                                <svg class="icon-icon-email">
-                                                    <use xlink:href="#icon-email"></use>
-                                                </svg> <a href="mailto:#">example@mail.com</a>
-                                            </li>
-                                            <li>
-                                                <svg class="icon-icon-phone">
-                                                    <use xlink:href="#icon-phone"></use>
-                                                </svg> <a href="tel:#">+1 (070) 123-4567</a>
-                                            </li>
-                                        </ul>
+                                <div class="col-auto">
+                                    <div class="dropdown-example">
+                                        <div class="dropdown-items">
+                                            <div class="dropdown-items__container">
+                                                <ul class="dropdown-items__list">
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-refresh">
+                                    <use xlink:href="#icon-refresh"></use>
+                                  </svg></span>Refresh</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-settings">
+                                    <use xlink:href="#icon-settings"></use>
+                                  </svg></span>Settings</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-download">
+                                    <use xlink:href="#icon-download"></use>
+                                  </svg></span>Download</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-action">
+                                    <use xlink:href="#icon-action"></use>
+                                  </svg></span>Action</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="customer-account__item-2 customer-   Home customer-card card">
-                        <div class="card__wrapper">
-                            <div class="card__container">
-                                <div class="card__header">
-                                    <div class="card__header-left">
-                                        <h3 class="card__header-title">   Home Address</h3>
+                                <div class="col-auto">
+                                    <div class="dropdown-example position-relative">
+                                        <div class="dropdown-emoji dropdown-menu dropdown-menu--up">
+                                            <div class="dropdown-emoji__content">
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/laughing.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/happy-2.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/crazy.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/bad.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/angry.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/happy.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/thinking.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/sad.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/pressure.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/in-love.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/nerd.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/happy-3.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/shocked.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/wink.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/sweating.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/shocked-2.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/shocked-3.svg" alt="#" />
+                                                </a>
+                                                <a class="dropdown-emoji__item" href="#" tabindex="0">
+                                                    <img class="dropdown-emoji__image" src="../static/img/content/emoji/sad-2.svg" alt="#" />
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="customer-card__header-right">
-                                        <button class="customer-card__btn-task">
-                                            <svg class="icon-icon-task">
-                                                <use xlink:href="#icon-task"></use>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="items-more">
+                                        <button class="items-more__button">
+                                            <svg class="icon-icon-more">
+                                                <use xlink:href="#icon-more"></use>
                                             </svg>
                                         </button>
+                                        <div class="dropdown-items dropdown-items--right">
+                                            <div class="dropdown-items__container">
+                                                <ul class="dropdown-items__list">
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-refresh">
+                                    <use xlink:href="#icon-refresh"></use>
+                                  </svg></span>Refresh</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-settings">
+                                    <use xlink:href="#icon-settings"></use>
+                                  </svg></span>Settings</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-download">
+                                    <use xlink:href="#icon-download"></use>
+                                  </svg></span>Download</a>
+                                                    </li>
+                                                    <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                  <svg class="icon-icon-action">
+                                    <use xlink:href="#icon-action"></use>
+                                  </svg></span>Action</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card__body">
-                                    <ul class="customer-   Home__list">
-                                        <li>
-                                            <div class="row row--xs justify-content-between">
-                                                <div class="col-auto text-grey">Address</div>
-                                                <div class="col-auto">898 Joanne Lane street</div>
-                                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="row gutter-bottom-xl">
+                        <div class="col-auto">
+                            <h2 class="section__title">Tooltip Custom</h2>
+                            <div class="row gutter-bottom-sm">
+                                <div class="col-auto">
+                                    <div class="chart-tooltip-custom">
+                                        <div class="chart-tooltip-custom__items"><span class="chart-tooltip-custom__marker"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:#22CCE2;"></span></span><span class="chart-tooltip-custom__value">2,000</span>
+                                            <span
+                                            class="chart-tooltip-custom__separate-item"></span><span class="chart-tooltip-custom__marker"><span style="display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:#FF3D57;"></span></span><span class="chart-tooltip-custom__value">1,500</span>
+                                                <span
+                                                class="chart-tooltip-custom__separate-item"></span>
+                                        </div>
+                                        <div class="chart-tooltip-custom__title">21 August, 2018</div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="chart-tooltip-custom">
+                                        <div class="chart-tooltip-custom__items"><span class="chart-tooltip-custom__value">$180</span><span class="chart-tooltip-custom__separate-item"></span>
+                                        </div>
+                                        <div class="chart-tooltip-custom__title">21 August, 2018</div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="chart-tooltip-custom">
+                                        <div class="chart-tooltip-custom__items"><span class="chart-tooltip-custom__value">Value</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <div class="row gutter-bottom-xl">
+                        <div class="col-auto">
+                            <h2 class="section__title">Buttons</h2>
+                            <div class="row gutter-bottom-sm">
+                                <div class="col-auto">
+                                    <button class="button button--primary" type="button"><span class="button__text">Button</span>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="button button--primary" type="button"><span class="button__icon button__icon--left">
+                        <svg class="icon-icon-plus">
+                          <use xlink:href="#icon-plus"></use>
+                        </svg></span><span class="button__text">Button</span>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="button button--primary button--load is-active" type="submit"><span class="button__icon button__icon--left">
+                        <svg class="icon-icon-refresh">
+                          <use xlink:href="#icon-refresh"></use>
+                        </svg></span><span class="button__text">Update</span>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="button-add button-add--blue"><span class="button-add__icon">
+                        <svg class="icon-icon-plus">
+                          <use xlink:href="#icon-plus"></use>
+                        </svg></span>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="button-add button-add--blue button-add--sm">+3</button>
+                                </div>
+                                <div class="col-auto">
+                                    <ul class="nav">
+                                        <li class="mr-3"><a class="button-icon active" href="#tab-grid" data-toggle="tab"><span class="button-icon__icon">
+                            <svg class="icon-icon-grid">
+                              <use xlink:href="#icon-grid"></use>
+                            </svg></span></a>
                                         </li>
-                                        <li>
-                                            <div class="row row--xs justify-content-between">
-                                                <div class="col-auto text-grey">City</div>
-                                                <div class="col-auto">Hong Kong</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row row--xs justify-content-between">
-                                                <div class="col-auto text-grey">Country</div>
-                                                <div class="col-auto">China</div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row row--xs justify-content-between">
-                                                <div class="col-auto text-grey">Zip code</div>
-                                                <div class="col-auto">02110</div>
-                                            </div>
+                                        <li class="mr-3"><a class="button-icon" href="#tab-list" data-toggle="tab"><span class="button-icon__icon">
+                            <svg class="icon-icon-list">
+                              <use xlink:href="#icon-list"></use>
+                            </svg></span></a>
                                         </li>
                                     </ul>
                                 </div>
+                                <div class="w-100"></div>
+                                <div class="col-auto">
+                                    <button class="button button--secondary" type="button"><span class="button__text">Button Secondary</span>
+                                    </button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="button button--secondary" type="button"><span class="button__icon button__icon--left">
+                        <svg class="icon-icon-plus">
+                          <use xlink:href="#icon-plus"></use>
+                        </svg></span><span class="button__text">Button Secondary</span>
+                                    </button>
+                                </div>
+                                <div class="w-100"></div>
                             </div>
                         </div>
-                    </div>
-                    <div class="customer-account__item-3 customer-payment customer-card card">
-                        <div class="card__wrapper">
-                            <div class="card__container">
-                                <div class="card__header">
-                                    <div class="card__header-left">
-                                        <h3 class="card__header-title">Payment methods</h3>
+                        <div class="col-12">
+                            <h2 class="section__title">Modal</h2>
+                            <div class="row gutter-bottom-sm">
+                                <div class="col-auto">
+                                    <button class="button button--primary button--block" data-dismiss="modal" data-modal="#addProductSuccess"><span class="button__text">Open Modal</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h2 class="section__title">Labels</h2>
+                            <div class="row gutter-bottom-sm">
+                                <div class="col-auto">
+                                    <div class="label label--primary">In Stock</div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="label label--primary label--lg"><span class="label__icon">
+                        <svg class="icon-icon-wallet">
+                          <use xlink:href="#icon-wallet"></use>
+                        </svg></span> Balance: $5,000</div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="label label--primary label--md"><span class="label__icon">
+                        <svg class="icon-icon-calendar">
+                          <use xlink:href="#icon-calendar"></use>
+                        </svg></span> Today</div>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="label label--primary label--md"><span class="label__icon">
+                        <svg class="icon-icon-calendar">
+                          <use xlink:href="#icon-calendar"></use>
+                        </svg></span> Today</div>
+                                </div>
+                                <div class="col-auto d-flex">
+                                    <div class="mr-2"><span class="badge badge--sm badge--blue">5%</span>
                                     </div>
-                                    <div class="customer-card__header-right">
-                                        <button class="customer-card__btn-task">
-                                            <svg class="icon-icon-task">
-                                                <use xlink:href="#icon-task"></use>
-                                            </svg>
-                                        </button>
+                                    <div class="mr-2"><span class="badge badge--sm badge--red">5%</span>
+                                    </div>
+                                    <div class="mr-2"><span class="badge badge--small badge--green">5%</span>
                                     </div>
                                 </div>
-                                <div class="card__body">
-                                    <div class="card__credit-card">
-                                        <div class="credit-card">
-                                            <img class="credit-card__image" src="../../static/img/content/credit-card@3x.png" alt="#" />
-                                            <div class="credit-card__content">
-                                                <input class="credit-card__number" type="text" value="0123   4567   8910   1112" readonly="readonly" />
-                                                <div class="credit-card__name">Felecia Burke</div>
-                                                <div class="credit-card__date">12/31</div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <h2 class="section__title">Switchers</h2>
+                            <div class="row gutter-bottom-sm">
+                                <div class="col-auto">
+                                    <div class="switcher-button">
+                                        <div class="switcher-button__items">
+                                            <div class="switcher-button__float"></div>
+                                            <div class="switcher-button__item active">
+                                                <button class="switcher-button__btn">Weekly</button>
+                                            </div>
+                                            <div class="switcher-button__item">
+                                                <button class="switcher-button__btn">Monthly</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card__footer">
-                                    <div class="card__container">
-                                        <div class="card__credit-list">
-                                            <ul class="card-list">
-                                                <li class="card-list__item">
-                                                    <div class="card-list__title">Card Type</div>
-                                                    <div class="card-list__value">VISA</div>
-                                                </li>
-                                                <li class="card-list__item">
-                                                    <div class="card-list__title">Card Holder</div>
-                                                    <div class="card-list__value">Felecia Burke</div>
-                                                </li>
-                                                <li class="card-list__item">
-                                                    <div class="card-list__title">Expire</div>
-                                                    <div class="card-list__value">12/31</div>
-                                                </li>
-                                                <li class="card-list__item">
-                                                    <div class="card-list__title">Card Number</div>
-                                                    <div class="card-list__value">0123 4567 8910 1112</div>
-                                                </li>
-                                                <li class="card-list__item">
-                                                    <div class="card-list__title">Balance</div>
-                                                    <div class="card-list__value">$1,000,000</div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="customer-account__item-4 customer-wish-list customer-card card">
-                        <div class="card__wrapper">
-                            <div class="card__container">
-                                <div class="card__header">
-                                    <div class="card__header-left">
-                                        <h3 class="card__header-title">Wish List</h3>
-                                    </div>
-                                    <div class="customer-card__header-right">
-                                        <div class="customer-wish-list__view">
-                                            <div class="row row--xs">
-                                                <div class="col-auto"><span class="text-light-theme">3 Items</span>
-                                                </div>
-                                                <div class="col-auto"><a href="customer-wishlist.html">View All</a>
-                                                </div>
+                                <div class="col-auto">
+                                    <div class="switcher-button">
+                                        <div class="switcher-button__items">
+                                            <div class="switcher-button__float"></div>
+                                            <div class="switcher-button__item">
+                                                <button class="switcher-button__btn">Daily</button>
+                                            </div>
+                                            <div class="switcher-button__item active">
+                                                <button class="switcher-button__btn">Weekly</button>
+                                            </div>
+                                            <div class="switcher-button__item">
+                                                <button class="switcher-button__btn">Monthly</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card__body">
-                                    <div class="customer-wish-list__product">
-                                        <div class="customer-wish-list__product-image">
-                                            <img src="../../static/img/content/product/thumb-2.jpg" srcset="../../static/img/content/product/thumb-2.jpg 2x" alt="#">
-                                        </div>
-                                        <div class="customer-wish-list__product-right">
-                                            <ul class="customer-wish-list__params">
-                                                <li><b>Apple Watch Series 4</b>
-                                                </li>
-                                                <li>Product ID: 790841</li>
-                                                <li>Color: Gold</li>
-                                                <li>Size: 44mm</li>
-                                                <li>Price: $399</li>
-                                            </ul>
-                                            <div class="label label--primary">In Stock</div>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <h2 class="section__title">Forms</h2>
+                    <div class="row gutter-bottom-sm">
+                        <div class="col-12 d-flex flex-wrap align-items-center">
+                            <div class="d-inline-block mr-4">
+                                <label class="checkbox checkbox--circle">
+                                    <input type="checkbox" checked><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                        <svg class="icon-icon-checked">
+                          <use xlink:href="#icon-checked"></use>
+                        </svg></span></span>
+                                </label>
+                            </div>
+                            <div class="d-inline-block mr-4">
+                                <label class="checkbox">
+                                    <input type="checkbox" checked><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                        <svg class="icon-icon-checked">
+                          <use xlink:href="#icon-checked"></use>
+                        </svg></span></span>
+                                </label>
+                            </div>
+                            <div class="d-inline-block mr-4">
+                                <div class="rating js-rating-stars" data-rating="1"></div>
+                            </div>
+                            <div class="d-inline-block mr-4">
+                                <div class="rating js-rating-stars" data-rating="5" data-readonly="true"></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="input-group input-group--prepend input-group--append">
+                                <div class="input-group__prepend">
+                                    <svg class="icon-icon-calendar">
+                                        <use xlink:href="#icon-calendar"></use>
+                                    </svg>
+                                </div>
+                                <input class="input input--select" type="text" value="01.12.18 / 07.12.18" readonly><span class="input-group__arrow">
+                    <svg class="icon-icon-keyboard-down">
+                      <use xlink:href="#icon-keyboard-down"></use>
+                    </svg></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="input-group input-group--append">
+                                <select class="input js-input-select input--fluid" data-placeholder="">
+                                    <option value="1" selected="selected">Week
+                                    </option>
+                                    <option value="2">Month
+                                    </option>
+                                    <option value="3">Quarter
+                                    </option>
+                                    <option value="4">Year
+                                    </option>
+                                    <option value="5">All Time
+                                    </option>
+                                    <option value="6">Custom
+                                    </option>
+                                </select><span class="input-group__arrow">
+                    <svg class="icon-icon-keyboard-down">
+                      <use xlink:href="#icon-keyboard-down"></use>
+                    </svg></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="input-group input-group--white input-group--append">
+                                <input class="input input--select" type="text" value="All status" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                    <svg class="icon-icon-keyboard-down">
+                      <use xlink:href="#icon-keyboard-down"></use>
+                    </svg></span>
+                                <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="All status"><span class="marker-item"></span> All status</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Published"><span class="marker-item color-green"></span> Published</a>
+                                    <a
+                                    class="dropdown-menu__item" href="#" tabindex="0" data-value="Deleted"><span class="marker-item color-red"></span> Deleted</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="input-group input-group--append input-group--append-lg">
+                                <input class="input js-card-number" type="text" placeholder="**** **** **** 1234" required><span class="input-group__append"><img class="add-card__input-number-logo" src="../static/img/content/visa-logo.png" alt="#"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <select class="input js-input-tags" multiple="multiple" data-placeholder="">
+                                <option value="1" selected="selected">Smartwatch</option>
+                                <option value="2" selected="selected">Apple</option>
+                                <option value="3">MacBook</option>
+                                <option value="4" selected="selected">Apple Watch</option>
+                                <option value="5">AirPods</option>
+                                <option value="6">iPhone</option>
+                                <option value="7">IPad</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <form method="GET">
+                                <div class="input-group input-group--white input-group--prepend">
+                                    <div class="input-group__prepend">
+                                        <svg class="icon-icon-search">
+                                            <use xlink:href="#icon-search"></use>
+                                        </svg>
+                                    </div>
+                                    <input class="input" type="text" placeholder="Search">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <h2 class="section__title">Progress Bars</h2>
+                    <div class="row gutter-bottom-sm">
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="progressbar">
+                                <div class="progressbar__legend"><span class="progressbar__legend-marker" style="color: #FF3D57"></span><span>Complete</span>
+                                </div>
+                                <div class="progressbar__items">
+                                    <div class="progressbar__bar" style="width: 75%; background-color: #FF3D57;"></div>
+                                </div>
+                                <div class="progressbar__append"><span class="progressbar__percentage">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="progressbar">
+                                <div class="progressbar__legend"><span class="progressbar__legend-marker" style="color: #FDBF5E"></span><span>In Progress</span>
+                                </div>
+                                <div class="progressbar__items">
+                                    <div class="progressbar__bar" style="width: 25%; background-color: #FDBF5E;"></div>
+                                </div>
+                                <div class="progressbar__append"><span class="progressbar__percentage">25%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="progressbar">
+                                <div class="progressbar__legend"><span class="progressbar__legend-marker" style="color: #22CCE2"></span><span>Started</span>
+                                </div>
+                                <div class="progressbar__items">
+                                    <div class="progressbar__bar" style="width: 80%; background-color: #22CCE2;"></div>
+                                </div>
+                                <div class="progressbar__append"><span class="progressbar__percentage">80%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <div class="media-progress">
+                                <h5 class="media-progress__title"><span class="text-clamp">Storage</span></h5>
+                                <div class="media-progress__percentage">30 %
+                                </div>
+                                <div class="media-progress__progressbar">
+                                    <div class="media-progress__bar" style="width: 30%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="progressbar progressbar--stacked progressbar--axis-top progressbar--lg">
+                                <div class="progressbar__items">
+                                    <div class="progressbar__bar progressbar__bar--green" style="width: 40%;"><span class="progressbar__bar-count">$70,000</span>
+                                    </div>
+                                    <div class="progressbar__bar progressbar__bar--orange" style="width: 20%;"><span class="progressbar__bar-count">$55,000</span>
+                                    </div>
+                                    <div class="progressbar__bar progressbar__bar--red" style="width: 20%;"><span class="progressbar__bar-count">$40,000</span>
+                                    </div>
+                                    <div class="progressbar__bar progressbar__bar--orange-dark" style="width: 10%;"><span class="progressbar__bar-count">$25,000</span>
+                                    </div>
+                                    <div class="progressbar__bar progressbar__bar--teal" style="width: 10%;"><span class="progressbar__bar-count">$20,000</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <div class="modal modal-account modal-compact scrollbar-thin" id="accountEdit" data-simplebar>
-        <div class="modal__overlay" data-dismiss="modal"></div>
-        <div class="modal__wrap">
-            <div class="modal__window">
-                <div class="modal__content">
-                    <button class="modal__close" data-dismiss="modal">
-                        <svg class="icon-icon-cross">
-                            <use xlink:href="#icon-cross"></use>
-                        </svg>
-                    </button>
-                    <div class="modal__body">
-                        <div class="modal-account__content">
-                            <div class="modal-account__left">
+                </section>
+                <section class="section">
+                    <h2 class="section__title">Media</h2>
+                    <div class="row gutter-bottom-sm">
+                        <div class="col-12 col-sm-6 col-lg-4 d-flex flex-column">
+                            <div class="mx-auto">
                                 <div class="modal-account__upload profile-upload js-profile-upload">
                                     <input class="profile-upload__input" type="file" name="file_upload" accept="image/png, image/jpeg">
                                     <svg class="profile-upload__thumbnail" viewBox="0 0 252 272" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1242,7 +1506,7 @@
                                                 <use xlink:href="#profileImageAddPlaceholder" transform="scale(0.00142857)" />
                                                 <use xlink:href="#profileImageAdd" transform="scale(0.00142857)" />
                                             </pattern>
-                                            <image id="profileImageAddPlaceholder" width="700" height="700" xlink:href='../../static/img/content/upload-placeholder.svg' />
+                                            <image id="profileImageAddPlaceholder" width="700" height="700" xlink:href='img/content/upload-placeholder.svg' />
                                             <image id="profileImageAdd" class="profile-upload__image" width="700" height="700" xlink:href='' />
                                         </defs>
                                     </svg>
@@ -1254,319 +1518,159 @@
                                             <br>to change photo</p>
                                     </div>
                                 </div>
-                                <div class="modal-account__tabs nav">
-                                    <a class="modal-account__tab active" data-toggle="tab" href="#accountDetails">
-                                        <svg class="icon-icon-details">
-                                            <use xlink:href="#icon-details"></use>
-                                        </svg>Account Details</a>
-                                    <a class="modal-account__tab" data-toggle="tab" href="#account   HomeAddress">
-                                        <svg class="icon-icon-truck">
-                                            <use xlink:href="#icon-truck"></use>
-                                        </svg>   Home Address</a>
-                                    <a class="modal-account__tab" data-toggle="tab" href="#accountPayment">
-                                        <svg class="icon-icon-credit-card">
-                                            <use xlink:href="#icon-credit-card"></use>
-                                        </svg>Payment Methods</a>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="mb-3">
+                                <div class="files-upload">
+                                    <div class="files-upload__drop">
+                                        <input class="files-upload__input" type="file" name="file_upload" multiple>
+                                        <div class="files-upload__drop-text">
+                                            <svg class="icon-icon-upload">
+                                                <use xlink:href="#icon-upload"></use>
+                                            </svg> <span>Drag and Drop or </span>  <span class="image-upload__drop-action text-blue">Browse</span>  <span>to upload</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="modal-account__right tab-content">
-                                <div class="modal-account__pane tab-pane fade show active" id="accountDetails">
-                                    <div class="modal-account__pane-header">
-                                        <h2>Account details</h2>
+                            <div class="mb-3">
+                                <div class="media-file">
+                                    <div class="media-file__icon">
+                                        <img class="media-file__thumb" src="../static/img/content/file-doc.svg" alt="#" />
                                     </div>
-                                    <form>
-                                        <div class="row row--md">
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">First Name: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="text" placeholder="" value="Felecia" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Last Name: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="text" placeholder="" value="Burke" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">E-Mail: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="email" placeholder="" value="example@mail.com" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label class="form-label form-label--sm">Date of Birth (optional):</label>
-                                                <div class="row row--md">
-                                                    <div class="col-12 col-lg-4 form-group form-group--lg">
-                                                        <div class="input-group input-group--append">
-                                                            <select class="input js-input-select input--fluid" data-placeholder="">
-                                                                <option value="1" selected="selected">1
-                                                                </option>
-                                                                <option value="2">2
-                                                                </option>
-                                                                <option value="3">3
-                                                                </option>
-                                                                <option value="4">4
-                                                                </option>
-                                                                <option value="5">5
-                                                                </option>
-                                                                <option value="6">6
-                                                                </option>
-                                                                <option value="7">7
-                                                                </option>
-                                                                <option value="8">8
-                                                                </option>
-                                                                <option value="9">9
-                                                                </option>
-                                                                <option value="10">10
-                                                                </option>
-                                                                <option value="11">11
-                                                                </option>
-                                                                <option value="12">12
-                                                                </option>
-                                                                <option value="13">13
-                                                                </option>
-                                                                <option value="14">14
-                                                                </option>
-                                                                <option value="15">15
-                                                                </option>
-                                                                <option value="16">16
-                                                                </option>
-                                                                <option value="17">17
-                                                                </option>
-                                                                <option value="18">18
-                                                                </option>
-                                                                <option value="19">19
-                                                                </option>
-                                                                <option value="20">20
-                                                                </option>
-                                                                <option value="21">21
-                                                                </option>
-                                                                <option value="22">22
-                                                                </option>
-                                                                <option value="23">23
-                                                                </option>
-                                                                <option value="24">24
-                                                                </option>
-                                                                <option value="25">25
-                                                                </option>
-                                                                <option value="26">26
-                                                                </option>
-                                                                <option value="27">27
-                                                                </option>
-                                                                <option value="28">28
-                                                                </option>
-                                                            </select><span class="input-group__arrow">
-                                  <svg class="icon-icon-keyboard-down">
-                                    <use xlink:href="#icon-keyboard-down"></use>
-                                  </svg></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-4 form-group form-group--lg">
-                                                        <div class="input-group input-group--append">
-                                                            <select class="input js-input-select input--fluid" data-placeholder="">
-                                                                <option value="1" selected="selected">January
-                                                                </option>
-                                                                <option value="2">February
-                                                                </option>
-                                                                <option value="3">March
-                                                                </option>
-                                                                <option value="4">April
-                                                                </option>
-                                                                <option value="5">May
-                                                                </option>
-                                                                <option value="6">June
-                                                                </option>
-                                                                <option value="7">July
-                                                                </option>
-                                                                <option value="8">August
-                                                                </option>
-                                                                <option value="9">September
-                                                                </option>
-                                                                <option value="10">October
-                                                                </option>
-                                                                <option value="11">November
-                                                                </option>
-                                                                <option value="12">December
-                                                                </option>
-                                                            </select><span class="input-group__arrow">
-                                  <svg class="icon-icon-keyboard-down">
-                                    <use xlink:href="#icon-keyboard-down"></use>
-                                  </svg></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-lg-4 form-group form-group--lg">
-                                                        <div class="input-group input-group--append">
-                                                            <select class="input js-input-select input--fluid" data-placeholder="">
-                                                                <option value="1" selected="selected">1990
-                                                                </option>
-                                                                <option value="2">1991
-                                                                </option>
-                                                                <option value="3">1992
-                                                                </option>
-                                                                <option value="4">1993
-                                                                </option>
-                                                                <option value="5">1994
-                                                                </option>
-                                                            </select><span class="input-group__arrow">
-                                  <svg class="icon-icon-keyboard-down">
-                                    <use xlink:href="#icon-keyboard-down"></use>
-                                  </svg></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Gender (optional):</label>
-                                                <div class="input-group input-group--append">
-                                                    <select class="input js-input-select input--fluid" data-placeholder="">
-                                                        <option value="1" selected="selected">Female
-                                                        </option>
-                                                        <option value="2">Male
-                                                        </option>
-                                                    </select><span class="input-group__arrow">
-                              <svg class="icon-icon-keyboard-down">
-                                <use xlink:href="#icon-keyboard-down"></use>
-                              </svg></span>
-                                                </div>
-                                            </div>
+                                    <div class="media-file__right">
+                                        <div class="media-file__prepend">
+                                            <h5 class="media-file__title">Resume.pdf</h5><span class="text-sm text-grey">570 KB</span>
                                         </div>
-                                        <div class="modal-account__form-submit">
-                                            <button class="button button--primary button--load" type="submit"><span class="button__icon button__icon--left">
-                            <svg class="icon-icon-refresh">
-                              <use xlink:href="#icon-refresh"></use>
-                            </svg></span><span class="button__text">Update</span>
-                                            </button>
+                                        <div class="media-file__append"><a class="button-icon button-icon--grey" href="#"><span class="button-icon__icon">
+                            <svg class="icon-icon-download">
+                              <use xlink:href="#icon-download"></use>
+                            </svg></span></a>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-account__pane tab-pane fade" id="account   HomeAddress">
-                                    <div class="modal-account__pane-header">
-                                        <h2>   Home Address</h2>
                                     </div>
-                                    <form>
-                                        <div class="row row--md">
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Country: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="text" placeholder="" value="Chine" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">City: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="text" placeholder="" value="Beijing" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">House Number and Street: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="text" placeholder="" value="898 Joanne Lane street" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">ZIP Code: *</label>
-                                                <div class="input-group">
-                                                    <input class="input js-zip-code" type="text" placeholder="" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Phone Number: *</label>
-                                                <div class="input-group">
-                                                    <input class="input js-phone-number" type="text" placeholder="+1 (070) 123-4567" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-account__form-submit">
-                                            <button class="button button--primary button--load" type="submit"><span class="button__icon button__icon--left">
-                            <svg class="icon-icon-refresh">
-                              <use xlink:href="#icon-refresh"></use>
-                            </svg></span><span class="button__text">Update</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-account__pane tab-pane fade" id="accountPayment">
-                                    <div class="modal-account__pane-header">
-                                        <h2>Payment methods</h2>
-                                    </div>
-                                    <form>
-                                        <div class="row row--md">
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Name on Card: *</label>
-                                                <div class="input-group">
-                                                    <input class="input" type="text" placeholder="Felecia Burke" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Card Number: *</label>
-                                                <div class="input-group input-group--append">
-                                                    <input class="input js-card-number" type="text" placeholder="****   ****   ****   1234" required><span class="input-group__append"><img class="add-card__input-number-logo" src="../../static/img/content/visa-logo.png" alt="#"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">Expire Date</label>
-                                                <div class="input-group">
-                                                    <input class="input js-card-date" type="text" placeholder="12/2020" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 form-group form-group--lg">
-                                                <label class="form-label form-label--sm">CVV Code <span class="badge-help" data-tippy-content="CVV Code" data-tippy-placement="top">
-                              <svg class="icon-icon-help">
-                                <use xlink:href="#icon-help"></use>
-                              </svg></span>
-                                                </label>
-                                                <div class="input-group"></div>
-                                                <input class="input js-card-cvv" type="text" placeholder="***" required>
-                                            </div>
-                                        </div>
-                                        <div class="modal-account__form-submit">
-                                            <button class="button button--primary button--load" type="submit"><span class="button__icon button__icon--left">
-                            <svg class="icon-icon-refresh">
-                              <use xlink:href="#icon-refresh"></use>
-                            </svg></span><span class="button__text">Update</span>
-                                            </button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <div class="media-file">
+                                    <div class="media-file__icon">
+                                        <img class="media-file__thumb" src="../static/img/content/file-pdf.svg" alt="#" />
+                                    </div>
+                                    <div class="media-file__right">
+                                        <div class="media-file__prepend">
+                                            <h5 class="media-file__title">Resume.pdf</h5><span class="text-sm text-grey">920 KB</span>
+                                        </div>
+                                        <div class="media-file__append"><a class="button-icon button-icon--grey" href="#"><span class="button-icon__icon">
+                            <svg class="icon-icon-trash">
+                              <use xlink:href="#icon-trash"></use>
+                            </svg></span></a>
+                                        </div>
+                                        <div class="media-file__upload">
+                                            <div class="media-file__upload-text">Uploading File... 40%</div>
+                                            <button class="media-file__upload-dismiss" type="button">
+                                                <svg class="icon-icon-cross">
+                                                    <use xlink:href="#icon-cross"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="media-file__progressbar">
+                                                <div class="media-file__progressbar-item" style="width: 40%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="section">
+                    <h2 class="section__title">Items</h2>
+                    <div class="row gutter-bottom-sm">
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="review-list">
+                                <div class="review-list__item">
+                                    <a class="review-list__avatar color-green" href="reviews.html">
+                                        <div class="review-list__avatar-text">JH</div>
+                                        <img src="../static/img/content/humans/item-6.jpg" alt="#" />
+                                    </a>
+                                    <div class="review-list__right">
+                                        <h5 class="review-list__name"><a href="reviews.html">John Hendrix</a></h5><span class="review-list__time">1 min ago</span>
+                                        <div class="review-list__message">
+                                            <p class="review-list__text">The Arts play a large role in the expression of inner thoughts and beauty in my life.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="media-item">
+                                <div class="media-item__icon color-orange">
+                                    <div class="media-item__icon-text">WS</div>
+                                </div>
+                                <div class="media-item__right">
+                                    <h5 class="media-item__title">Walter Sanders</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <div class="modal modal-compact modal-success scrollbar-thin" id="addProductSuccess" data-simplebar>
+        <div class="modal__overlay" data-dismiss="modal"></div>
+        <div class="modal__wrap">
+            <div class="modal__window">
+                <div class="modal__content">
+                    <div class="modal__body">
+                        <div class="modal__container">
+                            <img class="modal-success__icon" src="../static/img/content/checked-success.svg" alt="#">
+                            <h4 class="modal-success__title">Product was added</h4>
+                        </div>
+                    </div>
+                    <div class="modal-compact__buttons">
+                        <div class="modal-compact__button-item">
+                            <button class="modal-compact__button button"><span class="button__text">Add new product</span>
+                            </button>
+                        </div>
+                        <div class="modal-compact__button-item">
+                            <button class="modal-compact__button button" data-dismiss="modal"><span class="button__text">Close</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../../static/js/gsap/gsap.min.js"></script>
-    <script src="../../static/js/gsap/ScrollToPlugin.min.js"></script>
-    <script src="../../static/js/gsap/ScrollTrigger.min.js"></script>
-    <script src="../../static/js/vendor/popper.min.js"></script>
-    <script src="../../static/js/vendor/jquery.min.js"></script>
-    <script src="../../static/js/vendor/bootstrap.bundle.min.js"></script>
-    <script src="../../static/js/vendor/imagesloaded.pkgd.min.js"></script>
-    <script src="../../static/js/vendor/simplebar.min.js"></script>
-    <script src="../../static/js/vendor/tippy-bundle.umd.min.js"></script>
-    <script src="../../static/js/vendor/grid/masonry.pkgd.min.js"></script>
-    <script src="../../static/js/vendor/grid/isotope.pkgd.min.js"></script>
-    <script src="../../static/js/vendor/charts/circle-progress.min.js"></script>
-    <script src="../../static/js/vendor/charts/echarts.common.min.js"></script>
-    <script src="../../static/js/vendor/charts/apexcharts/apexcharts.min.js"></script>
-    <script src="../../static/js/vendor/cleave/cleave.min.js"></script>
-    <script src="../../static/js/vendor/cleave/addons/cleave-phone.us.js"></script>
-    <script src="../../static/js/vendor/jqvmap/jquery.vmap.min.js"></script>
-    <script src="../../static/js/vendor/jqvmap/jquery.vmap.world.js"></script>
-    <script src="../../static/js/vendor/jqvmap/jquery.vmap.sampledata.js"></script>
-    <script src="../../static/js/vendor/jquery.star-rating-svg.min.js"></script>
-    <script src="../../static/js/vendor/calendar/flatpickr/flatpickr.min.js"></script>
-    <script src="../../static/js/vendor/calendar/flatpickr/en.js"></script>
-    <script src="../../static/js/vendor/select2.min.js"></script>
-    <script src="../../static/js/vendor/editors/quill.min.js"></script>
-    <script src="../../static/js/vendor/filepond/filepond-plugin-image-preview.min.js"></script>
-    <script src="../../static/js/vendor/filepond/filepond.min.js"></script>
-    <script src="../../static/js/vendor/swiper-bundle.min.js"></script>
-    <script src="../../static/js/vendor/scrollmagic/ScrollMagic.min.js"></script>
-    <script src="../../static/js/vendor/scrollmagic/debug.addIndicators.min.js"></script>
-    <script src="../../static/js/components.js"></script>
-    <script src="../../static/js/common.js"></script>
+    <script src="../static/js/gsap/gsap.min.js"></script>
+    <script src="../static/js/gsap/ScrollToPlugin.min.js"></script>
+    <script src="../static/js/gsap/ScrollTrigger.min.js"></script>
+    <script src="../static/js/vendor/popper.min.js"></script>
+    <script src="../static/js/vendor/jquery.min.js"></script>
+    <script src="../static/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/vendor/simplebar.min.js"></script>
+    <script src="../static/js/vendor/tippy-bundle.umd.min.js"></script>
+    <script src="../static/js/vendor/grid/masonry.pkgd.min.js"></script>
+    <script src="../static/js/vendor/grid/isotope.pkgd.min.js"></script>
+    <script src="../static/js/vendor/charts/circle-progress.min.js"></script>
+    <script src="../static/js/vendor/charts/echarts.common.min.js"></script>
+    <script src="../static/js/vendor/charts/apexcharts/apexcharts.min.js"></script>
+    <script src="../static/js/vendor/cleave/cleave.min.js"></script>
+    <script src="../static/js/vendor/cleave/addons/cleave-phone.us.js"></script>
+    <script src="../static/js/vendor/jqvmap/jquery.vmap.min.js"></script>
+    <script src="../static/js/vendor/jqvmap/jquery.vmap.world.js"></script>
+    <script src="../static/js/vendor/jqvmap/jquery.vmap.sampledata.js"></script>
+    <script src="../static/js/vendor/jquery.star-rating-svg.min.js"></script>
+    <script src="../static/js/vendor/calendar/flatpickr/flatpickr.min.js"></script>
+    <script src="../static/js/vendor/calendar/flatpickr/en.js"></script>
+    <script src="../static/js/vendor/select2.min.js"></script>
+    <script src="../static/js/vendor/editors/quill.min.js"></script>
+    <script src="../static/js/vendor/filepond/filepond-plugin-image-preview.min.js"></script>
+    <script src="../static/js/vendor/filepond/filepond.min.js"></script>
+    <script src="../static/js/vendor/swiper-bundle.min.js"></script>
+    <script src="../static/js/vendor/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="../static/js/vendor/scrollmagic/debug.addIndicators.min.js"></script>
+    <script src="../static/js/components.js"></script>
+    <script src="../static/js/common.js"></script>
 </body>
 
 </html>
