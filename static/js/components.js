@@ -1185,12 +1185,14 @@ ImageUpload.prototype.dragHover = function (event) {
     }
 };
 
+
 ImageUpload.prototype.selectHandler = function (event) {
     const files = event.target.files || event.dataTransfer.files;
 
     this.dragHover(event);
 
     files.forEach(file => {
+        console.log("here 0")
         this.parseFile(file, event.currentTarget);
         this.uploadFile(file);
     });
@@ -1220,22 +1222,27 @@ ImageUpload.prototype.parseFile = function (file, input) {
     previewElement.classList = 'image-upload__preview-image';
     items[0].appendChild(previewElement);
     previewElement.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+    console.log(previewElement.style.backgroundImage)
     items[0].querySelector('.image-upload__preview-image').addEventListener('click', event => ImageUpload.removeItem(event, items));
     items[0].classList.add('is-active');
 };
 
 ImageUpload.prototype.uploadFile = function (file) {
     const xhr = new XMLHttpRequest();
-    const fileSizeLimit = 1024;
+    const fileSizeLimit = 1000000;
 
     if (file.size <= fileSizeLimit * 1024 * 1024) {
+
         xhr.addEventListener('readystatechange', () => {
+            console.log(xhr.status)
             if (xhr.readyState === 4 && xhr.status === 200) {
-                // Everything is good!
+                console.log("here")
             }
         });
+
+
     } else {
-        // Please upload a smaller file
+        console.log("here2")
     }
 };
 
@@ -1245,15 +1252,23 @@ ImageUpload.removeItem = (event, items) => {
     const listItem = element.parentNode;
     const listElements = list.querySelectorAll('.image-upload__item');
 
+    console.log(listElements)
+    console.log(list)
+    console.log(element)
+    console.log(items)
+
     listItem.classList.remove('is-active');
 
     if (listElements.length > 5) {
+        console.log(1)
         items[0].remove();
     }
 
     if (listItem.classList.contains('image-upload__item--added')) {
+        console.log(listItem)
         listItem.remove();
     }
+
 
     element.remove();
 };
