@@ -12,6 +12,7 @@ bp = Blueprint("activity", __name__, url_prefix="/activity")
 @bp.route("/add_activity", methods=['GET', 'POST'])
 def add_activity():
     activity = Activity()
+    activity.status = 'published'
     activity.name = request.form.get('name')
     activity.category = int(request.form.get('category'))
     activity.category = 1
@@ -68,7 +69,7 @@ def delete_activity():
     activity = Activity.query.get(activity_id)
     if activity is None:
         return jsonify({'code': 400, 'message': "no activity found"})
-    db.session.delete(activity)
+    activity.status = "deleted"
     db.session.commit()
     return jsonify({'code': 200})
 
