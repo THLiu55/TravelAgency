@@ -12,11 +12,7 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 
 @bp.route('/', methods=['GET', 'POST'])
 def homepage():
-    # return render_template("tour-detail.html")
-    #  return render_template("activity-grid.html")
-    return render_template("Staff/products.html")
-    #return redirect(url_for('manager.add_activity'))
-    #return render_template("manager.html")
+    return render_template("Homepage.html")
 
 
 @bp.route('/login', methods=['GET', 'POST'])
