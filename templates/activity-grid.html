@@ -410,15 +410,15 @@ Turkish <span>(25)</span>
 </div>
 <div class="activity-content">
 <h4 class="activity-title"><a href="#">{{ activity.name }}</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+<p><i class="far fa-location-dot"></i>{{ activity.address }}, {{ activity.city }}</p>
 <div class="activity-rate">
 <span class="badge"><i class="fal fa-star"></i> 5.0</span>
 <span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
+<span class="activity-rate-review">({{ activity.review_num }} Reviews)</span>
 </div>
 <div class="activity-bottom">
 <div class="activity-price">
-<span class="activity-price-amount">$300</span>
+<span class="activity-price-amount">${{ activity.price }}</span>
 </div>
 <div class="activity-text-btn">
 <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
