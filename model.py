@@ -52,7 +52,7 @@ class Activity(db.Model):
     __tablename__ = 'activities'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
-    category = db.Column(db.Integer)
+    category = db.Column(db.String(255))
     status = db.Column(db.String(255))
     price = db.Column(db.Float)
     city = db.Column(db.String(255))

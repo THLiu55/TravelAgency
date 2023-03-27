@@ -32,7 +32,3 @@ def add_review():
     db.session.add(review)
     db.session.commit()
     return jsonify({'code': 200})
-
-
-@db.route('/<page_num>', methods=['GET', 'POST'])
-def activityList(page_num):
