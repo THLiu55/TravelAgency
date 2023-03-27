@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 
-from flask import Blueprint, render_template, request, jsonify, current_app, session
+from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for
 from model import *
 from exts import db
 import os
@@ -14,13 +14,13 @@ def manager_homepage():
     return render_template('attractions.html')
 
 
-@bp.route("/add_activity", methods=['GET', 'POST'])
+@bp.route("/add_activity", methods=['POST'])
 def add_activity():
     activity = Activity()
     activity.status = 'published'
     activity.name = request.form.get('name')
-    activity.category = int(request.form.get('category'))
-    activity.category = 1
+    print(request.form.get('category'))
+    activity.category = request.form.get('category')
     activity.price = float(request.form.get('price'))
     activity.city = request.form.get('city')
     activity.state = request.form.get('state')
@@ -65,15 +65,22 @@ def add_activity():
     activity.contact_phone = request.form.get('contact_phone')
     db.session.add(activity)
     db.session.commit()
-    return jsonify({'code': 200})
+    return redirect(url_for('manager.activities'))
 
 
-@bp.route('/delete')
-def delete_activity():
-    activity_id = request.form.get('activity_id')
+@bp.route('/delete_activity/<activity_id>', methods=['GET', 'POST'])
+def delete_activity(activity_id):
     activity = Activity.query.get(activity_id)
     if activity is None:
         return jsonify({'code': 400, 'message': "no activity found"})
     activity.status = "deleted"
     db.session.commit()
-    return jsonify({'code': 200})
+    return redirect(url_for('manager.activities'))
+
+
+@bp.route('/activities', methods=['GET', 'POST'])
+def activities():
+    db.create_all()
+    page_num = 1
+    page = Activity.query.paginate(page=page_num, per_page=10)
+    return render_template('attractions.html', page=page)
