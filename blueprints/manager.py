@@ -80,7 +80,10 @@ def delete_activity(activity_id):
 
 @bp.route('/activities', methods=['GET', 'POST'])
 def activities():
-    db.create_all()
-    page_num = 1
-    page = Activity.query.paginate(page=page_num, per_page=10)
-    return render_template('attractions.html', page=page)
+    status = request.args.get("status")
+    category = request.args.get("category")
+    page = Activity.query.paginate(page=1, per_page=100)
+    published_page = Activity.query.filter_by(status="published").paginate(page=1, per_page=100)
+    deleted_page = Activity.query.filter_by(status="deleted").paginate(page=1, per_page=100)
+
+    return render_template('attractions.html', page=page, published_page=published_page, deleted_page=deleted_page)
