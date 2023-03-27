@@ -9,7 +9,6 @@ import os
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
 
-
 @bp.route('/add_review')
 def add_review():
     customer_id = session.get('customer_id')
@@ -32,3 +31,20 @@ def add_review():
     db.session.add(review)
     db.session.commit()
     return jsonify({'code': 200})
+
+
+@bp.route('/<page_num>', methods=['GET', 'POST'])
+def activityList(page_num):
+    total_activities = Activity.query.count()
+    pagination = Activity.query.paginate(page=int(page_num), per_page=9, error_out=False)
+    activities = pagination.items
+    for activity in activities:
+        activity.included = json.loads(activity.included)
+        activity.excluded = json.loads(activity.excluded)
+        activity.images = json.loads(activity.images)['images']
+        activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
+        print(activity.images[0])
+    return render_template('activity-grid.html', total_activities=total_activities, activities=activities)
+
+
+

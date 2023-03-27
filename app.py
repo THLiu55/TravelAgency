@@ -12,7 +12,7 @@ from flask_babel import Babel, gettext as _, refresh
 load_dotenv()
 
 # app config
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config.from_object(config_by_name[os.getenv("ENV_NAME")])
 
 # logger config
