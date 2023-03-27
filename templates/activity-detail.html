@@ -108,7 +108,7 @@
                                                 <h5>Included</h5>
                                                 <ul class="list">
                                                     {% for item in activity.included %}
-                                                    <li>{% item %}</li>
+                                                    <li>{{ item }}</li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
@@ -118,7 +118,7 @@
                                                 <h5>Not Included</h5>
                                                 <ul class="list">
                                                     {% for item in activity.excluded %}
-                                                    <li>{% item %}</li>
+                                                    <li>{{ item }}</li>
                                                     {% endfor %}
                                                 </ul>
                                             </div>
@@ -208,7 +208,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="far fa-star"></i>
                                                 </div>
-                                                <p>Base On {% activity.review_num %} Review</p>
+                                                <p>Base On {{ activity.review_num }}  Review</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -478,7 +478,7 @@
                                     <div class="listing-price">
                                         <h4 class="listing-price-tag">Bestseller</h4>
                                         <div class="listing-price-amount">
-                                            From <del>{% activity.price %}</del>
+                                            From <del>{{ activity.price }}</del>
                                         </div>
                                     </div>
                                     <div class="search-form">

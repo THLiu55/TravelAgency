@@ -47,4 +47,9 @@ def activityList(page_num):
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities)
 
 
-
+@bp.route('/details/<activity_id>/', methods=['GET'])
+def activityDetail(activity_id):
+    activity = Activity.query.get(activity_id)
+    if activity is None:
+        return jsonify({'code': 400, 'message': "no activity found"})
+    return render_template("activity-detail.html", activity=activity)

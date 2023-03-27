@@ -538,6 +538,7 @@ Version         : 1.0
 
     $(document).on('change', '.flight-multicity-item .date-picker', function (e) {
         var jd = $(e.target).val();
+        console.log('here')
         const journeyDayName = new Date(jd).toLocaleString('en-us', { weekday: 'long' });
         $(e.target).closest(".flight-multicity-item").find('.journey-day-name').html(journeyDayName);
     });
@@ -549,6 +550,7 @@ Version         : 1.0
         var swapTo = $(e.target).closest(".flight-search-item").find('.swap-to').val();
         $(e.target).closest(".flight-search-item").find('.swap-from').val(swapTo);
         $(e.target).closest(".flight-search-item").find('.swap-to').val(swapFrom);
+        console.log('here2')
     });
 
 
