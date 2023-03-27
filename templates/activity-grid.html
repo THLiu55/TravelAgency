@@ -384,7 +384,7 @@ Turkish <span>(25)</span>
 <div class="col-lg-8 col-xl-9">
 <div class="col-md-12">
 <div class="booking-sort">
-<h5>2,350 Results Found</h5>
+<h5>{{ total_activities }} Results Found</h5>
 <div class="booking-sort-list-grid">
 <a class="booking-sort-grid active" href="activity-grid.html"><i class="far fa-grid-2"></i></a>
 <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
@@ -400,14 +400,16 @@ Turkish <span>(25)</span>
 </div>
 </div>
 <div class="row">
+
+    {% for activity in activities %}
 <div class="col-md-6 col-lg-4">
 <div class="activity-item">
 <div class="activity-img">
-<img src="../static/image/Hawaiian.jpg" alt="">
+<img src="{{ url_for('static', filename=activity.images[0].replace('\\','/')) }}" alt="">
 <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
 </div>
 <div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+<h4 class="activity-title"><a href="#">{{ activity.name }}</a></h4>
 <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
 <div class="activity-rate">
 <span class="badge"><i class="fal fa-star"></i> 5.0</span>
@@ -425,209 +427,215 @@ Turkish <span>(25)</span>
 </div>
 </div>
 </div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<img src="assets/img/activity/02.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<span class="badge">Featured</span>
-<img src="assets/img/activity/03.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<img src="assets/img/activity/04.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
- <div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<img src="assets/img/activity/05.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<span class="badge">Featured</span>
-<img src="assets/img/activity/06.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<span class="badge badge-discount">25% Save</span>
-<img src="assets/img/activity/07.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="activity-item">
-<div class="activity-img">
-<img src="assets/img/activity/08.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
- <div class="activity-item">
-<div class="activity-img">
-<img src="assets/img/activity/02.jpg" alt="">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-</div>
-<div class="activity-content">
-<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
-<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
-<div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">(2.5k Reviews)</span>
-</div>
-<div class="activity-bottom">
-<div class="activity-price">
-<span class="activity-price-amount">$300</span>
-</div>
-<div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-</div>
-</div>
-</div>
-</div>
-</div>
+    {% endfor %}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<img src="assets/img/activity/02.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<span class="badge">Featured</span>#}
+{#<img src="assets/img/activity/03.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<img src="assets/img/activity/04.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{# <div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<img src="assets/img/activity/05.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<span class="badge">Featured</span>#}
+{#<img src="assets/img/activity/06.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<span class="badge badge-discount">25% Save</span>#}
+{#<img src="assets/img/activity/07.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{#<div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<img src="assets/img/activity/08.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#<div class="col-md-6 col-lg-4">#}
+{# <div class="activity-item">#}
+{#<div class="activity-img">#}
+{#<img src="assets/img/activity/02.jpg" alt="">#}
+{#<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>#}
+{#</div>#}
+{#<div class="activity-content">#}
+{#<h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>#}
+{#<p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>#}
+{#<div class="activity-rate">#}
+{#<span class="badge"><i class="fal fa-star"></i> 5.0</span>#}
+{#<span class="activity-rate-type">Excellent</span>#}
+{#<span class="activity-rate-review">(2.5k Reviews)</span>#}
+{#</div>#}
+{#<div class="activity-bottom">#}
+{#<div class="activity-price">#}
+{#<span class="activity-price-amount">$300</span>#}
+{#</div>#}
+{#<div class="activity-text-btn">#}
+{#<a href="#">See Details <i class="fas fa-arrow-right"></i></a>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+{#</div>#}
+
+
+
+
+
 
 <div class="pagination-area">
 <div aria-label="Page navigation example">
