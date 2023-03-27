@@ -1038,7 +1038,7 @@
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Accommodations</h1>
+                    <h1 class="page-header__title">Flights</h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -1062,7 +1062,7 @@
                                             </svg></a>
                                     </li>
                                     <li class="breadcrumbs__item active"><span
-                                            class="breadcrumbs__link">Accommodations</span>
+                                            class="breadcrumbs__link">Flights</span>
                                     </li>
                                 </ol>
                             </div>
@@ -1982,148 +1982,199 @@
 
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
-                                    <h4 class="user-profile-card-title">Add Accomodation</h4>
+                                    <h4 class="user-profile-card-title">Add Flights</h4>
                                     <div class="col-lg-12">
                                         <div class="add-listing-form">
                                             <h5 class="mb-4">Basic Information</h5>
                                             {# <form action="#">#}
-                                                <div class="row align-items-center">
+                                                <div class="row align-items-center" style="width: 100%;">
+                                                    <div style="display: grid; grid-template-columns: auto;">
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Hotel Name</label>
-                                                            <input type="text" class="form-control" name="name"
-                                                                placeholder="Enter hotel name">
+                                                        <label>Flight Type</label>
+                                                        <select class="select">
+                                                        <option value="">Select Flight Type</option>
+                                                        <option value="1">One Way Flight</option>
+                                                        <option value="2">Round Trip Flight</option>
+                                                        <option value="3">Multi City Flight</option>
+                                                        </select>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
+                                                        </div>
+                                                        <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Total Number Of Rooms & Suites</label>
-                                                            <input type="number" class="form-control" name="name"
-                                                                placeholder="Enter total rooms">
+                                                        <label>Take Off</label>
+                                                        <select class="select">
+                                                        <option value="">Select Detailed Take Off Time</option>
+                                                        <option value="1">Sat Oct 20, 06:30 AM</option>
+                                                        <option value="2">Mon Oct 20, 06:30 AM</option>
+                                                        <option value="3">Wed Oct 20, 06:30 AM</option>
+                                                        <option value="4">Tue Oct 20, 06:30 AM</option>
+                                                        <option value="5">Fri Oct 20, 06:30 AM</option>
+                                                        </select>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="col-lg-6">
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                         <div class="form-group">
+                                                        <label>Landing</label>
+                                                        <select class="select">
+                                                        <option value="">Select Detailed Landing Time</option>
+                                                        <option value="1">Sat Oct 20, 06:30 AM</option>
+                                                        <option value="2">Mon Oct 20, 06:30 AM</option>
+                                                        <option value="3">Wed Oct 20, 06:30 AM</option>
+                                                        <option value="4">Tue Oct 20, 06:30 AM</option>
+                                                        <option value="5">Fri Oct 20, 06:30 AM</option>
+                                                        </select>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Price</label>
-                                                            <input type="text" class="form-control" name="price"
-                                                                placeholder="Enter price">
+                                                        <label>Flight Stop</label>
+                                                        <select class="select">
+                                                        <option value="">Select Stop</option>
+                                                        <option value="1">Non Stop</option>
+                                                        <option value="2">1 Stop</option>
+                                                        <option value="3">2 Stop</option>
+                                                        <option value="4">3 Stop</option>
+                                                        <option value="5">Multi Stop</option>
+                                                        </select>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        {# <div class="form-group">#}
-                                                            {# <label>Price Currency</label>#}
-                                                            {# <select class="select">#}
-                                                                {# <option value="">Select Currency</option>#}
-                                                                {# <option value="1">USD</option>#}
-                                                                {# <option value="2">GBP</option>#}
-                                                                {# <option value="3">EUR</option>#}
-                                                                {# <option value="4">CAD</option>#}
-                                                                {# <option value="5">AUD</option>#}
-                                                                {# </select>#}
-                                                            {# </div>#}
-                                                    </div>
-                                                    <h5 class="my-4">Location</h5>
-                                                    <div class="col-lg-4">
-                                                        <div class="form-group">
-                                                            <label>City</label>
-                                                            <input type="text" class="form-control" name="city"
-                                                                placeholder="Enter city">
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="form-group">
-                                                            <label>State</label>
-                                                            <input type="text" class="form-control" name="state"
-                                                                placeholder="Enter state">
-                                                        </div>
-                                                    </div>
-                                                    <!-- <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter zip code">
-                                                            </div>
-                                                        </div> -->
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
-                                                            <label>Address</label>
-                                                            <input type="text" class="form-control" name="address"
-                                                                placeholder="Enter address">
-                                                        </div>
-                                                    </div>
-                                                    {# <div class="col-lg-12">#}
-                                                        {# <div class="form-group">#}
-                                                            {# <label>Address 2</label>#}
-                                                            {# <input type="text" class="form-control" #} {#
-                                                                placeholder="Enter address 2">#}
-                                                            {# </div>#}
-                                                        {# </div>#}
-                                                    <h5 class="my-4">Your Accommodation Information</h5>
+                                                    
+                                                </div>
+                                                    <h5 class="my-4">Your Flight Information</h5>
                                                     <div
-                                                        style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
+                                                        style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;width: 100%;">
+
+
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Minimum Stay</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Minimum Stay</option>
-                                                                    <option value="1">2 Nights Or Less</option>
-                                                                    <option value="2">More Than 2 Nights</option>
-                                                                </select>
+                                                            <label>Airline</label>
+                                                            <select class="select">
+                                                            <option value="">Select Airline Company</option>
+                                                            <option value="1">American Airlines</option>
+                                                            <option value="2">Delta Airlines</option>
+                                                            <option value="3">Qatar Airways</option>
+                                                            <option value="4">Fly Amirates</option>
+                                                            <option value="5">Singapore Airlines</option>
+                                                            </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
+                                                            </div>
+                                                            <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Security</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Security</option>
-                                                                    <option value="1">On Site</option>
-                                                                    <option value="2">None</option>
-                                                                </select>
+                                                            <label>Total Time Of Flight</label>
+                                                            <input type="text" class="form-control" placeholder="Enter total time" style="width: max-content; height: 56px;">
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
+                                                            </div>
+                                                            <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>On Site Staff</label>
-                                                                <select class="select">
-                                                                    <option value="">Select On Site Staff</option>
-                                                                    <option value="1">Yes</option>
-                                                                    <option value="2">No</option>
-                                                                </select>
+                                                            <label>Price (Per Person)</label>
+                                                             <input type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;">
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
+                                                            </div>
+                                                            <!-- <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Housekeeping</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Housekeeping</option>
-                                                                    <option value="1">Included In Room Rate</option>
-                                                                    <option value="2">Additional Fee</option>
-                                                                </select>
+                                                            <label>Fare Currency</label>
+                                                            <select class="select">
+                                                            <option value="">Select Currency</option>
+                                                            <option value="1">USD</option>
+                                                            <option value="2">GBP</option>
+                                                            <option value="3">EUR</option>
+                                                            <option value="4">CAD</option>
+                                                            <option value="5">AUD</option>
+                                                            </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
+                                                            </div> -->
+                                                            <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Front Desk</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Frequency</option>
-                                                                    <option value="1">24 Hour Staffing</option>
-                                                                    <option value="2">Limited Hours Staffing</option>
-                                                                    <option value="3">None</option>
-                                                                </select>
+                                                            <label>Fare Type</label>
+                                                            <select class="select">
+                                                            <option value="">Select The Fare Type</option>
+                                                            <option value="1">Refundable</option>
+                                                            <option value="2">Partially Refundable</option>
+                                                            <option value="3">Non Refundable</option>
+                                                            </select>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-4">
+                                                            </div>
+                                                            <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Bathroom</label>
-                                                                <select class="select">
-                                                                    <option value="">Select Bathroom</option>
-                                                                    <option value="1">All En Suite</option>
-                                                                    <option value="2">Some En Suite</option>
-                                                                    <option value="3">Shared</option>
-                                                                </select>
+                                                            <label>Flight Class</label>
+                                                            <select class="select">
+                                                            <option value="">Select Class</option>
+                                                            <option value="1">Economy</option>
+                                                            <option value="2">Business</option>
+                                                            <option value="3">First Class</option>
+                                                            </select>
                                                             </div>
-                                                        </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                            <label>Cancellation Charge</label>
+                                                            <select class="select">
+                                                            <option value="">Select Cancellation Charge</option>
+                                                            <option value="1">$50 / Per Person</option>
+                                                            <option value="2">$70 / Per Person</option>
+                                                            <option value="3">$90 / Per Person</option>
+                                                            </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                             <div class="form-group">
+                                                            <label>Flight Change</label>
+                                                            <select class="select">
+                                                            <option value="">Select Change</option>
+                                                            <option value="1">$50 / Per Person</option>
+                                                            <option value="2">$70 / Per Person</option>
+                                                            <option value="3">$90 / Per Person</option>
+                                                            </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                            <label>Seats & Baggage</label>
+                                                            <select class="select">
+                                                            <option value="">Select Seats & Baggage</option>
+                                                            <option value="1">$50 / Per Person</option>
+                                                            <option value="2">$70 / Per Person</option>
+                                                            <option value="3">$90 / Per Person</option>
+                                                            </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                            <label>Inflight Features</label>
+                                                            <select class="select">
+                                                            <option value="">Select Inflight Features</option>
+                                                            <option value="1">Available</option>
+                                                            <option value="2">Not Available</option>
+                                                            </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                            <label>Base Fare</label>
+                                                            <select class="select">
+                                                            <option value="">Select Base Fare</option>
+                                                            <option value="1">$400</option>
+                                                            <option value="2">$680</option>
+                                                            <option value="2">$950</option>
+                                                            </select>
+                                                            </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                            <label>Taxes & Fees</label>
+                                                            <select class="select">
+                                                            <option value="">Select Base Fare</option>
+                                                            <option value="1">$100</option>
+                                                            <option value="2">$280</option>
+                                                            <option value="2">$350</option>
+                                                            </select>
+                                                            </div>
+                                                            </div>
+
+
+
+
                                                     </div>
                                                     <div class="col-12 form-group form-group--lg">
                                                         <label class="form-label">Product Images</label>
@@ -2233,190 +2284,121 @@
                                                     <div
                                                         style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%; padding-top: 15px;">
                                                         <div>
-                                                            <h5 class="my-4">Amenities</h5>
+                                                            <h5 class="my-4">Inflight Features</h5>
                                                         </div>
 
 <div>
 
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity1" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity1">
-                                                                    Airport Transportation
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity2" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity2">
-                                                                    Bar / Lounge
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity3" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity3">
-                                                                    Beach
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity4" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity4">
-                                                                    Beverage Selection
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity5" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity5">
-                                                                    Swimming Pool
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity6" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity6">
-                                                                    WiFi
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity7" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity7">
-                                                                    Coffee
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity8" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity8">
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight1" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight1">
                                                                     Air Conditioning
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity9" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity9">
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight2" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight2">
+                                                                    WiFi
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight3" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight3">
+                                                                    Coffee
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight4" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight4">
                                                                     Entertainment
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity10" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity10">
-                                                                    Elevator In Building
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight5" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight5">
+                                                                    Food
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity11" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity11">
-                                                                    Wheelchair Access
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight6" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight6">
+                                                                    Drink
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity12" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity12">
-                                                                    Fitness Facility
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight7" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight7">
+                                                                    Wines
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity13" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity13">
-                                                                    Breakfast
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight8" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight8">
+                                                                    Comfort
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity14" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity14">
-                                                                    Handicap Accessible
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight9" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight9">
+                                                                    Television
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity15" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity15">
-                                                                    Pets Allowed
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight10" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight10">
+                                                                    Games
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity16" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity16">
-                                                                    Suitable For Events
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight11" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight11">
+                                                                    Shopping
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity17" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity17">
-                                                                    Restaurant
+                                                                <input class="form-check-input" name="inflight"
+                                                                    type="checkbox" value="" id="inflight12" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="inflight12">
+                                                                    Magazines
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity18" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity18">
-                                                                    Doorman
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity19" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity19">
-                                                                    Free Parking
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-6 col-md-3">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
-                                                                    type="checkbox" value="" id="aminity20" style="-webkit-appearance:checkbox;">
-                                                                <label class="form-check-label" for="aminity20">
-                                                                    Wine Bar
-                                                                </label>
-                                                            </div>
+                                                    
+                                                        
 
 
 
@@ -2463,7 +2445,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 my-4">
-                                                                <button type="submit" class="theme-btn">Submit New Accommodation</button>
+                                                                <button type="submit" class="theme-btn">Submit New Flight</button>
                                                             </div>
                                                         </div>
                                                     </div>
