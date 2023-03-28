@@ -2,16 +2,16 @@
 {% block title %} Activity Detail Page {% endblock %}
 
 {% block csslink %}
-    <link rel="stylesheet" href="../static/css/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/all-fontawesome.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/flaticon.css">
-    <link rel="stylesheet" href="../static/css/assets/css/animate.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/magnific-popup.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/nice-select.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/jquery.timepicker.min.css">
-    <link rel="stylesheet" href="../static/css/assets/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
 {% endblock %}
 
 
@@ -19,7 +19,7 @@
 
     <main class="main">
 
-        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/02.jpg)">
+        <div class="site-breadcrumb" style="background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
                 <h2 class="breadcrumb-title">Activity</h2>
                 <ul class="breadcrumb-menu">
@@ -37,7 +37,7 @@
                             <div class="listing-content">
                                 <div class="listing-slider owl-carousel owl-theme">
                                     {% for image in activity.images %}
-                                    <img src='{{ image }}' alt="">
+                                    <img src="{{ url_for('static', filename=image.replace('\\','/')) }}" alt="" >
                                     {% endfor %}
                                 </div>
                                 <div class="listing-header">
@@ -307,7 +307,7 @@
                                             <h5>Showing 1.2k Reviews</h5>
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
-                                                    <img src="assets/img/account/01.jpg" alt="">
+                                                    <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt="">
                                                     <div class="listing-review-author-info">
                                                         <div>
                                                             <h6>Kenneth Evans</h6>
@@ -343,7 +343,7 @@
                                             </div>
                                             <div class="listing-review-item review-reply-item">
                                                 <div class="listing-review-author">
-                                                    <img src="assets/img/account/02.jpg" alt="">
+                                                    <img src="{{ url_for('static', filename='css/assets/img/account/02.jpg') }}" alt="">
                                                     <div class="listing-review-author-info">
                                                         <div>
                                                             <h6>Erich T. Genao</h6>
@@ -378,7 +378,7 @@
                                             </div>
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
-                                                    <img src="assets/img/account/03.jpg" alt="">
+                                                    <img src="{{ url_for('static', filename='css/assets/img/account/03.jpg') }}" alt="">
                                                     <div class="listing-review-author-info">
                                                         <div>
                                                             <h6>Jesse Sinkler</h6>
@@ -678,7 +678,7 @@
                                 <h4 class="booking-title">Organized By</h4>
                                 <div class="listing-side-organizer">
                                     <div class="listing-side-organizer-img">
-                                        <img src="assets/img/account/01.jpg" alt="">
+                                        <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt="">
                                     </div>
                                     <div class="listing-side-organizer-info">
                                         <h5 class="listing-side-organizer-name">Roltak Travel Agency</h5>
@@ -699,20 +699,20 @@
 {% endblock %}
 
 {% block jsLink %}
-    <script src="../static/css/assets/js/jquery-3.6.0.min.js"></script>
-    <script src="../static/css/assets/js/modernizr.min.js"></script>
-    <script src="../static/css/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/css/assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="../static/css/assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="../static/css/assets/js/isotope.pkgd.min.js"></script>
-    <script src="../static/css/assets/js/jquery.appear.min.js"></script>
-    <script src="../static/css/assets/js/jquery.easing.min.js"></script>
-    <script src="../static/css/assets/js/owl.carousel.min.js"></script>
-    <script src="../static/css/assets/js/counter-up.js"></script>
-    <script src="../static/css/assets/js/masonry.pkgd.min.js"></script>
-    <script src="../static/css/assets/js/jquery.nice-select.min.js"></script>
-    <script src="../static/css/assets/js/jquery-ui.min.js"></script>
-    <script src="../static/css/assets/js/jquery.timepicker.min.js"></script>
-    <script src="../static/css/assets/js/wow.min.js"></script>
-    <script src="../static/css/assets/js/main.js"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
 {% endblock %}
