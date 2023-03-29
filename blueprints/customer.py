@@ -53,7 +53,7 @@ def captcha():
         return jsonify({"code": "400", "msg": "registered email"})
     captcha_number = get_hash_time(email)
     message = Message(
-        sender=("Travel Agency", "316710519@qq.com"),
+        sender="Travel Agency",
         subject="Verify Code",
         recipients=[email],
         body=f"Your verify code is: {captcha_number}\t (valid for an hour)"

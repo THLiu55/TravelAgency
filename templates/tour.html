@@ -1295,7 +1295,7 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-                            <form action="{{ url_for('manager.add_activity') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url_for('manager.add_tour') }}" method="POST" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="user-profile-card add-listing">
                                         <h4 class="user-profile-card-title">Add Tour</h4>
@@ -1377,7 +1377,7 @@
                                                             <div class="col-lg-12">
                                                             <div class="form-group">
                                                                <label>Duration</label>
-                                                               <input type="number" class="form-control" min="0" max="5"
+                                                               <input type="number" class="form-control" min="0" max="7" name="duration"
                                                                    placeholder="Enter Duration" id="inputNumber">
                                                            </div>
                                                        </div>
@@ -1650,76 +1650,6 @@
                                                         </div>
                                                         </div>
                                                     </div>
-                                                    
-                                                        
-                                                        <div>
-                                                            <h5 class="my-4">Activity Open Hours</h5>
-                                                        </div>
-                                                        <div style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;">
-                                                        
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Open Hour</label>
-                                                                <input type="time" class="form-control" placeholder="Enter Open Hours" name="openHour" style="width: auto; height: 56px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-3">
-                                                            <div class="form-group">
-                                                                <label>Visit Hour</label>
-                                                                <input type="number" class="form-control" name="visitHour" min="0"
-                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">
-                                                            </div>
-                                                        </div>
-{#                                                        <div class="col-lg-3">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Wednesday</label>#}
-{#                                                                <input type="text" class="form-control"#}
-{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-lg-3">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Thursday</label>#}
-{#                                                                <input type="text" class="form-control"#}
-{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-lg-3">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Friday</label>#}
-{#                                                                <input type="text" class="form-control"#}
-{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-lg-3">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Saturday</label>#}
-{#                                                                <input type="text" class="form-control"#}
-{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-lg-3">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Sunday</label>#}
-{#                                                                <input type="text" class="form-control"#}
-{#                                                                    placeholder="Enter Open Hours" style="width: auto;height: 56px;">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                        <div class="col-lg-3"  style="width: auto;">#}
-{#                                                            <div class="form-group"  style="width: auto;">#}
-{#                                                                <label>Visit Hour</label>#}
-{#                                                                <select class="select">#}
-{#                                                                    <option value="" >Select Visit Hour</option>#}
-{#                                                                    <option value="1">1 Hour</option>#}
-{#                                                                    <option value="2">1-2 Hours</option>#}
-{#                                                                    <option value="3">1-3 Hours</option>#}
-{#                                                                    <option value="4">1-4 Hours</option>#}
-{#                                                                    <option value="5">More Than 4 Hours</option>#}
-{#                                                                </select>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-                                                    
-                                                    </div>
 
                                                     <h5 class="my-4">Itinerary</h5>
                                                     <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;" id="divContainer">
@@ -1851,7 +1781,7 @@
 			for (var i = 0; i < num; i++) {
                 console.log(i)
 				var div = document.createElement("div");
-                div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_name_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
+                div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_desc_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
 				container.appendChild(div);
 			}
 		});

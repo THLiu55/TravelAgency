@@ -122,8 +122,6 @@ class Tour(db.Model):
     description = db.Column(db.Text)
     included = db.Column(db.Text)
     excluded = db.Column(db.Text)
-    openHour = db.Column(db.DateTime)
-    visitHour = db.Column(db.Integer)
     total_star = db.Column(db.Integer)
     review_num = db.Column(db.Integer)
     star_detail = db.Column(db.Text)
