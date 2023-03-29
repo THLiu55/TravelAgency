@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail, socketio
@@ -16,13 +16,17 @@ def homepage():
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
-    customer_email = request.form.get("signin-email")
-    customer_password = request.form.get("signin-password")
-    customer = Customer.query.filter_by(email=customer_email).first()
-    if check_password_hash(customer.password, customer_password):
-        return jsonify({"code": 200})
+    if request.method == 'GET':
+        return render_template("SignInUp.html")
     else:
-        return jsonify({"message": "The email address does not match the password"})
+        customer_email = request.form.get("signin-email")
+        customer_password = request.form.get("signin-password")
+        customer = Customer.query.filter_by(email=customer_email).first()
+        if check_password_hash(customer.password, customer_password):
+            session['customer_id'] = customer.id
+            return jsonify({"code": 200})
+        else:
+            return jsonify({"message": "The email address does not match the password"})
 
 
 @bp.route("/register", methods=["POST"])
