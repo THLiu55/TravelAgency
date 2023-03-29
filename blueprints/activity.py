@@ -9,10 +9,9 @@ import os
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
 
-@bp.route('/add_review')
-def add_review():
+@bp.route('/add_review/<activity_id>', methods=['POST'])
+def add_review(activity_id):
     customer_id = session.get('customer_id')
-    activity_id = request.form.get('activity_id')
     rating = request.form.get('rating')
     content = request.form.get('rating')
     # check if all the data have been entered
@@ -61,9 +60,3 @@ def activityDetail(activity_id):
     return render_template("activity-detail.html", activity=activity)
 
 
-
-
-@bp.route("/add_review", methods=["POST"])
-def addReview():
-    rating = request.form.get("rating")
-    content = request.form.get("content")
