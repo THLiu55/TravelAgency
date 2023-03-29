@@ -134,3 +134,8 @@ def respond_to(target_customer_id):
 
 
 ### END CHAT RELATED ###
+
+
+@bp.route("/add_tour", methods=["GET", "POST"])
+def add_tour():
+    return render_template("tour.html")
