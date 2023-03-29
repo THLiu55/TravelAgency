@@ -52,11 +52,12 @@ def activityDetail(activity_id):
     activity = Activity.query.get(activity_id)
     if activity is None:
         return jsonify({'code': 400, 'message': "no activity found"})
-    activity.included = json.loads(activity.included)
-    activity.excluded = json.loads(activity.excluded)
+    activity.included = json.loads(activity.included)['included']
+    activity.included = [i for i in activity.included if i is not None]
+    activity.excluded = json.loads(activity.excluded)['not_included']
+    activity.excluded = [i for i in activity.excluded if i is not None]
     activity.images = json.loads(activity.images)['images']
     activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
-
-
-
     return render_template("activity-detail.html", activity=activity)
+
+

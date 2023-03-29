@@ -37,7 +37,7 @@
         </div>
         
         <div class="account">
-        <a href="#"><i class="far fa-sign-in"></i>Login</a>
+        <a href="{{ url_for('customer.login') }}"><i class="far fa-sign-in"></i>Login</a>
         <a href="#"><i class="far fa-user-tie"></i>Sign Up</a>
         </div>
         </div>
@@ -88,7 +88,7 @@
         </ul> -->
         </li>
         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Sign in / User profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.login') }}">Sign in / User profile</a></li>
         </ul>
         <div class="header-nav-right">
         <!-- <div class="header-btn">
