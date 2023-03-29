@@ -421,7 +421,7 @@ Turkish <span>(25)</span>
 <span class="activity-price-amount">${{ activity.price }}</span>
 </div>
 <div class="activity-text-btn">
-<a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+<a href="{{ url_for('activity.activityDetail', activity_id=activity.id) }}">See Details <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
 </div>
