@@ -60,3 +60,8 @@ def activityDetail(activity_id):
 
 
     return render_template("activity-detail.html", activity=activity)
+
+@bp.route("/add_review", methods=["POST"])
+def addReview():
+    rating = request.form.get("rating")
+    content = request.form.get("content")

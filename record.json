@@ -11,5 +11,13 @@
       "comment": "this is a comment",
       "video_url": "url"
     }
+  },
+
+  "Tour": {
+    "Itinerary": {
+      "1": {"name": "name of activity done in day 1", "description": "desc of the activity"},
+      "2": {"name": "name of activity done in day 2", "description": "desc of the activity"},
+      "3": {"name": "name of activity done in day 3", "description": "desc of the activity"}
+    }
   }
 }

@@ -1176,71 +1176,71 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for item in page.items %}
-                                <tr class="table__row">
-                                    <td class="table__td">
-                                        <div class="table__checkbox table__checkbox--all">
-                                            <label class="checkbox">
-                                                <input type="checkbox" data-checkbox="product"><span
-                                                    class="checkbox__marker"><span class="checkbox__marker-icon">
-                                                        <svg class="icon-icon-checked">
-                                                            <use xlink:href="#icon-checked"></use>
-                                                        </svg></span></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">{{ item.id }}</span>
-                                    </td>
-                                    <td class="table__td">{{ item.name }}</td>
-                                    <td class="table__td"><span class="text-grey">{{ item.category }}</span>
-                                    </td>
-                                    <td class="table__td"><span>{{ item.price }}</span>
-                                    </td>
-                                    <td class="d-none d-lg-table-cell table__td"><span
-                                            class="text-grey">{{ item.start_time }}</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell table__td">
-                                        {% if item.status == "deleted" %}
-                                        <div class="table__status"><span class="table__status-icon color-red"></span>
-                                            Deleted
-                                        </div>
-                                        {% else %}
-                                            <div class="table__status"><span class="table__status-icon color-green"></span>
-                                            Published
-                                        </div>
-                                        {% endif %}
-                                    </td>
-                                    <td class="table__td table__actions">
-                                        <div class="items-more">
-                                            <button class="items-more__button">
-                                                <svg class="icon-icon-more">
-                                                    <use xlink:href="#icon-more"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="dropdown-items dropdown-items--right">
-                                                <div class="dropdown-items__container">
-                                                    <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-view">
-                                                                        <use xlink:href="#icon-view"></use>
-                                                                    </svg></span>Details</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a href="{{ url_for('manager.delete_activity', activity_id=item.id) }}"
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-trash">
-                                                                        <use xlink:href="#icon-trash"></use>
-                                                                    </svg></span>Delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            {% endfor %}
+{#                            {% for item in page.items %}#}
+{#                                <tr class="table__row">#}
+{#                                    <td class="table__td">#}
+{#                                        <div class="table__checkbox table__checkbox--all">#}
+{#                                            <label class="checkbox">#}
+{#                                                <input type="checkbox" data-checkbox="product"><span#}
+{#                                                    class="checkbox__marker"><span class="checkbox__marker-icon">#}
+{#                                                        <svg class="icon-icon-checked">#}
+{#                                                            <use xlink:href="#icon-checked"></use>#}
+{#                                                        </svg></span></span>#}
+{#                                            </label>#}
+{#                                        </div>#}
+{#                                    </td>#}
+{#                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">{{ item.id }}</span>#}
+{#                                    </td>#}
+{#                                    <td class="table__td">{{ item.name }}</td>#}
+{#                                    <td class="table__td"><span class="text-grey">{{ item.category }}</span>#}
+{#                                    </td>#}
+{#                                    <td class="table__td"><span>{{ item.price }}</span>#}
+{#                                    </td>#}
+{#                                    <td class="d-none d-lg-table-cell table__td"><span#}
+{#                                            class="text-grey">{{ item.start_time }}</span>#}
+{#                                    </td>#}
+{#                                    <td class="d-none d-sm-table-cell table__td">#}
+{#                                        {% if item.status == "deleted" %}#}
+{#                                        <div class="table__status"><span class="table__status-icon color-red"></span>#}
+{#                                            Deleted#}
+{#                                        </div>#}
+{#                                        {% else %}#}
+{#                                            <div class="table__status"><span class="table__status-icon color-green"></span>#}
+{#                                            Published#}
+{#                                        </div>#}
+{#                                        {% endif %}#}
+{#                                    </td>#}
+{#                                    <td class="table__td table__actions">#}
+{#                                        <div class="items-more">#}
+{#                                            <button class="items-more__button">#}
+{#                                                <svg class="icon-icon-more">#}
+{#                                                    <use xlink:href="#icon-more"></use>#}
+{#                                                </svg>#}
+{#                                            </button>#}
+{#                                            <div class="dropdown-items dropdown-items--right">#}
+{#                                                <div class="dropdown-items__container">#}
+{#                                                    <ul class="dropdown-items__list">#}
+{#                                                        <li class="dropdown-items__item"><a#}
+{#                                                                class="dropdown-items__link"><span#}
+{#                                                                    class="dropdown-items__link-icon">#}
+{#                                                                    <svg class="icon-icon-view">#}
+{#                                                                        <use xlink:href="#icon-view"></use>#}
+{#                                                                    </svg></span>Details</a>#}
+{#                                                        </li>#}
+{#                                                        <li class="dropdown-items__item"><a href="{{ url_for('manager.delete_activity', activity_id=item.id) }}"#}
+{#                                                                class="dropdown-items__link"><span#}
+{#                                                                    class="dropdown-items__link-icon">#}
+{#                                                                    <svg class="icon-icon-trash">#}
+{#                                                                        <use xlink:href="#icon-trash"></use>#}
+{#                                                                    </svg></span>Delete</a>#}
+{#                                                        </li>#}
+{#                                                    </ul>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </td>#}
+{#                                </tr>#}
+{#                            {% endfor %}#}
                             </tbody>
                         </table>
                     </div>
@@ -1723,7 +1723,7 @@
 
                                                     <h5 class="my-4">Itinerary</h5>
                                                     <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;" id="divContainer">
-                                                    
+
                                                     <div class="col-lg-12">
                                                     <div class="form-group">
                                                     <label>Itinerary Name</label>
@@ -1736,7 +1736,7 @@
                                                     <textarea class="form-control" placeholder="Write itinerary description" cols="30" rows="5"></textarea>
                                                     </div>
                                                     </div>
-                                                </div>
+                                                    </div>
                                                    
 
 
@@ -1851,7 +1851,7 @@
 			for (var i = 0; i < num; i++) {
                 console.log(i)
 				var div = document.createElement("div");
-                div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+(i+1) +"."+"Itinerary Name</label><input type='text' class='form-control' placeholder='Enter itinerary name'></div></div><div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
+                div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_name_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
 				container.appendChild(div);
 			}
 		});

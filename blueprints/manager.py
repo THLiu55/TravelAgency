@@ -84,17 +84,17 @@ def add_activity():
     return redirect(url_for("manager.activities"))
 
 
-@bp.route("/delete_activity/<activity_id>", methods=["GET", "POST"])
+@bp.route('/delete_activity/<activity_id>', methods=['GET', 'POST'])
 def delete_activity(activity_id):
     activity = Activity.query.get(activity_id)
     if activity is None:
-        return jsonify({"code": 400, "message": "no activity found"})
+        return jsonify({'code': 400, 'message': "no activity found"})
     activity.status = "deleted"
     db.session.commit()
-    return redirect(url_for("manager.activities"))
+    return redirect(url_for('manager.activities'))
 
 
-@bp.route("/activities", methods=["GET", "POST"])
+@bp.route('/activities', methods=['GET', 'POST'])
 def activities():
     status = request.args.get("status")
     category = request.args.get("category")
