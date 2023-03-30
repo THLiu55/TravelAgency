@@ -204,4 +204,5 @@ def add_tour():
 
 @bp.route("/tours")
 def tours():
-    return render_template("tour.html")
+    all_tours = Tour.query.paginate(page=1, per_page=100)
+    return render_template("tour.html", all_tours=all_tours)

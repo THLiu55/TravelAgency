@@ -992,7 +992,7 @@
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Activities</h1>
+                    <h1 class="page-header__title">Tours</h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -1176,71 +1176,63 @@
                                 </tr>
                             </thead>
                             <tbody>
-{#                            {% for item in page.items %}#}
-{#                                <tr class="table__row">#}
-{#                                    <td class="table__td">#}
-{#                                        <div class="table__checkbox table__checkbox--all">#}
-{#                                            <label class="checkbox">#}
-{#                                                <input type="checkbox" data-checkbox="product"><span#}
-{#                                                    class="checkbox__marker"><span class="checkbox__marker-icon">#}
-{#                                                        <svg class="icon-icon-checked">#}
-{#                                                            <use xlink:href="#icon-checked"></use>#}
-{#                                                        </svg></span></span>#}
-{#                                            </label>#}
-{#                                        </div>#}
-{#                                    </td>#}
-{#                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">{{ item.id }}</span>#}
-{#                                    </td>#}
-{#                                    <td class="table__td">{{ item.name }}</td>#}
-{#                                    <td class="table__td"><span class="text-grey">{{ item.category }}</span>#}
-{#                                    </td>#}
-{#                                    <td class="table__td"><span>{{ item.price }}</span>#}
-{#                                    </td>#}
-{#                                    <td class="d-none d-lg-table-cell table__td"><span#}
-{#                                            class="text-grey">{{ item.start_time }}</span>#}
-{#                                    </td>#}
-{#                                    <td class="d-none d-sm-table-cell table__td">#}
-{#                                        {% if item.status == "deleted" %}#}
-{#                                        <div class="table__status"><span class="table__status-icon color-red"></span>#}
-{#                                            Deleted#}
-{#                                        </div>#}
-{#                                        {% else %}#}
-{#                                            <div class="table__status"><span class="table__status-icon color-green"></span>#}
-{#                                            Published#}
-{#                                        </div>#}
-{#                                        {% endif %}#}
-{#                                    </td>#}
-{#                                    <td class="table__td table__actions">#}
-{#                                        <div class="items-more">#}
-{#                                            <button class="items-more__button">#}
-{#                                                <svg class="icon-icon-more">#}
-{#                                                    <use xlink:href="#icon-more"></use>#}
-{#                                                </svg>#}
-{#                                            </button>#}
-{#                                            <div class="dropdown-items dropdown-items--right">#}
-{#                                                <div class="dropdown-items__container">#}
-{#                                                    <ul class="dropdown-items__list">#}
-{#                                                        <li class="dropdown-items__item"><a#}
-{#                                                                class="dropdown-items__link"><span#}
-{#                                                                    class="dropdown-items__link-icon">#}
-{#                                                                    <svg class="icon-icon-view">#}
-{#                                                                        <use xlink:href="#icon-view"></use>#}
-{#                                                                    </svg></span>Details</a>#}
-{#                                                        </li>#}
-{#                                                        <li class="dropdown-items__item"><a href="{{ url_for('manager.delete_activity', activity_id=item.id) }}"#}
-{#                                                                class="dropdown-items__link"><span#}
-{#                                                                    class="dropdown-items__link-icon">#}
-{#                                                                    <svg class="icon-icon-trash">#}
-{#                                                                        <use xlink:href="#icon-trash"></use>#}
-{#                                                                    </svg></span>Delete</a>#}
-{#                                                        </li>#}
-{#                                                    </ul>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </td>#}
-{#                                </tr>#}
-{#                            {% endfor %}#}
+
+                            {% for tour in all_tours %}
+                            <tr class="table__row">
+                                    <td class="table__td">
+                                        <div class="table__checkbox table__checkbox--all">
+                                            <label class="checkbox">
+                                                <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                                        <svg class="icon-icon-checked">
+                                                            <use xlink:href="#icon-checked"></use>
+                                                        </svg></span></span>
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">1</span>
+                                    </td>
+                                    <td class="table__td">{{ tour.name}}</td>
+                                    <td class="table__td"><span class="text-grey">{{ tour.category }}</span>
+                                    </td>
+                                    <td class="table__td"><span>{{ tour.price }}</span>
+                                    </td>
+                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">2023-03-31 00:00:00</span>
+                                    </td>
+                                    <td class="d-none d-sm-table-cell table__td">
+
+                                            <div class="table__status"><span class="table__status-icon color-green"></span>
+                                            {{ tour.status }}
+                                        </div>
+
+                                    </td>
+                                    <td class="table__td table__actions">
+                                        <div class="items-more">
+                                            <button class="items-more__button">
+                                                <svg class="icon-icon-more">
+                                                    <use xlink:href="#icon-more"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="dropdown-items dropdown-items--right">
+                                                <div class="dropdown-items__container">
+                                                    <ul class="dropdown-items__list">
+                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                                    <svg class="icon-icon-view">
+                                                                        <use xlink:href="#icon-view"></use>
+                                                                    </svg></span>Details</a>
+                                                        </li>
+                                                        <li class="dropdown-items__item"><a href="/manager/delete_activity/1" class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                                    <svg class="icon-icon-trash">
+                                                                        <use xlink:href="#icon-trash"></use>
+                                                                    </svg></span>Delete</a>
+                                                         </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -1308,7 +1300,7 @@
                                                             <div class="form-group">
                                                                 <label>Official Place Name</label>
                                                                 <input type="text" class="form-control" name="name"
-                                                                    placeholder="Enter total rooms">
+                                                                    placeholder="Enter tour name">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
@@ -1407,19 +1399,6 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-{#                                                        <div class="col-lg-4">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Activity Type</label>#}
-{#                                                                <select class="select">#}
-{#                                                                    <option value="">Select Activity Type</option>#}
-{#                                                                    <option value="1">Activity Type 1</option>#}
-{#                                                                    <option value="2">Activity Type 2</option>#}
-{#                                                                    <option value="3">Activity Type 3</option>#}
-{#                                                                    <option value="4">Activity Type 4</option>#}
-{#                                                                    <option value="5">Activity Type 5</option>#}
-{#                                                                </select>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>From Date</label>
@@ -1440,21 +1419,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-{#                                                        <div class="col-lg-4">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Min Age</label>#}
-{#                                                                <input type="number" min="0" class="form-control"#}
-{#                                                                    placeholder="Enter age" style="width: auto;height: 56px;">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
                                                         </div>
-{#                                                        <div class="col-lg-12">#}
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Pick Up Location</label>#}
-{#                                                                <input type="text" class="form-control"#}
-{#                                                                    placeholder="Enter pickup location">#}
-{#                                                            </div>#}
-{#                                                        </div>#}
                                                         <div class="col-12 form-group form-group--lg">
                                                             <label class="form-label">Product Images</label>
                                                             <div class="image-upload">
@@ -1523,31 +1488,6 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-{#                                                        <div class="col-12 form-group form-group--lg mb-0">#}
-{#                                                            <label class="form-label">Tags</label>#}
-{#                                                            <select class="input js-input-tags" multiple="multiple" data-placeholder="">#}
-{#                                                                <option value="1" >Food</option>#}
-{#                                                                <option value="2" >Hot Air Balloon</option>#}
-{#                                                                <option value="3">Mountain Climbing</option>#}
-{#                                                                <option value="4" selected="selected">Bike Ride</option>#}
-{#                                                                <option value="5">Nightlife</option>#}
-{#                                                                <option value="6">Amusement Park</option>#}
-{#                                                                <option value="7">City sightseeing</option>#}
-{#                                                            </select>#}
-{#                                                        </div>#}
-                                                        <!-- <h5 class="my-4">Upload Images</h5>
-                                                        <div class="col-lg-12">
-                                                            <div class="form-group">
-                                                                <div class="listing-upload-wrapper">
-                                                                    <div class="listing-img-upload">
-                                                                        <span><i class="far fa-images"></i> Upload
-                                                                            listing Images</span>
-                                                                    </div>
-                                                                    <input type="file" class="listing-img-file"
-                                                                        multiple>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
                                                         <h5 class="my-4">Detailed Information</h5>
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
@@ -1705,7 +1645,7 @@
                                                         </div>
                                                         <div class="col-lg-12 my-4">
                                                             <button type="submit" class="theme-btn">Submit Your
-                                                                Activity</button>
+                                                                Tour</button>
                                                         </div>
                                                         </div>
                                                     </div>
