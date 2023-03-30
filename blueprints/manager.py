@@ -167,7 +167,7 @@ def add_tour():
         {"not_included": [not_included1, not_included2, not_included3, not_included4]}
     )
     images = request.files.getlist("images")
-    max_id = db.session.query(db.func.max(Activity.id)).scalar()
+    max_id = db.session.query(db.func.max(Tour.id)).scalar()
     if max_id is None:
         max_id = 1
     else:
