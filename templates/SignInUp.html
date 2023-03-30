@@ -129,9 +129,9 @@
                 <div class="sign-link">
                     <p>{{ _("Don't have an account?") }} <a href="#" class="signUp-link">{{ _("Sign Up") }}</a></p>
                 </div>
-{#                <div class="sign-link">#}
-{#                    <p><a href="#" class="staffSignIn-link">Login as a staff?</a></p>#}
-{#                </div>#}
+                <div class="sign-link">
+                    <p><a href="{{ url_for('customer.homepage') }}" class="staffSignIn-link">{{ _("Return to home page") }} </a></p>
+                </div>
             </form>
         </div>
 
