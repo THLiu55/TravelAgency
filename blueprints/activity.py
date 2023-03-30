@@ -38,11 +38,9 @@ def activityList(page_num):
     pagination = Activity.query.paginate(page=int(page_num), per_page=9, error_out=False)
     activities = pagination.items
     for activity in activities:
-        activity.included = json.loads(activity.included)
-        activity.excluded = json.loads(activity.excluded)
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
-        activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
+        activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities)
 
 
