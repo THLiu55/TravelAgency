@@ -1,8 +1,8 @@
-from flask import Blueprint, request, render_template, g, redirect, url_for
+from flask import Blueprint, request, render_template, g, redirect, url_for, session
 
 # from decorators import login_required
 from exts import db, socketio
-from utils.bot import get_wxbot_signature, get_wxbot_answer
+from utils.bot import BOT_CHOICE, get_wxbot_signature, get_wxbot_answer
 from model import Customer
 from time import time
 
@@ -13,28 +13,23 @@ name_space = "/socketest"
 
 @bp.route("/get_chatbot_answer", methods=["POST"])
 def get_chatbot_answer():
-    if request.method == "POST":
-        message = request.form["msg"]
-        # if not g.user:
-        #     return "Please login first."
+    answer = ""
 
-        userid = "test" # TODO: this is a test user id, should be replaced by the real user id
+    if BOT_CHOICE == "WXBOT":
+        message = request.form.get("msg")
 
-        # if g.user:
-        #     if g.user.signature and time() - g.user.signature_timestamp < 7200:
-        #         signature = g.user.signature
+        signature = session.get("signature")
+        signature_timestamp = session.get("signature_timestamp")
 
-        signature = get_wxbot_signature(userid)  # this will expire in 7200 seconds
-
-        # TODO: refactor this to make it use the cached signature withing 7200 seconds rather than requesting a new one every time
-
-        # userid = (
-        #     g.user.id if g.user else "guest_" + str(Customer.query.count())
-        #     # TODO: guest_1, guest_2, guest_3, ... is not a good way to identify a guest
-        # )
+        if not signature_timestamp or time() - signature_timestamp > 7200:
+            userid = session.get("userid", f"guest_{time()}")
+            signature = get_wxbot_signature(userid)
+            session["signature"] = signature
+            session["signature_timestamp"] = time()
 
         answer = get_wxbot_answer(message, signature)
-        return answer
+
+    return answer
 
 
 def ack():
