@@ -54,6 +54,29 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
     <meta name="theme-color" content="#ffffff" />
+    <style>
+        /* 自定义文件输入组件样式 */
+		.custom-file-label::after {
+			content: "选择文件";
+		}
+
+		.file-name-label {
+			display: inline-block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: calc(100% - 90px);
+			margin-right: 5px;
+		}
+
+		.file-name-input {
+			display: inline-block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 70px;
+		}
+    </style>
 </head>
 
 <body>
@@ -2427,6 +2450,18 @@
                                                             </div>
 
                                                         </div>
+                                                        <h5 class="my-4">The infomation of Availiable Rooms</h5>
+                                                        <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;"> -->
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                               <label>Room Type numbers</label>
+                                                               <input type="number" class="form-control" min="0" max="7" name="typenum"
+                                                                   placeholder="Enter room type numbers" id="inputRoomNumber">
+                                                           </div>
+                                                       </div>
+                                                       <h5 class="my-4">Room Information</h5>
+                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer">
+                                                       </div>
                                                         <h5 class="my-4">Contact Information</h5>
                                                         <div
                                                             style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 200%;padding-top: 15px;">
@@ -2526,6 +2561,7 @@
             </div>
         </div>
     </div>
+    
     <script src="../static/js/gsap/gsap.min.js"></script>
     <script src="../static/js/gsap/ScrollToPlugin.min.js"></script>
     <script src="../static/js/gsap/ScrollTrigger.min.js"></script>
@@ -2574,6 +2610,53 @@
     <script src="../static/css/assets/js/jquery.timepicker.min.js"></script>
     <script src="../static/css/assets/js/wow.min.js"></script>
     <script src="../static/css/assets/js/main.js"></script>
+    <script>
+
+        $(document).ready(function() {
+			// 当数字输入框的值改变时
+			$("#inputRoomNumber").on("input", function() {
+				var num = $(this).val();
+				$("#divRoomContainer").empty(); 
+                // 清空表单容器
+
+				// 根据输入数字生成表单
+				for (var i = 1; i <= num; i++) {
+					var formGroup = $('<div class="form-group"></div>');
+                    var labelname = $('<label for="hotelroom_name_' + i + '">Room Name - Room Type' + i + '</label>');
+                    var inputname = $('<input name="hotelroom_name_' + i + '" type="text" class="form-control" placeholder="Enter room name">');
+                    var labelprice = $('<label for="hotelroom_price_' + i + '">Room Price</label>');
+                    var inputprice = $('<input name="hotelroom_price_' + i + '" type="number" min=0 class="form-control" placeholder="Enter room price">');
+					var label = $('<label for="fileInput' + i + '"></label>');
+					var customFile = $('<div class="custom-file"></div>');
+					var fileInput = $('<input type="file" class="custom-file-input" id="fileInput' + i + '" style="display:none;">');
+					var fileLabel = $('<label class="custom-file-label" for="fileInput' + i + '" style="margin-top:20px; border-radius:10px;">Upload pictures</label>');
+					var fileNameInput = $('<input type="text" class="form-control" id="fileNameInput' + i + '" style="display:none;" readonly>');
+
+					// 将文件名显示在对应的文本框中
+					fileInput.on("change", function() {
+						var fileName = $(this).val().split("\\").pop();
+						var index = $(this).attr("id").match(/\d+/)[0]; // 提取文件上传控件的索引号
+						$("#fileNameInput" + index).val(fileName);
+						$(this).next(".custom-file-label").html(fileName);
+					});
+
+
+
+					customFile.append(fileInput);
+					customFile.append(fileLabel);
+                    formGroup.append(labelname);
+                    formGroup.append(inputname);
+                    formGroup.append(labelprice);
+                    formGroup.append(inputprice);
+					formGroup.append(label);
+					formGroup.append(customFile);
+					formGroup.append(fileNameInput);
+					$("#divRoomContainer").append(formGroup);
+				}
+			});
+		});
+
+	</script>
 </body>
 
 </html>
