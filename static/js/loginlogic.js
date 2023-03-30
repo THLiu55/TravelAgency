@@ -104,8 +104,7 @@ function send_email(){
     xhr.onload = function() {
         let response = JSON.parse(xhr.responseText)
         if (response.code === 400) {
-            let msg = response.message
-            email_error.innerHTML = msg;
+            email_error.innerHTML = response.message;
         } else if (response.code === 401) {
             let msg = response.message
             alert(msg)
@@ -170,6 +169,7 @@ function SignUp(){
                     break
                 case 'registered email':
                     email_error.innerHTML = msg
+                    alert("aaaaaaaaaa======")
                     break
                 case 'registered user name':
                     username_error.innerHTML = msg

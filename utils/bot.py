@@ -1,6 +1,7 @@
 import os, json, requests
 
-bot_choices = ["WXBOT", "CHATGPT", "FALLBACK"]
+# bot_choices = ["WXBOT", "CHATGPT", "FALLBACK"]
+BOT_CHOICE = os.environ.get("BOT_CHOICE")
 WXBOT_TOKEN = os.environ.get("WXBOT_TOKEN")
 WXBOT_GET_SIGNATURE_URL_PREFIX = os.environ.get("WXBOT_GET_SIGNATURE_URL_PREFIX")
 WXBOT_GET_RESPONSE_URL_PREFIX = os.environ.get("WXBOT_GET_RESPONSE_URL_PREFIX")

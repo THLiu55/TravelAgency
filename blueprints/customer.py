@@ -1,13 +1,15 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail, socketio
 from flask_mail import Message
 from utils.generate_hash import check_hash_time, get_hash_time
 from flask_babel import Babel, gettext as _, refresh
+from utils.decorators import login_required
 
 
 bp = Blueprint("customer", __name__, url_prefix="/")
+
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
@@ -50,10 +52,10 @@ def register():
 def captcha():
     email = request.values.get("email")
     if Customer.query.filter_by(email=email).first():
-        return jsonify({"code": "400", "msg": "registered email"})
+        return jsonify({"code": 400, "message": "registered email"})
     captcha_number = get_hash_time(email)
     message = Message(
-        sender="Travel Agency",
+        sender=("Travel Agency", current_app.config.get("MAIL_USERNAME")),
         subject="Verify Code",
         recipients=[email],
         body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
@@ -70,7 +72,7 @@ def recaptcha():
         return jsonify({"code": 401})
     captcha_number = get_hash_time(email)
     message = Message(
-        sender=("Travel Agency", "316710519@qq.com"),
+        sender=("Travel Agency", current_app.config.get("MAIL_USERNAME")),
         subject="Verify Code",
         recipients=[email],
         body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
@@ -102,3 +104,16 @@ def consult():
 
 
 ### END CHAT RELATED ###
+
+
+@bp.route("/activity_review", methods=["GET","POST"])
+@login_required
+def activity_review():
+    review = ActivityReview()
+    review.content = request.form.get("content")
+    review.rating = request.form.get("rating")
+    review.customerID = session.get("customer_id")
+    review.productID = request.form.get("productId")
+    db.session.add(review)
+    db.session.commit()
+    return redirect(url_for('activity.activityDetail', activity_id=review.productID))
