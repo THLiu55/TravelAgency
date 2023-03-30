@@ -21,7 +21,21 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 @bp.route("/")
 def manager_homepage():
-    return render_template("attractions.html")
+    return render_template("accommodation.html")
+
+
+@bp.route("/load_activities", methods=["POST"])
+def load_activities():
+    category = request.form.get("category")
+    status = request.form.get("publish")
+    q = Activity.query
+    print(status)
+    if category != "All Category":
+        q = q.filter_by(category=category)
+    if status != "All Status":
+        q = q.filter_by(status=status)
+    activities = [activity.serialize() for activity in q.all()]
+    return jsonify({"code": 200, "content": activities})
 
 
 @bp.route("/add_activity", methods=["POST"])
@@ -84,8 +98,9 @@ def add_activity():
     return redirect(url_for("manager.activities"))
 
 
-@bp.route('/delete_activity/<activity_id>', methods=['GET', 'POST'])
-def delete_activity(activity_id):
+@bp.route('/delete_activity', methods=['GET', 'POST'])
+def delete_activity():
+    activity_id = request.form.get('id')
     activity = Activity.query.get(activity_id)
     if activity is None:
         return jsonify({'code': 400, 'message': "no activity found"})
@@ -96,8 +111,7 @@ def delete_activity(activity_id):
 
 @bp.route('/activities', methods=['GET', 'POST'])
 def activities():
-    status = request.args.get("status")
-    category = request.args.get("category")
+    db.create_all()
     page = Activity.query.paginate(page=1, per_page=100)
     published_page = Activity.query.filter_by(status="published").paginate(
         page=1, per_page=100

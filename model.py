@@ -79,6 +79,15 @@ class Activity(db.Model):
     review = db.relationship('ActivityReview', backref='product')
     orders = db.relationship('ActivityOrder', backref='product')
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'category': self.category,
+            'status': self.status,
+            'name': self.name,
+            'start_time': self.start_time,
+            'price': self.price
+        }
 
 class TourOrder(db.Model):
     __tablename__ = 'tour_orders'
