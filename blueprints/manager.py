@@ -210,7 +210,7 @@ def add_tour():
         des.append({request.form.get("itinerary_name_{day}".format(day=i)): request.form.get(
             "itinerary_desc_{day}".format(day=i))})
         i = i + 1
-    tour.description = json.dumps({"tour_des": des})
+    tour.itineraries = json.dumps({"tour_des": des})
     db.session.add(tour)
     db.session.commit()
     return redirect(url_for("manager.tours"))

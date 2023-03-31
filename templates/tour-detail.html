@@ -36,20 +36,19 @@
                         <div class="col-lg-8">
                             <div class="listing-content">
                                 <div class="listing-slider owl-carousel owl-theme">
-                                    <img src="../static/tour/single-1.jpg" alt="">
-                                    <img src="../static/tour/single-2.jpg" alt="">
-                                    <img src="../static/tour/single-3.jpg" alt="">
+                                    {% for image in images %}
+                                    <img src="{{ url_for('static', filename=image.replace('\\','/')) }}" alt="" >
+                                    {% endfor %}
                                 </div>
                                 <div class="listing-header">
                                     <div class="listing-header-info">
-                                        <h4 class="listing-title">Explore The Evergreen Forest</h4>
-                                        <p class="listing-location"><i class="far fa-location-dot"></i> 25/B Milford
-                                            Road, New York</p>
+                                        <h4 class="listing-title">{{ tour.name }}</h4>
+                                        <p class="listing-location"><i class="far fa-location-dot"></i>{{ tour.city }}{{ tour.state }}</p>
                                     </div>
                                     <div class="listing-rate">
                                         <span class="badge"><i class="fal fa-star"></i> 5.0</span>
                                         <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">(2.5k Reviews)</span>
+                                        <span class="listing-rate-review">({{ tour.review_num }} Reviews)</span>
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -61,7 +60,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Duration</h6>
-                                                    <span>7 Days</span>
+                                                    <span>{{ days }} Days</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,7 +71,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Date</h6>
-                                                    <span>25 Oct - 31 Oct</span>
+                                                    <span>{{ tour.start_time }} - {{ tour.end_time }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -83,7 +82,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Group Size</h6>
-                                                    <span>40 People</span>
+                                                    <span>{{ tour.group_size }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,7 +93,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Tour Type</h6>
-                                                    <span>Historical Place</span>
+                                                    <span>{{ tour.category }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,49 +101,38 @@
                                 </div>
                                 <div class="listing-item">
                                     <h4 class="mb-3">Description</h4>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable. If you are going to use a passage of
-                                        Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
-                                        middle of text. </p>
-                                    <p class="mt-3">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to
-                                        use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                                        embarrassing hidden in the middle of text. </p>
-                                    <div class="listing-highlight">
-                                        <h5>Highlights</h5>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <ul class="list">
-                                                    <li>Contrary To Popular Belief</li>
-                                                    <li>Sed Perspiciatis Unde Omnis</li>
-                                                    <li>Quasi Architecto Beatae Vitae Dicta</li>
-                                                    <li>Nemo Enim Ipsam Voluptatem Quia</li>
-                                                    <li>Ratione quia Magni Dolores Eos</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <ul class="list">
-                                                    <li>Contrary To Popular Belief</li>
-                                                    <li>Sed Perspiciatis Unde Omnis</li>
-                                                    <li>Quasi Architecto Beatae Vitae Dicta</li>
-                                                    <li>Nemo Enim Ipsam Voluptatem Quia</li>
-                                                    <li>Ratione quia Magni Dolores Eos</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <p>{{ tour.description }}</p>
+{#                                    <div class="listing-highlight">#}
+{#                                        <h5>Highlights</h5>#}
+{#                                        <div class="row">#}
+{#                                            <div class="col-lg-6">#}
+{#                                                <ul class="list">#}
+{#                                                    <li>Contrary To Popular Belief</li>#}
+{#                                                    <li>Sed Perspiciatis Unde Omnis</li>#}
+{#                                                    <li>Quasi Architecto Beatae Vitae Dicta</li>#}
+{#                                                    <li>Nemo Enim Ipsam Voluptatem Quia</li>#}
+{#                                                    <li>Ratione quia Magni Dolores Eos</li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                            <div class="col-lg-6">#}
+{#                                                <ul class="list">#}
+{#                                                    <li>Contrary To Popular Belief</li>#}
+{#                                                    <li>Sed Perspiciatis Unde Omnis</li>#}
+{#                                                    <li>Quasi Architecto Beatae Vitae Dicta</li>#}
+{#                                                    <li>Nemo Enim Ipsam Voluptatem Quia</li>#}
+{#                                                    <li>Ratione quia Magni Dolores Eos</li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="listing-included">
                                                 <h5>Included</h5>
                                                 <ul class="list">
-                                                    <li>Airfare</li>
-                                                    <li>Local Transportation</li>
-                                                    <li>Accommodation</li>
-                                                    <li>Tour Guide</li>
-                                                    <li>Air Conditioned Coach</li>
+                                                     {% for item in tour.included %}
+                                                    <li>{{ item }}</li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
@@ -152,11 +140,9 @@
                                             <div class="listing-notincluded">
                                                 <h5>Not Included</h5>
                                                 <ul class="list">
-                                                    <li>Entrance Fees</li>
-                                                    <li>Guide Gratuity</li>
-                                                    <li>Food And Drinks</li>
-                                                    <li>Digital Guide Available</li>
-                                                    <li>Superior Coach</li>
+                                                     {% for item in tour.excluded %}
+                                                    <li>{{ item }}</li>
+                                                    {% endfor %}
                                                 </ul>
                                             </div>
                                         </div>
@@ -165,38 +151,22 @@
                                 <div class="listing-item">
                                     <h4 class="mb-3">Itinerary</h4>
                                     <div class="itinerary-content-box">
-                                        <div class="itinerary-single-box">
-                                            <span>01</span>
-                                            <img src="assets/img/tour/01.jpg" alt="">
-                                            <h4>09:00AM - 12:00PM</h4>
-                                            <h3>DAY 01 - Norway City Visit</h3>
-                                            <p>There are many variations of passages of Lorem Ipsum available, but
-                                                the majority have suffered alteration in some form, by injected
-                                                humour, or randomised words which don't look even slightly enim
-                                                ipsam voluptatem quia voluptas
-                                                believable.</p>
+                                        {% for i in range(days-1) %}
+                                            <div class="itinerary-single-box">
+                                            <span>0{{ i }}</span>
+{#                                            <img src="assets/img/tour/01.jpg" alt="">#}
+{#                                            <h4>09:00AM - 12:00PM</h4>#}
+                                            <h3>{{ tour.itineraries[i][0] }}</h3>
+                                            <p>{{ tour.itineraries[i][1] }}</p>
                                         </div>
-                                        <div class="itinerary-single-box">
-                                            <span>02</span>
-                                            <img src="assets/img/tour/02.jpg" alt="">
-                                            <h4>09:00AM - 12:00PM</h4>
-                                            <h3>DAY 02 - Norway City Visit</h3>
-                                            <p>There are many variations of passages of Lorem Ipsum available, but
-                                                the majority have suffered alteration in some form, by injected
-                                                humour, or randomised words which don't look even slightly enim
-                                                ipsam voluptatem quia voluptas
-                                                believable.</p>
-                                        </div>
+                                        {% endfor %}
+
                                         <div class="itinerary-single-box pb-0">
-                                            <span>03</span>
-                                            <img src="assets/img/tour/03.jpg" alt="">
-                                            <h4>09:00AM - 12:00PM</h4>
-                                            <h3>DAY 03 - Norway City Visit</h3>
-                                            <p>There are many variations of passages of Lorem Ipsum available, but
-                                                the majority have suffered alteration in some form, by injected
-                                                humour, or randomised words which don't look even slightly enim
-                                                ipsam voluptatem quia voluptas
-                                                believable.</p>
+                                            <span>0{{ days }}</span>
+{#                                            <img src="assets/img/tour/03.jpg" alt="">#}
+{#                                            <h4>09:00AM - 12:00PM</h4>#}
+                                            <h3>{{ tour.itineraries[days-1][0] }}</h3>
+                                            <p>{{ tour.itineraries[days-1][1] }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -283,7 +253,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="far fa-star"></i>
                                                 </div>
-                                                <p>Base On 15.5k Review</p>
+                                                <p>Base On {{ tour.review_num }} Review</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -380,114 +350,29 @@
                                         </div>
                                         <div class="listing-review">
                                             <h5>Showing 1.2k Reviews</h5>
+                                            {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
                                                     <img src="assets/img/account/01.jpg" alt="">
                                                     <div class="listing-review-author-info">
                                                         <div>
-                                                            <h6>Kenneth Evans</h6>
-                                                            <span><i class="far fa-clock"></i> 1 day ago</span>
+                                                            <h6>{{ review.customerID }}</h6>
+                                                            <span><i class="far fa-clock"></i>{{ review.issueTime }}</span>
                                                         </div>
                                                         <div class="listing-review-author-rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
+                                                            {% for i in range(review.rating) %}
+                                                                <i class="fas fa-star"></i>
+                                                            {% endfor %}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <p>
-                                                    There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humourmust explain to you how all this mistaken idea of
-                                                    denouncing pleasure words.
+                                                    {{ review.content }}
                                                 </p>
-                                                <div class="listing-review-reply">
-                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
-                                                        Reply</a>
-                                                    <div class="review-reaction">
-                                                        <a href="#" class="review-like active"><i
-                                                                class="fal fa-thumbs-up"></i> 15</a>
-                                                        <a href="#" class="review-dislike"><i
-                                                                class="fal fa-thumbs-down"></i> 05</a>
-                                                        <a href="#" class="review-love"><i class="fal fa-heart"></i>
-                                                            50</a>
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div class="listing-review-item review-reply-item">
-                                                <div class="listing-review-author">
-                                                    <img src="assets/img/account/02.jpg" alt="">
-                                                    <div class="listing-review-author-info">
-                                                        <div>
-                                                            <h6>Erich T. Genao</h6>
-                                                            <span><i class="far fa-clock"></i> 1 day ago</span>
-                                                        </div>
-                                                        <div class="listing-review-author-rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humour, or randomised words.
-                                                </p>
-                                                <div class="listing-review-reply">
-                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
-                                                        Reply</a>
-                                                    <div class="review-reaction">
-                                                        <a href="#" class="review-like"><i class="fal fa-thumbs-up"></i>
-                                                            15</a>
-                                                        <a href="#" class="review-dislike active"><i
-                                                                class="fal fa-thumbs-down"></i> 05</a>
-                                                        <a href="#" class="review-love"><i class="fal fa-heart"></i>
-                                                            50</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="listing-review-item">
-                                                <div class="listing-review-author">
-                                                    <img src="assets/img/account/03.jpg" alt="">
-                                                    <div class="listing-review-author-info">
-                                                        <div>
-                                                            <h6>Jesse Sinkler</h6>
-                                                            <span><i class="far fa-clock"></i> 1 day ago</span>
-                                                        </div>
-                                                        <div class="listing-review-author-rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humourmust explain to you how all this mistaken idea of
-                                                    denouncing pleasure words.
-                                                </p>
-                                                <div class="listing-review-reply">
-                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
-                                                        Reply</a>
-                                                    <div class="review-reaction">
-                                                        <a href="#" class="review-like"><i class="fal fa-thumbs-up"></i>
-                                                            15</a>
-                                                        <a href="#" class="review-dislike"><i
-                                                                class="fal fa-thumbs-down"></i> 05</a>
-                                                        <a href="#" class="review-love active"><i
-                                                                class="fal fa-heart"></i>
-                                                            50</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {% endfor %}
+
+
                                             <div class="text-center my-4">
                                                 <a href="#" class="theme-btn"> <span class="far fa-sync-alt"></span>
                                                     Load More</a>
@@ -495,10 +380,11 @@
                                         </div>
                                         <div class="listing-review-form">
                                             <h4>Leave A Review</h4>
-                                            <form action="#">
+                                            <form action="{{ url_for('tour.add_review') }}" method="post">
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
                                                         <label class="star-label">Your Rating</label>
+                                                        <input name="productId" value="{{ tour.id }}" hidden>
                                                         <div class="listing-review-form-star">
                                                             <div class="star-rating-wrapper">
                                                                 <div class="star-rating-box">
@@ -522,25 +408,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Your Name*">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control"
-                                                                   placeholder="Your Email*">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="form-group">
-                                                <textarea class="form-control" cols="30" rows="5"
+                                                <textarea class="form-control" cols="30" rows="5" name="content"
                                                           placeholder="Write Your Review*"></textarea>
                                                 </div>
-                                                <button class="theme-btn" type="button">Leave A Review</button>
+                                                <button class="theme-btn" type="submit">Leave A Review</button>
                                             </form>
                                         </div>
                                     </div>
@@ -743,10 +615,10 @@
                                     content
                                     layout.</p>
                                 <ul class="listing-side-list">
-                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
+                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">{{ tour.contact_phone }}</a></li>
                                     <li><i class="far fa-envelope"></i><a
                                             href="/cdn-cgi/l/email-protection#721b1c141d32170a131f021e175c111d1f"><span
-                                            class="__cf_email__" data-cfemail="e78e898188a7829f868a978b82c984888a">[email&#160;protected]</span></a>
+                                            class="__cf_email__" data-cfemail="e78e898188a7829f868a978b82c984888a">{{ tour.contact_email }}</span></a>
                                     </li>
                                 </ul>
                             </div>
