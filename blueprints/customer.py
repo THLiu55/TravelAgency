@@ -13,7 +13,6 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
-    session.clear()
     return render_template("Homepage.html")
 
 
@@ -29,7 +28,7 @@ def login():
         if check_password_hash(customer.password, customer_password):
             session['customer_id'] = customer.id
             url = request.form.get("url")
-            if url:
+            if url != "None":
                 return jsonify({"code": 200, "message": url})
             else:
                 return jsonify({"code": 200, "message": "/"})

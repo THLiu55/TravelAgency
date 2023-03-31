@@ -6,7 +6,7 @@ from flask_socketio import SocketIO, emit
 
 from utils.toys import get_locale
 
-db = SQLAlchemy()
+db = SQLAlchemy(session_options={"autoflush": False})
 mail = Mail()
 migrate = Migrate()
 babel = Babel()
