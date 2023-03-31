@@ -1,9 +1,10 @@
 import json
 from datetime import datetime
 
-from flask import Blueprint, render_template, request, jsonify, current_app, session
+from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
 from model import *
 from exts import db
+from utils.decorators import login_required
 
 
 bp = Blueprint("activity", __name__, url_prefix="/activity")
@@ -44,17 +45,27 @@ def activityList(page_num):
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities)
 
 
-@bp.route('/details/<activity_id>/', methods=['GET'])
+@bp.route('/details/<activity_id>/', methods=['GET', 'POST'])
+@login_required
 def activityDetail(activity_id):
-    activity = Activity.query.get(activity_id)
-    if activity is None:
-        return jsonify({'code': 400, 'message': "no activity found"})
-    activity.included = json.loads(activity.included)['included']
-    activity.included = [i for i in activity.included if i is not None]
-    activity.excluded = json.loads(activity.excluded)['not_included']
-    activity.excluded = [i for i in activity.excluded if i is not None]
-    activity.images = json.loads(activity.images)['images']
-    activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
-    return render_template("activity-detail.html", activity=activity)
+    if request.method == 'GET':
+        activity = Activity.query.get(activity_id)
+        activity.included = json.loads(activity.included)['included']
+        activity.included = [i for i in activity.included if i is not None]
+        activity.excluded = json.loads(activity.excluded)['not_included']
+        activity.excluded = [i for i in activity.excluded if i is not None]
+        activity.images = json.loads(activity.images)['images']
+        activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
+        return render_template("activity-detail.html", activity=activity)
+    else:
+        review = ActivityReview()
+        review.content = request.form.get("content")
+        review.rating = request.form.get("rating")
+        review.customerID = session.get("customer_id")
+        review.productID = request.form.get("productId")
+        db.session.add(review)
+        db.session.commit()
+        return redirect(url_for('activity.activityDetail', activity_id=review.productID))
+
 
 

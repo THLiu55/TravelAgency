@@ -1,3 +1,4 @@
+import requests
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,26 +8,31 @@ from utils.generate_hash import check_hash_time, get_hash_time
 from flask_babel import Babel, gettext as _, refresh
 from utils.decorators import login_required
 
-
 bp = Blueprint("customer", __name__, url_prefix="/")
 
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
+    # session.clear()
     return render_template("Homepage.html")
 
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == 'GET':
-        return render_template("SignInUp.html")
+        url = request.args.get('url')
+        return render_template("SignInUp.html", url=url)
     else:
         customer_email = request.form.get("signin-email")
         customer_password = request.form.get("signin-password")
         customer = Customer.query.filter_by(email=customer_email).first()
         if check_password_hash(customer.password, customer_password):
             session['customer_id'] = customer.id
-            return jsonify({"code": 200})
+            url = request.form.get("url")
+            if url:
+                return jsonify({"code": 200, "message": url})
+            else:
+                return jsonify({"code": 200, "message": "/"})
         else:
             return jsonify({"message": "The email address does not match the password"})
 
@@ -45,6 +51,7 @@ def register():
     new_customer.password = generate_password_hash(password)
     db.session.add(new_customer)
     db.session.commit()
+
     return jsonify({"code": 200})
 
 
@@ -59,7 +66,7 @@ def captcha():
         subject="Verify Code",
         recipients=[email],
         body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
-        f"\nIgnore it please if this is not your own operation",
+             f"\nIgnore it please if this is not your own operation",
     )
     mail.send(message)
     return jsonify({"code": 200})
@@ -76,7 +83,7 @@ def recaptcha():
         subject="Verify Code",
         recipients=[email],
         body=f"Your verify code is: {captcha_number}\t (valid for an hour)"
-        f"\nIgnore it please if this is not your own operation",
+             f"\nIgnore it please if this is not your own operation",
     )
     mail.send(message)
     return jsonify({"code": 200})
@@ -102,18 +109,17 @@ def consult():
     g.customer = Customer.query.filter_by(id=1).first()
     return render_template("chat.html")
 
-
 ### END CHAT RELATED ###
 
 
-@bp.route("/activity_review", methods=["GET","POST"])
-@login_required
-def activity_review():
-    review = ActivityReview()
-    review.content = request.form.get("content")
-    review.rating = request.form.get("rating")
-    review.customerID = session.get("customer_id")
-    review.productID = request.form.get("productId")
-    db.session.add(review)
-    db.session.commit()
-    return redirect(url_for('activity.activityDetail', activity_id=review.productID))
+# @bp.route("/activity_review", methods=["GET", "POST"])
+# @login_required
+# def activity_review():
+#     review = ActivityReview()
+#     review.content = request.form.get("content")
+#     review.rating = request.form.get("rating")
+#     review.customerID = session.get("customer_id")
+#     review.productID = request.form.get("productId")
+#     db.session.add(review)
+#     db.session.commit()
+#     return redirect(url_for('activity.activityDetail', activity_id=review.productID))

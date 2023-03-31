@@ -209,8 +209,7 @@ function SignIn(){
         let response = JSON.parse(xhr.responseText)
         if (response.code === 200) {
             console.log(200)
-
-            window.open("/","_self")
+            window.open(response.message,"_self")
         } else {
             alert(response.message)
         }

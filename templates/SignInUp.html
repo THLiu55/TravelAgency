@@ -74,6 +74,7 @@
             <form id="signup-form" method="post">
                 <h2>{{ _("Sign Up") }}</h2>
                 <div class="input-group">
+                    <input name="url" value="{{ url }}" hidden>
                     <input id="signup-username" name="signup-username" oninput="username_listener_sign_up()" type="text" maxlength="15" required>
                     <label for="signup-username">{{ _("Username") }}</label>
                     <div class="wrong_error" id="username_error"></div>
@@ -116,6 +117,7 @@
                 <h2>{{ _("Login") }}</h2>
                 <div class="input-group">
                     <input id="signin-email" name="signin-email" type="text" required>
+                    <input name="url" value="{{ url }}" hidden>
                     <label for="signin-email">{{ _("Email") }}</label>
                 </div>
                 <div class="input-group">
