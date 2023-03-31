@@ -418,6 +418,8 @@
                                                     Load More</a>
                                             </div>
                                         </div>
+
+                                        {% if logged %}
                                         <div class="listing-review-form">
                                             <h4>Leave A Review</h4>
                                             <form action="{{ url_for('activity.activityDetail', activity_id=activity.id) }}" method="post">
@@ -455,6 +457,7 @@
                                                 <button class="theme-btn" type="submit">Leave A Review</button>
                                             </form>
                                         </div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -586,38 +589,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-{#                                                                <div class="dropdown-item">#}
-{#                                                                    <h6 class="mb-3 mt-2">Room Type</h6>#}
-{#                                                                    <div class="passenger-class-info">#}
-{#                                                                        <div class="form-check">#}
-{#                                                                            <input class="form-check-input" type="radio"#}
-{#                                                                                   value="Single Room" name="room-type"#}
-{#                                                                                   id="room-type10">#}
-{#                                                                            <label class="form-check-label"#}
-{#                                                                                   for="room-type10">#}
-{#                                                                                Single Room#}
-{#                                                                            </label>#}
-{#                                                                        </div>#}
-{#                                                                        <div class="form-check">#}
-{#                                                                            <input class="form-check-input" checked#}
-{#                                                                                   type="radio" value="Double Room"#}
-{#                                                                                   name="room-type" id="room-type11">#}
-{#                                                                            <label class="form-check-label"#}
-{#                                                                                   for="room-type11">#}
-{#                                                                                Double Room#}
-{#                                                                            </label>#}
-{#                                                                        </div>#}
-{#                                                                        <div class="form-check">#}
-{#                                                                            <input class="form-check-input" type="radio"#}
-{#                                                                                   value="Deluxe Room" name="room-type"#}
-{#                                                                                   id="room-type12">#}
-{#                                                                            <label class="form-check-label"#}
-{#                                                                                   for="room-type12">#}
-{#                                                                                Deluxe Room#}
-{#                                                                            </label>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -638,16 +609,6 @@
                                     </div>
                                 </div>
                             </div>
-{#                            <div class="booking-sidebar listing-side-content mt-4">#}
-{#                                <h4 class="booking-title">Why Book With Us?</h4>#}
-{#                                <ul class="listing-side-list">#}
-{#                                    <li><i class="far fa-dollar-sign"></i>Best Price Guarantee</li>#}
-{#                                    <li><i class="far fa-headset"></i>24/7 Customer Care</li>#}
-{#                                    <li><i class="far fa-globe"></i>Hand Picked Tours & Activities</li>#}
-{#                                    <li><i class="far fa-flag"></i>Free Travel Insureance</li>#}
-{#                                    <li><i class="far fa-car"></i>Comfortable And Hygienic Vehicle</li>#}
-{#                                </ul>#}
-{#                            </div>#}
                             <div class="booking-sidebar listing-side-content mt-4">
                                 <h4 class="booking-title">Get A Question?</h4>
                                 <p>It is a long established fact that a reader will be distracted by the readable

@@ -10,8 +10,9 @@ from utils.decorators import login_required
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
 
-@bp.route('/add_review/<activity_id>', methods=['POST'])
-def add_review(activity_id):
+@bp.route('/add_review', methods=['POST'])
+def add_review():
+    activity_id = request.form.get('productId')
     customer_id = session.get('customer_id')
     rating = request.form.get('rating')
     content = request.form.get('rating')
@@ -46,26 +47,16 @@ def activityList(page_num):
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])
-@login_required
 def activityDetail(activity_id):
-    if request.method == 'GET':
-        activity = Activity.query.get(activity_id)
-        activity.included = json.loads(activity.included)['included']
-        activity.included = [i for i in activity.included if i is not None]
-        activity.excluded = json.loads(activity.excluded)['not_included']
-        activity.excluded = [i for i in activity.excluded if i is not None]
-        activity.images = json.loads(activity.images)['images']
-        activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
-        return render_template("activity-detail.html", activity=activity)
-    else:
-        review = ActivityReview()
-        review.content = request.form.get("content")
-        review.rating = request.form.get("rating")
-        review.customerID = session.get("customer_id")
-        review.productID = request.form.get("productId")
-        db.session.add(review)
-        db.session.commit()
-        return redirect(url_for('activity.activityDetail', activity_id=review.productID))
+    activity = Activity.query.get(activity_id)
+    activity.included = json.loads(activity.included)['included']
+    activity.included = [i for i in activity.included if i is not None]
+    activity.excluded = json.loads(activity.excluded)['not_included']
+    activity.excluded = [i for i in activity.excluded if i is not None]
+    activity.images = json.loads(activity.images)['images']
+    activity.images = [image[image.index('static'):].lstrip('static') for image in activity.images]
+    logged = True if session.get("customer_id") else False
+    return render_template("activity-detail.html", activity=activity, logged=logged)
 
 
 
