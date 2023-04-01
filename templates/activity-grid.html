@@ -278,30 +278,30 @@ Deluxe Room
 <div class="row">
 
 <div class="col-lg-4 col-xl-3 mb-4">
-<div class="booking-sidebar">
+<div class="booking-sidebar" >
 <div class="booking-item">
 <h4 class="booking-title">Activity Type</h4>
 <div class="activity-type">
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="1" id="activity-type1">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Food & Nightlife" id="activity-type1" onclick="activity_filter()">
 <label class="form-check-label" for="activity-type1">
 Food & Nightlife <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="2" id="activity-type2">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Hot Air Balloon" id="activity-type2" onclick="activity_filter()">
 <label class="form-check-label" for="activity-type2">
 Hot Air Balloon <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="3" id="activity-type3">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Mountain Climbing" id="activity-type3" onclick="activity_filter()">
 <label class="form-check-label" for="activity-type3">
 Mountain Climbing <span>(18)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="4" id="activity-type4">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Bike Ride" id="activity-type4" onclick="activity_filter()">
 <label class="form-check-label" for="activity-type4">
 Bike Ride <span>(35)</span>
 </label>
@@ -310,11 +310,12 @@ Bike Ride <span>(35)</span>
 </div>
 <div class="booking-item">
 <h4 class="booking-title">Activity Price</h4>
-<div class="activity-price">
+<div class="activity-price"  >
 <div class="price-range-slider">
 <div class="price-range-info">
 <label for="priceRange1">Price:</label>
 <input type="text" class="priceRange" id="priceRange1" readonly>
+<input id="page-ajax" value="1" hidden>
 </div>
 <div id="price-range1" class="price-range slider"></div>
 </div>
@@ -349,34 +350,7 @@ Up to 1 hour <span>(20)</span>
 </div>
 </div>
 </div>
-<div class="booking-item">
-<!-- <h4 class="booking-title">Languages</h4> -->
-<!-- <div class="activity-language">
-<div class="form-check">
-<input class="form-check-input" name="activity-language" type="checkbox" value="1" id="activity-language1">
-<label class="form-check-label" for="activity-language1">
-English <span>(20)</span>
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" name="activity-language" type="checkbox" value="2" id="activity-language2">
-<label class="form-check-label" for="activity-language2">
-Spanish <span>(15)</span>
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" name="activity-language" type="checkbox" value="3" id="activity-language3">
-<label class="form-check-label" for="activity-language3">
-French <span>(18)</span>
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" name="activity-language" type="checkbox" value="4" id="activity-language4">
-<label class="form-check-label" for="activity-language4">
-Turkish <span>(25)</span>
-</label>
-</div>
-</div> -->
+<div class="booking-item" onclick="">
 </div>
 </div>
 </div>
@@ -399,7 +373,7 @@ Turkish <span>(25)</span>
 </div>
 </div>
 </div>
-<div class="row">
+<div class="row" id="row-list-ajax">
 
     {% for activity in activities %}
 <div class="col-md-6 col-lg-4">
@@ -489,5 +463,6 @@ Turkish <span>(25)</span>
 <script src="../static/css/assets/js/jquery.timepicker.min.js"></script>
 <script src="../static/css/assets/js/wow.min.js"></script>
 <script src="../static/css/assets/js/main.js"></script>
+<script src="{{ url_for('static', filename="js/activityFilter.js") }}"></script>
 </body>
 </html>

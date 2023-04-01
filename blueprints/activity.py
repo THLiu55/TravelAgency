@@ -6,7 +6,6 @@ from model import *
 from exts import db
 from utils.decorators import login_required
 
-
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
 
@@ -27,7 +26,7 @@ def add_review():
     # order = ActivityOrder.query.filter_by(customerID=customer_id, productID=activity_id).first()
     # if order is None:
     #     return jsonify({'code': 400, 'message': 'No order'})
-    review = ActivityReview(rating=rating,issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
+    review = ActivityReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
                             productID=activity_id)
     activity.review_num = activity.review_num + 1
     db.session.add(review)
@@ -64,4 +63,18 @@ def activityDetail(activity_id):
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images)
 
 
-
+@bp.route('/activity_filter', methods=['GET', 'POST'])
+def activity_filter():
+    activity_type = request.form.get("type1").split(",")
+    # activity_price = request.form['activityPrice']
+    activity_duration = request.form.getlist('activityDuration')
+    page = int(request.form.get('page'))
+    query = Activity.query.filter(Activity.category.in_(activity_type))
+    pagination = query.paginate(page=page, per_page=9)
+    activities = pagination.items
+    for activity_i in activities:
+        activity_i.contact_email = url_for('activity.activityDetail', activity_id=activity_i.id)
+        activity_i.images = json.loads(activity_i.images)['images']
+        activity_i.images[0] = "../" + activity_i.images[0][activity_i.images[0].index('static'):].replace('\\','/')
+    activities = [activity.to_dict() for activity in activities]
+    return jsonify({"activities": activities, "page": 1})

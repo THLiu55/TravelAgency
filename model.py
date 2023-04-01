@@ -89,6 +89,35 @@ class Activity(db.Model):
             'price': self.price
         }
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'category': self.category,
+            'status': self.status,
+            'price': self.price,
+            'city': self.city,
+            'state': self.state,
+            'address': self.address,
+            'duration': self.duration,
+            'group_size': self.group_size,
+            'start_time': self.start_time.strftime('%Y-%m-%d %H:%M:%S') if self.start_time else None,
+            'end_time': self.end_time.strftime('%Y-%m-%d %H:%M:%S') if self.end_time else None,
+            'images': self.images,
+            'description': self.description,
+            'included': self.included,
+            'excluded': self.excluded,
+            'openHour': self.openHour.strftime('%H:%M:%S') if self.openHour else None,
+            'visitHour': self.visitHour,
+            'total_star': self.total_star,
+            'review_num': self.review_num,
+            'star_detail': self.star_detail,
+            'contact_name': self.contact_name,
+            'contact_email': self.contact_email,
+            'contact_phone': self.contact_phone,
+        }
+
+
 class TourOrder(db.Model):
     __tablename__ = 'tour_orders'
 
@@ -139,5 +168,3 @@ class Tour(db.Model):
     contact_phone = db.Column(db.String(255))
     review = db.relationship('TourReview', backref='product')
     orders = db.relationship('TourOrder', backref='product')
-
-
