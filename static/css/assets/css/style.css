@@ -1307,7 +1307,7 @@ multi level dropdown menu
 
 
 /* ===================
-hero css 
+hero css
 ====================== */
 
 .hero-section {
@@ -1627,7 +1627,7 @@ search css
 
 .search-form .static-dropdown.passenger-box .dropdown-menu{
   right: 0px !important;
-} 
+}
 
 .search-form .passenger-box .dropdown-item:hover{
   background: transparent;
@@ -1749,7 +1749,7 @@ search css
   .search-form .form-group{
     margin-bottom: 20px;
   }
-} 
+}
 
 @media all and (max-width: 991px) {
   .search-nav{
@@ -1766,7 +1766,7 @@ search css
     top: -30px;
     transform: translateX(-50%);
   }
-} 
+}
 
 
 
@@ -1847,7 +1847,7 @@ date picker
 
 
 /* ===================
-time picker css 
+time picker css
 ====================== */
 
 .ui-timepicker.ui-widget.ui-widget-content{
@@ -1978,7 +1978,7 @@ play btn
 
 
 /* ===================
-destination css 
+destination css
 ====================== */
 
 .destination-area{
@@ -2197,7 +2197,7 @@ destination css
 
 
 /* ===================
-flight css 
+flight css
 ====================== */
 
 .flight-area{
@@ -2337,7 +2337,7 @@ flight css
 
 
 /* ===================
-hotel css 
+hotel css
 ====================== */
 .hotel-area{
   position: relative;
@@ -2554,7 +2554,7 @@ hotel css
 
 
 /* ===================
-room type css 
+room type css
 ====================== */
 
 .room-type-item{
@@ -2592,7 +2592,7 @@ room type css
 
 
 /* ===================
-room css 
+room css
 ====================== */
 .room-area{
   position: relative;
@@ -2794,7 +2794,7 @@ room css
 
 
 /* ===================
-banner css 
+banner css
 ====================== */
 
 .banner-area{
@@ -2873,7 +2873,7 @@ banner css
 
 
 /* ===================
-tour css 
+tour css
 ====================== */
 
 .tour-area{
@@ -3074,7 +3074,7 @@ tour css
 
 
 /* ===================
-car css 
+car css
 ====================== */
 .car-area{
   position: relative;
@@ -3306,7 +3306,7 @@ car css
 
 
 /* ===================
-activity css 
+activity css
 ====================== */
 
 .activity-area{
@@ -3453,7 +3453,7 @@ activity css
 
 
 /* ===================
-cruise css 
+cruise css
 ====================== */
 
 .cruise-area{
@@ -3621,7 +3621,7 @@ cruise css
 
 
 /* ===================
-listing single css 
+listing single css
 ====================== */
 
 .listing-header{
@@ -4457,7 +4457,7 @@ listing single css
 
 
 /* ===================
-deal css 
+deal css
 ====================== */
 
 .deal-area{
@@ -4535,7 +4535,7 @@ deal css
 
 
 /* ===================
-download css 
+download css
 ====================== */
 
 .download-area{
@@ -4760,14 +4760,14 @@ booking sort
 
 
 /* ===================
-flight booking css 
+flight booking css
 ====================== */
 
 .flight-booking-item{
   background: #fff;
   border-radius: 12px;
   margin-bottom: 25px;
-  padding: 20px 20px 15px 20px; 
+  padding: 20px 20px 15px 20px;
   box-shadow: 0 0 40px 5px rgb(0 0 0 / 5%);
 }
 
@@ -5183,7 +5183,7 @@ flight booking css
 
 
 /* ===================
-cart css 
+cart css
 ====================== */
 
 .cart-area thead tr {
@@ -5348,7 +5348,7 @@ cart css
 
 
 /* ===================
-booking css 
+booking css
 ====================== */
 
 .booking-widget {
@@ -5540,7 +5540,7 @@ booking css
 .order-total span {
   font-weight: bold;
   color: #F96768;
-} 
+}
 
 .booking-payment-area .nav-link{
   background: transparent !important;
@@ -5597,7 +5597,7 @@ booking css
 
 
 /* ===================
-booking confirm css 
+booking confirm css
 ====================== */
 
 .booking-confirm-content {
@@ -5672,7 +5672,7 @@ booking confirm css
 
 
 /* ===================
-about css 
+about css
 ====================== */
 
 .about-area {
@@ -5826,7 +5826,7 @@ about css
 
 
 /* ===================
-service css 
+service css
 ====================== */
 
 .service-area {
@@ -5965,7 +5965,7 @@ service single
 
 
 /* ===================
-feature css 
+feature css
 ====================== */
 
 .feature-area {
@@ -6022,7 +6022,7 @@ feature css
 
 
 /* ===================
-video css 
+video css
 ====================== */
 
 .video-content {
@@ -6094,7 +6094,7 @@ video css
 
 
 /* ===================
-step/process css 
+step/process css
 ====================== */
 
 .process-single {
@@ -6178,7 +6178,7 @@ step/process css
 
 
 /* ===================
-testimonial css 
+testimonial css
 ====================== */
 
 .testimonial-area {
@@ -6320,7 +6320,7 @@ testimonial css
 
 
 /* ===================
-counter css 
+counter css
 ====================== */
 
 .counter-area {
@@ -6394,7 +6394,7 @@ counter css
 
 
 /* ===================
-cta-area css 
+cta-area css
 ====================== */
 
 .cta-area {
@@ -6444,7 +6444,7 @@ cta-area css
 
 
 /* ========================
-gallery css 
+gallery css
 =========================== */
 
 .gallery-item {
@@ -6533,7 +6533,7 @@ gallery css
 
 
 /* ===================
-mission css 
+mission css
 ====================== */
 
 .mission-img{
@@ -6596,7 +6596,7 @@ mission css
 
 
 /* ===================
-career css 
+career css
 ====================== */
 
 .career-item{
@@ -6698,7 +6698,7 @@ career css
 
 
 /* ===================
-career single css 
+career single css
 ====================== */
 .job-single-img img{
   border-radius: 10px;
@@ -6743,7 +6743,7 @@ career single css
 
 
 /* ===================
-blog css 
+blog css
 ====================== */
 
 .blog-item {
@@ -7280,7 +7280,7 @@ partner css
 
 
 /* ===================
-contact us css 
+contact us css
 ====================== */
 
 .contact-wrapper {
@@ -7387,7 +7387,7 @@ contact us css
 
 
 /* ===================
-team css 
+team css
 ====================== */
 
 .team-area {
@@ -7539,7 +7539,7 @@ team css
 
 
 /* ===================
-pricing css 
+pricing css
 ====================== */
 
 .pricing-item {
@@ -7607,7 +7607,7 @@ pricing css
 
 
 /* ===================
-faq css 
+faq css
 ====================== */
 
 .faq-area .accordion-item {
@@ -7765,7 +7765,7 @@ breadcrumb css
 
 
 /* ===================
-pagination css 
+pagination css
 ====================== */
 
 .pagination {
@@ -7804,7 +7804,7 @@ pagination css
 
 
 /* ===================
-auth css 
+auth css
 ====================== */
 
 .login-form {
@@ -7990,7 +7990,7 @@ auth css
 
 
 /* ===================
-user profile css 
+user profile css
 ====================== */
 
 .header-account img {
@@ -8473,7 +8473,7 @@ user profile css
 }
 
 .add-listing-form .nice-select {
-  /* width: 100%; */
+  width: 100%;
   height: 56px;
   line-height: 55px;
   border-radius: 12px;
@@ -8865,7 +8865,7 @@ user profile css
 
 
 /* ===================
-coming soon css 
+coming soon css
 ====================== */
 
 .coming-soon {
@@ -8984,7 +8984,7 @@ coming soon css
 
 
 /* ===================
-error css 
+error css
 ====================== */
 
 .error-wrapper {
@@ -9026,7 +9026,7 @@ error css
 
 
 /* ===================
-terms/privacy css 
+terms/privacy css
 ====================== */
 
 .terms-content:not(:last-child) {
@@ -9059,7 +9059,7 @@ terms/privacy css
 
 
 /* ===================
-footer css 
+footer css
 ====================== */
 
 .footer-area {
