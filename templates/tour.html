@@ -1062,25 +1062,31 @@
 {#                                        </div>#}
 {#                                    </div>#}
                                 </div>
-                                <div class="form-group form-group--inline col col-sm-auto">
-                                    <div class="input-group input-group--white input-group--append">
-                                        <select class="input js-input-select" data-placeholder="">
-                                            <option value="1" selected="selected">All Categories
-                                            </option>
-                                            <option value="2">Food & Nightlife
-                                            </option>
-                                            <option value="3">Hot Air Balloon
-                                            </option>
-                                            <option value="4">Mountain Climbing
-                                            </option>
-                                            <option value="5">Bike Ride
-                                            </option>
-                                        </select><span class="input-group__arrow">
+                                <div class="toolbox__status input-group input-group--white input-group--append"  style="width:200px;">
+                                        <input class="input input--select" type="text" value="All Category"
+                                            data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
+                                        <div
+                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
+                                            <a onclick="load_tours(null, 'All Category')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All Category"><span class="marker-item"></span> All Category
+                                            </a>
+                                            <a onclick="load_tours(null, 'Food & Nightlife')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="Food & Nightlife"><span class="marker-item"></span> Food & Nightlife
+                                            </a>
+                                            <a onclick="load_tours(null, 'Hot Air Balloon')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="Hot Air Balloon"><span class="marker-item"></span> Hot Air Balloon
+                                            </a>
+                                            <a onclick="load_tours(null, 'Mountain Climbing')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="Mountain Climbing"><span class="marker-item"></span> Mountain Climbing
+                                            </a>
+                                            <a onclick="load_tours(null, 'Bike Ride')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="Bike Ride"><span class="marker-item"></span> Bike Ride
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
                                         <input class="input input--select" type="text" value="All status"
@@ -1090,13 +1096,17 @@
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All status"><span class="marker-item"></span> All status</a>
-                                            <a class="dropdown-menu__item" href="#" tabindex="0"
+                                            <a onclick="load_tours('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All status"><span class="marker-item"></span> All status
+                                            </a>
+                                            <a onclick="load_tours('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
                                                 data-value="Published"><span class="marker-item color-green"></span>
-                                                Published</a><a class="dropdown-menu__item" href="#" tabindex="0"
+                                                Published
+                                            </a>
+                                            <a onclick="load_tours('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
                                                 data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted</a>
+                                                Deleted
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -1175,64 +1185,8 @@
                                     <th class="table__actions"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tour-container">
 
-                            {% for tour in all_tours %}
-                            <tr class="table__row">
-                                    <td class="table__td">
-                                        <div class="table__checkbox table__checkbox--all">
-                                            <label class="checkbox">
-                                                <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
-                                                        <svg class="icon-icon-checked">
-                                                            <use xlink:href="#icon-checked"></use>
-                                                        </svg></span></span>
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">{{ tour.id }}</span>
-                                    </td>
-                                    <td class="table__td">{{ tour.name}}</td>
-                                    <td class="table__td"><span class="text-grey">{{ tour.category }}</span>
-                                    </td>
-                                    <td class="table__td"><span>{{ tour.price }}</span>
-                                    </td>
-                                    <td class="d-none d-lg-table-cell table__td"><span class="text-grey">{{ tour.start_time }}</span>
-                                    </td>
-                                    <td class="d-none d-sm-table-cell table__td">
-
-                                            <div class="table__status"><span class="table__status-icon color-green"></span>
-                                            {{ tour.status }}
-                                        </div>
-
-                                    </td>
-                                    <td class="table__td table__actions">
-                                        <div class="items-more">
-                                            <button class="items-more__button">
-                                                <svg class="icon-icon-more">
-                                                    <use xlink:href="#icon-more"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="dropdown-items dropdown-items--right">
-                                                <div class="dropdown-items__container">
-                                                    <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-view">
-                                                                        <use xlink:href="#icon-view"></use>
-                                                                    </svg></span>Details</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a href="/manager/delete_activity/1" class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-trash">
-                                                                        <use xlink:href="#icon-trash"></use>
-                                                                    </svg></span>Delete</a>
-                                                         </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -1726,6 +1680,7 @@
 			}
 		});
 	</script>
+    <script src="../static/js/load_tour.js"></script>
     <script src="../static/js/gsap/gsap.min.js"></script>
     <script src="../static/js/gsap/ScrollToPlugin.min.js"></script>
     <script src="../static/js/gsap/ScrollTrigger.min.js"></script>

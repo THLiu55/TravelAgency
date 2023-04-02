@@ -111,21 +111,7 @@ def delete_activity():
 
 @bp.route('/activities', methods=['GET', 'POST'])
 def activities():
-    db.create_all()
-    page = Activity.query.paginate(page=1, per_page=100)
-    published_page = Activity.query.filter_by(status="published").paginate(
-        page=1, per_page=100
-    )
-    deleted_page = Activity.query.filter_by(status="deleted").paginate(
-        page=1, per_page=100
-    )
-
-    return render_template(
-        "attractions.html",
-        page=page,
-        published_page=published_page,
-        deleted_page=deleted_page,
-    )
+    return render_template("attractions.html")
 
 
 ### CHAT RELATED ###
@@ -216,7 +202,30 @@ def add_tour():
     return redirect(url_for("manager.tours"))
 
 
+@bp.route("/load_tours", methods=["POST"])
+def load_tours():
+    category = request.form.get("category")
+    status = request.form.get("publish")
+    q = Tour.query
+    if category != "All Category":
+        q = q.filter_by(category=category)
+    if status != "All Status":
+        q = q.filter_by(status=status)
+    tours = [tour.serialize() for tour in q.all()]
+    return jsonify({"code": 200, "content": tours})
+
+
+@bp.route('/delete_tour', methods=['GET', 'POST'])
+def delete_tour():
+    tour_id = request.form.get('id')
+    tour = Tour.query.get(tour_id)
+    if tour is None:
+        return jsonify({'code': 400, 'message': "no activity found"})
+    tour.status = "deleted"
+    db.session.commit()
+    return redirect(url_for('manager.tours'))
+
+
 @bp.route("/tours")
 def tours():
-    all_tours = Tour.query.paginate(page=1, per_page=100)
-    return render_template("tour.html", all_tours=all_tours)
+    return render_template("tour.html")

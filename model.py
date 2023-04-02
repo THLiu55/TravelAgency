@@ -168,3 +168,13 @@ class Tour(db.Model):
     contact_phone = db.Column(db.String(255))
     review = db.relationship('TourReview', backref='product')
     orders = db.relationship('TourOrder', backref='product')
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'category': self.category,
+            'status': self.status,
+            'name': self.name,
+            'start_time': self.start_time,
+            'price': self.price
+        }
