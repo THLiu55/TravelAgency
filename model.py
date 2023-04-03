@@ -76,6 +76,7 @@ class Activity(db.Model):
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
+    view_num = db.Column(db.Integer)
     review = db.relationship('ActivityReview', backref='product')
     orders = db.relationship('ActivityOrder', backref='product')
 
@@ -166,6 +167,7 @@ class Tour(db.Model):
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
+    view_num = db.Column(db.Integer)
     review = db.relationship('TourReview', backref='product')
     orders = db.relationship('TourOrder', backref='product')
 
@@ -178,3 +180,58 @@ class Tour(db.Model):
             'start_time': self.start_time,
             'price': self.price
         }
+
+
+class Hotel(db.Model):
+    __tablename__ = 'hotels'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    status = db.Column(db.String(255))
+    min_price = db.Column(db.Float)
+    room_num = db.Column(db.Integer)
+    city = db.Column(db.String(255))
+    state = db.Column(db.String(255))
+    address = db.Column(db.Text)
+    min_stay = db.Column(db.String(255))
+    security = db.Column(db.String(255))
+    on_site_staff = db.Column(db.String(255))
+    house_keeping = db.Column(db.String(255))
+    front_desk = db.Column(db.String(255))
+    bathroom = db.Column(db.String(255))
+    room_type_num = db.Column(db.Integer)
+    images = db.Column(db.Text)
+    description = db.Column(db.Text)
+    room_detail = db.Column(db.Text)
+    amenities = db.Column(db.Text)
+    total_star = db.Column(db.Integer)
+    review_num = db.Column(db.Integer)
+    star_detail = db.Column(db.Text)
+    contact_name = db.Column(db.String(255))
+    contact_email = db.Column(db.String(255))
+    contact_phone = db.Column(db.String(255))
+    view_num = db.Column(db.Integer)
+    review = db.relationship('HotelReview', backref='product')
+    orders = db.relationship('HotelOrder', backref='product')
+
+
+class HotelOrder(db.Model):
+    __tablename__ = 'hotel_orders'
+
+    id = db.Column(db.Integer, primary_key=True)
+    startTime = db.Column(db.DateTime)
+    endTime = db.Column(db.DateTime)
+    cost = db.Column(db.Float)
+    purchased = db.Column(db.Boolean)
+    productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+
+
+class HotelReview(db.Model):
+    __tablename__ = 'hotel_reviews'
+
+    id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.Integer)
+    issueTime = db.Column(db.DateTime)
+    content = db.Column(db.Text)
+    customerID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
+    productID = db.Column(db.Integer, db.ForeignKey('tours.id'))
