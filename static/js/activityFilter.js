@@ -1,6 +1,6 @@
 // noinspection JSUnresolvedFunction,JSUnresolvedVariable
 
-function activity_filter() {
+function activity_filter(min,max) {
     const checkboxes = document.querySelectorAll('input[name="activity-type"]');
     const selectedValues = [];
 
@@ -9,7 +9,8 @@ function activity_filter() {
         selectedValues.push(checkbox.value);}
     });
 
-    let activityPrice = $('#priceRange1').val();
+    // let activityPrice = $('#priceRange1').val();
+    let activityPrice = [min,max];
 
     const checkboxes1 = document.querySelectorAll('input[name="activity-duration"]');
     const selectedValues1 = [];
@@ -69,3 +70,16 @@ function activity_filter() {
         }},
     });
 }
+$(function() {
+    $("#price-range1").slider({
+        // 设置滑块的最小值、最大值、初始值等参数
+        min: 0,
+        max: 10000,
+        values: [1500, 5000],
+        // 滑块停止拖动时触发的函数
+        stop: function(event, ui) {
+            activity_filter(ui.values[0], ui.values[1]);
+        }
+    });
+});
+
