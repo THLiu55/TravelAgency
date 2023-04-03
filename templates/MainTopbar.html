@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %} {% endblock %} </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/topbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    {% block csslink %} {% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light customizenav sticky-top" style="background: linear-gradient(to right,white, rgb(99,185,214)); padding: 10px; border-radius: 5px;">
+      <!-- <nav class="navbar navbar-light bg-light" style=" --bs-bg-opacity: 0;">
+        <a class="navbar-brand" href="#">
+
+      <button class="btn btn-primary" type="button"  data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas">
+        <img src="../static/image/profile.svg" width="40" height="30" class="d-inline-block align-top" alt="" style="border-radius: 50%;" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="offcanvas" >
+
+
+      </button>
+
+      </a>
+</nav> -->
+        <a class="navbar-brand" href="{{ url_for('customer.homepage') }}" style="flex-basis: 20%; color: rgb(14, 123, 159);">Travel Agency Name</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item active">
+              <a class="nav-link test" href="#" style="color: rgb(56, 119, 173); border-radius: 50px;">
+
+                    Home
+
+                </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#" style="color: rgb(56, 119, 173);"> Travel Destinations</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle test" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color: rgb(56, 119, 173);">
+                Booking
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" >Acoomodation</a></li>
+                <li><a class="dropdown-item" href="#">Review</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link test" href="#"style="color: rgb(56, 119, 173);">Tourism Atrraction</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle test" href="#" role="button" data-toggle="dropdown" aria-expanded="false" style="color: rgb(56, 119, 173);">
+                User center
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" >Profile</a></li>
+                <li><a class="dropdown-item" href="#">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit"  style=" margin-left: 20px;">Search</button>
+          </form>
+        </div>
+        <!-- Image and text -->
+
+    </nav>
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">HI, Username! </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" style="background: linear-gradient(to bottom,white, rgb(211, 233, 239)); ">
+        <ul style="margin-left: 0;padding-left: 0;padding-top: 5%;">
+          <li style="list-style: none;"><a href="#" class="nav-link test" style="font-size: 1.5em;border-radius: 10px; padding: 2%;">Profile</a></li>
+          <li style="list-style: none;"><a href="#" class="nav-link test" style="font-size: 1.5em;border-radius: 10px; padding: 2%;">Order history</a></li>
+          <li style="list-style: none;"><a href="#" class="nav-link test" style="font-size: 1.5em;border-radius: 10px;padding: 2%;">Log out</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+
+
+
+    {% block body %} {% endblock %}
+
+    <div class="footer">
+      <div class="copyright">
+        <svg class="svg-up" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+          viewBox="0 0 160.7 61.5" enable-background="new 0 0 160.7 61.5" xml:space="preserve">
+          <path fill="rgba(156, 216, 236, 0.865)"
+            d="M80.3,61.5c0,0,22.1-2.7,43.1-5.4s41-5.4,36.6-5.4c-21.7,0-34.1-12.7-44.9-25.4S95.3,0,80.3,0c-15,0-24.1,12.7-34.9,25.4S22.3,50.8,0.6,50.8c-4.3,0-6.5,0,3.5,1.3S36.2,56.1,80.3,61.5z">
+          </path>
+        </svg>
+
+        <ul class="info" style="list-style:none;">
+          <li>&copy; {{ _("Group 7 NULLGROUPNAMEEXCEPTION") }}</li>
+          <li>{{ _("Fourth Teach Building, Beijing") }}</li>
+          <li>{{ _("Tel: 123456") }}</li>
+          <li>{{ _("Handcrafted with love by Group 7") }}</li>
+        </ul>
+      </div>
+    </div>
+
+
+</body>
+{% block jsLink %}
+{% endblock %}
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+</html>
