@@ -5,6 +5,7 @@ from flask import Blueprint, render_template, request, jsonify, session, redirec
 from model import *
 from exts import db
 from utils.decorators import login_required
+import re
 
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
@@ -66,15 +67,43 @@ def activityDetail(activity_id):
 @bp.route('/activity_filter', methods=['GET', 'POST'])
 def activity_filter():
     activity_type = request.form.get("type1").split(",")
-    # activity_price = request.form['activityPrice']
-    activity_duration = request.form.getlist('activityDuration')
+    to_sort = request.form.get('sort_by')
+    if activity_type[0] == '':
+        activity_type = ['Food & Nightlife', 'Hot Air Balloon', 'Mountain Climbing', 'Bike Ride']
+    activity_price = request.form.get('activityPrice')
+    activity_price = activity_price.split(',')
+    min_price = int(activity_price[0])
+    max_price = int(activity_price[-1])
+    activity_duration = request.form.get('activityDuration').split(",")
+    if activity_duration[0] == '':
+        query = Activity.query.filter(Activity.category.in_(activity_type),
+                                      Activity.price.between(min_price, max_price)
+                                      )
+    else:
+        activity_duration = activity_duration[0].split('-')
+        min_hour = int(activity_duration[0])
+        max_hour = int(activity_duration[-1])
+        query = Activity.query.filter(Activity.category.in_(activity_type),
+                                      Activity.price.between(min_price, max_price),
+                                      Activity.duration.between(min_hour, max_hour)
+                                      )
+
     page = int(request.form.get('page'))
-    query = Activity.query.filter(Activity.category.in_(activity_type))
     pagination = query.paginate(page=page, per_page=9)
     activities = pagination.items
     for activity_i in activities:
         activity_i.contact_email = url_for('activity.activityDetail', activity_id=activity_i.id)
         activity_i.images = json.loads(activity_i.images)['images']
-        activity_i.images[0] = "../" + activity_i.images[0][activity_i.images[0].index('static'):].replace('\\','/')
+        activity_i.images[0] = "../" + activity_i.images[0][activity_i.images[0].index('static'):].replace('\\', '/')
+
+    if to_sort == '2':
+        activities = sorted(activities, key=lambda activity: activity.view_num, reverse=False)
+
+    if to_sort == '3':
+        activities = sorted(activities, key=lambda activity: activity.price, reverse=False)
+
+    if to_sort == '4':
+        activities = sorted(activities, key=lambda activity: activity.price, reverse=True)
+
     activities = [activity.to_dict() for activity in activities]
     return jsonify({"activities": activities, "page": 1})
