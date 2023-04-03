@@ -14,6 +14,7 @@ load_dotenv()
 # app config
 app = Flask(__name__, static_folder='static')
 app.config.from_object(config_by_name[os.getenv("ENV_NAME")])
+print(os.getenv("ENV_NAME"))
 
 # logger config
 handler = RotatingFileHandler("./logs/app.log", maxBytes=10000, backupCount=1)

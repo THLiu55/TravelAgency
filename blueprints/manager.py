@@ -21,8 +21,11 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 @bp.route("/")
 def manager_homepage():
-    return render_template("accommodation.html")
+    return render_template("manager.html")
 
+# @bp.route('/destination', methods=["POST"])
+# def destinationList():
+#     return render_template("destinations.html")
 
 @bp.route("/load_activities", methods=["POST"])
 def load_activities():
@@ -111,7 +114,7 @@ def delete_activity():
 
 @bp.route('/activities', methods=['GET', 'POST'])
 def activities():
-    return render_template("attractions.html")
+    return render_template("activities.html")
 
 
 ### CHAT RELATED ###
@@ -229,3 +232,11 @@ def delete_tour():
 @bp.route("/tours")
 def tours():
     return render_template("tour.html")
+
+@bp.route("/Accommodations")
+def accommodations():
+    return render_template("accommodation.html")
+
+@bp.route("/flights")
+def flights():
+    return render_template("flight.html")

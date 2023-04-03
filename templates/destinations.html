@@ -928,27 +928,17 @@
                       </svg></span></a>
                                 <div class="collapse" id="Travel-Booking">
                                     <ul class="sidebar__collapse-menu">
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="attractions.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Attractions</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.activities') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Activities</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="accommodation.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Accommodation</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.tours') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Tours</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="destinations.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Destinations</span></a>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.accommodations') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Accommodations</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.flights') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Flights</span></a>
                                         </li>
                                         <li class="sidebar__menu-item"><a class="sidebar__link" href="order-details.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
                                         </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-invoice.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Invoice</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-status.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Status</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-history.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order History</span></a>
-                                        </li>
-                                           
-
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-messages.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Messages</span></a>
-                                        </li>
                                         <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-account-v2.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Account</span></a>
                                         </li>
                                         <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-wishlist.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
                                         </li>
@@ -965,24 +955,7 @@
                             <li class="sidebar__menu-item"><a class="sidebar__link" href="contacts.html" aria-expanded="false"><span class="sidebar__link-icon">
                       <svg class="icon-icon-contacts">
                         <use xlink:href="#icon-contacts"></use>
-                      </svg></span><span class="sidebar__link-text">Contacts</span></a>
-                            </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="#" data-toggle="collapse" data-target="#Auth" aria-expanded="false"><span class="sidebar__link-icon">
-                      <svg class="icon-icon-password">
-                        <use xlink:href="#icon-password"></use>
-                      </svg></span><span class="sidebar__link-text">Authentication</span><span class="sidebar__link-arrow">
-                      <svg class="icon-icon-keyboard-down">
-                        <use xlink:href="#icon-keyboard-down"></use>
-                      </svg></span></a>
-                                <div class="collapse" id="Auth">
-                                    <ul class="sidebar__collapse-menu">
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-login.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Login</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-create.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Create Account</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="auth-forgot.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Forgot</span></a>
-                                    </ul>
-                                </div>
+                      </svg></span><span class="sidebar__link-text">Logout</span></a>
                             </li>
                         </ul>
                     </nav>
