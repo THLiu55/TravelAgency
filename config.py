@@ -5,8 +5,7 @@ class Config(object):
     DEBUG = False
 
     # SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getenv("DB_URI")
-    # SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getenv("ENV_NAME") + ".sqlite3"
-    SQLALCHEMY_DATABASE_URI = r"sqlite:///C:\project2\travelagency\travelAgency.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getenv("ENV_NAME") + ".sqlite3"
     MAIL_SERVER = os.getenv("MAIL_SERVER")
     MAIL_PORT = (
         int(os.getenv("MAIL_PORT")) if os.getenv("MAIL_PORT") is not None else 25

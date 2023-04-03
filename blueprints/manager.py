@@ -233,6 +233,72 @@ def delete_tour():
 def tours():
     return render_template("tour.html")
 
+@bp.route("/add_hotel")
+def add_hotel():
+    hotel = Hotel()
+    hotel.status = "published"
+    hotel.name = request.form.get("name")
+    hotel.min_price = float(request.form.get("min_price"))
+    hotel.room_num = int(request.form.get("room_num"))
+    hotel.city = request.form.get("city")
+    hotel.state = request.form.get("state")
+    hotel.address = request.form.get("address")
+    hotel.min_stay = request.form.get("min_stay")
+    hotel.security = request.form.get("security")
+    hotel.on_site_staff = request.form.get("on_site_stuff")
+    hotel.house_keeping = request.form.get("house_keeping")
+    hotel.front_desk = request.form.get("front_desk")
+    hotel.bathroom = request.form.get("bathroom")
+    hotel.room_type_num = request.form.get("room_type_num")
+    hotel.description = request.form.get("description")
+    images = request.files.getlist("images")
+    max_id = db.session.query(db.func.max(Tour.id)).scalar()
+    if max_id is None:
+        max_id = 1
+    else:
+        max_id = max_id + 1
+    img_routes = []
+    folder_path = os.path.join(current_app.root_path, "static", "hotel_img", str(max_id))
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+    for image in images:
+        save_path = os.path.join(folder_path, image.filename)
+        image.save(save_path)
+        img_routes.append(save_path)
+    hotel.images = json.dumps({"images": img_routes})
+    hotel.total_star = 0
+    hotel.review_num = 0
+    hotel.star_detail = json.dumps({"star_detail": []})
+    hotel.contact_name = request.form.get("contact_name")
+    hotel.contact_email = request.form.get("contact_email")
+    hotel.contact_phone = request.form.get("contact_phone")
+    type_num = int(hotel.room_type_num)
+    des = []
+    i = 1
+    while i <= type_num:
+        sub_folder_path = os.path.join(folder_path, i)
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        images = request.files.getlist(f"room_images_{i}")
+        img_route = []
+        for image in images:
+            route = os.path.join(sub_folder_path, image.filename)
+            image.save(route)
+            img_route.append(route)
+        des.append({"id": i,
+                    "name": request.form.get(f"itinerary_name_{i}"),
+                    "price": request.form.get(f"itinerary_desc_{i}"),
+                    "picture": img_route})
+        i = i + 1
+    hotel.room_detail = json.dumps({"tour_des": des})
+    amenities = []
+    for i in range(1, 21):
+        amenities[i] = request.form.get(f"aminity{i}")
+    hotel.amenities = str(amenities)
+    db.session.add(hotel)
+    db.session.commit()
+    return redirect(url_for("manager.tours"))
+
 @bp.route("/accommodations")
 def accommodations():
     return render_template("accommodation.html")

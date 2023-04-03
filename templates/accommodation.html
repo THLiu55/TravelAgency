@@ -1947,16 +1947,16 @@
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
                                                             <label>Total Number Of Rooms & Suites</label>
-                                                            <input type="number" class="form-control" name="name"
+                                                            <input type="number" class="form-control" name="room_num"
                                                                 placeholder="Enter total rooms">
                                                         </div>
                                                     </div>
 
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Price</label>
-                                                            <input type="text" class="form-control" name="price"
-                                                                placeholder="Enter price">
+                                                            <label>Minimal Price</label>
+                                                            <input type="text" class="form-control" name="min_price"
+                                                                placeholder="Enter Minimal price">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
@@ -2014,20 +2014,20 @@
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                                 <label>Minimum Stay</label>
-                                                                <select class="select">
+                                                                <select name="min_stay" class="select">
                                                                     <option value="">Select Minimum Stay</option>
-                                                                    <option value="1">2 Nights Or Less</option>
-                                                                    <option value="2">More Than 2 Nights</option>
+                                                                    <option value="2 Nights Or Less">2 Nights Or Less</option>
+                                                                    <option value="More Than 2 Nights">More Than 2 Nights</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                                 <label>Security</label>
-                                                                <select class="select">
+                                                                <select name="security" class="select">
                                                                     <option value="">Select Security</option>
-                                                                    <option value="1">On Site</option>
-                                                                    <option value="2">None</option>
+                                                                    <option value="On Site">On Site</option>
+                                                                    <option value="None">None</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -2189,7 +2189,7 @@
 
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity1"
                                                                     type="checkbox" value="" id="aminity1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity1">
                                                                     Airport Transportation
@@ -2198,7 +2198,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity2"
                                                                     type="checkbox" value="" id="aminity2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity2">
                                                                     Bar / Lounge
@@ -2207,7 +2207,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity3"
                                                                     type="checkbox" value="" id="aminity3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity3">
                                                                     Beach
@@ -2216,7 +2216,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity4"
                                                                     type="checkbox" value="" id="aminity4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity4">
                                                                     Beverage Selection
@@ -2225,7 +2225,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity5"
                                                                     type="checkbox" value="" id="aminity5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity5">
                                                                     Swimming Pool
@@ -2234,7 +2234,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity6"
                                                                     type="checkbox" value="" id="aminity6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity6">
                                                                     WiFi
@@ -2243,7 +2243,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity7"
                                                                     type="checkbox" value="" id="aminity7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity7">
                                                                     Coffee
@@ -2252,7 +2252,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity8"
                                                                     type="checkbox" value="" id="aminity8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity8">
                                                                     Air Conditioning
@@ -2261,7 +2261,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity9"
                                                                     type="checkbox" value="" id="aminity9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity9">
                                                                     Entertainment
@@ -2270,7 +2270,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity10"
                                                                     type="checkbox" value="" id="aminity10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity10">
                                                                     Elevator In Building
@@ -2279,7 +2279,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity11"
                                                                     type="checkbox" value="" id="aminity11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity11">
                                                                     Wheelchair Access
@@ -2288,7 +2288,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity12"
                                                                     type="checkbox" value="" id="aminity12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity12">
                                                                     Fitness Facility
@@ -2297,7 +2297,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity13"
                                                                     type="checkbox" value="" id="aminity13" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity13">
                                                                     Breakfast
@@ -2306,7 +2306,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity14"
                                                                     type="checkbox" value="" id="aminity14" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity14">
                                                                     Handicap Accessible
@@ -2315,7 +2315,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity15"
                                                                     type="checkbox" value="" id="aminity15" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity15">
                                                                     Pets Allowed
@@ -2324,7 +2324,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity16"
                                                                     type="checkbox" value="" id="aminity16" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity16">
                                                                     Suitable For Events
@@ -2333,7 +2333,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity17"
                                                                     type="checkbox" value="" id="aminity17" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity17">
                                                                     Restaurant
@@ -2342,7 +2342,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity18"
                                                                     type="checkbox" value="" id="aminity18" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity18">
                                                                     Doorman
@@ -2351,7 +2351,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity19"
                                                                     type="checkbox" value="" id="aminity19" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity19">
                                                                     Free Parking
@@ -2360,7 +2360,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="aminity"
+                                                                <input class="form-check-input" name="aminity20"
                                                                     type="checkbox" value="" id="aminity20" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity20">
                                                                     Wine Bar
