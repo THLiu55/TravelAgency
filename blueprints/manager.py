@@ -233,7 +233,7 @@ def delete_tour():
 def tours():
     return render_template("tour.html")
 
-@bp.route("/Accommodations")
+@bp.route("/accommodations")
 def accommodations():
     return render_template("accommodation.html")
 
