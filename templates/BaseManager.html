@@ -938,13 +938,13 @@
                                     </li>
                                     <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.flights') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Flights</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="order-details.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.order_details') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.customers') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-wishlist.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.wish_list') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="reviews.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.reviews') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -952,7 +952,7 @@
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="chat.html" aria-expanded="false"><span class="sidebar__link-icon">
                   <svg class="icon-icon-chat">
                     <use xlink:href="#icon-chat"></use>
-                  </svg></span><span class="sidebar__link-text">Chat</span><span class="badge badge--red">20</span></a>
+                  </svg></span><span class="sidebar__link-text" href="{{ url_for('manager.chat') }}">Chat</span><span class="badge badge--red">20</span></a>
                         </li>
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="contacts.html" aria-expanded="false"><span class="sidebar__link-icon">
                   <svg class="icon-icon-contacts">
