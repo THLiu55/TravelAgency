@@ -13,6 +13,7 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
+    db.create_all()
     return render_template("Homepage.html")
 
 

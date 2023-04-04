@@ -21,11 +21,13 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 @bp.route("/")
 def manager_homepage():
+    db.create_all()
     return render_template("manager.html")
 
 # @bp.route('/destination', methods=["POST"])
 # def destinationList():
 #     return render_template("destinations.html")
+
 
 @bp.route("/load_activities", methods=["POST"])
 def load_activities():
@@ -92,7 +94,7 @@ def add_activity():
     activity.images = json.dumps({"images": img_routes})
     activity.total_star = 0
     activity.review_num = 0
-    activity.star_detail = json.dumps({"star_detail": []})
+    activity.star_detail = json.dumps({"star_detail": [0, 0, 0, 0, 0]})
     activity.contact_name = request.form.get("contact_name")
     activity.contact_email = request.form.get("contact_email")
     activity.contact_phone = request.form.get("contact_phone")
@@ -188,7 +190,7 @@ def add_tour():
     tour.images = json.dumps({"images": img_routes})
     tour.total_star = 0
     tour.review_num = 0
-    tour.star_detail = json.dumps({"star_detail": []})
+    tour.star_detail = json.dumps({"star_detail": [0, 0, 0, 0, 0]})
     tour.contact_name = request.form.get("contact_name")
     tour.contact_email = request.form.get("contact_email")
     tour.contact_phone = request.form.get("contact_phone")
@@ -233,7 +235,8 @@ def delete_tour():
 def tours():
     return render_template("tour.html")
 
-@bp.route("/add_hotel")
+
+@bp.route("/add_hotel", methods=["POST"])
 def add_hotel():
     hotel = Hotel()
     hotel.status = "published"
@@ -245,14 +248,15 @@ def add_hotel():
     hotel.address = request.form.get("address")
     hotel.min_stay = request.form.get("min_stay")
     hotel.security = request.form.get("security")
-    hotel.on_site_staff = request.form.get("on_site_stuff")
+    hotel.on_site_staff = request.form.get("on_site_staff")
     hotel.house_keeping = request.form.get("house_keeping")
     hotel.front_desk = request.form.get("front_desk")
     hotel.bathroom = request.form.get("bathroom")
-    hotel.room_type_num = request.form.get("room_type_num")
+    hotel.room_type_num = request.form.get("typenum")
     hotel.description = request.form.get("description")
+    hotel.view_num = 0
     images = request.files.getlist("images")
-    max_id = db.session.query(db.func.max(Tour.id)).scalar()
+    max_id = db.session.query(db.func.max(Hotel.id)).scalar()
     if max_id is None:
         max_id = 1
     else:
@@ -268,7 +272,7 @@ def add_hotel():
     hotel.images = json.dumps({"images": img_routes})
     hotel.total_star = 0
     hotel.review_num = 0
-    hotel.star_detail = json.dumps({"star_detail": []})
+    hotel.star_detail = json.dumps({"star_detail": [0, 0, 0, 0, 0]})
     hotel.contact_name = request.form.get("contact_name")
     hotel.contact_email = request.form.get("contact_email")
     hotel.contact_phone = request.form.get("contact_phone")
@@ -276,32 +280,33 @@ def add_hotel():
     des = []
     i = 1
     while i <= type_num:
-        sub_folder_path = os.path.join(folder_path, i)
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
-        images = request.files.getlist(f"room_images_{i}")
-        img_route = []
-        for image in images:
-            route = os.path.join(sub_folder_path, image.filename)
-            image.save(route)
-            img_route.append(route)
+        sub_folder_path = os.path.join(folder_path, str(i))
+        if not os.path.exists(sub_folder_path):
+            os.makedirs(sub_folder_path)
+        image = request.files.get(f"fileInput{i}")
+        route = os.path.join(sub_folder_path, image.filename)
+        image.save(route)
         des.append({"id": i,
-                    "name": request.form.get(f"itinerary_name_{i}"),
-                    "price": request.form.get(f"itinerary_desc_{i}"),
-                    "picture": img_route})
+                    "name": request.form.get(f"hotelroom_name_{i}"),
+                    "price": request.form.get(f"hotelroom_price_{i}"),
+                    "picture": route})
         i = i + 1
-    hotel.room_detail = json.dumps({"tour_des": des})
+    hotel.room_detail = json.dumps({"hotel_des": des})
     amenities = []
     for i in range(1, 21):
-        amenities[i] = request.form.get(f"aminity{i}")
+        amin = request.form.get(f"aminity{i}")
+        if amin is not None:
+            amenities.append(amin)
     hotel.amenities = str(amenities)
     db.session.add(hotel)
     db.session.commit()
-    return redirect(url_for("manager.tours"))
+    return redirect(url_for("manager.accommodations"))
+
 
 @bp.route("/accommodations")
 def accommodations():
     return render_template("accommodation.html")
+
 
 @bp.route("/flights")
 def flights():

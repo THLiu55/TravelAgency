@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" data-theme="light">
+<html class="no-js" lang="en" data-theme="light"
 
 {% extends "BaseManager.html" %}
 {% block title %} Manager Accommodations {% endblock %}
@@ -8,10 +8,508 @@
 {% block csslink %}
 {% endblock %}
 
+		.file-name-input {
+			display: inline-block;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 70px;
+		}
+    </style>
+</head>
 
 {% block body %}
     <div class="sidebar-backdrop"></div>
     <div class="page-wrapper">
+        <header class="header">
+            <div class="header__inner">
+                <div class="container-fluid">
+                    <div class="header__row row justify-content-between">
+                        <div class="header__col-left col d-flex align-items-center">
+                            <div class="header__left-toggle">
+                                <button class="header__toggle-menu toggle-sidebar" type="button">
+                                    <svg class="icon-icon-menu">
+                                        <use xlink:href="#icon-menu"></use>
+                                    </svg>
+                                </button>
+                                <button class="header__toggle-search toggle-search">
+                                    <svg class="icon-icon-search">
+                                        <use xlink:href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="header__search">
+                                <form class="form-search" action="#" method="GET">
+                                    <div class="form-search__container"><span class="form-search__icon-left">
+                                            <svg class="icon-icon-search">
+                                                <use xlink:href="#icon-search"></use>
+                                            </svg></span>
+                                        <input class="form-search__input" type="text" placeholder="Search..." />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header__col-right col d-flex align-items-center">
+                            <div class="header__language dropdown">
+                                <button class="header__toggle-language" type="button" data-toggle="dropdown"
+                                    data-tippy-content="Language" data-tippy-placement="bottom">
+                                    <svg class="icon-icon-language">
+                                        <use xlink:href="#icon-language"></use>
+                                    </svg> <span class="icon-arrow-down">
+                                        <svg class="icon-icon-arrow-down">
+                                            <use xlink:href="#icon-arrow-down"></use>
+                                        </svg></span>
+                                </button>
+                                <div class="lang-menu dropdown-menu">
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/us.svg"
+                                            alt="#" /><span class="lang-menu__text">En</span>
+                                    </button>
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/gb.svg"
+                                            alt="#" /><span class="lang-menu__text">Gb</span>
+                                    </button>
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/ru.svg"
+                                            alt="#" /><span class="lang-menu__text">Ru</span>
+                                    </button>
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/cn.svg"
+                                            alt="#" /><span class="lang-menu__text">Cn</span>
+                                    </button>
+                                    <div class="lang-menu__separate"></div><a
+                                        class="lang-menu__button lang-menu__button--all dropdown-menu__item" href="#"
+                                        tabindex="0">Learn</a>
+                                </div>
+                            </div>
+                            <div class="header__tools">
+                                <div class="header__notes header__tools-item">
+                                    <a class="header__tools-toggle header__tools-toggle--message" href="#"
+                                        data-tippy-content="Notifications" data-tippy-placement="bottom"
+                                        data-toggle="dropdown">
+                                        <svg class="icon-icon-message">
+                                            <use xlink:href="#icon-message"></use>
+                                        </svg> <span class="badge-signal"></span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu__top dropdown-menu__item"><span
+                                                class="dropdown-menu__title">Notifications</span><span
+                                                class="badge badge--red">5</span><a class="dropdown-menu__clear-all"
+                                                href="#" role="button">Clear All</a>
+                                        </div>
+                                        <div class="dropdown-menu__items scrollbar-thin scrollbar-visible"
+                                            data-simplebar="data-simplebar">
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-green">
+                                                            <svg class="icon-icon-cart">
+                                                                <use xlink:href="#icon-cart"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New Order Received</h4>
+                                                        <span class="dropdown-menu__item-time">25 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <svg class="icon-icon-bill">
+                                                                <use xlink:href="#icon-bill"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New invoice received</h4>
+                                                        <span class="dropdown-menu__item-time">5 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-teal">
+                                                            <svg class="icon-icon-truck">
+                                                                <use xlink:href="#icon-truck"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">new batch is shipped</h4>
+                                                        <span class="dropdown-menu__item-time">10 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-green">
+                                                            <svg class="icon-icon-cart">
+                                                                <use xlink:href="#icon-cart"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New Order Received</h4>
+                                                        <span class="dropdown-menu__item-time">25 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <svg class="icon-icon-bill">
+                                                                <use xlink:href="#icon-bill"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New invoice received</h4>
+                                                        <span class="dropdown-menu__item-time">5 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu__divider"></div><a
+                                            class="dropdown-menu__item dropdown-menu__link-all" href="#">View all
+                                            Notifications
+                                            <svg class="icon-icon-keyboard-right">
+                                                <use xlink:href="#icon-keyboard-right"></use>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                                <div class="header__messages header__tools-item">
+                                    <a class="header__tools-toggle header__tools-toggle--bell" href="#"
+                                        data-tippy-content="Messages" data-tippy-placement="bottom"
+                                        data-toggle="dropdown">
+                                        <svg class="icon-icon-bell">
+                                            <use xlink:href="#icon-bell"></use>
+                                        </svg> <span class="badge-signal"></span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu__top dropdown-menu__item"><span
+                                                class="dropdown-menu__title">Messages</span><span
+                                                class="badge badge--red">7</span><a class="dropdown-menu__clear-all"
+                                                href="#" role="button">Clear All</a>
+                                        </div>
+                                        <div class="dropdown-menu__items scrollbar-thin scrollbar-visible"
+                                            data-simplebar="data-simplebar">
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-teal">
+                                                            <div class="dropdown-menu__item-icon-text">MA</div>
+                                                            <img src="../static/img/content/humans/item-4.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--green"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Mark Anderson</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">25 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange-dark">
+                                                            <div class="dropdown-menu__item-icon-text">JT</div>
+                                                            <img src="../static/img/content/humans/item-1.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--green"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Jennifer Tang</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">3 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <div class="dropdown-menu__item-icon-text">SA</div>
+                                                            <img src="../static/img/content/humans/item-5.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Stephen Allen</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">10 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-red">
+                                                            <div class="dropdown-menu__item-icon-text">WS</div>
+                                                            <img src="../static/img/content/humans/item-6.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--red"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Walter Sanders</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">30 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-blue">
+                                                            <div class="dropdown-menu__item-icon-text">SA</div>
+                                                            <img src="../static/img/content/humans/item-5.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--green"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Stephen Allen</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">2h hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-green">
+                                                            <div class="dropdown-menu__item-icon-text">JH</div>
+                                                            <img src="../static/img/content/humans/item-7.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">John Hendrix</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">8 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <div class="dropdown-menu__item-icon-text">RH</div>
+                                                            <img src="../static/img/content/humans/item-8.jpg"
+                                                                alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--red"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Ryan Henderson</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
+                                                                Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">5 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu__divider"></div><a
+                                            class="dropdown-menu__item dropdown-menu__link-all" href="#">View all
+                                            Messages
+                                            <svg class="icon-icon-keyboard-right">
+                                                <use xlink:href="#icon-keyboard-right"></use>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header__profile dropdown">
+                                <a class="header__profile-toggle dropdown__toggle" href="#" data-toggle="dropdown">
+                                    <div class="header__profile-image"><span
+                                            class="header__profile-image-text">MA</span>
+                                        <img src="../static/img/content/humans/item-4.jpg" alt="#" />
+                                    </div>
+                                    <div class="header__profile-text"><span>Mark Anderson</span>
+                                    </div><span class="icon-arrow-down">
+                                        <svg class="icon-icon-arrow-down">
+                                            <use xlink:href="#icon-arrow-down"></use>
+                                        </svg></span>
+                                </a>
+                                <div class="profile-dropdown dropdown-menu dropdown-menu--right"><a
+                                        class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                            class="profile-dropdown__icon">
+                                            <svg class="icon-icon-user">
+                                                <use xlink:href="#icon-user"></use>
+                                            </svg></span><span>My Profile</span></a><a
+                                        class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                            class="profile-dropdown__icon">
+                                            <svg class="icon-icon-chat">
+                                                <use xlink:href="#icon-chat"></use>
+                                            </svg></span><span>My chat</span></a><a
+                                        class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                            class="profile-dropdown__icon">
+                                            <svg class="icon-icon-task">
+                                                <use xlink:href="#icon-task"></use>
+                                            </svg></span><span>Tasks</span></a><a
+                                        class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                            class="profile-dropdown__icon">
+                                            <svg class="icon-icon-settings">
+                                                <use xlink:href="#icon-settings"></use>
+                                            </svg></span><span>Settings</span></a>
+                                    <div class="dropdown-menu__divider"></div><a
+                                        class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                            class="profile-dropdown__icon">
+                                            <svg class="icon-icon-logout">
+                                                <use xlink:href="#icon-logout"></use>
+                                            </svg></span><span>Logout</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <aside class="sidebar">
+            <div class="sidebar__backdrop"></div>
+            <div class="sidebar__container">
+                <div class="sidebar__top">
+                    <div class="container container--sm">
+                        <a class="sidebar__logo" href="manager.html">
+                            <img class="sidebar__logo-icon" src="../static/img/content/logotype.svg" alt="#" width="44" />
+                            <div class="sidebar__logo-text">Group7</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="sidebar__content" data-simplebar="data-simplebar">
+                    <nav class="sidebar__nav">
+                        <ul class="sidebar__menu">
+                            <li class="sidebar__menu-item"><a class="sidebar__link active" href="manager.html" aria-expanded="true"><span class="sidebar__link-icon">
+                      <svg class="icon-icon-dashboard">
+                        <use xlink:href="#icon-dashboard"></use>
+                      </svg></span><span class="sidebar__link-text">Dashboard</span></a>
+                            </li>
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html" data-toggle="collapse" data-target="#Travel-Booking" aria-expanded="false"><span class="sidebar__link-icon">
+                      <svg class="icon-icon-cart">
+                        <use xlink:href="#icon-cart"></use>
+                      </svg></span><span class="sidebar__link-text">Product & Orders</span><span class="sidebar__link-arrow">
+                      <svg class="icon-icon-keyboard-down">
+                        <use xlink:href="#icon-keyboard-down"></use>
+                      </svg></span></a>
+                                <div class="collapse" id="Travel-Booking">
+                                    <ul class="sidebar__collapse-menu">
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.activities') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Activities</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.tours') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Tours</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.accommodations') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Accommodations</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.flights') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Flights</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-details.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-wishlist.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
+                                        </li>
+                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="reviews.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="chat.html" aria-expanded="false"><span class="sidebar__link-icon">
+                      <svg class="icon-icon-chat">
+                        <use xlink:href="#icon-chat"></use>
+                      </svg></span><span class="sidebar__link-text">Chat</span><span class="badge badge--red">20</span></a>
+                            </li>
+                            <li class="sidebar__menu-item"><a class="sidebar__link" href="contacts.html" aria-expanded="false"><span class="sidebar__link-icon">
+                      <svg class="icon-icon-contacts">
+                        <use xlink:href="#icon-contacts"></use>
+                      </svg></span><span class="sidebar__link-text">Logout</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </aside>
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
@@ -956,7 +1454,7 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-
+                            <form action="{{ url_for('manager.add_hotel') }}" method="post" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
                                     <h4 class="user-profile-card-title">Add Accomodation</h4>
@@ -988,17 +1486,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
-                                                        {# <div class="form-group">#}
-                                                            {# <label>Price Currency</label>#}
-                                                            {# <select class="select">#}
-                                                                {# <option value="">Select Currency</option>#}
-                                                                {# <option value="1">USD</option>#}
-                                                                {# <option value="2">GBP</option>#}
-                                                                {# <option value="3">EUR</option>#}
-                                                                {# <option value="4">CAD</option>#}
-                                                                {# <option value="5">AUD</option>#}
-                                                                {# </select>#}
-                                                            {# </div>#}
                                                     </div>
                                                     <h5 class="my-4">Location</h5>
                                                     <div class="col-lg-4">
@@ -1062,42 +1549,42 @@
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                                 <label>On Site Staff</label>
-                                                                <select class="select">
+                                                                <select name="on_site_staff" class="select">
                                                                     <option value="">Select On Site Staff</option>
-                                                                    <option value="1">Yes</option>
-                                                                    <option value="2">No</option>
+                                                                    <option value="Yes">Yes</option>
+                                                                    <option value="No">No</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                                 <label>Housekeeping</label>
-                                                                <select class="select">
+                                                                <select name="house_keeping" class="select">
                                                                     <option value="">Select Housekeeping</option>
-                                                                    <option value="1">Included In Room Rate</option>
-                                                                    <option value="2">Additional Fee</option>
+                                                                    <option value="Included In Room Rate">Included In Room Rate</option>
+                                                                    <option value="Additional Fee">Additional Fee</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                                 <label>Front Desk</label>
-                                                                <select class="select">
+                                                                <select name="front_desk" class="select">
                                                                     <option value="">Select Frequency</option>
-                                                                    <option value="1">24 Hour Staffing</option>
-                                                                    <option value="2">Limited Hours Staffing</option>
-                                                                    <option value="3">None</option>
+                                                                    <option value="24 Hour Staffing">24 Hour Staffing</option>
+                                                                    <option value="Limited Hours Staffing">Limited Hours Staffing</option>
+                                                                    <option value="None">None</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                                 <label>Bathroom</label>
-                                                                <select class="select">
+                                                                <select name="bathroom" class="select">
                                                                     <option value="">Select Bathroom</option>
-                                                                    <option value="1">All En Suite</option>
-                                                                    <option value="2">Some En Suite</option>
-                                                                    <option value="3">Shared</option>
+                                                                    <option value="All En Suite">All En Suite</option>
+                                                                    <option value="Some En Suite">Some En Suite</option>
+                                                                    <option value="Shared">Shared</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1218,7 +1705,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity1"
-                                                                    type="checkbox" value="" id="aminity1" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Airport Transportation" id="aminity1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity1">
                                                                     Airport Transportation
                                                                 </label>
@@ -1227,7 +1714,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity2"
-                                                                    type="checkbox" value="" id="aminity2" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Bar / Lounge" id="aminity2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity2">
                                                                     Bar / Lounge
                                                                 </label>
@@ -1236,7 +1723,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity3"
-                                                                    type="checkbox" value="" id="aminity3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Beach" id="aminity3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity3">
                                                                     Beach
                                                                 </label>
@@ -1245,7 +1732,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity4"
-                                                                    type="checkbox" value="" id="aminity4" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Beverage Selection" id="aminity4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity4">
                                                                     Beverage Selection
                                                                 </label>
@@ -1254,7 +1741,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity5"
-                                                                    type="checkbox" value="" id="aminity5" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Swimming Pool" id="aminity5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity5">
                                                                     Swimming Pool
                                                                 </label>
@@ -1263,7 +1750,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity6"
-                                                                    type="checkbox" value="" id="aminity6" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="WiFi" id="aminity6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity6">
                                                                     WiFi
                                                                 </label>
@@ -1272,7 +1759,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity7"
-                                                                    type="checkbox" value="" id="aminity7" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Coffee" id="aminity7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity7">
                                                                     Coffee
                                                                 </label>
@@ -1281,7 +1768,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity8"
-                                                                    type="checkbox" value="" id="aminity8" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Air Conditioning" id="aminity8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity8">
                                                                     Air Conditioning
                                                                 </label>
@@ -1290,7 +1777,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity9"
-                                                                    type="checkbox" value="" id="aminity9" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Entertainment" id="aminity9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity9">
                                                                     Entertainment
                                                                 </label>
@@ -1299,7 +1786,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity10"
-                                                                    type="checkbox" value="" id="aminity10" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Elevator In Building" id="aminity10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity10">
                                                                     Elevator In Building
                                                                 </label>
@@ -1308,7 +1795,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity11"
-                                                                    type="checkbox" value="" id="aminity11" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Wheelchair Access" id="aminity11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity11">
                                                                     Wheelchair Access
                                                                 </label>
@@ -1317,7 +1804,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity12"
-                                                                    type="checkbox" value="" id="aminity12" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Fitness Facility" id="aminity12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity12">
                                                                     Fitness Facility
                                                                 </label>
@@ -1326,7 +1813,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity13"
-                                                                    type="checkbox" value="" id="aminity13" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Breakfast" id="aminity13" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity13">
                                                                     Breakfast
                                                                 </label>
@@ -1335,7 +1822,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity14"
-                                                                    type="checkbox" value="" id="aminity14" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Handicap Accessible" id="aminity14" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity14">
                                                                     Handicap Accessible
                                                                 </label>
@@ -1344,7 +1831,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity15"
-                                                                    type="checkbox" value="" id="aminity15" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Pets Allowed" id="aminity15" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity15">
                                                                     Pets Allowed
                                                                 </label>
@@ -1353,7 +1840,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity16"
-                                                                    type="checkbox" value="" id="aminity16" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Suitable For Events" id="aminity16" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity16">
                                                                     Suitable For Events
                                                                 </label>
@@ -1362,7 +1849,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity17"
-                                                                    type="checkbox" value="" id="aminity17" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Restaurant" id="aminity17" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity17">
                                                                     Restaurant
                                                                 </label>
@@ -1371,7 +1858,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity18"
-                                                                    type="checkbox" value="" id="aminity18" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Doorman" id="aminity18" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity18">
                                                                     Doorman
                                                                 </label>
@@ -1380,7 +1867,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity19"
-                                                                    type="checkbox" value="" id="aminity19" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Free Parking" id="aminity19" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity19">
                                                                     Free Parking
                                                                 </label>
@@ -1389,7 +1876,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity20"
-                                                                    type="checkbox" value="" id="aminity20" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Wine Bar" id="aminity20" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity20">
                                                                     Wine Bar
                                                                 </label>
@@ -1519,6 +2006,7 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script>
 
         $(document).ready(function() {
@@ -1537,7 +2025,7 @@
                     var inputprice = $('<input name="hotelroom_price_' + i + '" type="number" min=0 class="form-control" placeholder="Enter room price">');
 					var label = $('<label for="fileInput' + i + '"></label>');
 					var customFile = $('<div class="custom-file"></div>');
-					var fileInput = $('<input type="file" class="custom-file-input" id="fileInput' + i + '" style="display:none;">');
+					var fileInput = $('<input type="file" class="custom-file-input" name="fileInput' + i + '" id="fileInput' + i + '" style="display:none;">');
 					var fileLabel = $('<label class="custom-file-label" for="fileInput' + i + '" style="margin-top:20px; border-radius:10px;">Upload pictures</label>');
 					var fileNameInput = $('<input type="text" class="form-control" id="fileNameInput' + i + '" style="display:none;" readonly>');
 
@@ -1564,5 +2052,6 @@
 				}
 			});
 		});
+
 	</script>
 {% endblock %}

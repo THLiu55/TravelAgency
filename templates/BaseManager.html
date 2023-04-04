@@ -967,9 +967,6 @@
         {% block body %} {% endblock %}
 </body>
 
-{% block jsLink %}
-{% endblock %}
-<script src="{{ url_for('static', filename='js/load_activities.js') }}"></script>
     <script src="{{ url_for('static', filename='js/gsap/gsap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/gsap/ScrollToPlugin.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/gsap/ScrollTrigger.min.js') }}"></script>
@@ -1018,4 +1015,6 @@
 <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+{% block jsLink %}
+{% endblock %}
 </html>
