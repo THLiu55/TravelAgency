@@ -213,6 +213,15 @@ class Hotel(db.Model):
     review = db.relationship('HotelReview', backref='product')
     orders = db.relationship('HotelOrder', backref='product')
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'status': self.status,
+            'name': self.name,
+            'price': self.min_price,
+            'city': self.city,
+            'room_num': self.room_num
+        }
 
 class HotelOrder(db.Model):
     __tablename__ = 'hotel_orders'

@@ -1,9 +1,9 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
-const item_container = document.getElementById("tour-container")
+const item_container = document.getElementById("item-container")
 let BASE_URL = window.location.origin
 
-function load_tours(published, category) {
+function load_hotels(published, category) {
     if (published == null) {
         published = cur_status
     }
@@ -12,11 +12,13 @@ function load_tours(published, category) {
     }
     cur_category = category
     cur_status = published
+    console.log("here")
+    console.log(BASE_URL)
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('publish', published)
     fd.set('category', category)
-    xhr.open('POST', '/manager/load_tours', true)
+    xhr.open('POST', '/manager/load_hotels', true)
     xhr.send(fd)
 
     // set animation after email send / error notification for registered email
@@ -51,12 +53,12 @@ function load_tours(published, category) {
                                 <td class="d-none d-lg-table-cell table__td"><span class="text-grey">${items[i].id}</span>
                                 </td>
                                 <td class="table__td">${items[i].name}</td>
-                                <td class="table__td"><span class="text-grey">${items[i].category}</span>
+                                <td class="table__td"><span class="text-grey">${items[i].room_num}</span>
                                 </td>
                                 <td class="table__td"><span>${items[i].price}</span>
                                 </td>
                                 <td class="d-none d-lg-table-cell table__td"><span
-                                        class="text-grey">${items[i].start_time}</span>
+                                        class="text-grey">${items[i].city}</span>
                                 </td>
                                 <td class="d-none d-sm-table-cell table__td">
                                     ${status_img}
@@ -97,17 +99,17 @@ function load_tours(published, category) {
     }
 }
 
-load_tours(cur_status, cur_category)
+load_hotels(cur_status, cur_category)
 
 function delete_item(id) {
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('id', id)
-    xhr.open('POST', '/manager/delete_tour', true)
+    xhr.open('POST', '/manager/delete_hotel', true)
     xhr.send(fd)
 
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
-        load_tours(cur_status, cur_category)
+        load_hotels(cur_status, cur_category)
     }
 }

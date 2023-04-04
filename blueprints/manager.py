@@ -24,6 +24,7 @@ def manager_homepage():
     db.create_all()
     return render_template("manager.html")
 
+
 # @bp.route('/destination', methods=["POST"])
 # def destinationList():
 #     return render_template("destinations.html")
@@ -31,16 +32,7 @@ def manager_homepage():
 
 @bp.route("/load_activities", methods=["POST"])
 def load_activities():
-    category = request.form.get("category")
-    status = request.form.get("publish")
-    q = Activity.query
-    print(status)
-    if category != "All Category":
-        q = q.filter_by(category=category)
-    if status != "All Status":
-        q = q.filter_by(status=status)
-    activities = [activity.serialize() for activity in q.all()]
-    return jsonify({"code": 200, "content": activities})
+    return load_product("Activity")
 
 
 @bp.route("/add_activity", methods=["POST"])
@@ -209,15 +201,7 @@ def add_tour():
 
 @bp.route("/load_tours", methods=["POST"])
 def load_tours():
-    category = request.form.get("category")
-    status = request.form.get("publish")
-    q = Tour.query
-    if category != "All Category":
-        q = q.filter_by(category=category)
-    if status != "All Status":
-        q = q.filter_by(status=status)
-    tours = [tour.serialize() for tour in q.all()]
-    return jsonify({"code": 200, "content": tours})
+    return load_product("Tour")
 
 
 @bp.route('/delete_tour', methods=['GET', 'POST'])
@@ -301,6 +285,35 @@ def add_hotel():
     db.session.add(hotel)
     db.session.commit()
     return redirect(url_for("manager.accommodations"))
+
+
+@bp.route("/load_hotels", methods=["POST"])
+def load_hotels():
+    return load_product("Hotel")
+
+
+@bp.route("/delete_hotel", methods=["POST"])
+def delete_hotel():
+    hotel_id = request.form.get('id')
+    hotel = Hotel.query.get(hotel_id)
+    if hotel is None:
+        return jsonify({'code': 400, 'message': "no activity found"})
+    hotel.status = "deleted"
+    db.session.commit()
+    return redirect(url_for('manager.accommodations'))
+
+
+def load_product(product_name):
+    product = Hotel if product_name == "Hotel" else Tour if product_name == "Tour" else Activity if product_name == "Activity" else None
+    category = request.form.get("category")
+    status = request.form.get("publish")
+    q = product.query
+    if product != Hotel and category != "All Category":
+        q = q.filter_by(category=category)
+    if status != "All Status":
+        q = q.filter_by(status=status)
+    products = [p.serialize() for p in q.all()]
+    return jsonify({"code": 200, "content": products})
 
 
 @bp.route("/accommodations")
