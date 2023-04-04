@@ -8,7 +8,7 @@ from utils.toys import get_locale
 
 db = SQLAlchemy(session_options={"autoflush": False})
 mail = Mail()
-migrate = Migrate()
+# migrate = Migrate()
 babel = Babel()
 socketio = SocketIO()
 
@@ -16,6 +16,6 @@ socketio = SocketIO()
 def exts_load_all(app):
     db.init_app(app)
     mail.init_app(app)
-    migrate.init_app(app, db)
+    # migrate.init_app(app, db)
     babel.init_app(app, locale_selector=get_locale)
     socketio.init_app(app, cors_allowed_origins="*")

@@ -37,6 +37,7 @@ def add_review():
 
 @bp.route('/<page_num>', methods=['GET', 'POST'])
 def activityList(page_num):
+    logged = False if session.get('customer_id') is None else True
     total_activities = Activity.query.count()
     pagination = Activity.query.paginate(page=int(page_num), per_page=9, error_out=False)
     activities = pagination.items
@@ -44,7 +45,8 @@ def activityList(page_num):
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
-    return render_template('activity-grid.html', total_activities=total_activities, activities=activities)
+    return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
+                           page_num=page_num, logged=logged)
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])

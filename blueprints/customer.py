@@ -13,7 +13,20 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
-    return render_template("Homepage.html")
+    logged = False if session.get('customer_id') is None else True
+    return render_template("Homepage.html", logged=logged)
+
+
+@bp.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('customer.login'))
+
+
+@bp.route("/re_jump")
+def re_jump():
+    url = request.referrer
+    return render_template('SignInUp.html', url=url)
 
 
 @bp.route("/login", methods=["GET", "POST"])
@@ -111,14 +124,7 @@ def consult():
 ### END CHAT RELATED ###
 
 
-# @bp.route("/activity_review", methods=["GET", "POST"])
-# @login_required
-# def activity_review():
-#     review = ActivityReview()
-#     review.content = request.form.get("content")
-#     review.rating = request.form.get("rating")
-#     review.customerID = session.get("customer_id")
-#     review.productID = request.form.get("productId")
-#     db.session.add(review)
-#     db.session.commit()
-#     return redirect(url_for('activity.activityDetail', activity_id=review.productID))
+@bp.route("/profile")
+def profile():
+    customer = Customer.query.filter_by(id=session.get('customer_id'))
+    return render_template("profile-wishlist.html", customer=customer)
