@@ -20,7 +20,7 @@
 
     <main class="main">
 
-        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/02.jpg)">
+        <div class="site-breadcrumb" style="background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
         
         </div>
 
@@ -30,9 +30,9 @@
                     <div class="col-md-8 mx-auto">
                         <div class="booking-confirm-content">
                             <div class="booking-confirm-icon"><i class="far fa-check"></i></div>
-                            <h3>Your Booking Roltak Hotel Is Confirmed.</h3>
-                            <p>Have a look about other intersting activities and tour plans!</p>
-                            <a href="#" class="theme-btn">Book More Now<i class="far fa-arrow-right"></i></a>
+                            <h3>Your Booking {{ name }} Is Confirmed.</h3>
+                            <p>Have a look about other interesting activities and tour plans!</p>
+                            <a href="{{ url_for('customer.profile') }}" class="theme-btn">See order detail<i class="far fa-arrow-right"></i></a>
                         </div>
                     </div>
                   

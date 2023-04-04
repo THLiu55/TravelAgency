@@ -393,7 +393,8 @@
                                         </div>
                                     </div>
                                     <div class="search-form">
-                                        <form action="#">
+                                        <form action="{{ url_for('activity.order_confirm') }}" method="post">
+                                            <input name="activity_id" value="{{ activity.id }}" hidden>
                                             <div class="tour-search-wrapper">
                                                 <div class="row">
                                                     <div class="col-lg-12">
@@ -411,108 +412,105 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
-                                                            <div class="search-form-date">
-                                                                <div class="search-form-return">
-                                                                    <label>Return Date</label>
-                                                                    <div class="form-group-icon">
-                                                                        <input type="text" name="return-date"
-                                                                               class="form-control date-picker return-date">
-                                                                        <i class="fal fa-calendar-days"></i>
-                                                                    </div>
-                                                                    <p class="return-day-name"></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group dropdown passenger-box">
-                                                            <div class="passenger-class" role="menu"
-                                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <label>Positions</label>
-                                                                <div class="form-group-icon">
-                                                                    <div class="passenger-total">
-{#                                                                        <span class="passenger-total-room">2</span>#}
-{#                                                                        Rooms,#}
-                                                                        <span class="passenger-total-amount">2</span>
-                                                                        Members
-                                                                    </div>
-                                                                    <i class="fal fa-user-plus"></i>
-                                                                </div>
-{#                                                                <p class="passenger-class-name">Double Room</p>#}
-                                                            </div>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Adults</h6>
-                                                                            <p>12+ Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="adult"
-                                                                                   class="qty-amount passenger-adult"
-                                                                                   value="2" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Children</h6>
-                                                                            <p>2-12 Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="children"
-                                                                                   class="qty-amount passenger-children"
-                                                                                   value="0" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Infant</h6>
-                                                                            <p>Below 2 Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="infant"
-                                                                                   class="qty-amount passenger-infant"
-                                                                                   value="0" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Tours</h6>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="room"
-                                                                                   class="qty-amount passenger-room"
-                                                                                   value="2" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="form-group">#}
+{#                                                            <div class="search-form-date">#}
+{#                                                                <div class="search-form-return">#}
+{#                                                                    <label>Return Date</label>#}
+{#                                                                    <div class="form-group-icon">#}
+{#                                                                        <input type="text" name="return-date"#}
+{#                                                                               class="form-control date-picker return-date">#}
+{#                                                                        <i class="fal fa-calendar-days"></i>#}
+{#                                                                    </div>#}
+{#                                                                    <p class="return-day-name"></p>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="form-group dropdown passenger-box">#}
+{#                                                            <div class="passenger-class" role="menu"#}
+{#                                                                 data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                                                                <label>Positions</label>#}
+{#                                                                <div class="form-group-icon">#}
+{#                                                                    <div class="passenger-total">#}
+{#                                                                        <span class="passenger-total-amount">2</span>#}
+{#                                                                        Members#}
+{#                                                                    </div>#}
+{#                                                                    <i class="fal fa-user-plus"></i>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                            <div class="dropdown-menu dropdown-menu-end">#}
+{#                                                                <div class="dropdown-item">#}
+{#                                                                    <div class="passenger-item">#}
+{#                                                                        <div class="passenger-info">#}
+{#                                                                            <h6>Adults</h6>#}
+{#                                                                            <p>12+ Years</p>#}
+{#                                                                        </div>#}
+{#                                                                        <div class="passenger-qty">#}
+{#                                                                            <button type="button" class="minus-btn"><i#}
+{#                                                                                    class="far fa-minus"></i></button>#}
+{#                                                                            <input type="text" name="adult"#}
+{#                                                                                   class="qty-amount passenger-adult"#}
+{#                                                                                   value="2" readonly>#}
+{#                                                                            <button type="button" class="plus-btn"><i#}
+{#                                                                                    class="far fa-plus"></i></button>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                                <div class="dropdown-item">#}
+{#                                                                    <div class="passenger-item">#}
+{#                                                                        <div class="passenger-info">#}
+{#                                                                            <h6>Children</h6>#}
+{#                                                                            <p>2-12 Years</p>#}
+{#                                                                        </div>#}
+{#                                                                        <div class="passenger-qty">#}
+{#                                                                            <button type="button" class="minus-btn"><i#}
+{#                                                                                    class="far fa-minus"></i></button>#}
+{#                                                                            <input type="text" name="children"#}
+{#                                                                                   class="qty-amount passenger-children"#}
+{#                                                                                   value="0" readonly>#}
+{#                                                                            <button type="button" class="plus-btn"><i#}
+{#                                                                                    class="far fa-plus"></i></button>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                                <div class="dropdown-item">#}
+{#                                                                    <div class="passenger-item">#}
+{#                                                                        <div class="passenger-info">#}
+{#                                                                            <h6>Infant</h6>#}
+{#                                                                            <p>Below 2 Years</p>#}
+{#                                                                        </div>#}
+{#                                                                        <div class="passenger-qty">#}
+{#                                                                            <button type="button" class="minus-btn"><i#}
+{#                                                                                    class="far fa-minus"></i></button>#}
+{#                                                                            <input type="text" name="infant"#}
+{#                                                                                   class="qty-amount passenger-infant"#}
+{#                                                                                   value="0" readonly>#}
+{#                                                                            <button type="button" class="plus-btn"><i#}
+{#                                                                                    class="far fa-plus"></i></button>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                                <div class="dropdown-item">#}
+{#                                                                    <div class="passenger-item">#}
+{#                                                                        <div class="passenger-info">#}
+{#                                                                            <h6>Tours</h6>#}
+{#                                                                        </div>#}
+{#                                                                        <div class="passenger-qty">#}
+{#                                                                            <button type="button" class="minus-btn"><i#}
+{#                                                                                    class="far fa-minus"></i></button>#}
+{#                                                                            <input type="text" name="room"#}
+{#                                                                                   class="qty-amount passenger-room"#}
+{#                                                                                   value="2" readonly>#}
+{#                                                                            <button type="button" class="plus-btn"><i#}
+{#                                                                                    class="far fa-plus"></i></button>#}
+{#                                                                        </div>#}
+{#                                                                    </div>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
                                                 </div>
                                                 <div class="listing-side-btn">
                                                     <button type="submit" class="theme-btn"><span

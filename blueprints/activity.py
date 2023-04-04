@@ -109,3 +109,41 @@ def activity_filter():
 
     activities = [activity.to_dict() for activity in activities]
     return jsonify({"activities": activities, "page": 1})
+
+
+@bp.route("/order-confirm", methods=['POST'])
+def order_confirm():
+    customer_id = session.get('customer_id')
+    if customer_id:
+        activity_id = request.form.get("activity_id")
+        to_confirmed = Activity.query.get(activity_id)
+        order_date = request.form.get("journey-date")
+        customer = Customer.query.get(customer_id)
+        return render_template("activity-booking-confirm.html", activity=to_confirmed, customer=customer,
+                               order_date=order_date, logged=True)
+    else:
+        url = request.referrer
+        return render_template("SignInUp.html", url=url)
+
+
+@bp.route("/order-success")
+def order_success():
+    customer = Customer.query.get(session.get("customer_id"))
+    cost = float(request.args.get("cost"))
+    if customer.wallet >= cost:
+        activity_order = ActivityOrder()
+        activity_order.customerID = session.get('customer_id')
+        activity_order.purchased = True
+        activity_order.startTime = datetime.datetime.now()
+        end_date = request.args.get("date")
+        date_format = "%Y/%m/%d"
+        datetime_obj = datetime.datetime.strptime(end_date, date_format)
+        activity_order.endTime = datetime_obj
+        activity_order.productID = request.args.get("activity_id")
+        activity_order.cost = cost
+        customer.wallet = customer.wallet - cost
+        db.session.add(activity_order)
+        db.session.commit()
+        return render_template("booking-success.html", name=request.args.get("name"))
+    else:
+        return jsonify({"balance": 400})
