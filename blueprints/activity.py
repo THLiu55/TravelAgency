@@ -66,6 +66,8 @@ def activityDetail(activity_id):
     wishlist_exists = ActivityOrder.query.filter_by(customerID=session.get("customer_id"),
                                                     productID=activity_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
+    activity.review_num = activity.review_num + 1
+    db.session.commit()
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
                            added=added)
 

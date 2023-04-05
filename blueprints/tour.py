@@ -40,6 +40,7 @@ def tourDetail(tour_id):
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
+    tour.review_num = tour.review_num + 1
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews)
 
 
@@ -66,3 +67,12 @@ def add_review():
     db.session.add(review)
     db.session.commit()
     return redirect(url_for('tour.tourDetail', tour_id=int(tour.id)))
+
+
+@bp.route('/tour_filter', methods=['GET', 'POST'])
+def tour_filter():
+    pass
+
+
+
+
