@@ -63,7 +63,11 @@ def activityDetail(activity_id):
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
-    return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images)
+    wishlist_exists = ActivityOrder.query.filter_by(customerID=session.get("customer_id"),
+                                                    productID=activity_id, purchased=False).first()
+    added = True if wishlist_exists is not None else False
+    return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
+                           added=added)
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])
@@ -147,3 +151,26 @@ def order_success():
         return render_template("booking-success.html", name=request.args.get("name"))
     else:
         return jsonify({"balance": 400})
+
+
+@bp.route("/add_wishlist/<activity_id>")
+def add_wishlist(activity_id):
+    aimed_activity = Activity.query.get(activity_id)
+    activity_order = ActivityOrder()
+    activity_order.cost = aimed_activity.price
+    activity_order.startTime = datetime.datetime.now()
+    activity_order.purchased = False
+    activity_order.customerID = session.get("customer_id")
+    activity_order.productID = activity_id
+    db.session.add(activity_order)
+    db.session.commit()
+    return redirect(url_for('customer.profile'))
+
+
+@bp.route("/remove_wishlist/<activity_id>")
+def remove_wishlist(activity_id):
+    activity_order = ActivityOrder.query.filter_by(customerID=session.get("customer_id"), productID=activity_id,
+                                                   purchased=False).first()
+    db.session.delete(activity_order)
+    db.session.commit()
+    return redirect(url_for('customer.profile'))

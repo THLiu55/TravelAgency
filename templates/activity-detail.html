@@ -516,8 +516,14 @@
                                                     <button type="submit" class="theme-btn"><span
                                                             class="far fa-shopping-bag"></span>Book Now
                                                     </button>
-                                                    <a href="#" class="border-btn"><i class="far fa-heart"></i> Add To
+
+                                                    {% if added %}
+                                                        <a href="{{ url_for('activity.remove_wishlist', activity_id=activity.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> Remove From
                                                         Wishlist</a>
+                                                    {% else %}
+                                                        <a href="{{ url_for('activity.add_wishlist', activity_id=activity.id) }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                        Wishlist</a>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </form>

@@ -127,5 +127,5 @@ def consult():
 
 @bp.route("/profile")
 def profile():
-    customer = Customer.query.filter_by(id=session.get('customer_id'))
+    customer = Customer.query.get(session.get('customer_id'))
     return render_template("profile-wishlist.html", customer=customer)
