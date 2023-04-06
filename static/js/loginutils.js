@@ -26,6 +26,21 @@ async function countDown(seconds) {
     num_div.innerHTML = "SEND";
 }
 
+// count Down for seconds (used in forget password sending email) ---- forget pass cound down
+async function forgetcountDown(seconds) {
+    const num_div = document.getElementById('forget-count')
+    const sending_btn = document.getElementById('forget-email-btn')
+    sending_btn.disabled = true
+    sending_btn.style.backgroundColor = '#1a2886'
+    for (let i = seconds; i > 0; i--) {
+        num_div.innerHTML = i.toString()
+        await delay(1000)
+    }
+    sending_btn.disabled = false
+    sending_btn.style.backgroundColor = '#67a0ff'
+    num_div.innerHTML = "SEND";
+}
+
 // set input event listeners
 function email_listener(email_input, email_error) {
     // clear the error message

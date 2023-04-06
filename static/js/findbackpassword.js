@@ -14,8 +14,14 @@ const forget_Repassword_error = document.getElementById('forget_Repassword_error
 const signinemail = document.getElementById('signin-email');
 const signinpassword = document.getElementById('signin-password');
 
+// forget password count down area
+const forget_num_div = document.getElementById('forget-count')
+
 // forget email send
 function forget_email_send(){
+    // animation when the email is sent
+    forgetcountDown(60, forget_num_div).then(r => {})
+
     // send the captcha to backend
     let xhr = new XMLHttpRequest()
     let fd = new FormData()
@@ -80,9 +86,9 @@ function forget_email_listener() {
     email_listener(forgetpassemail, forget_email_error);
 }
 
-// function  forget_captcha_listener() {
-//     captcha_listener(forgetpasscaptcha, forget_captcha_error);
-// }
+function  forget_captcha_listener() {
+    captcha_listener(forgetpasscaptcha, forget_captcha_error);
+}
 
 function forget_password_listener() {
     password_listener(forgetpasspassword, forget_password_error);
