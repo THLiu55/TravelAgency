@@ -651,26 +651,15 @@
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
+                                                        <li class="dropdown-items__item">
+                                                            <a class="dropdown-items__link">
+                                                                <span class="dropdown-items__link-icon">
+                                                                <span class="button-add__icon">
+                                                                    <button data-modal="#addProduct">
                                                                     <svg class="icon-icon-view">
                                                                         <use xlink:href="#icon-view"></use>
-                                                                    </svg></span>Details</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-duplicate">
-                                                                        <use xlink:href="#icon-duplicate"></use>
-                                                                    </svg></span>Duplicate</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon">
-                                                                    <svg class="icon-icon-archive">
-                                                                        <use xlink:href="#icon-archive"></use>
-                                                                    </svg></span>Archive</a>
+                                                                    </svg>Details</a></span></span>
+                                                                    </button>
                                                         </li>
                                                         <li class="dropdown-items__item"><a
                                                                 class="dropdown-items__link"><span
@@ -1379,7 +1368,7 @@
                                             {# <form action="#">#}
                                                 <div class="row align-items-center" style="width: 100%;">
                                                     <div style="display: grid; grid-template-columns: auto;">
-                                                    <div class="col-lg-6">
+                                                    <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Type</label>
                                                         <select class="select">
@@ -1402,7 +1391,7 @@
                                                         <input type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
                                                         </div>
                                                         </div>
-                                                        <div class="col-lg-6">
+                                                        <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Stop</label>
                                                         <select class="select">
@@ -1417,12 +1406,9 @@
                                                         </div>
                                                     
                                                 </div>
-                                                    <h5 class="my-4">Your Flight Information</h5>
                                                     <div
-                                                        style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;width: 100%;">
-
-
-                                                        <div class="col-lg-4">
+                                                        style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
+                                                        <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Airline</label>
                                                             <select class="select">
@@ -1435,19 +1421,19 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Total Time Of Flight</label>
                                                             <input type="text" class="form-control" placeholder="Enter total time" style="width: max-content; height: 56px;">
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Price (Per Person)</label>
                                                              <input type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;">
                                                             </div>
                                                             </div>
-                                                            <!-- <div class="col-lg-4">
+                                                            <!-- <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Fare Currency</label>
                                                             <select class="select">
@@ -1460,7 +1446,7 @@
                                                             </select>
                                                             </div>
                                                             </div> -->
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Fare Type</label>
                                                             <select class="select">
@@ -1471,7 +1457,7 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Flight Class</label>
                                                             <select class="select">
@@ -1482,7 +1468,7 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Cancellation Charge</label>
                                                             <select class="select">
@@ -1493,9 +1479,9 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                              <div class="form-group">
-                                                            <label>Flight Change</label>
+                                                            <label>Flight Charge</label>
                                                             <select class="select">
                                                             <option value="">Select Change</option>
                                                             <option value="1">$50 / Per Person</option>
@@ -1504,7 +1490,7 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Seats & Baggage</label>
                                                             <select class="select">
@@ -1515,17 +1501,17 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                            <label>Inflight Features</label>
-                                                            <select class="select">
-                                                            <option value="">Select Inflight Features</option>
-                                                            <option value="1">Available</option>
-                                                            <option value="2">Not Available</option>
-                                                            </select>
-                                                            </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
+{#                                                            <div class="col-lg-4" style="max-width: none;">#}
+{#                                                            <div class="form-group">#}
+{#                                                            <label>Inflight Features</label>#}
+{#                                                            <select class="select">#}
+{#                                                            <option value="">Select Inflight Features</option>#}
+{#                                                            <option value="1">Available</option>#}
+{#                                                            <option value="2">Not Available</option>#}
+{#                                                            </select>#}
+{#                                                            </div>#}
+{#                                                            </div>#}
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Base Fare</label>
                                                             <select class="select">
@@ -1536,7 +1522,7 @@
                                                             </select>
                                                             </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Taxes & Fees</label>
                                                             <select class="select">
@@ -1788,21 +1774,21 @@
                                                         <h5 class="my-4">Contact Information</h5>
                                                         <div
                                                             style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 200%;padding-top: 15px;">
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                                 <div class="form-group">
                                                                     <label>Name</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_name" placeholder="Enter name" style="width: max-content;">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_email" placeholder="Enter email" style="width: max-content;">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-4">
+                                                            <div class="col-lg-4" style="max-width: none;">
                                                                 <div class="form-group">
                                                                     <label>Phone</label>
                                                                     <input type="text" class="form-control"
