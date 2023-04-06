@@ -14,6 +14,11 @@ class Customer(db.Model, UserMixin):
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
     tour_reviews = db.relationship('TourReview', backref='customer')
+    hotel_orders = db.relationship('HotelOrder', backref='customer')
+    hotel_reviews = db.relationship('HotelReview', backref='customer')
+    flight_orders = db.relationship('FlightOrder', backref='customer')
+    flight_reviews = db.relationship('FlightReview', backref='customer')
+    messages = db.relationship('Message', backref='customer')
 
 
 class Message(db.Model):
@@ -23,8 +28,8 @@ class Message(db.Model):
     content = db.Column(db.Text)
     postTime = db.Column(db.DateTime)
     isRead = db.Column(db.Boolean)
-    receiverID = db.Column(db.String(255))
-    senderID = db.Column(db.String(255))
+    sendByCustomer = db.Column(db.Boolean)
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
 
 class ActivityOrder(db.Model):
