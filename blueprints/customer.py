@@ -130,6 +130,16 @@ def consult():
 @bp.route("/profile")
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
-    return render_template("profile-wishlist.html", customer=customer)
+    return render_template("profile.html", customer=customer, logged=True)
 
 
+@bp.route("/wallet")
+def wallet():
+    customer = Customer.query.get(session.get('customer_id'))
+    return render_template("profile-wallet.html", logged=True, customer=customer)
+
+
+@bp.route("/setting")
+def setting():
+    customer = Customer.query.get(session.get('customer_id'))
+    return render_template("profile-setting.html", logged=True)
