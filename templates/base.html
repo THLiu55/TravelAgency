@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/topbar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
     {% block csslink %} {% endblock %}
 </head>
 <body>
@@ -39,75 +38,80 @@
                                 <option value="1">ENG</option>
                                 <option value="2">CHN</option>
                             </select>
-                        <!-- <div class="account">
+                            <!-- <div class="account">
                             <a href="{{ url_for('customer.login') }}"><i class="far fa-sign-in"></i>Login</a>
                             <a href="{{ url_for('customer.login') }}"><i class="far fa-user-tie"></i>Sign Up</a>
                         </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="main-navigation">
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="manager.html">
-                    <!-- <img src="../static/img/logo.png" class="logo-display" alt="logo"> -->
-                    <img src="../static/img/logo.png" class="logo-scrolled" alt="logo" style="width:200px;">
-                </a>
-                <div class="mobile-menu-right">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-btn-icon"><i class="far fa-bars"></i></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="main_nav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active" href="{{ url_for('customer.homepage') }}">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">Flight</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#">Hotel</a>
-
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ url_for('activity.activityList', page_num=1) }}">Activity</a>
-                        </li>
-
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="{{ url_for('tour.tourList', page_num=1) }}">Tour</a>
-                            <!-- <ul class="dropdown-menu fade-down">
-                            <li><a class="dropdown-item" href="tour-grid.html">Tour Grid</a></li>
-                            <li><a class="dropdown-item" href="tour-list.html">Tour List</a></li>
-                            <li><a class="dropdown-item" href="tour-full-width.html">Tour Full Width</a></li>
-                            <li><a class="dropdown-item" href="tour-single.html">Tour Details</a></li>
-                            <li><a class="dropdown-item" href="tour-booking.html">Tour Booking</a></li>
-                            <li><a class="dropdown-item" href="tour-search-result.html">Tour Search Result</a>
+        <div class="main-navigation">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="manager.html">
+                        <!-- <img src="../static/img/logo.png" class="logo-display" alt="logo"> -->
+                        <img src="../static/img/logo.png" class="logo-scrolled" alt="logo" style="width:200px;">
+                    </a>
+                    <div class="mobile-menu-right">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#main_nav"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-btn-icon"><i class="far fa-bars"></i></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link active" href="{{ url_for('customer.homepage') }}">Home</a>
                             </li>
-                            <li><a class="dropdown-item" href="tour-add.html">Add Tour</a></li>
-                            </ul> -->
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Flight</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#">Hotel</a>
 
-                        {% if logged %}
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.profile') }}">Profile</a></li>
-                        {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.re_jump') }}">Sign in/up</a></li>
-                        {% endif %}
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link"
+                                   href="{{ url_for('activity.activityList', page_num=1) }}">Activity</a>
+                            </li>
 
-                    </ul>
-                    <div class="header-nav-right">
-                        <!-- <div class="header-btn">
-                        <a href="add-property.html" class="theme-btn mt-2">Become An Expert</a>
-                        </div> -->
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="{{ url_for('tour.tourList', page_num=1) }}">Tour</a>
+                                <!-- <ul class="dropdown-menu fade-down">
+                                <li><a class="dropdown-item" href="tour-grid.html">Tour Grid</a></li>
+                                <li><a class="dropdown-item" href="tour-list.html">Tour List</a></li>
+                                <li><a class="dropdown-item" href="tour-full-width.html">Tour Full Width</a></li>
+                                <li><a class="dropdown-item" href="tour-single.html">Tour Details</a></li>
+                                <li><a class="dropdown-item" href="tour-booking.html">Tour Booking</a></li>
+                                <li><a class="dropdown-item" href="tour-search-result.html">Tour Search Result</a>
+                                </li>
+                                <li><a class="dropdown-item" href="tour-add.html">Add Tour</a></li>
+                                </ul> -->
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+
+                            {% if logged %}
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.profile') }}">Profile</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.re_jump') }}">Sign
+                                    in/up</a></li>
+                            {% endif %}
+
+                        </ul>
+                        <div class="header-nav-right">
+                            <!-- <div class="header-btn">
+                            <a href="add-property.html" class="theme-btn mt-2">Become An Expert</a>
+                            </div> -->
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
 </header>
 
@@ -135,7 +139,7 @@
 
 
 </body>
-    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-    {% block jsLink %}{% endblock %}
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+{% block jsLink %}{% endblock %}
 
 </html>
