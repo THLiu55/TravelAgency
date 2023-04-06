@@ -1,5 +1,5 @@
 ﻿{% extends "base.html" %}
-{% block title %} Activities Grid {% endblock %}
+{% block title %} Tours Grid {% endblock %}
 
 {% block csslink %}
 
@@ -76,7 +76,7 @@
                                             <div class="form-group dropdown passenger-box">
                                                 <div class="passenger-class" role="menu" data-bs-toggle="dropdown"
                                                      aria-expanded="false">
-                                                    <label>Visitots</label>
+                                                    <label>Visitors</label>
                                                     <div class="form-group-icon">
                                                         <div class="passenger-total">
                                                             <span class="passenger-total-amount">2</span> Guests
@@ -207,31 +207,31 @@
                                 <h4 class="booking-title">Tour Category</h4>
                                 <div class="activity-type">
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="1"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Cultural tourism" onclick="activity_filter(3)"
                                                id="activity-type1">
                                         <label class="form-check-label" for="activity-type1">
-                                            Historical <span>(20)</span>
+                                            Cultural tourism <span>(20)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="2"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Wildlife observation" onclick="activity_filter(3)"
                                                id="activity-type2">
                                         <label class="form-check-label" for="activity-type2">
-                                            Weekend Trip <span>(15)</span>
+                                            Wildlife observation <span>(15)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="3"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Cruises" onclick="activity_filter(3)"
                                                id="activity-type3">
                                         <label class="form-check-label" for="activity-type3">
-                                            Special Tour <span>(18)</span>
+                                            Cruises <span>(18)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="4"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Grass Skyline" onclick="activity_filter(3)"
                                                id="activity-type4">
                                         <label class="form-check-label" for="activity-type4">
-                                            Holiday Tour <span>(35)</span>
+                                            Grass Skyline <span>(35)</span>
                                         </label>
                                     </div>
                                 </div>
@@ -243,6 +243,7 @@
                                         <div class="price-range-info">
                                             <label for="priceRange1">Price:</label>
                                             <input type="text" class="priceRange" id="priceRange1" readonly>
+                                            <input id="page-ajax" value="1" hidden>
                                         </div>
                                         <div id="price-range1" class="price-range slider"></div>
                                     </div>
@@ -252,63 +253,29 @@
                                 <h4 class="booking-title">Tour Duration</h4>
                                 <div class="activity-duration">
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="1"
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="0-2" onclick="tour_filter(0)"
                                                id="activity-duration1">
                                         <label class="form-check-label" for="activity-duration1">
-                                            Up to 1 hour <span>(20)</span>
+                                            1 to 2 days  <span>(20)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="2"
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="3-5" onclick="tour_filter(1)"
                                                id="activity-duration2">
                                         <label class="form-check-label" for="activity-duration2">
-                                            1 to 4 hours <span>(15)</span>
+                                            3 to 5 days <span>(15)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="3"
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="5-99" onclick="tour_filter(2)"
                                                id="activity-duration3">
                                         <label class="form-check-label" for="activity-duration3">
-                                            4 hours to 1 day <span>(18)</span>
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="4"
-                                               id="activity-duration4">
-                                        <label class="form-check-label" for="activity-duration4">
-                                            1 to 10 days <span>(25)</span>
+                                            More than 5 days <span>(18)</span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-item">
-                                <!-- <h4 class="booking-title">Languages</h4> -->
-                                <!-- <div class="activity-language">
-                                <div class="form-check">
-                                <input class="form-check-input" name="activity-language" type="checkbox" value="1" id="activity-language1">
-                                <label class="form-check-label" for="activity-language1">
-                                English <span>(20)</span>
-                                </label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input" name="activity-language" type="checkbox" value="2" id="activity-language2">
-                                <label class="form-check-label" for="activity-language2">
-                                Spanish <span>(15)</span>
-                                </label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input" name="activity-language" type="checkbox" value="3" id="activity-language3">
-                                <label class="form-check-label" for="activity-language3">
-                                French <span>(18)</span>
-                                </label>
-                                </div>
-                                <div class="form-check">
-                                <input class="form-check-input" name="activity-language" type="checkbox" value="4" id="activity-language4">
-                                <label class="form-check-label" for="activity-language4">
-                                Turkish <span>(25)</span>
-                                </label>
-                                </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -323,7 +290,7 @@
                                     <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
                                 </div>
                                 <div class="col-md-3 booking-sort-box">
-                                    <select class="select">
+                                    <select class="select" onchange="tour_filter(3)">
                                         <option value="1">Sort By Default</option>
                                         <option value="2">Sort By Popular</option>
                                         <option value="3">Sort By Low Price</option>
@@ -420,4 +387,5 @@
     <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tourFilter.js') }}"></script>
 {% endblock %}

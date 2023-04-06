@@ -371,13 +371,10 @@
                                                 </p>
                                             </div>
                                             {% endfor %}
-
-
-                                            <div class="text-center my-4">
-                                                <a href="#" class="theme-btn"> <span class="far fa-sync-alt"></span>
-                                                    Load More</a>
-                                            </div>
                                         </div>
+
+
+                                    {% if purchased %}
                                         <div class="listing-review-form">
                                             <h4>Leave A Review</h4>
                                             <form action="{{ url_for('tour.add_review') }}" method="post">
@@ -415,6 +412,9 @@
                                                 <button class="theme-btn" type="submit">Leave A Review</button>
                                             </form>
                                         </div>
+                                    {% endif %}
+
+
                                     </div>
                                 </div>
                             </div>

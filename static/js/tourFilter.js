@@ -4,7 +4,7 @@ let min = 1500;
 let max = 5000;
 
 // noinspection JSUnresolvedFunction
-function activity_filter(duration, min1, max1) {
+function tour_filter(duration, min1, max1) {
     checkbox_protect(duration);
     const checkboxes = document.querySelectorAll('input[name="activity-type"]');
     const selectedValues = [];
@@ -30,22 +30,22 @@ function activity_filter(duration, min1, max1) {
     let sort_by = getSortValue()
 
     $.ajax({
-      url: '../activity/activity_filter',
+      url: '../tour/tour_filter',
       type: 'POST',
       data: {
           "type1": selectedValues.toString(),
-          "activityPrice": activityPrice.toString(),
-          "activityDuration": selectedValues1.toString(),
+          "tourPrice": activityPrice.toString(),
+          "tourDuration": selectedValues1.toString(),
           "page": page,
           "sort_by": sort_by
       },
         success: function(response) {
-        let activities = response.activities;
-        let activityList = $('#row-list-ajax');
-        activityList.empty();
+        let tours = response.tours;
+        let tourList = $('#row-list-ajax');
+        tourList.empty();
 
-        for (let i = 0; i < activities.length; i++) {
-            let activity = activities[i];
+        for (let i = 0; i < tours.length; i++) {
+            let activity = tours[i];
             let html = '<div class="col-md-6 col-lg-4">' +
                  '<div class="activity-item">' +
                  '<div class="activity-img">' +
@@ -71,7 +71,7 @@ function activity_filter(duration, min1, max1) {
                  '</div>' +
                  '</div>' +
                  '</div>';
-            activityList.append(html);
+            tourList.append(html);
         }},
     });
 }
@@ -86,7 +86,7 @@ $(function() {
         stop: function(event, ui) {
             min = ui.values[0];
             max = ui.values[1];
-            activity_filter(3,ui.values[0], ui.values[1]);
+            tour_filter(3,ui.values[0], ui.values[1]);
         }
     });
 });

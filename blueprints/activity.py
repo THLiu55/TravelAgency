@@ -59,13 +59,15 @@ def activityDetail(activity_id):
     activity.excluded = [i for i in activity.excluded if i is not None]
     activity.images = json.loads(activity.images)['images']
     images = [image[image.index('static'):].lstrip('static') for image in activity.images]
-    logged = True if session.get("customer_id") else False
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
     wishlist_exists = ActivityOrder.query.filter_by(customerID=session.get("customer_id"),
                                                     productID=activity_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
+    purchased = ActivityOrder.query.filter_by(customerID=session.get("customer_id"),
+                                              productID=activity_id, purchased=True).first()
+    logged = True if session.get("customer_id") and purchased else False
     activity.review_num = activity.review_num + 1
     db.session.commit()
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,

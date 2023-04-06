@@ -181,6 +181,21 @@ class Tour(db.Model):
             'price': self.price
         }
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'status': self.status,
+            'price': self.price,
+            'city': self.city,
+            'state': self.state,
+            'address': self.address,
+            'images': self.images,
+            'total_star': self.total_star,
+            'review_num': self.review_num,
+            'star_detail': self.star_detail,
+        }
+
 
 class Hotel(db.Model):
     __tablename__ = 'hotels'

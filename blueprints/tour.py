@@ -41,7 +41,15 @@ def tourDetail(tour_id):
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
     tour.review_num = tour.review_num + 1
-    return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews)
+    wishlist_exists = TourOrder.query.filter_by(customerID=session.get("customer_id"),
+                                                productID=tour_id, purchased=False).first()
+    added = True if wishlist_exists is not None else False
+    purchased = TourOrder.query.filter_by(customerID=session.get("customer_id"),
+                                          productID=tour_id, purchased=True)
+    tour.review_num = tour.review_num + 1
+    db.session.commit()
+    return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
+                           purchased=purchased)
 
 
 @bp.route('/add_review', methods=['POST'])
@@ -71,8 +79,43 @@ def add_review():
 
 @bp.route('/tour_filter', methods=['GET', 'POST'])
 def tour_filter():
-    pass
+    tour_type = request.form.get("type1").split(",")
+    to_sort = request.form.get('sort_by')
+    if tour_type[0] == '':
+        tour_type = ['Cultural tourism', 'Wildlife observation', 'Cruises', 'Grass Skyline']
+    tour_price = request.form.get('tourPrice')
+    tour_price = tour_price.split(',')
+    min_price = int(tour_price[0])
+    max_price = int(tour_price[-1])
+    tour_duration = request.form.get('tourDuration').split(",")
+    if tour_duration[0] == '':
+        query = Tour.query.filter(Tour.category.in_(tour_type),
+                                  Tour.price.between(min_price, max_price)
+                                  )
+    else:
+        tour_duration = tour_duration[0].split('-')
+        min_hour = int(tour_duration[0])
+        max_hour = int(tour_duration[-1])
+        query = Tour.query.filter(Tour.category.in_(tour_type),
+                                  Tour.price.between(min_price, max_price),
+                                  Tour.duration.between(min_hour, max_hour)
+                                  )
+    page = int(request.form.get('page'))
+    pagination = query.paginate(page=page, per_page=9)
+    tours = pagination.items
+    for tour_i in tours:
+        tour_i.contact_email = url_for('tour.tourDetail', activity_id=tour_i.id)
+        tour_i.images = json.loads(tour_i.images)['images']
+        tour_i.images[0] = "../" + tour_i.images[0][tour_i.images[0].index('static'):].replace('\\', '/')
 
+    if to_sort == '2':
+        tours = sorted(tours, key=lambda tour: tour.view_num, reverse=False)
 
+    if to_sort == '3':
+        tours = sorted(tours, key=lambda tour: tour.price, reverse=False)
 
+    if to_sort == '4':
+        tours = sorted(tours, key=lambda tour: tour.price, reverse=True)
 
+    tours = [tour.to_dict() for tour in tours]
+    return jsonify({"tours": tours, "page": 1})
