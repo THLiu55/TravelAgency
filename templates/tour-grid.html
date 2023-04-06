@@ -204,31 +204,31 @@
                     <div class="col-lg-4 col-xl-3 mb-4">
                         <div class="booking-sidebar">
                             <div class="booking-item">
-                                <h4 class="booking-title">Tour Category</h4>
+                                <h4 class="booking-title">Tour Type</h4>
                                 <div class="activity-type">
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Cultural tourism" onclick="activity_filter(3)"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Cultural tourism" onclick="tour_filter(3)"
                                                id="activity-type1">
                                         <label class="form-check-label" for="activity-type1">
                                             Cultural tourism <span>(20)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Wildlife observation" onclick="activity_filter(3)"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Wildlife observation" onclick="tour_filter(3)"
                                                id="activity-type2">
                                         <label class="form-check-label" for="activity-type2">
                                             Wildlife observation <span>(15)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Cruises" onclick="activity_filter(3)"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Cruises" onclick="tour_filter(3)"
                                                id="activity-type3">
                                         <label class="form-check-label" for="activity-type3">
                                             Cruises <span>(18)</span>
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Grass Skyline" onclick="activity_filter(3)"
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="Grass Skyline" onclick="tour_filter(3)"
                                                id="activity-type4">
                                         <label class="form-check-label" for="activity-type4">
                                             Grass Skyline <span>(35)</span>
@@ -290,7 +290,7 @@
                                     <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
                                 </div>
                                 <div class="col-md-3 booking-sort-box">
-                                    <select class="select" onchange="tour_filter(3)">
+                                    <select class="select" id="sort-select-ajax" onchange="tour_filter(3)">
                                         <option value="1">Sort By Default</option>
                                         <option value="2">Sort By Popular</option>
                                         <option value="3">Sort By Low Price</option>
@@ -299,7 +299,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="row-list-ajax">
 
                             {% for tour in tours %}
                                 <div class="col-md-6 col-lg-4">
