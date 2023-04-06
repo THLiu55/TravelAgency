@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+import datetime
 
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for
 from model import *
@@ -17,7 +17,8 @@ def tourList(page_num):
         # noinspection PyTypeChecker
         single_tour.images = json.loads(single_tour.images)['images']
         single_tour.images[0] = single_tour.images[0][single_tour.images[0].index('static'):].lstrip('static')
-    return render_template("tour-grid.html", total_tours=total_tours, tours=tours)
+    logged = True if session.get("customer_id") else False
+    return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged)
 
 
 @bp.route('/details/<tour_id>/', methods=['GET'])
@@ -47,9 +48,12 @@ def tourDetail(tour_id):
                                                 productID=tour_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
     purchased = TourOrder.query.filter_by(customerID=session.get("customer_id"),
-                                          productID=tour_id, purchased=True)
+                                          productID=tour_id, purchased=True).first()
+    logged = session.get("customer_id")
+    purchased = True if (purchased is not None and logged is not None) else False
+    logged = True if logged else False
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
-                           purchased=purchased)
+                           purchased=purchased, logged=logged)
 
 
 @bp.route('/add_review', methods=['POST'])
@@ -69,7 +73,7 @@ def add_review():
     # order = ActivityOrder.query.filter_by(customerID=customer_id, productID=activity_id).first()
     # if order is None:
     #     return jsonify({'code': 400, 'message': 'No order'})
-    review = TourReview(rating=rating, issueTime=datetime.now(), content=content, customerID=customer_id,
+    review = TourReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
                         productID=tour_id)
     tour.review_num = tour.review_num + 1
     db.session.add(review)
@@ -119,3 +123,64 @@ def tour_filter():
 
     tours = [tour.to_dict() for tour in tours]
     return jsonify({"tours": tours, "page": 1})
+
+
+@bp.route("/order-confirm", methods=['POST'])
+def order_confirm():
+    customer_id = session.get('customer_id')
+    if customer_id:
+        tour_id = request.form.get("tour_id")
+        to_confirmed = Tour.query.get(tour_id)
+        order_date = request.form.get("journey-date")
+        customer = Customer.query.get(customer_id)
+        return render_template("tour-booking-confirm.html", tour=to_confirmed, customer=customer,
+                               order_date=order_date, logged=True)
+    else:
+        url = request.referrer
+        return render_template("SignInUp.html", url=url)
+
+
+@bp.route("/order-success")
+def order_success():
+    customer = Customer.query.get(session.get("customer_id"))
+    cost = float(request.args.get("cost"))
+    if customer.wallet >= cost:
+        tour_order = TourOrder()
+        tour_order.customerID = session.get('customer_id')
+        tour_order.purchased = True
+        tour_order.startTime = datetime.datetime.now()
+        end_date = request.args.get("date")
+        date_format = "%Y/%m/%d"
+        datetime_obj = datetime.datetime.strptime(end_date, date_format)
+        tour_order.endTime = datetime_obj
+        tour_order.productID = request.args.get("tour_id")
+        tour_order.cost = cost
+        customer.wallet = customer.wallet - cost
+        db.session.add(tour_order)
+        db.session.commit()
+        return render_template("booking-success.html", name=request.args.get("name"))
+    else:
+        return jsonify({"balance": 400})
+
+
+@bp.route("/add_wishlist/<tour_id>")
+def add_wishlist(tour_id):
+    aimed_tour = Tour.query.get(tour_id)
+    tour_order = TourOrder()
+    tour_order.cost = aimed_tour.price
+    tour_order.startTime = datetime.datetime.now()
+    tour_order.purchased = False
+    tour_order.customerID = session.get("customer_id")
+    tour_order.productID = tour_id
+    db.session.add(tour_order)
+    db.session.commit()
+    return redirect(url_for('customer.profile'))
+
+
+@bp.route("/remove_wishlist/<tour_id>")
+def remove_wishlist(tour_id):
+    tour_order = TourOrder.query.filter_by(customerID=session.get("customer_id"), productID=tour_id,
+                                           purchased=False).first()
+    db.session.delete(tour_order)
+    db.session.commit()
+    return redirect(url_for('customer.profile'))
