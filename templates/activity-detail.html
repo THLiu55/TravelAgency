@@ -46,9 +46,9 @@
                                         <p class="listing-location"><i class="far fa-location-dot"></i> {{ activity.address }}</p>
                                     </div>
                                     <div class="listing-rate">
-                                        <span class="badge"><i class="fal fa-star"></i> {{ activity.total_star }} </span>
+                                        <span class="badge"><i class="fal fa-star"></i> {{ star_score }} </span>
                                         <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">({{ total_vire }} Reviews)</span>
+                                        <span class="listing-rate-review">( {{ activity.review_num }} Reviews)</span>
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -132,81 +132,17 @@
                                                 style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
                                 </div>
-{#                                <div class="listing-item faq-area">#}
-{#                                    <h4 class="mb-4">Faq's</h4>#}
-{#                                    <div class="accordion" id="accordionExample">#}
-{#                                        <div class="accordion-item">#}
-{#                                            <h2 class="accordion-header" id="heading1">#}
-{#                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"#}
-{#                                                        data-bs-target="#collapse1" aria-expanded="true"#}
-{#                                                        aria-controls="collapse1">#}
-{#                                                    <span><i class="far fa-question"></i></span> What Are The#}
-{#                                                    Charges Of Services ?#}
-{#                                                </button>#}
-{#                                            </h2>#}
-{#                                            <div id="collapse1" class="accordion-collapse collapse show"#}
-{#                                                 aria-labelledby="heading1" data-bs-parent="#accordionExample">#}
-{#                                                <div class="accordion-body">#}
-{#                                                    We denounce with righteous indignation and dislike men who#}
-{#                                                    are so beguiled and demoralized by the charms of pleasure of the#}
-{#                                                    moment, so#}
-{#                                                    blinded by desirente odio dignissim quam.#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="accordion-item">#}
-{#                                            <h2 class="accordion-header" id="heading2">#}
-{#                                                <button class="accordion-button collapsed" type="button"#}
-{#                                                        data-bs-toggle="collapse" data-bs-target="#collapse2"#}
-{#                                                        aria-expanded="false" aria-controls="collapse2">#}
-{#                                                    <span><i class="far fa-question"></i></span> How Can I Become A#}
-{#                                                    Member#}
-{#                                                    ?#}
-{#                                                </button>#}
-{#                                            </h2>#}
-{#                                            <div id="collapse2" class="accordion-collapse collapse"#}
-{#                                                 aria-labelledby="heading2" data-bs-parent="#accordionExample">#}
-{#                                                <div class="accordion-body">#}
-{#                                                    We denounce with righteous indignation and dislike men who#}
-{#                                                    are so beguiled and demoralized by the charms of pleasure of the#}
-{#                                                    moment, so#}
-{#                                                    blinded by desirente odio dignissim quam.#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="accordion-item">#}
-{#                                            <h2 class="accordion-header" id="heading3">#}
-{#                                                <button class="accordion-button collapsed" type="button"#}
-{#                                                        data-bs-toggle="collapse" data-bs-target="#collapse3"#}
-{#                                                        aria-expanded="false" aria-controls="collapse3">#}
-{#                                                    <span><i class="far fa-question"></i></span> Can I Upgrade My#}
-{#                                                    Plan Any Time ?#}
-{#                                                </button>#}
-{#                                            </h2>#}
-{#                                            <div id="collapse3" class="accordion-collapse collapse"#}
-{#                                                 aria-labelledby="heading3" data-bs-parent="#accordionExample">#}
-{#                                                <div class="accordion-body">#}
-{#                                                    We denounce with righteous indignation and dislike men who#}
-{#                                                    are so beguiled and demoralized by the charms of pleasure of the#}
-{#                                                    moment, so#}
-{#                                                    blinded by desirente odio dignissim quam.#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
+
                                 <div class="listing-item">
                                     <h4 class="mb-3">Reviews</h4>
                                     <div class="listing-rating-box">
                                         <div class="listing-review-rating">
                                             <div class="listing-rating-count">
-                                                <h2>4.5</h2>
+                                                <h2>{{ star_score }}</h2>
                                                 <div class="listing-rating-star">
+                                                    {% for i in range(star_score_ceil) %}
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
+                                                    {% endfor %}
                                                 </div>
                                                 <p>Base On {{ activity.review_num }}  Review</p>
                                             </div>
@@ -221,12 +157,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 90%">
+                                                            <div class="listing-progress-width" style="width: {{ 100*star_detail[4]/(5*activity.review_num) }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>90%</span>
+                                                        <span>{{ (100*star_detail[4]/(5*activity.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -239,12 +175,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 80%">
+                                                            <div class="listing-progress-width" style="width: {{ 100*star_detail[3]/(4*activity.review_num) }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>80%</span>
+                                                        <span>{{ (100*star_detail[3]/(4*activity.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -257,12 +193,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 59%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[2]/(3*activity.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>59%</span>
+                                                        <span>{{ (100*star_detail[2]/(3*activity.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -275,12 +211,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 70%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[1]/(2*activity.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>70%</span>
+                                                        <span>{{ (100*star_detail[1]/(2*activity.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -293,18 +229,18 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 49%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[0]/(1*activity.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>49%</span>
+                                                        <span>{{ (100*star_detail[0]/(1*activity.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="listing-review">
-                                            <h5>Showing 1.2k Reviews</h5>
+                                            <h5>Showing {{ activity.review_num }} Reviews</h5>
                                             {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
@@ -324,18 +260,6 @@
                                                 <p>
                                                     {{ review.content }}
                                                 </p>
-{#                                                <div class="listing-review-reply">#}
-{#                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>#}
-{#                                                        Reply</a>#}
-{#                                                    <div class="review-reaction">#}
-{#                                                        <a href="#" class="review-like active"><i#}
-{#                                                                class="fal fa-thumbs-up"></i> 15</a>#}
-{#                                                        <a href="#" class="review-dislike"><i#}
-{#                                                                class="fal fa-thumbs-down"></i> 05</a>#}
-{#                                                        <a href="#" class="review-love"><i class="fal fa-heart"></i>#}
-{#                                                            50</a>#}
-{#                                                    </div>#}
-{#                                                </div>#}
                                             </div>
                                             {% endfor %}
                                         </div>
@@ -387,10 +311,7 @@
                             <div class="booking-sidebar listing-side-content">
                                 <div class="booking-item">
                                     <div class="listing-price">
-                                        <h4 class="listing-price-tag">Bestseller</h4>
-                                        <div class="listing-price-amount">
-                                            From <del>{{ activity.price }}</del>
-                                        </div>
+                                        <h4 class="listing-price-tag">Book the activity</h4>
                                     </div>
                                     <div class="search-form">
                                         <form action="{{ url_for('activity.order_confirm') }}" method="post">
@@ -412,105 +333,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-{#                                                    <div class="col-lg-12">#}
-{#                                                        <div class="form-group">#}
-{#                                                            <div class="search-form-date">#}
-{#                                                                <div class="search-form-return">#}
-{#                                                                    <label>Return Date</label>#}
-{#                                                                    <div class="form-group-icon">#}
-{#                                                                        <input type="text" name="return-date"#}
-{#                                                                               class="form-control date-picker return-date">#}
-{#                                                                        <i class="fal fa-calendar-days"></i>#}
-{#                                                                    </div>#}
-{#                                                                    <p class="return-day-name"></p>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-{#                                                    <div class="col-lg-12">#}
-{#                                                        <div class="form-group dropdown passenger-box">#}
-{#                                                            <div class="passenger-class" role="menu"#}
-{#                                                                 data-bs-toggle="dropdown" aria-expanded="false">#}
-{#                                                                <label>Positions</label>#}
-{#                                                                <div class="form-group-icon">#}
-{#                                                                    <div class="passenger-total">#}
-{#                                                                        <span class="passenger-total-amount">2</span>#}
-{#                                                                        Members#}
-{#                                                                    </div>#}
-{#                                                                    <i class="fal fa-user-plus"></i>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                            <div class="dropdown-menu dropdown-menu-end">#}
-{#                                                                <div class="dropdown-item">#}
-{#                                                                    <div class="passenger-item">#}
-{#                                                                        <div class="passenger-info">#}
-{#                                                                            <h6>Adults</h6>#}
-{#                                                                            <p>12+ Years</p>#}
-{#                                                                        </div>#}
-{#                                                                        <div class="passenger-qty">#}
-{#                                                                            <button type="button" class="minus-btn"><i#}
-{#                                                                                    class="far fa-minus"></i></button>#}
-{#                                                                            <input type="text" name="adult"#}
-{#                                                                                   class="qty-amount passenger-adult"#}
-{#                                                                                   value="2" readonly>#}
-{#                                                                            <button type="button" class="plus-btn"><i#}
-{#                                                                                    class="far fa-plus"></i></button>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                                <div class="dropdown-item">#}
-{#                                                                    <div class="passenger-item">#}
-{#                                                                        <div class="passenger-info">#}
-{#                                                                            <h6>Children</h6>#}
-{#                                                                            <p>2-12 Years</p>#}
-{#                                                                        </div>#}
-{#                                                                        <div class="passenger-qty">#}
-{#                                                                            <button type="button" class="minus-btn"><i#}
-{#                                                                                    class="far fa-minus"></i></button>#}
-{#                                                                            <input type="text" name="children"#}
-{#                                                                                   class="qty-amount passenger-children"#}
-{#                                                                                   value="0" readonly>#}
-{#                                                                            <button type="button" class="plus-btn"><i#}
-{#                                                                                    class="far fa-plus"></i></button>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                                <div class="dropdown-item">#}
-{#                                                                    <div class="passenger-item">#}
-{#                                                                        <div class="passenger-info">#}
-{#                                                                            <h6>Infant</h6>#}
-{#                                                                            <p>Below 2 Years</p>#}
-{#                                                                        </div>#}
-{#                                                                        <div class="passenger-qty">#}
-{#                                                                            <button type="button" class="minus-btn"><i#}
-{#                                                                                    class="far fa-minus"></i></button>#}
-{#                                                                            <input type="text" name="infant"#}
-{#                                                                                   class="qty-amount passenger-infant"#}
-{#                                                                                   value="0" readonly>#}
-{#                                                                            <button type="button" class="plus-btn"><i#}
-{#                                                                                    class="far fa-plus"></i></button>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                                <div class="dropdown-item">#}
-{#                                                                    <div class="passenger-item">#}
-{#                                                                        <div class="passenger-info">#}
-{#                                                                            <h6>Tours</h6>#}
-{#                                                                        </div>#}
-{#                                                                        <div class="passenger-qty">#}
-{#                                                                            <button type="button" class="minus-btn"><i#}
-{#                                                                                    class="far fa-minus"></i></button>#}
-{#                                                                            <input type="text" name="room"#}
-{#                                                                                   class="qty-amount passenger-room"#}
-{#                                                                                   value="2" readonly>#}
-{#                                                                            <button type="button" class="plus-btn"><i#}
-{#                                                                                    class="far fa-plus"></i></button>#}
-{#                                                                        </div>#}
-{#                                                                    </div>#}
-{#                                                                </div>#}
-{#                                                            </div>#}
-{#                                                        </div>#}
-{#                                                    </div>#}
                                                 </div>
                                                 <div class="listing-side-btn">
                                                     <button type="submit" class="theme-btn"><span
@@ -530,7 +352,7 @@
                                     </div>
                                     <div class="listing-side-share">
                                         <a href="#"><i class="far fa-share-nodes"></i> Share</a>
-                                        <span><i class="far fa-eye"></i> 250 Views</span>
+                                        <span><i class="far fa-eye"></i> {{ activity.view_num }} Views</span>
                                     </div>
                                 </div>
                             </div>
@@ -546,20 +368,6 @@
                                             class="__cf_email__" data-cfemail="e78e898188a7829f868a978b82c984888a">{{ activity.contact_email }}</span></a>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Organized By</h4>
-                                <div class="listing-side-organizer">
-                                    <div class="listing-side-organizer-img">
-                                        <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt="">
-                                    </div>
-                                    <div class="listing-side-organizer-info">
-                                        <h5 class="listing-side-organizer-name">Roltak Travel Agency</h5>
-                                        <p>Member Since 2021</p>
-                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> Send
-                                            Message</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

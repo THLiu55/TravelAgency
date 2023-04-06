@@ -19,7 +19,7 @@
 
     <main class="main">
 
-        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/02.jpg)">
+        <div class="site-breadcrumb" style="background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
                 <h2 class="breadcrumb-title">Tour</h2>
                 <ul class="breadcrumb-menu">
@@ -46,7 +46,7 @@
                                         <p class="listing-location"><i class="far fa-location-dot"></i>{{ tour.city }}{{ tour.state }}</p>
                                     </div>
                                     <div class="listing-rate">
-                                        <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                        <span class="badge"><i class="fal fa-star"></i> {{ star_score }}</span>
                                         <span class="listing-rate-type">Excellent</span>
                                         <span class="listing-rate-review">({{ tour.review_num }} Reviews)</span>
                                     </div>
@@ -155,13 +155,11 @@
                                     <div class="listing-rating-box">
                                         <div class="listing-review-rating">
                                             <div class="listing-rating-count">
-                                                <h2>4.5</h2>
+                                                <h2>{{ star_score }}</h2>
                                                 <div class="listing-rating-star">
+                                                    {% for i in range(star_score_ceil) %}
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
+                                                    {% endfor %}
                                                 </div>
                                                 <p>Base On {{ tour.review_num }} Review</p>
                                             </div>
@@ -176,12 +174,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 90%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[4]/(5*tour.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>90%</span>
+                                                        <span>{{ (100*star_detail[4]/(5*tour.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -194,12 +192,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 80%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[3]/(4*tour.review_num)|int) }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>80%</span>
+                                                        <span>{{ (100*star_detail[3]/(4*tour.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -212,12 +210,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 59%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[2]/(3*tour.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>59%</span>
+                                                        <span>{{ (100*star_detail[2]/(3*tour.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -230,12 +228,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 70%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[1]/(2*tour.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>70%</span>
+                                                        <span>{{ (100*star_detail[1]/(2*tour.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -248,18 +246,18 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 49%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[0]/(1*tour.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>49%</span>
+                                                        <span>{{ (100*star_detail[0]/(1*tour.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="listing-review">
-                                            <h5>Showing 1.2k Reviews</h5>
+                                            <h5>Showing {{ tour.review_num }} Reviews</h5>
                                             {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
@@ -333,11 +331,7 @@
                             <div class="booking-sidebar listing-side-content">
                                 <div class="booking-item">
                                     <div class="listing-price">
-                                        <h4 class="listing-price-tag">Bestseller</h4>
-                                        <div class="listing-price-amount">
-                                            From <span>$450.00</span>
-                                            <del>$590.00</del>
-                                        </div>
+                                        <h4 class="listing-price-tag">Book the tour</h4>
                                     </div>
                                     <div class="search-form">
                                         <form action="{{ url_for('tour.order_confirm') }}" method="post">
@@ -379,7 +373,7 @@
                                     </div>
                                     <div class="listing-side-share">
                                         <a href="#"><i class="far fa-share-nodes"></i> Share</a>
-                                        <span><i class="far fa-eye"></i> 250 Views</span>
+                                        <span><i class="far fa-eye"></i> {{ tour.view_num }} Views</span>
                                     </div>
                                 </div>
                             </div>
@@ -395,20 +389,6 @@
                                             class="__cf_email__" data-cfemail="e78e898188a7829f868a978b82c984888a">{{ tour.contact_email }}</span></a>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Organized By</h4>
-                                <div class="listing-side-organizer">
-                                    <div class="listing-side-organizer-img">
-                                        <img src="assets/img/account/01.jpg" alt="">
-                                    </div>
-                                    <div class="listing-side-organizer-info">
-                                        <h5 class="listing-side-organizer-name">Roltak Travel Agency</h5>
-                                        <p>Member Since 2021</p>
-                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> Send
-                                            Message</a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

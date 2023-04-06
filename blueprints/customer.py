@@ -131,3 +131,5 @@ def consult():
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
     return render_template("profile-wishlist.html", customer=customer)
+
+

@@ -1,5 +1,6 @@
 import json
 import datetime
+import math
 
 from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
 from model import *
@@ -30,6 +31,11 @@ def add_review():
     review = ActivityReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
                             productID=activity_id)
     activity.review_num = activity.review_num + 1
+    star = int(request.form.get("rating"))
+    star_index = star - 1
+    star_detail = json.loads(activity.star_detail)["star_detail"]
+    star_detail[star_index] = star_detail[star_index] + star
+    activity.star_detail = json.dumps({"star_detail": star_detail})
     db.session.add(review)
     db.session.commit()
     return redirect(url_for('activity.activityDetail', activity_id=activity.id))
@@ -72,8 +78,12 @@ def activityDetail(activity_id):
     logged = session.get("customer_id")
     purchased = True if (purchased is not None and logged is not None) else False
     logged = True if logged else False
+    star_detail = json.loads(activity.star_detail)['star_detail']
+    star_score = round(sum(star_detail) / activity.review_num, 1)
+    star_score_ceil = math.floor(star_score)
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
-                           added=added, purchased=purchased)
+                           added=added, purchased=purchased, star_score=star_score, star_score_ceil=star_score_ceil,
+                           star_detail=star_detail)
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])

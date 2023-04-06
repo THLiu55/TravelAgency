@@ -4,6 +4,7 @@ import datetime
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for
 from model import *
 from exts import db
+import math
 
 bp = Blueprint("tour", __name__, url_prefix="/tour")
 
@@ -27,8 +28,6 @@ def tourDetail(tour_id):
     tour.view_num = tour.view_num + 1
     db.session.commit()
     reviews = tour.review
-    if tour is None:
-        return jsonify({'code': 400, 'message': "no activity found"})
     tour.included = json.loads(tour.included)['included']
     tour.included = [i for i in tour.included if i is not None]
     tour.excluded = json.loads(tour.excluded)['not_included']
@@ -43,7 +42,7 @@ def tourDetail(tour_id):
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
-    tour.review_num = tour.review_num + 1
+    tour.view_num = tour.view_num + 1
     wishlist_exists = TourOrder.query.filter_by(customerID=session.get("customer_id"),
                                                 productID=tour_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
@@ -52,20 +51,19 @@ def tourDetail(tour_id):
     logged = session.get("customer_id")
     purchased = True if (purchased is not None and logged is not None) else False
     logged = True if logged else False
+    star_detail = json.loads(tour.star_detail)['star_detail']
+    star_score = round(sum(star_detail) / tour.review_num, 1)
+    star_score_ceil = math.floor(star_score)
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
-                           purchased=purchased, logged=logged)
+                           purchased=purchased, logged=logged, star_score=star_score, star_score_ceil=star_score_ceil,
+                           star_detail=star_detail)
 
 
 @bp.route('/add_review', methods=['POST'])
 def add_review():
     tour_id = request.form.get('productId')
     customer_id = session.get('customer_id')
-    rating = int(request.form.get('rating'))
     content = request.form.get('content')
-    # check if all the data have been entered
-    if not customer_id or not rating or not content:
-        return jsonify({'code': 400, 'message': 'Invalid data'})
-    # check if activity exist
     tour = Tour.query.get(tour_id)
     if tour is None:
         return jsonify({'code': 400, 'message': 'Activity not found'})
@@ -73,9 +71,14 @@ def add_review():
     # order = ActivityOrder.query.filter_by(customerID=customer_id, productID=activity_id).first()
     # if order is None:
     #     return jsonify({'code': 400, 'message': 'No order'})
-    review = TourReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
-                        productID=tour_id)
     tour.review_num = tour.review_num + 1
+    star = int(request.form.get("rating"))
+    star_index = star - 1
+    star_detail = json.loads(tour.star_detail)["star_detail"]
+    star_detail[star_index] = star_detail[star_index] + star
+    tour.star_detail = json.dumps({"star_detail": star_detail})
+    review = TourReview(rating=star, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
+                        productID=tour_id)
     db.session.add(review)
     db.session.commit()
     return redirect(url_for('tour.tourDetail', tour_id=int(tour.id)))
