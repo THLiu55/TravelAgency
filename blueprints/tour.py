@@ -23,6 +23,8 @@ def tourList(page_num):
 @bp.route('/details/<tour_id>/', methods=['GET'])
 def tourDetail(tour_id):
     tour = Tour.query.get(tour_id)
+    tour.view_num = tour.view_num + 1
+    db.session.commit()
     reviews = tour.review
     if tour is None:
         return jsonify({'code': 400, 'message': "no activity found"})
@@ -46,8 +48,6 @@ def tourDetail(tour_id):
     added = True if wishlist_exists is not None else False
     purchased = TourOrder.query.filter_by(customerID=session.get("customer_id"),
                                           productID=tour_id, purchased=True)
-    tour.review_num = tour.review_num + 1
-    db.session.commit()
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
                            purchased=purchased)
 
@@ -104,7 +104,7 @@ def tour_filter():
     pagination = query.paginate(page=page, per_page=9)
     tours = pagination.items
     for tour_i in tours:
-        tour_i.contact_email = url_for('tour.tourDetail', activity_id=tour_i.id)
+        tour_i.contact_email = url_for('tour.tourDetail', tour_id=tour_i.id)
         tour_i.images = json.loads(tour_i.images)['images']
         tour_i.images[0] = "../" + tour_i.images[0][tour_i.images[0].index('static'):].replace('\\', '/')
 
