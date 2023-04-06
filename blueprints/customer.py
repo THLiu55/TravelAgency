@@ -38,6 +38,8 @@ def login():
         customer_email = request.form.get("signin-email")
         customer_password = request.form.get("signin-password")
         customer = Customer.query.filter_by(email=customer_email).first()
+        if customer is None:
+            return jsonify({"message": "用户不存在"})
         if check_password_hash(customer.password, customer_password):
             session['customer_id'] = customer.id
             url = request.form.get("url")

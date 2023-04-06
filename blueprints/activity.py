@@ -69,9 +69,11 @@ def activityDetail(activity_id):
     added = True if wishlist_exists is not None else False
     purchased = ActivityOrder.query.filter_by(customerID=session.get("customer_id"),
                                               productID=activity_id, purchased=True).first()
-    logged = True if session.get("customer_id") and purchased else False
+    logged = session.get("customer_id")
+    purchased = True if (purchased is not None and logged is not None) else False
+    logged = True if logged else False
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
-                           added=added)
+                           added=added, purchased=purchased)
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])
