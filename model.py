@@ -238,6 +238,7 @@ class Hotel(db.Model):
             'room_num': self.room_num
         }
 
+
 class HotelOrder(db.Model):
     __tablename__ = 'hotel_orders'
 
@@ -257,5 +258,60 @@ class HotelReview(db.Model):
     rating = db.Column(db.Integer)
     issueTime = db.Column(db.DateTime)
     content = db.Column(db.Text)
-    customerID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
-    productID = db.Column(db.Integer, db.ForeignKey('tours.id'))
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
+
+
+class Flight(db.Model):
+    __tablename__ = 'flights'
+
+    id = db.Column(db.Integer, primary_key=True)
+    flight_type = db.Column(db.String(255))
+    takeoff_time = db.Column(db.DateTime)
+    landing_time = db.Column(db.DateTime)
+    flight_stop = db.Column(db.Integer)
+    company = db.Column(db.String(255))
+    total_time = db.Column(db.Float)
+    price = db.Column(db.Float)
+    fare_type = db.Column(db.String(255))
+    flight_class = db.Column(db.String(255))
+    cancellation_charge = db.Column(db.String(255))
+    change_charge = db.Column(db.String(255))
+    seat_baggage = db.Column(db.String(255))
+    base_fare = db.Column(db.String(255))
+    taxes = db.Column(db.String(255))
+    images = db.Column(db.Text)
+    description = db.Column(db.Text)
+    inflight_features = db.Column(db.Text)
+    total_star = db.Column(db.Integer)
+    review_num = db.Column(db.Integer)
+    star_detail = db.Column(db.Text)
+    contact_name = db.Column(db.String(255))
+    contact_email = db.Column(db.String(255))
+    contact_phone = db.Column(db.String(255))
+    view_num = db.Column(db.Integer)
+    review = db.relationship('FlightReview', backref='product')
+    orders = db.relationship('FlightOrder', backref='product')
+
+
+class FlightOrder(db.Model):
+    __tablename__ = 'flight_orders'
+
+    id = db.Column(db.Integer, primary_key=True)
+    startTime = db.Column(db.DateTime)
+    endTime = db.Column(db.DateTime)
+    cost = db.Column(db.Float)
+    purchased = db.Column(db.Boolean)
+    productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+
+
+class FlightReview(db.Model):
+    __tablename__ = 'flight_reviews'
+
+    id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.Integer)
+    issueTime = db.Column(db.DateTime)
+    content = db.Column(db.Text)
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
