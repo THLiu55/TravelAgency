@@ -1,5 +1,5 @@
 ﻿{% extends "base.html" %}
-{% block title %} My Wishlist {% endblock %}
+{% block title %} My Profile {% endblock %}
 
 {% block csslink %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/style.css') }}">
@@ -53,8 +53,8 @@
 </div>
 <ul class="user-profile-sidebar-list">
 <li><a class="active" href="{{ url_for('customer.profile') }}"><i class="far fa-user"></i> My Profile</a></li>
-<li><a href="profile-booking.html"><i class="far fa-shopping-bag"></i> My Booking</a></li>
-<li><a href="profile-wishlist.html"><i class="far fa-heart"></i> My Wishlist</a></li>
+<li><a href="{{ url_for('customer.booking') }}"><i class="far fa-shopping-bag"></i> My Booking</a></li>
+<li><a href="{{ url_for('customer.wishlist') }}"><i class="far fa-heart"></i> My Wishlist</a></li>
 <li><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge">02</span></a></li>
 <li><a href="{{ url_for('customer.wallet') }}"><i class="far fa-wallet"></i> My Wallet</a></li>
 <!-- <li><a href="profile-notification.html"><i class="far fa-bell"></i> Notifications <span class="badge">05</span></a></li> -->

@@ -133,6 +133,18 @@ def profile():
     return render_template("profile.html", customer=customer, logged=True)
 
 
+@bp.route("/booking")
+def booking():
+    customer = Customer.query.get(session.get('customer_id'))
+    return render_template("profile-booking.html", customer=customer, logged=True)
+
+
+@bp.route("/wishlist")
+def wishlist():
+    customer = Customer.query.get(session.get('customer_id'))
+    return render_template("profile-wishlist.html", customer=customer, logged=True)
+
+
 @bp.route("/wallet")
 def wallet():
     customer = Customer.query.get(session.get('customer_id'))
