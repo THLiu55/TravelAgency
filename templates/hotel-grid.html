@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 
-<title>MyTrip</title>
+<title>Hotel</title>
 
 <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
 
@@ -86,7 +86,7 @@
 <a class="nav-link" href="#">Flight</a>
 </li>
 <li class="nav-item dropdown">
-<a class="nav-link" href="#">Hotel</a>
+<a class="nav-link" href="{{ url_for('hotel.hotelList', page_num=page_num) }}">Hotel</a>
 
 </li>
 <li class="nav-item dropdown">
@@ -95,7 +95,7 @@
 
 
 <li class="nav-item dropdown">
-<a class="nav-link" href="#">Tour</a>
+<a class="nav-link" href="{{ url_for('tour.tourList', page_num=page_num) }}">Tour</a>
 <!-- <ul class="dropdown-menu fade-down">
 <li><a class="dropdown-item" href="tour-grid.html">Tour Grid</a></li>
 <li><a class="dropdown-item" href="tour-list.html">Tour List</a></li>
@@ -418,7 +418,7 @@ Restaurant <span>(15)</span>
 <div class="col-lg-8 col-xl-9">
 <div class="col-md-12">
 <div class="booking-sort">
-<h5>{{ total_activities }} Results Found</h5>
+<h5>{{ total_hotels }} Results Found</h5>
 <div class="booking-sort-list-grid">
 <a class="booking-sort-grid active" href="activity-grid.html"><i class="far fa-grid-2"></i></a>
 <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
@@ -435,27 +435,27 @@ Restaurant <span>(15)</span>
 </div>
 <div class="row" id="row-list-ajax">
 
-    {% for activity in activities %}
+    {% for hotel in hotels %}
 <div class="col-md-6 col-lg-4">
 <div class="activity-item">
 <div class="activity-img">
-<img src="{{ url_for('static', filename=activity.images[0].replace('\\','/')) }}" alt="" style="width:500px; height:200px">
+<img src="{{ url_for('static', filename=hotel.images[0].replace('\\','/')) }}" alt="" style="width:500px; height:200px">
 <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
 </div>
 <div class="activity-content">
-<h4 class="activity-title"><a href="#">{{ activity.name }}</a></h4>
-<p><i class="far fa-location-dot"></i>{{ activity.address }}, {{ activity.city }}</p>
+<h4 class="activity-title"><a href="#">{{ hotel.name }}</a></h4>
+<p><i class="far fa-location-dot"></i>{{ hotel.address }}, {{ hotel.city }}</p>
 <div class="activity-rate">
 <span class="badge"><i class="fal fa-star"></i> 5.0</span>
 <span class="activity-rate-type">Excellent</span>
-<span class="activity-rate-review">({{ activity.review_num }} Reviews)</span>
+<span class="activity-rate-review">({{ hotel.review_num }} Reviews)</span>
 </div>
 <div class="activity-bottom">
 <div class="activity-price">
-<span class="activity-price-amount">${{ activity.price }}</span>
+<span class="activity-price-amount">${{ hotel.min_price }}+</span>
 </div>
 <div class="activity-text-btn">
-<a href="{{ url_for('activity.activityDetail', activity_id=activity.id) }}">See Details <i class="fas fa-arrow-right"></i></a>
+<a href="{{ url_for('hotel.hotelDetail', hotel_id=hotel.id) }}">See Details <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
 </div>
@@ -524,6 +524,6 @@ Restaurant <span>(15)</span>
 <script src="../static/css/assets/js/jquery.timepicker.min.js"></script>
 <script src="../static/css/assets/js/wow.min.js"></script>
 <script src="../static/css/assets/js/main.js"></script>
-<script src="{{ url_for('static', filename="js/activityFilter.js") }}"></script>
+<script src="{{ url_for('static', filename="js/hotelFilter.js") }}"></script>
 </body>
 </html>

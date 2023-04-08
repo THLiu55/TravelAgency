@@ -79,11 +79,13 @@ def activityDetail(activity_id):
     purchased = True if (purchased is not None and logged is not None) else False
     logged = True if logged else False
     star_detail = json.loads(activity.star_detail)['star_detail']
-    star_score = round(sum(star_detail) / activity.review_num, 1)
+    star_score = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
     star_score_ceil = math.floor(star_score)
+    review_num = activity.review_num
+    activity.review_num = 10000 if activity.review_num == 0 else activity.review_num
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
                            added=added, purchased=purchased, star_score=star_score, star_score_ceil=star_score_ceil,
-                           star_detail=star_detail)
+                           star_detail=star_detail, review_num=review_num)
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])

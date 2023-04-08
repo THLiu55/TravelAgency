@@ -48,7 +48,7 @@
                                     <div class="listing-rate">
                                         <span class="badge"><i class="fal fa-star"></i> {{ star_score }}</span>
                                         <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">({{ tour.review_num }} Reviews)</span>
+                                        <span class="listing-rate-review">({{ review_num }} Reviews)</span>
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -161,7 +161,7 @@
                                                     <i class="fas fa-star"></i>
                                                     {% endfor %}
                                                 </div>
-                                                <p>Base On {{ tour.review_num }} Review</p>
+                                                <p>Base On {{ review_num }} Review</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -257,7 +257,7 @@
                                             </div>
                                         </div>
                                         <div class="listing-review">
-                                            <h5>Showing {{ tour.review_num }} Reviews</h5>
+                                            <h5>Showing {{ review_num }} Reviews</h5>
                                             {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">

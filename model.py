@@ -224,7 +224,7 @@ class Hotel(db.Model):
     room_detail = db.Column(db.Text)
     amenities = db.Column(db.Text)
     total_star = db.Column(db.Integer)
-    review_num = db.Column(db.Integer)
+    review_num = db.Column(db.Integer, default=0)
     star_detail = db.Column(db.Text)
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
