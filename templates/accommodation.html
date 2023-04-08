@@ -789,7 +789,7 @@
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
                                                             <label>Minimal Price</label>
-                                                            <input type="text" class="form-control" name="min_price"
+                                                            <input type="number" class="form-control" name="min_price" min="0"
                                                                 placeholder="Enter Minimal price">
                                                         </div>
                                                     </div>
@@ -1224,14 +1224,14 @@
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
-                                                                    <input type="text" class="form-control"
+                                                                    <input type="email" class="form-control"
                                                                         name="contact_email" placeholder="Enter email" style="width: max-content;">
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
                                                                     <label>Phone</label>
-                                                                    <input type="text" class="form-control"
+                                                                    <input type="number" class="form-control"
                                                                         name="contact_phone" placeholder="Enter phone" style="width: max-content;">
                                                                 </div>
                                                             </div>
@@ -1329,6 +1329,29 @@
 					var formGroup = $('<div class="form-group"></div>');
                     var labelname = $('<label for="hotelroom_name_' + i + '">Room Name - Room Type' + i + '</label>');
                     var inputname = $('<input name="hotelroom_name_' + i + '" type="text" class="form-control" placeholder="Enter room name">');
+
+                    var inputformGroup = $('<div class="input-form-group" style="display: grid;grid-template-columns: 1fr 1fr 1fr;justify-items: start;margin-left: 5%;margin-top:2%;"></div>');
+                    var labelWifi = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_wifi_' + i + '">Wifi</label></div>');
+                    var checkboxWifi = $('<input name="hotelroom_wifi_' + i + '" type="checkbox" class="form-check-input" value="1" style="-webkit-appearance:checkbox;">');
+
+                    var labelBed = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_1bed_' + i + '">1 Single beds</label></div>');
+                    var checkboxBed = $('<input name="hotelroom_1bed_' + i + '" type="checkbox" class="form-check-input" value="0" style="-webkit-appearance:checkbox;">');
+
+                    var label2Beds = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_2bed_' + i + '">2 Single beds</label></div>');
+                    var checkbox2Beds = $('<input name="hotelroom_2bed_' + i + '" type="checkbox" class="form-check-input" value="1" style="-webkit-appearance:checkbox;">');
+
+                    var labelRoomArea15 = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Area15_' + i + '">15 ㎡</label></div>');
+                    var checkboxRoomArea15 = $('<input name="hotelroom_Area15_' + i + '" type="checkbox" class="form-check-input" value="1" style="-webkit-appearance:checkbox;">');
+
+                    var labelRoomArea25 = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Area25_' + i + '">25 ㎡</label></div>');
+                    var checkboxRoomArea25 = $('<input name="hotelroom_Area25_' + i + '" type="checkbox" class="form-check-input" value="0" style="-webkit-appearance:checkbox;">');
+
+                    var labelBath = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Bath_' + i + '">Shower And Bathtub</label></div>');
+                    var checkboxBath = $('<input name="hotelroom_Bath_' + i + '" type="checkbox" class="form-check-input" value="1" style="-webkit-appearance:checkbox;">');
+
+                    var labelToiletries = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Toiletries_' + i + '">Free Toiletries</label></div>');
+                    var checkboxToiletries = $('<input name="hotelroom_Toiletries_' + i + '" type="checkbox" class="form-check-input" value="1" style="-webkit-appearance:checkbox;">');
+
                     var labelprice = $('<label for="hotelroom_price_' + i + '">Room Price</label>');
                     var inputprice = $('<input name="hotelroom_price_' + i + '" type="number" min=0 class="form-control" placeholder="Enter room price">');
 					var label = $('<label for="fileInput' + i + '"></label>');
@@ -1351,12 +1374,49 @@
 					customFile.append(fileLabel);
                     formGroup.append(labelname);
                     formGroup.append(inputname);
+                    
+                    // inputformGroup.append(checkboxWifi);
+                    labelWifi.append(checkboxWifi);
+                    inputformGroup.append(labelWifi);
+                    
+                    
+                    // inputformGroup.append(checkboxBed);
+                    labelBed.append(checkboxBed);
+                    inputformGroup.append(labelBed);
+
+
+                    label2Beds.append(checkbox2Beds);
+                    // inputformGroup.append(checkbox2Beds);
+                    inputformGroup.append(label2Beds);
+
+
+                    // inputformGroup.append(checkboxRoomArea15);
+                    labelRoomArea15.append(checkboxRoomArea15);
+                    inputformGroup.append(labelRoomArea15);
+
+
+                    // inputformGroup.append(checkboxRoomArea25);
+                    labelRoomArea25.append(checkboxRoomArea25);
+                    inputformGroup.append(labelRoomArea25);
+
+
+                    // inputformGroup.append(checkboxBath);
+                    labelBath.append(checkboxBath);
+                    inputformGroup.append(labelBath);
+
+
+                    // inputformGroup.append(checkboxToiletries);
+                    labelToiletries.append(checkboxToiletries);
+                    inputformGroup.append(labelToiletries);
+                    formGroup.append(inputformGroup);
                     formGroup.append(labelprice);
                     formGroup.append(inputprice);
 					formGroup.append(label);
 					formGroup.append(customFile);
 					formGroup.append(fileNameInput);
+
 					$("#divRoomContainer").append(formGroup);
+
 				}
 			});
 		});
