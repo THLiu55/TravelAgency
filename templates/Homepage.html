@@ -86,14 +86,15 @@
                     <p> {{ _("Pick some popular destinations for travel!") }} </p>
                 </div>
             </li>
-            <li>
+            <li id="myLi">
                 <div id="accomodation" style="margin-left: 2%;">
-                    <img src="../static/image/hotel.svg" alt=""/>
-                    <h1> {{ _("Accomodation") }}</h1>
+                        <img src="../static/image/hotel.svg" alt=""/>
+                    <h1> {{ _("Accomodation") }}</h1> 
                     <p> {{ _("Ranging from cozy to luxury.") }} </p>
+                
                 </div>
             </li>
-            <li>
+            <li id="liforattraction">
                 <div id="attraction" style="margin-left: 2%;">
                     <img src="../static/image/beach.svg" alt=""/>
                     <h1> {{ _("Tourist attraction") }}</h1>
@@ -107,7 +108,7 @@
         <p> {{ _("Train, Plane, bus and everything.") }}</p>
       </div>
     </li> -->
-            <li>
+            <li id="lifortour">
                 <div id="reviews" style="margin-left: 4%;">
                     <img src="../static/image/tour.svg" alt=""/>
                     <h1> {{ _("Tours") }}</h1>
@@ -1181,4 +1182,18 @@
 
     <script src="../static/js/wow.min.js"></script>
     <script src="../static/js/main.js"></script>
+    <script>
+        var myLi=$('#myLi');
+        myLi.click(function () {
+            window.location.href ="{{ url_for('hotel.hotelList', page_num=1) }}";
+        });
+        var myLi2=$('#liforattraction');
+        myLi2.click(function(){
+            window.location.href="{{ url_for('activity.activityList', page_num=1) }}";
+        });
+        var myLi2=$('#lifortour');
+        myLi2.click(function(){
+            window.location.href="{{ url_for('tour.tourList', page_num=1) }}";
+        });
+    </script>
 {% endblock %}
