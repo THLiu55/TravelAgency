@@ -304,11 +304,11 @@ def delete_hotel():
 
 
 def load_product(product_name):
-    product = Hotel if product_name == "Hotel" else Tour if product_name == "Tour" else Activity if product_name == "Activity" else None
+    product = Hotel if product_name == "Hotel" else Tour if product_name == "Tour" else Activity if product_name == "Activity" else Flight
     category = request.form.get("category")
     status = request.form.get("publish")
     q = product.query
-    if product != Hotel and category != "All Category":
+    if product != Hotel and product != Flight and category != "All Category":
         q = q.filter_by(category=category)
     if status != "All Status":
         q = q.filter_by(status=status)
@@ -320,6 +320,54 @@ def load_product(product_name):
 def accommodations():
     return render_template("accommodation.html")
 
+
+@bp.route("/add_flight", methods=["POST"])
+def add_flight():
+    flight = Flight()
+    flight.status = "published"
+    flight.flight_type = request.form.get("flight_type")
+    flight.takeoff_time = datetime.strptime(request.form.get("take_off_time"), "%Y-%m-%dT%H:%M")
+    flight.landing_time = datetime.strptime(request.form.get("landing_time"), "%Y-%m-%dT%H:%M")
+    flight.flight_stop = request.form.get("flight_stop")
+    flight.company = request.form.get("company")
+    flight.total_time = float(request.form.get("total_time"))
+    flight.price = float(request.form.get("price"))
+    flight.fare_type = request.form.get("fare_type")
+    flight.flight_class = request.form.get("flight_class")
+    flight.cancellation_charge = request.form.get("cancellation_charge")
+    flight.flight_charge = request.form.get("flight_charge")
+    flight.seat_baggage = request.form.get("seat_baggage")
+    flight.base_fare = request.form.get("base_fare")
+    flight.taxes = request.form.get("taxes")
+    images = request.files.getlist("images")
+    max_id = db.session.query(db.func.max(Flight.id)).scalar()
+    max_id = 1 if max_id is None else max_id + 1
+    img_routes = []
+    folder_path = os.path.join(current_app.root_path, "static", "flight_img", str(max_id))
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+    for image in images:
+        save_path = os.path.join(folder_path, image.filename)
+        image.save(save_path)
+        img_routes.append(save_path)
+    flight.images = json.dumps({"images": img_routes})
+    flight.description = request.form.get("description")
+    inflight_features = []
+    for i in range(1, 13):
+        amin = request.form.get(f"inflight{i}")
+        if amin is not None:
+            inflight_features.append(amin)
+    flight.inflight_features = str(inflight_features)
+    flight.total_star = 0
+    flight.review_num = 0
+    flight.star_detail = json.dumps({"star_detail": [0, 0, 0, 0, 0]})
+    flight.contact_name = request.form.get("contact_name")
+    flight.contact_email = request.form.get("contact_email")
+    flight.contact_phone = request.form.get("contact_phone")
+    flight.view_num = 0
+    db.session.add(flight)
+    db.session.commit()
+    return redirect(url_for("manager.flights"))
 
 @bp.route("/flights")
 def flights():

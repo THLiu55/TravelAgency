@@ -1289,7 +1289,7 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-
+                            <form action="{{ url_for('manager.add_flight') }}" method="POST" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
                                     <h4 class="user-profile-card-title">Modify Flights</h4>
@@ -1302,36 +1302,36 @@
                                                     <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Type</label>
-                                                        <select class="select">
+                                                        <select name="flight_type" class="select">
                                                         <option value="">Select Flight Type</option>
-                                                        <option value="1">One Way Flight</option>
-                                                        <option value="2">Round Trip Flight</option>
-                                                        <option value="3">Multi City Flight</option>
+                                                        <option value="One Way Flight">One Way Flight</option>
+                                                        <option value="Round Trip Flight">Round Trip Flight</option>
+                                                        <option value="Multi City Flight">Multi City Flight</option>
                                                         </select>
                                                         </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                         <div class="form-group">
                                                         <label>Take Off Time</label>
-                                                        <input type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
+                                                        <input name="take_off_time" type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
                                                         </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                          <div class="form-group">
                                                         <label>Landing Time</label>
-                                                        <input type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
+                                                        <input name="landing_time" type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
                                                         </div>
                                                         </div>
                                                         <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Stop</label>
-                                                        <select class="select">
+                                                        <select name="flight_stop" class="select">
                                                         <option value="">Select Stop</option>
-                                                        <option value="1">Non Stop</option>
-                                                        <option value="2">1 Stop</option>
-                                                        <option value="3">2 Stop</option>
-                                                        <option value="4">3 Stop</option>
-                                                        <option value="5">Multi Stop</option>
+                                                        <option value="Non Stop">Non Stop</option>
+                                                        <option value="1 Stop">1 Stop</option>
+                                                        <option value="2 Stop">2 Stop</option>
+                                                        <option value="3 Stop">3 Stop</option>
+                                                        <option value="Multi Stop">Multi Stop</option>
                                                         </select>
                                                         </div>
                                                         </div>
@@ -1342,26 +1342,26 @@
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Airline</label>
-                                                            <select class="select">
+                                                            <select name="company" class="select">
                                                             <option value="">Select Airline Company</option>
-                                                            <option value="1">American Airlines</option>
-                                                            <option value="2">Delta Airlines</option>
-                                                            <option value="3">Qatar Airways</option>
-                                                            <option value="4">Fly Amirates</option>
-                                                            <option value="5">Singapore Airlines</option>
+                                                            <option value="American Airlines">American Airlines</option>
+                                                            <option value="Delta Airlines">Delta Airlines</option>
+                                                            <option value="Qatar Airways">Qatar Airways</option>
+                                                            <option value="Fly Amirates">Fly Amirates</option>
+                                                            <option value="Singapore Airlines">Singapore Airlines</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Total Time Of Flight</label>
-                                                            <input type="text" class="form-control" placeholder="Enter total time" style="width: max-content; height: 56px;">
+                                                            <input name="total_time" type="text" class="form-control" placeholder="Enter total time" style="width: max-content; height: 56px;">
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Price (Per Person)</label>
-                                                             <input type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;">
+                                                             <input name="price" type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;">
                                                             </div>
                                                             </div>
                                                             <!-- <div class="col-lg-4" style="max-width: none;">
@@ -1380,55 +1380,55 @@
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Fare Type</label>
-                                                            <select class="select">
+                                                            <select name="fare_type" class="select">
                                                             <option value="">Select The Fare Type</option>
-                                                            <option value="1">Refundable</option>
-                                                            <option value="2">Partially Refundable</option>
-                                                            <option value="3">Non Refundable</option>
+                                                            <option value="Refundable">Refundable</option>
+                                                            <option value="Partially Refundable">Partially Refundable</option>
+                                                            <option value="Non Refundable">Non Refundable</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Flight Class</label>
-                                                            <select class="select">
+                                                            <select name="flight_class" class="select">
                                                             <option value="">Select Class</option>
-                                                            <option value="1">Economy</option>
-                                                            <option value="2">Business</option>
-                                                            <option value="3">First Class</option>
+                                                            <option value="Economy">Economy</option>
+                                                            <option value="Business">Business</option>
+                                                            <option value="First Class">First Class</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Cancellation Charge</label>
-                                                            <select class="select">
+                                                            <select name="cancellation_charge" class="select">
                                                             <option value="">Select Cancellation Charge</option>
-                                                            <option value="1">$50 / Per Person</option>
-                                                            <option value="2">$70 / Per Person</option>
-                                                            <option value="3">$90 / Per Person</option>
+                                                            <option value="$50 / Per Person">$50 / Per Person</option>
+                                                            <option value="$70 / Per Person">$70 / Per Person</option>
+                                                            <option value="$90 / Per Person">$90 / Per Person</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                              <div class="form-group">
                                                             <label>Flight Charge</label>
-                                                            <select class="select">
+                                                            <select name="flight_charge" class="select">
                                                             <option value="">Select Charge</option>
-                                                            <option value="1">$50 / Per Person</option>
-                                                            <option value="2">$70 / Per Person</option>
-                                                            <option value="3">$90 / Per Person</option>
+                                                            <option value="$50 / Per Person">$50 / Per Person</option>
+                                                            <option value="$70 / Per Person">$70 / Per Person</option>
+                                                            <option value="$90 / Per Person">$90 / Per Person</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Seats & Baggage</label>
-                                                            <select class="select">
+                                                            <select name="seat_baggage" class="select">
                                                             <option value="">Select Seats & Baggage</option>
-                                                            <option value="1">$50 / Per Person</option>
-                                                            <option value="2">$70 / Per Person</option>
-                                                            <option value="3">$90 / Per Person</option>
+                                                            <option value="$50 / Per Person">$50 / Per Person</option>
+                                                            <option value="$70 / Per Person">$70 / Per Person</option>
+                                                            <option value="$90 / Per Person">$90 / Per Person</option>
                                                             </select>
                                                             </div>
                                                             </div>
@@ -1445,22 +1445,22 @@
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Base Fare</label>
-                                                            <select class="select">
+                                                            <select name="base_fare" class="select">
                                                             <option value="">Select Base Fare</option>
-                                                            <option value="1">$400</option>
-                                                            <option value="2">$680</option>
-                                                            <option value="2">$950</option>
+                                                            <option value="$400">$400</option>
+                                                            <option value="$680">$680</option>
+                                                            <option value="$950">$950</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Taxes & Fees</label>
-                                                            <select class="select">
+                                                            <select name="taxes" class="select">
                                                             <option value="">Select Base Fare</option>
-                                                            <option value="1">$100</option>
-                                                            <option value="2">$280</option>
-                                                            <option value="2">$350</option>
+                                                            <option value="$100">$100</option>
+                                                            <option value="$280">$280</option>
+                                                            <option value="$350">$350</option>
                                                             </select>
                                                             </div>
                                                             </div>
@@ -1584,8 +1584,8 @@
 
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight1" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight1"
+                                                                    type="checkbox" value="Air Conditioning" id="inflight1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight1">
                                                                     Air Conditioning
                                                                 </label>
@@ -1593,8 +1593,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight2" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight2"
+                                                                    type="checkbox" value="WiFi" id="inflight2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight2">
                                                                     WiFi
                                                                 </label>
@@ -1602,8 +1602,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight3" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight3"
+                                                                    type="checkbox" value="Coffee" id="inflight3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight3">
                                                                     Coffee
                                                                 </label>
@@ -1611,8 +1611,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight4" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight4"
+                                                                    type="checkbox" value="Entertainment" id="inflight4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight4">
                                                                     Entertainment
                                                                 </label>
@@ -1620,8 +1620,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight5" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight5"
+                                                                    type="checkbox" value="Food" id="inflight5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight5">
                                                                     Food
                                                                 </label>
@@ -1629,8 +1629,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight6" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight6"
+                                                                    type="checkbox" value="Drink" id="inflight6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight6">
                                                                     Drink
                                                                 </label>
@@ -1638,8 +1638,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight7" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight7"
+                                                                    type="checkbox" value="Wines" id="inflight7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight7">
                                                                     Wines
                                                                 </label>
@@ -1647,8 +1647,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight8" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight8"
+                                                                    type="checkbox" value="Comfort" id="inflight8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight8">
                                                                     Comfort
                                                                 </label>
@@ -1656,8 +1656,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight9" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight9"
+                                                                    type="checkbox" value="Television" id="inflight9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight9">
                                                                     Television
                                                                 </label>
@@ -1665,8 +1665,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight10" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight10"
+                                                                    type="checkbox" value="Games" id="inflight10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight10">
                                                                     Games
                                                                 </label>
@@ -1674,8 +1674,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight11" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight11"
+                                                                    type="checkbox" value="Shopping" id="inflight11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight11">
                                                                     Shopping
                                                                 </label>
@@ -1683,8 +1683,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight12" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight12"
+                                                                    type="checkbox" value="Magazines" id="inflight12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight12">
                                                                     Magazines
                                                                 </label>
@@ -1747,7 +1747,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             </form>
                         </div>
@@ -1786,9 +1785,10 @@
                     <div class="modal__body">
                         <div class="modal__container">
 
+                            <form action="{{ url_for('manager.add_flight') }}" method="POST" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
-                                    <h4 class="user-profile-card-title">Add Flights</h4>
+                                    <h4 class="user-profile-card-title">Modify Flights</h4>
                                     <div class="col-lg-12">
                                         <div class="add-listing-form">
                                             <h5 class="mb-4">Basic Information</h5>
@@ -1798,66 +1798,66 @@
                                                     <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Type</label>
-                                                        <select class="select">
+                                                        <select name="flight_type" class="select">
                                                         <option value="">Select Flight Type</option>
-                                                        <option value="1">One Way Flight</option>
-                                                        <option value="2">Round Trip Flight</option>
-                                                        <option value="3">Multi City Flight</option>
+                                                        <option value="One Way Flight">One Way Flight</option>
+                                                        <option value="Round Trip Flight">Round Trip Flight</option>
+                                                        <option value="Multi City Flight">Multi City Flight</option>
                                                         </select>
                                                         </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                         <div class="form-group">
                                                         <label>Take Off Time</label>
-                                                        <input type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
+                                                        <input name="take_off_time" type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
                                                         </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                          <div class="form-group">
                                                         <label>Landing Time</label>
-                                                        <input type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
+                                                        <input name="landing_time" type="datetime-local" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;">
                                                         </div>
                                                         </div>
                                                         <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Stop</label>
-                                                        <select class="select">
+                                                        <select name="flight_stop" class="select">
                                                         <option value="">Select Stop</option>
-                                                        <option value="1">Non Stop</option>
-                                                        <option value="2">1 Stop</option>
-                                                        <option value="3">2 Stop</option>
-                                                        <option value="4">3 Stop</option>
-                                                        <option value="5">Multi Stop</option>
+                                                        <option value="Non Stop">Non Stop</option>
+                                                        <option value="1 Stop">1 Stop</option>
+                                                        <option value="2 Stop">2 Stop</option>
+                                                        <option value="3 Stop">3 Stop</option>
+                                                        <option value="Multi Stop">Multi Stop</option>
                                                         </select>
                                                         </div>
                                                         </div>
-                                                    
+
                                                 </div>
                                                     <div
                                                         style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Airline</label>
-                                                            <select class="select">
+                                                            <select name="company" class="select">
                                                             <option value="">Select Airline Company</option>
-                                                            <option value="1">American Airlines</option>
-                                                            <option value="2">Delta Airlines</option>
-                                                            <option value="3">Qatar Airways</option>
-                                                            <option value="4">Fly Amirates</option>
-                                                            <option value="5">Singapore Airlines</option>
+                                                            <option value="American Airlines">American Airlines</option>
+                                                            <option value="Delta Airlines">Delta Airlines</option>
+                                                            <option value="Qatar Airways">Qatar Airways</option>
+                                                            <option value="Fly Amirates">Fly Amirates</option>
+                                                            <option value="Singapore Airlines">Singapore Airlines</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Total Time Of Flight</label>
-                                                            <input type="text" class="form-control" placeholder="Enter total time" style="width: max-content; height: 56px;">
+                                                            <input name="total_time" type="text" class="form-control" placeholder="Enter total time" style="width: max-content; height: 56px;">
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Price (Per Person)</label>
-                                                             <input type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;">
+                                                             <input name="price" type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;">
                                                             </div>
                                                             </div>
                                                             <!-- <div class="col-lg-4" style="max-width: none;">
@@ -1876,55 +1876,55 @@
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Fare Type</label>
-                                                            <select class="select">
+                                                            <select name="fare_type" class="select">
                                                             <option value="">Select The Fare Type</option>
-                                                            <option value="1">Refundable</option>
-                                                            <option value="2">Partially Refundable</option>
-                                                            <option value="3">Non Refundable</option>
+                                                            <option value="Refundable">Refundable</option>
+                                                            <option value="Partially Refundable">Partially Refundable</option>
+                                                            <option value="Non Refundable">Non Refundable</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Flight Class</label>
-                                                            <select class="select">
+                                                            <select name="flight_class" class="select">
                                                             <option value="">Select Class</option>
-                                                            <option value="1">Economy</option>
-                                                            <option value="2">Business</option>
-                                                            <option value="3">First Class</option>
+                                                            <option value="Economy">Economy</option>
+                                                            <option value="Business">Business</option>
+                                                            <option value="First Class">First Class</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Cancellation Charge</label>
-                                                            <select class="select">
+                                                            <select name="cancellation_charge" class="select">
                                                             <option value="">Select Cancellation Charge</option>
-                                                            <option value="1">$50 / Per Person</option>
-                                                            <option value="2">$70 / Per Person</option>
-                                                            <option value="3">$90 / Per Person</option>
+                                                            <option value="$50 / Per Person">$50 / Per Person</option>
+                                                            <option value="$70 / Per Person">$70 / Per Person</option>
+                                                            <option value="$90 / Per Person">$90 / Per Person</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                              <div class="form-group">
                                                             <label>Flight Charge</label>
-                                                            <select class="select">
+                                                            <select name="flight_charge" class="select">
                                                             <option value="">Select Charge</option>
-                                                            <option value="1">$50 / Per Person</option>
-                                                            <option value="2">$70 / Per Person</option>
-                                                            <option value="3">$90 / Per Person</option>
+                                                            <option value="$50 / Per Person">$50 / Per Person</option>
+                                                            <option value="$70 / Per Person">$70 / Per Person</option>
+                                                            <option value="$90 / Per Person">$90 / Per Person</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Seats & Baggage</label>
-                                                            <select class="select">
+                                                            <select name="seat_baggage" class="select">
                                                             <option value="">Select Seats & Baggage</option>
-                                                            <option value="1">$50 / Per Person</option>
-                                                            <option value="2">$70 / Per Person</option>
-                                                            <option value="3">$90 / Per Person</option>
+                                                            <option value="$50 / Per Person">$50 / Per Person</option>
+                                                            <option value="$70 / Per Person">$70 / Per Person</option>
+                                                            <option value="$90 / Per Person">$90 / Per Person</option>
                                                             </select>
                                                             </div>
                                                             </div>
@@ -1941,22 +1941,22 @@
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Base Fare</label>
-                                                            <select class="select">
+                                                            <select name="base_fare" class="select">
                                                             <option value="">Select Base Fare</option>
-                                                            <option value="1">$400</option>
-                                                            <option value="2">$680</option>
-                                                            <option value="2">$950</option>
+                                                            <option value="$400">$400</option>
+                                                            <option value="$680">$680</option>
+                                                            <option value="$950">$950</option>
                                                             </select>
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
                                                             <label>Taxes & Fees</label>
-                                                            <select class="select">
+                                                            <select name="taxes" class="select">
                                                             <option value="">Select Base Fare</option>
-                                                            <option value="1">$100</option>
-                                                            <option value="2">$280</option>
-                                                            <option value="2">$350</option>
+                                                            <option value="$100">$100</option>
+                                                            <option value="$280">$280</option>
+                                                            <option value="$350">$350</option>
                                                             </select>
                                                             </div>
                                                             </div>
@@ -2080,8 +2080,8 @@
 
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight1" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight1"
+                                                                    type="checkbox" value="Air Conditioning" id="inflight1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight1">
                                                                     Air Conditioning
                                                                 </label>
@@ -2089,8 +2089,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight2" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight2"
+                                                                    type="checkbox" value="WiFi" id="inflight2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight2">
                                                                     WiFi
                                                                 </label>
@@ -2098,8 +2098,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight3" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight3"
+                                                                    type="checkbox" value="Coffee" id="inflight3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight3">
                                                                     Coffee
                                                                 </label>
@@ -2107,8 +2107,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight4" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight4"
+                                                                    type="checkbox" value="Entertainment" id="inflight4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight4">
                                                                     Entertainment
                                                                 </label>
@@ -2116,8 +2116,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight5" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight5"
+                                                                    type="checkbox" value="Food" id="inflight5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight5">
                                                                     Food
                                                                 </label>
@@ -2125,8 +2125,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight6" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight6"
+                                                                    type="checkbox" value="Drink" id="inflight6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight6">
                                                                     Drink
                                                                 </label>
@@ -2134,8 +2134,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight7" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight7"
+                                                                    type="checkbox" value="Wines" id="inflight7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight7">
                                                                     Wines
                                                                 </label>
@@ -2143,8 +2143,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight8" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight8"
+                                                                    type="checkbox" value="Comfort" id="inflight8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight8">
                                                                     Comfort
                                                                 </label>
@@ -2152,8 +2152,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight9" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight9"
+                                                                    type="checkbox" value="Television" id="inflight9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight9">
                                                                     Television
                                                                 </label>
@@ -2161,8 +2161,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight10" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight10"
+                                                                    type="checkbox" value="Games" id="inflight10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight10">
                                                                     Games
                                                                 </label>
@@ -2170,8 +2170,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight11" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight11"
+                                                                    type="checkbox" value="Shopping" id="inflight11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight11">
                                                                     Shopping
                                                                 </label>
@@ -2179,15 +2179,15 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="inflight"
-                                                                    type="checkbox" value="" id="inflight12" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="inflight12"
+                                                                    type="checkbox" value="Magazines" id="inflight12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight12">
                                                                     Magazines
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                    
-                                                        
+
+
 
 
 
@@ -2234,7 +2234,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-12 my-4">
-                                                                <button type="submit" class="theme-btn">Submit New Flight</button>
+                                                                <button type="submit" class="theme-btn">Save Changes</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -2243,7 +2243,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             </form>
                         </div>
