@@ -62,34 +62,43 @@ function load_flights(published, category) {
                                     ${status_img}
                                 </td>
                                 <td class="table__td table__actions">
-                                    <div class="items-more">
-                                        <button class="items-more__button">
-                                            <svg class="icon-icon-more">
-                                                <use xlink:href="#icon-more"></use>
-                                            </svg>
-                                        </button>
-                                        <div class="dropdown-items dropdown-items--right">
-                                            <div class="dropdown-items__container">
-                                                <ul class="dropdown-items__list">
-                                                    <li class="dropdown-items__item"><a
-                                                            class="dropdown-items__link"><span
-                                                                class="dropdown-items__link-icon">
-                                                                <svg class="icon-icon-view">
-                                                                    <use xlink:href="#icon-view"></use>
-                                                                </svg></span>Details</a>
-                                                    </li>
-                                                    <li class="dropdown-items__item"><a onclick="delete_item(${items[i].id})"
-                                                            class="dropdown-items__link"><span
-                                                                class="dropdown-items__link-icon">
-                                                                <svg class="icon-icon-trash">
-                                                                    <use xlink:href="#icon-trash"></use>
-                                                                </svg></span>Delete</a>
-                                                    </li>
-                                                </ul>
+                                        <div class="items-more">
+                                            <button class="items-more__button" style="max-width: 100px;max-height: 30px; margin-left: 0px; padding-left: 0px;margin-right: 0px; padding-right: 0px;">
+                                                <svg class="icon-icon-more">
+                                                    <use xlink:href="#icon-more"></use>
+                                                </svg>
+                                            </button>
+                                            <div class="dropdown-items dropdown-items--right">
+                                                <div class="dropdown-items__container">
+                                                    <ul class="dropdown-items__list">
+                                                        <li class="dropdown-items__item">
+                                                            <a class="dropdown-items__link">
+                                                            <span class="dropdown-items__link-icon" style="padding-left: 50%;">
+                                                                    <button data-modal="#modifyProduct" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
+                                                                    <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
+                                                                        <use xlink:href="#icon-view"></use>
+                                                                    </svg>Modify
+                                                                    </button>
+                                                            </span>
+                                                            </a>
+                                                        </li>
+
+                                                        <li class="dropdown-items__item" >
+                                                            <a class="dropdown-items__link">
+                                                            <span class="dropdown-items__link-icon" style="padding-left: 50%;">
+                                                                    <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
+                                                                    <svg class="icon-icon-trash">
+                                                                        <use xlink:href="#icon-trash"></use>
+                                                                    </svg>Delete
+                                                                </button>
+                                                            </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
                             </tr>`
             tr.innerHTML = s
             item_container.appendChild(tr)
