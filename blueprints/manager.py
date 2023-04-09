@@ -369,25 +369,35 @@ def add_flight():
     db.session.commit()
     return redirect(url_for("manager.flights"))
 
+
+@bp.route("/load_flights", methods=["POST"])
+def load_flights():
+    return load_product("Flight")
+
 @bp.route("/flights")
 def flights():
     return render_template("flight.html")
+
 
 @bp.route("/customers")
 def customers():
     return render_template("customer-account.html")
 
+
 @bp.route("/wish_list")
 def wish_list():
     return render_template("customer-wishlist.html")
+
 
 @bp.route("/chat")
 def chat():
     return render_template("chat.html")
 
+
 @bp.route("/order_details")
 def order_details():
     return render_template("order-details.html")
+
 
 @bp.route("/reviews")
 def reviews():

@@ -299,6 +299,16 @@ class Flight(db.Model):
     review = db.relationship('FlightReview', backref='product')
     orders = db.relationship('FlightOrder', backref='product')
 
+    def serialize(self):
+        return {
+            'id': self.id,
+            'status': self.status,
+            'price': self.price,
+            'flight_type': self.flight_type,
+            'take_off_time': self.takeoff_time,
+            'landing_time': self.landing_time
+        }
+
 
 class FlightOrder(db.Model):
     __tablename__ = 'flight_orders'
