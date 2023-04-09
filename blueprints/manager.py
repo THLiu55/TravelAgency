@@ -270,8 +270,13 @@ def add_hotel():
         image = request.files.get(f"fileInput{i}")
         route = os.path.join(sub_folder_path, image.filename)
         image.save(route)
+        features = []
+        for j in range(1, 8):
+            if request.form.get(f"feature_{j}_{i}") is not None:
+                features.append(request.form.get(f"feature_{j}_{i}"))
         des.append({"id": i,
                     "name": request.form.get(f"hotelroom_name_{i}"),
+                    "features": features,
                     "price": request.form.get(f"hotelroom_price_{i}"),
                     "picture": route})
         i = i + 1
