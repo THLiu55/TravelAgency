@@ -50,13 +50,13 @@ function load_flights(published, category) {
                                 </td>
                                 <td class="d-none d-lg-table-cell table__td"><span class="text-grey">${items[i].id}</span>
                                 </td>
-                                <td class="table__td">${items[i].flight_type}</td>
-                                <td class="table__td"><span class="text-grey">${items[i].take_off_time}</span>
+                                <td class="table__td">${items[i].departure}</td>
+                                <td class="table__td"><span class="text-grey">${items[i].destination}</span>
                                 </td>
-                                <td class="table__td"><span>${items[i].landing_time}</span>
+                                <td class="table__td"><span>${items[i].take_off_time}</span>
                                 </td>
                                 <td class="d-none d-lg-table-cell table__td"><span
-                                        class="text-grey">${items[i].price}</span>
+                                        class="text-grey">${items[i].landing_time}</span>
                                 </td>
                                 <td class="d-none d-sm-table-cell table__td">
                                     ${status_img}
@@ -84,7 +84,7 @@ function load_flights(published, category) {
                                                         </li>
 
                                                         <li class="dropdown-items__item" >
-                                                            <a class="dropdown-items__link">
+                                                            <a class="dropdown-items__link" onclick="delete_item(${items[i].id})">
                                                             <span class="dropdown-items__link-icon" style="padding-left: 50%;">
                                                                     <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                     <svg class="icon-icon-trash">
@@ -112,6 +112,7 @@ function delete_item(id) {
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('id', id)
+    console.log(id)
     xhr.open('POST', '/manager/delete_flight', true)
     xhr.send(fd)
 

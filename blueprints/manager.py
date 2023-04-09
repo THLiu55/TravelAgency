@@ -328,8 +328,12 @@ def accommodations():
 
 @bp.route("/add_flight", methods=["POST"])
 def add_flight():
+    db.drop_all()
+    db.create_all()
     flight = Flight()
     flight.status = "published"
+    flight.departure = request.form.get("departure")
+    flight.destination = request.form.get("destination")
     flight.flight_type = request.form.get("flight_type")
     flight.takeoff_time = datetime.strptime(request.form.get("take_off_time"), "%Y-%m-%dT%H:%M")
     flight.landing_time = datetime.strptime(request.form.get("landing_time"), "%Y-%m-%dT%H:%M")
@@ -378,6 +382,20 @@ def add_flight():
 @bp.route("/load_flights", methods=["POST"])
 def load_flights():
     return load_product("Flight")
+
+
+@bp.route("/delete_flight", methods=["POST"])
+def delete_flight():
+    flight_id = request.form.get('id')
+    flight = Flight.query.get(flight_id)
+    print("here")
+    if flight is None:
+        return jsonify({'code': 400, 'message': "no activity found"})
+    flight.status = "deleted"
+    db.session.commit()
+    return redirect(url_for('manager.flights'))
+
+
 
 @bp.route("/flights")
 def flights():

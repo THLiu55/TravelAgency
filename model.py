@@ -271,6 +271,8 @@ class Flight(db.Model):
     __tablename__ = 'flights'
 
     id = db.Column(db.Integer, primary_key=True)
+    departure = db.Column(db.String(255))
+    destination = db.Column(db.String(255))
     status = db.Column(db.String(255))
     flight_type = db.Column(db.String(255))
     takeoff_time = db.Column(db.DateTime)
@@ -303,8 +305,8 @@ class Flight(db.Model):
         return {
             'id': self.id,
             'status': self.status,
-            'price': self.price,
-            'flight_type': self.flight_type,
+            'departure': self.departure,
+            'destination': self.destination,
             'take_off_time': self.takeoff_time,
             'landing_time': self.landing_time
         }
