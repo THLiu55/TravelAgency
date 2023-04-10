@@ -351,3 +351,15 @@ class FlightReview(db.Model):
     content = db.Column(db.Text)
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
+
+
+class Room:
+    square_1 = False
+    square_2 = False
+    bed_1 = False
+    bed_2 = False
+    wifi = False
+    shower = False
+    free = False
+    picture = ''
+    price = 0

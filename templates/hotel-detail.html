@@ -78,17 +78,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="listing-feature">
-                                                <div class="listing-feature-icon">
-                                                    <i class="far fa-user"></i>
-                                                </div>
-                                                <div class="listing-feature-content">
-                                                    <h6>Extra People</h6>
-                                                    <span>No Charge</span>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="col-md-6 col-lg-3">
                                             <div class="listing-feature">
                                                 <div class="listing-feature-icon">
@@ -111,39 +101,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="listing-feature">
-                                                <div class="listing-feature-icon">
-                                                    <i class="far fa-money-bill"></i>
-                                                </div>
-                                                <div class="listing-feature-content">
-                                                    <h6>Security Deposit</h6>
-                                                    <span>$150</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="listing-feature">
-                                                <div class="listing-feature-icon">
-                                                    <i class="far fa-shield-cross"></i>
-                                                </div>
-                                                <div class="listing-feature-content">
-                                                    <h6>Safety & Security</h6>
-                                                    <span>High Security</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-3">
-                                            <div class="listing-feature">
-                                                <div class="listing-feature-icon">
-                                                    <i class="far fa-xmark"></i>
-                                                </div>
-                                                <div class="listing-feature-content">
-                                                    <h6>Cancellation</h6>
-                                                    <span>Strict</span>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -166,18 +124,31 @@
                                                         <h4 class="room-title"><a href="#">{{ room['name'] }}</a>
                                                         </h4>
                                                         <ul class="room-info-list">
-                                                            <li><i class="far fa-wifi"></i>Free Wi-Fi</li>
-                                                            <li><i class="far fa-bed"></i>2 Single beds</li>
-                                                            <li><i class="far fa-ruler-triangle"></i>15 m²</li>
-                                                            <li><i class="far fa-bath"></i>Shower And Bathtub</li>
-                                                            <li><i class="far fa-box-tissue"></i>Free Toiletries</li>
+                                                            {% if room.wifi %}
+                                                                <li><i class="far fa-wifi"></i>Free Wi-Fi</li>
+                                                            {% endif %}
+                                                            {% if room.bed_1 %}
+                                                                <li><i class="far fa-bed"></i>1 Single beds</li>
+                                                            {% endif %}
+                                                            {% if room.bed_2 %}
+                                                                <li><i class="far fa-bed"></i>2 Single beds</li>
+                                                            {% endif %}
+                                                            {% if room.square_1 %}
+                                                                <li><i class="far fa-ruler-triangle"></i>15 m²</li>
+                                                            {% endif %}
+                                                            {% if room.square_2 %}
+                                                                <li><i class="far fa-ruler-triangle"></i>25 m²</li>
+                                                            {% endif %}
+                                                            {% if room.free %}
+                                                                <li><i class="far fa-box-tissue"></i>Free Toiletries</li>
+                                                            {% endif %}
+                                                            {% if room.shower %}
+                                                                <li><i class="far fa-bath"></i>Shower And Bathtub</li>
+                                                            {% endif %}
                                                         </ul>
-                                                        <div class="room-detail-btn">
-                                                            <a href="#">Room Photos & Details</a>
-                                                        </div>
                                                         <div class="room-bottom">
                                                             <div class="room-price">
-                                                                <span class="room-price-amount">${{ room['price'] }} <span class="room-price-type">/Per Day</span></span>
+                                                                <span class="room-price-amount">${{ room.price }} <span class="room-price-type">/Per Day</span></span>
                                                             </div>
                                                             <div class="room-select-btn">
                                                                 <div class="form-check">
@@ -200,111 +171,154 @@
                                     <h4 class="mb-3">Amenities</h4>
                                     <div class="listing-amenity">
                                         <div class="row">
-                                            <div class="col-lg-4">
+                                            {% if wifi %}
+                                                <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-wifi"></i> Wifi</h6>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4">
+                                            {% endif %}
+                                            {% if television %}
+                                                <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-tv"></i> Television</h6>
                                                 </div>
                                             </div>
+                                            {% endif %}
+                                        {% if swimming_pool %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-water-ladder"></i> Swimming Pool</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+
+                                        {% if coffee %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-cup-togo"></i> Coffee</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if air_conditioning %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-air-conditioner"></i> Air Conditioning</h6>
+                                                    <h6><i class="far fa-air-conditioner"></i>Air Condition</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if fitness_facility %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-dumbbell"></i> Fitness Facility</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if fridge %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-refrigerator"></i> Fridge</h6>
+                                                    <h6><i class="far fa-refrigerator"></i>Bar / Lounge</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if wine_bar %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-wine-bottle"></i> Wine Bar</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if entertainment %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-music"></i> Entertainment</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if secure  %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-lock"></i> Secure Vault</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if pick_and_drop %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-car"></i> Pick And Drop</h6>
+                                                    <h6><i class="far fa-car"></i> Airport Transportation</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if room_service %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-vacuum-robot"></i> Room Service</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if pets_allowed %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-dog"></i> Pets Allowed</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if breakfast %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-egg-fried"></i> Breakfast</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if free_parking %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-cars"></i> Free Parking</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if fire_place %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-fire"></i> Fire Place</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if handicap %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-wheelchair-move"></i> Handicap Accessible</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if doorman %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-user-secret"></i> Doorman</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if elevator %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-building"></i> Elevator In Building</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if suitable %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-gift"></i> Suitable For Events</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if play %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-gamepad-modern"></i> Play Place</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -541,127 +555,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group dropdown passenger-box">
-                                                            <div class="passenger-class" role="menu"
-                                                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <label>Rooms, Guests</label>
-                                                                <div class="form-group-icon">
-                                                                    <div class="passenger-total">
-                                                                        <span class="passenger-total-room">2</span>
-                                                                        Rooms,
-                                                                        <span class="passenger-total-amount">2</span>
-                                                                        Guests
-                                                                    </div>
-                                                                    <i class="fal fa-user-plus"></i>
-                                                                </div>
-                                                                <p class="passenger-class-name">Double Room</p>
-                                                            </div>
-
-                                                            <!-- 服务项目选择下拉栏 -->
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Adults</h6>
-                                                                            <p>12+ Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="adult"
-                                                                                   class="qty-amount passenger-adult"
-                                                                                   value="2" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Children</h6>
-                                                                            <p>2-12 Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="children"
-                                                                                   class="qty-amount passenger-children"
-                                                                                   value="0" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Infant</h6>
-                                                                            <p>Below 2 Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="infant"
-                                                                                   class="qty-amount passenger-infant"
-                                                                                   value="0" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Rooms</h6>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="room"
-                                                                                   class="qty-amount passenger-room"
-                                                                                   value="2" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <h6 class="mb-3 mt-2">Room Type</h6>
-                                                                    <div class="passenger-class-info">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio"
-                                                                                   value="Single Room" name="room-type"
-                                                                                   id="room-type1">
-                                                                            <label class="form-check-label"
-                                                                                   for="room-type1">
-                                                                                Single Room
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" checked
-                                                                                   type="radio" value="Double Room"
-                                                                                   name="room-type" id="room-type2">
-                                                                            <label class="form-check-label"
-                                                                                   for="room-type2">
-                                                                                Double Room
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio"
-                                                                                   value="Deluxe Room" name="room-type"
-                                                                                   id="room-type3">
-                                                                            <label class="form-check-label"
-                                                                                   for="room-type3">
-                                                                                Deluxe Room
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="listing-side-btn">
                                                     <button type="submit" class="theme-btn"><span
@@ -675,7 +568,7 @@
                                     </div>
                                     <div class="listing-side-share">
                                         <a href="#"><i class="far fa-share-nodes"></i> Share</a>
-                                        <span><i class="far fa-eye"></i> 250 Views</span>
+                                        <span><i class="far fa-eye"></i> {{ hotel.view_num }} Views</span>
                                     </div>
                                 </div>
                             </div>

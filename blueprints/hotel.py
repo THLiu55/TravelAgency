@@ -61,8 +61,8 @@ def hotel_filter():
 @bp.route('/details/<hotel_id>/', methods=['GET', 'POST'])
 def hotelDetail(hotel_id):
     hotel = Hotel.query.get(hotel_id)
-    hotel.view_num = hotel.view_num + 1
-    db.session.commit()
+    # hotel.view_num = hotel.view_num + 1
+    # db.session.commit()
     reviews = hotel.review
     hotel.images = json.loads(hotel.images)['images']
     images = [image[image.index('static'):].lstrip('static') for image in hotel.images]
@@ -83,8 +83,42 @@ def hotelDetail(hotel_id):
     review_num = hotel.review_num
     hotel.review_num = 10000 if hotel.review_num == 0 else hotel.review_num
     rooms = json.loads(hotel.room_detail)['hotel_des']
-    for room in rooms:
-        room['picture'] = room['picture'][room['picture'].index('static'):].lstrip('static')
+    rooms_dic = []
+    for room_i in rooms:
+        room = Room()
+        room.picture = room_i['picture'][room_i['picture'].index('static'):].lstrip('static')
+        room.wifi = True if "WiFi" in room_i['features'] else False
+        room.square_1 = True if "15 ㎡" in room_i['features'] else False
+        room.square_2 = True if "25 ㎡" in room_i['features'] else False
+        room.bed_1 = True if "1 Single bed" in room_i['features'] else False
+        room.bed_2 = True if "2 single beds" in room_i['features'] else False
+        room.free = True if "Free Toiletries" in room_i['features'] else False
+        room.shower = True if "Shower And Bathtub" in room_i['features'] else False
+        room.price = float(room_i['price'])
+        rooms_dic.append(room)
+    wine_bar = True if "Wine Bar" in hotel.amenities else False
+    free_parking = True if "Free Parking" in hotel.amenities else False
+    doorman = True if "Doorman" in hotel.amenities else False
+    suitable = True if "Suitable For Events" in hotel.amenities else False
+    pets_allowed = True if "Pets Allowed" in hotel.amenities else False
+    handicap = True if "Handicap Accessible" in hotel.amenities else False
+    breakfast = True if "Breakfast" in hotel.amenities else False
+    fitness_facility = True if "Fitness Facility" in hotel.amenities else False
+    elevator = True if "Elevator In Building" in hotel.amenities else False
+    entertainment = True if "Entertainment" in hotel.amenities else False
+    air_conditioning = True if "Air Conditioning" in hotel.amenities else False
+    coffee = True if "Coffee" in hotel.amenities else False
+    wifi = True if "WiFi" in hotel.amenities else False
+    swimming_pool = True if "Swimming Pool" in hotel.amenities else False
+    play = True if "Beverage Selection" in hotel.amenities else False
+    pick_and_drop = True if "Airport Transportation" in hotel.amenities else False
+    fridge = True if "Bar / Lounge" in hotel.amenities else False
+
     return render_template("hotel-detail.html", hotel=hotel, logged=logged, reviews=reviews, images=images,
                            review_num=review_num, added=added, purchased=purchased, star_score=star_score,
-                           star_score_ceil=star_score_ceil, star_detail=star_detail, rooms=rooms)
+                           star_score_ceil=star_score_ceil, star_detail=star_detail, rooms=rooms_dic, wine_bar=wine_bar,
+                           doorman=doorman, suitable=suitable, free_parking=free_parking, pets_allowed=pets_allowed,
+                           handicap=handicap, television=True, fridge=fridge, secure=True, pick_and_drop=pick_and_drop,
+                           room_service=True, fire_place=True, breakfast=breakfast, fitness_facility=fitness_facility,
+                           elevator=elevator, entertainment=entertainment, air_conditioning=air_conditioning,
+                           coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play)
