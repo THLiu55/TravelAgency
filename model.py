@@ -250,6 +250,7 @@ class HotelOrder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     startTime = db.Column(db.DateTime)
     endTime = db.Column(db.DateTime)
+    checkOutTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
