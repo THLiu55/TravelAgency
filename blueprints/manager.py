@@ -16,10 +16,13 @@ from model import *
 from exts import db
 import os
 
+from utils.decorators import staff_login_required
+
 bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 
 @bp.route("/")
+@staff_login_required
 def manager_homepage():
     db.create_all()
     return render_template("manager.html")
@@ -29,13 +32,29 @@ def manager_homepage():
 # def destinationList():
 #     return render_template("destinations.html")
 
+@bp.route("/login", methods=["GET", "POST"])
+def login():
+    url = request.args.get('url')
+    print(f"here{url}")
+    if request.method == 'GET':
+        return render_template("Stafflogin.html", url=url)
+    else:
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if username == "admin" and password == "Admin-123456":
+            session['staff_id'] = 1
+            return redirect(url_for('manager.manager_homepage'))
+        return redirect(url_for('customer.homepage'))
+
 
 @bp.route("/load_activities", methods=["POST"])
+@staff_login_required
 def load_activities():
     return load_product("Activity")
 
 
 @bp.route("/add_activity", methods=["POST"])
+@staff_login_required
 def add_activity():
     activity = Activity()
     activity.status = "published"
@@ -96,6 +115,7 @@ def add_activity():
 
 
 @bp.route('/delete_activity', methods=['GET', 'POST'])
+@staff_login_required
 def delete_activity():
     activity_id = request.form.get('id')
     activity = Activity.query.get(activity_id)
@@ -107,6 +127,7 @@ def delete_activity():
 
 
 @bp.route('/activities', methods=['GET', 'POST'])
+@staff_login_required
 def activities():
     return render_template("activities.html")
 
@@ -134,6 +155,7 @@ def respond_to(target_customer_id):
 
 
 @bp.route("/add_tour", methods=["GET", "POST"])
+@staff_login_required
 def add_tour():
     tour = Tour()
     tour.status = "published"
@@ -200,11 +222,13 @@ def add_tour():
 
 
 @bp.route("/load_tours", methods=["POST"])
+@staff_login_required
 def load_tours():
     return load_product("Tour")
 
 
 @bp.route('/delete_tour', methods=['GET', 'POST'])
+@staff_login_required
 def delete_tour():
     tour_id = request.form.get('id')
     tour = Tour.query.get(tour_id)
@@ -216,11 +240,13 @@ def delete_tour():
 
 
 @bp.route("/tours")
+@staff_login_required
 def tours():
     return render_template("tour.html")
 
 
 @bp.route("/add_hotel", methods=["POST"])
+@staff_login_required
 def add_hotel():
     hotel = Hotel()
     hotel.status = "published"
@@ -294,11 +320,13 @@ def add_hotel():
 
 
 @bp.route("/load_hotels", methods=["POST"])
+@staff_login_required
 def load_hotels():
     return load_product("Hotel")
 
 
 @bp.route("/delete_hotel", methods=["POST"])
+@staff_login_required
 def delete_hotel():
     hotel_id = request.form.get('id')
     hotel = Hotel.query.get(hotel_id)
@@ -323,11 +351,13 @@ def load_product(product_name):
 
 
 @bp.route("/accommodations")
+@staff_login_required
 def accommodations():
     return render_template("accommodation.html")
 
 
 @bp.route("/add_flight", methods=["POST"])
+@staff_login_required
 def add_flight():
     db.drop_all()
     db.create_all()
@@ -381,11 +411,13 @@ def add_flight():
 
 
 @bp.route("/load_flights", methods=["POST"])
+@staff_login_required
 def load_flights():
     return load_product("Flight")
 
 
 @bp.route("/delete_flight", methods=["POST"])
+@staff_login_required
 def delete_flight():
     flight_id = request.form.get('id')
     flight = Flight.query.get(flight_id)
@@ -396,31 +428,38 @@ def delete_flight():
     db.session.commit()
     return redirect(url_for('manager.flights'))
 
+
 @bp.route("/flights")
+@staff_login_required
 def flights():
     return render_template("flight.html")
 
 
 @bp.route("/customers")
+@staff_login_required
 def customers():
     return render_template("customer-account.html")
 
 
 @bp.route("/wish_list")
+@staff_login_required
 def wish_list():
     return render_template("customer-wishlist.html")
 
 
 @bp.route("/chat")
+@staff_login_required
 def chat():
     return render_template("chat.html")
 
 
 @bp.route("/order_details")
+@staff_login_required
 def order_details():
     return render_template("order-details.html")
 
 
 @bp.route("/reviews")
+@staff_login_required
 def reviews():
     return render_template("reviews.html")

@@ -11,14 +11,14 @@
         <!--    staff sign in   -->
         <div class="wrapper">
             <div class="form-wrapper staff-sign-in">
-                <form id="staffin-form" method="post">
+                <form id="staffin-form" action="{{ url_for('manager.login') }}" method="post">
                     <h2>Staff Login</h2>
                     <div class="input-group">
-                        <input id="staff-name" type="text" required>
+                        <input name="username" id="staff-name" type="text" required>
                         <label for="staff-name">Staff name</label>
                     </div>
                     <div class="input-group">
-                        <input id="staff-password" type="password" required>
+                        <input name="password" id="staff-password" type="password" required>
                         <label for="staff-password">Password</label>
                     </div>
                     <button type="submit" class="btn" onclick="">Login</button>
