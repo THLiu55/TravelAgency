@@ -202,6 +202,7 @@ class Tour(db.Model):
             'total_star': self.total_star,
             'review_num': self.review_num,
             'star_detail': self.star_detail,
+            "contact_email": self.contact_email
         }
 
 
@@ -245,6 +246,18 @@ class Hotel(db.Model):
             'price': self.min_price,
             'city': self.city,
             'room_num': self.room_num
+        }
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            'images': self.images,
+            "name": self.name,
+            "address": self.address,
+            "city": self.city,
+            "review_num": self.review_num,
+            "min_price": self.min_price,
+            "contact_email": self.contact_email
         }
 
 

@@ -8,7 +8,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 
-<title>Hotel</title>
+<title>Hotels</title>
 
 <link rel="icon" type="image/x-icon" href="assets/img/logo/favicon.png">
 
@@ -90,12 +90,12 @@
 
 </li>
 <li class="nav-item dropdown">
-<a class="nav-link" href="{{ url_for('activity.activityList', page_num=page_num) }}">Activity</a>
+<a class="nav-link" href="{{ url_for('activity.activityList', page_num=1) }}">Activity</a>
 </li>
 
 
 <li class="nav-item dropdown">
-<a class="nav-link" href="{{ url_for('tour.tourList', page_num=page_num) }}">Tour</a>
+<a class="nav-link" href="{{ url_for('tour.tourList', page_num=1) }}">Tour</a>
 <!-- <ul class="dropdown-menu fade-down">
 <li><a class="dropdown-item" href="tour-grid.html">Tour Grid</a></li>
 <li><a class="dropdown-item" href="tour-list.html">Tour List</a></li>
@@ -123,13 +123,6 @@
 <main class="main">
 
 <div class="site-breadcrumb" style="background: url(../static/image/bg3.jpg)">
-<!-- <div class="container">
-<h2 class="breadcrumb-title">Activity Grid</h2>
-<ul class="breadcrumb-menu">
-<li><a href="manager.html">Home</a></li>
-<li class="active">Activity Grid</li>
-</ul>
-</div> -->
 </div>
 
 <div class="search-area">
@@ -286,45 +279,45 @@ Deluxe Room
 <h4 class="booking-title">Facilities</h4>
 <div class="activity-type">
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="Parking" id="activity-type1" onclick="activity_filter(3)">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Free Parking" id="activity-type1" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-type1">
-Parking <span>(20)</span>
+Free Parking <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="Restaurant" id="activity-type2" onclick="activity_filter(3)">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Restaurant" id="activity-type2" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-type2">
 Restaurant <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="Pet Friendly" id="activity-type3" onclick="activity_filter(3)">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Pets Allowed" id="activity-type3" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-type3">
-    Pet Friendly <span>(18)</span>
+   Pets Allowed <span>(18)</span>
 </label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="activity-type" type="checkbox" value="Airport Transport" id="activity-type3" onclick="activity_filter(3)">
+    <input class="form-check-input" name="activity-type" type="checkbox" value="Airport Transportation" id="activity-type3" onclick="hotel_filter()">
     <label class="form-check-label" for="activity-type3">
-        Airport Transport <span>(18)</span>
+        Airport Transportation <span>(18)</span>
     </label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="activity-type" type="checkbox" value="Fitness Center" id="activity-type3" onclick="activity_filter(3)">
+    <input class="form-check-input" name="activity-type" type="checkbox" value="Fitness Facility" id="activity-type3" onclick="hotel_filter()">
     <label class="form-check-label" for="activity-type3">
-        Fitness Center <span>(18)</span>
+        Fitness Facility <span>(18)</span>
     </label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="activity-type" type="checkbox" value="Internet Wifi" id="activity-type3" onclick="activity_filter(3)">
+    <input class="form-check-input" name="activity-type" type="checkbox" value="WiFi" id="activity-type3" onclick="hotel_filter()">
     <label class="form-check-label" for="activity-type3">
-        Internet Wifi <span>(18)</span>
+        WiFi <span>(18)</span>
     </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-type" type="checkbox" value="Air conditioning" id="activity-type4" onclick="activity_filter(3)">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Air Conditioning" id="activity-type4" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-type4">
-    Air conditioning <span>(35)</span>
+    Air Conditioning <span>(35)</span>
 </label>
 </div>
 </div>
@@ -346,31 +339,31 @@ Restaurant <span>(15)</span>
 <h4 class="booking-title">Hotel Star</h4>
 <div class="activity-duration">
 <div class="form-check">
-<input class="form-check-input" name="activity-duration" type="checkbox" value="0-4" id="activity-duration1" onclick="activity_filter(0)">
+<input class="form-check-input" name="activity-duration" type="checkbox" value="5" id="activity-duration5" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-duration1">
 5 Star <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="activity-duration" type="checkbox" value="0-4" id="activity-duration1" onclick="activity_filter(0)">
+    <input class="form-check-input" name="activity-duration" type="checkbox" value="4" id="activity-duration4" onclick="hotel_filter()">
     <label class="form-check-label" for="activity-duration1">
     4 Star <span>(20)</span>
     </label>
     </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-duration" type="checkbox" value="4-8" id="activity-duration2" onclick="activity_filter(1)">
+<input class="form-check-input" name="activity-duration" type="checkbox" value="3" id="activity-duration3" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-duration2">
 3 Star <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" name="activity-duration" type="checkbox" value="4-8" id="activity-duration2" onclick="activity_filter(1)">
+    <input class="form-check-input" name="activity-duration" type="checkbox" value="2" id="activity-duration2" onclick="hotel_filter()">
     <label class="form-check-label" for="activity-duration2">
     2 Star <span>(15)</span>
     </label>
     </div>
 <div class="form-check">
-<input class="form-check-input" name="activity-duration" type="checkbox" value="8-24" id="activity-duration3" onclick="activity_filter(2)">
+<input class="form-check-input" name="activity-duration" type="checkbox" value="1" id="activity-duration1" onclick="hotel_filter()">
 <label class="form-check-label" for="activity-duration4">
 1 Star <span>(25)</span>
 </label>
@@ -391,7 +384,7 @@ Restaurant <span>(15)</span>
 <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
 </div>
 <div class="col-md-3 booking-sort-box">
-<select class="select" id="sort-select-ajax" onchange="activity_filter(3)">
+<select class="select" id="sort-select-ajax" onchange="hotel_filter()">
 <option value="1" >Sort By Default</option>
 <option value="2" >Sort By Popular</option>
 <option value="3" >Sort By Low Price</option>
@@ -437,6 +430,9 @@ Restaurant <span>(15)</span>
 
 
 
+
+
+</div>
 <div class="pagination-area">
 <div aria-label="Page navigation example">
 <ul class="pagination">
@@ -458,8 +454,6 @@ Restaurant <span>(15)</span>
 <div class="pagination-showing">
 <p>Showing 1 - 6 of 24 Activities</p>
 </div>
-</div>
-
 </div>
 </div>
 </div>

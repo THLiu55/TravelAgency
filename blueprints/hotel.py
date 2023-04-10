@@ -3,6 +3,7 @@ import json, math
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for
 from model import *
 from exts import db
+from sqlalchemy import or_
 
 bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 
@@ -17,7 +18,44 @@ def hotelList(page_num):
         # noinspection PyTypeChecker
         single_hotel.images = json.loads(single_hotel.images)['images']
         single_hotel.images[0] = single_hotel.images[0][single_hotel.images[0].index('static'):].lstrip('static')
-    return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged)
+    return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged,
+                           page_num=page_num)
+
+
+@bp.route("/hotel_filter", methods=['POST', 'GET'])
+def hotel_filter():
+    hotel_type = request.form.get("type1").split(",")
+    to_sort = request.form.get('sort_by')
+    if hotel_type[0] == '':
+        hotel_type = ['Free Parking', 'Restaurant', 'Pets Allowed', 'Airport Transportation', 'Fitness Facility',
+                      'WiFi', 'Air Conditioning']
+    hotel_price = request.form.get('activityPrice')
+    hotel_price = hotel_price.split(',')
+    mi_price = int(hotel_price[0])
+    max_price = int(hotel_price[-1])
+    hotel_star = request.form.get('hotel_star').split(",")
+    if hotel_star[0] == '':
+        hotel_star = ['1', '2', '3', '4', '5']
+    query = Hotel.query.filter(Hotel.min_price.between(mi_price, max_price), Hotel.star.in_(hotel_star),
+                               or_(*[Hotel.amenities.like(f'%{word}%') for word in hotel_type]))
+    page = int(request.form.get('page'))
+    pagination = query.paginate(page=page, per_page=9)
+    hotels = pagination.items
+    for hotel_i in hotels:
+        hotel_i.contact_email = url_for('hotel.hotelDetail', hotel_id=hotel_i.id)
+        hotel_i.images = json.loads(hotel_i.images)['images']
+        hotel_i.images[0] = "../" + hotel_i.images[0][hotel_i.images[0].index('static'):].replace('\\', '/')
+
+    if to_sort == '2':
+        hotels = sorted(hotels, key=lambda hotel: hotel.view_num, reverse=False)
+
+    if to_sort == '3':
+        hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=False)
+
+    if to_sort == '4':
+        hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=True)
+    hotels = [hotel.to_dict() for hotel in hotels]
+    return jsonify({"hotels": hotels, "page": 1})
 
 
 @bp.route('/details/<hotel_id>/', methods=['GET', 'POST'])
