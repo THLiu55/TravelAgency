@@ -134,6 +134,7 @@ def consult():
 @bp.route("/profile")
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
+    customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
     return render_template("profile.html", customer=customer, logged=True)
 
 
@@ -158,4 +159,15 @@ def wallet():
 @bp.route("/setting")
 def setting():
     customer = Customer.query.get(session.get('customer_id'))
-    return render_template("profile-setting.html", logged=True)
+    return render_template("profile-setting.html", logged=True, customer=customer)
+
+
+@bp.route("/update-profile", methods=['POST'])
+def update_profile():
+    customer = Customer.query.get(session.get("customer_id"))
+    customer.email = request.form.get("email")
+    customer.nickname = request.form.get("name")
+    customer.phone_number = request.form.get("phone")
+    customer.address = request.form.get("address")
+    db.session.commit()
+    return redirect(url_for('customer.profile'))
