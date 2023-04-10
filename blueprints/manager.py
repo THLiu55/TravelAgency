@@ -239,6 +239,7 @@ def add_hotel():
     hotel.room_type_num = request.form.get("typenum")
     hotel.description = request.form.get("description")
     hotel.view_num = 0
+    hotel.star = request.form.get('hotel_star')
     images = request.files.getlist("images")
     max_id = db.session.query(db.func.max(Hotel.id)).scalar()
     if max_id is None:
@@ -394,8 +395,6 @@ def delete_flight():
     flight.status = "deleted"
     db.session.commit()
     return redirect(url_for('manager.flights'))
-
-
 
 @bp.route("/flights")
 def flights():

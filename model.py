@@ -218,6 +218,7 @@ class Hotel(db.Model):
     house_keeping = db.Column(db.String(255))
     front_desk = db.Column(db.String(255))
     bathroom = db.Column(db.String(255))
+    star = db.Column(db.String(255))
     room_type_num = db.Column(db.Integer)
     images = db.Column(db.Text)
     description = db.Column(db.Text)
