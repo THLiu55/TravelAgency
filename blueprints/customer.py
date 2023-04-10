@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
@@ -63,9 +65,10 @@ def register():
     new_customer.email = email
     new_customer.nickname = nickname
     new_customer.password = generate_password_hash(password)
+    new_customer.join_date = datetime.now()
+    new_customer.wallet = 0
     db.session.add(new_customer)
     db.session.commit()
-
     return jsonify({"code": 200})
 
 
@@ -83,6 +86,7 @@ def captcha():
              f"\nIgnore it please if this is not your own operation",
     )
     mail.send(message)
+    print(captcha_number)
     return jsonify({"code": 200})
 
 
