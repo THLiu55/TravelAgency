@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_babel import Babel, gettext as _, refresh
-from flask_socketio import SocketIO, emit
+from flask_socketio import SocketIO
 from sqlalchemy import MetaData
 
 from utils.toys import get_locale

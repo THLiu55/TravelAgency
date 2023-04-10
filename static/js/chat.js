@@ -1,11 +1,17 @@
 var $messages = $('.messages-content'),
+  // customerName = "anon", // by default
+  customerName = "Venderbad",
+  usingBot = true, // use bot by default
+  socket = null,
+  namespace = null,
   d, h, m,
   i = 0;
 
 $(window).load(function () {
   $messages.mCustomScrollbar();
   setTimeout(function () {
-    fakeMessage();
+    botMessage = "Hello! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
+    insertRespMessage(botMessage);
   }, 100);
 });
 
@@ -24,73 +30,64 @@ function setDate() {
   }
 }
 
-function insertMessage() {
-  msg = $('.message-input').val();
-  if ($.trim(msg) == '') {
-    return false;
-  }
-  $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
-  setDate();
+function clearInputBox() {
   $('.message-input').val(null);
+}
+
+function insertMyMessage(myMessage) {
+  $('<div class="message message-personal">' + myMessage + '</div>').appendTo($('.mCSB_container')).addClass('new');
+  setDate();
   updateScrollbar();
-  // setTimeout(function () {
-  //   fakeMessage();
-  // }, 1000 + (Math.random() * 20) * 100);
-  setTimeout(function () {
-    realMessageFromBot(msg);
-  }, 1000 + (Math.random() * 20) * 100);
+  i++; // not sure what this is for
+}
+
+function insertRespMessage(txtToInsert) {
+  $('<div class="message new"><figure class="avatar"><img src="../static/image/robot.svg" /></figure>' + txtToInsert + '</div>').appendTo($('.mCSB_container')).addClass('new');
+  setDate();
+  updateScrollbar();
+  i++;
 }
 
 $('.message-submit').click(function () {
-  insertMessage();
+  doSend();
+  clearInputBox();
 });
 
 $(window).on('keydown', function (e) {
   if (e.which == 13) {
-    insertMessage();
-    return false;
+    doSend();
+    clearInputBox();
+    return false; // to prevent the page from refreshing
   }
 })
 
-var Fake = [
-  'Hi there, I\'m Fabio and you?',
-  'Nice to meet you',
-  'How are you?',
-  'Not too bad, thanks',
-  'What do you do?',
-  'That\'s awesome',
-  'Codepen is a nice place to stay',
-  'I think you\'re a nice person',
-  'Why do you think that?',
-  'Can you explain?',
-  'Anyway I\'ve gotta go now',
-  'It was a pleasure chat with you',
-  'Time to make a new codepen',
-  'Bye',
-  ':)'
-]
+function doSend() {
 
-function fakeMessage() {
-  if ($('.message-input').val() != '') {
-    return false;
+  customerMessage = $('.message-input').val();
+
+  if (customerMessage == "change to real person customer service") { // currently there are only one keyword to change to real person customer service
+    clearInputBox();
+    insertMyMessage(customerMessage);
+    customerMessage = "";
+    changeToRealPersonCustomerService();
   }
-  $('<div class="message loading new"><figure class="avatar"><img src="../static/image/robot.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-  updateScrollbar();
 
-  setTimeout(function () {
-    $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="../static/image/robot.svg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    setDate();
-    updateScrollbar();
-    i++;
-  }, 1000 + (Math.random() * 20) * 100);
+  if ($.trim(customerMessage) == '') {
+    return false; // do not send empty message
+  }
 
+  if (usingBot) {
+    setTimeout(function () {
+      insertRespMessageFromBot(customerMessage);
+    }, 1000 + (Math.random() * 20) * 100);
+  } else {
+    var text = customerMessage
+    var sender = customerName
+    socket.emit('message', { sender: sender, text: text });
+  }
 }
 
-function realMessageFromBot(yourMessage) {
-  if ($('.message-input').val() != '') {
-    return false;
-  }
+function insertRespMessageFromBot(yourMessage) {
   $('<div class="message loading new"><figure class="avatar"><img src="../static/image/robot.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
   updateScrollbar();
 
@@ -101,15 +98,49 @@ function realMessageFromBot(yourMessage) {
     data: {
       'msg': yourMessage
     },
-    success: function (data) {
+    timeout: 15000, // timeout after 15 seconds
+    success: function (chatbotAnswer) {
       $('.message.loading').remove();
-      $('<div class="message new"><figure class="avatar"><img src="../static/image/robot.svg" /></figure>' + data + '</div>').appendTo($('.mCSB_container')).addClass('new');
-      setDate();
-      updateScrollbar();
-      i++;
+      insertRespMessage(chatbotAnswer);
+    },
+    error: function (xhr, status, error) {
+      // an error occurred
+      $('.message.loading').remove();
+      console.log("ERROR_" + status + "_" + error.message);
+      insertRespMessage("Sorry, I am having some problems. Please try again later.");
     }
   })
 }
+
+
+
+function changeToRealPersonCustomerService() {
+  usingBot = false;
+  insertRespMessage("Please wait while we connect you to a real person customer service...");
+
+  // when this func is called we establish a websocket connection to the server
+
+  namespace = '/socketest'; // TODO: change this to the namespace of your app
+  socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace, { autoJoin: false });
+
+  // set client side event handler
+  socket.on('message', function (res) {
+    var resSender = res.sender;
+    var resMsgTxt = res.text;
+    if (resMsgTxt) {
+      if (resSender == customerName) { // own message sent to server
+        insertMyMessage(resMsgTxt);
+      } else {
+        insertRespMessage(resMsgTxt);
+      }
+    }
+  });
+}
+
+
+
+
+/* FRONT END JS */
 
 // these are the functions for the cart unfold and fold
 var fold = document.getElementById('btnfold')
@@ -163,3 +194,5 @@ unfold.onclick = function () {
 
   document.getElementById('notebook').style.display = 'flex';
 }
+
+/* END FRONTEND JS */

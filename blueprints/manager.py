@@ -134,7 +134,31 @@ def activities():
 
 ### CHAT RELATED ###
 @bp.route("/responding/<target_customer_id>/", methods=["GET", "POST"])
-def respond_to(target_customer_id):
+def respond_view(target_customer_id):
+    """manager bargaining with target customer
+
+    Args:
+        targetcustomer_id (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    
+    # TODO: authenticate admin identity
+    
+    # TODO: check if the target customer exists
+    
+    target_customer = Customer.query.filter_by(id=target_customer_id).first()
+    if target_customer == None:
+        return False
+    
+    # TODO: load previous chat history from target_customer.messages
+    
+    return render_template("chat.html")
+
+
+@bp.route("/chat_test", methods=["GET", "POST"])
+def respond_test():
     """manager bargaining with target customer
 
     Args:
@@ -148,8 +172,7 @@ def respond_to(target_customer_id):
     #     return False
     # manager = g.admin
     # TODO: finish this function
-    return render_template("chat.html")
-
+    return render_template("Test.html")
 
 ### END CHAT RELATED ###
 
