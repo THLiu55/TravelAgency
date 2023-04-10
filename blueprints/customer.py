@@ -15,7 +15,6 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
-    session.clear()
     logged = False if session.get('customer_id') is None else True
     return render_template("Homepage.html", logged=logged)
 
