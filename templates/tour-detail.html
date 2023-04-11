@@ -358,8 +358,7 @@
                                                     <button type="submit" class="theme-btn"><span
                                                             class="far fa-shopping-bag"></span>Book Now
                                                     </button>
-
-
+                                                {% if logged %}
                                                     {% if added %}
                                                         <a href="{{ url_for('tour.remove_wishlist', tour_id=tour.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> Remove From
                                                         Wishlist</a>
@@ -367,6 +366,10 @@
                                                         <a href="{{ url_for('tour.add_wishlist', tour_id=tour.id) }}" class="border-btn"><i class="far fa-heart"></i> Add To
                                                         Wishlist</a>
                                                     {% endif %}
+                                                {% else%}
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                        Wishlist</a>
+                                                {% endif %}
                                                 </div>
                                             </div>
                                         </form>

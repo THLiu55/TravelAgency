@@ -61,8 +61,8 @@ def hotel_filter():
 @bp.route('/details/<hotel_id>/', methods=['GET', 'POST'])
 def hotelDetail(hotel_id):
     hotel = Hotel.query.get(hotel_id)
-    # hotel.view_num = hotel.view_num + 1
-    # db.session.commit()
+    hotel.view_num = hotel.view_num + 1
+    db.session.commit()
     reviews = hotel.review
     hotel.images = json.loads(hotel.images)['images']
     images = [image[image.index('static'):].lstrip('static') for image in hotel.images]
@@ -113,7 +113,6 @@ def hotelDetail(hotel_id):
     play = True if "Beverage Selection" in hotel.amenities else False
     pick_and_drop = True if "Airport Transportation" in hotel.amenities else False
     fridge = True if "Bar / Lounge" in hotel.amenities else False
-
     return render_template("hotel-detail.html", hotel=hotel, logged=logged, reviews=reviews, images=images,
                            review_num=review_num, added=added, purchased=purchased, star_score=star_score,
                            star_score_ceil=star_score_ceil, star_detail=star_detail, rooms=rooms_dic, wine_bar=wine_bar,
@@ -122,3 +121,25 @@ def hotelDetail(hotel_id):
                            room_service=True, fire_place=True, breakfast=breakfast, fitness_facility=fitness_facility,
                            elevator=elevator, entertainment=entertainment, air_conditioning=air_conditioning,
                            coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play)
+
+
+@bp.route("/add_wishlist/<hotel_id>")
+def add_wishlist(hotel_id):
+    aimed_hotel = Hotel.query.get(hotel_id)
+    hotel_order = HotelOrder()
+    hotel_order.customerID = session.get("customer_id")
+    hotel_order.productID = hotel_id
+    hotel_order.cost = aimed_hotel.min_price
+    hotel_order.purchased = False
+    db.session.add(hotel_order)
+    db.session.commit()
+    return redirect((url_for('customer.profile')))
+
+
+@bp.route("/remove_wishlist/<hotel_id>")
+def remove_wishlist(hotel_id):
+    hotel_order = HotelOrder.query.filter_by(customerID=session.get("customer_id"), productID=hotel_id,
+                                             purchased=False).first()
+    db.session.delete(hotel_order)
+    db.session.commit()
+    return redirect(url_for('customer.profile'))

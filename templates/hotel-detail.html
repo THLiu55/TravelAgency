@@ -560,8 +560,18 @@
                                                     <button type="submit" class="theme-btn"><span
                                                             class="far fa-shopping-bag"></span>Book Now
                                                     </button>
-                                                    <a href="#" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                {% if logged %}
+                                                    {% if added %}
+                                                        <a href="{{ url_for('hotel.remove_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:red"><i class="far fa-heart"></i> Remove From
                                                         Wishlist</a>
+                                                    {% else %}
+                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                        Wishlist</a>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                        Wishlist</a>
+                                                {% endif %}
                                                 </div>
                                             </div>
                                         </form>
@@ -572,16 +582,6 @@
                                     </div>
                                 </div>
                             </div>
-{#                            <div class="booking-sidebar listing-side-content mt-4">#}
-{#                                <h4 class="booking-title">Why Book With Us?</h4>#}
-{#                                <ul class="listing-side-list">#}
-{#                                    <li><i class="far fa-dollar-sign"></i>Best Price Guarantee</li>#}
-{#                                    <li><i class="far fa-headset"></i>24/7 Customer Care</li>#}
-{#                                    <li><i class="far fa-globe"></i>Hand Picked Tours & Activities</li>#}
-{#                                    <li><i class="far fa-flag"></i>Free Travel Insureance</li>#}
-{#                                    <li><i class="far fa-car"></i>Comfortable And Hygienic Vehicle</li>#}
-{#                                </ul>#}
-{#                            </div>#}
                             <div class="booking-sidebar listing-side-content mt-4">
                                 <h4 class="booking-title">Get A Question?</h4>
                                 <p>It is a long established fact that a reader will be distracted by the readable
