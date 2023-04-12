@@ -16,10 +16,13 @@ from model import *
 from exts import db
 import os
 
+from utils.decorators import staff_login_required
+
 bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 
 @bp.route("/")
+@staff_login_required
 def manager_homepage():
     db.create_all()
     return render_template("manager.html")
@@ -33,13 +36,29 @@ def logout():
 # def destinationList():
 #     return render_template("destinations.html")
 
+@bp.route("/login", methods=["GET", "POST"])
+def login():
+    url = request.args.get('url')
+    print(f"here{url}")
+    if request.method == 'GET':
+        return render_template("Stafflogin.html", url=url)
+    else:
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if username == "admin" and password == "Admin-123456":
+            session['staff_id'] = 1
+            return redirect(url_for('manager.manager_homepage'))
+        return redirect(url_for('customer.homepage'))
+
 
 @bp.route("/load_activities", methods=["POST"])
+@staff_login_required
 def load_activities():
     return load_product("Activity")
 
 
 @bp.route("/add_activity", methods=["POST"])
+@staff_login_required
 def add_activity():
     activity = Activity()
     activity.status = "published"
@@ -100,6 +119,7 @@ def add_activity():
 
 
 @bp.route('/delete_activity', methods=['GET', 'POST'])
+@staff_login_required
 def delete_activity():
     activity_id = request.form.get('id')
     activity = Activity.query.get(activity_id)
@@ -111,13 +131,38 @@ def delete_activity():
 
 
 @bp.route('/activities', methods=['GET', 'POST'])
+@staff_login_required
 def activities():
     return render_template("activities.html")
 
 
 ### CHAT RELATED ###
 @bp.route("/responding/<target_customer_id>/", methods=["GET", "POST"])
-def respond_to(target_customer_id):
+def respond_view(target_customer_id):
+    """manager bargaining with target customer
+
+    Args:
+        targetcustomer_id (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    
+    # TODO: authenticate admin identity
+    
+    # TODO: check if the target customer exists
+    
+    target_customer = Customer.query.filter_by(id=target_customer_id).first()
+    if target_customer == None:
+        return False
+    
+    # TODO: load previous chat history from target_customer.messages
+    
+    return render_template("chat.html")
+
+
+@bp.route("/chat_test", methods=["GET", "POST"])
+def respond_test():
     """manager bargaining with target customer
 
     Args:
@@ -131,13 +176,13 @@ def respond_to(target_customer_id):
     #     return False
     # manager = g.admin
     # TODO: finish this function
-    return render_template("chat.html")
-
+    return render_template("Test.html")
 
 ### END CHAT RELATED ###
 
 
 @bp.route("/add_tour", methods=["GET", "POST"])
+@staff_login_required
 def add_tour():
     tour = Tour()
     tour.status = "published"
@@ -204,11 +249,13 @@ def add_tour():
 
 
 @bp.route("/load_tours", methods=["POST"])
+@staff_login_required
 def load_tours():
     return load_product("Tour")
 
 
 @bp.route('/delete_tour', methods=['GET', 'POST'])
+@staff_login_required
 def delete_tour():
     tour_id = request.form.get('id')
     tour = Tour.query.get(tour_id)
@@ -220,11 +267,13 @@ def delete_tour():
 
 
 @bp.route("/tours")
+@staff_login_required
 def tours():
     return render_template("tour.html")
 
 
 @bp.route("/add_hotel", methods=["POST"])
+@staff_login_required
 def add_hotel():
     hotel = Hotel()
     hotel.status = "published"
@@ -243,6 +292,7 @@ def add_hotel():
     hotel.room_type_num = request.form.get("typenum")
     hotel.description = request.form.get("description")
     hotel.view_num = 0
+    hotel.star = request.form.get('hotel_star')
     images = request.files.getlist("images")
     max_id = db.session.query(db.func.max(Hotel.id)).scalar()
     if max_id is None:
@@ -274,8 +324,13 @@ def add_hotel():
         image = request.files.get(f"fileInput{i}")
         route = os.path.join(sub_folder_path, image.filename)
         image.save(route)
+        features = []
+        for j in range(1, 8):
+            if request.form.get(f"feature_{j}_{i}") is not None:
+                features.append(request.form.get(f"feature_{j}_{i}"))
         des.append({"id": i,
                     "name": request.form.get(f"hotelroom_name_{i}"),
+                    "features": features,
                     "price": request.form.get(f"hotelroom_price_{i}"),
                     "picture": route})
         i = i + 1
@@ -292,11 +347,13 @@ def add_hotel():
 
 
 @bp.route("/load_hotels", methods=["POST"])
+@staff_login_required
 def load_hotels():
     return load_product("Hotel")
 
 
 @bp.route("/delete_hotel", methods=["POST"])
+@staff_login_required
 def delete_hotel():
     hotel_id = request.form.get('id')
     hotel = Hotel.query.get(hotel_id)
@@ -321,14 +378,20 @@ def load_product(product_name):
 
 
 @bp.route("/accommodations")
+@staff_login_required
 def accommodations():
     return render_template("accommodation.html")
 
 
 @bp.route("/add_flight", methods=["POST"])
+@staff_login_required
 def add_flight():
+    db.drop_all()
+    db.create_all()
     flight = Flight()
     flight.status = "published"
+    flight.departure = request.form.get("departure")
+    flight.destination = request.form.get("destination")
     flight.flight_type = request.form.get("flight_type")
     flight.takeoff_time = datetime.strptime(request.form.get("take_off_time"), "%Y-%m-%dT%H:%M")
     flight.landing_time = datetime.strptime(request.form.get("landing_time"), "%Y-%m-%dT%H:%M")
@@ -375,34 +438,55 @@ def add_flight():
 
 
 @bp.route("/load_flights", methods=["POST"])
+@staff_login_required
 def load_flights():
     return load_product("Flight")
 
+
+@bp.route("/delete_flight", methods=["POST"])
+@staff_login_required
+def delete_flight():
+    flight_id = request.form.get('id')
+    flight = Flight.query.get(flight_id)
+    print("here")
+    if flight is None:
+        return jsonify({'code': 400, 'message': "no activity found"})
+    flight.status = "deleted"
+    db.session.commit()
+    return redirect(url_for('manager.flights'))
+
+
 @bp.route("/flights")
+@staff_login_required
 def flights():
     return render_template("flight.html")
 
 
 @bp.route("/customers")
+@staff_login_required
 def customers():
     return render_template("customer-account.html")
 
 
 @bp.route("/wish_list")
+@staff_login_required
 def wish_list():
     return render_template("customer-wishlist.html")
 
 
 @bp.route("/chat")
+@staff_login_required
 def chat():
     return render_template("chat.html")
 
 
 @bp.route("/order_details")
+@staff_login_required
 def order_details():
     return render_template("order-details.html")
 
 
 @bp.route("/reviews")
+@staff_login_required
 def reviews():
     return render_template("reviews.html")

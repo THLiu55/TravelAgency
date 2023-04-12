@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import requests
 from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
@@ -63,9 +65,10 @@ def register():
     new_customer.email = email
     new_customer.nickname = nickname
     new_customer.password = generate_password_hash(password)
+    new_customer.join_date = datetime.now()
+    new_customer.wallet = 0
     db.session.add(new_customer)
     db.session.commit()
-
     return jsonify({"code": 200})
 
 
@@ -83,6 +86,7 @@ def captcha():
              f"\nIgnore it please if this is not your own operation",
     )
     mail.send(message)
+    print(captcha_number)
     return jsonify({"code": 200})
 
 
@@ -130,6 +134,13 @@ def consult():
 @bp.route("/profile")
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
+    customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
+    return render_template("profile-base.html", customer=customer, logged=True)
+
+@bp.route("/profilepage")
+def profilepage():
+    customer = Customer.query.get(session.get('customer_id'))
+    customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
     return render_template("profile.html", customer=customer, logged=True)
 
 
@@ -154,4 +165,15 @@ def wallet():
 @bp.route("/setting")
 def setting():
     customer = Customer.query.get(session.get('customer_id'))
-    return render_template("profile-setting.html", logged=True)
+    return render_template("profile-setting.html", logged=True, customer=customer)
+
+
+@bp.route("/update-profile", methods=['POST'])
+def update_profile():
+    customer = Customer.query.get(session.get("customer_id"))
+    customer.email = request.form.get("email")
+    customer.nickname = request.form.get("name")
+    customer.phone_number = request.form.get("phone")
+    customer.address = request.form.get("address")
+    db.session.commit()
+    return redirect(url_for('customer.profile'))

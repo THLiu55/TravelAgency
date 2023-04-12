@@ -10,6 +10,9 @@ class Customer(db.Model, UserMixin):
     password = db.Column(db.String(255))
     avatarURL = db.Column(db.Text)
     wallet = db.Column(db.Float)
+    join_date = db.Column(db.DateTime)
+    address = db.Column(db.Text)
+    phone_number = db.Column(db.String(255))
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
@@ -199,6 +202,7 @@ class Tour(db.Model):
             'total_star': self.total_star,
             'review_num': self.review_num,
             'star_detail': self.star_detail,
+            "contact_email": self.contact_email
         }
 
 
@@ -218,6 +222,7 @@ class Hotel(db.Model):
     house_keeping = db.Column(db.String(255))
     front_desk = db.Column(db.String(255))
     bathroom = db.Column(db.String(255))
+    star = db.Column(db.String(255))
     room_type_num = db.Column(db.Integer)
     images = db.Column(db.Text)
     description = db.Column(db.Text)
@@ -243,6 +248,18 @@ class Hotel(db.Model):
             'room_num': self.room_num
         }
 
+    def to_dict(self):
+        return {
+            "id": self.id,
+            'images': self.images,
+            "name": self.name,
+            "address": self.address,
+            "city": self.city,
+            "review_num": self.review_num,
+            "min_price": self.min_price,
+            "contact_email": self.contact_email
+        }
+
 
 class HotelOrder(db.Model):
     __tablename__ = 'hotel_orders'
@@ -250,6 +267,7 @@ class HotelOrder(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     startTime = db.Column(db.DateTime)
     endTime = db.Column(db.DateTime)
+    checkOutTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
@@ -271,6 +289,8 @@ class Flight(db.Model):
     __tablename__ = 'flights'
 
     id = db.Column(db.Integer, primary_key=True)
+    departure = db.Column(db.String(255))
+    destination = db.Column(db.String(255))
     status = db.Column(db.String(255))
     flight_type = db.Column(db.String(255))
     takeoff_time = db.Column(db.DateTime)
@@ -303,8 +323,8 @@ class Flight(db.Model):
         return {
             'id': self.id,
             'status': self.status,
-            'price': self.price,
-            'flight_type': self.flight_type,
+            'departure': self.departure,
+            'destination': self.destination,
             'take_off_time': self.takeoff_time,
             'landing_time': self.landing_time
         }
@@ -331,3 +351,15 @@ class FlightReview(db.Model):
     content = db.Column(db.Text)
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
+
+
+class Room:
+    square_1 = False
+    square_2 = False
+    bed_1 = False
+    bed_2 = False
+    wifi = False
+    shower = False
+    free = False
+    picture = ''
+    price = 0
