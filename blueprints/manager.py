@@ -465,13 +465,13 @@ def flights():
 @bp.route("/customers")
 @staff_login_required
 def customers():
-    return render_template("customer-account.html")
+    return render_template("customerAccount.html")
 
 
 @bp.route("/wish_list")
 @staff_login_required
 def wish_list():
-    return render_template("customer-wishlist.html")
+    return render_template("customerWishlist.html")
 
 
 @bp.route("/chat")
@@ -483,7 +483,27 @@ def chat():
 @bp.route("/order_details")
 @staff_login_required
 def order_details():
-    return render_template("order-details.html")
+    return render_template("orderDetails.html")
+
+@bp.route("/order_invoice")
+@staff_login_required
+def order_invoice():
+    return render_template("orderInvoice.html")
+
+@bp.route("/order_history")
+@staff_login_required
+def order_history():
+    return render_template("orderHistory.html")
+
+@bp.route("/order_status")
+@staff_login_required
+def order_status():
+    return render_template("orderStatus.html")
+
+@bp.route("/order_message")
+@staff_login_required
+def order_messages():
+    return render_template("orderMessages.html")
 
 
 @bp.route("/reviews")
