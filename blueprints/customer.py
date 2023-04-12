@@ -135,6 +135,12 @@ def consult():
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
     customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
+    return render_template("profile-base.html", customer=customer, logged=True)
+
+@bp.route("/profilepage")
+def profilepage():
+    customer = Customer.query.get(session.get('customer_id'))
+    customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
     return render_template("profile.html", customer=customer, logged=True)
 
 
