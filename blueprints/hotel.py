@@ -219,3 +219,8 @@ def order_success():
         return render_template("booking-success.html", name=request.args.get("name"))
     else:
         return jsonify({"balance": 400})
+
+
+@bp.route("/add_review", methods=['POST'])
+def add_review():
+    pass
