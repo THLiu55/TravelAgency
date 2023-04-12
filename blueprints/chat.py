@@ -46,6 +46,15 @@ def get_chatbot_answer():
 
     return answer
 
+@bp.route("/get_session_customer_name", methods=["POST"])
+def get_session_customer_name():
+    if session.get("customer_id"):
+        customer = Customer.query.filter_by(id=session.get("customer_id")).first()
+        if customer:
+            return customer.nickname
+    # if not logged in, return "anon" by default
+    return "anon"
+
 
 ### END CHATBOT ROUTERS ###
 

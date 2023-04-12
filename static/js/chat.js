@@ -1,6 +1,5 @@
 var $messages = $('.messages-content'),
-  // customerName = "anon", // by default
-  customerName = "Venderbad",
+  customerName = "",
   usingBot = true, // use bot by default
   socket = null,
   namespace = null,
@@ -8,12 +7,35 @@ var $messages = $('.messages-content'),
   i = 0;
 
 $(window).load(function () {
+  initGlobalVars();
   $messages.mCustomScrollbar();
   setTimeout(function () {
-    botMessage = "Hello! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
+    botMessage = "Hello, " + customerName + "! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
     insertRespMessage(botMessage);
   }, 100);
 });
+
+function initGlobalVars() {
+  // get the customerName by post request to /get_session_customer_name
+  $.ajax({
+    type: "POST",
+    url: "/get_session_customer_name",
+    data: {},
+    timeout: 15000, // timeout after 15 seconds
+    success: function (customerNameFromServer) {
+      customerName = customerNameFromServer;
+    },
+    error: function (xhr, status, error) {
+      // an error occurred
+      console.log("ERROR_" + status + "_" + error.message);
+      customerName = "anon"; // fallback to anon
+    }
+  })
+
+  // currently we set namespace to /chat
+  namespace = '/chat'; // TODO: change this to the namespace of your app
+
+}
 
 function updateScrollbar() {
   $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
@@ -77,17 +99,17 @@ function doSend() {
   }
 
   if (usingBot) {
-    setTimeout(function () {
-      insertRespMessageFromBot(customerMessage);
-    }, 1000 + (Math.random() * 20) * 100);
+    insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
+    getAndInsertRespMessageFromBot(customerMessage);
   } else {
+    // need not to insert message manually, because the server will send back the message to the client
     var text = customerMessage
     var sender = customerName
     socket.emit('message', { sender: sender, text: text });
   }
 }
 
-function insertRespMessageFromBot(yourMessage) {
+function getAndInsertRespMessageFromBot(yourMessage) {
   $('<div class="message loading new"><figure class="avatar"><img src="../static/image/robot.svg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
   updateScrollbar();
 
@@ -120,7 +142,7 @@ function changeToRealPersonCustomerService() {
 
   // when this func is called we establish a websocket connection to the server
 
-  namespace = '/socketest'; // TODO: change this to the namespace of your app
+  // namespace = '/socketest'; // now it is initialized in initGlobalVars()
   socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace, { autoJoin: false });
 
   // set client side event handler
