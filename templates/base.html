@@ -63,17 +63,17 @@
                     </div>
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link active" href="{{ url_for('customer.homepage') }}">Home</a>
+                            <li class="nav-item dropdown" id="navi-menu">
+                                <a class="nav-link" href="{{ url_for('customer.homepage') }}">Home</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" id="navi-menu">
                                 <a class="nav-link" href="#">Flight</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" id="navi-menu">
                                 <a class="nav-link" href="{{ url_for('hotel.hotelList', page_num=1) }}">Hotel</a>
 
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown" id="navi-menu">
                                 <a class="nav-link"
                                    href="{{ url_for('activity.activityList', page_num=1) }}">Activity</a>
                             </li>
@@ -139,6 +139,22 @@
 
 
 </body>
+<script>
+    function selected(elem) {
+    // alert("selected")
+    // Remove the "selected" class from all list items
+    // var navItems = document.querySelectorAll('ul a');
+    var navItems = document.querySelectorAll('#navi-menu');
+    for (var i = 0; i < navItems.length; i++) {
+      navItems[i].classList.remove('active');
+      console.log(navItems[i])
+    //   alert(navItems[i])
+    }
+    
+    // Add the "selected" class to the clicked list item
+    elem.parentNode.classList.add('active');
+  }
+</script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 {% block jsLink %}{% endblock %}
 
