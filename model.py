@@ -265,11 +265,12 @@ class HotelOrder(db.Model):
     __tablename__ = 'hotel_orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    startTime = db.Column(db.DateTime)
-    endTime = db.Column(db.DateTime)
-    checkOutTime = db.Column(db.DateTime)
+    startTime = db.Column(db.DateTime)  # check in time
+    endTime = db.Column(db.DateTime)  # Order time
+    checkOutTime = db.Column(db.DateTime)  # check out time
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
+    roomID = db.Column(db.String(255))
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
@@ -281,6 +282,7 @@ class HotelReview(db.Model):
     rating = db.Column(db.Integer)
     issueTime = db.Column(db.DateTime)
     content = db.Column(db.Text)
+    roomID = db.Column(db.String(255))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
 

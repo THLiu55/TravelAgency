@@ -36,7 +36,7 @@
                                             <ul>
                                                 <li>Product Type <span>Hotel</span></li>
                                                 <li>Product Name <span>{{ hotel.name }}</span></li>
-                                                <li>Product Category <span>{{ hotel.category }}</span></li>
+                                                <li>Room name <span>{{ room_name }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -45,8 +45,9 @@
                                         <div class="booking-summary-list">
                                             <h6>Product Info</h6>
                                             <ul>
-                                                <li>Hotel Date <span>{{ order_date }}</span></li>
-                                                <li>Hotel Price <span>{{ tour.price }}</span></li>
+                                                <li>Check In Date <span>{{ hotel_order.startTime }}</span></li>
+                                                <li>Check Out Date <span>{{ hotel_order.checkOutTime }}</span></li>
+                                                <li>Hotel Price <span>{{ hotel_order.cost }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -64,17 +65,17 @@
                                         <div class="booking-summary-list">
                                             <h6>Billing Info</h6>
                                             <ul>
-                                                <li>Tax <span class="text - success">{{ tour.price*0.05 }}</span></li>
+                                                <li>Tax <span class="text - success">{{ hotel_order.cost*0.05 }}</span></li>
                                                 <li>Payment Method <span>Token</span></li>
-                                                <li class="fw-bold">Total Payment <span>{{ tour.price*0.05+tour.price }}</span></li>
+                                                <li class="fw-bold">Total Payment <span>{{ hotel_order.cost*1.05 }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-confirm-btn">
-                                <a href="{{ url_for('tour.order_success', tour_id=tour.id, date=order_date, cost=tour.price*0.05+tour.price, name=tour.name) }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
-                                <a href="{{ url_for('tour.tourDetail', tour_id=tour.id) }}" class="theme-btn cancel-booking"><span
+                                <a href="{{ url_for('hotel.order_success', hotel_id=hotel_order.productID, cost=hotel_order.cost*1.05, roomID=room_id, s_date=hotel_order.startTime, e_date=hotel_order.checkOutTime, name=hotel.name) }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
+                                <a href="{{ url_for('hotel.hotelDetail', hotel_id=hotel.id) }}" class="theme-btn cancel-booking"><span
                                         class="far fa-xmark-circle"></span>Cancel Booking</a>
                             </div>
                         </div>

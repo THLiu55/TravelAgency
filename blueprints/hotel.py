@@ -1,3 +1,4 @@
+import datetime
 import json, math
 
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for
@@ -86,6 +87,7 @@ def hotelDetail(hotel_id):
     rooms_dic = []
     for room_i in rooms:
         room = Room()
+        room.id = room_i["id"]
         room.picture = room_i['picture'][room_i['picture'].index('static'):].lstrip('static')
         room.wifi = True if "WiFi" in room_i['features'] else False
         room.square_1 = True if "15 ㎡" in room_i['features'] else False
@@ -113,6 +115,12 @@ def hotelDetail(hotel_id):
     play = True if "Beverage Selection" in hotel.amenities else False
     pick_and_drop = True if "Airport Transportation" in hotel.amenities else False
     fridge = True if "Bar / Lounge" in hotel.amenities else False
+    if hotel.min_stay == "More Than 2 Nights":
+        min_stay = "More Than 2 Nights"
+        hotel.min_stay = True
+    else:
+        min_stay = "2 Nights Or Less"
+        hotel.min_stay = False
     return render_template("hotel-detail.html", hotel=hotel, logged=logged, reviews=reviews, images=images,
                            review_num=review_num, added=added, purchased=purchased, star_score=star_score,
                            star_score_ceil=star_score_ceil, star_detail=star_detail, rooms=rooms_dic, wine_bar=wine_bar,
@@ -120,7 +128,8 @@ def hotelDetail(hotel_id):
                            handicap=handicap, television=True, fridge=fridge, secure=True, pick_and_drop=pick_and_drop,
                            room_service=True, fire_place=True, breakfast=breakfast, fitness_facility=fitness_facility,
                            elevator=elevator, entertainment=entertainment, air_conditioning=air_conditioning,
-                           coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play)
+                           coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play, room_num=len(rooms),
+                           min_stay=min_stay)
 
 
 @bp.route("/add_wishlist/<hotel_id>")
@@ -143,3 +152,70 @@ def remove_wishlist(hotel_id):
     db.session.delete(hotel_order)
     db.session.commit()
     return redirect(url_for('customer.profile'))
+
+
+@bp.route("/order-confirm", methods=['POST'])
+def order_confirm():
+    customer_id = session.get('customer_id')
+    if customer_id:
+        customer = Customer.query.get(customer_id)
+        hotel_id = request.form.get("hotel_id")
+        hotel = Hotel.query.get(hotel_id)
+        to_confirmed = Hotel.query.get(hotel_id)
+        hotel_order = HotelOrder()
+        hotel_order.customerID = customer_id
+        hotel_order.productID = hotel_id
+        hotel_order.purchased = False
+        hotel_order.cost = float(request.form.get("price-total"))
+        hotel_order.startTime = request.form.get("journey-date")
+        hotel_order.checkOutTime = request.form.get("return-date")
+        hotel_order.roomID = request.form.get("room_id")
+        rooms = json.loads(hotel.room_detail)['hotel_des']
+        room_name = ""
+        room_id = ""
+        for room_i in rooms:
+            if str(room_i["id"]) == hotel_order.roomID:
+                room_name = room_i["name"]
+                room_id = room_i["id"]
+                break
+        return render_template("hotel-booking-confirm.html", hotel=to_confirmed, customer=customer,
+                               hotel_order=hotel_order, logged=True, room_name=room_name, room_id=room_id)
+    else:
+        url = request.referrer
+        return render_template("SignInUp.html", url=url)
+
+
+@bp.route("/order-success")
+def order_success():
+    customer = Customer.query.get(session.get("customer_id"))
+    cost = float(request.args.get("cost"))
+    if customer.wallet >= cost:
+        hotel_order = HotelOrder()
+        hotel_order.customerID = session.get('customer_id')
+        hotel_order.purchased = True
+        hotel_order.roomID = request.args.get("roomID")
+        s_date = request.args.get("s_date")
+        e_date = request.args.get("e_date")
+        try:
+            date_format = "%Y/%m/%d"
+            datetime_s = datetime.datetime.strptime(s_date, date_format)
+        except ValueError:
+            date_format = "%m/%d/%Y"
+            datetime_s = datetime.datetime.strptime(s_date, date_format)
+        try:
+            date_format = "%Y/%m/%d"
+            datetime_e = datetime.datetime.strptime(e_date, date_format)
+        except ValueError:
+            date_format = "%m/%d/%Y"
+            datetime_e = datetime.datetime.strptime(e_date, date_format)
+        hotel_order.startTime = datetime_s
+        hotel_order.productID = request.args.get("hotel_id")
+        hotel_order.cost = float(request.args.get("cost"))
+        hotel_order.checkOutTime = datetime_e
+        hotel_order.endTime = datetime.datetime.now()
+        customer.wallet = customer.wallet - cost
+        db.session.add(hotel_order)
+        db.session.commit()
+        return render_template("booking-success.html", name=request.args.get("name"))
+    else:
+        return jsonify({"balance": 400})
