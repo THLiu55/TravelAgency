@@ -25,7 +25,7 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @staff_login_required
 def manager_homepage():
     db.create_all()
-    return render_template("manager.html")
+    return render_template("Dashboard.html")
 
 @bp.route("/logout")
 def logout():
@@ -510,3 +510,8 @@ def order_messages():
 @staff_login_required
 def reviews():
     return render_template("reviews.html")
+
+@bp.route("/total_orders")
+@staff_login_required
+def total_orders():
+    return render_template("orders.html")
