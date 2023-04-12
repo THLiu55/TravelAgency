@@ -82,7 +82,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #4F4B8B;
+  color: #103db9;
   margin: 0px;
   font-weight: 600;
   font-family: 'Barlow', sans-serif;
@@ -635,7 +635,7 @@ theme button
   text-align: center;
   overflow: hidden;
   border: none;
-  background: #7167FF;
+  background: #0f35b1;
   box-shadow: 0 3px 24px rgb(0 0 0 / 12%);
   z-index: 1;
 }
@@ -701,7 +701,7 @@ scroll-top css
   outline: none;
   border-radius: 8px;
   color: #fff;
-  background: #7167FF;
+  background: #435abd;
   cursor: pointer;
   width: 45px;
   height: 45px;
@@ -948,7 +948,7 @@ nav menu css
 
   .navbar .nav-item .nav-link.active,
   .navbar .nav-item:hover .nav-link {
-    color: #7167FF;
+    color: #0e71c8;
   }
 
   .navbar .nav-item:hover .dropdown-menu {
@@ -1052,20 +1052,20 @@ nav menu css
 }
 
 .navbar.fixed-top .nav-item .nav-link {
-  color: #4F4B8B;
+  color: #13318d;
 }
 
 .navbar.fixed-top .header-nav-link {
-  color: #4F4B8B;
+  color: #13318d;
 }
 
 .navbar.fixed-top .header-nav-link:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .navbar.fixed-top .nav-item .nav-link.active,
 .navbar.fixed-top .nav-item:hover .nav-link {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -1543,7 +1543,7 @@ search css
   position: relative;
   padding: 10px 15px;
   border-radius: 12px;
-  background: rgba(113, 103, 255, .15);
+  background: rgb(38 204 246 / 20%);
 }
 
 .search-form .form-group label{
@@ -1566,7 +1566,7 @@ search css
   right: 20px;
   top: 0px;
   font-size: 28px;
-  color: #7167FF;
+  color: #1236c5;
 }
 
 .search-form .form-group p {
@@ -1654,7 +1654,7 @@ search css
   height: 35px;
   line-height: 32px;
   border-radius: 50px;
-  background: rgba(113, 103, 255, .15);
+  background: #a5cff4a3;
 }
 
 .search-form .passenger-qty button i{
@@ -1894,11 +1894,11 @@ price range slider
   border: none;
   font-weight: 800;
   outline: none;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .price-range-slider label {
-  color: #4F4B8B;
+  color: #13318d;
   font-weight: 500;
 }
 
@@ -1906,7 +1906,7 @@ price range slider
   top: -0.36em !important;
   border-radius: 50px;
   background: #fff !important;
-  border: 4px solid #7167FF !important;
+  border: 4px solid #0e71c8 !important;
   width: 1.1em;
   height: 1.1em;
   outline: none;
@@ -1921,7 +1921,7 @@ price range slider
 }
 
 .price-range-slider .ui-widget-header {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 
@@ -3350,7 +3350,7 @@ activity css
   width: 35px;
   height: 35px;
   line-height: 35px;
-  background: #7167FF;
+  background: #103db9;
   color: #fff;
   border-radius: 50px;
   text-align: center;
@@ -3384,7 +3384,7 @@ activity css
 }
 
 .activity-rate-type{
-  color: #7167FF;
+  color: #103db9;
   font-weight: 500;
   margin: 0 5px;
 }
@@ -4696,12 +4696,12 @@ booking sort
   border-radius: 6px;
   text-align: center;
   border: 1px solid #CED4DA;
-  color: #4F4B8B;
+  color: #13318d;
 }
 
 .booking-sort-list-grid a.active {
-  border-color: #7167FF;
-  color: #7167FF;
+  border-color: #0e71c8;
+  color: #0e71c8;
 }
 
 .booking-sort .nice-select {
@@ -4712,7 +4712,7 @@ booking sort
   padding-left: 15px;
   font-size: 16px;
   border-color: #CED4DA;
-  color: #4F4B8B;
+  color: #13318d;
 }
 
 .booking-sort .form-control:focus,
@@ -7777,7 +7777,7 @@ pagination css
 
 .pagination .page-link {
   border: none;
-  background: #4F4B8B;
+  background: #103db9;
   color: #fff;
   margin: 0 10px;
   border-radius: 10px !important;
@@ -7790,7 +7790,7 @@ pagination css
 
 .pagination .page-link:hover,
 .pagination .page-item.active .page-link {
-  background: #7167FF;
+  background: #72a6d6;
   color: #fff;
 }
 
@@ -7914,17 +7914,17 @@ auth css
 }
 
 .login-form .form-check-label a {
-  color: #7167FF;
+  color: #0e71c8;
   transition: .5s;
 }
 
 .login-form .form-check-label a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .form-check-input:checked {
-  background-color: #7167FF;
-  border-color: #7167FF;
+  background-color: #0e71c8;
+  border-color: #0e71c8;
 }
 
 .login-divider {
@@ -8093,12 +8093,12 @@ user profile css
 }
 
 .user-profile-sidebar-list li a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .user-profile-sidebar-list li a i {
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .user-profile-sidebar-list .active i {
@@ -8106,7 +8106,7 @@ user profile css
 }
 
 .user-profile-sidebar-list .active {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff !important;
   border-radius: 8px;
 }
@@ -8114,7 +8114,7 @@ user profile css
 .user-profile-sidebar-list li .badge{
   float: right;
   margin-top: 5px;
-  background: #F96768;
+  background: #061a7b;
 }
 
 .profile-menu-angle{
@@ -8149,7 +8149,7 @@ user profile css
 }
 
 .user-profile-card-title {
-  color: #4F4B8B;
+  color: #0f3f81;
   padding-bottom: 15px;
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
@@ -9529,7 +9529,7 @@ home-2
 
   .home-2 .navbar .nav-item .nav-link.active,
   .home-2 .navbar .nav-item .nav-link:hover {
-    color: #7167FF;
+    color: #0e71c8;
   }
 }
 
