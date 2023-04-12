@@ -46,6 +46,16 @@ class ActivityOrder(db.Model):
     productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
+    def serialize(self):
+        return {
+            'category': 'activity',
+            'id': self.id,
+            'start_time': self.startTime,
+            'end_time': self.endTime,
+            'cost': self.cost,
+            'purchased': self.purchased
+        }
+
 
 class ActivityReview(db.Model):
     __tablename__ = 'activity_reviews'
@@ -137,6 +147,16 @@ class TourOrder(db.Model):
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('tours.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+
+    def serialize(self):
+        return {
+            'category': 'tour',
+            'id': self.id,
+            'start_time': self.startTime,
+            'end_time': self.endTime,
+            'cost': self.cost,
+            'purchased': self.purchased
+        }
 
 
 class TourReview(db.Model):
@@ -274,6 +294,16 @@ class HotelOrder(db.Model):
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
+    def serialize(self):
+        return {
+            'category': 'hotel',
+            'id': self.id,
+            'start_time': self.startTime,
+            'end_time': self.checkOutTime,
+            'cost': self.cost,
+            'purchased': self.purchased
+        }
+
 
 class HotelReview(db.Model):
     __tablename__ = 'hotel_reviews'
@@ -342,6 +372,16 @@ class FlightOrder(db.Model):
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+
+    def serialize(self):
+        return {
+            'category': 'flight',
+            'id': self.id,
+            'start_time': self.startTime,
+            'end_time': self.endTime,
+            'cost': self.cost,
+            'purchased': self.purchased
+        }
 
 
 class FlightReview(db.Model):

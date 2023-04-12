@@ -397,6 +397,7 @@ def add_flight():
     flight.landing_time = datetime.strptime(request.form.get("landing_time"), "%Y-%m-%dT%H:%M")
     flight.flight_stop = request.form.get("flight_stop")
     flight.company = request.form.get("company")
+    print(request.form.get("total_time"))
     flight.total_time = float(request.form.get("total_time"))
     flight.price = float(request.form.get("price"))
     flight.fare_type = request.form.get("fare_type")
@@ -454,6 +455,8 @@ def delete_flight():
     flight.status = "deleted"
     db.session.commit()
     return redirect(url_for('manager.flights'))
+
+
 
 
 @bp.route("/flights")
