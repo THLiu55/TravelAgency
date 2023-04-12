@@ -137,6 +137,7 @@ def profile():
     customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
     return render_template("profile-base.html", customer=customer, logged=True)
 
+
 @bp.route("/profilepage")
 def profilepage():
     customer = Customer.query.get(session.get('customer_id'))
@@ -147,7 +148,41 @@ def profilepage():
 @bp.route("/booking")
 def booking():
     customer = Customer.query.get(session.get('customer_id'))
-    return render_template("profile-booking.html", customer=customer, logged=True)
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    order_list = []
+    for hotel_i in hotel_orders:
+        order_object = OrderObject()
+        order_object.price = hotel_i.cost
+        order_object.name = Hotel.query.get(hotel_i.productID).name
+        order_object.type = 'Hotel'
+        order_object.url = url_for('hotel.hotelDetail', hotel_id=hotel_i.productID)
+        order_object.status = True if hotel_i.checkOutTime < datetime.now() else False
+        order_object.time = hotel_i.endTime
+        order_list.append(order_object)
+    for tour_i in tour_orders:
+        order_object = OrderObject()
+        order_object.price = tour_i.cost
+        order_object.name = Tour.query.get(tour_i.productID).name
+        order_object.type = 'Tour'
+        order_object.url = url_for('tour.tourDetail', tour_id=tour_i.productID)
+        order_object.status = True if tour_i.endTime < datetime.now() else False
+        order_object.time = tour_i.startTime
+        order_list.append(order_object)
+    for activity_i in activity_orders:
+        order_object = OrderObject()
+        order_object.price = activity_i.cost
+        order_object.name = Activity.query.get(activity_i.productID).name
+        order_object.type = 'Activity'
+        order_object.url = url_for('activity.activityDetail', activity_id=activity_i.productID)
+        order_object.status = True if activity_i.endTime < datetime.now() else False
+        order_object.time = activity_i.startTime
+        order_list.append(order_object)
+    sorted_orders = sorted(order_list, key=lambda obj: obj.time)
+    length = len(sorted_orders)
+    return render_template("profile-booking.html", sorted_orders=sorted_orders, customer=customer, logged=True,
+                           length=length)
 
 
 @bp.route("/wishlist")

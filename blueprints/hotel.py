@@ -223,4 +223,19 @@ def order_success():
 
 @bp.route("/add_review", methods=['POST'])
 def add_review():
-    pass
+    hotel_id = request.form.get('productId')
+    customer_id = session.get('customer_id')
+    rating = request.form.get('rating')
+    content = request.form.get('content')
+    hotel = Hotel.query.get(hotel_id)
+    review = HotelReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
+                         productID=hotel_id)
+    hotel.review_num = hotel.review_num + 1
+    star = int(request.form.get("rating"))
+    star_index = star - 1
+    star_detail = json.loads(hotel.star_detail)["star_detail"]
+    star_detail[star_index] = star_detail[star_index] + star
+    hotel.star_detail = json.dumps({"star_detail": star_detail})
+    db.session.add(review)
+    db.session.commit()
+    return redirect(url_for('hotel.hotelDetail', hotel_id=hotel_id))

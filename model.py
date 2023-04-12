@@ -39,7 +39,7 @@ class ActivityOrder(db.Model):
     __tablename__ = 'activity_orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    startTime = db.Column(db.DateTime)
+    startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
@@ -141,7 +141,7 @@ class TourOrder(db.Model):
     __tablename__ = 'tour_orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    startTime = db.Column(db.DateTime)
+    startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
@@ -405,3 +405,16 @@ class Room:
     free = False
     picture = ''
     price = 0
+
+
+class OrderObject:
+    name = ''
+    type = ''
+    date = ''
+    price = ''
+    status = True  # finish
+    url = ''
+    time = None
+
+
+

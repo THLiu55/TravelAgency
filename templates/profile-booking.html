@@ -9,7 +9,7 @@
 <thead>
 <tr>
 <th>No</th>
-<th>Booking ID</th>
+<th>Booking Name</th>
 <th>Type</th>
 <th>Date</th>
 <th>Price</th>
@@ -18,102 +18,27 @@
 </tr>
 </thead>
 <tbody>
+{% for i in range(0,length) %}
 <tr>
-<td>01.</td>
-<td><b>#12453</b></td>
-<td>Hotel</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-success">Confirmed</span></td>
+<td>i.</td>
+<td><b>{{ sorted_orders[i].name}}</b></td>
+<td>{{ sorted_orders[i].type }}</td>
+<td>{{ sorted_orders[i].date }}</td>
+<td>${{ sorted_orders[i].price }}</td>
+    {% if sorted_orders[i].status %}
+        <td><span class="badge badge-success">Confirmed</span></td>
+    {% else %}
+        <td><span class="badge badge-warning">Pending</span></td>
+    {% endif %}
 <td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
+<a href="{{ sorted_orders[i].url }}" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
+    {% if not sorted_orders[i].status %}
+        <a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
+    {% endif %}
 </td>
 </tr>
-<tr>
-<td>02.</td>
-<td><b>#12453</b></td>
-<td>Flight</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-success">Confirmed</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
-<tr>
-<td>03.</td>
-<td><b>#12453</b></td>
-<td>Activity</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-warning">Pending</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
-<tr>
-<td>04.</td>
-<td><b>#12453</b></td>
-<td>Car</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-success">Confirmed</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
-<tr>
-<td>05.</td>
-<td><b>#12453</b></td>
-<td>Cruise</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-danger">Cancelled</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
-<tr>
-<td>06.</td>
-<td><b>#12453</b></td>
-<td>Flight</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-success">Confirmed</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
-<tr>
-<td>07.</td>
-<td><b>#12453</b></td>
-<td>Car</td>
-<td>Oct 22, 2022</td>
- <td>$11,569</td>
-<td><span class="badge badge-danger">Cancelled</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
-<tr>
-<td>08.</td>
-<td><b>#12453</b></td>
-<td>Flight</td>
-<td>Oct 22, 2022</td>
-<td>$11,569</td>
-<td><span class="badge badge-success">Confirmed</span></td>
-<td>
-<a href="#" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-<a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-</td>
-</tr>
+{% endfor %}
+
 </tbody>
 </table>
 </div>
