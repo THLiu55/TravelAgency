@@ -32,31 +32,32 @@
                     <div class="order-tabs__list-wrapper swiper-container">
                         <div class="order-tabs__list swiper-wrapper">
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link order-tabs__link--active" href="order-details.html">
+                                <a class="order-tabs__link" href="{{ url_for('manager.order_details')}}">
                                     <svg class="icon-icon-details">
                                         <use xlink:href="#icon-details"></use>
                                     </svg>Details</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-invoice.html">
+                                <a class="order-tabs__link" href="{{ url_for('manager.order_invoice')}}">
                                     <svg class="icon-icon-invoice">
                                         <use xlink:href="#icon-invoice"></use>
                                     </svg>Invoice</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-status.html">
+                                <a class="order-tabs__link order-tabs__link--active" href="{{ url_for('manager.order_status')}}">
                                     <svg class="icon-icon-status">
                                         <use xlink:href="#icon-status"></use>
                                     </svg>Status</a>
                             </div>
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-history.html">
+                                <a class="order-tabs__link" href="{{ url_for('manager.order_history')}}">
                                     <svg class="icon-icon-back-time">
                                         <use xlink:href="#icon-back-time"></use>
                                     </svg>History</a>
                             </div>
+
                             <div class="order-tabs__item swiper-slide">
-                                <a class="order-tabs__link" href="order-messages.html">
+                                <a class="order-tabs__link" href="{{ url_for('manager.order_messages')}}">
                                     <svg class="icon-icon-chat-messages">
                                         <use xlink:href="#icon-chat-messages"></use>
                                     </svg>Messages</a>
@@ -78,7 +79,7 @@
                             <div class="breadcrumbs__container">
                                 <ol class="breadcrumbs__list">
                                     <li class="breadcrumbs__item">
-                                        <a class="breadcrumbs__link" href="manager.html">
+                                        <a class="breadcrumbs__link" href="{{ url_for('manager.order_details')}}>
                                             <svg class="icon-icon-home breadcrumbs__icon">
                                                 <use xlink:href="#icon-home"></use>
                                             </svg>

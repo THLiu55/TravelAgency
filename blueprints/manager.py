@@ -24,6 +24,10 @@ def manager_homepage():
     db.create_all()
     return render_template("manager.html")
 
+@bp.route("/logout")
+def logout():
+    return render_template("Stafflogin.html")
+
 
 # @bp.route('/destination', methods=["POST"])
 # def destinationList():

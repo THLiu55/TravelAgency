@@ -900,68 +900,6 @@
                 </div>
             </div>
         </header>
-        <aside class="sidebar">
-            <div class="sidebar__backdrop"></div>
-            <div class="sidebar__container">
-                <div class="sidebar__top">
-                    <div class="container container--sm">
-                        <a class="sidebar__logo" href="manager.html">
-                            <img class="sidebar__logo-icon" src="../static/img/content/logotype.svg" alt="#" width="44" />
-                            <div class="sidebar__logo-text">Group7</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="sidebar__content" data-simplebar="data-simplebar">
-                    <nav class="sidebar__nav">
-                        <ul class="sidebar__menu">
-                            <li class="sidebar__menu-item"><a class="sidebar__link active" href="manager.html" aria-expanded="true"><span class="sidebar__link-icon">
-                      <svg class="icon-icon-dashboard">
-                        <use xlink:href="#icon-dashboard"></use>
-                      </svg></span><span class="sidebar__link-text">Dashboard</span></a>
-                            </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html" data-toggle="collapse" data-target="#Travel-Booking" aria-expanded="false"><span class="sidebar__link-icon">
-                      <svg class="icon-icon-cart">
-                        <use xlink:href="#icon-cart"></use>
-                      </svg></span><span class="sidebar__link-text">Product & Orders</span><span class="sidebar__link-arrow">
-                      <svg class="icon-icon-keyboard-down">
-                        <use xlink:href="#icon-keyboard-down"></use>
-                      </svg></span></a>
-                                <div class="collapse" id="Travel-Booking">
-                                    <ul class="sidebar__collapse-menu">
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.activities') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Activities</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.tours') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Tours</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.accommodations') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Accommodations</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.flights') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Flights</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="order-details.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Order Details</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customers.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="customer-wishlist.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
-                                        </li>
-                                        <li class="sidebar__menu-item"><a class="sidebar__link" href="reviews.html"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="chat.html" aria-expanded="false"><span class="sidebar__link-icon">
-                      <svg class="icon-icon-chat">
-                        <use xlink:href="#icon-chat"></use>
-                      </svg></span><span class="sidebar__link-text">Chat</span><span class="badge badge--red">20</span></a>
-                            </li>
-                            <li class="sidebar__menu-item"><a class="sidebar__link" href="contacts.html" aria-expanded="false"><span class="sidebar__link-icon">
-                      <svg class="icon-icon-contacts">
-                        <use xlink:href="#icon-contacts"></use>
-                      </svg></span><span class="sidebar__link-text">Logout</span></a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </aside>
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
@@ -973,7 +911,7 @@
                             <div class="breadcrumbs__container">
                                 <ol class="breadcrumbs__list">
                                     <li class="breadcrumbs__item">
-                                        <a class="breadcrumbs__link" href="manager.html">
+                                        <a class="breadcrumbs__link" href="{{ url_for('manager.order_details')}}>
                                             <svg class="icon-icon-home breadcrumbs__icon">
                                                 <use xlink:href="#icon-home"></use>
                                             </svg>
