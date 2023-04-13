@@ -87,8 +87,8 @@ def activityDetail(activity_id):
     activity.end_time = activity.end_time.strftime("%Y-%m-%d")
 
     address = "Beijing"
-    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
-    response = req.get(url).json()
+    # url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
+    # response = req.get(url).json()
     lat = 39.906217
     lon = 116.3912757
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
