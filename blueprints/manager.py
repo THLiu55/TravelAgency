@@ -386,8 +386,8 @@ def accommodations():
 @bp.route("/add_flight", methods=["POST"])
 @staff_login_required
 def add_flight():
-    db.drop_all()
-    db.create_all()
+    # db.drop_all()
+    # db.create_all()
     flight = Flight()
     flight.status = "published"
     flight.departure = request.form.get("departure")
