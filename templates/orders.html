@@ -435,41 +435,53 @@
                     <div class="toolbox__row row gutter-bottom-xs">
                         <div class="toolbox__left col-12 col-lg">
                             <div class="toolbox__left-row row row--xs gutter-bottom-xs">
-                                <div class="form-group form-group--inline col-12 col-sm-auto">
-                                    <label class="form-label">Show</label>
-                                    <div class="input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>
-                                            <a
-                                            class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>
+
+                                <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
+                                    <div class="toolbox__status input-group input-group--white input-group--append">
+                                        <input class="input input--select" type="text" value="All Category"
+                                            data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                        <div
+                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
+                                            <a onclick="load_orders('all', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All Category"><span class="marker-item"></span> All Category</a>
+                                            <a onclick="load_orders('activity', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Activities"><span class="marker-item "></span>
+                                                Activities</a>
+                                            <a onclick="load_orders('tour', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Tours"><span class="marker-item "></span>
+                                                Tours</a>
+                                            <a onclick="load_orders('hotel', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Hotels"><span class="marker-item "></span>
+                                                Hotels</a>
+                                            <a onclick="load_orders('flight', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Flights"><span class="marker-item "></span>
+                                                Flights</a>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-group form-group--inline col col-sm-auto">
-                                    <div class="input-group input-group--white input-group--prepend input-group--append">
-                                        <div class="input-group__prepend">
-                                            <svg class="icon-icon-calendar">
-                                                <use xlink:href="#icon-calendar"></use>
-                                            </svg>
-                                        </div>
-                                        <input class="input input--select" type="text" value="01.12.18 / 07.12.18" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
                                     </div>
                                 </div>
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="All status"><span class="marker-item"></span> All status</a>
-                                            <a class="dropdown-menu__item" href="#" tabindex="0" data-value="Complete"><span class="marker-item color-green"></span> Complete</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Canceled"><span class="marker-item color-blue"></span> Canceled</a><a class="dropdown-menu__item"
-                                            href="#" tabindex="0" data-value="Processing"><span class="marker-item color-orange"></span> Processing</a>
+                                        <input class="input input--select" type="text" value="All status"
+                                            data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                        <div
+                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
+                                            <a onclick="load_orders(null, 'all')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All status"><span class="marker-item"></span> All status</a>
+                                            <a onclick="load_orders(null, 'waiting')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Waiting"><span class="marker-item color-blue"></span>
+                                                Waiting</a>
+                                            <a onclick="load_orders(null, 'processing')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Processing"><span class="marker-item color-orange"></span>
+                                                Processing</a>
+                                            <a onclick="load_orders(null, 'done')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Done"><span class="marker-item color-green"></span>
+                                                Done</a>
                                         </div>
                                     </div>
                                 </div>
@@ -518,22 +530,22 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th class="d-none d-lg-table-cell"><span>Order ID</span>
+                                    <th class="d-none d-lg-table-cell"><span>Customer</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Customer Name</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort"><span class="align-middle">Product Type</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Product Type</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Total</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Total</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort"><span class="align-middle">Start Date</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Date</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort"><span class="align-middle">End Date</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="item-container">
                                 <tr class="table__row">
                                     <td class="table__td">
                                         <div class="table__checkbox table__checkbox--all">
@@ -1158,4 +1170,5 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+    <script src="{{ url_for('static', filename='js/load_orders.js') }}"></script>
 {% endblock %}

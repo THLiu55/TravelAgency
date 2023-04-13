@@ -547,7 +547,7 @@ def total_orders():
 def load_orders():
     category = request.form.get("category")
     orders = []
-    if category is None:
+    if category == 'all':
         orders += [order.serialize() for order in TourOrder.query.all()]
         orders += [order.serialize() for order in ActivityOrder.query.all()]
         orders += [order.serialize() for order in HotelOrder.query.all()]
@@ -557,4 +557,4 @@ def load_orders():
         orders += [order.serialize() for order in order_data.query.all()]
     db.session.commit()
     print(orders)
-    return jsonify({"code": 200, "orders": orders})
+    return jsonify({"code": 200, "content": orders})

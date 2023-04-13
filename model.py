@@ -57,10 +57,10 @@ class ActivityOrder(db.Model):
 
     def serialize(self):
         return {
-            'customerID': self.customer.serialize(),
+            'customer': self.customer.serialize(),
             'category': 'activity',
             'id': self.id,
-            'start_time': self.start.isoformat(),
+            'start_time': self.startTime.isoformat(),
             'end_time': self.endTime.isoformat(),
             'cost': self.cost,
             'purchased': self.purchased
@@ -162,10 +162,10 @@ class TourOrder(db.Model):
 
     def serialize(self):
         return {
-            'customerID': self.customer.serialize(),
+            'customer': self.customer.serialize(),
             'category': 'tour',
             'id': self.id,
-            'start_time': self.start.isoformat(),
+            'start_time': self.startTime.isoformat(),
             'end_time': self.endTime.isoformat(),
             'cost': self.cost,
             'purchased': self.purchased
@@ -311,7 +311,7 @@ class HotelOrder(db.Model):
 
     def serialize(self):
         return {
-            'customerID': self.customer.serialize(),
+            'customer': self.customer.serialize(),
             'category': 'hotel',
             'id': self.id,
             'start_time': self.startTime.isoformat(),
@@ -391,7 +391,7 @@ class FlightOrder(db.Model):
 
     def serialize(self):
         return {
-            'customerID': self.customer.serialize(),
+            'customer': self.customer.serialize(),
             'category': 'flight',
             'id': self.id,
             'start_time': self.startTime.isoformat(),
