@@ -320,24 +320,24 @@
                 </div>
             </div>
             <div class="row align-items-center">
+                {% for flight in flights %}
                 <div class="col-md-6 col-lg-3">
                     <div class="flight-item">
                         <div class="flight-img">
-                            <img src="../static/flight/01.jpg" alt="">
+                            <img src="{{ url_for('static', filename=flight.images[0].replace('\\','/')) }}" alt="">
                             <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
                         </div>
                         <div class="flight-content">
                             <div class="flight-title">
                                 <div class="flight-title-info">
                                     <img src="../static/flight/airline-1.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
+                                    <h4><a href="#">{{flight.departure}}<i class="far fa-exchange"></i>{{flight.destination}}</a></h4>
                                 </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
+                                <p class="flight-date"><i class="far fa-calendar-days"></i>{{flight.takeoff_time}} - {{flight.landing_time}}</p>
                             </div>
                             <div class="flight-bottom">
                                 <div class="flight-price">
-                                    From <span>$300</span>
+                                    From <span>${{flight.price}}</span>
                                 </div>
                                 <div class="flight-text-btn">
                                     <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
@@ -346,190 +346,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <span class="badge">Featured</span>
-                            <img src="../static/flight/02.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-2.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$450</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <img src="../static/flight/03.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-3.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$520</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <img src="../static/flight/04.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-4.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$630</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <img src="../static/flight/05.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-5.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$780</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <span class="badge badge-discount">25% Save</span>
-                            <img src="../static/flight/06.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-6.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$680</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <img src="../static/flight/07.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-1.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$580</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="flight-item">
-                        <div class="flight-img">
-                            <img src="../static/flight/08.jpg" alt="">
-                            <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
-                        </div>
-                        <div class="flight-content">
-                            <div class="flight-title">
-                                <div class="flight-title-info">
-                                    <img src="../static/flight/airline-2.png" alt="">
-                                    <h4><a href="#">New York <i class="far fa-exchange"></i> Los Angeles</a></h4>
-                                </div>
-                                <p class="flight-date"><i class="far fa-calendar-days"></i> Aug 01, 2022 - Aug 30,
-                                    2022</p>
-                            </div>
-                            <div class="flight-bottom">
-                                <div class="flight-price">
-                                    From <span>$490</span>
-                                </div>
-                                <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                
                 <div class="text-center mt-3">
                     <a href="#" class="theme-btn">Discover More<i class="far fa-arrow-right"></i></a>
                 </div>
@@ -549,23 +367,24 @@
                 </div>
             </div>
             <div class="hotel-slider owl-carousel owl-theme">
+                {% for hotel in hotels %}
                 <div class="hotel-item">
                     <div class="hotel-img">
-                        <span class="badge">Featured</span>
-                        <img src="../static/hotel/01.jpg" alt="">
+                        <!-- <span class="badge">Featured</span> -->
+                        <img src="{{ url_for('static', filename=hotel.images[0].replace('\\','/')) }}" alt="">
                         <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
                     </div>
                     <div class="hotel-content">
-                        <h4 class="hotel-title"><a href="#">Western Grant Park Hotel</a></h4>
-                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                        <h4 class="hotel-title"><a href="#">{{ hotel.name }}</a></h4>
+                        <p><i class="far fa-location-dot"></i> {{ hotel.address }},  {{ hotel.city }}</p>
                         <div class="hotel-rate">
-                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                            <span class="badge"><i class="fal fa-star"></i> {{ hotel.star }}</span>
                             <span class="hotel-rate-type">Excellent</span>
-                            <span class="hotel-rate-review">(2.5k Reviews)</span>
+                            <span class="hotel-rate-review">({{ hotel.review_num }} Reviews)</span>
                         </div>
                         <div class="hotel-bottom">
                             <div class="hotel-price">
-    <span class="hotel-price-amount">$300 <span class="hotel-price-type">/Per
+    <span class="hotel-price-amount">${{ hotel.min_price }}+ <span class="hotel-price-type">/Per
     Night</span></span>
                             </div>
                             <div class="hotel-text-btn">
@@ -574,7 +393,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="hotel-item">
+                {% endfor %}
+                <!-- <div class="hotel-item">
                     <div class="hotel-img">
                         <img src="../static/hotel/02.jpg" alt="">
                         <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
@@ -695,7 +515,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -719,6 +539,7 @@
                 </div>
             </div>
             <div class="row filter-box">
+                
                 <div class="col-md-6 col-lg-3 filter-item cat1">
                     <div class="tour-item">
                         <div class="tour-img">
