@@ -435,10 +435,10 @@ class OrderObject:
 
 
 class PlanObj:
-    name = ''
+    title = ''
     start = None
     end = None
-    type = ''
+    color = ''
 
 
 class WishListObject:

@@ -191,24 +191,24 @@ def plan_events():
     for hotel_i in hotel_orders:
         if hotel_i.startTime > datetime.now():
             plan_object = PlanObj()
-            plan_object.name = Hotel.query.get(hotel_i.productID).name
-            plan_object.type = 'Hotel'
+            plan_object.title = Hotel.query.get(hotel_i.productID).name
+            plan_object.color = '#00671'
             plan_object.start = hotel_i.startTime
             plan_object.end = hotel_i.checkOutTime
             plan_list.append(plan_object)
     for tour_i in tour_orders:
         if tour_i.endTime > datetime.now():
             plan_object = PlanObj()
-            plan_object.name = Tour.query.get(tour_i.productID).name
-            plan_object.type = 'Tour'
+            plan_object.title = Tour.query.get(tour_i.productID).name
+            plan_object.color = '#009378'
             plan_object.start = tour_i.endTime
             plan_object.end = tour_i.endTime + timedelta(days=tour_i.duration)
             plan_list.append(plan_object)
     for activity_i in activity_orders:
         if activity_i.endTime > datetime.now():
             plan_object = PlanObj()
-            plan_object.name = Activity.query.get(activity_i.productID).name
-            plan_object.type = 'Activity'
+            plan_object.title = Activity.query.get(activity_i.productID).name
+            plan_object.color = '#2bb3c0'  # #e16123
             plan_object.start = activity_i.endTime
             plan_object.end = activity_i.endTime
             plan_list.append(plan_object)
@@ -220,10 +220,10 @@ def plan_events():
 
 def plan_obj_serializer(plan_obj):
     return {
-        'name': plan_obj.name,
+        'title': plan_obj.title,
         'start': plan_obj.start.isoformat(),
         'end': plan_obj.end.isoformat(),
-        'type': plan_obj.type
+        'color': plan_obj.color
     }
 
 
