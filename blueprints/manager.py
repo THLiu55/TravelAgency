@@ -503,6 +503,7 @@ def order_history():
 def order_status():
     return render_template("orderStatus.html")
 
+
 @bp.route("/order_message")
 @staff_login_required
 def order_messages():
@@ -514,7 +515,26 @@ def order_messages():
 def reviews():
     return render_template("reviews.html")
 
+
 @bp.route("/total_orders")
 @staff_login_required
 def total_orders():
     return render_template("orders.html")
+
+
+@bp.route("/load_orders", methods=["POST", "GET"])
+@staff_login_required
+def load_orders():
+    category = request.form.get("category")
+    orders = []
+    if category is None:
+        orders += [order.serialize() for order in TourOrder.query.all()]
+        orders += [order.serialize() for order in ActivityOrder.query.all()]
+        orders += [order.serialize() for order in HotelOrder.query.all()]
+        orders += [order.serialize() for order in FlightOrder.query.all()]
+    else:
+        order_data = TourOrder if category == 'tour' else ActivityOrder if category == 'activity' else HotelOrder if category == 'hotel' else FlightOrder
+        orders += [order.serialize() for order in order_data.query.all()]
+    db.session.commit()
+    print(orders)
+    return jsonify({"code": 200, "orders": orders})

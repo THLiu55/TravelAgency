@@ -9,7 +9,7 @@ class Customer(db.Model, UserMixin):
     nickname = db.Column(db.String(255))
     password = db.Column(db.String(255))
     avatarURL = db.Column(db.Text)
-    wallet = db.Column(db.Float)
+    wallet = db.Column(db.Double)
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
@@ -22,6 +22,15 @@ class Customer(db.Model, UserMixin):
     flight_orders = db.relationship('FlightOrder', backref='customer')
     flight_reviews = db.relationship('FlightReview', backref='customer')
     messages = db.relationship('Message', backref='customer')
+
+    def serialize(self):
+        return {
+            'id': self.id,
+            'email': self.email,
+            'nickname': self.nickname,
+            'avatar': self.avatarURL,
+            'wallet': self.wallet
+        }
 
 
 class Message(db.Model):
@@ -48,10 +57,11 @@ class ActivityOrder(db.Model):
 
     def serialize(self):
         return {
+            'customerID': self.customer.serialize(),
             'category': 'activity',
             'id': self.id,
-            'start_time': self.startTime,
-            'end_time': self.endTime,
+            'start_time': self.start.isoformat(),
+            'end_time': self.endTime.isoformat(),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -89,12 +99,12 @@ class Activity(db.Model):
     openHour = db.Column(db.DateTime)
     visitHour = db.Column(db.Integer)
     total_star = db.Column(db.Integer)
-    review_num = db.Column(db.Integer)
+    review_num = db.Column(db.Integer, defalt=0)
     star_detail = db.Column(db.Text)
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
-    view_num = db.Column(db.Integer)
+    view_num = db.Column(db.Integer, default=0)
     review = db.relationship('ActivityReview', backref='product')
     orders = db.relationship('ActivityOrder', backref='product')
 
@@ -104,7 +114,7 @@ class Activity(db.Model):
             'category': self.category,
             'status': self.status,
             'name': self.name,
-            'start_time': self.start_time,
+            'start_time': self.start_time.isoformat(),
             'price': self.price
         }
 
@@ -150,10 +160,11 @@ class TourOrder(db.Model):
 
     def serialize(self):
         return {
+            'customerID': self.customer.serialize(),
             'category': 'tour',
             'id': self.id,
-            'start_time': self.startTime,
-            'end_time': self.endTime,
+            'start_time': self.start.isoformat(),
+            'end_time': self.endTime.isoformat(),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -190,12 +201,12 @@ class Tour(db.Model):
     included = db.Column(db.Text)
     excluded = db.Column(db.Text)
     total_star = db.Column(db.Integer)
-    review_num = db.Column(db.Integer)
+    view_num = db.Column(db.Integer, default=0)
     star_detail = db.Column(db.Text)
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
-    view_num = db.Column(db.Integer)
+    review_num = db.Column(db.Integer, default=0)
     review = db.relationship('TourReview', backref='product')
     orders = db.relationship('TourOrder', backref='product')
 
@@ -205,7 +216,7 @@ class Tour(db.Model):
             'category': self.category,
             'status': self.status,
             'name': self.name,
-            'start_time': self.start_time,
+            'start_time': self.start_time.isoformat(),
             'price': self.price
         }
 
@@ -254,7 +265,7 @@ class Hotel(db.Model):
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
-    view_num = db.Column(db.Integer)
+    view_num = db.Column(db.Integer, default=0)
     review = db.relationship('HotelReview', backref='product')
     orders = db.relationship('HotelOrder', backref='product')
 
@@ -296,10 +307,11 @@ class HotelOrder(db.Model):
 
     def serialize(self):
         return {
+            'customerID': self.customer.serialize(),
             'category': 'hotel',
             'id': self.id,
-            'start_time': self.startTime,
-            'end_time': self.checkOutTime,
+            'start_time': self.startTime.isoformat(),
+            'end_time': self.checkOutTime.isoformat(),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -342,12 +354,12 @@ class Flight(db.Model):
     description = db.Column(db.Text)
     inflight_features = db.Column(db.Text)
     total_star = db.Column(db.Integer)
-    review_num = db.Column(db.Integer)
+    review_num = db.Column(db.Integer, defalt=0)
     star_detail = db.Column(db.Text)
     contact_name = db.Column(db.String(255))
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
-    view_num = db.Column(db.Integer)
+    view_num = db.Column(db.Integer, defalt=0)
     review = db.relationship('FlightReview', backref='product')
     orders = db.relationship('FlightOrder', backref='product')
 
@@ -357,8 +369,8 @@ class Flight(db.Model):
             'status': self.status,
             'departure': self.departure,
             'destination': self.destination,
-            'take_off_time': self.takeoff_time,
-            'landing_time': self.landing_time
+            'take_off_time': self.takeoff_time.isoformat(),
+            'landing_time': self.landing_time.isoformat()
         }
 
 
@@ -375,10 +387,11 @@ class FlightOrder(db.Model):
 
     def serialize(self):
         return {
+            'customerID': self.customer.serialize(),
             'category': 'flight',
             'id': self.id,
-            'start_time': self.startTime,
-            'end_time': self.endTime,
+            'start_time': self.startTime.isoformat(),
+            'end_time': self.endTime.isoformat(),
             'cost': self.cost,
             'purchased': self.purchased
         }
