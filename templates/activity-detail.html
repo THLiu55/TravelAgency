@@ -244,7 +244,9 @@
                                             {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
-                                                    <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt="">
+
+                                                    <img src="https://avatar.oxro.io/avatar.svg?name={{ review.customerID }}" alt="">
+                                                    <!-- <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt=""> -->
                                                     <div class="listing-review-author-info">
                                                         <div>
                                                             <h6>{{ review.customerID }}</h6>
