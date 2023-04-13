@@ -556,5 +556,15 @@ def load_orders():
         order_data = TourOrder if category == 'tour' else ActivityOrder if category == 'activity' else HotelOrder if category == 'hotel' else FlightOrder
         orders += [order.serialize() for order in order_data.query.all()]
     db.session.commit()
-    print(orders)
     return jsonify({"code": 200, "content": orders})
+
+
+@bp.route("/load_reviews", methods=["POST", "GET"])
+@staff_login_required
+def load_reviews():
+    review_list = []
+    review_list += [review.serialize() for review in ActivityReview.query.all()]
+    review_list += [review.serialize() for review in HotelReview.query.all()]
+    review_list += [review.serialize() for review in TourReview.query.all()]
+    db.session.commit()
+    return jsonify({"code": 200, "content": review_list})
