@@ -446,8 +446,3 @@ class WishListObject:
     name = ''
     price = ''
     url = ''
-
-
-
-
-

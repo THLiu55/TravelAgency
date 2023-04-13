@@ -212,7 +212,19 @@ def plan_events():
             plan_object.start = activity_i.endTime
             plan_object.end = activity_i.endTime
             plan_list.append(plan_object)
-    return jsonify({"event": plan_list})
+    plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
+    json_data = json.dumps(plan_dict_list)
+
+    return jsonify(json.loads(json_data))
+
+
+def plan_obj_serializer(plan_obj):
+    return {
+        'name': plan_obj.name,
+        'start': plan_obj.start.isoformat(),
+        'end': plan_obj.end.isoformat(),
+        'type': plan_obj.type
+    }
 
 
 @bp.route("/booking")
