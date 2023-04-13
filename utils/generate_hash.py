@@ -16,7 +16,7 @@ def check_hash_time(email, captcha):
     now = datetime.datetime.now()
     hash_value1 = hash_text(email + str(now.year) + str(now.month) + str(now.day) + str(now.hour))
     if now.hour == 0:
-        hash_value2 = hash_text(email + str(now.year) + str(now.month) + str(now.day-1) + str(23))
+        hash_value2 = hash_text(email + str(now.year) + str(now.month) + str(now.day - 1) + str(23))
     else:
-        hash_value2 = hash_text(email + str(now.year) + str(now.month) + str(now.day) + str(now.hour-1))
+        hash_value2 = hash_text(email + str(now.year) + str(now.month) + str(now.day) + str(now.hour - 1))
     return hash_value1 == captcha or hash_value2 == captcha

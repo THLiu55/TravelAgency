@@ -160,8 +160,12 @@ def order_success():
         activity_order.purchased = True
         activity_order.startTime = datetime.datetime.now()
         end_date = request.args.get("date")
-        date_format = "%Y/%m/%d"
-        datetime_obj = datetime.datetime.strptime(end_date, date_format)
+        try:
+            date_format = "%Y/%m/%d"
+            datetime_obj = datetime.datetime.strptime(end_date, date_format)
+        except ValueError:
+            date_format = "%m/%d/%Y"
+            datetime_obj = datetime.datetime.strptime(end_date, date_format)
         activity_order.endTime = datetime_obj
         activity_order.productID = request.args.get("activity_id")
         activity_order.cost = cost

@@ -155,8 +155,12 @@ def order_success():
         tour_order.purchased = True
         tour_order.startTime = datetime.datetime.now()
         end_date = request.args.get("date")
-        date_format = "%Y/%m/%d"
-        datetime_obj = datetime.datetime.strptime(end_date, date_format)
+        try:
+            date_format = "%Y/%m/%d"
+            datetime_obj = datetime.datetime.strptime(end_date, date_format)
+        except ValueError:
+            date_format = "%m/%d/%Y"
+            datetime_obj = datetime.datetime.strptime(end_date, date_format)
         tour_order.endTime = datetime_obj
         tour_order.productID = request.args.get("tour_id")
         tour_order.cost = cost
