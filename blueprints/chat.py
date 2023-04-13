@@ -19,7 +19,7 @@ from flask_socketio import join_room, leave_room, send, emit
 
 bp = Blueprint("chat", __name__, url_prefix="/")
 
-NAMESPACE = "/socketest"
+NAMESPACE = "/chat"
 
 
 ### CHATBOT ROUTERS ###
