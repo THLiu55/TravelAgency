@@ -212,3 +212,8 @@ def update_profile():
     customer.address = request.form.get("address")
     db.session.commit()
     return redirect(url_for('customer.profile'))
+
+@bp.route("/flight")
+def flight():
+    customer = Customer.query.get(session.get('customer_id'))
+    return render_template("flight-grid.html", customer=customer, logged=True)
