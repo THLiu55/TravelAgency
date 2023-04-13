@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+import requests as req
 
 from flask import (
     Blueprint,
@@ -26,6 +27,7 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 def manager_homepage():
     db.create_all()
     return render_template("Dashboard.html")
+
 
 @bp.route("/logout")
 def logout():
@@ -68,6 +70,14 @@ def add_activity():
     activity.city = request.form.get("city")
     activity.state = request.form.get("state")
     activity.address = request.form.get("address")
+    address = activity.address + " " + activity.city + " " + activity.state
+    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
+    response = req.get(url).json()
+    if len(response) > 0:
+        activity.lat = response[0]['lat']
+        activity.lon = response[0]['lon']
+    else:
+        return jsonify({"code": "invalid address "})
     activity.duration = request.form.get("duration")
     activity.group_size = int(request.form.get("group_size"))
     activity.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
@@ -147,17 +157,17 @@ def respond_view(target_customer_id):
     Returns:
         _type_: _description_
     """
-    
+
     # TODO: authenticate admin identity
-    
+
     # TODO: check if the target customer exists
-    
+
     target_customer = Customer.query.filter_by(id=target_customer_id).first()
     if target_customer == None:
         return False
-    
+
     # TODO: load previous chat history from target_customer.messages
-    
+
     return render_template("chat.html")
 
 
@@ -178,6 +188,7 @@ def respond_test():
     # TODO: finish this function
     return render_template("Test.html")
 
+
 ### END CHAT RELATED ###
 
 
@@ -192,6 +203,14 @@ def add_tour():
     tour.city = request.form.get("city")
     tour.state = request.form.get("state")
     tour.address = request.form.get("address")
+    address = tour.address + " " + tour.city + " " + tour.state
+    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
+    response = req.get(url).json()
+    if len(response) > 0:
+        tour.lat = response[0]['lat']
+        tour.lon = response[0]['lon']
+    else:
+        return jsonify({"code": "invalid address"})
     tour.duration = request.form.get("duration")
     tour.group_size = int(request.form.get("group_size"))
     tour.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
@@ -457,8 +476,6 @@ def delete_flight():
     return redirect(url_for('manager.flights'))
 
 
-
-
 @bp.route("/flights")
 @staff_login_required
 def flights():
@@ -488,15 +505,18 @@ def chat():
 def order_details():
     return render_template("orderInvoice.html")
 
+
 @bp.route("/order_invoice")
 @staff_login_required
 def order_invoice():
     return render_template("orderInvoice.html")
 
+
 @bp.route("/order_history")
 @staff_login_required
 def order_history():
     return render_template("orderHistory.html")
+
 
 @bp.route("/order_status")
 @staff_login_required
@@ -527,7 +547,7 @@ def total_orders():
 def load_orders():
     category = request.form.get("category")
     orders = []
-    if category is None:
+    if category == 'all':
         orders += [order.serialize() for order in TourOrder.query.all()]
         orders += [order.serialize() for order in ActivityOrder.query.all()]
         orders += [order.serialize() for order in HotelOrder.query.all()]
@@ -537,4 +557,4 @@ def load_orders():
         orders += [order.serialize() for order in order_data.query.all()]
     db.session.commit()
     print(orders)
-    return jsonify({"code": 200, "orders": orders})
+    return jsonify({"code": 200, "content": orders})
