@@ -18,6 +18,22 @@ Author URI  : http://www.bootstrapmb.com/item/2664
         $body = $('body');
 
     $(function () {
+        var retrieved_events
+        $.ajax({
+              url: '../plan_events',
+              method: 'GET', // 可以是 GET 或 POST
+              dataType: 'json', // 返回的数据类型
+              success: function(data) {
+                // 成功获取数据后的处理
+                console.log(data);
+                retrieved_events = data
+              },
+              error: function(xhr, status, error) {
+                // 获取数据失败后的处理
+                console.log("Error: " + error);
+              }
+        });
+
         /* ------------------------------------------------------------------------- *
          * CALENDAR EVENTS
          * ------------------------------------------------------------------------- */
@@ -145,7 +161,7 @@ Author URI  : http://www.bootstrapmb.com/item/2664
                     {
                         title: 'The Cambridge University',
                         start: '2023-04-09T00:00:00',
-                        end: '2023-04-12T23:59:59',
+                        // end: '2023-04-12T23:59:59',
                         color: '#ff4040',
                         id: "demo6"
                     },

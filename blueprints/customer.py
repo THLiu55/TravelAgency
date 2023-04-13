@@ -48,7 +48,6 @@ def homepage():
         # noinspection PyTypeChecker
         tour.images = json.loads(tour.images)['images']
         tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
-
     return render_template("Homepage.html", total_activities=total_activities, activities=activities,
                            total_flights=total_flights, flights=flights, total_hotels=total_hotels, hotels=hotels,
                            total_tours=total_tours, tours=tours,
