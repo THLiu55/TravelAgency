@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,29 +8,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/topbar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
-    {% block csslink %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/style.css') }}">
-
     {#  original css links  #}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
-    {#  calendar css links  #}
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/fontawesome-all.min.css') }}"> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/fullcalendar.min.css') }}">
-    {#  footer css link  #}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
+        {#  calendar css links  #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/fullcalendar.min.css') }}">
+        {#  footer css link  #}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
-{% endblock %}
+
+    {% block csslink %}
+    {% endblock %}
 </head>
-
 
 
 <body>
@@ -141,59 +139,69 @@
 
 <main class="main">
 
-    <div class="site-breadcrumb" style=" padding-top: 20px;;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})" >
-    <!-- <div class="container"> -->
-    <!-- <h2 class="breadcrumb-title">My Profile</h2>
+    <div class="site-breadcrumb"
+         style=" padding-top: 20px;;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
+        <!-- <div class="container"> -->
+        <!-- <h2 class="breadcrumb-title">My Profile</h2>
     <ul class="breadcrumb-menu">
     <li><a href="{{ url_for('customer.homepage') }}">Home</a></li>
     <li class="active">My Profile</li>
     </ul> -->
-    <!-- </div> -->
+        <!-- </div> -->
     </div>
-    
+
     <div class="user-profile py-120" style="padding:40px;">
-    <div class="container">
-    <div class="row">
-    <div class="col-lg-3">
-    <div class="user-profile-sidebar">
-    <div class="user-profile-sidebar-top">
-    <div class="user-profile-img">
-    <!-- <img src="{{ url_for('static', filename='image/user.svg') }}" alt=""> -->
-    <img src="https://avatar.oxro.io/avatar.svg?name={{customer.nickname}} " alt="">
-    <!-- <button type="button" class="profile-img-btn"><i class="far fa-camera"></i></button>
-    <input type="file" class="profile-img-file"> -->
-    </div>
-    <h4>{{ customer.nickname }}</h4>
-    <p>{{ customer.email }}</p>
-    </div>
-    <nav>
-    <ul class="user-profile-sidebar-list">
-    <li id="profile-menu"><a href="{{ url_for('customer.profilepage') }}" onclick="selected1(this)"><i class="far fa-user"></i> My Profile</a></li>
-    <li id="profile-menu"><a href="{{ url_for('customer.booking') }}" onclick="selected1(this)"><i class="far fa-shopping-bag"></i> My Booking</a></li>
-    <li id="profile-menu"><a href="{{ url_for('customer.wishlist') }}" onclick="selected1(this)"><i class="far fa-heart"></i> My Wishlist</a></li>
-    <li id="profile-menu"><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge">02</span></a></li>
-    <li id="profile-menu"><a href="{{ url_for('customer.wallet') }}" onclick="selected1(this)"><i class="far fa-wallet"></i> My Wallet</a></li>
-    <!-- <li><a href="profile-notification.html"><i class="far fa-bell"></i> Notifications <span class="badge">05</span></a></li> -->
-    <li id="profile-menu"><a href="{{ url_for('customer.setting') }}" onclick="selected1(this)"><i class="far fa-cog"></i> Settings</a></li>
-    <li><a href="{{ url_for('customer.logout') }}" onclick="selected1(this)"><i class="far fa-sign-out"></i> Logout</a></li>
-    </ul>
-    </nav>
-    </div>
-    </div>
-    <div class="col-lg-9" id="content">
-        {% block body %}
-        {% endblock %}
-    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="user-profile-sidebar">
+                        <div class="user-profile-sidebar-top">
+                            <div class="user-profile-img">
+                                <img src="{{ url_for('static', filename='image/user.svg') }}" alt="">
+                                <!-- <button type="button" class="profile-img-btn"><i class="far fa-camera"></i></button>
+                                <input type="file" class="profile-img-file"> -->
+                            </div>
+                            <h4>{{ customer.nickname }}</h4>
+                            <p>{{ customer.email }}</p>
+                        </div>
+                        <nav>
+                            <ul class="user-profile-sidebar-list">
+                                <li id="profile-menu"><a href="{{ url_for('customer.profilepage') }}"
+                                                         onclick="selected1(this)"><i class="far fa-user"></i> My
+                                    Profile</a></li>
+                                <li id="profile-menu"><a href="{{ url_for('customer.booking') }}"
+                                                         onclick="selected1(this)"><i class="far fa-shopping-bag"></i>
+                                    My Booking</a></li>
+                                <li id="profile-menu"><a href="{{ url_for('customer.wishlist') }}"
+                                                         onclick="selected1(this)"><i class="far fa-heart"></i> My
+                                    Wishlist</a></li>
+                                <li id="profile-menu"><a href="profile-message.html"><i class="far fa-envelope"></i>
+                                    Messages <span class="badge">02</span></a></li>
+                                <li id="profile-menu"><a href="{{ url_for('customer.wallet') }}"
+                                                         onclick="selected1(this)"><i class="far fa-wallet"></i> My
+                                    Wallet</a></li>
+                                <!-- <li><a href="profile-notification.html"><i class="far fa-bell"></i> Notifications <span class="badge">05</span></a></li> -->
+                                <li id="profile-menu"><a href="{{ url_for('customer.setting') }}"
+                                                         onclick="selected1(this)"><i class="far fa-cog"></i>
+                                    Settings</a></li>
+                                <li><a href="{{ url_for('customer.logout') }}" onclick="selected1(this)"><i
+                                        class="far fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-9" id="content">
+
+                    {% block body %}
+                    {% endblock %}
+
+                    {#       add calendar here           #}
 
 
-
-
+                </div>
 
 
 </body>
-</div>
-</div>
-</div>
 <div class="footer">
     <div class="copyright">
         <svg class="svg-up" width="192" height="61" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -213,26 +221,24 @@
 </div>
 
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    {#  original js  #}
+    <script>
 
-{% block jsLink %}
-{#  original js  #}
-<script>
-    
-function selected1(elem) {
-    // alert("selected")
-    // Remove the "selected" class from all list items
-    // var navItems = document.querySelectorAll('ul a');
-    var navItems = document.querySelectorAll('#profile-menu');
-    for (var i = 0; i < navItems.length; i++) {
-      navItems[i].classList.remove('active');
-      console.log(navItems[i])
-    //   alert(navItems[i])
-    }
-    
-    // Add the "selected" class to the clicked list item
-    elem.parentNode.classList.add('active');
-  }
-</script>
+        function selected1(elem) {
+            // alert("selected")
+            // Remove the "selected" class from all list items
+            // var navItems = document.querySelectorAll('ul a');
+            var navItems = document.querySelectorAll('#profile-menu');
+            for (var i = 0; i < navItems.length; i++) {
+                navItems[i].classList.remove('active');
+                console.log(navItems[i])
+                //   alert(navItems[i])
+            }
+
+            // Add the "selected" class to the clicked list item
+            elem.parentNode.classList.add('active');
+        }
+    </script>
     <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js' ) }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js ') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js ') }}"></script>
@@ -249,40 +255,39 @@ function selected1(elem) {
     <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js ') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js ') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js ') }}"></script>
-{#  calendar js  #}
-    <script src="{{ url_for('static', filename='css/calendar/js/moment.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='css/calendar/js/fullcalendar.js') }}"></script>
-    <script src="{{ url_for('static', filename='css/calendar/js/page/calendar.js') }}"></script>
-    <script src="{{ url_for('static', filename='css/calendar/js/locale-all.js') }}"></script>
+
     <script>
-        $(document).ready(function(){
-            $('nav li#profile-menu a').click(function(e){
+        $(document).ready(function () {
+            $('nav li#profile-menu a').click(function (e) {
                 e.preventDefault();
                 var url = $(this).attr('href');
                 loadPage(url);
             });
-                var url =$('nav li#profile-menu a:first-child').attr('href');
-                // alert(url);
-                loadPage(url);
+            var url = $('nav li#profile-menu a:first-child').attr('href');
+            // alert(url);
+            loadPage(url);
 
-            
+
         });
-        function loadPage(url){
-           
-                $.ajax({
+
+        function loadPage(url) {
+
+            $.ajax({
                 url: url,
                 type: 'GET',
-                success: function(data){
-                    
-                    
+                success: function (data) {
+
+
                     $('#content').html(data);
 
                 }
             });
-            
-           
+
+
         }
     </script>
 
+
+{% block jsLink %}
 {% endblock %}
 </html>

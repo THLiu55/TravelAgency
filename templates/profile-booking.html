@@ -1,69 +1,68 @@
-﻿
+﻿<div class="col-lg-9">
+    <div class="user-profile-wrapper">
+        <div class="user-profile-card">
+            <h4 class="user-profile-card-title">My Booking</h4>
+            <div class="table-responsive">
+                <table class="table text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Booking Name</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in range(0,length) %}
+                        <tr>
+                            <td>{{ i + 1 }}.</td>
+                            <td><b>{{ sorted_orders[i].name }}</b></td>
+                            <td>{{ sorted_orders[i].type }}</td>
+                            <td>{{ sorted_orders[i].date }}</td>
+                            <td>${{ sorted_orders[i].price }}</td>
+                            {% if sorted_orders[i].status %}
+                                <td><span class="badge badge-success">Confirmed</span></td>
+                            {% else %}
+                                <td><span class="badge badge-warning">Pending</span></td>
+                            {% endif %}
+                            <td>
+                                <a href="{{ sorted_orders[i].url }}" class="btn btn-outline-secondary btn-sm"><i
+                                        class="far fa-eye"></i></a>
+                                {% if not sorted_orders[i].status %}
+                                    <a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
 
-<div class="col-lg-9">
-<div class="user-profile-wrapper">
-<div class="user-profile-card">
-<h4 class="user-profile-card-title">My Booking</h4>
-<div class="table-responsive">
-<table class="table text-nowrap">
-<thead>
-<tr>
-<th>No</th>
-<th>Booking Name</th>
-<th>Type</th>
-<th>Date</th>
-<th>Price</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-{% for i in range(0,length) %}
-<tr>
-<td>{{ i + 1 }}.</td>
-<td><b>{{ sorted_orders[i].name}}</b></td>
-<td>{{ sorted_orders[i].type }}</td>
-<td>{{ sorted_orders[i].date }}</td>
-<td>${{ sorted_orders[i].price }}</td>
-    {% if sorted_orders[i].status %}
-        <td><span class="badge badge-success">Confirmed</span></td>
-    {% else %}
-        <td><span class="badge badge-warning">Pending</span></td>
-    {% endif %}
-<td>
-<a href="{{ sorted_orders[i].url }}" class="btn btn-outline-secondary btn-sm"><i class="far fa-eye"></i></a>
-    {% if not sorted_orders[i].status %}
-        <a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
-    {% endif %}
-</td>
-</tr>
-{% endfor %}
+                    </tbody>
+                </table>
+            </div>
 
-</tbody>
-</table>
-</div>
-
-<div class="pagination-area my-3">
-<div aria-label="Page navigation example">
-<ul class="pagination mt-0">
-<li class="page-item">
-<a class="page-link" href="#" aria-label="Previous">
-<span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
-</a>
-</li>
-<li class="page-item active"><a class="page-link" href="#">1</a></li>
-<li class="page-item"><a class="page-link" href="#">2</a></li>
-<li class="page-item"><a class="page-link" href="#">3</a></li>
-<li class="page-item">
-<a class="page-link" href="#" aria-label="Next">
-<span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
-</a>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
+            <div class="pagination-area my-3">
+                <div aria-label="Page navigation example">
+                    <ul class="pagination mt-0">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </div>
