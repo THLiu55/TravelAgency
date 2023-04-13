@@ -483,10 +483,10 @@ def chat():
     return render_template("chat.html")
 
 
-@bp.route("/order_details")
+@bp.route("/order_invoice")
 @staff_login_required
 def order_details():
-    return render_template("orderDetails.html")
+    return render_template("orderInvoice.html")
 
 @bp.route("/order_invoice")
 @staff_login_required
