@@ -105,6 +105,8 @@ class Activity(db.Model):
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
     view_num = db.Column(db.Integer, default=0)
+    lat = db.Column(db.Double)
+    lon = db.Column(db.Double)
     review = db.relationship('ActivityReview', backref='product')
     orders = db.relationship('ActivityOrder', backref='product')
 
@@ -266,6 +268,8 @@ class Hotel(db.Model):
     contact_email = db.Column(db.String(255))
     contact_phone = db.Column(db.String(255))
     view_num = db.Column(db.Integer, default=0)
+    lat = db.Column(db.Double)
+    lon = db.Column(db.Double)
     review = db.relationship('HotelReview', backref='product')
     orders = db.relationship('HotelOrder', backref='product')
 

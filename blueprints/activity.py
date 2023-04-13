@@ -85,12 +85,8 @@ def activityDetail(activity_id):
     activity.review_num = 10000 if activity.review_num == 0 else activity.review_num
     activity.start_time = activity.start_time.strftime("%Y-%m-%d")
     activity.end_time = activity.end_time.strftime("%Y-%m-%d")
-
-    address = "Beijing"
-    # url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
-    # response = req.get(url).json()
-    lat = 39.906217
-    lon = 116.3912757
+    lat = activity.lat
+    lon = activity.lon
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
                            added=added, purchased=purchased, star_score=star_score, star_score_ceil=star_score_ceil,
                            star_detail=star_detail, review_num=review_num, lat=lat, lon=lon)
