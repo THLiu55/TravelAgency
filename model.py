@@ -432,6 +432,8 @@ class OrderObject:
     status = True  # finish
     url = ''
     time = None
+    start_time = ''
+    end_time = ''
 
 
 class WishListObject:
