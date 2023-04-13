@@ -26,7 +26,10 @@ Author URI  : http://www.bootstrapmb.com/item/2664
               success: function(data) {
                 // 成功获取数据后的处理
                 console.log(data);
-                retrieved_events = data
+                retrieved_events = data;
+                // replace events list with retrieved data
+                $calendarApp.fullCalendar('removeEvents');
+                $calendarApp.fullCalendar('addEventSource', retrieved_events);
               },
               error: function(xhr, status, error) {
                 // 获取数据失败后的处理
@@ -118,61 +121,7 @@ Author URI  : http://www.bootstrapmb.com/item/2664
                     }
                 },
                 timeFormat: 'h(:mm)a',
-
-                // 如果要显示events，就直接在这个list里加就可以了，注意日期格式
-                // events: [
-                //     {
-                //         title: 'flight1',
-                //         start: '2023-04-01',
-                //         end: '2023-04-12',
-                //         color: '#006671',
-                //         id:"demo1"
-                //     },
-                //     {
-                //         title: 'some hotel',
-                //         start: '2023-04-01',
-                //         end: '2023-04-03',
-                //         color: '#009378',
-                //         id: "demo2"
-                //     },
-                //     {
-                //         title: 'london trip',
-                //         start: '2023-04-04',
-                //         end: '2023-04-06',
-                //         color: '#2bb3c0',
-                //         id: "demo3"
-                //     },
-                //     {
-                //         title: 'the big ben',
-                //         start: '2023-04-07',
-                //         end: '2023-04-08',
-                //         color: '#e16123',
-                //         id: "demo4"
-                //     },
-                //     {
-                //         title: 'The Cambridge University',
-                //         start: '2023-04-09',
-                //         end: '2023-04-12',
-                //         color: '#ff4040',
-                //         id: "demo6"
-                //     }
-                // ]
-                events: [
-                    {
-                        title: 'The Cambridge University',
-                        start: '2023-04-09T00:00:00',
-                        // end: '2023-04-12T23:59:59',
-                        color: '#ff4040',
-                        id: "demo6"
-                    },
-                    {
-                        title: 'the big ben',
-                        start: '2023-04-07T00:00:00',
-                        end: '2023-04-08T23:59:59',
-                        color: '#e16123',
-                        id: "demo4"
-                    },
-                ]
+                events: retrieved_events
 
             });
         }
