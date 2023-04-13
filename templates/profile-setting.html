@@ -10,25 +10,25 @@
 <div class="col-md-6">
 <div class="form-group">
 <label>User Name</label>
-<input type="text" name="name" class="form-control" placeholder="{{ customer.nickname }}">
+<input type="text" name="name" value="{{ customer.nickname }}" class="form-control" placeholder="{{ customer.nickname }}">
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label>Email</label>
-<input type="text" name="email" class="form-control" placeholder="{{ customer.email }}">
+<input type="text" name="email" value="{{ customer.email }}" class="form-control" placeholder="{{ customer.email }}">
 </div>
 </div>
 <div class="col-md-6">
 <div class="form-group">
 <label>Phone</label>
-<input type="text" class="form-control" name="phone" placeholder="{{ customer.phone_number }}">
+<input type="text" class="form-control" value="{{ customer.phone_number }}" name="phone" placeholder="{{ customer.phone_number }}">
 </div>
 </div>
 <div class="col-md-12"> 
 <div class="form-group">
 <label>Address</label>
-<input type="text" class="form-control" name="address" placeholder="{{ customer.address }}">
+<input type="text" class="form-control" value="{{ customer.address }}" name="address" placeholder="{{ customer.address }}">
 </div>
 </div>
 <button type="submit" class="theme-btn mt-4">Update Profile Info <i class="far fa-user"></i></button>

@@ -430,4 +430,13 @@ class OrderObject:
     time = None
 
 
+class WishListObject:
+    is_flight = False
+    name = ''
+    price = ''
+    url = ''
+
+
+
+
 

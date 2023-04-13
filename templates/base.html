@@ -67,7 +67,7 @@
                                 <a class="nav-link" href="{{ url_for('customer.homepage') }}">Home</a>
                             </li>
                             <li class="nav-item dropdown" id="navi-menu">
-                                <a class="nav-link" href="#">Flight</a>
+                                <a class="nav-link" href="{{ url_for('flight.flightList', page_num=1) }}">Flight</a>
                             </li>
                             <li class="nav-item dropdown" id="navi-menu">
                                 <a class="nav-link" href="{{ url_for('hotel.hotelList', page_num=1) }}">Hotel</a>
