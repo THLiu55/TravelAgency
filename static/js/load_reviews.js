@@ -27,9 +27,16 @@ function load_reviews(category, status) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
 
-
+            console.log(items[i].category)
             if (cur_category !== items[i].category && cur_category !== 'all') {
                 continue;
+            }
+
+            console.log(items[i].rating)
+            console.log(cur_status)
+            console.log(' -------------- ')
+            if (cur_status !== items[i].rating.toString() && cur_status !== 'all') {
+                continue
             }
 
 

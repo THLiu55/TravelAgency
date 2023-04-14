@@ -61,52 +61,55 @@
                     <div class="toolbox__row row gutter-bottom-xs">
                         <div class="toolbox__left col-12 col-lg">
                             <div class="toolbox__left-row row row--xs gutter-bottom-xs">
-                                <div class="form-group form-group--inline col-12 col-sm-auto">
-                                    <label class="form-label">Show</label>
-                                    <div class="input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>
-                                            <a
-                                            class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group form-group--inline col col-sm-auto">
-                                    <div class="input-group input-group--white input-group--prepend input-group--append">
-                                        <div class="input-group__prepend">
-                                            <svg class="icon-icon-calendar">
-                                                <use xlink:href="#icon-calendar"></use>
-                                            </svg>
-                                        </div>
-                                        <input class="input input--select" type="text" value="01.12.18 / 07.12.18" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
-                                    </div>
-                                </div>
-                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="All status"><span class="marker-item"></span> All status</a>
-                                            <a class="dropdown-menu__item" href="#" tabindex="0" data-value="Published"><span class="marker-item color-green"></span> Published</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Canceled"><span class="marker-item color-blue"></span> Canceled</a>
+                                        <input class="input input--select" type="text" value="All Category"
+                                            data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                        <div
+                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
+                                            <a onclick="load_reviews('all', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All Category"><span class="marker-item"></span> All Category</a>
+                                            <a onclick="load_reviews('activity', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Activities"><span class="marker-item "></span>
+                                                Activities</a>
+                                            <a onclick="load_reviews('tour', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Tours"><span class="marker-item "></span>
+                                                Tours</a>
+                                            <a onclick="load_reviews('hotel', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="Hotels"><span class="marker-item "></span>
+                                                Hotels</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="Any rating" data-toggle="dropdown" readonly><span class="input-group__arrow">
-                        <svg class="icon-icon-keyboard-down">
-                          <use xlink:href="#icon-keyboard-down"></use>
-                        </svg></span>
-                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="Any rating">Any rating</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="1">1</a><a class="dropdown-menu__item" href="#"
-                                            tabindex="0" data-value="2">2</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="3">3</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="4">4</a><a class="dropdown-menu__item"
-                                            href="#" tabindex="0" data-value="5">5</a>
+                                        <input class="input input--select" type="text" value="All Ratings"
+                                            data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                        <div
+                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
+                                            <a onclick="load_reviews(null, 'all')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All Ratings"><span class="marker-item"></span> All Ratings</a>
+                                            <a onclick="load_reviews(null, '5')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value=5>
+                                                5</a>
+                                            <a onclick="load_reviews(null, '4')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value=4>
+                                                4</a>
+                                            <a onclick="load_reviews(null, '3')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value=3>
+                                                3</a>
+                                            <a onclick="load_reviews(null, '2')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value=2>
+                                                2</a>
+                                            <a onclick="load_reviews(null, '1')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value=1>
+                                                1</a>
                                         </div>
                                     </div>
                                 </div>

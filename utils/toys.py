@@ -15,3 +15,17 @@ def get_fuzzed_room_name(customer_id):
     return str(customer_id) # TODO: for test, change later
     # return "THE_ALL_IN_ONE_ROOM"
 ### END CHAT RELATED ###
+
+import datetime
+
+def extract_date(datetime_string):
+    # Remove the timezone information
+    datetime_string = datetime_string.split()[0]
+
+    # Convert the string to a datetime object
+    datetime_obj = datetime.datetime.fromisoformat(datetime_string)
+
+    # Extract the date portion and format it as "yyyy-mm-dd"
+    formatted_date = datetime_obj.strftime("%Y-%m-%d")
+
+    return formatted_date

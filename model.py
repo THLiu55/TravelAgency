@@ -1,5 +1,6 @@
 from exts import db
 from flask_login import UserMixin
+from utils.toys import extract_date
 
 
 class Customer(db.Model, UserMixin):
@@ -79,11 +80,12 @@ class ActivityReview(db.Model):
 
     def serialize(self):
         return {
+            'category': 'activity',
             'reviewed_product': self.product.serialize(),
             'customer': self.customer.serialize(),
             'rating': self.rating,
             'content': self.content,
-            'date': self.issueTime,
+            'date': extract_date(self.issueTime.isoformat())
         }
 
 
@@ -193,11 +195,12 @@ class TourReview(db.Model):
 
     def serialize(self):
         return {
+            'category': 'tour',
             'reviewed_product': self.product.serialize(),
             'customer': self.customer.serialize(),
             'rating': self.rating,
             'content': self.content,
-            'date': self.issueTime,
+            'date': extract_date(self.issueTime.isoformat())
         }
 
 
@@ -352,11 +355,12 @@ class HotelReview(db.Model):
 
     def serialize(self):
         return {
+            'category': 'hotel',
             'reviewed_product': self.product.serialize(),
             'customer': self.customer.serialize(),
             'rating': self.rating,
             'content': self.content,
-            'date': self.issueTime,
+            'date': extract_date(self.issueTime.isoformat())
         }
 
 
