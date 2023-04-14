@@ -32,12 +32,10 @@ function load_reviews(category, status) {
                 continue;
             }
 
-            console.log(items[i].rating)
-            console.log(cur_status)
-            console.log(' -------------- ')
             if (cur_status !== items[i].rating.toString() && cur_status !== 'all') {
                 continue
             }
+            items[i].rating = "\u2B50".repeat(items[i].rating)
 
 
             s = `<tr class="table__row">
@@ -57,9 +55,9 @@ function load_reviews(category, status) {
                                     <td class="table__td text-overflow maxw-260"><span class="text-light-theme">${items[i].content}</span>
                                     </td>
                                     <td class="table__td">
-                                        <div class="rating js-rating-stars" data-rating="${items[i].rating}" data-readonly="true"></div>
+                                        <div class="table__status"></span>${items[i].rating}</div>
                                     </td>
-                                    <td class="table__td text-nowrap"><span class="text-light-theme">${items[i].date}</span>  <span class="text-dark-theme">10:00</span>
+                                    <td class="table__td text-nowrap"><span class="text-light-theme">${items[i].date}</span>  
                                     </td>
                                     <td class="table__td">
                                         <div class="table__status"><span class="table__status-icon color-green"></span> Published</div>
