@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 import requests as req
+from sqlalchemy import func
 
 from flask import (
     Blueprint,
@@ -25,7 +26,15 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @staff_login_required
 def manager_homepage():
     db.create_all()
-    return render_template("Dashboard.html")
+    total_views = db.session.query(func.sum(Activity.view_num)).scalar()
+    total_views += db.session.query(func.sum(Tour.view_num)).scalar()
+    total_views += db.session.query(func.sum(Hotel.view_num)).scalar()
+    num_customers = Customer.query.count()
+    num_orders = ActivityOrder.query.count()
+    num_orders += HotelOrder.query.count()
+    num_orders += TourOrder.query.count()
+    num_orders += FlightOrder.query.count()
+    return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers)
 
 
 @bp.route("/logout")
@@ -537,16 +546,22 @@ def total_orders():
     return render_template("orders.html")
 
 
+@bp.route("/load_graph")
+@staff_login_required
+def load_graph():
+    return
+
+
 @bp.route("/load_orders", methods=["POST", "GET"])
 @staff_login_required
 def load_orders():
     category = request.form.get("category")
     orders = []
     if category == 'all':
-        orders += [order.serialize() for order in TourOrder.query.all()]
-        orders += [order.serialize() for order in ActivityOrder.query.all()]
-        orders += [order.serialize() for order in HotelOrder.query.all()]
-        orders += [order.serialize() for order in FlightOrder.query.all()]
+        orders += [order.serialize() for order in TourOrder.query.filter_by(purchased=True).all()]
+        orders += [order.serialize() for order in ActivityOrder.query.filter_by(purchased=True).all()]
+        orders += [order.serialize() for order in HotelOrder.query.filter_by(purchased=True).all()]
+        orders += [order.serialize() for order in FlightOrder.query.filter_by(purchased=True).all()]
     else:
         order_data = TourOrder if category == 'tour' else ActivityOrder if category == 'activity' else HotelOrder if category == 'hotel' else FlightOrder
         orders += [order.serialize() for order in order_data.query.all()]

@@ -37,7 +37,7 @@ $mm.fn.extend({
         fontSize: 24
       }
     }, options)
-    
+
     return new Chart(this.getContext("2d"), {
       type: 'doughnut',
       data: data,
@@ -60,7 +60,7 @@ $mm.fn.extend({
     })
 
     let max = data.datasets.reduce((a, b) => Math.max(a, Math.max(...b.data)), 0)
-    
+
     options = $mm.merge(true, {
       maintainAspectRatio: false,
       legend: {
@@ -151,7 +151,7 @@ $mm('#test4').sparkline({
   data: {
     labels: labels,
     datasets: [{
-      data: $mm.randData(10, 100, 0)
+      data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     }]
   }
 })

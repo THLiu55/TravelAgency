@@ -36,6 +36,9 @@ function load_reviews(category, status) {
                 continue
             }
             items[i].rating = "\u2B50".repeat(items[i].rating)
+            if (items[i].content.length > 35) {
+                items[i].content = items[i].content.substring(0, 34) + "..."
+            }
 
 
             s = `<tr class="table__row">

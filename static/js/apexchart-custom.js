@@ -6,10 +6,10 @@ $(function () {
     var options = {
         series: [{
         name: 'series1',
-        data: [31, 40, 28, 51, 42, 60, 50]
+        data: [31, 40, 28, 51, 42, 60, 90]
     }, {
         name: 'series2',
-        data: [11, 32, 45, 32, 34, 52, 41]
+        data: [11, 32, 45, 32, 34, 52, 91]
     }],
         chart: {
         height: 350,
