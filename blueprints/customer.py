@@ -241,7 +241,7 @@ def booking():
         order_object.type = 'Hotel'
         order_object.url = url_for('hotel.hotelDetail', hotel_id=hotel_i.productID)
         order_object.status = True if hotel_i.checkOutTime < datetime.now() else False
-        order_object.time = hotel_i.endTime
+        order_object.time = hotel_i.endTime.strftime('%y-%m-%d %H:%M')
         order_list.append(order_object)
     for tour_i in tour_orders:
         order_object = OrderObject()
@@ -250,7 +250,7 @@ def booking():
         order_object.type = 'Tour'
         order_object.url = url_for('tour.tourDetail', tour_id=tour_i.productID)
         order_object.status = True if tour_i.endTime < datetime.now() else False
-        order_object.time = tour_i.startTime
+        order_object.time = tour_i.startTime.strftime('%y-%m-%d %H:%M')
         order_list.append(order_object)
     for activity_i in activity_orders:
         order_object = OrderObject()
@@ -259,9 +259,9 @@ def booking():
         order_object.type = 'Activity'
         order_object.url = url_for('activity.activityDetail', activity_id=activity_i.productID)
         order_object.status = True if activity_i.endTime < datetime.now() else False
-        order_object.time = activity_i.startTime
+        order_object.time = activity_i.startTime.strftime('%y-%m-%d %H:%M')
         order_list.append(order_object)
-    sorted_orders = sorted(order_list, key=lambda obj: obj.time)
+    sorted_orders = sorted(order_list, key=lambda obj: obj.time, reverse=True)
     length = len(sorted_orders)
     return render_template("profile-booking.html", sorted_orders=sorted_orders, customer=customer, logged=True,
                            length=length)
@@ -270,7 +270,48 @@ def booking():
 @bp.route("/wishlist")
 def wishlist():
     customer = Customer.query.get(session.get('customer_id'))
-    return render_template("profile-wishlist.html", customer=customer, logged=True)
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=False).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=False).all()
+    order_list = []
+    for flight_i in flight_orders:
+        flight_obj = Flight.query.get(flight_i.productID)
+        order_obj = WishListObject("Flight", flight_obj.departure + " - " + flight_obj.destination, 5, "Excellent",
+                                   flight_obj.review_num, flight_obj.price,
+                                   url_for('static', filename='images/bg1.jpg'),
+                                   url_for('flight.flightDetail', flight_id=flight_obj.id), flight_i.startTime)
+        order_list.append(order_obj)
+    for hotel_i in hotel_orders:
+        hotel_obj = Hotel.query.get(hotel_i.productID)
+        hotel_obj.images = json.loads(hotel_obj.images)['images']
+        hotel_obj.images[0] = hotel_obj.images[0][hotel_obj.images[0].index('static'):].lstrip('static')
+        order_object = WishListObject(hotel_obj.name, hotel_obj.address + " " + hotel_obj.city, 5, "Excellent",
+                                      hotel_obj.review_num, hotel_obj.price, hotel_obj.images[0],
+                                      url_for('hotel.hotelDetail', hotel_obj=hotel_obj.id), hotel_i.endTime)
+        order_list.append(order_object)
+    for tour_i in tour_orders:
+        tour_object = Tour.query.get(tour_i.productID)
+        tour_object.images = json.loads(tour_object.images)['images']
+        tour_object.images[0] = tour_object.images[0][tour_object.images[0].index('static'):].lstrip('static')
+        order_object = WishListObject(tour_object.name, tour_object.address + " " + tour_object.city, 5, "Excellent",
+                                      tour_object.review_num, tour_object.cost, tour_object.images[0],
+                                      url_for('tour.tourDetail', tour_obj=tour_object.id), tour_i.startTime)
+        order_list.append(order_object)
+    for activity_i in activity_orders:
+        activity_object = Activity.query.get(activity_i.productID)
+        activity_object.images = json.loads(activity_object.images)['images']
+        activity_object.images[0] = activity_object.images[0][activity_object.images[0].index('static'):]
+        order_object = WishListObject(activity_object.name, activity_object.address + " " + activity_object.city, 5,
+                                      "Excellent", activity_object.review_num, activity_i.cost,
+                                      activity_object.images[0],
+                                      url_for('activity.activityDetail', activity_id=activity_i.productID),
+                                      activity_i.endTime)
+        order_list.append(order_object)
+    sorted_orders = sorted(order_list, key=lambda obj: obj.time, reverse=True)
+    length = len(sorted_orders)
+    return render_template("profile-wishlist.html", customer=customer, logged=True, sorted_orders=sorted_orders,
+                           length=length)
 
 
 @bp.route("/wallet")

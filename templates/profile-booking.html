@@ -21,12 +21,12 @@
                             <td>{{ i + 1 }}.</td>
                             <td><b>{{ sorted_orders[i].name }}</b></td>
                             <td>{{ sorted_orders[i].type }}</td>
-                            <td>{{ sorted_orders[i].date }}</td>
+                            <td>{{ sorted_orders[i].time }}</td>
                             <td>${{ sorted_orders[i].price }}</td>
                             {% if sorted_orders[i].status %}
-                                <td><span class="badge badge-success">Confirmed</span></td>
+                                <td><span class="badge badge-success">Finished</span></td>
                             {% else %}
-                                <td><span class="badge badge-warning">Pending</span></td>
+                                <td><span class="badge badge-warning">Upcoming</span></td>
                             {% endif %}
                             <td>
                                 <a href="{{ sorted_orders[i].url }}" class="btn btn-outline-secondary btn-sm"><i

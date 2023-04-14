@@ -359,6 +359,7 @@ class HotelReview(db.Model):
             'date': self.issueTime,
         }
 
+
 class Flight(db.Model):
     __tablename__ = 'flights'
 
@@ -468,7 +469,13 @@ class PlanObj:
 
 
 class WishListObject:
-    is_flight = False
-    name = ''
-    price = ''
-    url = ''
+    def __init__(self, title, second_line, star, star_des, review_num, price, photo_url, url, time):
+        self.title = title
+        self.second_line = second_line
+        self.star = star
+        self.star_des = star_des
+        self.review_num = review_num
+        self.price = price
+        self.photo_url = photo_url
+        self.url = url
+        self.time = time

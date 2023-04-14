@@ -16,4 +16,10 @@ def flightList(page_num):
         # noinspection PyTypeChecker
         flight.images = json.loads(flight.images)['images']
         flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
-    return render_template("flight-grid.html",total_flights=total_flights, flights=flights, page_num=page_num, logged=logged)
+    return render_template("flight-grid.html", total_flights=total_flights, flights=flights, page_num=page_num,
+                           logged=logged)
+
+
+@bp.route('/details/<flight_id>')
+def flightDetail():
+    return render_template("flight-detail.html")

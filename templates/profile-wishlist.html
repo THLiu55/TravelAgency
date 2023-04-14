@@ -1,30 +1,31 @@
 ﻿<div class="user-profile-wrapper">
     <div class="user-profile-card">
         <h4 class="user-profile-card-title">My Wishlist</h4>
-        <div class="row mt-30">
+
+        {% for i in sorted_orders %}
+            <div class="row mt-30">
 
             <div class="col-md-6 col-lg-4">
                 <div class="hotel-item">
                     <div class="hotel-img">
                         <span class="badge">Featured</span>
-                        <img src="assets/img/hotel/02.jpg" alt="">
+                        <img src="{{ i.photo_url }}" alt="">
                         <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
                     </div>
                     <div class="hotel-content">
-                        <h4 class="hotel-title"><a href="#">Western Grant Park Hotel</a></h4>
-                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                        <h4 class="hotel-title"><a href="#">{{ i.title }}</a></h4>
+                        <p><i class="far fa-location-dot"></i>{{ i.second_line }}</p>
                         <div class="hotel-rate">
-                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
-                            <span class="hotel-rate-type">Excellent</span>
-                            <span class="hotel-rate-review">(2.5k Reviews)</span>
+                            <span class="badge"><i class="fal fa-star"></i> {{ i.star }}</span>
+                            <span class="hotel-rate-type">{{ i.star_des }}</span>
+                            <span class="hotel-rate-review">({{ i.review_num }} Reviews)</span>
                         </div>
                         <div class="hotel-bottom">
                             <div class="hotel-price">
-<span class="hotel-price-amount">$300 <span class="hotel-price-type">/Per
-Night</span></span>
+<span class="hotel-price-amount">${{ i.price }} <span class="hotel-price-type"></span></span>
                             </div>
                             <div class="hotel-text-btn">
-                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{ i.url }}">See Details <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -33,6 +34,9 @@ Night</span></span>
 
 
         </div>
+
+
+        {% endfor %}
 
         <div class="pagination-area my-4">
             <div aria-label="Page navigation example">
