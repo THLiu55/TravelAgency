@@ -37,7 +37,7 @@ def tourDetail(tour_id):
     tour.itineraries = json.loads(tour.itineraries)['tour_des']
     tour.itineraries = [list(i.items())[0] for i in tour.itineraries]
     tour.start_time = tour.start_time.strftime("%Y-%m-%d")
-    tour.end_time = tour.end_time.strftime("%Y-%m-%d %H:%M")
+    tour.end_time = tour.end_time.strftime("%Y-%m-%d")
     days = len(tour.itineraries)
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
@@ -183,7 +183,7 @@ def add_wishlist(tour_id):
     tour_order.productID = tour_id
     db.session.add(tour_order)
     db.session.commit()
-    return redirect(url_for('customer.profile'))
+    return redirect(url_for('customer.profile', page="/wishlist"))
 
 
 @bp.route("/remove_wishlist/<tour_id>")
@@ -192,4 +192,4 @@ def remove_wishlist(tour_id):
                                            purchased=False).first()
     db.session.delete(tour_order)
     db.session.commit()
-    return redirect(url_for('customer.profile'))
+    return redirect(url_for('customer.profile', page="/wishlist"))

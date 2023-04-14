@@ -2,13 +2,14 @@
     <div class="user-profile-card">
         <h4 class="user-profile-card-title">My Wishlist</h4>
 
-        {% for i in sorted_orders %}
+
             <div class="row mt-30">
 
+                {% for i in sorted_orders %}
             <div class="col-md-6 col-lg-4">
                 <div class="hotel-item">
                     <div class="hotel-img">
-                        <span class="badge">Featured</span>
+                        <span class="badge">{{ i.type_ }}</span>
                         <img src="{{ i.photo_url }}" alt="">
                         <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
                     </div>
@@ -31,12 +32,12 @@
                     </div>
                 </div>
             </div>
-
+                {% endfor %}
 
         </div>
 
 
-        {% endfor %}
+
 
         <div class="pagination-area my-4">
             <div aria-label="Page navigation example">

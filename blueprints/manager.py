@@ -302,6 +302,14 @@ def add_hotel():
     hotel.city = request.form.get("city")
     hotel.state = request.form.get("state")
     hotel.address = request.form.get("address")
+    address = hotel.address + " " + hotel.city + " " + hotel.state
+    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
+    response = req.get(url).json()
+    if len(response) > 0:
+        hotel.lat = response[0]['lat']
+        hotel.lon = response[0]['lon']
+    else:
+        return jsonify({"code": "invalid address "})
     hotel.min_stay = request.form.get("min_stay")
     hotel.security = request.form.get("security")
     hotel.on_site_staff = request.form.get("on_site_staff")

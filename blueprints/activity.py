@@ -190,7 +190,7 @@ def add_wishlist(activity_id):
     activity_order.productID = activity_id
     db.session.add(activity_order)
     db.session.commit()
-    return redirect(url_for('customer.profile'))
+    return redirect(url_for('customer.profile', page="/wishlist"))
 
 
 @bp.route("/remove_wishlist/<activity_id>")
@@ -199,4 +199,4 @@ def remove_wishlist(activity_id):
                                                    purchased=False).first()
     db.session.delete(activity_order)
     db.session.commit()
-    return redirect(url_for('customer.profile'))
+    return redirect(url_for('customer.profile', page="/wishlist"))

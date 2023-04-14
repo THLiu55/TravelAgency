@@ -171,7 +171,12 @@ def consult():
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
     customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
-    return render_template("profile-base.html", customer=customer, logged=True)
+    page = request.args.get("page")
+    if page is not None:
+        page = page
+    else:
+        page = "/profilepage"
+    return render_template("profile-base.html", customer=customer, logged=True, page=page)
 
 
 @bp.route("/profilepage")
@@ -198,11 +203,12 @@ def plan_events():
             plan_list.append(plan_object)
     for tour_i in tour_orders:
         if tour_i.endTime > datetime.now():
+            tour_obj = Tour.query.get(tour_i.productID)
             plan_object = PlanObj()
             plan_object.title = Tour.query.get(tour_i.productID).name
             plan_object.color = '#009378'
             plan_object.start = tour_i.endTime
-            plan_object.end = tour_i.endTime + timedelta(days=tour_i.duration)
+            plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
             plan_list.append(plan_object)
     for activity_i in activity_orders:
         if activity_i.endTime > datetime.now():
@@ -280,23 +286,24 @@ def wishlist():
         order_obj = WishListObject("Flight", flight_obj.departure + " - " + flight_obj.destination, 5, "Excellent",
                                    flight_obj.review_num, flight_obj.price,
                                    url_for('static', filename='images/bg1.jpg'),
-                                   url_for('flight.flightDetail', flight_id=flight_obj.id), flight_i.startTime)
+                                   url_for('flight.flightDetail', flight_id=flight_obj.id), flight_i.startTime,
+                                   "Flight")
         order_list.append(order_obj)
     for hotel_i in hotel_orders:
         hotel_obj = Hotel.query.get(hotel_i.productID)
         hotel_obj.images = json.loads(hotel_obj.images)['images']
-        hotel_obj.images[0] = hotel_obj.images[0][hotel_obj.images[0].index('static'):].lstrip('static')
+        hotel_obj.images[0] = hotel_obj.images[0][hotel_obj.images[0].index('static'):]
         order_object = WishListObject(hotel_obj.name, hotel_obj.address + " " + hotel_obj.city, 5, "Excellent",
-                                      hotel_obj.review_num, hotel_obj.price, hotel_obj.images[0],
-                                      url_for('hotel.hotelDetail', hotel_obj=hotel_obj.id), hotel_i.endTime)
+                                      hotel_obj.review_num, hotel_obj.min_price, hotel_obj.images[0],
+                                      url_for('hotel.hotelDetail', hotel_id=hotel_obj.id), hotel_i.endTime, "Hotel")
         order_list.append(order_object)
     for tour_i in tour_orders:
         tour_object = Tour.query.get(tour_i.productID)
         tour_object.images = json.loads(tour_object.images)['images']
-        tour_object.images[0] = tour_object.images[0][tour_object.images[0].index('static'):].lstrip('static')
+        tour_object.images[0] = tour_object.images[0][tour_object.images[0].index('static'):]
         order_object = WishListObject(tour_object.name, tour_object.address + " " + tour_object.city, 5, "Excellent",
-                                      tour_object.review_num, tour_object.cost, tour_object.images[0],
-                                      url_for('tour.tourDetail', tour_obj=tour_object.id), tour_i.startTime)
+                                      tour_object.review_num, tour_object.price, tour_object.images[0],
+                                      url_for('tour.tourDetail', tour_id=tour_object.id), tour_i.startTime, "Tour")
         order_list.append(order_object)
     for activity_i in activity_orders:
         activity_object = Activity.query.get(activity_i.productID)
@@ -306,7 +313,7 @@ def wishlist():
                                       "Excellent", activity_object.review_num, activity_i.cost,
                                       activity_object.images[0],
                                       url_for('activity.activityDetail', activity_id=activity_i.productID),
-                                      activity_i.endTime)
+                                      activity_i.startTime, "Activity")
         order_list.append(order_object)
     sorted_orders = sorted(order_list, key=lambda obj: obj.time, reverse=True)
     length = len(sorted_orders)

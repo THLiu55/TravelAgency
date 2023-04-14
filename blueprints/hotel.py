@@ -129,7 +129,7 @@ def hotelDetail(hotel_id):
                            room_service=True, fire_place=True, breakfast=breakfast, fitness_facility=fitness_facility,
                            elevator=elevator, entertainment=entertainment, air_conditioning=air_conditioning,
                            coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play, room_num=len(rooms),
-                           min_stay=min_stay)
+                           min_stay=min_stay, lat=hotel.lat, lon=hotel.lon)
 
 
 @bp.route("/add_wishlist/<hotel_id>")
@@ -140,9 +140,10 @@ def add_wishlist(hotel_id):
     hotel_order.productID = hotel_id
     hotel_order.cost = aimed_hotel.min_price
     hotel_order.purchased = False
+    hotel_order.endTime = datetime.datetime.now()
     db.session.add(hotel_order)
     db.session.commit()
-    return redirect((url_for('customer.profile')))
+    return redirect((url_for('customer.profile', page="/wishlist")))
 
 
 @bp.route("/remove_wishlist/<hotel_id>")
@@ -151,7 +152,7 @@ def remove_wishlist(hotel_id):
                                              purchased=False).first()
     db.session.delete(hotel_order)
     db.session.commit()
-    return redirect(url_for('customer.profile'))
+    return redirect(url_for('customer.profile', page="/wishlist"))
 
 
 @bp.route("/order-confirm", methods=['POST'])
