@@ -18,7 +18,6 @@ from exts import db
 import os
 
 from utils.decorators import staff_login_required
-
 bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 
@@ -148,6 +147,7 @@ def activities():
 
 ### CHAT RELATED ###
 @bp.route("/responding/<target_customer_id>/", methods=["GET", "POST"])
+@staff_login_required
 def respond_view(target_customer_id):
     """manager bargaining with target customer
 
@@ -158,17 +158,12 @@ def respond_view(target_customer_id):
         _type_: _description_
     """
 
-    # TODO: authenticate admin identity
-
-    # TODO: check if the target customer exists
-
     target_customer = Customer.query.filter_by(id=target_customer_id).first()
-    if target_customer == None:
+    if target_customer:
+        # TODO: load previous chat history from target_customer.messages
+        return render_template("chat.html", target_customer=target_customer)
+    else:
         return False
-
-    # TODO: load previous chat history from target_customer.messages
-
-    return render_template("chat.html")
 
 
 @bp.route("/chat_test", methods=["GET", "POST"])
