@@ -26,11 +26,12 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @staff_login_required
 def manager_homepage():
     db.create_all()
-    total_views = db.session.query(func.sum(Activity.view_num)).scalar()
+    total_views, num_customers, num_orders = 0, 0, 0
+    total_views += db.session.query(func.sum(Activity.view_num)).scalar()
     total_views += db.session.query(func.sum(Tour.view_num)).scalar()
     total_views += db.session.query(func.sum(Hotel.view_num)).scalar()
-    num_customers = Customer.query.count()
-    num_orders = ActivityOrder.query.count()
+    num_customers += Customer.query.count()
+    num_orders += ActivityOrder.query.count()
     num_orders += HotelOrder.query.count()
     num_orders += TourOrder.query.count()
     num_orders += FlightOrder.query.count()
