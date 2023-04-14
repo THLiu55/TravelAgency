@@ -18,3 +18,8 @@ venv/
 *.db
 *.sqlite3
 *.log
+
+
+# User data folders by now
+userdata/
+activity_img/
