@@ -29,8 +29,8 @@ class Config(object):
 class DevelopmentConfig(Config):
     DEBUG = True
     FLASK_DEBUG = True
-    SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_ECHO = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ECHO = False
 
 
 class ProductionConfig(Config):
