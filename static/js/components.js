@@ -512,8 +512,8 @@ function chart() {
 
     const profitPieChartOptions = {
         series: dataSeries('#profitPieChart'),
-        labels: ['Current', 'Lost', 'Target'],
-        colors: ['#FF3D57', '#FDBF5E', '#22CCE2'],
+        labels: ['Activity', 'Hotel', 'Flight', 'Tour'],
+        colors: ['#FF3D57', '#FDBF5E', '#22CCE2', '#eef213'],
         chart: {
             type: 'donut',
             dropShadow: {
@@ -587,7 +587,7 @@ function chart() {
         tooltip: Echart.tooltip(),
         barGap: '30%',
         legend: {
-            data: ['Views', 'Comment'],
+            data: ['Comment'],
             left: 'right',
             itemGap: 50,
             itemWidth: 8,
@@ -598,7 +598,7 @@ function chart() {
                 color: themeStyle('--text-primary-color')
             }
         },
-        color: ['#22CCE2', '#FF3D57'],
+        color: ['#22CCE2'],
         toolbox: {
             show: false
         },
@@ -641,7 +641,7 @@ function chart() {
             {
                 name: 'Comment',
                 type: 'bar',
-                data: dataSeries('#activityChart')[2],
+                data: dataSeries('#activityChart')[1],
                 itemStyle: {
                     borderRadius: [5, 5, 0, 0]
                 }
