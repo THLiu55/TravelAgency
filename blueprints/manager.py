@@ -496,22 +496,14 @@ def customers():
 def wish_list():
     return render_template("customerWishlist.html")
 
-
 @bp.route("/chat")
 @staff_login_required
 def chat():
     return render_template("chat.html")
 
-
-@bp.route("/order_invoice")
+@bp.route("/order_details")
 @staff_login_required
 def order_details():
-    return render_template("orderInvoice.html")
-
-
-@bp.route("/order_invoice")
-@staff_login_required
-def order_invoice():
     return render_template("orderInvoice.html")
 
 
