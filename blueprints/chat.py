@@ -7,12 +7,13 @@ from flask import (
     url_for,
     session,
     current_app,
+    jsonify
 )
 
-# from decorators import login_required
 from exts import socketio as io
 from utils.bot import BOT_CHOICE, get_wxbot_signature, get_wxbot_answer
 from utils.toys import get_fuzzed_room_name
+from utils.decorators import login_required
 from model import Customer
 from time import time
 from flask_socketio import join_room, leave_room, send, emit
@@ -51,9 +52,9 @@ def get_session_customer_name():
     if session.get("customer_id"):
         customer = Customer.query.filter_by(id=session.get("customer_id")).first()
         if customer:
-            return customer.nickname
+            return jsonify({"isLoggedIn": True, "nickname": customer.nickname})
     # if not logged in, return "anon" by default
-    return "anon"
+    return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
 
 
 ### END CHATBOT ROUTERS ###
@@ -74,7 +75,7 @@ def handle_connect():
             print("customer " + customer.nickname + " joined room: " + str(room))
             io.emit(
                 "message",
-                {"text": "Welcome " + customer.nickname + " to the chat room."},
+                {"sender": "system", "text": "Welcome " + customer.nickname + " to the chat room."},
                 broadcast=False,
                 namespace=NAMESPACE,
             )
@@ -138,7 +139,7 @@ def handle_message(data):
     elif sender_name == "TestAdminUser":
         target_customer_id = data["target_customer_id"]
         target_room = get_fuzzed_room_name(target_customer_id)
-        print("sending message to room: " + str(target_room))
+        print(sender_name + " sending message: " + msg_text + " to room: " + str(target_room))
         io.send(data=sending_data, namespace=NAMESPACE, to=target_room)
     else:
         customer_id = session.get("customer_id")
@@ -146,6 +147,7 @@ def handle_message(data):
         if customer.nickname != sender_name:
             raise ConnectionRefusedError("User not found.")
         room = get_fuzzed_room_name(customer.id)
+        print(sender_name + " sending message: " + msg_text + " to room: " + str(room))
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
 
 

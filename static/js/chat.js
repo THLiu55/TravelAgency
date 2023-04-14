@@ -1,5 +1,7 @@
 var $messages = $('.messages-content'),
   customerName = "",
+  isLoggedIn = false,
+  loginPageUrl = "",
   usingBot = true, // use bot by default
   socket = null,
   namespace = null,
@@ -22,8 +24,15 @@ function initGlobalVars() {
     url: "/get_session_customer_name",
     data: {},
     timeout: 15000, // timeout after 15 seconds
-    success: function (customerNameFromServer) {
-      customerName = customerNameFromServer;
+    success: function (responseFromServer) {
+      isLoggedIn = responseFromServer.isLoggedIn;
+      if (isLoggedIn) {
+        // loginPageUrl = "Not Needed Anymore"
+        customerName = responseFromServer.nickname;
+      } else if (isLoggedIn == false) {
+        customerName = "anon"; // fallback to anon
+        loginPageUrl = responseFromServer.loginPageUrl;
+      }
     },
     error: function (xhr, status, error) {
       // an error occurred
@@ -137,6 +146,10 @@ function getAndInsertRespMessageFromBot(yourMessage) {
 
 
 function changeToRealPersonCustomerService() {
+  if (isLoggedIn == false) {
+    window.location.href = loginPageUrl;
+    return;
+  }
   usingBot = false;
   insertRespMessage("Please wait while we connect you to a real person customer service...");
 
@@ -149,6 +162,7 @@ function changeToRealPersonCustomerService() {
   socket.on('message', function (res) {
     var resSender = res.sender;
     var resMsgTxt = res.text;
+    console.log("received message: '" + resMsgTxt + "' from " + resSender);
     if (resMsgTxt) {
       if (resSender == customerName) { // own message sent to server
         insertMyMessage(resMsgTxt);
