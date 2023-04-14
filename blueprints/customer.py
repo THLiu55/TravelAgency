@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import json
 
 import requests
@@ -25,8 +25,6 @@ def homepage():
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
 
-
-
     total_flights = Flight.query.count()
     paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
     flights = paginationFlight.items
@@ -50,10 +48,10 @@ def homepage():
         # noinspection PyTypeChecker
         tour.images = json.loads(tour.images)['images']
         tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
-    
     return render_template("Homepage.html", total_activities=total_activities, activities=activities,
-                           total_flights=total_flights,flights=flights, total_hotels=total_hotels,hotels=hotels, total_tours=total_tours, tours=tours,
-                         logged=logged)
+                           total_flights=total_flights, flights=flights, total_hotels=total_hotels, hotels=hotels,
+                           total_tours=total_tours, tours=tours,
+                           logged=logged)
 
 
 @bp.route("/logout")
@@ -81,6 +79,7 @@ def login():
             return jsonify({"message": "用户不存在"})
         if check_password_hash(customer.password, customer_password):
             session['customer_id'] = customer.id
+            print(session['customer_id'])
             url = request.form.get("url")
             if url != "None":
                 return jsonify({"code": 200, "message": url})
@@ -180,6 +179,52 @@ def profilepage():
     customer = Customer.query.get(session.get('customer_id'))
     customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
     return render_template("profile.html", customer=customer, logged=True)
+
+
+@bp.route("/plan_events")
+def plan_events():
+    customer = Customer.query.get(session.get('customer_id'))
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    plan_list = []
+    for hotel_i in hotel_orders:
+        if hotel_i.startTime > datetime.now():
+            plan_object = PlanObj()
+            plan_object.title = Hotel.query.get(hotel_i.productID).name
+            plan_object.color = '#00671'
+            plan_object.start = hotel_i.startTime
+            plan_object.end = hotel_i.checkOutTime
+            plan_list.append(plan_object)
+    for tour_i in tour_orders:
+        if tour_i.endTime > datetime.now():
+            plan_object = PlanObj()
+            plan_object.title = Tour.query.get(tour_i.productID).name
+            plan_object.color = '#009378'
+            plan_object.start = tour_i.endTime
+            plan_object.end = tour_i.endTime + timedelta(days=tour_i.duration)
+            plan_list.append(plan_object)
+    for activity_i in activity_orders:
+        if activity_i.endTime > datetime.now():
+            plan_object = PlanObj()
+            plan_object.title = Activity.query.get(activity_i.productID).name
+            plan_object.color = '#2bb3c0'  # #e16123
+            plan_object.start = activity_i.endTime
+            plan_object.end = activity_i.endTime
+            plan_list.append(plan_object)
+    plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
+    json_data = json.dumps(plan_dict_list)
+
+    return jsonify(json.loads(json_data))
+
+
+def plan_obj_serializer(plan_obj):
+    return {
+        'title': plan_obj.title,
+        'start': plan_obj.start.isoformat(),
+        'end': plan_obj.end.isoformat(),
+        'color': plan_obj.color
+    }
 
 
 @bp.route("/booking")

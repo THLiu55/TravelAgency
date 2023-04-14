@@ -76,7 +76,7 @@
                 <div class="container">
                     <a class="navbar-brand" href="manager.html">
                         <!-- <img src="../static/img/logo.png" class="logo-display" alt="logo"> -->
-                        <img src="{{ url_for('static',filename="img/logo/logo-dark.png") }}" class="logo-scrolled" alt="logo" style="width:200px;">
+                        <img src="{{ url_for('static',filename="image/logo.png") }}" class="logo-scrolled" alt="logo" style="width:200px;">
                     </a>
                     <div class="mobile-menu-right">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -150,7 +150,7 @@
     </ul> -->
     <!-- </div> -->
     </div>
-    
+
     <div class="user-profile py-120" style="padding:40px;">
     <div class="container">
     <div class="row">
@@ -168,8 +168,9 @@
     </div>
     <nav>
     <ul class="user-profile-sidebar-list">
+         <li id="profile-menu"><a href="{{ url_for('customer.booking') }}" onclick="selected1(this)"><i class="far fa-shopping-bag"></i> My Booking</a></li>
     <li id="profile-menu"><a href="{{ url_for('customer.profilepage') }}" onclick="selected1(this)"><i class="far fa-user"></i> My Profile</a></li>
-    <li id="profile-menu"><a href="{{ url_for('customer.booking') }}" onclick="selected1(this)"><i class="far fa-shopping-bag"></i> My Booking</a></li>
+
     <li id="profile-menu"><a href="{{ url_for('customer.wishlist') }}" onclick="selected1(this)"><i class="far fa-heart"></i> My Wishlist</a></li>
     <li id="profile-menu"><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge">02</span></a></li>
     <li id="profile-menu"><a href="{{ url_for('customer.wallet') }}" onclick="selected1(this)"><i class="far fa-wallet"></i> My Wallet</a></li>
@@ -217,7 +218,7 @@
 {% block jsLink %}
 {#  original js  #}
 <script>
-    
+
 function selected1(elem) {
     // alert("selected")
     // Remove the "selected" class from all list items
@@ -228,7 +229,7 @@ function selected1(elem) {
       console.log(navItems[i])
     //   alert(navItems[i])
     }
-    
+
     // Add the "selected" class to the clicked list item
     elem.parentNode.classList.add('active');
   }
@@ -265,22 +266,22 @@ function selected1(elem) {
                 // alert(url);
                 loadPage(url);
 
-            
+
         });
         function loadPage(url){
-           
+
                 $.ajax({
                 url: url,
                 type: 'GET',
                 success: function(data){
-                    
-                    
+
+
                     $('#content').html(data);
 
                 }
             });
-            
-           
+
+
         }
     </script>
 

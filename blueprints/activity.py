@@ -174,7 +174,7 @@ def order_success():
         customer.wallet = customer.wallet - cost
         db.session.add(activity_order)
         db.session.commit()
-        return render_template("booking-success.html", name=request.args.get("name"))
+        return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
         return jsonify({"balance": 400})
 

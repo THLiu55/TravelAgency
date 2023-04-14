@@ -9,7 +9,7 @@ Author URI  : http://www.bootstrapmb.com/item/2664
 
 (function ($) {
     "use strict";
-    
+
     /* ------------------------------------------------------------------------- *
      * COMMON VARIABLES
      * ------------------------------------------------------------------------- */
@@ -18,6 +18,25 @@ Author URI  : http://www.bootstrapmb.com/item/2664
         $body = $('body');
 
     $(function () {
+        var retrieved_events
+        $.ajax({
+              url: '../plan_events',
+              method: 'GET', // 可以是 GET 或 POST
+              dataType: 'json', // 返回的数据类型
+              success: function(data) {
+                // 成功获取数据后的处理
+                console.log(data);
+                retrieved_events = data;
+                // replace events list with retrieved data
+                $calendarApp.fullCalendar('removeEvents');
+                $calendarApp.fullCalendar('addEventSource', retrieved_events);
+              },
+              error: function(xhr, status, error) {
+                // 获取数据失败后的处理
+                console.log("Error: " + error);
+              }
+        });
+
         /* ------------------------------------------------------------------------- *
          * CALENDAR EVENTS
          * ------------------------------------------------------------------------- */
@@ -52,10 +71,10 @@ Author URI  : http://www.bootstrapmb.com/item/2664
 
             $el.addClass('active').siblings().removeClass('active');
         });
-       
+
         $calendarEvents.on('submit', 'form', function (e) {
             e.preventDefault();
-           
+
             var $el = $(this),
                 $input = $el.children('input'),
                 $event = $('<div></div>'),
@@ -78,7 +97,7 @@ Author URI  : http://www.bootstrapmb.com/item/2664
                 .addClass( ' fc-event ' + $colorClass.attr('class') )
                 .text( $input.val() )
                 .appendTo($calendarEventsEl);
-            
+
         });
 
         /* ------------------------------------------------------------------------- *
@@ -102,54 +121,17 @@ Author URI  : http://www.bootstrapmb.com/item/2664
                     }
                 },
                 timeFormat: 'h(:mm)a',
-
-                // 如果要显示events，就直接在这个list里加就可以了，注意日期格式
-                events: [
-                    {
-                        title: 'flight1',
-                        start: '2023-04-1',
-                        end: '2023-04-12',
-                        id:"demo1"
-                    },
-                    {
-                        title: 'some hotel',
-                        start: '2023-04-1',
-                        end: '2023-04-3',
-                        color: '#009378',
-                        id: "demo2"
-                    },
-                    {
-                        title: 'london trip',
-                        start: '2023-04-4',
-                        end: '2023-04-6',
-                        color: '#2bb3c0',
-                        id: "demo3"
-                    },
-                    {
-                        title: 'the big ben',
-                        start: '2023-04-7',
-                        end: '2023-04-8',
-                        color: '#e16123',
-                        id: "demo4"
-                    },
-                    {
-                        title: 'The Cambridge University',
-                        start: '2023-04-9',
-                        end: '2023-04-12',
-                        color: '#ff4040',
-                        id: "demo6"
-                    }
-                ]
+                events: retrieved_events
 
             });
         }
-        //删除事件
-        // $(document).on('click', '.btn_del', function () {
-        //     $calendarApp.fullCalendar('removeEvents');
-        //     //下面是删除某个，加载事件的时候添加id
-        //     //id可以取数据库里的唯一编号
-        //     //$calendarApp.fullCalendar('removeEvents',[id])
-        // });
+        // 删除事件
+        $(document).on('click', '.btn_del', function () {
+            $calendarApp.fullCalendar('removeEvents');
+            //下面是删除某个，加载事件的时候添加id
+            //id可以取数据库里的唯一编号
+            //$calendarApp.fullCalendar('removeEvents',[id])
+        });
     });
  
     

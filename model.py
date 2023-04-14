@@ -77,6 +77,15 @@ class ActivityReview(db.Model):
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
 
+    def serialize(self):
+        return {
+            'reviewed_product': self.product.serialize(),
+            'customer': self.customer.serialize(),
+            'rating': self.rating,
+            'content': self.content,
+            'date': self.issueTime,
+        }
+
 
 class Activity(db.Model):
     __tablename__ = 'activities'
@@ -181,6 +190,15 @@ class TourReview(db.Model):
     content = db.Column(db.Text)
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('tours.id'))
+
+    def serialize(self):
+        return {
+            'reviewed_product': self.product.serialize(),
+            'customer': self.customer.serialize(),
+            'rating': self.rating,
+            'content': self.content,
+            'date': self.issueTime,
+        }
 
 
 class Tour(db.Model):
@@ -332,6 +350,14 @@ class HotelReview(db.Model):
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
 
+    def serialize(self):
+        return {
+            'reviewed_product': self.product.serialize(),
+            'customer': self.customer.serialize(),
+            'rating': self.rating,
+            'content': self.content,
+            'date': self.issueTime,
+        }
 
 class Flight(db.Model):
     __tablename__ = 'flights'
@@ -434,13 +460,15 @@ class OrderObject:
     time = None
 
 
+class PlanObj:
+    title = ''
+    start = None
+    end = None
+    color = ''
+
+
 class WishListObject:
     is_flight = False
     name = ''
     price = ''
     url = ''
-
-
-
-
-

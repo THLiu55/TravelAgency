@@ -1,23 +1,30 @@
-﻿
-<div class="user-profile-wrapper">
-<div class="user-profile-card">
-<h4 class="user-profile-card-title">Profile Info</h4>
-<div class="col-lg-6">
-<div class="profile-info-list">
-<ul>
-<li>Nickname: <span>{{ customer.nickname }}</span></li>
-<li>Email: <span>{{ customer.email }}</span></li>
-<li>Phone: <span>{{ customer.phone_number }}</span></li>
-<li>Address: <span>{{ customer.address }}</span></li>
-<li>Join Date: <span>{{ customer.join_date }}</span></li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+﻿<div class="user-profile-wrapper">
+    <div class="user-profile-card">
+        <h4 class="user-profile-card-title">Profile Info</h4>
+        <div class="col-lg-6">
+            <div class="profile-info-list">
+                <ul>
+                    <li>Nickname: <span>{{ customer.nickname }}</span></li>
+                    <li>Email: <span>{{ customer.email }}</span></li>
+                    <li>Phone: <span>{{ customer.phone_number }}</span></li>
+                    <li>Address: <span>{{ customer.address }}</span></li>
+                    <li>Join Date: <span>{{ customer.join_date }}</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
-</main>
+{% block body %}
+    <!-- Calendar Start -->
+    <div id="calendarApp" class="calendar--app"></div>
+    <!-- Calendar End -->
+{% endblock %}
+
+{% block jsLink %}
+{#  calendar js  #}
+    <script src="{{ url_for('static', filename='css/calendar/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/fullcalendar.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/page/calendar.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/locale-all.js') }}"></script>
+{% endblock %}
