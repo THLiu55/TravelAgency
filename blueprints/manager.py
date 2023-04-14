@@ -38,13 +38,12 @@ def manager_homepage():
     num_orders += FlightOrder.query.count()
 
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=14)
-
-    print(end_date, start_date)
+    start_date = end_date - timedelta(days=7)
+    prev_date = start_date - timedelta(days=7)
 
     results = []
     profit_split = [0, 0, 0, 0]  # activity, tour, hotel, flight
-    for order, i in zip([ActivityOrder, HotelOrder, TourOrder, FlightOrder], [0, 1, 2, 3]):
+    for order, i in zip([ActivityOrder, HotelOrder, TourOrder, FlightOrder], range(4)):
         tmp = db.session.query(
             func.date(order.startTime),
             func.sum(order.cost)
@@ -58,7 +57,20 @@ def manager_homepage():
         profit_split[i] = sum([item[1] for item in tmp])
         results += tmp
 
-    print(profit_split)
+    for order in [ActivityOrder, HotelOrder, TourOrder, FlightOrder]:
+        results += db.session.query(
+            func.date(order.startTime),
+            func.sum(order.cost)
+        ).filter(
+            order.startTime <= end_date,
+            order.startTime >= start_date,
+            order.purchased == 1
+        ).group_by(
+            func.date(order.startTime)
+        ).all()
+
+    sum_profit = sum(profit_split)
+    percent = [25, 25, 25, 25] if sum_profit == 0 else [i / sum_profit for i in profit_split]
     costs_dict = {}
     for i in range(14):
         date = end_date - timedelta(days=i)
@@ -71,8 +83,9 @@ def manager_homepage():
             costs_dict[date.date()] = 0
 
     ordered_values = [[costs_dict[k] for k in sorted(costs_dict.keys())][0:7], [costs_dict[k] for k in sorted(costs_dict.keys())][7:]]
+    print(percent)
 
-    data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[1]), "profit_prev": sum(ordered_values[0]), "profit_split": profit_split}
+    data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[1]), "profit_prev": sum(ordered_values[0]), "profit_split": profit_split, "percent":percent}
     return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers, data=data)
 
 
