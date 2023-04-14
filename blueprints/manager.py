@@ -1,5 +1,4 @@
 import json
-from datetime import datetime
 import requests as req
 from sqlalchemy import func
 from datetime import datetime, timedelta
@@ -38,21 +37,42 @@ def manager_homepage():
     num_orders += TourOrder.query.count()
     num_orders += FlightOrder.query.count()
 
-    end_date = datetime.utcnow().date()
+    end_date = datetime.now()
     start_date = end_date - timedelta(days=14)
 
-    profits = db.session.query(
-        func.sum(ActivityOrder.cost).label('total_profit')
-    ).filter(
-        ActivityOrder.startTime >= start_date,
-        ActivityOrder.startTime < end_date,
-        ActivityOrder.purchased == True
-    ).group_by(func.date(ActivityOrder.startTime)).all()
+    print(end_date, start_date)
 
-    profit_list_2d = [[profit[0] for profit in profits[0:7]], [profit[0] for profit in profits[7:]]]
+    results = []
+    profit_split = [0, 0, 0, 0]  # activity, tour, hotel, flight
+    for order, i in zip([ActivityOrder, HotelOrder, TourOrder, FlightOrder], [0, 1, 2, 3]):
+        tmp = db.session.query(
+            func.date(order.startTime),
+            func.sum(order.cost)
+        ).filter(
+            order.startTime <= end_date,
+            order.startTime >= start_date,
+            order.purchased == 1
+        ).group_by(
+            func.date(order.startTime)
+        ).all()
+        profit_split[i] = sum([item[1] for item in tmp])
+        results += tmp
 
-    data = {"profit_list": profit_list_2d, "profit_this": sum(profit_list_2d[0]), "profit_prev": sum(profit_list_2d[1])}
+    print(profit_split)
+    costs_dict = {}
+    for i in range(14):
+        date = end_date - timedelta(days=i)
+        flag = True
+        for result in results:
+            if str(result[0]) == str(date.date()):
+                costs_dict[date.date()] = result[1] if date.date() not in costs_dict else costs_dict[date.date()] + result[1]
+                flag = False
+        if flag:
+            costs_dict[date.date()] = 0
 
+    ordered_values = [[costs_dict[k] for k in sorted(costs_dict.keys())][0:7], [costs_dict[k] for k in sorted(costs_dict.keys())][7:]]
+
+    data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[1]), "profit_prev": sum(ordered_values[0]), "profit_split": profit_split}
     return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers, data=data)
 
 
