@@ -194,30 +194,36 @@ def plan_events():
     activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     plan_list = []
     for hotel_i in hotel_orders:
+        plan_object = PlanObj()
+        plan_object.title = Hotel.query.get(hotel_i.productID).name
         if hotel_i.startTime > datetime.now():
-            plan_object = PlanObj()
-            plan_object.title = Hotel.query.get(hotel_i.productID).name
             plan_object.color = '#00671'
-            plan_object.start = hotel_i.startTime
-            plan_object.end = hotel_i.checkOutTime
-            plan_list.append(plan_object)
+        else:
+            plan_object.color = '#000000'
+        plan_object.start = hotel_i.startTime
+        plan_object.end = hotel_i.checkOutTime
+        plan_list.append(plan_object)
     for tour_i in tour_orders:
+        tour_obj = Tour.query.get(tour_i.productID)
+        plan_object = PlanObj()
+        plan_object.title = Tour.query.get(tour_i.productID).name
         if tour_i.endTime > datetime.now():
-            tour_obj = Tour.query.get(tour_i.productID)
-            plan_object = PlanObj()
-            plan_object.title = Tour.query.get(tour_i.productID).name
             plan_object.color = '#009378'
-            plan_object.start = tour_i.endTime
-            plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
-            plan_list.append(plan_object)
+        else:
+            plan_object.color = '#000000'
+        plan_object.start = tour_i.endTime
+        plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
+        plan_list.append(plan_object)
     for activity_i in activity_orders:
+        plan_object = PlanObj()
+        plan_object.title = Activity.query.get(activity_i.productID).name
         if activity_i.endTime > datetime.now():
-            plan_object = PlanObj()
-            plan_object.title = Activity.query.get(activity_i.productID).name
             plan_object.color = '#2bb3c0'  # #e16123
-            plan_object.start = activity_i.endTime
-            plan_object.end = activity_i.endTime
-            plan_list.append(plan_object)
+        else:
+            plan_object.color = '#000000'
+        plan_object.start = activity_i.endTime
+        plan_object.end = activity_i.endTime
+        plan_list.append(plan_object)
     plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
     json_data = json.dumps(plan_dict_list)
 
