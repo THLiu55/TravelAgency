@@ -74,7 +74,7 @@
         <div class="main-navigation">
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
-                    <a class="navbar-brand" href="manager.html">
+                    <a class="navbar-brand">
                         <!-- <img src="../static/img/logo.png" class="logo-display" alt="logo"> -->
                         <img src="{{ url_for('static',filename="image/logo.png") }}" class="logo-scrolled" alt="logo" style="width:200px;">
                     </a>
@@ -88,7 +88,7 @@
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link active" href="{{ url_for('customer.homepage') }}">Home</a>
+                                <a class="nav-link" href="{{ url_for('customer.homepage') }}">Home</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#">Flight</a>
@@ -119,7 +119,7 @@
                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 
                             {% if logged %}
-                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.profile') }}">Profile</a>
+                                <li class="nav-item"><a class="nav-link active" href="{{ url_for('customer.profile') }}">Profile</a>
                                 </li>
                             {% else %}
                                 <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.re_jump') }}">Sign
@@ -168,15 +168,15 @@
     </div>
     <nav>
     <ul class="user-profile-sidebar-list">
-         <li id="profile-menu"><a href="{{ url_for('customer.booking') }}" onclick="selected1(this)"><i class="far fa-shopping-bag"></i> My Booking</a></li>
-    <li id="profile-menu"><a href="{{ url_for('customer.profilepage') }}" onclick="selected1(this)"><i class="far fa-user"></i> My Profile</a></li>
+         <li id="profile-menu"><a href="{{ url_for('customer.booking') }}" onclick="selected1(this)"><i class="far fa-shopping-bag"></i> <span> My Booking</span></a></li>
+    <li id="profile-menu"><a href="{{ url_for('customer.profilepage') }}" onclick="selected1(this)"><i class="far fa-user"></i> <span>My Profile</span></a></li>
 
-    <li id="profile-menu"><a href="{{ url_for('customer.wishlist') }}" onclick="selected1(this)"><i class="far fa-heart"></i> My Wishlist</a></li>
+    <li id="profile-menu"><a href="{{ url_for('customer.wishlist') }}" onclick="selected1(this)"><i class="far fa-heart"></i> <span>My Wishlist</span></a></li>
     <li id="profile-menu"><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge">02</span></a></li>
-    <li id="profile-menu"><a href="{{ url_for('customer.wallet') }}" onclick="selected1(this)"><i class="far fa-wallet"></i> My Wallet</a></li>
+    <li id="profile-menu"><a href="{{ url_for('customer.wallet') }}" onclick="selected1(this)"><i class="far fa-wallet"></i><span> My Wallet</span></a></li>
     <!-- <li><a href="profile-notification.html"><i class="far fa-bell"></i> Notifications <span class="badge">05</span></a></li> -->
-    <li id="profile-menu"><a href="{{ url_for('customer.setting') }}" onclick="selected1(this)"><i class="far fa-cog"></i> Settings</a></li>
-    <li><a href="{{ url_for('customer.logout') }}" onclick="selected1(this)"><i class="far fa-sign-out"></i> Logout</a></li>
+    <li id="profile-menu"><a href="{{ url_for('customer.setting') }}" onclick="selected1(this)"><i class="far fa-cog"></i> <span>Settings</span></a></li>
+    <li><a href="{{ url_for('customer.logout') }}" onclick="selected1(this)"><i class="far fa-sign-out"></i> <span>Logout</span></a></li>
     </ul>
     </nav>
     </div>

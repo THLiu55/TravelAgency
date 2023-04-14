@@ -199,7 +199,7 @@ def plan_events():
         if hotel_i.startTime > datetime.now():
             plan_object.color = '#00671'
         else:
-            plan_object.color = '#000000'
+            plan_object.color = '#ea5050'
         plan_object.start = hotel_i.startTime
         plan_object.end = hotel_i.checkOutTime
         plan_list.append(plan_object)
@@ -210,7 +210,7 @@ def plan_events():
         if tour_i.endTime > datetime.now():
             plan_object.color = '#009378'
         else:
-            plan_object.color = '#000000'
+            plan_object.color = '#ea5050'
         plan_object.start = tour_i.endTime
         plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
         plan_list.append(plan_object)
@@ -220,7 +220,7 @@ def plan_events():
         if activity_i.endTime > datetime.now():
             plan_object.color = '#2bb3c0'  # #e16123
         else:
-            plan_object.color = '#000000'
+            plan_object.color = '#ea5050'
         plan_object.start = activity_i.endTime
         plan_object.end = activity_i.endTime
         plan_list.append(plan_object)

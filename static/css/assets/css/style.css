@@ -644,7 +644,7 @@ theme button
   content: "";
   height: 400px;
   width: 400px;
-  background: #F96768;
+  background: #82b6e4;
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -2380,7 +2380,7 @@ hotel css
   width: 35px;
   height: 35px;
   line-height: 35px;
-  background: #7167FF;
+  background: #0b36a1;
   color: #fff;
   border-radius: 50px;
   text-align: center;
@@ -2390,7 +2390,7 @@ hotel css
 }
 
 .hotel-img .add-wishlist:hover{
-  background: #F96768;
+  background: #6eb1e4;
   color: #fff;
 }
 
@@ -2414,7 +2414,7 @@ hotel css
 }
 
 .hotel-rate-type{
-  color: #7167FF;
+  color: #113e93;
   font-weight: 500;
   margin: 0 5px;
 }
@@ -3645,7 +3645,7 @@ listing single css
 }
 
 .listing-rate-type{
-  color: #7167FF;
+  color: #0d3d8a;
   font-weight: 500;
 }
 
@@ -3669,11 +3669,11 @@ listing single css
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: rgba(113, 103, 255, .2);
+  background: rgba(136, 169, 234, 0.2);
   border-radius: 12px;
   font-size: 18px;
   text-align: center;
-  color: #7167FF;
+  color: #547cf1;
 }
 
 .listing-feature-content span{
@@ -4017,7 +4017,7 @@ listing single css
 .listing-rating-count h2{
   font-weight: 700;
   font-size: 50px;
-  color: #7167FF;
+  color: #0f3284;
 }
 
 .listing-rating-star i{
@@ -4056,7 +4056,7 @@ listing single css
   left: 0;
   height: 5px;
   border-radius: 5px;
-  background: #7167FF;
+  background: #092e9c;
 }
 
 .listing-review{
@@ -4299,7 +4299,7 @@ listing single css
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: 2px;
-  color: #7167FF;
+  color: #0c2b92;
 }
 
 .listing-price-amount{
@@ -4331,17 +4331,18 @@ listing single css
 }
 
 .listing-side-btn .border-btn{
-  border: 2px solid #7167FF;
+  border: 2px solid #ededf1;
   margin-top: 25px;
   text-align: center;
   font-weight: 500;
   padding: 9px 20px;
   border-radius: 12px;
+  color: white;
 }
 
 .listing-side-btn .border-btn:hover{
   background: #7167FF;
-  color: #fff;
+  color: rgb(241, 161, 161);
 }
 
 .listing-side-share{
@@ -4364,7 +4365,7 @@ listing single css
   width: 30px;
   height: 30px;
   line-height: 30px;
-  background: #7167FF;
+  background: #236ed6;
   color: #fff;
   font-size: 14px;
   margin-right: 10px;
@@ -8109,6 +8110,9 @@ user profile css
   background: #0e71c8;
   color: #fff !important;
   border-radius: 8px;
+}
+.user-profile-sidebar-list .active span{
+  color: #fff;
 }
 
 .user-profile-sidebar-list li .badge{
