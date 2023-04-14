@@ -2,6 +2,7 @@ import json
 from datetime import datetime
 import requests as req
 from sqlalchemy import func
+from datetime import datetime, timedelta
 
 from flask import (
     Blueprint,
@@ -27,15 +28,32 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 def manager_homepage():
     db.create_all()
     total_views, num_customers, num_orders = 0, 0, 0
-    total_views += db.session.query(func.sum(Activity.view_num)).scalar()
-    total_views += db.session.query(func.sum(Tour.view_num)).scalar()
-    total_views += db.session.query(func.sum(Hotel.view_num)).scalar()
+    total_views += db.session.query(func.coalesce(func.sum(Activity.view_num), 0)).scalar()
+    total_views += db.session.query(func.coalesce(func.sum(Tour.view_num), 0)).scalar()
+    total_views += db.session.query(func.coalesce(func.sum(Hotel.view_num), 0)).scalar()
+    total_views += db.session.query(func.coalesce(func.sum(Flight.view_num), 0)).scalar()
     num_customers += Customer.query.count()
     num_orders += ActivityOrder.query.count()
     num_orders += HotelOrder.query.count()
     num_orders += TourOrder.query.count()
     num_orders += FlightOrder.query.count()
-    return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers)
+
+    end_date = datetime.utcnow().date()
+    start_date = end_date - timedelta(days=14)
+
+    profits = db.session.query(
+        func.sum(ActivityOrder.cost).label('total_profit')
+    ).filter(
+        ActivityOrder.startTime >= start_date,
+        ActivityOrder.startTime < end_date,
+        ActivityOrder.purchased == True
+    ).group_by(func.date(ActivityOrder.startTime)).all()
+
+    profit_list_2d = [[profit[0] for profit in profits[0:7]], [profit[0] for profit in profits[7:]]]
+
+    data = {"profit_list": profit_list_2d, "profit_this": sum(profit_list_2d[0]), "profit_prev": sum(profit_list_2d[1])}
+
+    return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers, data=data)
 
 
 @bp.route("/logout")
@@ -547,10 +565,19 @@ def total_orders():
     return render_template("orders.html")
 
 
-@bp.route("/load_graph")
+@bp.route("/load_graph", methods=["POST"])
 @staff_login_required
 def load_graph():
-    return
+    today = datetime.today()
+    start_date = today - timedelta(days=6)
+    date_strings = []
+    while start_date <= today:
+        date_strings.append(start_date.strftime('%d %b'))
+        start_date += timedelta(days=1)
+
+    graph_data = {'x_axis': date_strings}
+    return jsonify({"code": 200, "data": graph_data});
+
 
 
 @bp.route("/load_orders", methods=["POST", "GET"])
