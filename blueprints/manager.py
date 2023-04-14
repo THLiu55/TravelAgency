@@ -38,23 +38,34 @@ def manager_homepage():
     num_orders += TourOrder.query.count()
     num_orders += FlightOrder.query.count()
 
-    end_date = datetime.utcnow().date()
-    start_date = end_date - timedelta(days=14)
+    start_date = datetime.now()
+    end_date = start_date - timedelta(days=14)
 
-    profits = db.session.query(
-        func.sum(ActivityOrder.cost).label('total_profit')
+    results = db.session.query(
+        func.date(ActivityOrder.endTime),
+        func.sum(ActivityOrder.cost)
     ).filter(
-        ActivityOrder.startTime >= start_date,
-        ActivityOrder.startTime < end_date,
-        ActivityOrder.purchased == True
-    ).group_by(func.date(ActivityOrder.startTime)).all()
+        ActivityOrder.endTime >= end_date,
+        ActivityOrder.endTime <= start_date
+    ).group_by(
+        func.date(ActivityOrder.endTime)
+    ).all()
 
-    profit_list_2d = [[profit[0] for profit in profits[0:7]], [profit[0] for profit in profits[7:]]]
+    costs_dict = {}
+    for i in range(14):
+        date = start_date - timedelta(days=i)
+        for result in results:
+            if result[0] == date.date():
+                costs_dict[date.date()] = result[1]
+                break
+        else:
+            costs_dict[date.date()] = 0
 
-    data = {"profit_list": profit_list_2d, "profit_this": sum(profit_list_2d[0]), "profit_prev": sum(profit_list_2d[1])}
+    ordered_values = [[costs_dict[k] for k in sorted(costs_dict.keys())][0:7], [costs_dict[k] for k in sorted(costs_dict.keys())][7:]]
+    print(ordered_values)
 
+    data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[0]), "profit_prev": sum(ordered_values[1])}
     return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers, data=data)
-
 
 @bp.route("/logout")
 def logout():
