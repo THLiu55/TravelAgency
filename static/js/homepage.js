@@ -62,8 +62,8 @@ $(function(){
       
   
       
-      console.log('current '+current);
-      console.log('prev '+prev);
+      // console.log('current '+current);
+      // console.log('prev '+prev);
     }
   }
   );
@@ -79,7 +79,7 @@ $(function(){
   });
 
   closeBtn.forEach(function (element, index) {
-     console.log(element);
+    //  console.log(element);
       element.addEventListener('click',function (e) {
           e.preventDefault();
           card.classList.remove('active');
