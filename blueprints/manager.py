@@ -576,7 +576,7 @@ def load_graph():
         start_date += timedelta(days=1)
 
     graph_data = {'x_axis': date_strings}
-    return jsonify({"code": 200, "data": graph_data});
+    return jsonify({"code": 200, "data": graph_data})
 
 
 

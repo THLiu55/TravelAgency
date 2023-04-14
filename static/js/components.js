@@ -1,27 +1,24 @@
 const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var revenue_xaxis
+(function ($) {
 
-// (function ($) {
-//
-//     $(function () {
-//         $.ajax({
-//               url: '../plan_events',
-//               method: 'GET', // 可以是 GET 或 POST
-//               dataType: 'json', // 返回的数据类型
-//               success: function(data) {
-//                 // 成功获取数据后的处理
-//                 console.log(data);
-//                 retrieved_events = data;
-//                 // replace events list with retrieved data
-//                 $calendarApp.fullCalendar('removeEvents');
-//                 $calendarApp.fullCalendar('addEventSource', retrieved_events);
-//               },
-//               error: function(xhr, status, error) {
-//                 // 获取数据失败后的处理
-//                 console.log("Error: " + error);
-//               }
-//         })
-//     });
-// } (jQuery))
+    $(function () {
+        $.ajax({
+              url: '/manager/load_graph',
+              method: 'POST', // 可以是 GET 或 POST
+              dataType: 'json', // 返回的数据类型
+              success: function(data) {
+                // 成功获取数据后的处理
+                console.log(data);
+                revenue_xaxis = data.data.x_axis;
+              },
+              error: function(xhr, status, error) {
+                // 获取数据失败后的处理
+                console.log("Error: " + error);
+              }
+        })
+    });
+} (jQuery))
 
 function CalendarInline(id) {
     this.calendar = document.querySelector(id);
@@ -470,7 +467,7 @@ function chart() {
             show: false
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan'],
+            categories: revenue_xaxis,
             tooltip: false,
             labels: {
                 offsetY: 5,
@@ -641,7 +638,6 @@ function chart() {
             }
         ],
         series: [
-
             {
                 name: 'Comment',
                 type: 'bar',
