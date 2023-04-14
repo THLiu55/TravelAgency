@@ -1,5 +1,28 @@
 const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+// (function ($) {
+//
+//     $(function () {
+//         $.ajax({
+//               url: '../plan_events',
+//               method: 'GET', // 可以是 GET 或 POST
+//               dataType: 'json', // 返回的数据类型
+//               success: function(data) {
+//                 // 成功获取数据后的处理
+//                 console.log(data);
+//                 retrieved_events = data;
+//                 // replace events list with retrieved data
+//                 $calendarApp.fullCalendar('removeEvents');
+//                 $calendarApp.fullCalendar('addEventSource', retrieved_events);
+//               },
+//               error: function(xhr, status, error) {
+//                 // 获取数据失败后的处理
+//                 console.log("Error: " + error);
+//               }
+//         })
+//     });
+// } (jQuery))
+
 function CalendarInline(id) {
     this.calendar = document.querySelector(id);
     this.widget = document.querySelector(`[data-calendar="${id}"]`);
@@ -618,15 +641,7 @@ function chart() {
             }
         ],
         series: [
-            {
-                name: 'Views',
-                type: 'bar',
-                barGap: 0,
-                data: dataSeries('#activityChart')[1],
-                itemStyle: {
-                    borderRadius: [5, 5, 0, 0]
-                }
-            },
+
             {
                 name: 'Comment',
                 type: 'bar',
