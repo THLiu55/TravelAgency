@@ -29,22 +29,24 @@ def manager_homepage():
     today = datetime.now().date()
     one_day_ago = today - timedelta(days=1)
 
-    today_reviews = (db.session.query(func.count()).filter(ActivityReview.issueTime >= today, ActivityReview.issueTime < today + timedelta(days=1)).scalar() or 0)
-    today_reviews += (db.session.query(func.count()).filter(TourReview.issueTime >= today, TourReview.issueTime < today + timedelta(days=1)).scalar() or 0)
-    today_reviews += (db.session.query(func.count()).filter(HotelReview.issueTime >= today, HotelReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+    today_reviews = (db.session.query(func.count(ActivityReview.id)).filter(ActivityReview.issueTime >= today, ActivityReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+    today_reviews += (db.session.query(func.count(TourReview.id)).filter(TourReview.issueTime >= today, TourReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+    today_reviews += (db.session.query(func.count(HotelReview.id)).filter(HotelReview.issueTime >= today, HotelReview.issueTime < today + timedelta(days=1)).scalar() or 0)
 
     today_customers = (db.session.query(func.count()).filter(Customer.join_date >= today, Customer.join_date < today + timedelta(days=1)).scalar() or 0)
 
-    today_orders = (db.session.query(func.count()).filter(ActivityOrder.startTime >= today, ActivityOrder.startTime < today + timedelta(days=1)).scalar() or 0)
-    today_orders += (db.session.query(func.count()).filter(TourOrder.startTime >= today, TourOrder.startTime < today + timedelta(days=1)).scalar() or 0)
-    today_orders += (db.session.query(func.count()).filter(HotelOrder.startTime >= today, HotelOrder.startTime < today + timedelta(days=1)).scalar() or 0)
-    today_orders += (db.session.query(func.count()).filter(FlightOrder.startTime >= today, FlightOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders = (db.session.query(func.count(ActivityOrder.id)).filter(ActivityOrder.startTime >= today, ActivityOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders += (db.session.query(func.count(TourOrder.id)).filter(TourOrder.startTime >= today, TourOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders += (db.session.query(func.count(HotelOrder.id)).filter(HotelOrder.endTime >= today, HotelOrder.endTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders += (db.session.query(func.count(FlightOrder.id)).filter(FlightOrder.startTime >= today, FlightOrder.startTime < today + timedelta(days=1)).scalar() or 0)
 
     total_reviews = (db.session.query(func.coalesce(func.sum(Activity.review_num), 0) + func.coalesce(func.sum(Tour.review_num), 0) + func.coalesce(func.sum(Hotel.review_num), 0)).scalar() or 0)
 
-    total_orders = (db.session.query(func.coalesce(func.sum(ActivityOrder.cost), 0) + func.coalesce(func.sum(TourOrder.cost), 0) + func.coalesce(func.sum(HotelOrder.cost), 0) + func.coalesce(func.sum(FlightOrder.cost), 0)).scalar() or 0)
+    total_orders = (db.session.query(func.count(TourOrder.id)).scalar() or 0) + (db.session.query(func.count(HotelOrder.id)).scalar() or 0) + (db.session.query(func.count(ActivityOrder.id)).scalar() or 0) + (db.session.query(func.count(FlightOrder.id)).scalar() or 0)
 
     num_customers = (db.session.query(func.count(Customer.id)).scalar() or 0)
+
+    print(today_orders)
 
     def get_percent(a, b):
         return 0 if b == 0 else int(100 * (a / b))
