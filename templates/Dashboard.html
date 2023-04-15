@@ -396,10 +396,9 @@
                                         <div class="widget__left">
                                             <h3 class="widget__title">Comments</h3>
                                             <div class="widget__status-title text-grey"> Comments Today</div>
-                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.reviews_today }}</span><span class="trade-icon trade-icon--up">
+                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.reviews_today }}</span>
                                             </div>
-                                            <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
-                                            </div>
+
                                         </div>
                                         <div class="widget__chart">
                                             <div class="widget__chart-inner">
@@ -420,10 +419,9 @@
                                         <div class="widget__left">
                                             <h3 class="widget__title">Bookings</h3>
                                             <div class="widget__status-title text-grey"> Bookings Today</div>
-                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.order_today }}</span><span class="trade-icon trade-icon--down">
+                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.order_today }}</span>
                                             </div>
-                                            <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
-                                            </div>
+
                                         </div>
                                         <div class="widget__chart">
                                             <div class="widget__chart-inner">
@@ -444,9 +442,7 @@
                                         <div class="widget__left">
                                             <h3 class="widget__title">Sign-Ups</h3>
                                             <div class="widget__status-title text-grey"> Sign-Ups Today</div>
-                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.customer_today }}</span><span class="trade-icon trade-icon--up">
-                                            </div>
-                                            <div class="widget__details"><a class="link-under text-grey" href="#">Detail</a>
+                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.customer_today }}</span>
                                             </div>
                                         </div>
                                         <div class="widget__chart">
@@ -476,69 +472,8 @@
                                             <div class="card__header-left">
                                                 <h3 class="card__header-title">Revenue</h3>
                                             </div>
-                                            <div class="card__tools">
-                                                <div class="card__tools-row row row--xs gutter-bottom-xs">
-                                                    <div class="card__tools-calendar col-auto">
-                                                        <div class="input-group input-group--prepend input-group--append">
-                                                            <div class="input-group__prepend">
-                                                                <svg class="icon-icon-calendar">
-                                                                    <use xlink:href="#icon-calendar"></use>
-                                                                </svg>
-                                                            </div>
-                                                            <input class="input input--select" type="text" value="01.12.18 / 07.12.18" readonly="readonly" /><span class="input-group__arrow">
-                                  <svg class="icon-icon-keyboard-down">
-                                    <use xlink:href="#icon-keyboard-down"></use>
-                                  </svg></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card__tools-week col">
-                                                        <div class="input-group input-group--append">
-                                                            <input class="input input--select" type="text" value="Week" data-toggle="dropdown" readonly="readonly" /><span class="input-group__arrow">
-                                  <svg class="icon-icon-keyboard-down">
-                                    <use xlink:href="#icon-keyboard-down"></use>
-                                  </svg></span>
-                                                            <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="Week">Week</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Month">Month</a><a class="dropdown-menu__item"
-                                                                href="#" tabindex="0" data-value="Quarter">Quarter</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="Year">Year</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="All Time">All Time</a>
-                                                                <a
-                                                                class="dropdown-menu__item" href="#" tabindex="0" data-value="Custom">Custom</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card__tools-more">
-                                                <button class="items-more__button">
-                                                    <svg class="icon-icon-more">
-                                                        <use xlink:href="#icon-more"></use>
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-items">
-                                                    <div class="dropdown-items__container">
-                                                        <ul class="dropdown-items__list">
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-refresh">
-                                        <use xlink:href="#icon-refresh"></use>
-                                      </svg></span>Refresh</a>
-                                                            </li>
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-settings">
-                                        <use xlink:href="#icon-settings"></use>
-                                      </svg></span>Settings</a>
-                                                            </li>
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-download">
-                                        <use xlink:href="#icon-download"></use>
-                                      </svg></span>Download</a>
-                                                            </li>
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-action">
-                                        <use xlink:href="#icon-action"></use>
-                                      </svg></span>Action</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+
+
                                         </div>
                                         <div class="card__body">
                                             <div class="card__widgets">
@@ -572,39 +507,6 @@
                                         <div class="card__header mb-0">
                                             <div class="card__header-left">
                                                 <h3 class="card__header-title">Profit</h3>
-                                            </div>
-                                            <div class="card__tools-more">
-                                                <button class="items-more__button">
-                                                    <svg class="icon-icon-more">
-                                                        <use xlink:href="#icon-more"></use>
-                                                    </svg>
-                                                </button>
-                                                <div class="dropdown-items">
-                                                    <div class="dropdown-items__container">
-                                                        <ul class="dropdown-items__list">
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-refresh">
-                                        <use xlink:href="#icon-refresh"></use>
-                                      </svg></span>Refresh</a>
-                                                            </li>
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-settings">
-                                        <use xlink:href="#icon-settings"></use>
-                                      </svg></span>Settings</a>
-                                                            </li>
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-download">
-                                        <use xlink:href="#icon-download"></use>
-                                      </svg></span>Download</a>
-                                                            </li>
-                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                      <svg class="icon-icon-action">
-                                        <use xlink:href="#icon-action"></use>
-                                      </svg></span>Action</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="card__body">
