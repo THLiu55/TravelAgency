@@ -395,16 +395,6 @@
                         <div class="breadcrumbs">
                             <div class="breadcrumbs__container">
                                 <ol class="breadcrumbs__list">
-                                    <li class="breadcrumbs__item">
-                                        <a class="breadcrumbs__link" href="{{ url_for('manager.order_details')}}>
-                                            <svg class="icon-icon-home breadcrumbs__icon">
-                                                <use xlink:href="#icon-home"></use>
-                                            </svg>
-                                            <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
-                                                <use xlink:href="#icon-keyboard-right"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
                                     <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Travel-Booking</span>
                         <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                           <use xlink:href="#icon-keyboard-right"></use>
@@ -439,6 +429,7 @@
                     </div>
                 </div>
                 <div class="card card-order order-invoice">
+                    <form action="{{ url_for('manager.hotel_invoice') }}" method="POST" enctype="multipart/form-data">
                     <div class="card__wrapper">
                         <div class="card__container">
                             <div class="card__header">
@@ -584,6 +575,7 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </main>

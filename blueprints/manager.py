@@ -581,10 +581,26 @@ def wish_list():
 def chat():
     return render_template("chat.html")
 
-@bp.route("/order_details")
+# previous order_details
+@bp.route("/activity_invoice")
 @staff_login_required
-def order_details():
-    return render_template("orderInvoice.html")
+def activity_invoice():
+    return render_template("orderInvoiceActivity.html")
+
+@bp.route("/hotel_invoice")
+@staff_login_required
+def hotel_invoice():
+    return render_template("orderInvoiceHotel.html")
+
+@bp.route("/tour_invoice")
+@staff_login_required
+def tour_invoice():
+    return render_template("orderInvoiceTour.html")
+
+@bp.route("/flight_invoice")
+@staff_login_required
+def flight_invoice():
+    return render_template("orderInvoiceFlight.html")
 
 
 @bp.route("/order_history")
