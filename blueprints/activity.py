@@ -93,7 +93,7 @@ def activityDetail(activity_id):
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])
-def activity_filter():
+def activity_filter():  # ajax activity filter
     activity_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
     if activity_type[0] == '':
