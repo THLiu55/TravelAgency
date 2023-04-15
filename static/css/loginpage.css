@@ -393,7 +393,30 @@ h2 {
 .sign-link {
     font-size: 14px;
     text-align: center;
+}
+
+#signup-platform{
     margin: 1.5rem 0;
+}
+
+#signup-platform p a{
+    color: #e91e63;
+}
+
+#home-platform{
+    margin: 1.5rem 0;
+}
+
+#home-platform p a{
+    color: #e91e63;
+}
+
+#staff-platform{
+    margin: 4.5rem 0 0 0;
+}
+
+#staff-platform p a{
+    color: #6e5b6e;
 }
 
 .sign-link p {
@@ -401,7 +424,7 @@ h2 {
 }
 
 .sign-link p a {
-    color: #e91e63;
+
     text-decoration: none;
     font-weight: 600;
 }
