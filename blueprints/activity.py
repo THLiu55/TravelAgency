@@ -113,7 +113,7 @@ def activity_filter():  # ajax activity filter
         max_hour = int(activity_duration[-1])
         query = Activity.query.filter(Activity.category.in_(activity_type),
                                       Activity.price.between(min_price, max_price),
-                                      Activity.duration.between(min_hour, max_hour)
+                                      Activity.visitHour.between(min_hour, max_hour)
                                       )
 
     page = int(request.form.get('page'))
