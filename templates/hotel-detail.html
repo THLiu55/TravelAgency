@@ -573,11 +573,11 @@
                                                         <a href="{{ url_for('hotel.remove_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:red"><i class="far fa-heart"></i> Remove From
                                                         Wishlist</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
                                                         Wishlist</a>
                                                     {% endif %}
                                                 {% else %}
-                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
                                                         Wishlist</a>
                                                 {% endif %}
                                                 </div>
