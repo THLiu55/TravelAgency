@@ -105,7 +105,7 @@ def manager_homepage():
     ordered_values = [[costs_dict[k] for k in sorted(costs_dict.keys())][0:7], [costs_dict[k] for k in sorted(costs_dict.keys())][7:]]
     print(ordered_values)
     data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[1]), "profit_prev": sum(ordered_values[0]), "profit_split": profit_split, "percent":percent}
-    return render_template(upper_data=upper_data, data=data)
+    return render_template("Dashboard.html", upper_data=upper_data, data=data)
 
 
 @bp.route("/logout")
