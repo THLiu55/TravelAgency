@@ -46,8 +46,15 @@ def manager_homepage():
 
     num_customers = (db.session.query(func.count(Customer.id)).scalar() or 0)
 
-    upper_data = {'order_today': today_orders, 'customer_today': today_customers, 'reviews_today': today_reviews,
-                  'order_total': total_orders, 'customer_total': num_customers, 'reviews_total': total_reviews}
+    def get_percent(a, b):
+        return int(100 * (a / b))
+
+    upper_data = {'order_today': today_orders,
+                  'customer_today': today_customers,
+                  'reviews_today': today_reviews,
+                  'order_percent': get_percent(today_orders, total_orders),
+                  'customer_percent': get_percent(today_customers, num_customers),
+                  'reviews_percent': get_percent(today_reviews, total_reviews)}
 
     end_date = datetime.now()
     start_date = end_date - timedelta(days=7)
