@@ -9551,7 +9551,7 @@ span.flatpickr-weekday {
 }
 
 .card-order__product .colgroup-1 {
-  width: 40%;
+  width: 30%;
 }
 
 .card-order__product .colgroup-2 {
@@ -9647,7 +9647,8 @@ span.flatpickr-weekday {
 
 .order-invoice .table__header > tr th {
   vertical-align: top;
-  padding-top: 0;
+  padding-top: 5px;
+  color:#0c2b92;
 }
 
 .order-status {

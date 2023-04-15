@@ -388,7 +388,7 @@
         <main class="page-content page-content--order-header">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Invoice <span class="text-grey">#10</span></h1>
+                    <h1 class="page-header__title">Invoice <span class="text-grey">#order number</span></h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -444,15 +444,15 @@
                             <div class="card__header">
                                 <div class="row gutter-bottom-xs justify-content-between flex-grow-1">
                                     <div class="col">
-                                        <h2 class="order-invoice__title"><b class="text-uppercase">Invoice</b> <br> #790841</h2>
+                                        <h2 class="order-invoice__title"><b class="text-uppercase">Invoice</b> <br> #order number</h2>
                                         <div class="order-invoice__address"><span class="text-grey-dark">Group7</span>
                                             <br>Beijing University of Technology
-                                            <br> <a href="#">+1 (070) 123-4567</a> 
+                                            <br> <a href="#">+1 (070) 123-4567</a>
                                             <br> <a href="#">www.Group7.com</a>
                                         </div>
                                     </div>
                                     <div class="order-invoice__header-right col-12 col-md-auto">
-                                        <div class="card__date">Placed on 12.07.2018 10:00</div>
+                                        <div class="card__date">Placed on 12.04.2023 10:00</div>
                                         <div class="order-invoice__logo"></div>
                                     </div>
                                 </div>
@@ -470,11 +470,11 @@
                                     <tr>
                                         <th><span class="text-nowrap">PRODUCT</span>
                                         </th>
-                                        <th class="text-center"><span>TYPE</span>
+                                        <th class="text-center"><span>DURATION</span>
                                         </th>
-                                        <th class="text-center"><span>QUANTITY</span>
+                                        <th class="text-center"><span>START TIME</span>
                                         </th>
-                                        <th><span>TOTAL PRICE</span>
+                                        <th><span>END TIME</span>
                                         </th>
                                     </tr>
                                 </thead>
@@ -486,13 +486,21 @@
                                         <td class="table__td text-center text-light-theme">10</td>
                                         <td class="table__td text-nowrap text-dark-theme">$25,000</td>
                                     </tr>
-                                    <tr class="table__row">
-                                        <td class="table__td">Canada Historical Tour<span class="text-light-theme"></span>
-                                        </td>
-                                        <td class="table__td text-center text-dark-theme">Tour</td>
-                                        <td class="table__td text-center text-light-theme">10</td>
-                                        <td class="table__td text-nowrap text-dark-theme">$25,000</td>
+                                </tbody>
+
+                                <thead class="table__header">
+                                    <tr>
+                                        <th><span class="text-nowrap">DESCRIPTION</span>
+                                        </th>
+                                        <th class="text-center"><span>TYPE</span>
+                                        </th>
+                                        <th class="text-center"><span>CITY</span>
+                                        </th>
+                                        <th><span>STATE</span>
+                                        </th>
                                     </tr>
+                                </thead>
+                                <tbody>
                                     <tr class="table__row">
                                         <td class="table__td"><span class="text-light-theme">Western Grant Park Hotel</span>
                                         </td>
@@ -501,8 +509,58 @@
                                         <td class="table__td text-nowrap text-dark-theme">$25,000</td>
                                     </tr>
                                 </tbody>
+
+                                <thead class="table__header">
+                                    <tr>
+                                        <th><span class="text-nowrap">ADDRESS</span>
+                                        </th>
+                                        <th class="text-center"><span>CONTACT NAME</span>
+                                        </th>
+                                        <th class="text-center"><span>CONTACT EMAIL</span>
+                                        </th>
+                                        <th><span>CONTACT PHONE</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table__row">
+                                            <td class="table__td"><span class="text-light-theme">Western Grant Park Hotel</span>
+                                            </td>
+                                            <td class="table__td text-center text-dark-theme">Accommodation</td>
+                                            <td class="table__td text-center text-light-theme">10</td>
+                                            <td class="table__td text-nowrap text-dark-theme">$25,000</td>
+                                        </tr>
+                                </tbody>
+
+                            <thead class="table__header">
+                                    <tr>
+                                        <th><span class="text-nowrap">INCLUDED</span>
+                                        </th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table__row">
+                                    <td class="table__td"><span class="text-light-theme">fdsafds, fdsfadsfds, dfsadfsaf, erweewr</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <thead class="table__header">
+                                    <tr>
+                                        <th><span class="text-nowrap">EXCLUDED</span>
+                                        </th>
+                                    </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table__row">
+                                    <td class="table__td"><span class="text-light-theme">fdsafds, fdsfadsfds, dfsadfsaf, erweewr</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
                             </table>
                         </div>
+
                         <div class="card-order__footer-total">
                             <div class="card__container">
                                 <div class="row gutter-bottom-sm justify-content-end">
@@ -513,12 +571,8 @@
                                                 <div class="card-order__total-value">$75,000</div>
                                             </li>
                                             <li class="card-order__total-item">
-                                                <div class="card-order__total-title">TAX(20%):</div>
+                                                <div class="card-order__total-title">TAX(5%):</div>
                                                 <div class="card-order__total-value">$90,000</div>
-                                            </li>
-                                            <li class="card-order__total-item">
-                                                <div class="card-order__total-title">DISCOUNT:</div>
-                                                <div class="card-order__total-value">10%</div>
                                             </li>
                                             <li class="card-order__total-item card-order__total-footer">
                                                 <div class="card-order__total-title">total:</div>
