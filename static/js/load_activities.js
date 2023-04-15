@@ -86,11 +86,11 @@ function load_activities(published, category) {
                                                                 </span>
                                                             </a>
                                                         </li>
-                                                        <li class="dropdown-items__item" >
+                                                        <li class="dropdown-items__item" ><a onclick="delete_item(${items[i].id})"
                                                             <a class="dropdown-items__link">
                                                                 <span class="dropdown-items__link-icon" style="ipadding-left: 50%;">
-                                                                        <button style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
-                                                                        <svg class="icon-icon-trash">
+                                                                    <button style="max-width: 100px; max-height: 30px;  white-space: nowrap;">
+                                                                        <svg class="icon-icon-trash" style="max-width: 60px;max-height: 10px;">
                                                                             <use xlink:href="#icon-trash"></use>
                                                                         </svg>Delete
                                                                     </button>
