@@ -40,14 +40,14 @@ def manager_homepage():
     today_orders += (db.session.query(func.count()).filter(HotelOrder.startTime >= today, HotelOrder.startTime < today + timedelta(days=1)).scalar() or 0)
     today_orders += (db.session.query(func.count()).filter(FlightOrder.startTime >= today, FlightOrder.startTime < today + timedelta(days=1)).scalar() or 0)
 
-    total_reviews = (db.session.query(func.coalesce(func.sum(ActivityReview.review_num), 0) + func.coalesce(func.sum(TourReview.review_num), 0) + func.coalesce(func.sum(HotelReview.review_num), 0)).scalar() or 0)
+    total_reviews = (db.session.query(func.coalesce(func.sum(Activity.review_num), 0) + func.coalesce(func.sum(Tour.review_num), 0) + func.coalesce(func.sum(Hotel.review_num), 0)).scalar() or 0)
 
     total_orders = (db.session.query(func.coalesce(func.sum(ActivityOrder.cost), 0) + func.coalesce(func.sum(TourOrder.cost), 0) + func.coalesce(func.sum(HotelOrder.cost), 0) + func.coalesce(func.sum(FlightOrder.cost), 0)).scalar() or 0)
 
     num_customers = (db.session.query(func.count(Customer.id)).scalar() or 0)
 
     def get_percent(a, b):
-        return int(100 * (a / b))
+        return 0 if b == 0 else int(100 * (a / b))
 
     upper_data = {'order_today': today_orders,
                   'customer_today': today_customers,
