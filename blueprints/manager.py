@@ -280,14 +280,6 @@ def add_tour():
     tour.city = request.form.get("city")
     tour.state = request.form.get("state")
     tour.address = request.form.get("address")
-    address = tour.address + " " + tour.city + " " + tour.state
-    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
-    response = req.get(url).json()
-    if len(response) > 0:
-        tour.lat = response[0]['lat']
-        tour.lon = response[0]['lon']
-    else:
-        return jsonify({"code": "invalid address"})
     tour.duration = request.form.get("duration")
     tour.group_size = int(request.form.get("group_size"))
     tour.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
@@ -379,14 +371,14 @@ def add_hotel():
     hotel.city = request.form.get("city")
     hotel.state = request.form.get("state")
     hotel.address = request.form.get("address")
-    address = hotel.address + " " + hotel.city + " " + hotel.state
-    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
-    response = req.get(url).json()
-    if len(response) > 0:
-        hotel.lat = response[0]['lat']
-        hotel.lon = response[0]['lon']
-    else:
-        return jsonify({"code": "invalid address "})
+    # address = hotel.address + " " + hotel.city + " " + hotel.state
+    # url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
+    # response = req.get(url).json()
+    # if len(response) > 0:
+    #     hotel.lat = response[0]['lat']
+    #     hotel.lon = response[0]['lon']
+    # else:
+    #     return jsonify({"code": "invalid address "})
     hotel.min_stay = request.form.get("min_stay")
     hotel.security = request.form.get("security")
     hotel.on_site_staff = request.form.get("on_site_staff")
