@@ -48,7 +48,7 @@ def hotel_filter():
         hotel_i.images[0] = "../" + hotel_i.images[0][hotel_i.images[0].index('static'):].replace('\\', '/')
 
     if to_sort == '2':
-        hotels = sorted(hotels, key=lambda hotel: hotel.view_num, reverse=False)
+        hotels = sorted(hotels, key=lambda hotel: hotel.view_num, reverse=True)
 
     if to_sort == '3':
         hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=False)

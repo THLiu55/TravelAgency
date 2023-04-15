@@ -125,7 +125,7 @@ def activity_filter():  # ajax activity filter
         activity_i.images[0] = "../" + activity_i.images[0][activity_i.images[0].index('static'):].replace('\\', '/')
 
     if to_sort == '2':
-        activities = sorted(activities, key=lambda activity: activity.view_num, reverse=False)
+        activities = sorted(activities, key=lambda activity: activity.view_num, reverse=True)
 
     if to_sort == '3':
         activities = sorted(activities, key=lambda activity: activity.price, reverse=False)

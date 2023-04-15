@@ -118,7 +118,7 @@ def tour_filter():
         tour_i.images[0] = "../" + tour_i.images[0][tour_i.images[0].index('static'):].replace('\\', '/')
 
     if to_sort == '2':
-        tours = sorted(tours, key=lambda tour: tour.view_num, reverse=False)
+        tours = sorted(tours, key=lambda tour: tour.view_num, reverse=True)
 
     if to_sort == '3':
         tours = sorted(tours, key=lambda tour: tour.price, reverse=False)
