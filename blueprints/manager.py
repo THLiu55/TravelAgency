@@ -26,16 +26,35 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @staff_login_required
 def manager_homepage():
     db.create_all()
-    total_views, num_customers, num_orders = 0, 0, 0
-    total_views += db.session.query(func.coalesce(func.sum(Activity.view_num), 0)).scalar()
-    total_views += db.session.query(func.coalesce(func.sum(Tour.view_num), 0)).scalar()
-    total_views += db.session.query(func.coalesce(func.sum(Hotel.view_num), 0)).scalar()
-    total_views += db.session.query(func.coalesce(func.sum(Flight.view_num), 0)).scalar()
-    num_customers += Customer.query.count()
-    num_orders += ActivityOrder.query.count()
-    num_orders += HotelOrder.query.count()
-    num_orders += TourOrder.query.count()
-    num_orders += FlightOrder.query.count()
+    today = datetime.now().date()
+    one_day_ago = today - timedelta(days=1)
+
+    today_reviews = (db.session.query(func.count()).filter(ActivityReview.issueTime >= today, ActivityReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+    today_reviews += (db.session.query(func.count()).filter(TourReview.issueTime >= today, TourReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+    today_reviews += (db.session.query(func.count()).filter(HotelReview.issueTime >= today, HotelReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+
+    today_customers = (db.session.query(func.count()).filter(Customer.join_date >= today, Customer.join_date < today + timedelta(days=1)).scalar() or 0)
+
+    today_orders = (db.session.query(func.count()).filter(ActivityOrder.startTime >= today, ActivityOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders += (db.session.query(func.count()).filter(TourOrder.startTime >= today, TourOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders += (db.session.query(func.count()).filter(HotelOrder.startTime >= today, HotelOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders += (db.session.query(func.count()).filter(FlightOrder.startTime >= today, FlightOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+
+    total_reviews = (db.session.query(func.coalesce(func.sum(Activity.review_num), 0) + func.coalesce(func.sum(Tour.review_num), 0) + func.coalesce(func.sum(Hotel.review_num), 0)).scalar() or 0)
+
+    total_orders = (db.session.query(func.coalesce(func.sum(ActivityOrder.cost), 0) + func.coalesce(func.sum(TourOrder.cost), 0) + func.coalesce(func.sum(HotelOrder.cost), 0) + func.coalesce(func.sum(FlightOrder.cost), 0)).scalar() or 0)
+
+    num_customers = (db.session.query(func.count(Customer.id)).scalar() or 0)
+
+    def get_percent(a, b):
+        return 0 if b == 0 else int(100 * (a / b))
+
+    upper_data = {'order_today': today_orders,
+                  'customer_today': today_customers,
+                  'reviews_today': today_reviews,
+                  'order_percent': get_percent(today_orders, total_orders),
+                  'customer_percent': get_percent(today_customers, num_customers),
+                  'reviews_percent': get_percent(today_reviews, total_reviews)}
 
     end_date = datetime.now()
     start_date = end_date - timedelta(days=7)
@@ -62,15 +81,16 @@ def manager_homepage():
             func.date(order.startTime),
             func.sum(order.cost)
         ).filter(
-            order.startTime <= end_date,
-            order.startTime >= start_date,
+            order.startTime <= start_date,
+            order.startTime >= prev_date,
             order.purchased == 1
         ).group_by(
             func.date(order.startTime)
         ).all()
 
+    print(results)
     sum_profit = sum(profit_split)
-    percent = [25, 25, 25, 25] if sum_profit == 0 else [i / sum_profit for i in profit_split]
+    percent = [25, 25, 25, 25] if sum_profit == 0 else [int((i / sum_profit) * 100) for i in profit_split]
     costs_dict = {}
     for i in range(14):
         date = end_date - timedelta(days=i)
@@ -83,10 +103,9 @@ def manager_homepage():
             costs_dict[date.date()] = 0
 
     ordered_values = [[costs_dict[k] for k in sorted(costs_dict.keys())][0:7], [costs_dict[k] for k in sorted(costs_dict.keys())][7:]]
-    print(percent)
-
+    print(ordered_values)
     data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[1]), "profit_prev": sum(ordered_values[0]), "profit_split": profit_split, "percent":percent}
-    return render_template("Dashboard.html", total_views=total_views, num_orders=num_orders, num_customers=num_customers, data=data)
+    return render_template("Dashboard.html", upper_data=upper_data, data=data)
 
 
 @bp.route("/logout")
