@@ -45,8 +45,9 @@ def flightDetail(flight_id):
     wishlist_exists = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                                   productID=flight_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
-    purchased = ActivityOrder.query.filter_by(customerID=session.get("customer_id"),
-                                              productID=flight_id, purchased=True).first()
+    purchased = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
+                                            productID=flight_id, purchased=True).first()
+    purchased = True if (purchased is not None and logged is not None) else False
     return render_template("flight-detail.html", logged=logged, flight=flight, images=images, wifi=wifi,
                            air_condition=air_condition, coffee=coffee
                            , entertainment=entertainment, food=food, drink=drink, wines=wines, comfort=comfort,
