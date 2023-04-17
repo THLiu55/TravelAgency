@@ -494,7 +494,7 @@ Refundable <span>(15)</span>
 <!-- <del class="discount-price">$5,548</del> -->
 <span class="price-amount">{{flight.price}}</span>
 </div>
-<a href="#" class="theme-btn">Book Now<i class="far fa-arrow-right"></i></a>
+<a href="{{ url_for('flight.flightDetail', flight_id=flight.id) }}" class="theme-btn">Book Now<i class="far fa-arrow-right"></i></a>
 </div>
 </div>
 <div class="flight-booking-detail">

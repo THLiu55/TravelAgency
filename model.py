@@ -372,8 +372,9 @@ class Flight(db.Model):
     destination = db.Column(db.String(255))
     status = db.Column(db.String(255))
     flight_type = db.Column(db.String(255))
-    takeoff_time = db.Column(db.DateTime)
-    landing_time = db.Column(db.DateTime)
+    week_day = db.Column(db.Integer)
+    takeoff_time = db.Column(db.Time)
+    landing_time = db.Column(db.Time)
     flight_stop = db.Column(db.String(255))
     company = db.Column(db.String(255))
     total_time = db.Column(db.Float)
@@ -413,7 +414,7 @@ class FlightOrder(db.Model):
     __tablename__ = 'flight_orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    startTime = db.Column(db.DateTime)
+    startTime = db.Column(db.DateTime) # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)

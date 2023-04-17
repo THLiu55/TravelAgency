@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %} Booking Confirm {% endblock %}
+
+{% block csslink %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
+        </div>
+
+        <div class="booking-confirm py-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mx-auto mt-5">
+                        <div class="booking-summary">
+                            <h3>Booking Summary</h3>
+                            <div class="booking-summary-content">
+                                <div class="row g-5">
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Flight Info</h6>
+                                            <ul>
+                                                <li>Product Type <span>Flight</span></li>
+                                                <li>Company <span>{{ flight.company }}</span></li>
+                                                <li>Departure <span>{{ flight.departure }}</span></li>
+                                                <li>Destination <span>{{ flight.destination }}</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Product Info</h6>
+                                            <ul>
+                                                <li>Departure Time <span>{{ dep_time }}</span></li>
+                                                <li>Landing time <span>{{ land_time }}</span></li>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Customer Info</h6>
+                                            <ul>
+                                                <li>Name <span>{{ customer.nickname }}</span></li>
+                                                <li>Email <span>{{ customer.email }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Billing Info</h6>
+                                            <ul>
+                                                <li>Tax <span class="text - success">{{ flight.price*0.05 }}</span></li>
+                                                <li>Payment Method <span>Token</span></li>
+                                                <li class="fw-bold">Total Payment <span>{{ flight.price*0.05+activity.price }}</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-confirm-btn">
+                                <a href="{{ url_for('activity.order_success', activity_id=activity.id, date=order_date, cost=activity.price*0.05+activity.price, name=activity.name) }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
+                                <a href="{{ url_for('activity.activityDetail', activity_id=activity.id) }}" class="theme-btn cancel-booking"><span
+                                        class="far fa-xmark-circle"></span>Cancel Booking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+
+{% block jsLink %}
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+{% endblock %}

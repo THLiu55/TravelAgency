@@ -289,9 +289,11 @@ def wishlist():
     order_list = []
     for flight_i in flight_orders:
         flight_obj = Flight.query.get(flight_i.productID)
+        flight_obj.images = json.loads(flight_obj.images)['images']
+        flight_obj.images[0] = flight_obj.images[0][flight_obj.images[0].index('static'):]
         order_obj = WishListObject("Flight", flight_obj.departure + " - " + flight_obj.destination, 5, "Excellent",
                                    flight_obj.review_num, flight_obj.price,
-                                   url_for('static', filename='images/bg1.jpg'),
+                                   flight_obj.images[0],
                                    url_for('flight.flightDetail', flight_id=flight_obj.id), flight_i.startTime,
                                    "Flight")
         order_list.append(order_obj)

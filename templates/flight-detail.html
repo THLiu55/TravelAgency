@@ -17,7 +17,7 @@
 {% block body %}
     <main class="main">
         {#    顶部title area    #}
-        <div class="site-breadcrumb" style="padding-top:100px;background: url(assets/img/breadcrumb/01.jpg)">
+        <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
                 <h2 class="breadcrumb-title">Flight</h2>
                 <ul class="breadcrumb-menu">
@@ -35,57 +35,23 @@
                         <div class="col-lg-8">
                             <div class="listing-content">
                                 <div class="listing-slider owl-carousel owl-theme">
-                                    <img src="../static/flight/single-1.jpg" alt="">
-                                    <img src="../static/flight/single-2.jpg" alt="">
-                                    <img src="../static/flight/single-3.jpg" alt="">
+                                    {% for image in images %}
+                                    <img src="{{ url_for('static', filename=image.replace('\\','/')) }}" alt="" >
+                                    {% endfor %}
                                 </div>
                                 <div class="listing-header">
                                     <div class="listing-header-info">
                                         <!-- title & location -->
-                                        <h4 class="listing-title">New York - Los Angeles</h4>
-                                        <p class="listing-stop">One Way Trip <span class="badge">1 Stop</span></p>
+                                        <h4 class="listing-title">{{ flight.departure }} - {{ flight.destination }}</h4>
+                                        <p class="listing-stop">{{ flight.flight_type }} <span class="badge">{{ flight.flight_stop }}</span></p>
                                     </div>
                                     <div class="listing-rate">
                                         <!-- overall review -->
                                         <span class="badge"><i class="fal fa-star"></i> 5.0</span>
                                         <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">(2.5k Reviews)</span>
+                                        <span class="listing-rate-review">({{ flight.review_num }} reviews)</span>
                                     </div>
                                 </div>
-
-
-{#                                <div class="listing-item listing-flight">#}
-{#                                    <div class="flight-booking-time">#}
-{#                                        <div class="start-time">#}
-{#                                            <div class="start-time-icon">#}
-{#                                                <i class="fal fa-plane-departure"></i>#}
-{#                                            </div>#}
-{#                                            <div class="start-time-info">#}
-{#                                                <h6 class="start-time-text">Flight Take Off</h6>#}
-{#                                                <p class="flight-full-date">Sat, 22 Oct, 2022 | 07:30AM</p>#}
-{#                                                <span class="flight-destination">JFK</span>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="flight-stop">#}
-{#                                            <span class="flight-stop-number">1 Stop (STN)</span>#}
-{#                                            <div class="flight-stop-arrow flight-has-stop"></div>#}
-{#                                            <div class="flight-booking-duration">#}
-{#                                                <span class="duration-text">4h 05m</span>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="end-time">#}
-{#                                            <div class="start-time-icon">#}
-{#                                                <i class="fal fa-plane-arrival"></i>#}
-{#                                            </div>#}
-{#                                            <div class="start-time-info">#}
-{#                                                <h6 class="end-time-text">Flight Landing</h6>#}
-{#                                                <p class="flight-full-date">Sat, 25 Oct, 2022 | 08:35AM</p>#}
-{#                                                <span class="flight-destination">LAX</span>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-
                                 <!-- flight attr -->
                                 <div class="listing-item pt-5">
                                     <div class="row">
@@ -96,7 +62,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Airline</h6>
-                                                    <span>Delta</span>
+                                                    <span>{{ flight.company }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,7 +73,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Flight Type</h6>
-                                                    <span>Economy</span>
+                                                    <span>{{ flight.flight_class }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,7 +84,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Fare Type</h6>
-                                                    <span>Refundable</span>
+                                                    <span>{{ flight.fare_type }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +95,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Cancellation Fee</h6>
-                                                    <span>$50 /Per Person</span>
+                                                    <span>{{ flight.cancellation_charge }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +106,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Flight Change</h6>
-                                                    <span>$80 /Per Person</span>
+                                                    <span>{{ flight.flight_charge }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,7 +117,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Seats & Baggage</h6>
-                                                    <span>$30 Extra Charge</span>
+                                                    <span>{{ flight.seat_baggage }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +139,7 @@
                                                 </div>
                                                 <div class="listing-feature-content">
                                                     <h6>Taxes & Fees</h6>
-                                                    <span>$40</span>
+                                                    <span>{{ flight.taxes }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,209 +147,84 @@
                                 </div>
 
                                 <div class="listing-item">
-                                    <h4 class="mb-3">About Delta Airlines</h4>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which don't look even slightly believable. If you are going to use a passage of
-                                        Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the
-                                        middle of text. </p>
-                                    <p class="mt-3">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to
-                                        use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                                        embarrassing hidden in the middle of text. </p>
+                                    <h4 class="mb-3">About {{ flight.company }}</h4>
+                                    <p class="mt-3">{{ flight.description }}</p>
                                 </div>
 
                                 <div class="listing-item">
                                     <h4 class="mb-3">Inflight Features</h4>
                                     <div class="listing-amenity">
                                         <div class="row">
+                                            {% if wifi %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-wifi"></i> Wifi</h6>
                                                 </div>
                                             </div>
+                                            {% endif %}
+                                        {% if television %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-tv"></i> Television</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if entertainment %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-music"></i> Entertainment</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if coffee %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-cup-togo"></i> Coffee</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if air_condition %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-air-conditioner"></i> Air Conditioning</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if food %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="fa-regular fa-salad"></i> Food</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if game %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-gamepad-modern"></i> Games</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if wines %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-wine-bottle"></i> Wines</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if comfort %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-couch"></i> Comfort</h6>
                                                 </div>
                                             </div>
+                                        {% endif %}
+                                        {% if magazines %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
                                                     <h6><i class="far fa-image"></i> Magazines</h6>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- baggage form and info area -->
-                                <div class="listing-baggage">
-                                    <h4 class="mb-3">Baggage</h4>
-                                    <div class="listing-baggage-check">
-                                        <form action="#">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label>From</label>
-                                                        <div class="form-group-icon">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="City, Airport, Country Name">
-                                                            <i class="far fa-location-dot"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="form-group">
-                                                        <label>To</label>
-                                                        <div class="form-group-icon">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="City, Airport, Country Name">
-                                                            <i class="far fa-location-dot"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <label>Top Tier Status</label>
-                                                        <div class="form-group-icon">
-                                                            <select class="select">
-                                                                <option value="">Select Tier Status</option>
-                                                                <option value="1">Super Elite 40k</option>
-                                                                <option value="2">Super Elite 50k</option>
-                                                                <option value="3">Super Elite 60k</option>
-                                                                <option value="4">Super Elite 70k</option>
-                                                            </select>
-                                                            <i class="far fa-timer"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <label>Bag Weight (Kgs)</label>
-                                                        <div class="form-group-icon">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Bag Weight">
-                                                            <i class="far fa-suitcase"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <label>Flight Class</label>
-                                                        <div class="form-group-icon">
-                                                            <select class="select">
-                                                                <option value="">Select Class</option>
-                                                                <option value="1">Economy</option>
-                                                                <option value="2">Business</option>
-                                                                <option value="3">First Class</option>
-                                                            </select>
-                                                            <i class="far fa-user-tie"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12">
-                                                    <button type="submit" class="theme-btn">Check Baggage Allowance
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <p class="mt-4">
-                                        There are many variations of passages of Lorem Ipsum available, but the majority
-                                        have suffered alteration in some form, by injected humour, or randomised words
-                                        which
-                                        don't look even slightly believable.
-                                    </p>
-                                    <div class="mt-2">
-                                        <div class="listing-amenity">
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Carry-on Allowance</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Damaged Baggage</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Baggage Status</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Baggage Tips</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Lost and Found</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Baggage Allowance</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Restricted Items</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Delayed Baggage</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Baggage Services</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="listing-amenity-item">
-                                                        <h6><i class="far fa-suitcase"></i> Liability Limitations</h6>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -425,69 +266,6 @@
                                         </div>
                                     </div>
                                 </div>
-{#                                <div class="listing-item faq-area">#}
-{#                                    <h4 class="mb-4">Faq's</h4>#}
-{#                                    <div class="accordion" id="accordionExample">#}
-{#                                        <div class="accordion-item">#}
-{#                                            <h2 class="accordion-header" id="heading1">#}
-{#                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"#}
-{#                                                        data-bs-target="#collapse1" aria-expanded="true"#}
-{#                                                        aria-controls="collapse1">#}
-{#                                                    <span><i class="far fa-question"></i></span> What Are The#}
-{#                                                    Charges Of Services ?#}
-{#                                                </button>#}
-{#                                            </h2>#}
-{#                                            <div id="collapse1" class="accordion-collapse collapse show"#}
-{#                                                 aria-labelledby="heading1" data-bs-parent="#accordionExample">#}
-{#                                                <div class="accordion-body">#}
-{#                                                    We denounce with righteous indignation and dislike men who#}
-{#                                                    are so beguiled and demoralized by the charms of pleasure of the#}
-{#                                                    moment, so#}
-{#                                                    blinded by desirente odio dignissim quam.#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="accordion-item">#}
-{#                                            <h2 class="accordion-header" id="heading2">#}
-{#                                                <button class="accordion-button collapsed" type="button"#}
-{#                                                        data-bs-toggle="collapse" data-bs-target="#collapse2"#}
-{#                                                        aria-expanded="false" aria-controls="collapse2">#}
-{#                                                    <span><i class="far fa-question"></i></span> How Can I Become A#}
-{#                                                    Member#}
-{#                                                    ?#}
-{#                                                </button>#}
-{#                                            </h2>#}
-{#                                            <div id="collapse2" class="accordion-collapse collapse"#}
-{#                                                 aria-labelledby="heading2" data-bs-parent="#accordionExample">#}
-{#                                                <div class="accordion-body">#}
-{#                                                    We denounce with righteous indignation and dislike men who#}
-{#                                                    are so beguiled and demoralized by the charms of pleasure of the#}
-{#                                                    moment, so#}
-{#                                                    blinded by desirente odio dignissim quam.#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                        <div class="accordion-item">#}
-{#                                            <h2 class="accordion-header" id="heading3">#}
-{#                                                <button class="accordion-button collapsed" type="button"#}
-{#                                                        data-bs-toggle="collapse" data-bs-target="#collapse3"#}
-{#                                                        aria-expanded="false" aria-controls="collapse3">#}
-{#                                                    <span><i class="far fa-question"></i></span> Can I Upgrade My#}
-{#                                                    Plan Any Time ?#}
-{#                                                </button>#}
-{#                                            </h2>#}
-{#                                            <div id="collapse3" class="accordion-collapse collapse"#}
-{#                                                 aria-labelledby="heading3" data-bs-parent="#accordionExample">#}
-{#                                                <div class="accordion-body">#}
-{#                                                    We denounce with righteous indignation and dislike men who#}
-{#                                                    are so beguiled and demoralized by the charms of pleasure of the#}
-{#                                                    moment, so#}
-{#                                                    blinded by desirente odio dignissim quam.#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
 
                                 <!-- review area -->
                                 <div class="listing-item">
@@ -772,13 +550,6 @@
                         <div class="col-lg-4">
                             <div class="booking-sidebar listing-side-content">
                                 <div class="booking-item">
-                                    <div class="listing-price">
-                                        <h4 class="listing-price-tag">Bestseller</h4>
-                                        <div class="listing-price-amount">
-                                            From <span>$450.00</span>
-                                            <del>$590.00</del>
-                                        </div>
-                                    </div>
                                     <div class="search-form">
                                         <form action="#">
                                             <div class="tour-search-wrapper">
@@ -798,131 +569,23 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
-                                                            <div class="search-form-date">
-                                                                <div class="search-form-return">
-                                                                    <label>Return Date</label>
-                                                                    <div class="form-group-icon">
-                                                                        <input type="text" name="return-date"
-                                                                               class="form-control date-picker return-date">
-                                                                        <i class="fal fa-calendar-days"></i>
-                                                                    </div>
-                                                                    <p class="return-day-name"></p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group dropdown static-dropdown passenger-box">
-                                                            <div class="passenger-class" role="menu"
-                                                                 data-bs-toggle="dropdown" data-bs-display="static"
-                                                                 aria-expanded="false">
-                                                                <label>Passenger, Class</label>
-                                                                <div class="form-group-icon">
-                                                                    <div class="passenger-total"><span
-                                                                            class="passenger-total-amount">2</span>
-                                                                        Passenger
-                                                                    </div>
-                                                                    <i class="fal fa-user-plus"></i>
-                                                                </div>
-                                                                <p class="passenger-class-name">Business</p>
-                                                            </div>
-                                                            <div class="dropdown-menu dropdown-menu-end">
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Adults</h6>
-                                                                            <p>12+ Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="adult"
-                                                                                   class="qty-amount passenger-adult"
-                                                                                   value="2" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Children</h6>
-                                                                            <p>2-12 Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="children"
-                                                                                   class="qty-amount passenger-children"
-                                                                                   value="0" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <div class="passenger-item">
-                                                                        <div class="passenger-info">
-                                                                            <h6>Infant</h6>
-                                                                            <p>Below 2 Years</p>
-                                                                        </div>
-                                                                        <div class="passenger-qty">
-                                                                            <button type="button" class="minus-btn"><i
-                                                                                    class="far fa-minus"></i></button>
-                                                                            <input type="text" name="infant"
-                                                                                   class="qty-amount passenger-infant"
-                                                                                   value="0" readonly>
-                                                                            <button type="button" class="plus-btn"><i
-                                                                                    class="far fa-plus"></i></button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="dropdown-item">
-                                                                    <h6 class="mb-3 mt-2">Cabin Class</h6>
-                                                                    <div class="passenger-class-info">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio"
-                                                                                   value="Economy" name="cabin-class"
-                                                                                   id="cabin-class1">
-                                                                            <label class="form-check-label"
-                                                                                   for="cabin-class1">
-                                                                                Economy
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" checked
-                                                                                   type="radio" value="Business"
-                                                                                   name="cabin-class" id="cabin-class2">
-                                                                            <label class="form-check-label"
-                                                                                   for="cabin-class2">
-                                                                                Business
-                                                                            </label>
-                                                                        </div>
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio"
-                                                                                   value="First Class"
-                                                                                   name="cabin-class"
-                                                                                   id="cabin-class3">
-                                                                            <label class="form-check-label"
-                                                                                   for="cabin-class3">
-                                                                                First Class
-                                                                            </label>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="listing-side-btn">
                                                     <button type="submit" class="theme-btn"><span
                                                             class="far fa-shopping-bag"></span>Book Now
                                                     </button>
-                                                    <a href="#" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                   {% if logged %}
+                                                    {% if added %}
+                                                        <a href="{{ url_for('flight.remove_wishlist', flight_id=flight.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> Remove From
+                                                            Wishlist</a>
+                                                    {% else %}
+                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
                                                         Wishlist</a>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> Add To
+                                                        Wishlist</a>
+                                                {% endif %}
                                                 </div>
                                             </div>
                                         </form>
@@ -933,16 +596,6 @@
                                     </div>
                                 </div>
                             </div>
-{#                            <div class="booking-sidebar listing-side-content mt-4">#}
-{#                                <h4 class="booking-title">Why Book With Us?</h4>#}
-{#                                <ul class="listing-side-list">#}
-{#                                    <li><i class="far fa-dollar-sign"></i>Best Price Guarantee</li>#}
-{#                                    <li><i class="far fa-headset"></i>24/7 Customer Care</li>#}
-{#                                    <li><i class="far fa-globe"></i>Hand Picked Tours & Activities</li>#}
-{#                                    <li><i class="far fa-flag"></i>Free Travel Insureance</li>#}
-{#                                    <li><i class="far fa-car"></i>Comfortable And Hygienic Vehicle</li>#}
-{#                                </ul>#}
-{#                            </div>#}
                             <div class="booking-sidebar listing-side-content mt-4">
                                 <h4 class="booking-title">Get A Question?</h4>
                                 <p>It is a long-established fact that a reader will be distracted by the readable
