@@ -68,15 +68,15 @@
                                             <ul>
                                                 <li>Tax <span class="text - success">{{ flight.price*0.05 }}</span></li>
                                                 <li>Payment Method <span>Token</span></li>
-                                                <li class="fw-bold">Total Payment <span>{{ flight.price*0.05+activity.price }}</span></li>
+                                                <li class="fw-bold">Total Payment <span>{{ flight.price*0.05+flight.price }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-confirm-btn">
-                                <a href="{{ url_for('activity.order_success', activity_id=activity.id, date=order_date, cost=activity.price*0.05+activity.price, name=activity.name) }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
-                                <a href="{{ url_for('activity.activityDetail', activity_id=activity.id) }}" class="theme-btn cancel-booking"><span
+                                <a href="{{ url_for('flight.order_success', flight_id=flight.id, date=order_date, cost=flight.price*0.05+flight.price, name='Flight') }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
+                                <a href="{{ url_for('flight.flightDetail', flight_id=flight.id) }}" class="theme-btn cancel-booking"><span
                                         class="far fa-xmark-circle"></span>Cancel Booking</a>
                             </div>
                         </div>

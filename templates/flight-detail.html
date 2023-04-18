@@ -551,7 +551,8 @@
                             <div class="booking-sidebar listing-side-content">
                                 <div class="booking-item">
                                     <div class="search-form">
-                                        <form action="#">
+                                        <form action="{{ url_for('flight.order_confirm') }}" method="post">
+                                        <input name="flight_id" value="{{ flight.id }}" hidden>
                                             <div class="tour-search-wrapper">
                                                 <div class="row">
                                                     <div class="col-lg-12">

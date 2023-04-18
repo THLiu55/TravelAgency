@@ -268,19 +268,19 @@ Another Flight
 <h4 class="booking-title">Flight Class</h4>
 <div class="flight-class">
 <div class="form-check">
- <input class="form-check-input" name="flight-class" type="checkbox" value="1" id="flight-class1">
+    <input class="form-check-input" name="flight-class" type="checkbox" value="Business" id="flight-class1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-class1">
 Business <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-class" type="checkbox" value="2" id="flight-class2">
+<input class="form-check-input" name="flight-class" type="checkbox" value="First Class" id="flight-class2" onclick="flight_filter()">
 <label class="form-check-label" for="flight-class2">
 First Class <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-class" type="checkbox" value="3" id="flight-class3">
+<input class="form-check-input" name="flight-class" type="checkbox" value="Economy" id="flight-class3" onclick="flight_filter()">
 <label class="form-check-label" for="flight-class3">
 Economy <span>(18)</span>
 </label>
@@ -303,25 +303,25 @@ Economy <span>(18)</span>
 <h4 class="booking-title">Flight Time</h4>
 <div class="flight-time">
 <div class="form-check">
-<input class="form-check-input" name="flight-time" type="checkbox" value="1" id="flight-time1">
+<input class="form-check-input" name="flight-time" type="checkbox" value="00:00-05:59" id="flight-time1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-time1">
 <i class="far fa-sunrise"></i> 00:00 - 05:59 <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-time" type="checkbox" value="2" id="flight-time2">
+<input class="form-check-input" name="flight-time" type="checkbox" value="06:00-11:59" id="flight-time2" onclick="flight_filter()">
 <label class="form-check-label" for="flight-time2">
 <i class="far fa-sun-bright"></i> 06:00 - 11:59 <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-time" type="checkbox" value="3" id="flight-time3">
+<input class="form-check-input" name="flight-time" type="checkbox" value="12:00-17:59" id="flight-time3" onclick="flight_filter()">
 <label class="form-check-label" for="flight-time3">
 <i class="far fa-sunset"></i> 12:00 - 17:59 <span>(18)</span>
 </label>
  </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-time" type="checkbox" value="3" id="flight-time4">
+<input class="form-check-input" name="flight-time" type="checkbox" value="18:00-23:59" id="flight-time4" onclick="flight_filter()">
 <label class="form-check-label" for="flight-time4">
 <i class="far fa-moon-stars"></i> 18:00 - 23:59 <span>(21)</span>
 </label>
@@ -332,27 +332,33 @@ Economy <span>(18)</span>
 <h4 class="booking-title">Flight Stops</h4>
 <div class="flight-stop">
 <div class="form-check">
-<input class="form-check-input" name="flight-stop" type="checkbox" value="1" id="flight-stop1">
+<input class="form-check-input" name="flight-stop" type="checkbox" value="Non Stop" id="flight-stop1">
 <label class="form-check-label" for="flight-stop1">
 Non Stop <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-stop" type="checkbox" value="2" id="flight-stop2">
+<input class="form-check-input" name="flight-stop" type="checkbox" value="1 Stop" id="flight-stop2">
 <label class="form-check-label" for="flight-stop2">
 1 Stop <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-stop" type="checkbox" value="3" id="flight-stop3">
+<input class="form-check-input" name="flight-stop" type="checkbox" value="2 Stop" id="flight-stop3">
 <label class="form-check-label" for="flight-stop3">
 2 Stop <span>(18)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-stop" type="checkbox" value="4" id="flight-stop4">
+<input class="form-check-input" name="flight-stop" type="checkbox" value="3 Stop" id="flight-stop4">
 <label class="form-check-label" for="flight-stop4">
 3 Stop <span>(25)</span>
+</label>
+</div>
+    <div class="form-check">
+<input class="form-check-input" name="flight-stop" type="checkbox" value="Multi Stop" id="flight-stop5">
+<label class="form-check-label" for="flight-stop3">
+Multi Stop <span>(18)</span>
 </label>
 </div>
 </div>
@@ -361,44 +367,33 @@ Non Stop <span>(20)</span>
 <h4 class="booking-title">Airlines</h4>
 <div class="flight-airline">
 <div class="form-check">
-<input class="form-check-input" name="flight-airline" type="checkbox" value="1" id="flight-airline1">
+<input class="form-check-input" name="flight-airline" type="checkbox" value="American Airlines" id="flight-airline1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline1">
 American Airlines <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-airline" type="checkbox" value="2" id="flight-airline2">
+<input class="form-check-input" name="flight-airline" type="checkbox" value="Delta Airlines" id="flight-airline2"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline2">
 Delta Airlines <span>(15)</span>
  </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-airline" type="checkbox" value="3" id="flight-airline3">
+<input class="form-check-input" name="flight-airline" type="checkbox" value="Qatar Airways" id="flight-airline3"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline3">
 Qatar Airways <span>(18)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-airline" type="checkbox" value="4" id="flight-airline4">
+<input class="form-check-input" name="flight-airline" type="checkbox" value="Fly Amirates" id="flight-airline4"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline4">
 Fly Amirates <span>(25)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-airline" type="checkbox" value="5" id="flight-airline5">
+<input class="form-check-input" name="flight-airline" type="checkbox" value="Singapore Airlines" id="flight-airline5"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline5">
 Singapore Airlines <span>(35)</span>
-</label>
-</div>
-</div>
-</div>
-<div class="booking-item">
-<h4 class="booking-title">Weights</h4>
-<div class="flight-weight">
-<div class="form-check">
-<input class="form-check-input" name="flight-weight" type="checkbox" value="1" id="flight-weight1">
-<label class="form-check-label" for="flight-weight1">
-25 Kg <span>(20)</span>
 </label>
 </div>
 </div>
@@ -407,21 +402,21 @@ Singapore Airlines <span>(35)</span>
 <h4 class="booking-title">Refundable</h4>
 <div class="flight-refundable">
 <div class="form-check">
-<input class="form-check-input" name="flight-refundable" type="checkbox" value="1" id="flight-refundable1">
+<input class="form-check-input" name="flight-refundable" type="checkbox" value="Non Refundable" id="flight-refundable1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-refundable1">
 Non Refundable <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-refundable" type="checkbox" value="2" id="flight-refundable2">
+<input class="form-check-input" name="flight-refundable" type="checkbox" value="Refundable" id="flight-refundable2" onclick="flight_filter()">
 <label class="form-check-label" for="flight-refundable2">
 Refundable <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
-<input class="form-check-input" name="flight-refundable" type="checkbox" value="3" id="flight-refundable3">
+<input class="form-check-input" name="flight-refundable" type="checkbox" value="Partially Refundable" id="flight-refundable3" onclick="flight_filter()">
 <label class="form-check-label" for="flight-refundable3">
- As Per Rules <span>(18)</span>
+Partially Refundable <span>(18)</span>
 </label>
 </div>
 </div>
@@ -438,7 +433,7 @@ Refundable <span>(15)</span>
 <a class="booking-sort-list" href="flight-list.html"><i class="far fa-list-ul"></i></a>
 </div>
 <div class="col-md-3 booking-sort-box">
-<select class="select">
+<select class="select" id="sort-select-ajax" onchange="flight_filter()">
 <option value="1">Sort By Default</option>
 <option value="2">Sort By Popular</option>
 <option value="3">Sort By Low Price</option>
@@ -500,145 +495,6 @@ Refundable <span>(15)</span>
 <div class="flight-booking-detail">
 <div class="flight-booking-detail-header">
 <p>{{flight.fare_type}}</p>
-<a href="#flight-booking-collapse1" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="flight-booking-collapse1">Flight
-Details <i class="far fa-angle-down"></i></a>
-</div>
-<div class="collapse" id="flight-booking-collapse1">
-<div class="flight-booking-detail-wrapper">
-<div class="row">
-<div class="col-lg-12">
-<div class="flight-booking-detail-left">
-<ul class="nav nav-tabs" id="flTab1" role="tablist">
-<li class="nav-item" role="presentation">
-<button class="nav-link active" id="fl-tab1" data-bs-toggle="tab" data-bs-target="#fl-tab-pane1" type="button" role="tab" aria-controls="fl-tab-pane1" aria-selected="true">JFK - LAX</button>
-</li>
-</ul>
-<div class="tab-content" id="flTabContent1">
-<div class="tab-pane fade show active" id="fl-tab-pane1" role="tabpanel" aria-labelledby="fl-tab1" tabindex="0">
-<div class="flight-booking-detail-info">
-<div class="flight-booking-airline">
-<div class="flight-airline-img">
- <img src="assets/img/flight/airline-7.png" alt="">
-</div>
-<div class="flight-airline-info flex-grow-1">
-<h5 class="flight-airline-name">{{ flight.company }}</h5>
-<!-- <span class="flight-airline-model">SG 143 | AT7</span> -->
-</div>
-<p class="flight-airline-class">{{flight.class}}</p>
-</div>
-<div class="flight-booking-time">
-<div class="start-time">
-<div class="start-time-icon">
-<i class="fal fa-plane-departure"></i>
-</div>
-<div class="start-time-info">
-<!-- <h6 class="start-time-text">07:30</h6> -->
-<p class="flight-full-date">{{flight.takeoff_time}}</p>
-<span class="flight-destination">{{flight.departure}}</span>
-</div>
-</div>
-<div class="flight-stop">
-<span class="flight-stop-number">{{flight.flight_stop}}</span>
-<div class="flight-stop-arrow"></div>
-<div class="flight-booking-duration">
-<span class="duration-text">{{flight.total_time}}hour(s)</span>
-</div>
-</div>
-<div class="end-time">
-<div class="start-time-icon">
-<i class="fal fa-plane-arrival"></i>
-</div>
-<div class="start-time-info">
-<!-- <h6 class="end-time-text">08:35</h6> -->
-<p class="flight-full-date">{{flight.landing_time}}</p>
-<span class="flight-destination">{{flight.destination}}</span>
-</div>
-</div>
-</div>
-</div>
- </div>
-</div>
-</div>
-</div>
-<div class="col-lg-12">
-<div class="flight-booking-detail-right">
-<ul class="nav nav-tabs" id="frTab1" role="tablist">
-<li class="nav-item" role="presentation">
-<button class="nav-link active" id="fr-tab1" data-bs-toggle="tab" data-bs-target="#fr-tab-pane1" type="button" role="tab" aria-controls="fr-tab-pane1" aria-selected="true">Baggage</button>
-</li>
-<li class="nav-item" role="presentation">
-<button class="nav-link" id="fr-tab2" data-bs-toggle="tab" data-bs-target="#fr-tab-pane2" type="button" role="tab" aria-controls="fr-tab-pane2" aria-selected="false">Fare</button>
-</li>
-<li class="nav-item" role="presentation">
-<button class="nav-link" id="fr-tab3" data-bs-toggle="tab" data-bs-target="#fr-tab-pane3" type="button" role="tab" aria-controls="fr-tab-pane3" aria-selected="false">Policy</button>
-</li>
-</ul>
-<div class="tab-content" id="frTabContent1">
-<div class="tab-pane fade show active" id="fr-tab-pane1" role="tabpanel" aria-labelledby="fr-tab1" tabindex="0">
-<div class="flight-booking-detail-info">
-<table class="table table-borderless">
-<tr>
-<th>Flight</th>
-<th>Cabin</th>
-<th>Check In</th>
-</tr>
-<tr>
-<td>{{flight.departure}} - {{flight.destination}}</td>
- <td>{{flight.seat_baggage}}</td>
-<td>{{flight.seat_baggage}}</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="tab-pane fade" id="fr-tab-pane2" role="tabpanel" aria-labelledby="fr-tab2" tabindex="0">
-<div class="flight-booking-detail-info">
-<table class="table table-borderless">
-<tr>
-<th>Fare Summary</th>
-<th>Base Fare</th>
-<th>Tax</th>
-</tr>
-<tr>
-<td>Adult x 1</td>
-<td>{{flight.base_fare}}</td>
-<td>{{flight.taxes}}</td>
-</tr>
-<!-- <tr>
-<td>Child x 1</td>
-<td>$3,423</td>
-<td>$1,000</td>
-</tr> -->
-</table>
-</div>
-</div>
-<div class="tab-pane fade" id="fr-tab-pane3" role="tabpanel" aria-labelledby="fr-tab3" tabindex="0">
-<div class="flight-booking-detail-info">
-<div class="flight-booking-policy">
-<ul>
-<li>
-1. Refund and Date Change are done as per the following policies.
-</li>
-<li>
-2. Refund Amount= Refund Charge (as per airline policy + ShareTrip Convenience Fee).
-</li>
-<li>
-3. Date Change Amount= Date Change Fee (as per Airline Policy + ShareTrip Convenience Fee).
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="flight-booking-detail-price">
-<h6 class="flight-booking-detail-price-title">Total</h6>
-<div class="flight-detail-price-amount">
-{{flight.price}}
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -699,5 +555,5 @@ Details <i class="far fa-angle-down"></i></a>
     <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/tourFilter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/flightFilter.js') }}"></script>
 {% endblock %}

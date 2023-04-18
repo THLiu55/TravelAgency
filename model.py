@@ -409,6 +409,21 @@ class Flight(db.Model):
             'landing_time': self.landing_time.isoformat()
         }
 
+    def to_dict(self):
+        return {
+            'company':self.company,
+            'takeoff_time':self.takeoff_time.strftime("%H:%M"),
+            'flight_stop':self.flight_stop,
+            'landing_time':self.landing_time.strftime("%H:%M"),
+            'destination':self.destination,
+            'total_time':self.total_time,
+            'price':self.price,
+            'fare_type':self.fare_type,
+            'departure':self.departure
+
+
+        }
+
 
 class FlightOrder(db.Model):
     __tablename__ = 'flight_orders'
