@@ -18,7 +18,11 @@ from model import *
 from exts import db
 import os
 
+
 from utils.decorators import staff_login_required
+
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 bp = Blueprint("manager", __name__, url_prefix="/manager")
 
 
@@ -29,34 +33,110 @@ def manager_homepage():
     today = datetime.now().date()
     one_day_ago = today - timedelta(days=1)
 
-    today_reviews = (db.session.query(func.count(ActivityReview.id)).filter(ActivityReview.issueTime >= today, ActivityReview.issueTime < today + timedelta(days=1)).scalar() or 0)
-    today_reviews += (db.session.query(func.count(TourReview.id)).filter(TourReview.issueTime >= today, TourReview.issueTime < today + timedelta(days=1)).scalar() or 0)
-    today_reviews += (db.session.query(func.count(HotelReview.id)).filter(HotelReview.issueTime >= today, HotelReview.issueTime < today + timedelta(days=1)).scalar() or 0)
+    today_reviews = (
+        db.session.query(func.count(ActivityReview.id))
+        .filter(
+            ActivityReview.issueTime >= today,
+            ActivityReview.issueTime < today + timedelta(days=1),
+        )
+        .scalar()
+        or 0
+    )
+    today_reviews += (
+        db.session.query(func.count(TourReview.id))
+        .filter(
+            TourReview.issueTime >= today,
+            TourReview.issueTime < today + timedelta(days=1),
+        )
+        .scalar()
+        or 0
+    )
+    today_reviews += (
+        db.session.query(func.count(HotelReview.id))
+        .filter(
+            HotelReview.issueTime >= today,
+            HotelReview.issueTime < today + timedelta(days=1),
+        )
+        .scalar()
+        or 0
+    )
 
-    today_customers = (db.session.query(func.count()).filter(Customer.join_date >= today, Customer.join_date < today + timedelta(days=1)).scalar() or 0)
+    today_customers = (
+        db.session.query(func.count())
+        .filter(
+            Customer.join_date >= today, Customer.join_date < today + timedelta(days=1)
+        )
+        .scalar()
+        or 0
+    )
 
-    today_orders = (db.session.query(func.count(ActivityOrder.id)).filter(ActivityOrder.startTime >= today, ActivityOrder.startTime < today + timedelta(days=1)).scalar() or 0)
-    today_orders += (db.session.query(func.count(TourOrder.id)).filter(TourOrder.startTime >= today, TourOrder.startTime < today + timedelta(days=1)).scalar() or 0)
-    today_orders += (db.session.query(func.count(HotelOrder.id)).filter(HotelOrder.endTime >= today, HotelOrder.endTime < today + timedelta(days=1)).scalar() or 0)
-    today_orders += (db.session.query(func.count(FlightOrder.id)).filter(FlightOrder.startTime >= today, FlightOrder.startTime < today + timedelta(days=1)).scalar() or 0)
+    today_orders = (
+        db.session.query(func.count(ActivityOrder.id))
+        .filter(
+            ActivityOrder.startTime >= today,
+            ActivityOrder.startTime < today + timedelta(days=1),
+        )
+        .scalar()
+        or 0
+    )
+    today_orders += (
+        db.session.query(func.count(TourOrder.id))
+        .filter(
+            TourOrder.startTime >= today,
+            TourOrder.startTime < today + timedelta(days=1),
+        )
+        .scalar()
+        or 0
+    )
+    today_orders += (
+        db.session.query(func.count(HotelOrder.id))
+        .filter(
+            HotelOrder.endTime >= today, HotelOrder.endTime < today + timedelta(days=1)
+        )
+        .scalar()
+        or 0
+    )
+    today_orders += (
+        db.session.query(func.count(FlightOrder.id))
+        .filter(
+            FlightOrder.startTime >= today,
+            FlightOrder.startTime < today + timedelta(days=1),
+        )
+        .scalar()
+        or 0
+    )
 
-    total_reviews = (db.session.query(func.coalesce(func.sum(Activity.review_num), 0) + func.coalesce(func.sum(Tour.review_num), 0) + func.coalesce(func.sum(Hotel.review_num), 0)).scalar() or 0)
+    total_reviews = (
+        db.session.query(
+            func.coalesce(func.sum(Activity.review_num), 0)
+            + func.coalesce(func.sum(Tour.review_num), 0)
+            + func.coalesce(func.sum(Hotel.review_num), 0)
+        ).scalar()
+        or 0
+    )
 
-    total_orders = (db.session.query(func.count(TourOrder.id)).scalar() or 0) + (db.session.query(func.count(HotelOrder.id)).scalar() or 0) + (db.session.query(func.count(ActivityOrder.id)).scalar() or 0) + (db.session.query(func.count(FlightOrder.id)).scalar() or 0)
+    total_orders = (
+        (db.session.query(func.count(TourOrder.id)).scalar() or 0)
+        + (db.session.query(func.count(HotelOrder.id)).scalar() or 0)
+        + (db.session.query(func.count(ActivityOrder.id)).scalar() or 0)
+        + (db.session.query(func.count(FlightOrder.id)).scalar() or 0)
+    )
 
-    num_customers = (db.session.query(func.count(Customer.id)).scalar() or 0)
+    num_customers = db.session.query(func.count(Customer.id)).scalar() or 0
 
     print(today_orders)
 
     def get_percent(a, b):
         return 0 if b == 0 else int(100 * (a / b))
 
-    upper_data = {'order_today': today_orders,
-                  'customer_today': today_customers,
-                  'reviews_today': today_reviews,
-                  'order_percent': get_percent(today_orders, total_orders),
-                  'customer_percent': get_percent(today_customers, num_customers),
-                  'reviews_percent': get_percent(today_reviews, total_reviews)}
+    upper_data = {
+        "order_today": today_orders,
+        "customer_today": today_customers,
+        "reviews_today": today_reviews,
+        "order_percent": get_percent(today_orders, total_orders),
+        "customer_percent": get_percent(today_customers, num_customers),
+        "reviews_percent": get_percent(today_reviews, total_reviews),
+    }
 
     end_date = datetime.now()
     start_date = end_date - timedelta(days=7)
@@ -65,48 +145,65 @@ def manager_homepage():
     results = []
     profit_split = [0, 0, 0, 0]  # activity, tour, hotel, flight
     for order, i in zip([ActivityOrder, HotelOrder, TourOrder, FlightOrder], range(4)):
-        tmp = db.session.query(
-            func.date(order.startTime),
-            func.sum(order.cost)
-        ).filter(
-            order.startTime <= end_date,
-            order.startTime >= start_date,
-            order.purchased == 1
-        ).group_by(
-            func.date(order.startTime)
-        ).all()
+        tmp = (
+            db.session.query(func.date(order.startTime), func.sum(order.cost))
+            .filter(
+                order.startTime <= end_date,
+                order.startTime >= start_date,
+                order.purchased == 1,
+            )
+            .group_by(func.date(order.startTime))
+            .all()
+        )
         profit_split[i] = sum([item[1] for item in tmp])
         results += tmp
 
     for order in [ActivityOrder, HotelOrder, TourOrder, FlightOrder]:
-        results += db.session.query(
-            func.date(order.startTime),
-            func.sum(order.cost)
-        ).filter(
-            order.startTime <= start_date,
-            order.startTime >= prev_date,
-            order.purchased == 1
-        ).group_by(
-            func.date(order.startTime)
-        ).all()
+        results += (
+            db.session.query(func.date(order.startTime), func.sum(order.cost))
+            .filter(
+                order.startTime <= start_date,
+                order.startTime >= prev_date,
+                order.purchased == 1,
+            )
+            .group_by(func.date(order.startTime))
+            .all()
+        )
 
     print(results)
     sum_profit = sum(profit_split)
-    percent = [25, 25, 25, 25] if sum_profit == 0 else [int((i / sum_profit) * 100) for i in profit_split]
+    percent = (
+        [25, 25, 25, 25]
+        if sum_profit == 0
+        else [int((i / sum_profit) * 100) for i in profit_split]
+    )
     costs_dict = {}
     for i in range(14):
         date = end_date - timedelta(days=i)
         flag = True
         for result in results:
             if str(result[0]) == str(date.date()):
-                costs_dict[date.date()] = result[1] if date.date() not in costs_dict else costs_dict[date.date()] + result[1]
+                costs_dict[date.date()] = (
+                    result[1]
+                    if date.date() not in costs_dict
+                    else costs_dict[date.date()] + result[1]
+                )
                 flag = False
         if flag:
             costs_dict[date.date()] = 0
 
-    ordered_values = [[costs_dict[k] for k in sorted(costs_dict.keys())][0:7], [costs_dict[k] for k in sorted(costs_dict.keys())][7:]]
+    ordered_values = [
+        [costs_dict[k] for k in sorted(costs_dict.keys())][0:7],
+        [costs_dict[k] for k in sorted(costs_dict.keys())][7:],
+    ]
     print(ordered_values)
-    data = {"profit_list": ordered_values, "profit_this": sum(ordered_values[1]), "profit_prev": sum(ordered_values[0]), "profit_split": profit_split, "percent":percent}
+    data = {
+        "profit_list": ordered_values,
+        "profit_this": sum(ordered_values[1]),
+        "profit_prev": sum(ordered_values[0]),
+        "profit_split": profit_split,
+        "percent": percent,
+    }
     return render_template("Dashboard.html", upper_data=upper_data, data=data)
 
 
@@ -119,19 +216,20 @@ def logout():
 # def destinationList():
 #     return render_template("destinations.html")
 
+
 @bp.route("/login", methods=["GET", "POST"])
 def login():
-    url = request.args.get('url')
+    url = request.args.get("url")
     print(f"here{url}")
-    if request.method == 'GET':
+    if request.method == "GET":
         return render_template("Stafflogin.html", url=url)
     else:
         username = request.form.get("username")
         password = request.form.get("password")
-        if username == "admin" and password == "Admin-123456":
-            session['staff_id'] = 1
-            return redirect(url_for('manager.manager_homepage'))
-        return redirect(url_for('customer.homepage'))
+        if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
+            session["staff_id"] = 1
+            return redirect(url_for("manager.manager_homepage"))
+        return redirect(url_for("customer.homepage"))
 
 
 @bp.route("/load_activities", methods=["POST"])
@@ -152,11 +250,11 @@ def add_activity():
     activity.state = request.form.get("state")
     activity.address = request.form.get("address")
     address = activity.address + " " + activity.city + " " + activity.state
-    url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
+    url = "https://nominatim.openstreetmap.org/search?q={}&format=json".format(address)
     response = req.get(url).json()
     if len(response) > 0:
-        activity.lat = response[0]['lat']
-        activity.lon = response[0]['lon']
+        activity.lat = response[0]["lat"]
+        activity.lon = response[0]["lon"]
     else:
         return jsonify({"code": "invalid address "})
     activity.duration = request.form.get("duration")
@@ -209,19 +307,19 @@ def add_activity():
     return redirect(url_for("manager.activities"))
 
 
-@bp.route('/delete_activity', methods=['GET', 'POST'])
+@bp.route("/delete_activity", methods=["GET", "POST"])
 @staff_login_required
 def delete_activity():
-    activity_id = request.form.get('id')
+    activity_id = request.form.get("id")
     activity = Activity.query.get(activity_id)
     if activity is None:
-        return jsonify({'code': 400, 'message': "no activity found"})
+        return jsonify({"code": 400, "message": "no activity found"})
     activity.status = "deleted"
     db.session.commit()
-    return redirect(url_for('manager.activities'))
+    return redirect(url_for("manager.activities"))
 
 
-@bp.route('/activities', methods=['GET', 'POST'])
+@bp.route("/activities", methods=["GET", "POST"])
 @staff_login_required
 def activities():
     return render_template("activities.html")
@@ -327,8 +425,13 @@ def add_tour():
     des = []
     i = 1
     while i <= days:
-        des.append({request.form.get("itinerary_name_{day}".format(day=i)): request.form.get(
-            "itinerary_desc_{day}".format(day=i))})
+        des.append(
+            {
+                request.form.get(
+                    "itinerary_name_{day}".format(day=i)
+                ): request.form.get("itinerary_desc_{day}".format(day=i))
+            }
+        )
         i = i + 1
     tour.itineraries = json.dumps({"tour_des": des})
     db.session.add(tour)
@@ -342,16 +445,16 @@ def load_tours():
     return load_product("Tour")
 
 
-@bp.route('/delete_tour', methods=['GET', 'POST'])
+@bp.route("/delete_tour", methods=["GET", "POST"])
 @staff_login_required
 def delete_tour():
-    tour_id = request.form.get('id')
+    tour_id = request.form.get("id")
     tour = Tour.query.get(tour_id)
     if tour is None:
-        return jsonify({'code': 400, 'message': "no activity found"})
+        return jsonify({"code": 400, "message": "no activity found"})
     tour.status = "deleted"
     db.session.commit()
-    return redirect(url_for('manager.tours'))
+    return redirect(url_for("manager.tours"))
 
 
 @bp.route("/tours")
@@ -388,7 +491,7 @@ def add_hotel():
     hotel.room_type_num = request.form.get("typenum")
     hotel.description = request.form.get("description")
     hotel.view_num = 0
-    hotel.star = request.form.get('hotel_star')
+    hotel.star = request.form.get("hotel_star")
     images = request.files.getlist("images")
     max_id = db.session.query(db.func.max(Hotel.id)).scalar()
     if max_id is None:
@@ -396,7 +499,9 @@ def add_hotel():
     else:
         max_id = max_id + 1
     img_routes = []
-    folder_path = os.path.join(current_app.root_path, "static", "hotel_img", str(max_id))
+    folder_path = os.path.join(
+        current_app.root_path, "static", "hotel_img", str(max_id)
+    )
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
     for image in images:
@@ -424,11 +529,15 @@ def add_hotel():
         for j in range(1, 8):
             if request.form.get(f"feature_{j}_{i}") is not None:
                 features.append(request.form.get(f"feature_{j}_{i}"))
-        des.append({"id": i,
-                    "name": request.form.get(f"hotelroom_name_{i}"),
-                    "features": features,
-                    "price": request.form.get(f"hotelroom_price_{i}"),
-                    "picture": route})
+        des.append(
+            {
+                "id": i,
+                "name": request.form.get(f"hotelroom_name_{i}"),
+                "features": features,
+                "price": request.form.get(f"hotelroom_price_{i}"),
+                "picture": route,
+            }
+        )
         i = i + 1
     hotel.room_detail = json.dumps({"hotel_des": des})
     amenities = []
@@ -451,17 +560,25 @@ def load_hotels():
 @bp.route("/delete_hotel", methods=["POST"])
 @staff_login_required
 def delete_hotel():
-    hotel_id = request.form.get('id')
+    hotel_id = request.form.get("id")
     hotel = Hotel.query.get(hotel_id)
     if hotel is None:
-        return jsonify({'code': 400, 'message': "no activity found"})
+        return jsonify({"code": 400, "message": "no activity found"})
     hotel.status = "deleted"
     db.session.commit()
-    return redirect(url_for('manager.accommodations'))
+    return redirect(url_for("manager.accommodations"))
 
 
 def load_product(product_name):
-    product = Hotel if product_name == "Hotel" else Tour if product_name == "Tour" else Activity if product_name == "Activity" else Flight
+    product = (
+        Hotel
+        if product_name == "Hotel"
+        else Tour
+        if product_name == "Tour"
+        else Activity
+        if product_name == "Activity"
+        else Flight
+    )
     category = request.form.get("category")
     status = request.form.get("publish")
     q = product.query
@@ -489,8 +606,12 @@ def add_flight():
     flight.departure = request.form.get("departure")
     flight.destination = request.form.get("destination")
     flight.flight_type = request.form.get("flight_type")
-    flight.takeoff_time = datetime.strptime(request.form.get("take_off_time"), '%H:%M').time()
-    flight.landing_time = datetime.strptime(request.form.get("landing_time"), '%H:%M').time()
+    flight.takeoff_time = datetime.strptime(
+        request.form.get("take_off_time"), "%H:%M"
+    ).time()
+    flight.landing_time = datetime.strptime(
+        request.form.get("landing_time"), "%H:%M"
+    ).time()
     flight.week_day = request.form.get("day_of_week")
     flight.flight_stop = request.form.get("flight_stop")
     flight.company = request.form.get("company")
@@ -508,7 +629,9 @@ def add_flight():
     max_id = db.session.query(db.func.max(Flight.id)).scalar()
     max_id = 1 if max_id is None else max_id + 1
     img_routes = []
-    folder_path = os.path.join(current_app.root_path, "static", "flight_img", str(max_id))
+    folder_path = os.path.join(
+        current_app.root_path, "static", "flight_img", str(max_id)
+    )
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
     for image in images:
@@ -544,14 +667,14 @@ def load_flights():
 @bp.route("/delete_flight", methods=["POST"])
 @staff_login_required
 def delete_flight():
-    flight_id = request.form.get('id')
+    flight_id = request.form.get("id")
     flight = Flight.query.get(flight_id)
     print("here")
     if flight is None:
-        return jsonify({'code': 400, 'message': "no activity found"})
+        return jsonify({"code": 400, "message": "no activity found"})
     flight.status = "deleted"
     db.session.commit()
-    return redirect(url_for('manager.flights'))
+    return redirect(url_for("manager.flights"))
 
 
 @bp.route("/flights")
@@ -571,10 +694,12 @@ def customers():
 def wish_list():
     return render_template("customerWishlist.html")
 
+
 @bp.route("/chat")
 @staff_login_required
 def chat():
     return render_template("chat.html")
+
 
 # previous order_details
 @bp.route("/activity_invoice")
@@ -582,15 +707,18 @@ def chat():
 def activity_invoice():
     return render_template("orderInvoiceActivity.html")
 
+
 @bp.route("/hotel_invoice")
 @staff_login_required
 def hotel_invoice():
     return render_template("orderInvoiceHotel.html")
 
+
 @bp.route("/tour_invoice")
 @staff_login_required
 def tour_invoice():
     return render_template("orderInvoiceTour.html")
+
 
 @bp.route("/flight_invoice")
 @staff_login_required
@@ -635,12 +763,11 @@ def load_graph():
     start_date = today - timedelta(days=6)
     date_strings = []
     while start_date <= today:
-        date_strings.append(start_date.strftime('%d %b'))
+        date_strings.append(start_date.strftime("%d %b"))
         start_date += timedelta(days=1)
 
-    graph_data = {'x_axis': date_strings}
+    graph_data = {"x_axis": date_strings}
     return jsonify({"code": 200, "data": graph_data})
-
 
 
 @bp.route("/load_orders", methods=["POST", "GET"])
@@ -648,13 +775,33 @@ def load_graph():
 def load_orders():
     category = request.form.get("category")
     orders = []
-    if category == 'all':
-        orders += [order.serialize() for order in TourOrder.query.filter_by(purchased=True).all()]
-        orders += [order.serialize() for order in ActivityOrder.query.filter_by(purchased=True).all()]
-        orders += [order.serialize() for order in HotelOrder.query.filter_by(purchased=True).all()]
-        orders += [order.serialize() for order in FlightOrder.query.filter_by(purchased=True).all()]
+    if category == "all":
+        orders += [
+            order.serialize()
+            for order in TourOrder.query.filter_by(purchased=True).all()
+        ]
+        orders += [
+            order.serialize()
+            for order in ActivityOrder.query.filter_by(purchased=True).all()
+        ]
+        orders += [
+            order.serialize()
+            for order in HotelOrder.query.filter_by(purchased=True).all()
+        ]
+        orders += [
+            order.serialize()
+            for order in FlightOrder.query.filter_by(purchased=True).all()
+        ]
     else:
-        order_data = TourOrder if category == 'tour' else ActivityOrder if category == 'activity' else HotelOrder if category == 'hotel' else FlightOrder
+        order_data = (
+            TourOrder
+            if category == "tour"
+            else ActivityOrder
+            if category == "activity"
+            else HotelOrder
+            if category == "hotel"
+            else FlightOrder
+        )
         orders += [order.serialize() for order in order_data.query.all()]
     db.session.commit()
     return jsonify({"code": 200, "content": orders})
