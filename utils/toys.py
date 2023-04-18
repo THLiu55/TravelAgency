@@ -1,22 +1,25 @@
 from flask import session
 import hashlib
+import datetime
 
 
 ### BABEL RELATED ###
 def get_locale():
     return session.get("language", "zh")
+
+
 ### END BABEL RELATED ###
 
 
 ### CHAT RELATED ###
 def get_fuzzed_room_name(customer_id):
     # my impl is to hash the customer_id to get a room name
-    # return hashlib.sha256(str(customer_id).encode("utf-8")).hexdigest()[:10]
-    return str(customer_id) # TODO: for test, change later
-    # return "THE_ALL_IN_ONE_ROOM"
+    return hashlib.sha256(str(customer_id).encode("utf-8")).hexdigest()[:10]
+    # return str(customer_id)  # TODO: for test, change later
+
+
 ### END CHAT RELATED ###
 
-import datetime
 
 def extract_date(datetime_string):
     # Remove the timezone information
