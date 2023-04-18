@@ -79,6 +79,10 @@ def login():
             return jsonify({"message": "用户不存在"})
         if check_password_hash(customer.password, customer_password):
             session['customer_id'] = customer.id
+            try:
+                session.pop("staff_id")
+            except:
+                pass
             print(session['customer_id'])
             url = request.form.get("url")
             if url != "None":

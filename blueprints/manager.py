@@ -229,6 +229,10 @@ def login():
         password = request.form.get("password")
         if username == ADMIN_USERNAME and password == ADMIN_PASSWORD:
             session["staff_id"] = 1
+            try:
+                session.pop("customer_id")
+            except:
+                pass
             return redirect(url_for("manager.manager_homepage"))
         return redirect(url_for("customer.homepage"))
 
