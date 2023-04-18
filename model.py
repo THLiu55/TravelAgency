@@ -38,10 +38,10 @@ class Message(db.Model):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, primary_key=True)
+    isPic = db.Column(db.Boolean)
     content = db.Column(db.Text)
-    postTime = db.Column(db.DateTime)
-    isRead = db.Column(db.Boolean)
-    sendByCustomer = db.Column(db.Boolean)
+    sentTime = db.Column(db.DateTime)
+    isByCustomer = db.Column(db.Boolean) # if False then by staff
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
 

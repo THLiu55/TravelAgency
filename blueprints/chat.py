@@ -7,15 +7,17 @@ from flask import (
     url_for,
     session,
     current_app,
-    jsonify
+    jsonify,
 )
 
 from exts import socketio as io
+from exts import db
 from utils.bot import BOT_CHOICE, get_wxbot_signature, get_wxbot_answer
 from utils.toys import get_fuzzed_room_name
 from utils.decorators import login_required
-from model import Customer
+from model import Customer, Message
 from time import time
+from datetime import datetime
 from flask_socketio import join_room, leave_room, send, emit
 
 bp = Blueprint("chat", __name__, url_prefix="/")
@@ -40,12 +42,16 @@ def get_chatbot_answer():
             session["signature"] = signature
             session["signature_timestamp"] = time()
             current_app.logger.info(
-                "Generated new signature: " + signature + " for user with id " + str(userid)
+                "Generated new signature: "
+                + signature
+                + " for user with id "
+                + str(userid)
             )
 
         answer = get_wxbot_answer(message, signature)
 
     return answer
+
 
 @bp.route("/get_session_customer_name", methods=["POST"])
 def get_session_customer_name():
@@ -65,7 +71,15 @@ def get_session_customer_name():
 def handle_connect():
     if session.get("staff_id"):
         print("admin joining test public room")
-        # join_room("test_public_room") # TODO: THIS IS NOT NECESSARY IN THEORY
+        io.emit(
+            "message",
+            {
+                "sender": "system",
+                "text": "Admin entered the chat room.",
+            },
+            broadcast=False,
+            namespace=NAMESPACE,
+        )
     elif session.get("customer_id"):
         customer = Customer.query.filter_by(id=session.get("customer_id")).first()
         if customer:
@@ -75,7 +89,10 @@ def handle_connect():
             print("customer " + customer.nickname + " joined room: " + str(room))
             io.emit(
                 "message",
-                {"sender": "system", "text": "Welcome " + customer.nickname + " to the chat room."},
+                {
+                    "sender": "system",
+                    "text": "Welcome " + customer.nickname + " to the chat room.",
+                },
                 broadcast=False,
                 namespace=NAMESPACE,
             )
@@ -88,6 +105,7 @@ def handle_connect():
 
 @io.on("disconnect", namespace=NAMESPACE)
 def handle_disconnect():
+    db.session.commit() # commit all messages sent by customer
     print("client disconnected.")
 
 
@@ -118,6 +136,7 @@ def handle_join(data):
 
 @io.on("leave", namespace=NAMESPACE)
 def handle_leave(data):
+    db.session.commit() # commit all messages sent by customer
     customer_id = data["target_customer_id"]
     room = get_fuzzed_room_name(customer_id)
     print("leaving room: " + str(room))
@@ -139,9 +158,25 @@ def handle_message(data):
     elif sender_name == "TestAdminUser":
         target_customer_id = data["target_customer_id"]
         target_room = get_fuzzed_room_name(target_customer_id)
-        print(sender_name + " sending message: " + msg_text + " to room: " + str(target_room))
+        print(
+            sender_name
+            + " sending message: "
+            + msg_text
+            + " to room: "
+            + str(target_room)
+        )
         io.send(data=sending_data, namespace=NAMESPACE, to=target_room)
+        new_message = Message(
+            customerID = target_customer_id,
+            sentTime = datetime.now(),
+            content = msg_text,
+            isPic = False,
+            isByCustomer = False,
+        )
+        db.session.add(new_message)
+        db.session.commit()
     else:
+        # theoretically, this is for customer
         customer_id = session.get("customer_id")
         customer = Customer.query.filter_by(id=customer_id).first()
         if customer.nickname != sender_name:
@@ -149,6 +184,15 @@ def handle_message(data):
         room = get_fuzzed_room_name(customer.id)
         print(sender_name + " sending message: " + msg_text + " to room: " + str(room))
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
+        new_message = Message(
+            customerID = customer_id,
+            isPic = False,
+            content = msg_text,
+            sentTime = datetime.now(),
+            isByCustomer = True,
+        )
+        db.session.add(new_message)
+        db.session.commit()
 
 
 ### END SOCKETIO EVENT HANDLERS ###
