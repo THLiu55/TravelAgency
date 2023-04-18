@@ -156,17 +156,6 @@ def resetPassword():
     return jsonify({"code": 200})
 
 
-### CHAT RELATED ###
-@bp.route("/consult", methods=["GET", "POST"])
-def consult():
-    """customer consult with staff"""
-    g.customer = Customer.query.filter_by(id=1).first()
-    return render_template("chat.html")
-
-
-### END CHAT RELATED ###
-
-
 @bp.route("/profile")
 def profile():
     customer = Customer.query.get(session.get('customer_id'))

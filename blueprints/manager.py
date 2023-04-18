@@ -342,7 +342,7 @@ def respond_view(target_customer_id):
     target_customer = Customer.query.filter_by(id=target_customer_id).first()
     if target_customer:
         # TODO: load previous chat history from target_customer.messages
-        return render_template("chat.html", target_customer=target_customer)
+        return render_template("chatManager.html", target_customer=target_customer)
     else:
         return False
 
@@ -699,7 +699,7 @@ def wish_list():
 @bp.route("/chat")
 @staff_login_required
 def chat():
-    return render_template("chat.html")
+    return render_template("chatManager.html")
 
 
 # previous order_details

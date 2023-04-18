@@ -14,11 +14,12 @@ from exts import socketio as io
 from exts import db
 from utils.bot import BOT_CHOICE, get_wxbot_signature, get_wxbot_answer
 from utils.toys import get_fuzzed_room_name
-from utils.decorators import login_required
+from utils.decorators import login_required, staff_login_required
 from model import Customer, Message
 from time import time
 from datetime import datetime
 from flask_socketio import join_room, leave_room, send, emit
+from sqlalchemy import desc
 
 bp = Blueprint("chat", __name__, url_prefix="/")
 
@@ -37,7 +38,7 @@ def get_chatbot_answer():
         signature_timestamp = session.get("signature_timestamp")
 
         if not signature_timestamp or time() - signature_timestamp > 7200:
-            userid = session.get("userid", f"guest_{time()}")
+            userid = session.get("customer_id", f"guest_{time()}")
             signature = get_wxbot_signature(userid)
             session["signature"] = signature
             session["signature_timestamp"] = time()
@@ -53,14 +54,24 @@ def get_chatbot_answer():
     return answer
 
 
-@bp.route("/get_session_customer_name", methods=["POST"])
+@bp.route("/get_session_customer_name", methods=["GET"])
 def get_session_customer_name():
     if session.get("customer_id"):
         customer = Customer.query.filter_by(id=session.get("customer_id")).first()
         if customer:
             return jsonify({"isLoggedIn": True, "nickname": customer.nickname})
-    # if not logged in, return "anon" by default
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
+
+@bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
+@staff_login_required
+def staff_load_chat_history(customer_id):
+    return get_history_by_cus_id(customer_id)
+
+@bp.route("/load_my_chat_history", methods=["GET"]) # for customer
+@login_required
+def load_my_chat_history():
+    customer_id = session.get("customer_id")
+    return get_history_by_cus_id(customer_id)
 
 
 ### END CHATBOT ROUTERS ###
@@ -198,3 +209,19 @@ def handle_message(data):
 ### END SOCKETIO EVENT HANDLERS ###
 
 # TODO: refactor socketio.emit, socketio.send to emit, send in the future
+
+
+
+def get_history_by_cus_id(customer_id):
+    messages = Message.query.filter_by(customerID=customer_id).order_by(desc(Message.sentTime)).limit(20).all() # TODO: dynamic limit refactor
+    if messages:
+        return [
+            {
+                "isByCustomer": message.isByCustomer,
+                "isPic": message.isPic,
+                "content": message.content,
+                "sentTime": message.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
+            }
+            for message in messages
+        ]
+    return []

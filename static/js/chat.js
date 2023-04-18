@@ -26,9 +26,9 @@ $(window).load(function () {
 function initGlobalVars() {
   // get the customerName by post request to /get_session_customer_name
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: "/get_session_customer_name",
-    data: {},
+    // data: {},
     timeout: 15000, // timeout after 15 seconds
     success: function (responseFromServer) {
       isLoggedIn = responseFromServer.isLoggedIn;
