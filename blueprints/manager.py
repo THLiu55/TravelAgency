@@ -209,6 +209,7 @@ def manager_homepage():
 
 @bp.route("/logout")
 def logout():
+    session.pop("staff_id", None)
     return render_template("Stafflogin.html")
 
 
