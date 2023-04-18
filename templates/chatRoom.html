@@ -3,7 +3,7 @@
 		<div class="chat-title">
 			<div>
 				<figure class="avatar">
-					<img src="../static/image/robot.svg" />
+					<img src="{{ url_for( 'static', filename='image/robot.svg' ) }}" />
 				</figure>
 			</div>
 
@@ -14,11 +14,12 @@
 				</div>
 
 				<a href="javascript:void(0)" onclick="btnfold()" id="btnfold">
-					<img class="icons close" src="../static/image/close.svg" style="width: 10px; height: 10px" /></a>
+					<img class="icons close" src="{{ url_for( 'static', filename='image/close.svg' ) }}"
+						style="width: 10px; height: 10px" /></a>
 			</div>
 		</div>
 		<div class="messages">
-			<div class="messages-content"></div>
+			<div class="messages-content" style="overflow-y: auto; height: 100%;"></div>
 		</div>
 		<div class="message-box">
 			<textarea type="text" class="message-input" placeholder="Type message..."></textarea>
@@ -29,8 +30,11 @@
 </div>
 
 <a id="shopincart" href="javascript:void(0)" onclick="btnunfold()">
-	<img class="sicons" src="../static/image/chat.svg" style="width: 50%; height: 35%" />
+	<img class="sicons" src="{{ url_for( 'static', filename='image/chat.svg' ) }}" style="width: 50%; height: 35%" />
 </a>
+<script>
+	window.botAvatarUrl = "{{ url_for( 'static', filename='image/robot.svg' ) }}";
+</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 <script
