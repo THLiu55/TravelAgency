@@ -5,6 +5,7 @@ from model import Flight, FlightOrder, FlightReview, Customer, Activity, Activit
 import datetime
 from exts import db
 from datetime import time
+from sqlalchemy import or_
 
 bp = Blueprint("flight", __name__, url_prefix="/flight")
 
@@ -121,7 +122,7 @@ def flight_filter():
     if dep_time[0] == '':
         dep_time_s = time(0, 0)
         dep_time_e = time(23, 59)
-        query = Flight.query.filter(
+        queries = Flight.query.filter(
             Flight.company.in_(airline),
             Flight.flight_stop.in_(stop),
             Flight.fare_type.in_(refundable),
@@ -131,23 +132,28 @@ def flight_filter():
         )
 
     else:
-        query = Flight.query.filter(
+        filters = []
+        if "00:00-05:59" in dep_time:
+            filters.append(Flight.takeoff_time.between(time(0, 0), time(5, 59)))
+        if "06:00-11:59" in dep_time:
+            filters.append(Flight.takeoff_time.between(time(6, 0), time(11, 59)))
+        if "12:00-17:59" in dep_time:
+            filters.append(Flight.takeoff_time.between(time(12, 0), time(17, 59)))
+        if "18:00-23:59" in dep_time:
+            filters.append(Flight.takeoff_time.between(time(18, 0), time(23, 59)))
+        queries = Flight.query.filter(
             Flight.company.in_(airline),
             Flight.flight_stop.in_(stop),
             Flight.fare_type.in_(refundable),
             Flight.flight_class.in_(class_type),
             Flight.price.between(min_price, max_price),
-            (Flight.takeoff_time.between(time(0, 0), time(5, 59))) if "00:00-05:59" in dep_time else True,
-            (Flight.takeoff_time.between(time(6, 0), time(11, 59))) if "06:00-11:59" in dep_time else True,
-            (Flight.takeoff_time.between(time(12, 0), time(17, 59))) if "12:00-17:59" in dep_time else True,
-            (Flight.takeoff_time.between(time(18, 0), time(23, 59))) if "18:00-23:59" in dep_time else True
+            or_(*filters)
         )
-
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=9)
+    pagination = queries.paginate(page=page, per_page=9)
     flights = pagination.items
     for flight_i in flights:
-        flight_i.contact_email = url_for('flight.flightDetail', flight_id=flight_i.id)
+        flight_i.contact_name = url_for('flight.flightDetail', flight_id=flight_i.id)
         flight_i.images = json.loads(flight_i.images)['images']
         flight_i.images[0] = "../" + flight_i.images[0][flight_i.images[0].index('static'):].replace('\\', '/')
     if to_sort == '2':
@@ -159,7 +165,7 @@ def flight_filter():
         flights = sorted(flights, key=lambda flight: flight.price, reverse=True)
 
     flights = [flight.to_dict() for flight in flights]
-    return jsonify({"activities": flights, "page": 1})
+    return jsonify({"flights": flights, "page": 1})
 
 
 @bp.route("/add_wishlist/<flight_id>")

@@ -41,7 +41,7 @@ class Message(db.Model):
     isPic = db.Column(db.Boolean)
     content = db.Column(db.Text)
     sentTime = db.Column(db.DateTime)
-    isByCustomer = db.Column(db.Boolean) # if False then by staff
+    isByCustomer = db.Column(db.Boolean)  # if False then by staff
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
 
 
@@ -411,17 +411,17 @@ class Flight(db.Model):
 
     def to_dict(self):
         return {
-            'company':self.company,
-            'takeoff_time':self.takeoff_time.strftime("%H:%M"),
-            'flight_stop':self.flight_stop,
-            'landing_time':self.landing_time.strftime("%H:%M"),
-            'destination':self.destination,
-            'total_time':self.total_time,
-            'price':self.price,
-            'fare_type':self.fare_type,
-            'departure':self.departure
-
-
+            'company': self.company,
+            'takeoff_time': self.takeoff_time.strftime("%H:%M"),
+            'flight_stop': self.flight_stop,
+            'landing_time': self.landing_time.strftime("%H:%M"),
+            'destination': self.destination,
+            'total_time': self.total_time,
+            'price': self.price,
+            'fare_type': self.fare_type,
+            'departure': self.departure,
+            'contact_name': self.contact_name,
+            'images': self.images
         }
 
 
@@ -429,7 +429,7 @@ class FlightOrder(db.Model):
     __tablename__ = 'flight_orders'
 
     id = db.Column(db.Integer, primary_key=True)
-    startTime = db.Column(db.DateTime) # order time
+    startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
