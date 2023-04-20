@@ -1,6 +1,7 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
 const item_container = document.getElementById("item-container")
+const modifyProduct = document.getElementById("modifyProduct")
 let BASE_URL = window.location.origin
 
 function load_flights(published, category) {
@@ -72,17 +73,16 @@ function load_flights(published, category) {
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
                                                         <li class="dropdown-items__item">
-                                                            <a class="dropdown-items__link">
+                                                        <a class="dropdown-items__link">
                                                             <span class="dropdown-items__link-icon" style="padding-left: 50%;">
-                                                                    <button data-modal="#modifyProduct" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
-                                                                    <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
-                                                                        <use xlink:href="#icon-view"></use>
-                                                                    </svg>Modify
-                                                                    </button>
+                                                                <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
+                                                                <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
+                                                                    <use xlink:href="#icon-view"></use>
+                                                                </svg>Modify
+                                                                </button>
                                                             </span>
-                                                            </a>
-                                                        </li>
-
+                                                        </a>
+                                                    </li>
                                                         <li class="dropdown-items__item" >
                                                             <a class="dropdown-items__link" onclick="delete_item(${items[i].id})">
                                                             <span class="dropdown-items__link-icon" style="padding-left: 50%;">
@@ -103,6 +103,17 @@ function load_flights(published, category) {
             tr.innerHTML = s
             item_container.appendChild(tr)
         }
+
+        const button_Modify = document.querySelectorAll("#button_Modify")
+
+        // for (let i = 1; i < button_Modify.length; i++) {
+        //
+        // }
+        button_Modify.forEach(item => {
+            item.addEventListener('click', () => {
+                modifyProduct.classList.add("is-active", "is-animate")
+            })
+        })
     }
 }
 

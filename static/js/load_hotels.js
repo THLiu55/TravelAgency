@@ -1,6 +1,7 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
 const item_container = document.getElementById("item-container")
+const modifyProduct = document.getElementById("modifyProduct")
 let BASE_URL = window.location.origin
 
 function load_hotels(published, category) {
@@ -73,19 +74,27 @@ function load_hotels(published, category) {
                                         <div class="dropdown-items dropdown-items--right">
                                             <div class="dropdown-items__container">
                                                 <ul class="dropdown-items__list">
-                                                    <li class="dropdown-items__item"><a
-                                                            class="dropdown-items__link"><span
-                                                                class="dropdown-items__link-icon">
-                                                                <svg class="icon-icon-view">
+                                                    <li class="dropdown-items__item">
+                                                        <a class="dropdown-items__link">
+                                                            <span class="dropdown-items__link-icon" style="padding-left: 50%;">
+                                                                <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
+                                                                <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
                                                                     <use xlink:href="#icon-view"></use>
-                                                                </svg></span>Details</a>
+                                                                </svg>Modify
+                                                                </button>
+                                                            </span>
+                                                        </a>
                                                     </li>
-                                                    <li class="dropdown-items__item"><a onclick="delete_item(${items[i].id})"
-                                                            class="dropdown-items__link"><span
-                                                                class="dropdown-items__link-icon">
+                                                    <li class="dropdown-items__item" >
+                                                        <a class="dropdown-items__link" onclick="delete_item(${items[i].id})">
+                                                        <span class="dropdown-items__link-icon" style="padding-left: 50%;">
+                                                                <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
-                                                                </svg></span>Delete</a>
+                                                                </svg>Delete
+                                                            </button>
+                                                        </span>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -96,6 +105,17 @@ function load_hotels(published, category) {
             tr.innerHTML = s
             item_container.appendChild(tr)
         }
+
+                const button_Modify = document.querySelectorAll("#button_Modify")
+
+        // for (let i = 1; i < button_Modify.length; i++) {
+        //
+        // }
+        button_Modify.forEach(item => {
+            item.addEventListener('click', () => {
+                modifyProduct.classList.add("is-active", "is-animate")
+            })
+        })
     }
 }
 

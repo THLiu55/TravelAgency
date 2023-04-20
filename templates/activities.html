@@ -186,41 +186,6 @@
                                 </tr>
                             </thead>
                             <tbody id="item-container">
-                               <td class="table__td table__actions">
-                                        <div class="items-more">
-                                            <button class="items-more__button" style="max-width: 100px;max-height: 30px; margin-left: 0px; padding-left: 0px;margin-right: 0px; padding-right: 0px;">
-                                                <svg class="icon-icon-more">
-                                                    <use xlink:href="#icon-more"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="dropdown-items dropdown-items--right">
-                                                <div class="dropdown-items__container">
-                                                    <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link">
-                                                            <span class="dropdown-items__link-icon" style="padding-left: 50%;">
-                                                                    <button data-modal="#modifyProduct" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
-                                                                    <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
-                                                                        <use xlink:href="#icon-view"></use>
-                                                                    </svg>Modify
-                                                                    </button></a>
-                                                                </span>
-                                                        </li>
-                                                        <li class="dropdown-items__item" ><a
-                                                                class="dropdown-items__link"><span
-                                                                    class="dropdown-items__link-icon" style="padding-left: 50%;">
-                                                                    <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
-                                                                    <svg class="icon-icon-trash">
-                                                                        <use xlink:href="#icon-trash"></use>
-                                                                    </svg>Delete
-                                                                </button></a>
-                                                            </span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -263,7 +228,6 @@
             </div>
         </main>
     </div>
-{#    侧边栏方法，好像写重了一个#}
     <div class="modal modal--panel modal--right" id="modifyProduct">
         <div class="modal__overlay" data-dismiss="modal"></div>
         <div class="modal__wrap">
@@ -624,7 +588,7 @@
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
                                     <button class="button button--primary button--block" data-dismiss="modal" type="submit"
-                                        data-modal="#addAttractionsuccess" onclick="ImageUpload.prototype.removeAllItems()"><span class="button__text">Create</span>
+                                        data-modal="#addAttractionsuccess" onclick="ImageUpload.prototype.removeAllItems()"><span class="button__text">Save</span>
                                     </button>
                                 </div>
                                 <div class="modal__footer-button">
@@ -639,7 +603,6 @@
             </div>
         </div>
     </div>
-
     <div class="modal modal--panel modal--right" id="addProduct">
         <div class="modal__overlay" data-dismiss="modal"></div>
         <div class="modal__wrap">

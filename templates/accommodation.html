@@ -638,6 +638,557 @@
             </div>
         </main>
     </div>
+    <div class="modal modal--panel modal--right" id="modifyProduct">
+        <div class="modal__overlay" data-dismiss="modal"></div>
+        <div class="modal__wrap">
+            <div class="modal__window scrollbar-thin" data-simplebar>
+                <div class="modal__content">
+                    <div class="modal__header">
+                        <div class="modal__container">
+                            <h2 class="modal__title">Modify Product</h2>
+                        </div>
+                    </div>
+                    <div class="modal__body">
+                        <div class="modal__container">
+                            <form action="{{ url_for('manager.add_hotel') }}" method="post" enctype="multipart/form-data">
+                            <div class="row row--md">
+                                <div class="user-profile-card add-listing">
+                                    <h4 class="user-profile-card-title">Modify Accomodation</h4>
+                                    <div class="col-lg-12">
+                                        <div class="add-listing-form">
+                                            <h5 class="mb-4">Basic Information</h5>
+                                            {# <form action="#">#}
+                                                <div class="row align-items-center">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Hotel Name</label>
+                                                            <input type="text" class="form-control" name="name"
+                                                                placeholder="Enter hotel name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Total Number Of Rooms & Suites</label>
+                                                            <input type="number" class="form-control" name="room_num"
+                                                                placeholder="Enter total rooms">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label>Minimal Price</label>
+                                                            <input type="number" class="form-control" name="min_price" min="0"
+                                                                placeholder="Enter Minimal price">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                    </div>
+                                                    <h5 class="my-4">Location</h5>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>City</label>
+                                                            <input type="text" class="form-control" name="city"
+                                                                placeholder="Enter city">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>State</label>
+                                                            <input type="text" class="form-control" name="state"
+                                                                placeholder="Enter state">
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Zip Code</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Enter zip code">
+                                                            </div>
+                                                        </div> -->
+{#                                                    <div class="col-lg-12">#}
+{#                                                        <div class="form-group">#}
+{#                                                            <label>Address</label>#}
+{#                                                            <input type="text" class="form-control" name="address"#}
+{#                                                                placeholder="Enter address">#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+
+
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                                <label>Hotel Star</label>
+                                                                <select name="hotel_star" class="select">
+                                                                    <option value="">Select On Hotel Star</option>
+                                                                    <option value="1">1 Star</option>
+                                                                    <option value="2">2 Star</option>
+                                                                    <option value="3">3 Star</option>
+                                                                    <option value="4">4 Star</option>
+                                                                    <option value="5">5 Star</option>
+                                                                </select>
+                                                            </div>
+                                                    </div>
+
+
+                                                    {# <div class="col-lg-12">#}
+                                                        {# <div class="form-group">#}
+                                                            {# <label>Address 2</label>#}
+                                                            {# <input type="text" class="form-control" #} {#
+                                                                placeholder="Enter address 2">#}
+                                                            {# </div>#}
+                                                        {# </div>#}
+                                                    <h5 class="my-4">Your Accommodation Information</h5>
+                                                    <div
+                                                        style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
+                                                        <div class="col-lg-4" style="max-width: none;">
+                                                            <div class="form-group">
+                                                                <label>Minimum Stay</label>
+                                                                <select name="min_stay" class="select">
+                                                                    <option value="">Select Minimum Stay</option>
+                                                                    <option value="2 Nights Or Less">2 Nights Or Less</option>
+                                                                    <option value="More Than 2 Nights">More Than 2 Nights</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4"  style="max-width: none;">
+                                                            <div class="form-group">
+                                                                <label>Security</label>
+                                                                <select name="security" class="select">
+                                                                    <option value="">Select Security</option>
+                                                                    <option value="On Site">On Site</option>
+                                                                    <option value="None">None</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4"  style="max-width: none;">
+                                                            <div class="form-group">
+                                                                <label>On Site Staff</label>
+                                                                <select name="on_site_staff" class="select">
+                                                                    <option value="">Select On Site Staff</option>
+                                                                    <option value="Yes">Yes</option>
+                                                                    <option value="No">No</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4"  style="max-width: none;">
+                                                            <div class="form-group">
+                                                                <label>Housekeeping</label>
+                                                                <select name="house_keeping" class="select">
+                                                                    <option value="">Select Housekeeping</option>
+                                                                    <option value="Included In Room Rate">Included In Room Rate</option>
+                                                                    <option value="Additional Fee">Additional Fee</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4"  style="max-width: none;">
+                                                            <div class="form-group">
+                                                                <label>Front Desk</label>
+                                                                <select name="front_desk" class="select">
+                                                                    <option value="">Select Frequency</option>
+                                                                    <option value="24 Hour Staffing">24 Hour Staffing</option>
+                                                                    <option value="Limited Hours Staffing">Limited Hours Staffing</option>
+                                                                    <option value="None">None</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4"  style="max-width: none;">
+                                                            <div class="form-group">
+                                                                <label>Bathroom</label>
+                                                                <select name="bathroom" class="select">
+                                                                    <option value="">Select Bathroom</option>
+                                                                    <option value="All En Suite">All En Suite</option>
+                                                                    <option value="Some En Suite">Some En Suite</option>
+                                                                    <option value="Shared">Shared</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 form-group form-group--lg">
+                                                        <label class="form-label">Product Images</label>
+                                                        <div class="image-upload">
+                                                            <div class="image-upload__drop">
+                                                                <input class="image-upload__input" type="file"
+                                                                    name="images" accept="image/png, image/jpeg"
+                                                                    multiple>
+                                                                <div class="image-upload__drop-text">
+                                                                    <svg class="icon-icon-upload">
+                                                                        <use xlink:href="#icon-upload"></use>
+                                                                    </svg> <span>Drag and Drop or </span> <span
+                                                                        class="image-upload__drop-action text-blue">Browse</span>
+                                                                    <span>to upload</span>
+                                                                </div>
+                                                            </div>
+                                                            <ul class="image-upload__list">
+                                                                <li class="image-upload__item">
+                                                                    <div class="image-upload__progress">
+                                                                        <div class="image-upload__progress-icon"></div>
+                                                                    </div>
+                                                                    <div class="image-upload__action-remove">
+                                                                        <svg class="icon-icon-cross">
+                                                                            <use xlink:href="#icon-cross"></use>
+                                                                        </svg>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="image-upload__item">
+                                                                    <div class="image-upload__progress">
+                                                                        <div class="image-upload__progress-icon"></div>
+                                                                    </div>
+                                                                    <div class="image-upload__action-remove">
+                                                                        <svg class="icon-icon-cross">
+                                                                            <use xlink:href="#icon-cross"></use>
+                                                                        </svg>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="image-upload__item">
+                                                                    <div class="image-upload__progress">
+                                                                        <div class="image-upload__progress-icon"></div>
+                                                                    </div>
+                                                                    <div class="image-upload__action-remove">
+                                                                        <svg class="icon-icon-cross">
+                                                                            <use xlink:href="#icon-cross"></use>
+                                                                        </svg>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="image-upload__item">
+                                                                    <div class="image-upload__progress">
+                                                                        <div class="image-upload__progress-icon"></div>
+                                                                    </div>
+                                                                    <div class="image-upload__action-remove">
+                                                                        <svg class="icon-icon-cross">
+                                                                            <use xlink:href="#icon-cross"></use>
+                                                                        </svg>
+                                                                    </div>
+                                                                </li>
+                                                                <li class="image-upload__item">
+                                                                    <div class="image-upload__progress">
+                                                                        <div class="image-upload__progress-icon"></div>
+                                                                    </div>
+                                                                    <div class="image-upload__action-remove">
+                                                                        <svg class="icon-icon-cross">
+                                                                            <use xlink:href="#icon-cross"></use>
+                                                                        </svg>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    {# <div class="col-12 form-group form-group--lg mb-0">#}
+                                                        {# <label class="form-label">Tags</label>#}
+                                                        {# <select class="input js-input-tags" multiple="multiple"
+                                                            data-placeholder="">#}
+                                                            {# <option value="1">Food</option>#}
+                                                            {# <option value="2">Hot Air Balloon</option>#}
+                                                            {# <option value="3">Mountain Climbing</option>#}
+                                                            {# <option value="4" selected="selected">Bike Ride</option>
+                                                            #}
+                                                            {# <option value="5">Nightlife</option>#}
+                                                            {# <option value="6">Amusement Park</option>#}
+                                                            {# <option value="7">City sightseeing</option>#}
+                                                            {# </select>#}
+                                                        {# </div>#}
+                                                    <!-- <h5 class="my-4">Upload Images</h5>
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                                <div class="listing-upload-wrapper">
+                                                                    <div class="listing-img-upload">
+                                                                        <span><i class="far fa-images"></i> Upload
+                                                                            listing Images</span>
+                                                                    </div>
+                                                                    <input type="file" class="listing-img-file"
+                                                                        multiple>
+                                                                </div>
+                                                            </div>
+                                                        </div> -->
+                                                    <h5 class="my-4">Detailed Information</h5>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label>Description</label>
+                                                            <textarea class="form-control" name="description"
+                                                                placeholder="Write description" cols="30"
+                                                                rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%; padding-top: 15px;">
+                                                        <div>
+                                                            <h5 class="my-4">Amenities</h5>
+                                                        </div>
+
+<div>
+
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity1"
+                                                                    type="checkbox" value="Airport Transportation" id="aminity1" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity1">
+                                                                    Airport Transportation
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity2"
+                                                                    type="checkbox" value="Bar / Lounge" id="aminity2" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity2">
+                                                                    Bar / Lounge
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity3"
+                                                                    type="checkbox" value="Beach" id="aminity3" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity3">
+                                                                    Beach
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity4"
+                                                                    type="checkbox" value="Beverage Selection" id="aminity4" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity4">
+                                                                    Beverage Selection
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity5"
+                                                                    type="checkbox" value="Swimming Pool" id="aminity5" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity5">
+                                                                    Swimming Pool
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity6"
+                                                                    type="checkbox" value="WiFi" id="aminity6" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity6">
+                                                                    WiFi
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity7"
+                                                                    type="checkbox" value="Coffee" id="aminity7" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity7">
+                                                                    Coffee
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity8"
+                                                                    type="checkbox" value="Air Conditioning" id="aminity8" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity8">
+                                                                    Air Conditioning
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity9"
+                                                                    type="checkbox" value="Entertainment" id="aminity9" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity9">
+                                                                    Entertainment
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity10"
+                                                                    type="checkbox" value="Elevator In Building" id="aminity10" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity10">
+                                                                    Elevator In Building
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity11"
+                                                                    type="checkbox" value="Wheelchair Access" id="aminity11" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity11">
+                                                                    Wheelchair Access
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity12"
+                                                                    type="checkbox" value="Fitness Facility" id="aminity12" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity12">
+                                                                    Fitness Facility
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity13"
+                                                                    type="checkbox" value="Breakfast" id="aminity13" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity13">
+                                                                    Breakfast
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity14"
+                                                                    type="checkbox" value="Handicap Accessible" id="aminity14" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity14">
+                                                                    Handicap Accessible
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity15"
+                                                                    type="checkbox" value="Pets Allowed" id="aminity15" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity15">
+                                                                    Pets Allowed
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity16"
+                                                                    type="checkbox" value="Suitable For Events" id="aminity16" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity16">
+                                                                    Suitable For Events
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity17"
+                                                                    type="checkbox" value="Restaurant" id="aminity17" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity17">
+                                                                    Restaurant
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity18"
+                                                                    type="checkbox" value="Doorman" id="aminity18" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity18">
+                                                                    Doorman
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity19"
+                                                                    type="checkbox" value="Free Parking" id="aminity19" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity19">
+                                                                    Free Parking
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-3">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" name="aminity20"
+                                                                    type="checkbox" value="Wine Bar" id="aminity20" style="-webkit-appearance:checkbox;">
+                                                                <label class="form-check-label" for="aminity20">
+                                                                    Wine Bar
+                                                                </label>
+                                                            </div>
+
+
+
+
+
+
+                                                            </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <h5 class="my-4">The infomation of Availiable Rooms</h5>
+                                                        <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;"> -->
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group">
+                                                               <label>Room Type numbers</label>
+                                                               <input type="number" class="form-control" min="0" max="7" name="typenum"
+                                                                   placeholder="Enter room type numbers" id="inputRoomNumber">
+                                                           </div>
+                                                       </div>
+                                                       <h5 class="my-4">Room Information</h5>
+                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer">
+                                                       </div>
+                                                        <h5 class="my-4">Contact Information</h5>
+                                                        <div
+                                                            style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 200%;padding-top: 15px;">
+                                                            <div class="col-lg-4">
+                                                                <div class="form-group">
+                                                                    <label>Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="contact_name" placeholder="Enter name" style="width: max-content;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="form-group">
+                                                                    <label>Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                        name="contact_email" placeholder="Enter email" style="width: max-content;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <div class="form-group">
+                                                                    <label>Phone</label>
+                                                                    <input type="tel" class="form-control"
+                                                                        name="contact_phone" placeholder="Enter phone" style="width: max-content;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 mt-4">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" name="agree"
+                                                                        type="checkbox" value="" id="agree" disabled
+                                                                        checked style="-webkit-appearance:checkbox;">
+                                                                    <label class="form-check-label" for="agree">
+                                                                        I Agree With Your Terms Of Services And Privacy
+                                                                        Policy.
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12 my-4">
+                                                                <button type="submit" class="theme-btn">Submit New Accommodation</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {#
+                                            </form>#}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal__footer">
+                        <div class="modal__container">
+                            <div class="modal__footer-buttons">
+                                <div class="modal__footer-button">
+                                    <button class="button button--primary button--block" data-dismiss="modal"
+                                        type="submit" data-modal="#addAccommodationsuccess"
+                                        onclick="ImageUpload.prototype.removeAllItems()"><span
+                                            class="button__text">Save</span>
+                                    </button>
+                                </div>
+                                <div class="modal__footer-button">
+                                    <button class="button button--secondary button--block" data-dismiss="modal"><span
+                                            class="button__text">Cancel</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal modal--panel modal--right" id="addProduct">
         <div class="modal__overlay" data-dismiss="modal"></div>
         <div class="modal__wrap">
