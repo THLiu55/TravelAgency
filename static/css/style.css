@@ -6712,8 +6712,8 @@ html[data-theme="dark"] .input-group__arrows {
 .sidebar__logo-icon {
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  min-width: 43px;
-  width: 43px;
+  min-width: 153px;
+  width: 153px;
   margin-right: 5px;
 }
 
@@ -9600,11 +9600,11 @@ span.flatpickr-weekday {
 
 .order-invoice__logo {
   width: 100%;
-  max-width: 10.0667rem;
-  height: 2.3333rem;
+  max-width: 20.0667rem;
+  height: 4.3333rem;
   margin-top: 1.6rem;
   margin-left: auto;
-  background: url("../img/content/logo-light.svg") no-repeat 50% 50%/contain;
+  background: url("../image/logo.png") no-repeat 50% 50%/contain;
 }
 
 @media (max-width: 767px) {
