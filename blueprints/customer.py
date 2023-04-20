@@ -179,7 +179,7 @@ def profilepage():
     return render_template("profile.html", customer=customer, logged=True)
 
 
-@bp.route("/plan_events_wishlist")
+@bp.route("/plan_events_wishlist", methods=["GET"])
 def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
     customer = Customer.query.get(session.get('customer_id'))
     hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
@@ -265,6 +265,15 @@ def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
     print(json_data,"-----------------")
 
     return jsonify(json.loads(json_data))
+
+def plan_obj_serializer(plan_obj):
+    return {
+        'title': plan_obj.title,
+        'start': plan_obj.start.isoformat(),
+        'end': plan_obj.end.isoformat(),
+        'color': plan_obj.color
+    }
+
 
 
 
@@ -411,30 +420,109 @@ def wishlist():
                            length=length)
 
 
-@bp.route("/wishlist_calendar", methods=['POST'])
+@bp.route("/wishlist_calendar", methods=['POST', 'GET'])
 def plan_wishlist():
     order_id = request.form.get("order_id")
     order_type = request.form.get("order_type")
-    flightorder_list = []
-    hotelorder_list = []
-    tourorder_list = []
-    activityorder_list = []
+    flightList = []
+    hotelList = []
+    tourList = []
+    activityList = []
     if order_type == "Flight":
         order = FlightOrder.query.get(order_id)
-        flightorder_list.append(order)
+        flightList.append(order)
 
     elif order_type == "Hotel":
         order = HotelOrder.query.get(order_id)
-        hotelorder_list.append(order)
+        hotelList.append(order)
     elif order_type == "Tour":
         order = TourOrder.query.get(order_id)
-        tourorder_list.append(order)
+        tourList.append(order)
     elif order_type == "Activity":
         order = ActivityOrder.query.get(order_id)
-        activityorder_list.append(order)
-    # print(flightorder_list, hotelorder_list, tourorder_list, activityorder_list)
-    plan_events_wishlist(flightorder_list, hotelorder_list, tourorder_list, activityorder_list)
-    return redirect(url_for('customer.wishlist'))
+        activityList.append(order)
+    # print(flightList, hotelList, tourList, activityList,"flightList, hotelList, tourList, activityList")
+    customer = Customer.query.get(session.get('customer_id'))
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    plan_list = []
+    for hotel_i in hotel_orders:
+        plan_object = PlanObj()
+        plan_object.title = Hotel.query.get(hotel_i.productID).name
+        if hotel_i.startTime > datetime.now():
+            plan_object.color = '#00671'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = hotel_i.startTime
+        plan_object.end = hotel_i.checkOutTime
+        plan_list.append(plan_object)
+    for tour_i in tour_orders:
+        tour_obj = Tour.query.get(tour_i.productID)
+        plan_object = PlanObj()
+        plan_object.title = Tour.query.get(tour_i.productID).name
+        if tour_i.endTime > datetime.now():
+            plan_object.color = '#009378'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = tour_i.endTime
+        plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
+        plan_list.append(plan_object)
+    for activity_i in activity_orders:
+        plan_object = PlanObj()
+        plan_object.title = Activity.query.get(activity_i.productID).name
+        if activity_i.endTime > datetime.now():
+            plan_object.color = '#2bb3c0'  # #e16123
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = activity_i.endTime
+        plan_object.end = activity_i.endTime
+        plan_list.append(plan_object)
+
+
+    for hotel_ii in hotelList:
+        plan_object = PlanObj()
+        plan_object.title = Hotel.query.get(hotel_ii.productID).name
+        if hotel_ii.startTime > datetime.now():
+            plan_object.color = '#00671'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = hotel_ii.startTime
+        plan_object.end = hotel_ii.checkOutTime
+        plan_list.append(plan_object)
+    for tour_ii in tourList:
+        tour_obj = Tour.query.get(tour_ii.productID)
+        plan_object = PlanObj()
+        plan_object.title = Tour.query.get(tour_ii.productID).name
+        if tour_ii.endTime > datetime.now():
+            plan_object.color = '#009378'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = tour_ii.startTime
+        plan_object.end = tour_ii.endTime + timedelta(days=tour_obj.duration)
+        print(plan_object.start, plan_object.end)
+        plan_list.append(plan_object)
+    for activity_ii in activityList:
+        plan_object = PlanObj()
+        plan_object.title = Activity.query.get(activity_ii.productID).name
+        if activity_ii.endTime > datetime.now():
+            plan_object.color = '#2bb3c0'  # #e16123
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = activity_ii.startTime
+        plan_object.end = activity_ii.endTime
+        print(plan_object.start, plan_object.end)
+        plan_list.append(plan_object)
+
+
+    plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
+    json_data = json.dumps(plan_dict_list)
+    print(plan_dict_list,"-----------------")
+    print(json_data,"-----------------")
+    print(json.loads(json_data),"-----------------")
+
+    return jsonify(json.loads(json_data))
+    # return redirect(url_for('customer.wishlist'))
 
 
 

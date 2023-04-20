@@ -20,8 +20,8 @@ Author URI  : http://www.bootstrapmb.com/item/2664
     $(function () {
         var retrieved_events
         $.ajax({
-              url: '../plan_events_wishlist',
-              method: 'GET', // 可以是 GET 或 POST
+              url: '../wishlist_calendar',
+              method: 'POST', // 可以是 GET 或 POST
               dataType: 'json', // 返回的数据类型
               success: function(data) {
                 console.log("test");
