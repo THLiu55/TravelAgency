@@ -399,12 +399,33 @@ Version         : 1.0
         });
     }
 
-
-    // search date picker 
+    // search date picker
     if ($('.date-picker').length) {
-        $(".date-picker").datepicker();
-    }
+        // constrain users to select date
+        // an array of specific dates to allow selection for
+        // initialize the datepicker and set the beforeShowDay option
+        if ($('.date-picker').hasClass('flight-special-date')){
+            var allowedDates = ["2023-04-22", "2023-04-25", "2023-04-30"];
+            $(".date-picker").datepicker({
+            beforeShowDay: function(date) {
+                // convert date to a string in yyyy-mm-dd format
+                var dateString = $.datepicker.formatDate('yy-mm-dd', date);
 
+                // check if the date is in the allowedDates array
+                if ($.inArray(dateString, allowedDates) !== -1) {
+                    // if it is, return an array with the 'enabled' class and an empty tooltip
+                    return [true, 'enabled', ''];
+                } else {
+                    // if it's not, return an array with the 'disabled' class and a tooltip indicating that the date is unavailable
+                    return [false, 'disabled', 'This date is unavailable'];
+                }
+            }
+            });
+        }else {
+            $(".date-picker").datepicker()
+        }
+
+    }
 
     // find-car time picker 
     if ($('.time-picker').length) {

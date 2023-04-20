@@ -29,7 +29,6 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @bp.route("/")
 @staff_login_required
 def manager_homepage():
-    db.create_all()
     today = datetime.now().date()
     one_day_ago = today - timedelta(days=1)
 
