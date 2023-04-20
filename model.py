@@ -489,7 +489,7 @@ class PlanObj:
 
 
 class WishListObject:
-    def __init__(self, title, second_line, star, star_des, review_num, price, photo_url, url, time, type_):
+    def __init__(self, title, second_line, star, star_des, review_num, price, photo_url, url, time, type_, id):
         self.title = title
         self.second_line = second_line
         self.star = star
@@ -500,3 +500,4 @@ class WishListObject:
         self.url = url
         self.time = time
         self.type_ = type_
+        self.id = id

@@ -11,7 +11,7 @@
                     <div class="hotel-img">
                         <span class="badge">{{ i.type_ }}</span>
                         <img src="{{ i.photo_url }}" alt="">
-                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                        <a href="#" class="add-wishlist"  data-order-id="{{ i.id }}" data-order-type="{{ i.type_ }}"id="addtoWishListCalender"><i class="far fa-calendar-plus"></i></a>
                     </div>
                     <div class="hotel-content">
                         <h4 class="hotel-title"><a href="#">{{ i.title }}</a></h4>
@@ -36,6 +36,8 @@
 
         </div>
 
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Plan them in my calendar</button>
+
 
 
 
@@ -59,8 +61,66 @@
                 </ul>
             </div>
         </div> -->
+
+        <!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 999999;" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+        <div class="modal-body">
+            {% block body %}
+            <div id="calendarApp" class="calendar--app"></div>
+            {% endblock %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+    $(".add-wishlist").click(function (event) {
+        event.preventDefault();
+        $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        var order_id = $(this).data("order-id");
+        var order_type = $(this).data("order-type");
+        $.ajax({
+            url: "/wishlist_calendar",
+            type: "POST",
+            data: {
+                order_id: order_id,
+                order_type: order_type
+                
+            },
+            success: function (response) {
+                console.log(response.data);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    });
+});
 
+  
+</script>
+{% block jsLink %}
+{#  calendar js  #}
+    <script src="{{ url_for('static', filename='css/calendar/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/fullcalendar.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/page/calendarwishlist.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/locale-all.js') }}"></script>
+{% endblock %}
 </main>

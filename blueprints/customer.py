@@ -25,13 +25,13 @@ def homepage():
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
 
-    total_flights = Flight.query.count()
-    paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
-    flights = paginationFlight.items
-    for flight in flights:
-        # noinspection PyTypeChecker
-        flight.images = json.loads(flight.images)['images']
-        flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
+    # total_flights = Flight.query.count()
+    # paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
+    # flights = paginationFlight.items
+    # for flight in flights:
+    #     # noinspection PyTypeChecker
+    #     flight.images = json.loads(flight.images)['images']
+    #     flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
 
     total_hotels = Hotel.query.count()
     paginationHotel = Hotel.query.paginate(page=int(1), per_page=9, error_out=False)
@@ -49,7 +49,7 @@ def homepage():
         tour.images = json.loads(tour.images)['images']
         tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
     return render_template("Homepage.html", total_activities=total_activities, activities=activities,
-                           total_flights=total_flights, flights=flights, total_hotels=total_hotels, hotels=hotels,
+                            total_hotels=total_hotels, hotels=hotels,
                            total_tours=total_tours, tours=tours,
                            logged=logged)
 
@@ -179,6 +179,95 @@ def profilepage():
     return render_template("profile.html", customer=customer, logged=True)
 
 
+@bp.route("/plan_events_wishlist")
+def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
+    customer = Customer.query.get(session.get('customer_id'))
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    plan_list = []
+    for hotel_i in hotel_orders:
+        plan_object = PlanObj()
+        plan_object.title = Hotel.query.get(hotel_i.productID).name
+        if hotel_i.startTime > datetime.now():
+            plan_object.color = '#00671'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = hotel_i.startTime
+        plan_object.end = hotel_i.checkOutTime
+        plan_list.append(plan_object)
+    for tour_i in tour_orders:
+        tour_obj = Tour.query.get(tour_i.productID)
+        plan_object = PlanObj()
+        plan_object.title = Tour.query.get(tour_i.productID).name
+        if tour_i.endTime > datetime.now():
+            plan_object.color = '#009378'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = tour_i.endTime
+        plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
+        plan_list.append(plan_object)
+    for activity_i in activity_orders:
+        plan_object = PlanObj()
+        plan_object.title = Activity.query.get(activity_i.productID).name
+        if activity_i.endTime > datetime.now():
+            plan_object.color = '#2bb3c0'  # #e16123
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = activity_i.endTime
+        plan_object.end = activity_i.endTime
+        plan_list.append(plan_object)
+
+    # for flight_i in flightlist:
+    #     plan_object = PlanObj()
+    #     plan_object.title = flight_i.flightNumber
+    #     if flight_i.endTime > datetime.now():
+    #         plan_object.color = '#e16123'
+    #     else:
+    #         plan_object.color = '#ea5050'
+    #     plan_object.start = flight_i.endTime
+    #     plan_object.end = flight_i.endTime
+    #     plan_list.append(plan_object)
+    for hotel_i in hotelList:
+        plan_object = PlanObj()
+        plan_object.title = Hotel.query.get(hotel_i.productID).name
+        if hotel_i.startTime > datetime.now():
+            plan_object.color = '#00671'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = hotel_i.startTime
+        plan_object.end = hotel_i.checkOutTime
+        plan_list.append(plan_object)
+    for tour_i in tourList:
+        tour_obj = Tour.query.get(tour_i.productID)
+        plan_object = PlanObj()
+        plan_object.title = Tour.query.get(tour_i.productID).name
+        if tour_i.endTime > datetime.now():
+            plan_object.color = '#009378'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = tour_i.endTime
+        plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
+        print(plan_object.start, plan_object.end)
+        plan_list.append(plan_object)
+    for activity_i in activityList:
+        plan_object = PlanObj()
+        plan_object.title = Activity.query.get(activity_i.productID).name
+        if activity_i.endTime > datetime.now():
+            plan_object.color = '#2bb3c0'  # #e16123
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = activity_i.endTime
+        plan_object.end = activity_i.endTime
+        plan_list.append(plan_object)
+    plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
+    json_data = json.dumps(plan_dict_list)
+    print(json_data,"-----------------")
+
+    return jsonify(json.loads(json_data))
+
+
+
 @bp.route("/plan_events")
 def plan_events():
     customer = Customer.query.get(session.get('customer_id'))
@@ -288,7 +377,7 @@ def wishlist():
                                    flight_obj.review_num, flight_obj.price,
                                    flight_obj.images[0],
                                    url_for('flight.flightDetail', flight_id=flight_obj.id), flight_i.startTime,
-                                   "Flight")
+                                   "Flight",flight_i.productID)
         order_list.append(order_obj)
     for hotel_i in hotel_orders:
         hotel_obj = Hotel.query.get(hotel_i.productID)
@@ -296,7 +385,7 @@ def wishlist():
         hotel_obj.images[0] = hotel_obj.images[0][hotel_obj.images[0].index('static'):]
         order_object = WishListObject(hotel_obj.name, hotel_obj.address + " " + hotel_obj.city, 5, "Excellent",
                                       hotel_obj.review_num, hotel_obj.min_price, hotel_obj.images[0],
-                                      url_for('hotel.hotelDetail', hotel_id=hotel_obj.id), hotel_i.endTime, "Hotel")
+                                      url_for('hotel.hotelDetail', hotel_id=hotel_obj.id), hotel_i.endTime, "Hotel",hotel_i.id)
         order_list.append(order_object)
     for tour_i in tour_orders:
         tour_object = Tour.query.get(tour_i.productID)
@@ -304,7 +393,7 @@ def wishlist():
         tour_object.images[0] = tour_object.images[0][tour_object.images[0].index('static'):]
         order_object = WishListObject(tour_object.name, tour_object.address + " " + tour_object.city, 5, "Excellent",
                                       tour_object.review_num, tour_object.price, tour_object.images[0],
-                                      url_for('tour.tourDetail', tour_id=tour_object.id), tour_i.startTime, "Tour")
+                                      url_for('tour.tourDetail', tour_id=tour_object.id), tour_i.startTime, "Tour",tour_i.id)
         order_list.append(order_object)
     for activity_i in activity_orders:
         activity_object = Activity.query.get(activity_i.productID)
@@ -314,12 +403,39 @@ def wishlist():
                                       "Excellent", activity_object.review_num, activity_i.cost,
                                       activity_object.images[0],
                                       url_for('activity.activityDetail', activity_id=activity_i.productID),
-                                      activity_i.startTime, "Activity")
+                                      activity_i.startTime, "Activity",activity_i.productID)
         order_list.append(order_object)
     sorted_orders = sorted(order_list, key=lambda obj: obj.time, reverse=True)
     length = len(sorted_orders)
     return render_template("profile-wishlist.html", customer=customer, logged=True, sorted_orders=sorted_orders,
                            length=length)
+
+
+@bp.route("/wishlist_calendar", methods=['POST'])
+def plan_wishlist():
+    order_id = request.form.get("order_id")
+    order_type = request.form.get("order_type")
+    flightorder_list = []
+    hotelorder_list = []
+    tourorder_list = []
+    activityorder_list = []
+    if order_type == "Flight":
+        order = FlightOrder.query.get(order_id)
+        flightorder_list.append(order)
+
+    elif order_type == "Hotel":
+        order = HotelOrder.query.get(order_id)
+        hotelorder_list.append(order)
+    elif order_type == "Tour":
+        order = TourOrder.query.get(order_id)
+        tourorder_list.append(order)
+    elif order_type == "Activity":
+        order = ActivityOrder.query.get(order_id)
+        activityorder_list.append(order)
+    # print(flightorder_list, hotelorder_list, tourorder_list, activityorder_list)
+    plan_events_wishlist(flightorder_list, hotelorder_list, tourorder_list, activityorder_list)
+    return redirect(url_for('customer.wishlist'))
+
 
 
 @bp.route("/wallet")
