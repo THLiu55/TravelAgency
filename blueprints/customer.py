@@ -25,13 +25,13 @@ def homepage():
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
 
-    # total_flights = Flight.query.count()
-    # paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
-    # flights = paginationFlight.items
-    # for flight in flights:
-    #     # noinspection PyTypeChecker
-    #     flight.images = json.loads(flight.images)['images']
-    #     flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
+    total_flights = Flight.query.count()
+    paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
+    flights = paginationFlight.items
+    for flight in flights:
+        # noinspection PyTypeChecker
+        flight.images = json.loads(flight.images)['images']
+        flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
 
     total_hotels = Hotel.query.count()
     paginationHotel = Hotel.query.paginate(page=int(1), per_page=9, error_out=False)
@@ -49,7 +49,7 @@ def homepage():
         tour.images = json.loads(tour.images)['images']
         tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
     return render_template("Homepage.html", total_activities=total_activities, activities=activities,
-                            total_hotels=total_hotels, hotels=hotels,
+                           total_flights=total_flights,flights=flights, total_hotels=total_hotels, hotels=hotels,
                            total_tours=total_tours, tours=tours,
                            logged=logged)
 
