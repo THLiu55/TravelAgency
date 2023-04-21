@@ -1,14 +1,13 @@
 var $messages = $(".messages-content"),
   customerName = "",
+  customerId = -1,
   isLoggedIn = false,
   loginPageUrl = "",
   usingBot = true, // use bot by default
   botAvatarUrl = window.botAvatarUrl,
   socket = null,
   namespace = null,
-  d,
   h,
-  m,
   i = 0;
 
 $(window).load(function () {
@@ -24,10 +23,10 @@ $(window).load(function () {
 });
 
 function initGlobalVars() {
-  // get the customerName by post request to /get_session_customer_name
+  // get the customerName by post request to /get_session_customer_info
   $.ajax({
     type: "GET",
-    url: "/get_session_customer_name",
+    url: "/get_session_customer_info",
     // data: {},
     timeout: 15000, // timeout after 15 seconds
     success: function (responseFromServer) {
@@ -35,8 +34,10 @@ function initGlobalVars() {
       if (isLoggedIn) {
         // loginPageUrl = "Not Needed Anymore"
         customerName = responseFromServer.nickname;
+        customerId = responseFromServer.cusId;
       } else if (isLoggedIn == false) {
         customerName = "anon"; // fallback to anon
+        customerId = -1;
         loginPageUrl = responseFromServer.loginPageUrl;
       }
     },
@@ -58,14 +59,24 @@ function updateScrollbar() {
   });
 }
 
-function setDate() {
-  d = new Date();
-  if (m != d.getMinutes()) {
-    m = d.getMinutes();
-    $('<div class="timestamp">' + d.getHours() + ":" + m + "</div>").appendTo(
-      $(".message:last")
-    );
-  }
+function setDateNow() {
+  var now = new Date();
+  var hour = now.getHours().toString();
+  var minute = now.getMinutes().toString();
+  insertTimeStampForMsg(hour, minute);
+}
+
+function setDate(dateTimeStr) {
+  var dateTimeObj = new Date(dateTimeStr);
+  var hour = dateTimeObj.getHours();
+  var minute = dateTimeObj.getMinutes();
+  insertTimeStampForMsg(hour, minute);
+}
+
+function insertTimeStampForMsg(hour, minute) {
+  $('<div class="timestamp">' + hour + ":" + minute + "</div>").appendTo(
+    $(".message:last")
+  );
 }
 
 function clearInputBox() {
@@ -76,7 +87,16 @@ function insertMyMessage(myMessage) {
   $('<div class="message message-personal">' + myMessage + "</div>")
     .appendTo($(".mCSB_container"))
     .addClass("new");
-  setDate();
+  setDateNow();
+  updateScrollbar();
+  i++; // not sure what this is for
+}
+
+function insertMyMessageWithTime(myMessage, dateTimeStr) {
+  $('<div class="message message-personal">' + myMessage + "</div>")
+    .appendTo($(".mCSB_container"))
+    .addClass("new");
+  setDate(dateTimeStr);
   updateScrollbar();
   i++; // not sure what this is for
 }
@@ -91,7 +111,40 @@ function insertRespMessage(txtToInsert) {
   )
     .appendTo($(".mCSB_container"))
     .addClass("new");
-  setDate();
+  setDateNow();
+  updateScrollbar();
+  i++;
+}
+
+function insertRespMessageWithTime(txtToInsert, dateTimeStr) {
+  $(
+    '<div class="message new"><figure class="avatar"><img src="' +
+      botAvatarUrl +
+      '" /></figure>' +
+      txtToInsert +
+      "</div>"
+  )
+    .appendTo($(".mCSB_container"))
+    .addClass("new");
+  setDate(dateTimeStr);
+  updateScrollbar();
+  i++;
+}
+
+function insertSysBroadcast(txtToInsert) {
+  $("<p>" + txtToInsert + "</p>")
+    .appendTo($(".mCSB_container"))
+    .addClass("new");
+  setDateNow();
+  updateScrollbar();
+  i++;
+}
+
+function insertSysBroadcastWithTime(txtToInsert, dateTimeStr) {
+  $("<p>" + txtToInsert + "</p>")
+    .appendTo($(".mCSB_container"))
+    .addClass("new");
+  setDate(dateTimeStr);
   updateScrollbar();
   i++;
 }
@@ -108,6 +161,18 @@ $(window).on("keydown", function (e) {
     return false; // to prevent the page from refreshing
   }
 });
+
+// $(".history-loader").click(function () {
+//   socket.emit("req4history", { cusId: customerId });
+//   // then we remove the click2loadHistoryTxt
+//   $(".mCSB_container .history-loader").remove();
+// });
+
+function requestForHistory() {
+  socket.emit("req4history", { cusId: customerId });
+  // then we remove the click2loadHistoryTxt
+  $(".mCSB_container .history-loader").remove();
+}
 
 function doSend() {
   customerMessage = $(".message-input").val();
@@ -178,7 +243,6 @@ function changeToRealPersonCustomerService() {
 
   // when this func is called we establish a websocket connection to the server
 
-  // namespace = '/socketest'; // now it is initialized in initGlobalVars()
   socket = io.connect(
     location.protocol +
       "//" +
@@ -191,15 +255,26 @@ function changeToRealPersonCustomerService() {
 
   // set client side event handler
   socket.on("message", function (res) {
+    var isHistory = res.isHistory;
     var resSender = res.sender;
     var resMsgTxt = res.text;
-    console.log("received message: '" + resMsgTxt + "' from " + resSender);
+    // console.log("received message: '" + resMsgTxt + "' from " + resSender);
     if (resMsgTxt) {
       if (resSender == customerName) {
         // own message sent to server
-        insertMyMessage(resMsgTxt);
+        if (isHistory) {
+          var sentTime = res.sentTime;
+          insertMyMessageWithTime(resMsgTxt, sentTime);
+        } else {
+          insertMyMessage(resMsgTxt);
+        }
       } else {
-        insertRespMessage(resMsgTxt);
+        if (isHistory) {
+          var sentTime = res.sentTime;
+          insertRespMessageWithTime(resMsgTxt, sentTime);
+        } else {
+          insertRespMessage(resMsgTxt);
+        }
       }
     }
   });

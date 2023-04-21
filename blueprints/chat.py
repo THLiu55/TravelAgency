@@ -54,24 +54,31 @@ def get_chatbot_answer():
     return answer
 
 
-@bp.route("/get_session_customer_name", methods=["GET"])
-def get_session_customer_name():
+@bp.route("/get_session_customer_info", methods=["GET"])
+def get_session_customer_info():
     if session.get("customer_id"):
         customer = Customer.query.filter_by(id=session.get("customer_id")).first()
         if customer:
-            return jsonify({"isLoggedIn": True, "nickname": customer.nickname})
+            return jsonify(
+                {
+                    "isLoggedIn": True,
+                    "nickname": customer.nickname,
+                    "cusId": customer.id,
+                }
+            )
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
 
-@bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
-@staff_login_required
-def staff_load_chat_history(customer_id):
-    return get_history_by_cus_id(customer_id)
 
-@bp.route("/load_my_chat_history", methods=["GET"]) # for customer
-@login_required
-def load_my_chat_history():
-    customer_id = session.get("customer_id")
-    return get_history_by_cus_id(customer_id)
+# @bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
+# @staff_login_required
+# def staff_load_chat_history(customer_id):
+#     return jsonify(get_history_by_cus_id(customer_id))
+
+# @bp.route("/load_my_chat_history", methods=["GET"]) # for customer
+# @login_required
+# def load_my_chat_history():
+#     customer_id = session.get("customer_id")
+#     return jsonify(get_history_by_cus_id(customer_id))
 
 
 ### END CHATBOT ROUTERS ###
@@ -102,7 +109,9 @@ def handle_connect():
                 "message",
                 {
                     "sender": "system",
-                    "text": "Welcome " + customer.nickname + " to the chat room.",
+                    "text": "Welcome "
+                    + customer.nickname
+                    + " to the chat room, <a class='history-loader' onclick='requestForHistory()'>click here to load history</a>",
                 },
                 broadcast=False,
                 namespace=NAMESPACE,
@@ -116,7 +125,7 @@ def handle_connect():
 
 @io.on("disconnect", namespace=NAMESPACE)
 def handle_disconnect():
-    db.session.commit() # commit all messages sent by customer
+    db.session.commit()  # commit all messages sent by customer
     print("client disconnected.")
 
 
@@ -147,7 +156,7 @@ def handle_join(data):
 
 @io.on("leave", namespace=NAMESPACE)
 def handle_leave(data):
-    db.session.commit() # commit all messages sent by customer
+    db.session.commit()  # commit all messages sent by customer
     customer_id = data["target_customer_id"]
     room = get_fuzzed_room_name(customer_id)
     print("leaving room: " + str(room))
@@ -178,11 +187,11 @@ def handle_message(data):
         )
         io.send(data=sending_data, namespace=NAMESPACE, to=target_room)
         new_message = Message(
-            customerID = target_customer_id,
-            sentTime = datetime.now(),
-            content = msg_text,
-            isPic = False,
-            isByCustomer = False,
+            customerID=target_customer_id,
+            sentTime=datetime.now(),
+            content=msg_text,
+            isPic=False,
+            isByCustomer=False,
         )
         db.session.add(new_message)
         db.session.commit()
@@ -196,14 +205,33 @@ def handle_message(data):
         print(sender_name + " sending message: " + msg_text + " to room: " + str(room))
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
         new_message = Message(
-            customerID = customer_id,
-            isPic = False,
-            content = msg_text,
-            sentTime = datetime.now(),
-            isByCustomer = True,
+            customerID=customer_id,
+            isPic=False,
+            content=msg_text,
+            sentTime=datetime.now(),
+            isByCustomer=True,
         )
         db.session.add(new_message)
         db.session.commit()
+
+
+@io.on("req4history", namespace=NAMESPACE)
+def handle_req4history(data):
+    cusId = data["cusId"]
+    room = get_fuzzed_room_name(cusId)
+    messages = get_history_by_cus_id(cusId)
+    for message in messages:
+        if message.isByCustomer:  # TODO: Pic related logic
+            sender = message.customer.nickname
+        else:
+            sender = "TestAdminUser"  # TODO: dynamic admin name
+        sending_data = {
+            "isHistory": True,
+            "sentTime": message.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
+            "sender": sender,
+            "text": message.content,
+        }
+        io.send(data=sending_data, namespace=NAMESPACE, to=room)
 
 
 ### END SOCKETIO EVENT HANDLERS ###
@@ -211,17 +239,12 @@ def handle_message(data):
 # TODO: refactor socketio.emit, socketio.send to emit, send in the future
 
 
-
+### UTILS ###
 def get_history_by_cus_id(customer_id):
-    messages = Message.query.filter_by(customerID=customer_id).order_by(desc(Message.sentTime)).limit(20).all() # TODO: dynamic limit refactor
-    if messages:
-        return [
-            {
-                "isByCustomer": message.isByCustomer,
-                "isPic": message.isPic,
-                "content": message.content,
-                "sentTime": message.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
-            }
-            for message in messages
-        ]
-    return []
+    messages = (
+        Message.query.filter_by(customerID=customer_id)
+        .order_by(desc(Message.sentTime))
+        .limit(20)
+        .all()[::-1]
+    )  # TODO: dynamic limit refactor
+    return messages
