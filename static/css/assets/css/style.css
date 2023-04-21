@@ -2389,6 +2389,19 @@ hotel css
   top: 10px;
 }
 
+.add-wishlist-success{
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  background: #119b23;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
 .hotel-img .add-wishlist:hover{
   background: #6eb1e4;
   color: #fff;

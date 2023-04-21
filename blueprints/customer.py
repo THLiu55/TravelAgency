@@ -218,16 +218,16 @@ def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
         plan_object.end = activity_i.endTime
         plan_list.append(plan_object)
 
-    # for flight_i in flightlist:
-    #     plan_object = PlanObj()
-    #     plan_object.title = flight_i.flightNumber
-    #     if flight_i.endTime > datetime.now():
-    #         plan_object.color = '#e16123'
-    #     else:
-    #         plan_object.color = '#ea5050'
-    #     plan_object.start = flight_i.endTime
-    #     plan_object.end = flight_i.endTime
-    #     plan_list.append(plan_object)
+    for flight_i in flightlist:
+        plan_object = PlanObj()
+        plan_object.title = flight_i.flightNumber
+        if flight_i.endTime > datetime.now():
+            plan_object.color = '#e16123'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = flight_i.endTime
+        plan_object.end = flight_i.endTime
+        plan_list.append(plan_object)
     for hotel_i in hotelList:
         plan_object = PlanObj()
         plan_object.title = Hotel.query.get(hotel_i.productID).name

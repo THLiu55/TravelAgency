@@ -1,7 +1,11 @@
 ﻿<div class="user-profile-wrapper">
     <div class="user-profile-card">
+        <div class="alert alert-success alert-dismissible fade" role="alert">
+            <strong> Add to your calendar sucessfully!</strong> Click the button below to have a look!
+            
+          </div>
         <h4 class="user-profile-card-title">My Wishlist</h4>
-
+        
 
             <div class="row mt-30">
 
@@ -95,6 +99,13 @@
     $(".add-wishlist").click(function (event) {
         event.preventDefault();
         $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        
+        //let alert show
+        $('.alert-success').addClass('show');
+        //hide alert after 3 seconds
+        setTimeout(function() {
+            $('.alert-success').removeClass('show');
+        }, 3000);
         var order_id = $(this).data("order-id");
         var order_type = $(this).data("order-type");
         var retrieved_events
