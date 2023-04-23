@@ -1292,7 +1292,7 @@ ImageUpload.prototype.removeAllItems = function() {
             listItem.remove();
         }
     });
-    alert("aaaaaaa")
+    alert("succeed!")
 }
 
 
