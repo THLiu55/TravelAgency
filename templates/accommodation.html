@@ -1111,11 +1111,11 @@
                                                             <div class="form-group">
                                                                <label>Room Type numbers</label>
                                                                <input type="number" class="form-control" min="0" max="7" name="typenum"
-                                                                   placeholder="Enter room type numbers" id="inputRoomNumber">
+                                                                   placeholder="Enter room type numbers" id="inputRoomNumber1">
                                                            </div>
                                                        </div>
                                                        <h5 class="my-4">Room Information</h5>
-                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer">
+                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer1">
                                                        </div>
                                                         <h5 class="my-4">Contact Information</h5>
                                                         <div
@@ -1771,7 +1771,7 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
-    <script src="{{ url_for('static', filename='js/load_hotels.js') }}"></script>
+    
     <script>
 
         $(document).ready(function() {
@@ -1879,4 +1879,5 @@
 		});
 
 	</script>
+    <script src="{{ url_for('static', filename='js/load_hotels.js') }}"></script>
 {% endblock %}
