@@ -7,14 +7,15 @@ import json
 def translator(q, from_lang, to_lang):
     if q == "":
         return ""
-    token = '24.542424861741f1d1de256da32a0fce83.2592000.1680242545.282335-30852236'
+    token = '24.801b570bfa8ca04575f51d40ea7d9e3c.2592000.1684900858.282335-30852236'
     url = 'https://aip.baidubce.com/rpc/2.0/mt/texttrans/v1?access_token=' + token
 
     headers = {'Content-Type': 'application/json'}
-    payload = {'q': q, 'from': from_lang, 'to': to_lang, 'termIds' : ''}
+    payload = {'q': q, 'from': from_lang, 'to': to_lang, 'termIds': ''}
 
     result = requests.post(url, params=payload, headers=headers).json()
     return result.get('result').get('trans_result')[0].get('dst')
+
 
 
 def fill_translations(file_path, from_language, destination_language, translator):
@@ -47,3 +48,5 @@ def fill_translations(file_path, from_language, destination_language, translator
 
 if __name__ == "__main__":
     fill_translations('./zh/LC_MESSAGES/messages.po', 'en', 'zh', translator)
+    # translator("here", "en", "zh")
+
