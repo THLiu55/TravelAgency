@@ -266,16 +266,6 @@ def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
 
     return jsonify(json.loads(json_data))
 
-def plan_obj_serializer(plan_obj):
-    return {
-        'title': plan_obj.title,
-        'start': plan_obj.start.isoformat(),
-        'end': plan_obj.end.isoformat(),
-        'color': plan_obj.color
-    }
-
-
-
 
 @bp.route("/plan_events")
 def plan_events():

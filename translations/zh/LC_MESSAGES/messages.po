@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-24 11:30+0800\n"
-"PO-Revision-Date: 2023-04-24 11:30+0800\n"
+"POT-Creation-Date: 2023-04-24 12:10+0800\n"
+"PO-Revision-Date: 2023-04-24 12:10+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
 "Language-Team: zh <LL@li.org>\n"
@@ -20,75 +20,75 @@ msgstr ""
 
 #: templates/Homepage.html:34
 msgid "Explore The BJUT Together"
-msgstr ""
-
-#: templates/Homepage.html:35 templates/Homepage.html:818
-msgid ""
-"Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
-"University of Technology."
-msgstr "test"
+msgstr "一起探索BJUT"
 
 #: templates/Homepage.html:85
 msgid "Flights"
-msgstr ""
+msgstr "航班"
 
 #: templates/Homepage.html:86
 msgid "Choose flights according to your needs. "
-msgstr ""
+msgstr "根据您的需求选择航班。"
 
 #: templates/Homepage.html:92
 msgid "Accomodation"
-msgstr ""
+msgstr "住宿"
 
 #: templates/Homepage.html:93
 msgid "Ranging from cozy to luxury."
-msgstr ""
+msgstr "从舒适到奢华。"
 
 #: templates/Homepage.html:100
 msgid "Tourist attraction"
-msgstr ""
+msgstr "旅游胜地"
 
 #: templates/Homepage.html:101
 msgid "Famous and representative tourist attractions."
-msgstr ""
+msgstr "著名和有代表性的旅游景点。"
 
 #: templates/Homepage.html:107
 msgid "Tranportation"
-msgstr ""
+msgstr "跨境提供"
 
 #: templates/Homepage.html:108
 msgid "Train, Plane, bus and everything."
-msgstr ""
+msgstr "火车、飞机、公共汽车等等。"
 
 #: templates/Homepage.html:114
 msgid "Tours"
-msgstr ""
+msgstr "旅行"
 
 #: templates/Homepage.html:115
 msgid "Pick some popular destinations for travel!"
-msgstr ""
+msgstr "选择一些热门的旅行目的地！"
 
 #: templates/Homepage.html:816
 msgid "The Library"
-msgstr ""
+msgstr "图书馆"
 
 #: templates/Homepage.html:817
 msgid "Yifu Library"
+msgstr "逸夫图书馆"
+
+#: templates/Homepage.html:818
+msgid ""
+"Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
+"University of Technology."
 msgstr ""
 
 #: templates/Homepage.html:819 templates/Homepage.html:834
 #: templates/Homepage.html:849 templates/Homepage.html:863
 #: templates/Homepage.html:877
 msgid "Explore the tour"
-msgstr ""
+msgstr "探索旅程"
 
 #: templates/Homepage.html:827
 msgid "Tourism Atrraction"
-msgstr ""
+msgstr "旅游业萎缩"
 
 #: templates/Homepage.html:828
 msgid "Temple of Heaven"
-msgstr ""
+msgstr "天坛"
 
 #: templates/Homepage.html:830
 msgid ""
@@ -98,11 +98,11 @@ msgstr ""
 
 #: templates/Homepage.html:843
 msgid "Tropical area"
-msgstr ""
+msgstr "热带地区"
 
 #: templates/Homepage.html:844
 msgid "The beach"
-msgstr ""
+msgstr "海滩"
 
 #: templates/Homepage.html:846
 msgid ""
@@ -112,39 +112,39 @@ msgstr ""
 
 #: templates/Homepage.html:858
 msgid "Temple"
-msgstr ""
+msgstr "寺庙"
 
 #: templates/Homepage.html:859
 msgid "Special temple"
-msgstr ""
+msgstr "特殊寺庙"
 
 #: templates/Homepage.html:861
 msgid "Good place to have a temple run."
-msgstr ""
+msgstr "这是一个经营寺庙的好地方。"
 
 #: templates/Homepage.html:872
 msgid "The white building"
-msgstr ""
+msgstr "白色建筑"
 
 #: templates/Homepage.html:873
 msgid "White building"
-msgstr ""
+msgstr "白色建筑"
 
 #: templates/Homepage.html:875
 msgid "White building is white."
-msgstr ""
+msgstr "白色建筑是白色的。"
 
 #: templates/Homepage.html:893
 msgid "We are GROUP7 travel agency!"
-msgstr ""
+msgstr "我们是GROUP7旅行社！"
 
 #: templates/Homepage.html:894
 msgid "Family hold company for"
-msgstr ""
+msgstr "家族控股公司"
 
 #: templates/Homepage.html:895
 msgid "travel!"
-msgstr ""
+msgstr "长途行走"
 
 #: templates/Homepage.html:896
 msgid ""
@@ -154,194 +154,194 @@ msgstr ""
 
 #: templates/Homepage.html:905
 msgid "Beijing, China"
-msgstr ""
+msgstr "中国北京"
 
 #: templates/Homepage.html:967 templates/MainTopbar.html:103
 #: templates/base.html:133 templates/profile-base.html:208
 msgid "Group 7 NULLGROUPNAMEEXCEPTION"
-msgstr ""
+msgstr "第7组NULLGROUPNAMEEXCEPTION"
 
 #: templates/Homepage.html:968 templates/MainTopbar.html:104
 #: templates/base.html:134 templates/profile-base.html:209
 msgid "Fourth Teach Building, Beijing"
-msgstr ""
+msgstr "北京第四教学楼"
 
 #: templates/Homepage.html:969 templates/MainTopbar.html:105
 #: templates/base.html:135 templates/profile-base.html:210
 msgid "Tel: 123456"
-msgstr ""
+msgstr "电话：123456"
 
 #: templates/Homepage.html:970 templates/MainTopbar.html:106
 #: templates/base.html:136 templates/profile-base.html:211
 msgid "Handcrafted with love by Group 7"
-msgstr ""
+msgstr "第七组用爱手工制作"
 
 #: templates/SignInUp.html:19
 msgid "Change Password"
-msgstr ""
+msgstr "修改密码"
 
 #: templates/SignInUp.html:22 templates/SignInUp.html:84
 #: templates/SignInUp.html:121
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: templates/SignInUp.html:25 templates/SignInUp.html:87
 msgid "SEND"
-msgstr ""
+msgstr "发送"
 
 #: templates/SignInUp.html:32 templates/SignInUp.html:104
 msgid "Captcha"
-msgstr ""
+msgstr "Captcha公司"
 
 #: templates/SignInUp.html:38
 msgid "Reset Password"
-msgstr ""
+msgstr "重置密码"
 
 #: templates/SignInUp.html:43 templates/SignInUp.html:99
 msgid "Confirm Password"
-msgstr ""
+msgstr "确认密码"
 
 #: templates/SignInUp.html:46
 msgid "Reset"
-msgstr ""
+msgstr "重置"
 
 #: templates/SignInUp.html:48
 msgid "Go Back"
-msgstr ""
+msgstr "回去"
 
 #: templates/SignInUp.html:75 templates/SignInUp.html:107
 #: templates/SignInUp.html:132
 msgid "Sign Up"
-msgstr ""
+msgstr "注册"
 
 #: templates/SignInUp.html:79
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: templates/SignInUp.html:94 templates/SignInUp.html:125
 msgid "Password"
-msgstr ""
+msgstr "暗语"
 
 #: templates/SignInUp.html:109
 msgid "Already have an account?"
-msgstr ""
+msgstr "已经有账户了吗？"
 
 #: templates/SignInUp.html:109
 msgid "Sign In"
-msgstr ""
+msgstr "登录"
 
 #: templates/SignInUp.html:117 templates/SignInUp.html:130
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:4
-#: venv/Lib/site-packages/flask_security/templates/security/login_user.html:3
-#: venv/Lib/site-packages/flask_security/templates/security/send_login.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:4
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/login_user.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/send_login.html:3
 msgid "Login"
-msgstr ""
+msgstr "登录"
 
 #: templates/SignInUp.html:128
 msgid "Forgot password?"
-msgstr ""
+msgstr "忘记密码了吗？"
 
 #: templates/SignInUp.html:132
 msgid "Don't have an account?"
-msgstr ""
+msgstr "没有帐户？"
 
 #: templates/SignInUp.html:135
 msgid "Return to home page"
-msgstr ""
+msgstr "返回主页"
 
 #: templates/SignInUp.html:138
 msgid "Link to staff panel"
-msgstr ""
+msgstr "员工面板链接"
 
 #: templates/chatRoom.html:12
 msgid "Travel Agency Name"
-msgstr ""
+msgstr "旅行社名称"
 
 #: templates/chatRoom.html:13
 msgid "24H chat robot"
-msgstr ""
+msgstr "24小时聊天机器人"
 
 #: templates/chatRoom.html:26
 msgid "Send"
-msgstr ""
+msgstr "邮寄"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:2
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:2
 msgid "Menu"
-msgstr ""
+msgstr "菜单"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:6
-#: venv/Lib/site-packages/flask_security/templates/security/register_user.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:6
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/register_user.html:3
 msgid "Register"
-msgstr ""
+msgstr "登记"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:9
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:9
 msgid "Forgot password"
-msgstr ""
+msgstr "忘记密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:12
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/_menu.html:12
 msgid "Confirm account"
-msgstr ""
+msgstr "确认帐户"
 
-#: venv/Lib/site-packages/flask_security/templates/security/change_password.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/change_password.html:3
 msgid "Change password"
-msgstr ""
+msgstr "更改密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/forgot_password.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/forgot_password.html:3
 msgid "Send password reset instructions"
-msgstr ""
+msgstr "发送密码重置说明"
 
-#: venv/Lib/site-packages/flask_security/templates/security/reset_password.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/reset_password.html:3
 msgid "Reset password"
-msgstr ""
+msgstr "重置密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/send_confirmation.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/send_confirmation.html:3
 msgid "Resend confirmation instructions"
-msgstr ""
+msgstr "重新发送确认说明"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:1
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/change_notice.html:1
 msgid "Your password has been changed."
-msgstr ""
+msgstr "您的密码已更改。"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "If you did not change your password,"
-msgstr ""
+msgstr "如果您没有更改密码，"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "click here to reset it"
-msgstr ""
+msgstr "单击此处重置"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
 msgid "Please confirm your email through the link below:"
-msgstr ""
+msgstr "请通过以下链接确认您的电子邮件："
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:6
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/welcome.html:6
 msgid "Confirm my account"
-msgstr ""
+msgstr "确认我的帐户"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:1
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:1
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/login_instructions.html:1
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/welcome.html:1
 #, python-format
 msgid "Welcome %(email)s!"
-msgstr ""
+msgstr "欢迎使用%（电子邮件）s！"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:3
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/login_instructions.html:3
 msgid "You can log into your account through the link below:"
-msgstr ""
+msgstr "您可以通过以下链接登录您的帐户："
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:5
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/login_instructions.html:5
 msgid "Login now"
-msgstr ""
+msgstr "立即登录"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/reset_instructions.html:1
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/reset_instructions.html:1
 msgid "Click here to reset your password"
-msgstr ""
+msgstr "单击此处重置您的密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/reset_notice.html:1
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/reset_notice.html:1
 msgid "Your password has been reset"
-msgstr ""
+msgstr "您的密码已重置"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:4
+#: venv/lib/python3.10/site-packages/flask_security/templates/security/email/welcome.html:4
 msgid "You can confirm your email through the link below:"
-msgstr ""
+msgstr "您可以通过以下链接确认您的电子邮件："
 
