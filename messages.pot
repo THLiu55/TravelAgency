@@ -8,29 +8,187 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-15 13:27+0800\n"
+"POT-Creation-Date: 2023-04-24 11:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: templates/Homepage.html:34
+msgid "Explore The BJUT Together"
+msgstr ""
+
+#: templates/Homepage.html:35 templates/Homepage.html:818
+msgid ""
+"Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
+"University of Technology."
+msgstr ""
+
+#: templates/Homepage.html:85
+msgid "Flights"
+msgstr ""
+
+#: templates/Homepage.html:86
+msgid "Choose flights according to your needs. "
+msgstr ""
+
+#: templates/Homepage.html:92
+msgid "Accomodation"
+msgstr ""
+
+#: templates/Homepage.html:93
+msgid "Ranging from cozy to luxury."
+msgstr ""
+
+#: templates/Homepage.html:100
+msgid "Tourist attraction"
+msgstr ""
+
+#: templates/Homepage.html:101
+msgid "Famous and representative tourist attractions."
+msgstr ""
+
+#: templates/Homepage.html:107
+msgid "Tranportation"
+msgstr ""
+
+#: templates/Homepage.html:108
+msgid "Train, Plane, bus and everything."
+msgstr ""
+
+#: templates/Homepage.html:114
+msgid "Tours"
+msgstr ""
+
+#: templates/Homepage.html:115
+msgid "Pick some popular destinations for travel!"
+msgstr ""
+
+#: templates/Homepage.html:816
+msgid "The Library"
+msgstr ""
+
+#: templates/Homepage.html:817
+msgid "Yifu Library"
+msgstr ""
+
+#: templates/Homepage.html:819 templates/Homepage.html:834
+#: templates/Homepage.html:849 templates/Homepage.html:863
+#: templates/Homepage.html:877
+msgid "Explore the tour"
+msgstr ""
+
+#: templates/Homepage.html:827
+msgid "Tourism Atrraction"
+msgstr ""
+
+#: templates/Homepage.html:828
+msgid "Temple of Heaven"
+msgstr ""
+
+#: templates/Homepage.html:830
+msgid ""
+"The Temple of Heaven is a complex of religious buildings situated in the "
+"central Beijing."
+msgstr ""
+
+#: templates/Homepage.html:843
+msgid "Tropical area"
+msgstr ""
+
+#: templates/Homepage.html:844
+msgid "The beach"
+msgstr ""
+
+#: templates/Homepage.html:846
+msgid ""
+"The beach is very beautiful, the water is very clear, the sand is very "
+"white, and the sea is very blue."
+msgstr ""
+
+#: templates/Homepage.html:858
+msgid "Temple"
+msgstr ""
+
+#: templates/Homepage.html:859
+msgid "Special temple"
+msgstr ""
+
+#: templates/Homepage.html:861
+msgid "Good place to have a temple run."
+msgstr ""
+
+#: templates/Homepage.html:872
+msgid "The white building"
+msgstr ""
+
+#: templates/Homepage.html:873
+msgid "White building"
+msgstr ""
+
+#: templates/Homepage.html:875
+msgid "White building is white."
+msgstr ""
+
+#: templates/Homepage.html:893
+msgid "We are GROUP7 travel agency!"
+msgstr ""
+
+#: templates/Homepage.html:894
+msgid "Family hold company for"
+msgstr ""
+
+#: templates/Homepage.html:895
+msgid "travel!"
+msgstr ""
+
+#: templates/Homepage.html:896
+msgid ""
+"Made up of six team members with rich experience and good service "
+"attitude to ensure your good travel experience!"
+msgstr ""
+
+#: templates/Homepage.html:905
+msgid "Beijing, China"
+msgstr ""
+
+#: templates/Homepage.html:967 templates/MainTopbar.html:103
+#: templates/base.html:133 templates/profile-base.html:208
+msgid "Group 7 NULLGROUPNAMEEXCEPTION"
+msgstr ""
+
+#: templates/Homepage.html:968 templates/MainTopbar.html:104
+#: templates/base.html:134 templates/profile-base.html:209
+msgid "Fourth Teach Building, Beijing"
+msgstr ""
+
+#: templates/Homepage.html:969 templates/MainTopbar.html:105
+#: templates/base.html:135 templates/profile-base.html:210
+msgid "Tel: 123456"
+msgstr ""
+
+#: templates/Homepage.html:970 templates/MainTopbar.html:106
+#: templates/base.html:136 templates/profile-base.html:211
+msgid "Handcrafted with love by Group 7"
+msgstr ""
 
 #: templates/SignInUp.html:19
 msgid "Change Password"
 msgstr ""
 
-#: templates/SignInUp.html:22 templates/SignInUp.html:83
-#: templates/SignInUp.html:119
+#: templates/SignInUp.html:22 templates/SignInUp.html:84
+#: templates/SignInUp.html:121
 msgid "Email"
 msgstr ""
 
-#: templates/SignInUp.html:25 templates/SignInUp.html:86
+#: templates/SignInUp.html:25 templates/SignInUp.html:87
 msgid "SEND"
 msgstr ""
 
-#: templates/SignInUp.html:32 templates/SignInUp.html:103
+#: templates/SignInUp.html:32 templates/SignInUp.html:104
 msgid "Captcha"
 msgstr ""
 
@@ -38,7 +196,7 @@ msgstr ""
 msgid "Reset Password"
 msgstr ""
 
-#: templates/SignInUp.html:43 templates/SignInUp.html:98
+#: templates/SignInUp.html:43 templates/SignInUp.html:99
 msgid "Confirm Password"
 msgstr ""
 
@@ -50,36 +208,139 @@ msgstr ""
 msgid "Go Back"
 msgstr ""
 
-#: templates/SignInUp.html:75 templates/SignInUp.html:106
-#: templates/SignInUp.html:130
+#: templates/SignInUp.html:75 templates/SignInUp.html:107
+#: templates/SignInUp.html:132
 msgid "Sign Up"
 msgstr ""
 
-#: templates/SignInUp.html:78
+#: templates/SignInUp.html:79
 msgid "Username"
 msgstr ""
 
-#: templates/SignInUp.html:93 templates/SignInUp.html:123
+#: templates/SignInUp.html:94 templates/SignInUp.html:125
 msgid "Password"
 msgstr ""
 
-#: templates/SignInUp.html:108
+#: templates/SignInUp.html:109
 msgid "Already have an account?"
 msgstr ""
 
-#: templates/SignInUp.html:108
+#: templates/SignInUp.html:109
 msgid "Sign In"
 msgstr ""
 
-#: templates/SignInUp.html:116 templates/SignInUp.html:128
+#: templates/SignInUp.html:117 templates/SignInUp.html:130
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:4
+#: venv/Lib/site-packages/flask_security/templates/security/login_user.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/send_login.html:3
 msgid "Login"
 msgstr ""
 
-#: templates/SignInUp.html:126
+#: templates/SignInUp.html:128
 msgid "Forgot password?"
 msgstr ""
 
-#: templates/SignInUp.html:130
+#: templates/SignInUp.html:132
 msgid "Don't have an account?"
+msgstr ""
+
+#: templates/SignInUp.html:135
+msgid "Return to home page"
+msgstr ""
+
+#: templates/SignInUp.html:138
+msgid "Link to staff panel"
+msgstr ""
+
+#: templates/chatRoom.html:12
+msgid "Travel Agency Name"
+msgstr ""
+
+#: templates/chatRoom.html:13
+msgid "24H chat robot"
+msgstr ""
+
+#: templates/chatRoom.html:26
+msgid "Send"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:2
+msgid "Menu"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:6
+#: venv/Lib/site-packages/flask_security/templates/security/register_user.html:3
+msgid "Register"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:9
+msgid "Forgot password"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:12
+msgid "Confirm account"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/change_password.html:3
+msgid "Change password"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/forgot_password.html:3
+msgid "Send password reset instructions"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/reset_password.html:3
+msgid "Reset password"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/send_confirmation.html:3
+msgid "Resend confirmation instructions"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:1
+msgid "Your password has been changed."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
+msgid "If you did not change your password,"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
+msgid "click here to reset it"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
+msgid "Please confirm your email through the link below:"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:6
+msgid "Confirm my account"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:1
+#, python-format
+msgid "Welcome %(email)s!"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:3
+msgid "You can log into your account through the link below:"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:5
+msgid "Login now"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/reset_instructions.html:1
+msgid "Click here to reset your password"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/reset_notice.html:1
+msgid "Your password has been reset"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:4
+msgid "You can confirm your email through the link below:"
 msgstr ""
 
