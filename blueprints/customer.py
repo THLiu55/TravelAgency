@@ -528,6 +528,10 @@ def setting():
     return render_template("profile-setting.html", logged=True, customer=customer)
 
 
+@bp.route("/about_us")
+def about_us():
+    return render_template("AboutUs.html")
+
 @bp.route("/update-profile", methods=['POST'])
 def update_profile():
     customer = Customer.query.get(session.get("customer_id"))
