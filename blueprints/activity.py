@@ -54,7 +54,7 @@ def activityList(page_num):
     activities_for_search = [activity.to_dict() for activity in activities]
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
                            page_num=page_num, logged=logged,
-                           activities_for_search=jsonify({"activities_for_search": activities_for_search}))
+                           activities_for_search=activities_for_search)
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])
