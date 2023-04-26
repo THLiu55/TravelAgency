@@ -313,7 +313,7 @@ class Hotel(db.Model):
             "city": self.city,
             "review_num": self.review_num,
             "min_price": self.min_price,
-            "contact_email": self.contact_email
+            "contact_email": self.contact_email,
         }
 
 

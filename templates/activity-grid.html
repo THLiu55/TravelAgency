@@ -41,9 +41,9 @@
 <div class="search-form">
 <form action="#">
 <div class="activity-search-wrapper">
-    <input id="search_box_change">
+<input id="search_box_change">
 <div class="search-btn">
-<button type="button" onclick="search_now(activities_for_search)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+<button type="button" onclick="activity_filter(3)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
 </div>
 </div>
 </form>
@@ -233,9 +233,5 @@ Up to 4 hour <span>(20)</span>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/activityFilter.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/activity_search.js') }}"></script>
     <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
-    <script>
-        const activities_for_search = {{ activities_for_search | tojson }};
-    </script>
 {% endblock %}

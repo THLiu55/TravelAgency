@@ -39,7 +39,7 @@ function hotel_filter() {
           "sort_by": sort_by
       },
         success: function(response) {
-        let hotels = response.hotels;
+        let hotels = search_now(response.hotels);
         let hotelList = $('#row-list-ajax');
         hotelList.empty();
 
@@ -96,6 +96,34 @@ function getSortValue() {
     let options = selectElement.options;
     return options[index].value;
 }
+
+function search_now(list) {
+    const options = {
+        threshold: 0.4,
+        tokenize:true,
+        keys: [
+            "name",
+            "city",
+            "address"
+        ]
+    };
+
+    let pattern = document.getElementById("search_box_change").value;
+    if (pattern === ''){
+        return list;
+    }
+
+
+    const fuse = new Fuse(list, options);
+
+    let result = fuse.search(pattern);
+
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}
+
 
 
 
