@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/seachbarstyle.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -33,18 +34,33 @@
         </div>
 </div>
 
-<div class="search-area">
+<div class="search-area" style="margin-top: 4%;">
 <div class="container">
 <div class="search-wrapper">
 
-<div class="search-box activity-search">
+<div class="search-box activity-search" style="background-color: transparent;">
 <div class="search-form">
 <form action="#">
 <div class="activity-search-wrapper">
-<input id="search_box_change">
-<div class="search-btn">
+    <div class="seachbarcontainer" style="margin-left: 50%;margin-right: 50%;">
+        <form autocomplete="off">
+          <div class="finder">
+            <div class="finder__outer">
+              <div class="finder__inner">
+                <div class="finder__icon" ref="icon"></div>
+                <input id="search_box_change" class="finder__input" type="text" name="q" />
+              </div>
+            </div>
+          </div>
+          <div class="search-btn" >
+            <button type="button" style="margin-left: 50%;"onclick="activity_filter(3)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+            </div>
+        </form>
+      </div>
+<!-- <input id="search_box_change"> -->
+<!-- <div class="search-btn">
 <button type="button" onclick="hotel_filter()" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
-</div>
+</div> -->
 </div>
 </form>
 </div>
@@ -270,5 +286,6 @@ Restaurant <span>(15)</span>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hotelFilter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/seachbarscript.js') }}"></script>
     <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
 {% endblock %}
