@@ -1,7 +1,7 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, render_template, session, request, make_response, jsonify
+from flask import Flask, render_template, session, request, make_response, jsonify, send_from_directory
 from dotenv import load_dotenv
 from config import config_by_name
 from blueprints import bp_register_all
@@ -49,6 +49,11 @@ def set_locale():
 # @app.context_processor
 # def inject_conf_var():
 #     return dict(AVAILABLE_LANGUAGES=app.config['LANGUAGES'], CURRENT_LANGUAGE=session.get('language', request.accept_languages.best_match(app.config['LANGUAGES'].keys())))
+
+
+@app.route('/<path:filename>')
+def node_file_for_search(filename):
+    return send_from_directory(app.root_path, filename)
 
 
 if __name__ == "__main__":

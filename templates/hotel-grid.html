@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/seachbarstyle.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -33,140 +34,33 @@
         </div>
 </div>
 
-<div class="search-area">
+<div class="search-area" style="margin-top: 4%;">
 <div class="container">
 <div class="search-wrapper">
 
-<div class="search-box activity-search">
+<div class="search-box activity-search" style="background-color: transparent;">
 <div class="search-form">
 <form action="#">
 <div class="activity-search-wrapper">
-<div class="row">
-<div class="col-lg-4">
-<div class="form-group">
-<label>Location</label>
-<div class="form-group-icon">
-<input type="text" name="location" class="form-control" value="New York, United States">
-<i class="fal fa-earth-americas"></i>
-</div>
-<p>Where Are You Going?</p>
-</div>
-</div>
-<div class="col-lg-4">
-<div class="form-group">
- <div class="search-form-date">
-<div class="search-form-journey">
-<label>Check In</label>
-<div class="form-group-icon">
-<input type="text" name="journey-date" class="form-control date-picker journey-date">
-<i class="fal fa-calendar-days"></i>
-</div>
-<p class="journey-day-name"></p>
-</div>
-<div class="search-form-return">
-<label>Check Out</label>
-<div class="form-group-icon">
-<input type="text" name="return-date" class="form-control date-picker return-date">
-</div>
-<p class="return-day-name"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4">
-<div class="form-group dropdown passenger-box">
-<div class="passenger-class" role="menu" data-bs-toggle="dropdown" aria-expanded="false">
-<label>Visitots</label>
-<div class="form-group-icon">
-<div class="passenger-total">
-<span class="passenger-total-amount">2</span> Guests
-</div>
-<i class="fal fa-user-plus"></i>
-</div>
-<p class="passenger-class-name">Double Room</p>
-</div>
-<div class="dropdown-menu dropdown-menu-end">
-<div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Adults</h6>
-<p>12+ Years</p>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
-<input type="text" name="adult" class="qty-amount passenger-adult" value="2" readonly>
- <button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
-<div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Children</h6>
-<p>2-12 Years</p>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
-<input type="text" name="children" class="qty-amount passenger-children" value="0" readonly>
-<button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
-<div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Infant</h6>
-<p>Below 2 Years</p>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
-<input type="text" name="infant" class="qty-amount passenger-infant" value="0" readonly>
-<button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
-<div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Rooms</h6>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
- <input type="text" name="room" class="qty-amount passenger-room" value="2" readonly>
-<button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
-<div class="dropdown-item">
-<h6 class="mb-3 mt-2">Room Type</h6>
-<div class="passenger-class-info">
-<div class="form-check">
-<input class="form-check-input" type="radio" value="Single Room" name="room-type" id="room-type4">
-<label class="form-check-label" for="room-type4">
-Single Room
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" checked type="radio" value="Double Room" name="room-type" id="room-type5">
-<label class="form-check-label" for="room-type5">
-Double Room
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" type="radio" value="Deluxe Room" name="room-type" id="room-type6">
-<label class="form-check-label" for="room-type6">
-Deluxe Room
-</label>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="search-btn">
-<button type="submit" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
-</div>
+    <div class="seachbarcontainer" style="margin-left: 50%;margin-right: 50%;">
+        <form autocomplete="off">
+          <div class="finder">
+            <div class="finder__outer">
+              <div class="finder__inner">
+                <div class="finder__icon" ref="icon"></div>
+                <input id="search_box_change" class="finder__input" type="text" name="q" />
+              </div>
+            </div>
+          </div>
+          <div class="search-btn" >
+            <button type="button" style="margin-left: 50%;"onclick="activity_filter(3)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+            </div>
+        </form>
+      </div>
+<!-- <input id="search_box_change"> -->
+<!-- <div class="search-btn">
+<button type="button" onclick="hotel_filter()" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+</div> -->
 </div>
 </form>
 </div>
@@ -392,4 +286,6 @@ Restaurant <span>(15)</span>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/hotelFilter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/seachbarscript.js') }}"></script>
+    <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
 {% endblock %}
