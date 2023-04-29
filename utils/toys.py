@@ -5,8 +5,7 @@ import datetime
 
 ### BABEL RELATED ###
 def get_locale():
-    print(session.get("language", "zh"))
-    return session.get("language", "zh")
+    return session.get("language", "en")
 
 
 ### END BABEL RELATED ###
