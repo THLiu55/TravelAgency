@@ -690,7 +690,7 @@ def flights():
 @bp.route("/customers")
 @staff_login_required
 def customers():
-    return render_template("customerAccount.html")
+    return render_template("contacts.html")
 
 
 @bp.route("/wish_list")
