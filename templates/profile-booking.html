@@ -1,18 +1,18 @@
 ﻿<div class="col-lg-9">
     <div class="user-profile-wrapper">
         <div class="user-profile-card">
-            <h4 class="user-profile-card-title">My Booking</h4>
+            <h4 class="user-profile-card-title">{{ _("My Booking") }}</h4>
             <div class="table-responsive">
                 <table class="table text-nowrap">
                     <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Booking Name</th>
-                        <th>Type</th>
-                        <th>Date</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>{{ _("No") }}</th>
+                        <th>{{ _("Booking Name") }}</th>
+                        <th>{{ _("Type") }}</th>
+                        <th>{{ _("Date") }}</th>
+                        <th>{{ _("Price") }}</th>
+                        <th>{{ _("Status") }}</th>
+                        <th>{{ _("Action") }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -24,15 +24,15 @@
                             <td>{{ sorted_orders[i].time }}</td>
                             <td>${{ sorted_orders[i].price }}</td>
                             {% if sorted_orders[i].status %}
-                                <td><span class="badge badge-success">Finished</span></td>
+                                <td><span class="badge badge-success">{{ _("Finished") }}</span></td>
                             {% else %}
-                                <td><span class="badge badge-warning">Upcoming</span></td>
+                                <td><span class="badge badge-warning">{{ _("Upcoming") }}</span></td>
                             {% endif %}
                             <td>
                                 <a href="{{ sorted_orders[i].url }}" class="btn btn-outline-secondary btn-sm"><i
                                         class="far fa-eye"></i></a>
                                 {% if not sorted_orders[i].status %}
-                                    <a href="#" class="btn btn-outline-danger btn-sm">Cancel</a>
+                                    <a href="#" class="btn btn-outline-danger btn-sm">{{ _("Cancel") }}</a>
                                 {% endif %}
                             </td>
                         </tr>

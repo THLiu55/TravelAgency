@@ -1,14 +1,14 @@
 ﻿<div class="user-profile-wrapper">
     <div class="user-profile-card">
-        <h4 class="user-profile-card-title">Profile Info</h4>
+        <h4 class="user-profile-card-title">{{ _("Profile Info") }}</h4>
         <div class="col-lg-6">
             <div class="profile-info-list">
                 <ul>
-                    <li>Nickname: <span>{{ customer.nickname }}</span></li>
-                    <li>Email: <span>{{ customer.email }}</span></li>
-                    <li>Phone: <span>{{ customer.phone_number }}</span></li>
-                    <li>Address: <span>{{ customer.address }}</span></li>
-                    <li>Join Date: <span>{{ customer.join_date }}</span></li>
+                    <li>{{ _("Nickname:") }} <span>{{ customer.nickname }}</span></li>
+                    <li>{{ _("Email:") }}<span>{{ customer.email }}</span></li>
+                    <li>{{ _("Phone:") }} <span>{{ customer.phone_number }}</span></li>
+                    <li>{{ _("Address:") }} <span>{{ customer.address }}</span></li>
+                    <li>{{ _("Join Date:") }} <span>{{ customer.join_date }}</span></li>
                 </ul>
             </div>
         </div>
