@@ -12,7 +12,7 @@ from flask import (
 
 from exts import socketio as io
 from exts import db
-from utils.bot import BOT_CHOICE, get_wxbot_signature, get_wxbot_answer
+from utils.bot import BOT_CHOICE, BOT_CMD_RESP_DICT, get_wxbot_signature, get_wxbot_answer
 from utils.toys import get_fuzzed_room_name
 from utils.decorators import login_required, staff_login_required
 from model import Customer, Message
@@ -68,18 +68,9 @@ def get_session_customer_info():
             )
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
 
-
-# @bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
-# @staff_login_required
-# def staff_load_chat_history(customer_id):
-#     return jsonify(get_history_by_cus_id(customer_id))
-
-# @bp.route("/load_my_chat_history", methods=["GET"]) # for customer
-# @login_required
-# def load_my_chat_history():
-#     customer_id = session.get("customer_id")
-#     return jsonify(get_history_by_cus_id(customer_id))
-
+@bp.route("/get_bot_cmd_resp_dict", methods=["GET"])
+def get_bot_cmd_resp_dict():
+    return jsonify(BOT_CMD_RESP_DICT)
 
 ### END CHATBOT ROUTERS ###
 
@@ -216,6 +207,7 @@ def handle_message(data):
 
 
 @io.on("req4history", namespace=NAMESPACE)
+@login_required
 def handle_req4history(data):
     cusId = data["cusId"]
     room = get_fuzzed_room_name(cusId)
