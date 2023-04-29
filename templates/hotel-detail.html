@@ -19,7 +19,7 @@
     <main class="main">
         <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
-                <h2 class="breadcrumb-title">Accommodation</h2>
+                <h2 class="breadcrumb-title">{{ _("Accommodation") }}</h2>
                 <!-- <ul class="breadcrumb-menu">
                     <li><a href="Homepage.html">Home</a></li>
                     <li class="active">Hotel Detail</li>
@@ -49,8 +49,8 @@
                                     <div class="listing-rate">
                                         <!-- overall review -->
                                         <span class="badge"><i class="fal fa-star"></i> {{ star_score }}</span>
-                                        <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">({{review_num }} Reviews)</span>
+                                        <span class="listing-rate-type">{{ _("Excellent") }}</span>
+                                        <span class="listing-rate-review">({{review_num }} {{ _("Reviews") }})</span>
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -62,8 +62,8 @@
                                                     <i class="far fa-hotel"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Hotel Type</h6>
-                                                    <span>5 Star</span>
+                                                    <h6>{{ _("Hotel Type") }}</h6>
+                                                    <span>{{ _("5 Star") }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,8 +73,8 @@
                                                     <i class="far fa-bed-front"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Minimum Stay</h6>
-                                                    <span>{{ min_stay }} Nights</span>
+                                                    <h6>{{ _("Minimum Stay") }}</h6>
+                                                    <span>{{ min_stay }} {{ _("Nights") }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +85,7 @@
                                                     <i class="far fa-globe"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Country</h6>
+                                                    <h6>{{ _("Country") }}</h6>
                                                     <span>{{ hotel.state }}</span>
                                                 </div>
                                             </div>
@@ -96,7 +96,7 @@
                                                     <i class="far fa-map"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>City</h6>
+                                                    <h6>{{ _("City") }}</h6>
                                                     <span>{{ hotel.city }}</span>
                                                 </div>
                                             </div>
@@ -106,12 +106,12 @@
                                 </div>
                                 <div class="listing-item">
                                     <!-- description -->
-                                    <h4 class="mb-3">Description</h4>
+                                    <h4 class="mb-3">{{ _("Description") }}</h4>
                                     <p>{{ hotel.description }}</p>
                                 </div>
                                 <div class="listing-item">
                                     <div class="listing-hotel-room room-list my-5">
-                                        <h4 class="mb-3">Available Rooms</h4>
+                                        <h4 class="mb-3">{{ _("Available Rooms") }}</h4>
                                         <div class="row">
 
                                             {% for i in range(room_num) %}
@@ -125,13 +125,13 @@
                                                         </h4>
                                                         <ul class="room-info-list">
                                                             {% if rooms[i].wifi %}
-                                                                <li><i class="far fa-wifi"></i>Free Wi-Fi</li>
+                                                                <li><i class="far fa-wifi"></i>{{ _("Free Wi-Fi") }}</li>
                                                             {% endif %}
                                                             {% if rooms[i].bed_1 %}
-                                                                <li><i class="far fa-bed"></i>1 Single beds</li>
+                                                                <li><i class="far fa-bed"></i>{{ _("1 Single beds") }}</li>
                                                             {% endif %}
                                                             {% if rooms[i].bed_2 %}
-                                                                <li><i class="far fa-bed"></i>2 Single beds</li>
+                                                                <li><i class="far fa-bed"></i>{{ _("2 Single beds") }}</li>
                                                             {% endif %}
                                                             {% if rooms[i].square_1 %}
                                                                 <li><i class="far fa-ruler-triangle"></i>15 m²</li>
@@ -140,22 +140,22 @@
                                                                 <li><i class="far fa-ruler-triangle"></i>25 m²</li>
                                                             {% endif %}
                                                             {% if rooms[i].free %}
-                                                                <li><i class="far fa-box-tissue"></i>Free Toiletries</li>
+                                                                <li><i class="far fa-box-tissue"></i>{{ _("Free Toiletries") }}</li>
                                                             {% endif %}
                                                             {% if rooms[i].shower %}
-                                                                <li><i class="far fa-bath"></i>Shower And Bathtub</li>
+                                                                <li><i class="far fa-bath"></i>{{ _("Shower And Bathtub") }}</li>
                                                             {% endif %}
                                                         </ul>
                                                         <div class="room-bottom">
                                                             <div class="room-price">
-                                                                <span class="room-price-amount">${{ rooms[i].price }} <span class="room-price-type">/Per Day</span></span>
+                                                                <span class="room-price-amount">${{ rooms[i].price }} <span class="room-price-type">{{ _("/Per Day") }}</span></span>
                                                             </div>
                                                             <div class="room-select-btn">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" name="room-select"
                                                                            type="checkbox" value="{{ rooms[i].price }};{{ rooms[i].id }}" id="select-room{{ i }}" onclick="select_one({{ i }})">
                                                                     <label class="form-check-label" for="room2">
-                                                                        Select Room
+                                                                        {{ _("Select Room") }}
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -168,7 +168,7 @@
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Amenities</h4>
+                                    <h4 class="mb-3">{{ _("Amenities") }}</h4>
                                     <div class="listing-amenity">
                                         <div class="row">
                                             {% if wifi %}
@@ -181,14 +181,14 @@
                                             {% if television %}
                                                 <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-tv"></i> Television</h6>
+                                                    <h6><i class="far fa-tv"></i>{{ _("Television") }}</h6>
                                                 </div>
                                             </div>
                                             {% endif %}
                                         {% if swimming_pool %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-water-ladder"></i> Swimming Pool</h6>
+                                                    <h6><i class="far fa-water-ladder"></i>{{ _("Swimming Pool") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
@@ -196,126 +196,126 @@
                                         {% if coffee %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-cup-togo"></i> Coffee</h6>
+                                                    <h6><i class="far fa-cup-togo"></i>{{ _("Coffee") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if air_conditioning %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-air-conditioner"></i>Air Condition</h6>
+                                                    <h6><i class="far fa-air-conditioner"></i>{{ _("Air Condition") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if fitness_facility %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-dumbbell"></i> Fitness Facility</h6>
+                                                    <h6><i class="far fa-dumbbell"></i>{{ _("Fitness Facility") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if fridge %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-refrigerator"></i>Bar / Lounge</h6>
+                                                    <h6><i class="far fa-refrigerator"></i>{{ _("Bar / Lounge") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if wine_bar %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-wine-bottle"></i> Wine Bar</h6>
+                                                    <h6><i class="far fa-wine-bottle"></i>{{ _("Wine Bar") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if entertainment %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-music"></i> Entertainment</h6>
+                                                    <h6><i class="far fa-music"></i>{{ _("Entertainment") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if secure  %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-lock"></i> Secure Vault</h6>
+                                                    <h6><i class="far fa-lock"></i> {{ _("Secure Vault") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if pick_and_drop %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-car"></i> Airport Transportation</h6>
+                                                    <h6><i class="far fa-car"></i> {{ _("Airport Transportation") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if room_service %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-vacuum-robot"></i> Room Service</h6>
+                                                    <h6><i class="far fa-vacuum-robot"></i> {{ _("Room Service") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if pets_allowed %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-dog"></i> Pets Allowed</h6>
+                                                    <h6><i class="far fa-dog"></i>{{ _("Pets Allowed") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if breakfast %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-egg-fried"></i> Breakfast</h6>
+                                                    <h6><i class="far fa-egg-fried"></i> {{ _("Breakfast") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if free_parking %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-cars"></i> Free Parking</h6>
+                                                    <h6><i class="far fa-cars"></i> {{ _("Free Parking") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if fire_place %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-fire"></i> Fire Place</h6>
+                                                    <h6><i class="far fa-fire"></i> {{ _("Fire Place") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if handicap %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-wheelchair-move"></i> Handicap Accessible</h6>
+                                                    <h6><i class="far fa-wheelchair-move"></i> {{ _("Handicap Accessible") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if doorman %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-user-secret"></i> Doorman</h6>
+                                                    <h6><i class="far fa-user-secret"></i> {{ _("Doorman") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if elevator %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-building"></i> Elevator In Building</h6>
+                                                    <h6><i class="far fa-building"></i> {{ _("Elevator In Building") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if suitable %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-gift"></i> Suitable For Events</h6>
+                                                    <h6><i class="far fa-gift"></i> {{ _("Suitable For Events") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if play %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-gamepad-modern"></i> Play Place</h6>
+                                                    <h6><i class="far fa-gamepad-modern"></i> {{ _("Play Place") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
@@ -323,14 +323,14 @@
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-4">Location Map</h4>
+                                    <h4 class="mb-4">{{ _("Location Map") }}</h4>
                                     <div class="contact-map">
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"
                                                 style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Reviews</h4>
+                                    <h4 class="mb-3">{{ _("Reviews") }}</h4>
                                     <div class="listing-rating-box">
                                         <div class="listing-review-rating">
                                             <div class="listing-rating-count">
@@ -340,7 +340,7 @@
                                                     <i class="fas fa-star"></i>
                                                     {% endfor %}
                                                 </div>
-                                                <p>Base On {{ review_num }} Review</p>
+                                                <p>{{ _("Based on") }} {{ review_num }} {{ _("Review") }}</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -436,7 +436,7 @@
                                             </div>
                                         </div>
                                         <div class="listing-review">
-                                            <h5>Showing {{ review_num }} Reviews</h5>
+                                            <h5>{{ _("Showing") }} {{ review_num }} {{ _("Reviews") }}</h5>
                                             {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
@@ -463,12 +463,12 @@
 
                                     {% if purchased %}
                                         <div class="listing-review-form">
-                                            <h4>Leave A Review</h4>
+                                            <h4>{{ _("Leave A Review") }}</h4>
                                             <form action="{{ url_for('hotel.add_review') }}" method="post">
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
                                                         <input name="productId" value="{{ hotel.id }}" hidden>
-                                                        <label class="star-label">Your Rating</label>
+                                                        <label class="star-label">{{ _("Your Rating") }}</label>
                                                         <div class="listing-review-form-star">
                                                             <div class="star-rating-wrapper">
                                                                 <div class="star-rating-box">
@@ -496,7 +496,7 @@
                                                     <textarea class="form-control" cols="30" rows="5" name="content"
                                                               placeholder="Write Your Review*"></textarea>
                                                 </div>
-                                                <button class="theme-btn" type="submit">Leave A Review</button>
+                                                <button class="theme-btn" type="submit">{{ _("Leave A Review") }}</button>
                                             </form>
                                         </div>
                                     {% endif %}
@@ -510,9 +510,9 @@
                             <div class="booking-sidebar listing-side-content">
                                 <div class="booking-item">
                                     <div class="listing-price">
-                                        <h4 class="listing-price-tag">Bestseller</h4>
+                                        <h4 class="listing-price-tag">{{ _("Bestseller") }}</h4>
                                         <div class="listing-price-amount">
-                                            From <span>$450.00</span>
+                                            {{ _("From") }} <span>$450.00</span>
                                             <del>$590.00</del>
                                         </div>
                                     </div>
@@ -524,7 +524,7 @@
                                                         <div class="form-group">
                                                             <div class="search-form-date">
                                                                 <div class="search-form-journey">
-                                                                    <label>Check In</label>
+                                                                    <label>{{ _("Check In") }}</label>
                                                                     <div class="form-group-icon">
                                                                         <input type="text" name="journey-date" id="journey-date"
                                                                                class="form-control date-picker journey-date">
@@ -539,7 +539,7 @@
                                                         <div class="form-group">
                                                             <div class="search-form-date">
                                                                 <div class="search-form-return">
-                                                                    <label>Check Out</label>
+                                                                    <label>{{ _("Check Out") }}</label>
                                                                     <div class="form-group-icon">
                                                                         <input type="text" name="return-date" id="return-date"
                                                                                class="form-control date-picker return-date">
@@ -558,11 +558,11 @@
                                                 <div class="listing-side-btn">
                                                     {% if hotel.min_stay %}
                                                         <button type="submit" value="3" id="button-cancel" class="theme-btn"><span
-                                                            class="far fa-shopping-bag"></span>Book Now
+                                                            class="far fa-shopping-bag"></span>{{ _("Book Now") }}
                                                         </button>
                                                     {% else %}
                                                         <button type="submit" value="2" id="button-cancel" class="theme-btn"><span
-                                                            class="far fa-shopping-bag"></span>Book Now
+                                                            class="far fa-shopping-bag"></span>{{ _("Book Now") }}
                                                     </button>
                                                     {% endif %}
 
@@ -570,30 +570,27 @@
 
                                                 {% if logged %}
                                                     {% if added %}
-                                                        <a href="{{ url_for('hotel.remove_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:red"><i class="far fa-heart"></i> Remove From
-                                                        Wishlist</a>
+                                                        <a href="{{ url_for('hotel.remove_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
-                                                        Wishlist</a>
+                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i>{{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
-                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
-                                                        Wishlist</a>
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                 {% endif %}
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="listing-side-share">
-                                        <a href="#"><i class="far fa-share-nodes"></i> Share</a>
-                                        <span><i class="far fa-eye"></i> {{ hotel.view_num }} Views</span>
+                                        <a href="#"><i class="far fa-share-nodes"></i> {{ _("Share") }}</a>
+                                        <span><i class="far fa-eye"></i> {{ hotel.view_num }} {{ _("Views") }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Get A Question?</h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable
-                                    content layout.</p>
+                                <h4 class="booking-title">{{ _("Get A Question?") }}</h4>
+                                <p>{{ _("It is a long established fact that a reader will be distracted by the readable
+                                    content layout.") }}</p>
                                 <ul class="listing-side-list">
                                     <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
                                     <li><i class="far fa-envelope"></i><a
@@ -603,16 +600,15 @@
                                 </ul>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Organized By</h4>
+                                <h4 class="booking-title">{{ _("Organized By") }}</h4>
                                 <div class="listing-side-organizer">
                                     <div class="listing-side-organizer-img">
                                         <img src="assets/img/account/01.jpg" alt="">
                                     </div>
                                     <div class="listing-side-organizer-info">
-                                        <h5 class="listing-side-organizer-name">Roltak Travel Agency</h5>
-                                        <p>Member Since 2021</p>
-                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> Send
-                                            Message</a>
+                                        <h5 class="listing-side-organizer-name">{{ _("Roltak Travel Agency") }}</h5>
+                                        <p>{{ _("Member Since 2021") }}</p>
+                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> {{ _("Send Message") }}</a>
                                     </div>
                                 </div>
                             </div>

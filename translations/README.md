@@ -10,7 +10,7 @@
    * 更新translations/zh/LC_MESSAGES/目录下的翻译目录
 
      ~~~sh
-     pybabel init -i messages.pot -d translations -l zh
+     pybabel update -i messages.pot -d translations
      ~~~
 
 3. 进入 translations/zh/LC_MESSAGES/messages.po 然后根据msgid补充msgstr (翻译)

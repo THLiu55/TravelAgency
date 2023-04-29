@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-24 17:40+0800\n"
+"POT-Creation-Date: 2023-04-24 21:26+0800\n"
 "PO-Revision-Date: 2023-04-24 17:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -22,156 +22,232 @@ msgstr ""
 msgid "Explore The BJUT Together"
 msgstr "一起探索BJUT"
 
-#: templates/Homepage.html:35 templates/Homepage.html:818
+#: templates/Homepage.html:35 templates/Homepage.html:816
 msgid ""
 "Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
 "University of Technology."
-msgstr ""
+msgstr "非常好的图书馆，从早上7点开放到晚上10点半，位于北京工业大学。"
 
-#: templates/Homepage.html:85
-msgid "Flights"
-msgstr "航班"
+#: templates/Homepage.html:48
+msgid "Explore The Temple of Heaven"
+msgstr "探索天坛"
 
-#: templates/Homepage.html:86
-msgid "Choose flights according to your needs. "
-msgstr "根据您的需求选择航班。"
-
-#: templates/Homepage.html:92
-msgid "Accomodation"
-msgstr "住宿"
-
-#: templates/Homepage.html:93
-msgid "Ranging from cozy to luxury."
-msgstr "从舒适到奢华。"
-
-#: templates/Homepage.html:100
-msgid "Tourist attraction"
-msgstr "旅游胜地"
-
-#: templates/Homepage.html:101
-msgid "Famous and representative tourist attractions."
-msgstr "著名和有代表性的旅游景点。"
-
-#: templates/Homepage.html:107
-msgid "Tranportation"
-msgstr "跨境提供"
-
-#: templates/Homepage.html:108
-msgid "Train, Plane, bus and everything."
-msgstr "火车、飞机、公共汽车等等。"
-
-#: templates/Homepage.html:114
-msgid "Tours"
-msgstr "旅行"
-
-#: templates/Homepage.html:115
-msgid "Pick some popular destinations for travel!"
-msgstr "选择一些热门的旅行目的地！"
-
-#: templates/Homepage.html:816
-msgid "The Library"
-msgstr "图书馆"
-
-#: templates/Homepage.html:817
-msgid "Yifu Library"
-msgstr "逸夫图书馆"
-
-#: templates/Homepage.html:819 templates/Homepage.html:834
-#: templates/Homepage.html:849 templates/Homepage.html:863
-#: templates/Homepage.html:877
-msgid "Explore the tour"
-msgstr "探索旅程"
-
-#: templates/Homepage.html:827
-msgid "Tourism Atrraction"
-msgstr "旅游业萎缩"
-
-#: templates/Homepage.html:828
-msgid "Temple of Heaven"
-msgstr "天坛"
-
-#: templates/Homepage.html:830
+#: templates/Homepage.html:49 templates/Homepage.html:828
 msgid ""
 "The Temple of Heaven is a complex of religious buildings situated in the "
 "central Beijing."
-msgstr ""
+msgstr "天坛是一座宗教建筑群，坐落于北京市中心。"
 
-#: templates/Homepage.html:843
+#: templates/Homepage.html:63
+msgid "Explore The City Together"
+msgstr "一起探索这个城市"
+
+#: templates/Homepage.html:64
+msgid "Find awesome flight, accommodation, destination, and attractions"
+msgstr "查找精彩的航班、住宿、目的地和景点"
+
+#: templates/Homepage.html:83
+msgid "Flights"
+msgstr "航班"
+
+#: templates/Homepage.html:84
+msgid "Choose flights according to your needs. "
+msgstr "根据您的需求选择航班。"
+
+#: templates/Homepage.html:90
+msgid "Accomodation"
+msgstr "住宿"
+
+#: templates/Homepage.html:91
+msgid "Ranging from cozy to luxury."
+msgstr "从舒适到奢华。"
+
+#: templates/Homepage.html:98
+msgid "Tourist attraction"
+msgstr "旅游胜地"
+
+#: templates/Homepage.html:99
+msgid "Famous and representative tourist attractions."
+msgstr "著名和有代表性的旅游景点。"
+
+#: templates/Homepage.html:105
+msgid "Tranportation"
+msgstr "跨境提供"
+
+#: templates/Homepage.html:106
+msgid "Train, Plane, bus and everything."
+msgstr "火车、飞机、公共汽车等等。"
+
+#: templates/Homepage.html:112
+msgid "Tours"
+msgstr "旅行"
+
+#: templates/Homepage.html:113
+msgid "Pick some popular destinations for travel!"
+msgstr "选择一些热门的旅行目的地！"
+
+#: templates/Homepage.html:144
+msgid "Destination"
+msgstr "目的地"
+
+#: templates/Homepage.html:145
+msgid "Our Most Popular Destinations"
+msgstr "选择一些热门的旅行目的地！"
+
+#: templates/Homepage.html:314 templates/base.html:71
+msgid "Flight"
+msgstr "航班"
+
+#: templates/Homepage.html:315
+msgid "Our Most Popular Flights"
+msgstr "我们最受欢迎的航班"
+
+#: templates/Homepage.html:340
+msgid "See Details"
+msgstr "请参阅详细信息"
+
+#: templates/Homepage.html:349
+msgid "Discover More"
+msgstr "发现更多"
+
+#: templates/Homepage.html:361 templates/base.html:74
+msgid "Hotel"
+msgstr "酒店"
+
+#: templates/Homepage.html:362
+msgid "Our Most Popular Hotels"
+msgstr "我们最受欢迎的酒店"
+
+#: templates/Homepage.html:388
+msgid "See Details "
+msgstr "请参阅详细信息"
+
+#: templates/Homepage.html:524 templates/base.html:84
+msgid "Tour"
+msgstr "旅行"
+
+#: templates/Homepage.html:525
+msgid "Our Most Popular Tours"
+msgstr "我们最受欢迎的旅游"
+
+#: templates/Homepage.html:529
+msgid "All Tour"
+msgstr "旅行"
+
+#: templates/Homepage.html:530
+msgid "Historical"
+msgstr "历史的"
+
+#: templates/Homepage.html:531
+msgid "Weekend Trip"
+msgstr "周末旅行"
+
+#: templates/Homepage.html:532
+msgid "Special Tour"
+msgstr "特殊寺庙"
+
+#: templates/Homepage.html:533
+msgid "Holiday Tour"
+msgstr "假日旅游"
+
+#: templates/Homepage.html:814
+msgid "The Library"
+msgstr "图书馆"
+
+#: templates/Homepage.html:815
+msgid "Yifu Library"
+msgstr "逸夫图书馆"
+
+#: templates/Homepage.html:817 templates/Homepage.html:832
+#: templates/Homepage.html:847 templates/Homepage.html:861
+#: templates/Homepage.html:875
+msgid "Explore the tour"
+msgstr "探索旅程"
+
+#: templates/Homepage.html:825
+msgid "Tourism Atrraction"
+msgstr "旅游胜地"
+
+#: templates/Homepage.html:826
+msgid "Temple of Heaven"
+msgstr "天坛"
+
+#: templates/Homepage.html:841
 msgid "Tropical area"
 msgstr "热带地区"
 
-#: templates/Homepage.html:844
+#: templates/Homepage.html:842
 msgid "The beach"
 msgstr "海滩"
 
-#: templates/Homepage.html:846
+#: templates/Homepage.html:844
 msgid ""
 "The beach is very beautiful, the water is very clear, the sand is very "
 "white, and the sea is very blue."
-msgstr ""
+msgstr "海滩很漂亮，水很清澈，沙子很白，大海很蓝。"
 
-#: templates/Homepage.html:858
+#: templates/Homepage.html:856
 msgid "Temple"
 msgstr "寺庙"
 
-#: templates/Homepage.html:859
+#: templates/Homepage.html:857
 msgid "Special temple"
 msgstr "特殊寺庙"
 
-#: templates/Homepage.html:861
+#: templates/Homepage.html:859
 msgid "Good place to have a temple run."
 msgstr "这是一个经营寺庙的好地方。"
 
-#: templates/Homepage.html:872
+#: templates/Homepage.html:870
 msgid "The white building"
 msgstr "白色建筑"
 
-#: templates/Homepage.html:873
+#: templates/Homepage.html:871
 msgid "White building"
 msgstr "白色建筑"
 
-#: templates/Homepage.html:875
+#: templates/Homepage.html:873
 msgid "White building is white."
 msgstr "白色建筑是白色的。"
 
-#: templates/Homepage.html:893
+#: templates/Homepage.html:891
 msgid "We are GROUP7 travel agency!"
 msgstr "我们是GROUP7旅行社！"
 
-#: templates/Homepage.html:894
+#: templates/Homepage.html:892
 msgid "Family hold company for"
 msgstr "家族控股公司"
 
-#: templates/Homepage.html:895
+#: templates/Homepage.html:893
 msgid "travel!"
 msgstr "长途行走"
 
-#: templates/Homepage.html:896
+#: templates/Homepage.html:894
 msgid ""
 "Made up of six team members with rich experience and good service "
 "attitude to ensure your good travel experience!"
-msgstr ""
+msgstr "由六名经验丰富、服务周到的团队成员组成的态度，保证您良好的旅行体验!"
 
-#: templates/Homepage.html:905
+#: templates/Homepage.html:903
 msgid "Beijing, China"
 msgstr "中国北京"
 
-#: templates/Homepage.html:967 templates/MainTopbar.html:103
+#: templates/Homepage.html:965 templates/MainTopbar.html:103
 #: templates/base.html:132 templates/profile-base.html:208
 msgid "Group 7 NULLGROUPNAMEEXCEPTION"
 msgstr "第7组NULLGROUPNAMEEXCEPTION"
 
-#: templates/Homepage.html:968 templates/MainTopbar.html:104
+#: templates/Homepage.html:966 templates/MainTopbar.html:104
 #: templates/base.html:133 templates/profile-base.html:209
 msgid "Fourth Teach Building, Beijing"
 msgstr "北京第四教学楼"
 
-#: templates/Homepage.html:969 templates/MainTopbar.html:105
+#: templates/Homepage.html:967 templates/MainTopbar.html:105
 #: templates/base.html:134 templates/profile-base.html:210
 msgid "Tel: 123456"
 msgstr "电话：123456"
 
-#: templates/Homepage.html:970 templates/MainTopbar.html:106
+#: templates/Homepage.html:968 templates/MainTopbar.html:106
 #: templates/base.html:135 templates/profile-base.html:211
 msgid "Handcrafted with love by Group 7"
 msgstr "第七组用爱手工制作"
@@ -275,21 +351,9 @@ msgstr "中文"
 msgid "Home"
 msgstr "家"
 
-#: templates/base.html:71
-msgid "Flight"
-msgstr "航班"
-
-#: templates/base.html:74
-msgid "Hotel"
-msgstr "酒店"
-
 #: templates/base.html:79
 msgid "Activity"
 msgstr "活动"
-
-#: templates/base.html:84
-msgid "Tour"
-msgstr "旅行"
 
 #: templates/base.html:96
 msgid "Contact"

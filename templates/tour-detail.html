@@ -21,7 +21,7 @@
 
         <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
-                <h2 class="breadcrumb-title">Tour</h2>
+                <h2 class="breadcrumb-title">{{ _("Tour") }}</h2>
 
             </div>
         </div>
@@ -44,8 +44,8 @@
                                     </div>
                                     <div class="listing-rate">
                                         <span class="badge"><i class="fal fa-star"></i> {{ star_score }}</span>
-                                        <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">({{ review_num }} Reviews)</span>
+                                        <span class="listing-rate-type">{{ _("Excellent") }}</span>
+                                        <span class="listing-rate-review">({{ review_num }} {{ _("Reviews") }})</span>
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -56,8 +56,8 @@
                                                     <i class="far fa-clock"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Duration</h6>
-                                                    <span>{{ days }} Days</span>
+                                                    <h6>{{ _("Duration") }}</h6>
+                                                    <span>{{ days }} {{ _("Days") }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@
                                                     <i class="far fa-calendar-days"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Date</h6>
+                                                    <h6>{{ _("Date") }}</h6>
                                                     <span>{{ tour.start_time }} - {{ tour.end_time }}</span>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@
                                                     <i class="far fa-users"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Group Size</h6>
+                                                    <h6>{{ _("Group Size") }}</h6>
                                                     <span>{{ tour.group_size }}</span>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@
                                                     <i class="far fa-earth-americas"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Tour Type</h6>
+                                                    <h6>{{ _("Tour Type") }}</h6>
                                                     <span>{{ tour.category }}</span>
                                                 </div>
                                             </div>
@@ -97,12 +97,12 @@
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Description</h4>
+                                    <h4 class="mb-3">{{ _("Description") }}</h4>
                                     <p>{{ tour.description }}</p>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="listing-included">
-                                                <h5>Included</h5>
+                                                <h5>{{ _("Included") }}</h5>
                                                 <ul class="list">
                                                      {% for item in tour.included %}
                                                     <li>{{ item }}</li>
@@ -112,7 +112,7 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="listing-notincluded">
-                                                <h5>Not Included</h5>
+                                                <h5>{{ _("Not Included") }}</h5>
                                                 <ul class="list">
                                                      {% for item in tour.excluded %}
                                                     <li>{{ item }}</li>
@@ -123,7 +123,7 @@
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Itinerary</h4>
+                                    <h4 class="mb-3">{{ _("Itinerary") }}</h4>
                                     <div class="itinerary-content-box">
                                         {% for i in range(days-1) %}
                                             <div class="itinerary-single-box">
@@ -141,14 +141,14 @@
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-4">Location Map</h4>
+                                    <h4 class="mb-4">{{ _("Location Map") }}</h4>
                                     <div class="contact-map">
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"
                                                 style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
                                 </div>
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Reviews</h4>
+                                    <h4 class="mb-3">{{ _("Reviews") }}</h4>
                                     <div class="listing-rating-box">
                                         <div class="listing-review-rating">
                                             <div class="listing-rating-count">
@@ -158,7 +158,7 @@
                                                     <i class="fas fa-star"></i>
                                                     {% endfor %}
                                                 </div>
-                                                <p>Base On {{ review_num }} Review</p>
+                                                <p>{{ _("Base On ") }} {{ review_num }} {{ _("Reviews") }}</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -254,7 +254,7 @@
                                             </div>
                                         </div>
                                         <div class="listing-review">
-                                            <h5>Showing {{ review_num }} Reviews</h5>
+                                            <h5>{{ _("Showing ") }} {{ review_num }} {{ _("Reviews") }}</h5>
                                             {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
@@ -282,11 +282,11 @@
 
                                     {% if purchased %}
                                         <div class="listing-review-form">
-                                            <h4>Leave A Review</h4>
+                                            <h4>{{ _("Leave A Review") }}</h4>
                                             <form action="{{ url_for('tour.add_review') }}" method="post">
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
-                                                        <label class="star-label">Your Rating</label>
+                                                        <label class="star-label">{{ _("Your Rating") }}</label>
                                                         <input name="productId" value="{{ tour.id }}" hidden>
                                                         <div class="listing-review-form-star">
                                                             <div class="star-rating-wrapper">
@@ -315,7 +315,7 @@
                                                 <textarea class="form-control" cols="30" rows="5" name="content"
                                                           placeholder="Write Your Review*"></textarea>
                                                 </div>
-                                                <button class="theme-btn" type="submit">Leave A Review</button>
+                                                <button class="theme-btn" type="submit">{{ _("Leave A Review") }}</button>
                                             </form>
                                         </div>
                                     {% endif %}
@@ -329,7 +329,7 @@
                             <div class="booking-sidebar listing-side-content">
                                 <div class="booking-item">
                                     <div class="listing-price">
-                                        <h4 class="listing-price-tag">Book the tour</h4>
+                                        <h4 class="listing-price-tag">{{ _("Book the tour") }}</h4>
                                     </div>
                                     <div class="search-form">
                                         <form action="{{ url_for('tour.order_confirm') }}" method="post">
@@ -354,35 +354,33 @@
                                                 </div>
                                                 <div class="listing-side-btn">
                                                     <button type="submit" class="theme-btn"><span
-                                                            class="far fa-shopping-bag"></span>Book Now
+                                                            class="far fa-shopping-bag"></span>{{ _("Book now") }}
                                                     </button>
                                                 {% if logged %}
                                                     {% if added %}
-                                                        <a href="{{ url_for('tour.remove_wishlist', tour_id=tour.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> Remove From
-                                                        Wishlist</a>
+                                                        <a href="{{ url_for('tour.remove_wishlist', tour_id=tour.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From
+                                                        Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('tour.add_wishlist', tour_id=tour.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
-                                                        Wishlist</a>
+                                                        <a href="{{ url_for('tour.add_wishlist', tour_id=tour.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else%}
-                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> Add To
-                                                        Wishlist</a>
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                 {% endif %}
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="listing-side-share">
-                                        <a href="#"><i class="far fa-share-nodes"></i> Share</a>
-                                        <span><i class="far fa-eye"></i> {{ tour.view_num }} Views</span>
+                                        <a href="#"><i class="far fa-share-nodes"></i> {{ _("Share") }}</a>
+                                        <span><i class="far fa-eye"></i> {{ tour.view_num }} {{ _("Views") }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Get A Question?</h4>
-                                <p>It is a long established fact that a reader will be distracted by the readable
+                                <h4 class="booking-title">{{ _("Get A Question?") }}</h4>
+                                <p>{{ _("It is a long established fact that a reader will be distracted by the readable
                                     content
-                                    layout.</p>
+                                    layout.") }}</p>
                                 <ul class="listing-side-list">
                                     <li><i class="far fa-phone"></i><a href="tel:+21234567897">{{ tour.contact_phone }}</a></li>
                                     <li><i class="far fa-envelope"></i><a

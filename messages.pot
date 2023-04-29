@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-24 17:40+0800\n"
+"POT-Creation-Date: 2023-04-24 21:26+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,156 +21,232 @@ msgstr ""
 msgid "Explore The BJUT Together"
 msgstr ""
 
-#: templates/Homepage.html:35 templates/Homepage.html:818
+#: templates/Homepage.html:35 templates/Homepage.html:816
 msgid ""
 "Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
 "University of Technology."
 msgstr ""
 
-#: templates/Homepage.html:85
-msgid "Flights"
+#: templates/Homepage.html:48
+msgid "Explore The Temple of Heaven"
 msgstr ""
 
-#: templates/Homepage.html:86
-msgid "Choose flights according to your needs. "
-msgstr ""
-
-#: templates/Homepage.html:92
-msgid "Accomodation"
-msgstr ""
-
-#: templates/Homepage.html:93
-msgid "Ranging from cozy to luxury."
-msgstr ""
-
-#: templates/Homepage.html:100
-msgid "Tourist attraction"
-msgstr ""
-
-#: templates/Homepage.html:101
-msgid "Famous and representative tourist attractions."
-msgstr ""
-
-#: templates/Homepage.html:107
-msgid "Tranportation"
-msgstr ""
-
-#: templates/Homepage.html:108
-msgid "Train, Plane, bus and everything."
-msgstr ""
-
-#: templates/Homepage.html:114
-msgid "Tours"
-msgstr ""
-
-#: templates/Homepage.html:115
-msgid "Pick some popular destinations for travel!"
-msgstr ""
-
-#: templates/Homepage.html:816
-msgid "The Library"
-msgstr ""
-
-#: templates/Homepage.html:817
-msgid "Yifu Library"
-msgstr ""
-
-#: templates/Homepage.html:819 templates/Homepage.html:834
-#: templates/Homepage.html:849 templates/Homepage.html:863
-#: templates/Homepage.html:877
-msgid "Explore the tour"
-msgstr ""
-
-#: templates/Homepage.html:827
-msgid "Tourism Atrraction"
-msgstr ""
-
-#: templates/Homepage.html:828
-msgid "Temple of Heaven"
-msgstr ""
-
-#: templates/Homepage.html:830
+#: templates/Homepage.html:49 templates/Homepage.html:828
 msgid ""
 "The Temple of Heaven is a complex of religious buildings situated in the "
 "central Beijing."
 msgstr ""
 
-#: templates/Homepage.html:843
+#: templates/Homepage.html:63
+msgid "Explore The City Together"
+msgstr ""
+
+#: templates/Homepage.html:64
+msgid "Find awesome flight, accommodation, destination, and attractions"
+msgstr ""
+
+#: templates/Homepage.html:83
+msgid "Flights"
+msgstr ""
+
+#: templates/Homepage.html:84
+msgid "Choose flights according to your needs. "
+msgstr ""
+
+#: templates/Homepage.html:90
+msgid "Accomodation"
+msgstr ""
+
+#: templates/Homepage.html:91
+msgid "Ranging from cozy to luxury."
+msgstr ""
+
+#: templates/Homepage.html:98
+msgid "Tourist attraction"
+msgstr ""
+
+#: templates/Homepage.html:99
+msgid "Famous and representative tourist attractions."
+msgstr ""
+
+#: templates/Homepage.html:105
+msgid "Tranportation"
+msgstr ""
+
+#: templates/Homepage.html:106
+msgid "Train, Plane, bus and everything."
+msgstr ""
+
+#: templates/Homepage.html:112
+msgid "Tours"
+msgstr ""
+
+#: templates/Homepage.html:113
+msgid "Pick some popular destinations for travel!"
+msgstr ""
+
+#: templates/Homepage.html:144
+msgid "Destination"
+msgstr ""
+
+#: templates/Homepage.html:145
+msgid "Our Most Popular Destinations"
+msgstr ""
+
+#: templates/Homepage.html:314 templates/base.html:71
+msgid "Flight"
+msgstr ""
+
+#: templates/Homepage.html:315
+msgid "Our Most Popular Flights"
+msgstr ""
+
+#: templates/Homepage.html:340
+msgid "See Details"
+msgstr ""
+
+#: templates/Homepage.html:349
+msgid "Discover More"
+msgstr ""
+
+#: templates/Homepage.html:361 templates/base.html:74
+msgid "Hotel"
+msgstr ""
+
+#: templates/Homepage.html:362
+msgid "Our Most Popular Hotels"
+msgstr ""
+
+#: templates/Homepage.html:388
+msgid "See Details "
+msgstr ""
+
+#: templates/Homepage.html:524 templates/base.html:84
+msgid "Tour"
+msgstr ""
+
+#: templates/Homepage.html:525
+msgid "Our Most Popular Tours"
+msgstr ""
+
+#: templates/Homepage.html:529
+msgid "All Tour"
+msgstr ""
+
+#: templates/Homepage.html:530
+msgid "Historical"
+msgstr ""
+
+#: templates/Homepage.html:531
+msgid "Weekend Trip"
+msgstr ""
+
+#: templates/Homepage.html:532
+msgid "Special Tour"
+msgstr ""
+
+#: templates/Homepage.html:533
+msgid "Holiday Tour"
+msgstr ""
+
+#: templates/Homepage.html:814
+msgid "The Library"
+msgstr ""
+
+#: templates/Homepage.html:815
+msgid "Yifu Library"
+msgstr ""
+
+#: templates/Homepage.html:817 templates/Homepage.html:832
+#: templates/Homepage.html:847 templates/Homepage.html:861
+#: templates/Homepage.html:875
+msgid "Explore the tour"
+msgstr ""
+
+#: templates/Homepage.html:825
+msgid "Tourism Atrraction"
+msgstr ""
+
+#: templates/Homepage.html:826
+msgid "Temple of Heaven"
+msgstr ""
+
+#: templates/Homepage.html:841
 msgid "Tropical area"
 msgstr ""
 
-#: templates/Homepage.html:844
+#: templates/Homepage.html:842
 msgid "The beach"
 msgstr ""
 
-#: templates/Homepage.html:846
+#: templates/Homepage.html:844
 msgid ""
 "The beach is very beautiful, the water is very clear, the sand is very "
 "white, and the sea is very blue."
 msgstr ""
 
-#: templates/Homepage.html:858
+#: templates/Homepage.html:856
 msgid "Temple"
 msgstr ""
 
-#: templates/Homepage.html:859
+#: templates/Homepage.html:857
 msgid "Special temple"
 msgstr ""
 
-#: templates/Homepage.html:861
+#: templates/Homepage.html:859
 msgid "Good place to have a temple run."
 msgstr ""
 
-#: templates/Homepage.html:872
+#: templates/Homepage.html:870
 msgid "The white building"
 msgstr ""
 
-#: templates/Homepage.html:873
+#: templates/Homepage.html:871
 msgid "White building"
 msgstr ""
 
-#: templates/Homepage.html:875
+#: templates/Homepage.html:873
 msgid "White building is white."
 msgstr ""
 
-#: templates/Homepage.html:893
+#: templates/Homepage.html:891
 msgid "We are GROUP7 travel agency!"
 msgstr ""
 
-#: templates/Homepage.html:894
+#: templates/Homepage.html:892
 msgid "Family hold company for"
 msgstr ""
 
-#: templates/Homepage.html:895
+#: templates/Homepage.html:893
 msgid "travel!"
 msgstr ""
 
-#: templates/Homepage.html:896
+#: templates/Homepage.html:894
 msgid ""
 "Made up of six team members with rich experience and good service "
 "attitude to ensure your good travel experience!"
 msgstr ""
 
-#: templates/Homepage.html:905
+#: templates/Homepage.html:903
 msgid "Beijing, China"
 msgstr ""
 
-#: templates/Homepage.html:967 templates/MainTopbar.html:103
+#: templates/Homepage.html:965 templates/MainTopbar.html:103
 #: templates/base.html:132 templates/profile-base.html:208
 msgid "Group 7 NULLGROUPNAMEEXCEPTION"
 msgstr ""
 
-#: templates/Homepage.html:968 templates/MainTopbar.html:104
+#: templates/Homepage.html:966 templates/MainTopbar.html:104
 #: templates/base.html:133 templates/profile-base.html:209
 msgid "Fourth Teach Building, Beijing"
 msgstr ""
 
-#: templates/Homepage.html:969 templates/MainTopbar.html:105
+#: templates/Homepage.html:967 templates/MainTopbar.html:105
 #: templates/base.html:134 templates/profile-base.html:210
 msgid "Tel: 123456"
 msgstr ""
 
-#: templates/Homepage.html:970 templates/MainTopbar.html:106
+#: templates/Homepage.html:968 templates/MainTopbar.html:106
 #: templates/base.html:135 templates/profile-base.html:211
 msgid "Handcrafted with love by Group 7"
 msgstr ""
@@ -274,20 +350,8 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:71
-msgid "Flight"
-msgstr ""
-
-#: templates/base.html:74
-msgid "Hotel"
-msgstr ""
-
 #: templates/base.html:79
 msgid "Activity"
-msgstr ""
-
-#: templates/base.html:84
-msgid "Tour"
 msgstr ""
 
 #: templates/base.html:96

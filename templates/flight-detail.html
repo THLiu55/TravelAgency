@@ -19,7 +19,7 @@
         {#    顶部title area    #}
         <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
-                <h2 class="breadcrumb-title">Flight</h2>
+                <h2 class="breadcrumb-title">{{ _("Flight") }}</h2>
                 <ul class="breadcrumb-menu">
 
                 </ul>
@@ -48,8 +48,8 @@
                                     <div class="listing-rate">
                                         <!-- overall review -->
                                         <span class="badge"><i class="fal fa-star"></i> 5.0</span>
-                                        <span class="listing-rate-type">Excellent</span>
-                                        <span class="listing-rate-review">({{ flight.review_num }} reviews)</span>
+                                        <span class="listing-rate-type">{{ _("Excellent") }}</span>
+                                        <span class="listing-rate-review">({{ flight.review_num }} {{ _("reviews") }})</span>
                                     </div>
                                 </div>
                                 <!-- flight attr -->
@@ -72,7 +72,7 @@
                                                     <i class="far fa-user-tie"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Flight Type</h6>
+                                                    <h6>{{ _("Flight Type") }}</h6>
                                                     <span>{{ flight.flight_class }}</span>
                                                 </div>
                                             </div>
@@ -83,7 +83,7 @@
                                                     <i class="far fa-refresh"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Fare Type</h6>
+                                                    <h6>{{ _("Fare Type") }}</h6>
                                                     <span>{{ flight.fare_type }}</span>
                                                 </div>
                                             </div>
@@ -94,7 +94,7 @@
                                                     <i class="far fa-xmark"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Cancellation Fee</h6>
+                                                    <h6>{{ _("Cancellation Fee") }}</h6>
                                                     <span>{{ flight.cancellation_charge }}</span>
                                                 </div>
                                             </div>
@@ -105,7 +105,7 @@
                                                     <i class="far fa-dollar-sign"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Flight Change</h6>
+                                                    <h6>{{ _("Flight Change") }}</h6>
                                                     <span>{{ flight.flight_charge }}</span>
                                                 </div>
                                             </div>
@@ -116,7 +116,7 @@
                                                     <i class="far fa-suitcase"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Seats & Baggage</h6>
+                                                    <h6>{{ _("Seats & Baggage") }}</h6>
                                                     <span>{{ flight.seat_baggage }}</span>
                                                 </div>
                                             </div>
@@ -127,8 +127,8 @@
                                                     <i class="far fa-cog"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Inflight Features</h6>
-                                                    <span>Available</span>
+                                                    <h6>{{ _("Inflight Features") }}</h6>
+                                                    <span>{{ _("Available") }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +138,7 @@
                                                     <i class="far fa-percent"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Taxes & Fees</h6>
+                                                    <h6>{{ _("Taxes & Fees") }}</h6>
                                                     <span>{{ flight.taxes }}</span>
                                                 </div>
                                             </div>
@@ -147,81 +147,81 @@
                                 </div>
 
                                 <div class="listing-item">
-                                    <h4 class="mb-3">About {{ flight.company }}</h4>
+                                    <h4 class="mb-3">{{ _("About") }} {{ flight.company }}</h4>
                                     <p class="mt-3">{{ flight.description }}</p>
                                 </div>
 
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Inflight Features</h4>
+                                    <h4 class="mb-3">{{ _("Inflight Features") }}</h4>
                                     <div class="listing-amenity">
                                         <div class="row">
                                             {% if wifi %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-wifi"></i> Wifi</h6>
+                                                    <h6><i class="far fa-wifi"></i> {{ _("Wifi") }}</h6>
                                                 </div>
                                             </div>
                                             {% endif %}
                                         {% if television %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-tv"></i> Television</h6>
+                                                    <h6><i class="far fa-tv"></i> {{ _("Television") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if entertainment %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-music"></i> Entertainment</h6>
+                                                    <h6><i class="far fa-music"></i> {{ _("Entertainment") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if coffee %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-cup-togo"></i> Coffee</h6>
+                                                    <h6><i class="far fa-cup-togo"></i> {{ _("Coffee") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if air_condition %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-air-conditioner"></i> Air Conditioning</h6>
+                                                    <h6><i class="far fa-air-conditioner"></i> {{ _("Air Conditioning") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if food %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="fa-regular fa-salad"></i> Food</h6>
+                                                    <h6><i class="fa-regular fa-salad"></i> {{ _("Food") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if game %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-gamepad-modern"></i> Games</h6>
+                                                    <h6><i class="far fa-gamepad-modern"></i> {{ _("Games") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if wines %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-wine-bottle"></i> Wines</h6>
+                                                    <h6><i class="far fa-wine-bottle"></i> {{ _("Wines") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if comfort %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-couch"></i> Comfort</h6>
+                                                    <h6><i class="far fa-couch"></i> {{ _("Comfort") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
                                         {% if magazines %}
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-image"></i> Magazines</h6>
+                                                    <h6><i class="far fa-image"></i> {{ _("Magazines") }}</h6>
                                                 </div>
                                             </div>
                                         {% endif %}
@@ -230,37 +230,37 @@
                                 </div>
 
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Fare Rules For Your Flight</h4>
+                                    <h4 class="mb-3">{{ _("Fare Rules For Your Flight") }}</h4>
                                     <div class="listing-amenity">
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-check"></i> Rules And Policies</h6>
+                                                    <h6><i class="far fa-check"></i> {{ _("Rules And Policies") }}</h6>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-check"></i> Flight Changess</h6>
+                                                    <h6><i class="far fa-check"></i> {{ _("Flight Changes") }}</h6>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-check"></i> Refunds</h6>
+                                                    <h6><i class="far fa-check"></i> {{ _("Refunds") }}</h6>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-check"></i> Airline Penalties</h6>
+                                                    <h6><i class="far fa-check"></i> {{ _("Airline Penalties") }}</h6>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-check"></i> Flight Cancellation</h6>
+                                                    <h6><i class="far fa-check"></i> {{ _("Flight Cancellation") }}</h6>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="listing-amenity-item">
-                                                    <h6><i class="far fa-check"></i> Airline Terms Of Use</h6>
+                                                    <h6><i class="far fa-check"></i> {{ _("Airline Terms Of Use") }}</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,7 +269,7 @@
 
                                 <!-- review area -->
                                 <div class="listing-item">
-                                    <h4 class="mb-3">Reviews</h4>
+                                    <h4 class="mb-3">{{ _("Reviews") }}</h4>
                                     <div class="listing-rating-box">
                                         <div class="listing-review-rating">
                                             <div class="listing-rating-count">
@@ -281,7 +281,7 @@
                                                     <i class="fas fa-star"></i>
                                                     <i class="far fa-star"></i>
                                                 </div>
-                                                <p>Base On 15.5k Review</p>
+                                                <p>{{ _("Base On 15.5k Review") }}</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -492,11 +492,11 @@
                                             </div>
                                         </div>
                                         <div class="listing-review-form">
-                                            <h4>Leave A Review</h4>
+                                            <h4>{{ _("Leave A Review") }}</h4>
                                             <form action="#">
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
-                                                        <label class="star-label">Your Rating</label>
+                                                        <label class="star-label">{{ _("Your Rating") }}</label>
                                                         <div class="listing-review-form-star">
                                                             <div class="star-rating-wrapper">
                                                                 <div class="star-rating-box">
@@ -559,7 +559,7 @@
                                                         <div class="form-group">
                                                             <div class="search-form-date">
                                                                 <div class="search-form-journey">
-                                                                    <label>Journey Date</label>
+                                                                    <label>{{ _("Journey Date") }}</label>
                                                                     <div class="form-group-icon">
                                                                         <input type="text" name="journey-date"
                                                                                class="form-control date-picker journey-date flight-special-date">
@@ -573,35 +573,32 @@
                                                 </div>
                                                 <div class="listing-side-btn">
                                                     <button type="submit" class="theme-btn"><span
-                                                            class="far fa-shopping-bag"></span>Book Now
+                                                            class="far fa-shopping-bag"></span>{{ _("Book Now") }}
                                                     </button>
                                                    {% if logged %}
                                                     {% if added %}
-                                                        <a href="{{ url_for('flight.remove_wishlist', flight_id=flight.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> Remove From
-                                                            Wishlist</a>
+                                                        <a href="{{ url_for('flight.remove_wishlist', flight_id=flight.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> Add To
-                                                        Wishlist</a>
+                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
-                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> Add To
-                                                        Wishlist</a>
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                 {% endif %}
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="listing-side-share">
-                                        <a href="#"><i class="far fa-share-nodes"></i> Share</a>
-                                        <span><i class="far fa-eye"></i> 250 Views</span>
+                                        <a href="#"><i class="far fa-share-nodes"></i> {{ _("Share") }}</a>
+                                        <span><i class="far fa-eye"></i> 250 {{ _("Views") }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Get A Question?</h4>
-                                <p>It is a long-established fact that a reader will be distracted by the readable
+                                <h4 class="booking-title">{{ _("Get A Question?") }}</h4>
+                                <p>{{ _("t is a long-established fact that a reader will be distracted by the readable
                                     content
-                                    layout.</p>
+                                    layout.") }}</p>
                                 <ul class="listing-side-list">
                                     <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
                                     <li><i class="far fa-envelope"></i><a
@@ -611,16 +608,15 @@
                                 </ul>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">Organized By</h4>
+                                <h4 class="booking-title">{{ _("Organized By") }}</h4>
                                 <div class="listing-side-organizer">
                                     <div class="listing-side-organizer-img">
                                         <img src="assets/img/account/01.jpg" alt="">
                                     </div>
                                     <div class="listing-side-organizer-info">
-                                        <h5 class="listing-side-organizer-name">Roltak Travel Agency</h5>
-                                        <p>Member Since 2021</p>
-                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> Send
-                                            Message</a>
+                                        <h5 class="listing-side-organizer-name">{{ _("Roltak Travel Agency") }}</h5>
+                                        <p>{{ _("Member Since 2021") }}</p>
+                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span>{{ _("Sendd Message") }} </a>
                                     </div>
                                 </div>
                             </div>

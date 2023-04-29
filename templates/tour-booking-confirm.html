@@ -27,55 +27,55 @@
                 <div class="row">
                     <div class="col-md-8 mx-auto mt-5">
                         <div class="booking-summary">
-                            <h3>Booking Summary</h3>
+                            <h3>{{ _("Booking Summary") }}</h3>
                             <div class="booking-summary-content">
                                 <div class="row g-5">
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Tour Info</h6>
+                                            <h6>{{ _("Tour Info") }}</h6>
                                             <ul>
-                                                <li>Product Type <span>Tour</span></li>
-                                                <li>Product Name <span>{{ tour.name }}</span></li>
-                                                <li>Product Category <span>{{ tour.category }}</span></li>
+                                                <li>{{ _("Product Type ") }}<span>{{ _("Tour") }}</span></li>
+                                                <li>{{ _("Product Name ") }} <span>{{ tour.name }}</span></li>
+                                                <li>{{ _("Product Category ") }} <span>{{ tour.category }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Product Info</h6>
+                                            <h6>{{ _("Product Info ") }}</h6>
                                             <ul>
-                                                <li>Tour Date <span>{{ order_date }}</span></li>
-                                                <li>Tour Price <span>{{ tour.price }}</span></li>
+                                                <li>{{ _("Tour Date ") }} <span>{{ order_date }}</span></li>
+                                                <li>{{ _("Tour Price ") }} <span>{{ tour.price }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Customer Info</h6>
+                                            <h6>{{ _("Customer Info ") }}</h6>
                                             <ul>
-                                                <li>Name <span>{{ customer.nickname }}</span></li>
-                                                <li>Email <span>{{ customer.email }}</span>
+                                                <li>{{ _("Name") }} <span>{{ customer.nickname }}</span></li>
+                                                <li>{{ _("Email") }} <span>{{ customer.email }}</span>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Billing Info</h6>
+                                            <h6>{{ _("Billing Info") }}</h6>
                                             <ul>
                                                 <li>Tax <span class="text - success">{{ tour.price*0.05 }}</span></li>
-                                                <li>Payment Method <span>Token</span></li>
-                                                <li class="fw-bold">Total Payment <span>{{ tour.price*0.05+tour.price }}</span></li>
+                                                <li>{{ _("Payment Method") }} <span>{{ _("Token") }}</span></li>
+                                                <li class="fw-bold">{{ _("Total Payment") }} <span>{{ tour.price*0.05+tour.price }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-confirm-btn">
-                                <a href="{{ url_for('tour.order_success', tour_id=tour.id, date=order_date, cost=tour.price*0.05+tour.price, name=tour.name) }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
+                                <a href="{{ url_for('tour.order_success', tour_id=tour.id, date=order_date, cost=tour.price*0.05+tour.price, name=tour.name) }}" class="theme-btn"><span class="far fa-print"></span>{{ _("Confirm Booking") }}</a>
                                 <a href="{{ url_for('tour.tourDetail', tour_id=tour.id) }}" class="theme-btn cancel-booking"><span
-                                        class="far fa-xmark-circle"></span>Cancel Booking</a>
+                                        class="far fa-xmark-circle"></span>{{ _("Cancel Booking") }}</a>
                             </div>
                         </div>
                     </div>
