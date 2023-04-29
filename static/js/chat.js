@@ -5,6 +5,7 @@ var $messages = $(".messages-content"),
   loginPageUrl = "",
   usingBot = true, // use bot by default
   botAvatarUrl = window.botAvatarUrl,
+  botCmdRespDict = null,
   socket = null,
   namespace = null,
   h,
@@ -48,6 +49,22 @@ function initGlobalVars() {
     },
   });
 
+  // get the bot cmd resp dict
+  $.ajax({
+    type: "GET",
+    url: "/get_bot_cmd_resp_dict",
+    // data: {},
+    timeout: 15000, // timeout after 15 seconds
+    success: function (responseFromServer) {
+      console.log("responseFromServer: " + responseFromServer + " with type: " + typeof responseFromServer);
+      botCmdRespDict = JSON.parse(responseFromServer);
+    },
+    error: function (xhr, status, error) {
+      // an error occurred
+      console.log("ERROR_" + status + "_" + error.message);
+    },
+  });
+
   // currently we set namespace to /chat
   namespace = "/chat";
 }
@@ -68,8 +85,8 @@ function setDateNow() {
 
 function setDate(dateTimeStr) {
   var dateTimeObj = new Date(dateTimeStr);
-  var hour = dateTimeObj.getHours();
-  var minute = dateTimeObj.getMinutes();
+  var hour = dateTimeObj.getHours().toString();
+  var minute = dateTimeObj.getMinutes().toString();
   insertTimeStampForMsg(hour, minute);
 }
 
@@ -191,7 +208,15 @@ function doSend() {
 
   if (usingBot) {
     insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
-    getAndInsertRespMessageFromBot(customerMessage);
+    // TODO: TEST APPROACH CHANGE IMMEDIATELY
+    console.log(botCmdRespDict)
+    if (customerMessage in botCmdRespDict) {
+      // if the message is a bot command
+      var botCmdResp = botCmdRespDict[customerMessage];
+      insertRespMessage(botCmdResp);
+    } else {
+      getAndInsertRespMessageFromBot(customerMessage);
+    }
   } else {
     // need not to insert message manually, because the server will send back the message to the client
     var text = customerMessage;
