@@ -14,6 +14,7 @@ class Customer(db.Model, UserMixin):
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
+    amount_unread_msgs = db.Column(db.Integer, default=0)
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
@@ -43,6 +44,16 @@ class Message(db.Model):
     sentTime = db.Column(db.DateTime)
     isByCustomer = db.Column(db.Boolean)  # if False then by staff
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'isPic': self.isPic,
+            'content': self.content,
+            'sentTime': self.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
+            'isByCustomer': self.isByCustomer,
+            'customerID': self.customerID,
+        }
 
 
 class ActivityOrder(db.Model):
