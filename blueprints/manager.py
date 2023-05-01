@@ -212,6 +212,10 @@ def logout():
     return render_template("Stafflogin.html")
 
 
+# @bp.route('/destination', methods=["POST"])
+# def destinationList():
+#     return render_template("destinations.html")
+
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
@@ -345,13 +349,27 @@ def respond_view(target_customer_id):
     else:
         return False
 
-@bp.route("/chat")
-@staff_login_required
-def chat():
-    customers = Customer.query.filter(Customer.amount_unread_msgs>0).order_by(Customer.amount_unread_msgs.desc()).all()
-    return render_template("chatManager.html", customers=customers)
+
+@bp.route("/chat_test", methods=["GET", "POST"])
+def respond_test():
+    """manager bargaining with target customer
+
+    Args:
+        targetcustomer_id (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    # target_user = Customer.query.filter_by(id=target_customer_id).first()
+    # if target_user == None:
+    #     return False
+    # manager = g.admin
+    # TODO: finish this function
+    return render_template("Test.html")
+
 
 ### END CHAT RELATED ###
+
 
 @bp.route("/add_tour", methods=["GET", "POST"])
 @staff_login_required
@@ -681,6 +699,12 @@ def wish_list():
     return render_template("customerWishlist.html")
 
 
+@bp.route("/chat")
+@staff_login_required
+def chat():
+    return render_template("chatManager.html")
+
+
 # previous order_details
 @bp.route("/activity_invoice")
 @staff_login_required
@@ -818,3 +842,8 @@ def load_info():
     else:
         return jsonify({"code": 400})
 
+
+@bp.route("/customer_detail", methods=["POST", "GET"])
+@staff_login_required
+def customer_detail():
+    return render_template("customerDetail.html")
