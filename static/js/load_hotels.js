@@ -75,7 +75,7 @@ function load_hotels(published, category) {
                                             <div class="dropdown-items__container">
                                                 <ul class="dropdown-items__list">
                                                     <li class="dropdown-items__item">
-                                                        <a class="dropdown-items__link">
+                                                        <a class="dropdown-items__link" onclick="getModifyData(${items[i].id})">
                                                             <span class="dropdown-items__link-icon" onclick="modify(${items[i].id})" style="padding-left: 50%;">
                                                                 <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
                                                                 <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
@@ -136,4 +136,25 @@ function delete_item(id) {
 
 function clearInputs(){
     location.reload();
+}
+
+function getModifyData(id){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            var response = xhr.responseText;
+        // 处理服务器返回的数据
+            console.log(response);
+        } else {
+        // 处理错误情况
+            console.log('wrong');
+        }
+      }
+    };
+    xhr.open('POST', '/load_info');
+    const fd = new FormData()
+    fd.set('id', id)
+    fd.set('type', "hotel")
+    xhr.send(fd);
 }
