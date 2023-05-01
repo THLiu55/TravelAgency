@@ -182,34 +182,42 @@
                     </ul>
                 </div>
                 <div class="chat-users__content scrollbar-thin scrollbar-hidden" data-simplebar>
-                    <ul class="chat-users__list">
+                    <ul class="chat-users__list" id="all-customers-list">
 
-                        <!-- current target customer -->
-
+                        {% for customer in customers %}
                         <li class="chat-users__list-item">
-                            <a class="chat-users__item" id="activatee-{{ target_customer.nickname }}" href="#">
+                            <a class="chat-users__item customer-activatee-a" id="activatee-{{ customer.nickname }}"
+                                href="#">
                                 <div class="chat-users__item-avatar color-red">
-                                    <div class="chat-users__item-avatar-text">{{ (target_customer.nickname)[0] }}</div>
+                                    <div class="chat-users__item-avatar-text">{{ (customer.nickname)[0] }}</div>
                                     <span class="badge-signal badge-signal--green"></span>
-                                    <img src="https://avatar.oxro.io/avatar.svg?name={{ target_customer.nickname }}"
-                                        alt="#">
+                                    <img class="customer-avatar"
+                                        src="https://avatar.oxro.io/avatar.svg?name={{ customer.nickname }}" alt="#">
                                 </div>
                                 <div class="chat-users__item-right">
-                                    <h5 class="chat-users__item-name">{{ target_customer.nickname }}</h5>
+                                    <h5 class="chat-users__item-name customer-nickname-h5"
+                                        id="customer-nickname-{{ loop.index }}">{{ customer.nickname }}</h5>
+                                    <h5 class="chat-users__item-name customer-id-h5" id="customer-id-{{ loop.index }}"
+                                        style="display: none;">{{ customer.id }}</h5>
                                     <div class="chat-users__item-right-group"><span class="chat-users__item-time">1
                                             min</span>
                                     </div>
                                     <div class="chat-users__item-message">
                                         <div class="chat-users__item-badge"><span
-                                                class="badge badge--small badge--red">3</span>
+                                                class="badge badge--small badge--red unread-counter"
+                                                id="unread-counter-{{ customer.nickname }}">{{
+                                                customer.amount_unread_msgs
+                                                }}</span>
                                         </div>
-                                        <p class="chat-users__item-text">This is a test message history</p>
+                                        <p class="chat-users__item-text last-msg-preview"
+                                            id="last-msg-preview-{{ customer.nickname }}">{% if
+                                            ((customer.messages)[-1]).isPic %} (Pic)
+                                            {% else %} {{ ((customer.messages)[-1]).content }}{% endif %}</p>
                                     </div>
                                 </div>
                             </a>
                         </li>
-
-                        <!-- TODO: add other target customers -->
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -225,19 +233,18 @@
                         </button>
                         <a class="media-item media-item--medium" href="#">
                             <div class="media-item__icon color-red">
-                                <div class="media-item__icon-text">{{ (target_customer.nickname)[0] }}</div><span
+                                <div class="media-item__icon-text">#</div><span
                                     class="badge-signal badge-signal--green"></span>
 
-                                <img class="media-item__thumb"
-                                    src="https://avatar.oxro.io/avatar.svg?name={{ target_customer.nickname }}" alt="#">
+                                <img class="media-item__thumb" id="selected-customer-avatar" alt="#"
+                                    src="{% if not customers %}{{ url_for( 'static', filename='img/content/humans/item-3.jpg' ) }}{% else %}https://avatar.oxro.io/avatar.svg?name={{ customers[0].nickname }}{% endif %}">
                             </div>
                             <div class="media-item__right">
-                                <h5 class="media-item__title font-weight-medium" id="customer-nickname">{{
-                                    target_customer.nickname }}
-                                </h5>
-                                <h5 display="none" class="media-item__title font-weight-medium" id="customer-id">{{
-                                    target_customer.id }}
-                                </h5>
+                                <h5 class="media-item__title font-weight-medium selected-customer-nickname-h5"
+                                    id="selected-customer-nickname"></h5>
+                                <h5 style="display:none;"
+                                    class="media-item__title font-weight-medium selected-customer-id-h5"
+                                    id="selected-customer-id"></h5>
                                 <div class="text-sm text-grey">Active 1 min ago</div>
                             </div>
                         </a>
@@ -292,7 +299,7 @@
                                         <a class="dropdown-emoji__item" href="#" tabindex="0">
                                             <img class="dropdown-emoji__image"
                                                 src="{{ url_for( 'static', filename='img/content/emoji/laughing.svg' ) }}"
-                                                alt="#" onclick="insertRespMessage('Venderbad', 'testTest234')" />
+                                                alt="#" />
                                         </a>
                                         <a class="dropdown-emoji__item" href="#" tabindex="0">
                                             <img class="dropdown-emoji__image"
@@ -383,7 +390,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input class="chat-details__input input" type="text" placeholder="Write a Message...">
+                        <input class="chat-details__input input" id="chat-inputbox" type="text"
+                            placeholder="Write a Message...">
                     </div>
                     <div class="chat-details__bottom-right">
                         <button class="button-add button-add--blue" id="send-message"><span class="button-add__icon">
