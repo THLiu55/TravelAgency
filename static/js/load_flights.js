@@ -132,3 +132,24 @@ function delete_item(id) {
         load_flights(cur_status, cur_category)
     }
 }
+
+function clearInputs() {
+    // const inputs = document.getElementsByTagName('input');
+    // const textareas = document.getElementsByTagName('textarea');
+    // const selects = document.getElementsByTagName('select');
+    // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    // for (let i = 0; i < inputs.length; i++) {
+    //     inputs[i].value = '';
+    // }
+    // for (let i = 0; i < textareas.length; i++) {
+    //     textareas[i].value = '';
+    // }
+    // for (let i = 0; i < selects.length; i++) {
+    //     selects[i].selectedIndex = 0;
+    // }
+    // for (let i = 0; i < checkboxes.length; i++) {
+    //     checkboxes[i].checked = false;
+    // }
+
+    location.reload();
+}

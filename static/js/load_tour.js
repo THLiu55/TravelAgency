@@ -131,3 +131,7 @@ function delete_item(id) {
         load_tours(cur_status, cur_category)
     }
 }
+
+function clearInputs(){
+    location.reload();
+}

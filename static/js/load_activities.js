@@ -134,3 +134,7 @@ function delete_item(id) {
         load_activities(cur_status, cur_category)
     }
 }
+
+function clearInputs(){
+    location.reload();
+}
