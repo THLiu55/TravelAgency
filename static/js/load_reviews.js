@@ -109,5 +109,9 @@ function load_reviews(category, status) {
 
 load_reviews(cur_category, 'all')
 
+function clearInputs(){
+    location.reload();
+}
+
 
 

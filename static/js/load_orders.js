@@ -115,3 +115,7 @@ function load_orders(category, status) {
 }
 
 load_orders(cur_category, 'all')
+
+function clearInputs(){
+    location.reload();
+}
