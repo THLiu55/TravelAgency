@@ -56,5 +56,10 @@ def node_file_for_search(filename):
     return send_from_directory(app.root_path, filename)
 
 
+@app.route('/<path:filename>')
+def node_file_for_map(filename):
+    return send_from_directory(app.root_path, filename)
+
+
 if __name__ == "__main__":
     app.run()
