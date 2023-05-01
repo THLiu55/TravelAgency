@@ -147,11 +147,11 @@ function getModifyData(id){
         }
       }
     };
-    xhr.open('POST', '/load_info');
+    xhr.open('POST', '/manager/load_info', true);
     const fd = new FormData()
     fd.set('id', id)
     fd.set('type', "flight")
-    xhr.send(fd);
+    xhr.send(fd)
 }
 
 function clearInputs() {

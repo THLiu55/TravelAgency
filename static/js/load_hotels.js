@@ -152,7 +152,7 @@ function getModifyData(id){
         }
       }
     };
-    xhr.open('POST', '/load_info');
+    xhr.open('POST', '/manager/load_info');
     const fd = new FormData()
     fd.set('id', id)
     fd.set('type', "hotel")
