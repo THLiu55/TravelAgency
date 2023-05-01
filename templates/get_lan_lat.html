@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Add a geocoder</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="{{ url_for('node_file_for_map', filename='map/mapcss.css') }}" rel="stylesheet">
+<script src="{{ url_for('node_file_for_map', filename='map/mapjs.js') }}"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<script src="{{ url_for('node_file_for_map', filename='map/map/node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.min.js') }}"></script>
+
+<link rel="stylesheet" href="{{ url_for('node_file_for_map', filename='map/map/node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css') }}" type="text/css">
+
+<div id="map"></div>
+
+<script>
+	// TO MAKE THE MAP APPEAR YOU MUST
+	// ADD YOUR ACCESS TOKEN FROM
+	// https://account.mapbox.com
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGhpdTc3NSIsImEiOiJjbGg0c254MWQxNWtyM2xwamNoNm9kbHUyIn0.V6uMIymS_TjxWZh9Ns0bNg';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [116.47697557677532, 39.87322752073521],
+        zoom: 13,
+        language: 'en'
+    });
+
+
+    const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        language: 'zh-Hans'
+    });
+
+    // Add the control to the map.
+    map.addControl(geocoder);
+
+
+    // 创建一个Marker对象
+    const marker = new mapboxgl.Marker({
+        draggable: true // 允许拖拽
+    })
+    .setLngLat([116.47697557677532, 39.87322752073521]) // 设置Marker的初始位置
+    .addTo(map); // 添加到地图上
+
+    // 监听dragend事件，获取Marker的经纬度坐标
+    marker.on('dragend', (event) => {
+        const lngLat = marker.getLngLat(); // 获取Marker的经纬度坐标
+        console.log(`Marker position: ${lngLat.lng}, ${lngLat.lat}`); // 在控制台输出经纬度信息
+
+        const positionElement = document.getElementById('position');
+
+    });
+
+
+    const inputElement = document.querySelector('.mapboxgl-ctrl-geocoder--input');
+    inputElement.style.display = 'none';
+
+    const iconElement = document.querySelector('.mapboxgl-ctrl-geocoder--icon-search');
+    iconElement.style.display = 'none';
+
+    let aa = geocoder.getLanguage();
+    alert(aa);
+
+
+
+
+</script>
+
+
+</body>
+</html>
