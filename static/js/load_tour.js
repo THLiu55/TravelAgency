@@ -156,3 +156,4 @@ function getModifyData(id){
     fd.set('type', "tour")
     xhr.send(fd)
 }
+
