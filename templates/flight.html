@@ -625,10 +625,9 @@
                                                 <div class="row align-items-center" style="width: 100%;">
                                                     <div style="display: grid; grid-template-columns: auto;">
                                                     <div class="col-lg-6" style="max-width: none;">
-                                                        <div class="form-group" id="modify-flight-type">
+                                                        <div class="form-group">
                                                         <label>Flight Type</label>
-                                                        <select name="flight_type" class="select">
-                                                        <option value="">Select Flight Type</option>
+                                                        <select name="flight_type" class="select" id="modify_flight_type">                                                         <option value="">Select Flight Type</option>
                                                         <option value="One Way Flight">One Way Flight</option>
                                                         <option value="Round Trip Flight">Round Trip Flight</option>
                                                         <option value="Multi City Flight">Multi City Flight</option>
@@ -673,9 +672,9 @@
                                                         </div>
 
                                                         <div class="col-lg-6" style="max-width: none;">
-                                                        <div class="form-group" id="modify-flight-stop">
+                                                        <div class="form-group">
                                                         <label>Flight Stop</label>
-                                                        <select name="flight_stop" class="select">
+                                                        <select name="flight_stop" class="select" id="modify-flight-stop">
                                                         <option value="">Select Stop</option>
                                                         <option value="Non Stop">Non Stop</option>
                                                         <option value="1 Stop">1 Stop</option>
@@ -690,9 +689,9 @@
                                                     <div
                                                         style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-airline">
+                                                            <div class="form-group">
                                                             <label>Airline</label>
-                                                            <select name="company" class="select">
+                                                            <select name="company" class="select" id="modify-airline">
                                                             <option value="">Select Airline Company</option>
                                                             <option value="American Airlines">American Airlines</option>
                                                             <option value="Delta Airlines">Delta Airlines</option>
@@ -728,9 +727,9 @@
                                                             </div>
                                                             </div> -->
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-fare-type">
+                                                            <div class="form-group" >
                                                             <label>Fare Type</label>
-                                                            <select name="fare_type" class="select">
+                                                            <select name="fare_type" class="select" id="modify-fare-type">
                                                             <option value="">Select The Fare Type</option>
                                                             <option value="Refundable">Refundable</option>
                                                             <option value="Partially Refundable">Partially Refundable</option>
@@ -739,9 +738,9 @@
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-flight-class">
+                                                            <div class="form-group">
                                                             <label>Flight Class</label>
-                                                            <select name="flight_class" class="select">
+                                                            <select name="flight_class" class="select" id="modify-flight-class">
                                                             <option value="">Select Class</option>
                                                             <option value="Economy">Economy</option>
                                                             <option value="Business">Business</option>
@@ -750,9 +749,9 @@
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-cancellation-charge">
+                                                            <div class="form-group">
                                                             <label>Cancellation Charge</label>
-                                                            <select name="cancellation_charge" class="select">
+                                                            <select name="cancellation_charge" class="select" id="modify-cancellation-charge">
                                                             <option value="">Select Cancellation Charge</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
@@ -761,9 +760,9 @@
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                             <div class="form-group" id="modify-flight-charge">
+                                                             <div class="form-group">
                                                             <label>Flight Charge</label>
-                                                            <select name="flight_charge" class="select">
+                                                            <select name="flight_charge" class="select" id="modify-flight-charge">
                                                             <option value="">Select Charge</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
@@ -772,9 +771,9 @@
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-seats-baggage">
+                                                            <div class="form-group">
                                                             <label>Seats & Baggage</label>
-                                                            <select name="seat_baggage" class="select">
+                                                            <select name="seat_baggage" class="select" id="modify-seats-baggage">
                                                             <option value="">Select Seats & Baggage</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
@@ -793,9 +792,9 @@
 {#                                                            </div>#}
 {#                                                            </div>#}
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-base-fare">
+                                                            <div class="form-group">
                                                             <label>Base Fare</label>
-                                                            <select name="base_fare" class="select">
+                                                            <select name="base_fare" class="select" id="modify-base-fare">
                                                             <option value="">Select Base Fare</option>
                                                             <option value="$400">$400</option>
                                                             <option value="$680">$680</option>
@@ -804,9 +803,9 @@
                                                             </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
-                                                            <div class="form-group" id="modify-taxes-fees">
+                                                            <div class="form-group">
                                                             <label>Taxes & Fees</label>
-                                                            <select name="taxes" class="select">
+                                                            <select name="taxes" class="select" id="modify-taxes-fees">
                                                             <option value="">Select Base Fare</option>
                                                             <option value="$100">$100</option>
                                                             <option value="$280">$280</option>

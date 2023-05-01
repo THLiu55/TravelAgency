@@ -133,14 +133,34 @@ function delete_item(id) {
     }
 }
 
+function setModifySelect(id,value) {
+    const select = $("#"+id);
+    select.val(value)
+    select.niceSelect("update");
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-            var response = xhr.responseText;
+            var response = JSON.parse(xhr.responseText);
         // 处理服务器返回的数据
             console.log(response);
+            console.log(response['content']);
+            console.log(response['content']["flight_type"]);
+            //参数为设置的id和传入的值（值需要与select中option的value一致）
+            setModifySelect("modify_flight_type", response['content']["flight_type"]);
+            setModifySelect("modify-flight-stop", response['content']["flight_stop"]);
+            setModifySelect("modify-airline", response['content']["company"]);
+            setModifySelect("modify-fare-type", response['content']["fare_type"]);
+            setModifySelect("modify-flight-class", response['content']["flight_class"]);
+            setModifySelect("modify-cancellation-charge", response['content']["cancellation_charge"]);
+            setModifySelect("modify-flight-charge", response['content']["flight_charge"]);
+            setModifySelect("modify-seats-baggage", response['content']["seat_baggage"]);
+            setModifySelect("modify-base-fare", response['content']["base_fare"]);
+            setModifySelect("modify-taxes-fees", response['content']["taxes"]);
+
         } else {
         // 处理错误情况
             console.log('wrong');
