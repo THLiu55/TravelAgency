@@ -1,32 +1,102 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-theme="light">
+
 {% extends "BaseManager.html" %}
-{% block title %} Manager Flights {% endblock %}
+{% block title %} Customer Detail {% endblock %}
 
 {# head数据均放在该block里 #}
 {% block csslink %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/fullcalendar.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar/css/style-manager.css') }}">
+
 {% endblock %}
 
 {% block body %}
-    <div class="user-profile-wrapper">
-        <div class="user-profile-card">
-            <h4 class="user-profile-card-title">{{ _("Profile Info") }}</h4>
-            <div class="col-lg-6">
-                <div class="profile-info-list">
-                    <ul>
-                        <li>{{ _("Nickname:") }} <span>111</span></li>
-                        <li>{{ _("Email:") }}<span>222</span></li>
-                        <li>{{ _("Phone:") }} <span>333</span></li>
-                        <li>{{ _("Address:") }} <span>444</span></li>
-                        <li>{{ _("Join Date:") }} <span>555</span></li>
-                    </ul>
+    <div class="sidebar-backdrop"></div>
+    <div class="page-wrapper">
+        <main class="page-content">
+            <div class="container">
+                <div class="user-profile-card">
+                    <h4 class="user-profile-card-title">{{ _("Profile Info") }}</h4>
+                    <div class="col-lg-6">
+                        <div class="profile-info-list">
+                            <ul>
+                                <li>{{ _("Nickname:") }} <span>111</span></li>
+                                <li>{{ _("Email:") }}<span>222</span></li>
+                                <li>{{ _("Phone:") }} <span>333</span></li>
+                                <li>{{ _("Address:") }} <span>444</span></li>
+                                <li>{{ _("Join Date:") }} <span>555</span></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
+                <div class="table-wrapper">
+{#                    <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>#}
+                        <table class="table table--lines">
+                            <colgroup>
+                                <col width="200px">
+                                <col width="200px">
+                                <col width="200px">
+                                <col width="200px">
+                                <col width="200px">
+                                <col>
+                                <col>
+                                <col>
+                            </colgroup>
+                            <thead class="table__header">
+                                <tr class="table__header-row">
+                                    <th>
+                                        <div class="table__checkbox table__checkbox--all">
+                                            <label class="checkbox">
+                                                <input class="js-checkbox-all" type="checkbox"
+                                                    data-checkbox-all="product"><span class="checkbox__marker"><span
+                                                        class="checkbox__marker-icon">
+                                                        <svg class="icon-icon-checked">
+                                                            <use xlink:href="#icon-checked"></use>
+                                                        </svg></span></span>
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th class="table__th-sort"><span class="align-middle">Product Type</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Total</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort"><span class="align-middle">Start Date</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort"><span class="align-middle">End Date</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
+                                    </th>
+                                    <th class="table__actions"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tour-container">
+
+                            </tbody>
+                        </table>
+                    <div class="table-wrapper__footer">
+                        <div class="row">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar Start -->
+                <div id="calendarApp" class="calendar--app"></div>
+                <!-- Calendar End -->
+            </div>
+        </main>
+    </div>
 
 
 {% endblock %}
 
 {% block jsLink %}
+    <script src="{{ url_for('static', filename='css/calendar/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/fullcalendar.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/page/calendar.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/locale-all.js') }}"></script>
 
 {% endblock %}
+
+</html>

@@ -139,10 +139,11 @@ function getModifyData(id){
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
             var response = xhr.responseText;
-        // 处理服务器返回的数据
+            // 处理服务器返回的数据
             console.log(response);
+
         } else {
-        // 处理错误情况
+            // 处理错误情况
             console.log('wrong');
         }
       }
