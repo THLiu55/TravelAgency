@@ -1,17 +1,17 @@
 ﻿<div class="alert alert-danger alert-dismissible fade" role="alert" id="clear-alert">
-    <strong> Clear your calendar sucessfully!</strong>
+    <strong> {{ _("Clear your calendar successfully!") }}</strong>
     
   </div>
 <div class="user-profile-wrapper">
     <div class="user-profile-card">
         <div class="alert alert-success alert-dismissible fade" role="alert" id="success-alert" style="position: relative;">
-            <strong> Add to your calendar sucessfully!</strong> Click the button below to have a look!
+            <strong> {{ _("Add to your calendar successfully!") }}</strong> {{ _("Click the button below to have a look!") }}
             
           </div>
           <div style="display: grid; grid-template-columns: 70% 30%; align-items: start">
-        <h4 class="user-profile-card-title">My Wishlist</h4>
+        <h4 class="user-profile-card-title">{{ _("My Wishlist") }}</h4>
         <!-- <button  type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Clear the items in wishlist calendar" data-content="Clear the items in wishlist calendar">Click to clear</button> -->
-        <button  id="clearCalendar" class="btn btn-danger">Clear calendar</button>
+        <button  id="clearCalendar" class="btn btn-danger">{{ _("Clear calendar") }}</button>
         
     </div>
 
@@ -31,14 +31,14 @@
                         <div class="hotel-rate">
                             <span class="badge"><i class="fal fa-star"></i> {{ i.star }}</span>
                             <span class="hotel-rate-type">{{ i.star_des }}</span>
-                            <span class="hotel-rate-review">({{ i.review_num }} Reviews)</span>
+                            <span class="hotel-rate-review">({{ i.review_num }} {{ _("Reviews") }})</span>
                         </div>
                         <div class="hotel-bottom">
                             <div class="hotel-price">
 <span class="hotel-price-amount">${{ i.price }} <span class="hotel-price-type"></span></span>
                             </div>
                             <div class="hotel-text-btn">
-                                <a href="{{ i.url }}">See Details <i class="fas fa-arrow-right"></i></a>
+                                <a href="{{ i.url }}">{{ _("See Details") }} <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
         </div>
 
       
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="test"> Plan them in my calendar</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="test"> {{ _("Plan them in my calendar") }}</button>
 
 
 
@@ -92,8 +92,8 @@
             {% endblock %}
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _("Close") }}</button>
+          <button type="button" class="btn btn-primary">{{ _("Save Changes") }}</button>
         </div>
       </div>
     </div>

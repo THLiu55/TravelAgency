@@ -12,7 +12,12 @@ from flask import (
 
 from exts import socketio as io
 from exts import db
-from utils.bot import BOT_CHOICE, get_wxbot_signature, get_wxbot_answer
+from utils.bot import (
+    BOT_CHOICE,
+    BOT_CMD_RESP_DICT,
+    get_wxbot_signature,
+    get_wxbot_answer,
+)
 from utils.toys import get_fuzzed_room_name
 from utils.decorators import login_required, staff_login_required
 from model import Customer, Message
@@ -20,10 +25,12 @@ from time import time
 from datetime import datetime
 from flask_socketio import join_room, leave_room, send, emit
 from sqlalchemy import desc
+import os
 
 bp = Blueprint("chat", __name__, url_prefix="/")
 
 NAMESPACE = "/chat"
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
 
 
 ### CHATBOT ROUTERS ###
@@ -69,16 +76,18 @@ def get_session_customer_info():
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
 
 
-# @bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
-# @staff_login_required
-# def staff_load_chat_history(customer_id):
-#     return jsonify(get_history_by_cus_id(customer_id))
+@bp.route("/get_bot_cmd_resp_dict", methods=["GET"])
+def get_bot_cmd_resp_dict():
+    return jsonify(BOT_CMD_RESP_DICT)
 
-# @bp.route("/load_my_chat_history", methods=["GET"]) # for customer
-# @login_required
-# def load_my_chat_history():
-#     customer_id = session.get("customer_id")
-#     return jsonify(get_history_by_cus_id(customer_id))
+
+@bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
+@staff_login_required
+def staff_load_chat_history(customer_id):
+    target_customer = Customer.query.filter_by(id=customer_id).first()
+    to_return = [message.to_dict() for message in target_customer.messages]
+    return jsonify(to_return)
+    # return jsonify(get_history_by_cus_id(customer_id))
 
 
 ### END CHATBOT ROUTERS ###
@@ -88,7 +97,7 @@ def get_session_customer_info():
 @io.on("connect", namespace=NAMESPACE)
 def handle_connect():
     if session.get("staff_id"):
-        print("admin joining test public room")
+        print("admin connected.")
         io.emit(
             "message",
             {
@@ -137,7 +146,7 @@ def handle_join(data):
         print("admin joining room: " + str(room) + " for customer " + str(customer_id))
         join_room(room)
         io.send(
-            data={"text": "admin joined the conversation."},
+            data={"sender": "system", "text": "admin joined the conversation."},
             namespace=NAMESPACE,
             to=room,
         )
@@ -175,8 +184,9 @@ def handle_message(data):
     sending_data = {"sender": sender_name, "text": msg_text}
     if sender_name == "system":
         io.emit("message", sending_data, broadcast=False, namespace=NAMESPACE)
-    elif sender_name == "TestAdminUser":
+    elif sender_name == ADMIN_USERNAME:
         target_customer_id = data["target_customer_id"]
+        target_customer = Customer.query.filter_by(id=target_customer_id).first()
         target_room = get_fuzzed_room_name(target_customer_id)
         print(
             sender_name
@@ -193,6 +203,7 @@ def handle_message(data):
             isPic=False,
             isByCustomer=False,
         )
+        target_customer.amount_unread_msgs += 1
         db.session.add(new_message)
         db.session.commit()
     else:
@@ -211,12 +222,15 @@ def handle_message(data):
             sentTime=datetime.now(),
             isByCustomer=True,
         )
+        customer.amount_unread_msgs += 1
         db.session.add(new_message)
         db.session.commit()
 
 
 @io.on("req4history", namespace=NAMESPACE)
+@login_required
 def handle_req4history(data):
+    """For customer to request for history"""
     cusId = data["cusId"]
     room = get_fuzzed_room_name(cusId)
     messages = get_history_by_cus_id(cusId)
@@ -224,7 +238,7 @@ def handle_req4history(data):
         if message.isByCustomer:  # TODO: Pic related logic
             sender = message.customer.nickname
         else:
-            sender = "TestAdminUser"  # TODO: dynamic admin name
+            sender = ADMIN_USERNAME
         sending_data = {
             "isHistory": True,
             "sentTime": message.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
@@ -232,6 +246,17 @@ def handle_req4history(data):
             "text": message.content,
         }
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
+
+
+@io.on("read", namespace=NAMESPACE)
+@staff_login_required
+def handle_read(data):
+    """This is for admin to mark a customer's message as read"""
+    print("marking message as read")
+    cusId = data["cusId"]
+    customer = Customer.query.filter_by(id=cusId).first()
+    customer.amount_unread_msgs = 0
+    db.session.commit()
 
 
 ### END SOCKETIO EVENT HANDLERS ###

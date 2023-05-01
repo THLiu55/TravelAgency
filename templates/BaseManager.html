@@ -756,10 +756,10 @@
                         <div class="header__profile dropdown">
                             <a class="header__profile-toggle dropdown__toggle" href="#" data-toggle="dropdown">
                                 <div class="header__profile-image"><span
-                                        class="header__profile-image-text">MA</span>
-                                    <img src="https://avatar.oxro.io/avatar.svg?name=TestAdminUser" alt="#" />
+                                        class="header__profile-image-text">A</span>
+                                    <img src="https://avatar.oxro.io/avatar.svg?name={{g.admin_username}}" alt="#" />
                                 </div>
-                                <div class="header__profile-text"><span>TestAdmin</span>
+                                <div class="header__profile-text"><span id="admin-username-txt">{{g.admin_username}}</span>
                                 </div><span class="icon-arrow-down">
                                     <svg class="icon-icon-arrow-down">
                                         <use xlink:href="#icon-arrow-down"></use>
@@ -841,8 +841,6 @@
                                     </li>
                                     <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.customers') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.wish_list') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Wish List</span></a>
-                                    </li>
                                     <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.reviews') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
                                     </li>
                                 </ul>
@@ -907,7 +905,7 @@
 <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
- <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+<script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>

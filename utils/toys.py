@@ -5,8 +5,7 @@ import datetime
 
 ### BABEL RELATED ###
 def get_locale():
-    print(session.get("language", "zh"))
-    return session.get("language", "zh")
+    return session.get("language", "en")
 
 
 ### END BABEL RELATED ###
@@ -16,7 +15,6 @@ def get_locale():
 def get_fuzzed_room_name(customer_id):
     # my impl is to hash the customer_id to get a room name
     return hashlib.sha256(str(customer_id).encode("utf-8")).hexdigest()[:10]
-    # return str(customer_id)  # TODO: for test, change later
 
 
 ### END CHAT RELATED ###

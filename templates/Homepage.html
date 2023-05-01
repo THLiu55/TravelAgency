@@ -32,7 +32,7 @@
                             <div class="hero-content text-center">
                                 <div class="hero-content-wrapper">
                                     <h1 class="hero-title" data-animation="fadeInUp" data-delay=".25s">{{ _("Explore The BJUT Together")}}</h1>
-                                    <p data-animation="fadeInUp" data-delay=".50s">Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing University of Technology.</p>
+                                    <p data-animation="fadeInUp" data-delay=".50s">{{ _("Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing University of Technology.") }}</p>
                                 </div>
                             </div>
                         </div>
@@ -45,8 +45,8 @@
                         <div class="col-lg-12 mx-auto">
                             <div class="hero-content text-center">
                                 <div class="hero-content-wrapper">
-                                    <h1 class="hero-title" data-animation="fadeInUp" data-delay=".25s">Explore The Temple of Heaven</h1>
-                                    <p data-animation="fadeInUp" data-delay=".50s">The Temple of Heaven is a complex of religious buildings situated in the central Beijing.</p>
+                                    <h1 class="hero-title" data-animation="fadeInUp" data-delay=".25s">{{ _("Explore The Temple of Heaven")}}</h1>
+                                    <p data-animation="fadeInUp" data-delay=".50s">{{ _("The Temple of Heaven is a complex of religious buildings situated in the central Beijing.")}}</p>
                                 </div>
                             </div>
                         </div>
@@ -60,10 +60,8 @@
                         <div class="col-lg-12 mx-auto">
                             <div class="hero-content text-center">
                                 <div class="hero-content-wrapper">
-                                    <h1 class="hero-title" data-animation="fadeInUp" data-delay=".25s">Explore The
-                                        City Together</h1>
-                                    <p data-animation="fadeInUp" data-delay=".50s">Find awesome flight, accommodation, destination,
-                                        and attractions</p>
+                                    <h1 class="hero-title" data-animation="fadeInUp" data-delay=".25s">{{ _("Explore The City Together")}}</h1>
+                                    <p data-animation="fadeInUp" data-delay=".50s">{{ _("Find awesome flight, accommodation, destination, and attractions")}}</p>
                                 </div>
                             </div>
                         </div>
@@ -143,8 +141,8 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">Destination</span>
-                        <h2 class="site-title">Our Most Popular Destinations</h2>
+                        <span class="site-title-tagline">{{ _("Destination") }}</span>
+                        <h2 class="site-title">{{ _("Our Most Popular Destinations") }}</h2>
                     </div>
                 </div>
             </div>
@@ -313,8 +311,8 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">Flight</span>
-                        <h2 class="site-title">Our Most Popular Flights</h2>
+                        <span class="site-title-tagline">{{ _("Flight") }}</span>
+                        <h2 class="site-title">{{ _("Our Most Popular Flights") }}</h2>
                     </div>
                 </div>
             </div>
@@ -339,7 +337,7 @@
                                     From <span>${{flight.price}}</span>
                                 </div>
                                 <div class="flight-text-btn">
-                                    <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                    <a href="#">{{ _("See Details") }} <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -348,7 +346,7 @@
                 {% endfor %}
                 
                 <div class="text-center mt-3">
-                    <a href="#" class="theme-btn">Discover More<i class="far fa-arrow-right"></i></a>
+                    <a href="#" class="theme-btn">{{ _("Discover More") }}<i class="far fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -360,8 +358,8 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">Hotel</span>
-                        <h2 class="site-title">Our Most Popular Hotels</h2>
+                        <span class="site-title-tagline">{{ _("Hotel") }}</span>
+                        <h2 class="site-title">{{ _("Our Most Popular Hotels") }}</h2>
                     </div>
                 </div>
             </div>
@@ -387,7 +385,7 @@
     Night</span></span>
                             </div>
                             <div class="hotel-text-btn">
-                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                <a href="#">{{ _("See Details ") }}<i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -523,16 +521,16 @@
             <div class="row">
                 <div class="col-lg-7 mx-auto">
                     <div class="site-heading text-center mb-30">
-                        <span class="site-title-tagline">Tour</span>
-                        <h2 class="site-title">Our Most Popular Tours</h2>
+                        <span class="site-title-tagline">{{ _("Tour") }}</span>
+                        <h2 class="site-title">{{ _("Our Most Popular Tours") }}</h2>
                     </div>
                     <div class="filter-controls">
                         <ul class="filter-btns">
-                            <li class="active" data-filter="*">All Tour</li>
-                            <li data-filter=".cat1">Historical</li>
-                            <li data-filter=".cat2">Weekend Trip</li>
-                            <li data-filter=".cat3">Special Tour</li>
-                            <li data-filter=".cat4">Holiday Tour</li>
+                            <li class="active" data-filter="*">{{ _("All Tour") }}</li>
+                            <li data-filter=".cat1">{{ _("Historical") }}</li>
+                            <li data-filter=".cat2">{{ _("Weekend Trip") }}</li>
+                            <li data-filter=".cat3">{{ _("Special Tour") }}</li>
+                            <li data-filter=".cat4">{{ _("Holiday Tour") }}</li>
                         </ul>
                     </div>
                 </div>

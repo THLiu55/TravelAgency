@@ -51,10 +51,8 @@ def activityList(page_num):
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
-    activities_for_search = [activity.to_dict() for activity in activities]
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
-                           page_num=page_num, logged=logged,
-                           activities_for_search=activities_for_search)
+                           page_num=page_num, logged=logged,)
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])

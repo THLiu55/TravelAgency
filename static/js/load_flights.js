@@ -73,7 +73,7 @@ function load_flights(published, category) {
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
                                                         <li class="dropdown-items__item">
-                                                        <a class="dropdown-items__link">
+                                                        <a class="dropdown-items__link" onclick="getModifyData(${items[i].id})">
                                                             <span class="dropdown-items__link-icon" style="padding-left: 50%;">
                                                                 <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
                                                                 <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
@@ -131,4 +131,46 @@ function delete_item(id) {
     xhr.onload = function() {
         load_flights(cur_status, cur_category)
     }
+}
+
+function getModifyData(id){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            var response = xhr.responseText;
+        // 处理服务器返回的数据
+            console.log(response);
+        } else {
+        // 处理错误情况
+            console.log('wrong');
+        }
+      }
+    };
+    xhr.open('POST', '/manager/load_info', true);
+    const fd = new FormData()
+    fd.set('id', id)
+    fd.set('type', "flight")
+    xhr.send(fd)
+}
+
+function clearInputs() {
+    // const inputs = document.getElementsByTagName('input');
+    // const textareas = document.getElementsByTagName('textarea');
+    // const selects = document.getElementsByTagName('select');
+    // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    // for (let i = 0; i < inputs.length; i++) {
+    //     inputs[i].value = '';
+    // }
+    // for (let i = 0; i < textareas.length; i++) {
+    //     textareas[i].value = '';
+    // }
+    // for (let i = 0; i < selects.length; i++) {
+    //     selects[i].selectedIndex = 0;
+    // }
+    // for (let i = 0; i < checkboxes.length; i++) {
+    //     checkboxes[i].checked = false;
+    // }
+
+    location.reload();
 }

@@ -14,6 +14,7 @@ class Customer(db.Model, UserMixin):
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
+    amount_unread_msgs = db.Column(db.Integer, default=0)
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
@@ -43,6 +44,16 @@ class Message(db.Model):
     sentTime = db.Column(db.DateTime)
     isByCustomer = db.Column(db.Boolean)  # if False then by staff
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'isPic': self.isPic,
+            'content': self.content,
+            'sentTime': self.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
+            'isByCustomer': self.isByCustomer,
+            'customerID': self.customerID,
+        }
 
 
 class ActivityOrder(db.Model):
@@ -159,6 +170,36 @@ class Activity(db.Model):
             'contact_phone': self.contact_phone,
         }
 
+    def serialize_info(self):
+        return {
+            'name': self.name,
+            'category': self.category,
+            'status': self.status,
+            'price': self.price,
+            'city': self.city,
+            'state': self.state,
+            'address': self.address,
+            'duration': self.duration,
+            'group_size': self.group_size,
+            'start_time': self.start_time.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.end_time.strftime('%Y-%m-%d %H:%M:%S'),
+            'images': self.images.split(',') if self.images else [],
+            'description': self.description,
+            'included': self.included,
+            'excluded': self.excluded,
+            'openHour': self.openHour.strftime('%H:%M:%S') if self.openHour else None,
+            'visitHour': self.visitHour,
+            'total_star': self.total_star,
+            'review_num': self.review_num,
+            'star_detail': self.star_detail,
+            'contact_name': self.contact_name,
+            'contact_email': self.contact_email,
+            'contact_phone': self.contact_phone,
+            'view_num': self.view_num,
+            'lat': self.lat,
+            'lon': self.lon
+        }
+
 
 class TourOrder(db.Model):
     __tablename__ = 'tour_orders'
@@ -259,6 +300,34 @@ class Tour(db.Model):
             "contact_email": self.contact_email
         }
 
+    def serialize_info(self):
+        # Create a dictionary with all the information except for the id
+        return {
+            "name": self.name,
+            "category": self.category,
+            "status": self.status,
+            "price": self.price,
+            "city": self.city,
+            "state": self.state,
+            "address": self.address,
+            "duration": self.duration,
+            "group_size": self.group_size,
+            "itineraries": self.itineraries,
+            "start_time": self.start_time.isoformat(),
+            "end_time": self.end_time.isoformat(),
+            "images": self.images,
+            "description": self.description,
+            "included": self.included,
+            "excluded": self.excluded,
+            "total_star": self.total_star,
+            "view_num": self.view_num,
+            "star_detail": self.star_detail,
+            "contact_name": self.contact_name,
+            "contact_email": self.contact_email,
+            "contact_phone": self.contact_phone,
+            "review_num": self.review_num
+        }
+
 
 class Hotel(db.Model):
     __tablename__ = 'hotels'
@@ -313,8 +382,41 @@ class Hotel(db.Model):
             "city": self.city,
             "review_num": self.review_num,
             "min_price": self.min_price,
-            "contact_email": self.contact_email
+            "contact_email": self.contact_email,
         }
+
+    def serialize_info(self):
+        serialized_hotel = {
+            "name": self.name,
+            "status": self.status,
+            "min_price": self.min_price,
+            "room_num": self.room_num,
+            "city": self.city,
+            "state": self.state,
+            "address": self.address,
+            "min_stay": self.min_stay,
+            "security": self.security,
+            "on_site_staff": self.on_site_staff,
+            "house_keeping": self.house_keeping,
+            "front_desk": self.front_desk,
+            "bathroom": self.bathroom,
+            "star": self.star,
+            "room_type_num": self.room_type_num,
+            "images": self.images,
+            "description": self.description,
+            "room_detail": self.room_detail,
+            "amenities": self.amenities,
+            "total_star": self.total_star,
+            "review_num": self.review_num,
+            "star_detail": self.star_detail,
+            "contact_name": self.contact_name,
+            "contact_email": self.contact_email,
+            "contact_phone": self.contact_phone,
+            "view_num": self.view_num,
+            "lat": self.lat,
+            "lon": self.lon
+        }
+        return serialized_hotel
 
 
 class HotelOrder(db.Model):
@@ -423,6 +525,39 @@ class Flight(db.Model):
             'contact_name': self.contact_name,
             'images': self.images
         }
+
+    def serialize_info(self):
+        info = {
+            'departure': self.departure,
+            'destination': self.destination,
+            'status': self.status,
+            'flight_type': self.flight_type,
+            'week_day': self.week_day,
+            'takeoff_time': str(self.takeoff_time),
+            'landing_time': str(self.landing_time),
+            'flight_stop': self.flight_stop,
+            'company': self.company,
+            'total_time': self.total_time,
+            'price': self.price,
+            'fare_type': self.fare_type,
+            'flight_class': self.flight_class,
+            'cancellation_charge': self.cancellation_charge,
+            'flight_charge': self.flight_charge,
+            'seat_baggage': self.seat_baggage,
+            'base_fare': self.base_fare,
+            'taxes': self.taxes,
+            'images': self.images,
+            'description': self.description,
+            'inflight_features': self.inflight_features,
+            'total_star': self.total_star,
+            'review_num': self.review_num,
+            'star_detail': self.star_detail,
+            'contact_name': self.contact_name,
+            'contact_email': self.contact_email,
+            'contact_phone': self.contact_phone,
+            'view_num': self.view_num,
+        }
+        return info
 
 
 class FlightOrder(db.Model):

@@ -690,7 +690,7 @@ def flights():
 @bp.route("/customers")
 @staff_login_required
 def customers():
-    return render_template("customerAccount.html")
+    return render_template("contacts.html")
 
 
 @bp.route("/wish_list")
@@ -820,3 +820,30 @@ def load_reviews():
     review_list += [review.serialize() for review in TourReview.query.all()]
     db.session.commit()
     return jsonify({"code": 200, "content": review_list})
+
+
+@bp.route("/load_info", methods=["POST", "GET"])
+@staff_login_required
+def load_info():
+    category = request.form.get("type")
+    product_id = int(request.form.get("id"))
+    order_data = (
+        Tour
+        if category == "tour"
+        else Activity
+        if category == "activity"
+        else Hotel
+        if category == "hotel"
+        else Flight
+    )
+    order_info = order_data.query.filter_by(id=product_id).first()
+    if order_info:
+        return jsonify({"code": 200, "content": order_info.serialize_info()})
+    else:
+        return jsonify({"code": 400})
+
+
+@bp.route("/customer_detail", methods=["POST", "GET"])
+@staff_login_required
+def customer_detail():
+    return render_template("customerDetail.html")

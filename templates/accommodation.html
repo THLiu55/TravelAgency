@@ -431,22 +431,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="page-tools__right">
-                        <div class="page-tools__right-row">
-                            <div class="page-tools__right-item"><a class="button-icon" href="#"><span
-                                        class="button-icon__icon">
-                                        <svg class="icon-icon-print">
-                                            <use xlink:href="#icon-print"></use>
-                                        </svg></span></a>
-                            </div>
-                            <div class="page-tools__right-item"><a class="button-icon" href="#"><span
-                                        class="button-icon__icon">
-                                        <svg class="icon-icon-import">
-                                            <use xlink:href="#icon-import"></use>
-                                        </svg></span></a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="toolbox">
                     <div class="toolbox__row row gutter-bottom-xs">
@@ -549,7 +533,7 @@
                     </div>
                 </div>
                 <div class="table-wrapper">
-                    <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>
+{#                    <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>#}
                         <table class="table table--lines">
                             <colgroup>
                                 <col width="90px">
@@ -598,7 +582,7 @@
                             <tbody id="item-container">
                             </tbody>
                         </table>
-                    </div>
+{#                    </div>#}
                     <div class="table-wrapper__footer">
                         <div class="row">
 {#                            <div class="table-wrapper__show-result col text-grey"><span#}
@@ -1171,15 +1155,8 @@
                         <div class="modal__container">
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
-                                    <button class="button button--primary button--block" data-dismiss="modal"
-                                        type="submit" data-modal="#addAccommodationsuccess"
-                                        onclick="ImageUpload.prototype.removeAllItems()"><span
-                                            class="button__text">Save</span>
-                                    </button>
-                                </div>
-                                <div class="modal__footer-button">
                                     <button class="button button--secondary button--block" data-dismiss="modal"><span
-                                            class="button__text">Cancel</span>
+                                            class="button__text" onclick="clearInputs()">Cancel</span>
                                     </button>
                                 </div>
                             </div>
@@ -1722,15 +1699,8 @@
                         <div class="modal__container">
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
-                                    <button class="button button--primary button--block" data-dismiss="modal"
-                                        type="submit" data-modal="#addAccommodationsuccess"
-                                        onclick="ImageUpload.prototype.removeAllItems()"><span
-                                            class="button__text">Create</span>
-                                    </button>
-                                </div>
-                                <div class="modal__footer-button">
                                     <button class="button button--secondary button--block" data-dismiss="modal"><span
-                                            class="button__text">Cancel</span>
+                                            class="button__text" onclick="clearInputs()">Cancel</span>
                                     </button>
                                 </div>
                             </div>

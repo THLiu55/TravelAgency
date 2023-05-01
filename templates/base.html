@@ -35,14 +35,10 @@
                 <div class="col-md-5">
                     <div class="header-top-right">
                         <div class="lang" style="z-index: 99999;">
-                            <select name="lang" class="select">
-                                <option value="1">ENG</option>
-                                <option value="2">CHN</option>
+                            <select id="langSwitcher" name="lang" class="select" onchange="switchLanguage(this.value)">
+                                <option value="en">ENG</option>
+                                <option value="zh">CHN</option>
                             </select>
-                            <!-- <div class="account">
-                            <a href="{{ url_for('customer.login') }}"><i class="far fa-sign-in"></i>Login</a>
-                            <a href="{{ url_for('customer.login') }}"><i class="far fa-user-tie"></i>Sign Up</a>
-                        </div> -->
                         </div>
                     </div>
                 </div>
@@ -157,6 +153,9 @@
   }
 </script>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-{% block jsLink %}{% endblock %}
+<script src="{{ url_for('static', filename='js/translation.js') }}"></script>
+
+{% block jsLink %}
+{% endblock %}
 
 </html>

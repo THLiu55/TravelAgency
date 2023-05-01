@@ -1,5 +1,5 @@
 ﻿{% extends "base.html" %}
-{% block title %} Flights Grid {% endblock %}
+{% block title %} Flights {% endblock %}
 
 {% block csslink %}
     <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/seachbarstyle.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -32,221 +33,57 @@
 </div>
 </div>
 
-<div class="search-area">
+<div class="search-area" style="margin-top: 4%;">
 <div class="container">
 <div class="search-wrapper">
 
-<div class="search-box flight-search">
+<div class="search-box flight-search"  style="background-color: transparent;">
 <div class="search-form">
 <form action="#">
-
+<!-- 
 <div class="flight-type">
 <div class="form-check form-check-inline">
 <input class="form-check-input" type="radio" checked value="one-way" name="flight-type" id="flight-type1">
 <label class="form-check-label" for="flight-type1">
-One Way
+{{ _("One Way") }}
 </label>
 </div>
 <div class="form-check form-check-inline">
 <input class="form-check-input" type="radio" value="round-way" name="flight-type" id="flight-type2">
 <label class="form-check-label" for="flight-type2">
-Round Way
+{{ _("Round Way") }}
 </label>
  </div>
 <div class="form-check form-check-inline">
 <input class="form-check-input" type="radio" value="multi-city" name="flight-type" id="flight-type3">
 <label class="form-check-label" for="flight-type3">
-Multi City
+{{ _("Multi City") }}
 </label>
 </div>
-</div>
+</div> -->
 
 
 <div class="flight-search-wrapper">
-<div class="flight-search-content">
 
-<div class="flight-search-item">
-<div class="row">
-<div class="col-lg-3">
-<div class="form-group">
-<label>From</label>
-<div class="form-group-icon">
-<input type="text" name="from-destination" class="form-control swap-from" value="New York">
-<i class="fal fa-plane-departure"></i>
-</div>
-<p>JFK - John F. Kennedy International Airport
-</p>
-</div>
-</div>
-<div class="col-lg-3">
-<div class="form-group">
-<div class="search-form-swap"><i class="far fa-repeat"></i>
-</div>
-<label>To</label>
-<div class="form-group-icon">
-<input type="text" name="to-destination" class="form-control swap-to" value="Los Angeles">
-<i class="fal fa-plane-arrival"></i>
-</div>
-<p>LAX - Los Angeles International Airport</p>
-</div>
-</div>
-<div class="col-lg-3">
-<div class="form-group">
-<div class="search-form-date">
-<div class="search-form-journey">
-<label>Journey Date</label>
-<div class="form-group-icon">
-<input type="text" name="journey-date" class="form-control date-picker journey-date">
-<i class="fal fa-calendar-days"></i>
-</div>
- <p class="journey-day-name"></p>
-</div>
-<div class="search-form-return">
-<label>Return Date</label>
-<div class="form-group-icon">
-<input type="text" name="return-date" class="form-control date-picker return-date">
-</div>
-<p class="return-day-name"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-3">
-<div class="form-group dropdown static-dropdown passenger-box">
-<div class="passenger-class" role="menu" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-<label>Passenger, Class</label>
-<div class="form-group-icon">
-<div class="passenger-total"><span class="passenger-total-amount">2</span>
-Passenger
-</div>
-<i class="fal fa-user-plus"></i>
-</div>
-<p class="passenger-class-name">Business</p>
-</div>
-<div class="dropdown-menu dropdown-menu-end">
-<div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Adults</h6>
-<p>12+ Years</p>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
-<input type="text" name="adult" class="qty-amount passenger-adult" value="2" readonly>
-<button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
- <div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Children</h6>
-<p>2-12 Years</p>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
-<input type="text" name="children" class="qty-amount passenger-children" value="0" readonly>
-<button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
-<div class="dropdown-item">
-<div class="passenger-item">
-<div class="passenger-info">
-<h6>Infant</h6>
-<p>Below 2 Years</p>
-</div>
-<div class="passenger-qty">
-<button type="button" class="minus-btn"><i class="far fa-minus"></i></button>
-<input type="text" name="infant" class="qty-amount passenger-infant" value="0" readonly>
-<button type="button" class="plus-btn"><i class="far fa-plus"></i></button>
-</div>
-</div>
-</div>
-<div class="dropdown-item">
-<h6 class="mb-3 mt-2">Cabin Class</h6>
-<div class="passenger-class-info">
-<div class="form-check">
-<input class="form-check-input" type="radio" value="Economy" name="cabin-class" id="cabin-class1">
-<label class="form-check-label" for="cabin-class1">
-Economy
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" checked type="radio" value="Business" name="cabin-class" id="cabin-class2">
-<label class="form-check-label" for="cabin-class2">
-Business
-</label>
-</div>
-<div class="form-check">
-<input class="form-check-input" type="radio" value="First Class" name="cabin-class" id="cabin-class3">
-<label class="form-check-label" for="cabin-class3">
-First Class
-</label>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="seachbarcontainer" style="margin-left: 50%;margin-right: 50%;">
+        <form autocomplete="off">
+          <div class="finder">
+            <div class="finder__outer">
+              <div class="finder__inner">
+                <div class="finder__icon" ref="icon"></div>
+                <input id="search_box_change" class="finder__input" type="text" name="q" />
+              </div>
+            </div>
+          </div>
+          <div class="search-btn" >
+            <button type="button" style="margin-left: 50%;" onclick="flight_filter()" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+            </div>
+        </form>
+      </div>
 
-
-<div class="flight-search-item flight-multicity-item have-to-clone">
-<div class="row">
-<div class="col-lg-3">
-<div class="form-group">
-<label>From</label>
-<div class="form-group-icon">
-<input type="text" name="from-destination" class="form-control swap-from" value="New York">
-<i class="fal fa-plane-departure"></i>
-</div>
-<p>JFK - John F. Kennedy International Airport
-</p>
-</div>
-</div>
-<div class="col-lg-3">
-<div class="form-group">
-<div class="search-form-swap"><i class="far fa-repeat"></i>
- </div>
-<label>To</label>
-<div class="form-group-icon">
-<input type="text" name="to-destination" class="form-control swap-to" value="Los Angeles">
-<i class="fal fa-plane-arrival"></i>
-</div>
-<p>LAX - Los Angeles International Airport</p>
-</div>
-</div>
-<div class="col-lg-3">
-<div class="form-group">
-<div class="search-form-date">
-<div class="search-form-journey">
-<label>Journey Date</label>
-<div class="form-group-icon">
-<input type="text" name="journey-date" class="form-control date-picker journey-date">
-<i class="fal fa-calendar-days"></i>
-</div>
-<p class="journey-day-name"></p>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-3">
-<div class="form-group">
-<div class="multicity-btn">
-<i class="fal fa-plus-circle"></i> Add
-Another Flight
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="search-btn">
+<!-- <div class="search-btn">
 <button type="submit" class="theme-btn"><span class="far fa-search"></span>Update Search</button>
-</div>
+</div> -->
 </div>
 
 </form>
@@ -258,37 +95,37 @@ Another Flight
 </div>
 
 
-<div class="flight-booking flight-grid py-120">
+<div class="flight-booking flight-grid py-120" style="padding: 80px 0;">
 <div class="container">
 <div class="row">
 
 <div class="col-lg-4 col-xl-3 mb-4">
 <div class="booking-sidebar">
 <div class="booking-item">
-<h4 class="booking-title">Flight Class</h4>
+<h4 class="booking-title">{{ _("Flight Class") }}</h4>
 <div class="flight-class">
 <div class="form-check">
     <input class="form-check-input" name="flight-class" type="checkbox" value="Business" id="flight-class1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-class1">
-Business <span>(20)</span>
+{{ _("Business") }} <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-class" type="checkbox" value="First Class" id="flight-class2" onclick="flight_filter()">
 <label class="form-check-label" for="flight-class2">
-First Class <span>(15)</span>
+{{ _("First Class") }}<span>(15)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-class" type="checkbox" value="Economy" id="flight-class3" onclick="flight_filter()">
 <label class="form-check-label" for="flight-class3">
-Economy <span>(18)</span>
+{{ _("Economy") }} <span>(18)</span>
 </label>
 </div>
 </div>
 </div>
 <div class="booking-item">
-<h4 class="booking-title">Flight Price</h4>
+<h4 class="booking-title">{{ _("Flight Price") }}</h4>
 <div class="flight-price">
 <div class="price-range-slider">
 <div class="price-range-info">
@@ -300,7 +137,7 @@ Economy <span>(18)</span>
 </div>
 </div>
 <div class="booking-item">
-<h4 class="booking-title">Flight Time</h4>
+<h4 class="booking-title">{{ _("Flight Time") }}</h4>
 <div class="flight-time">
 <div class="form-check">
 <input class="form-check-input" name="flight-time" type="checkbox" value="00:00-05:59" id="flight-time1" onclick="flight_filter()">
@@ -329,94 +166,94 @@ Economy <span>(18)</span>
 </div>
 </div>
 <div class="booking-item">
-<h4 class="booking-title">Flight Stops</h4>
+<h4 class="booking-title">{{ _("Flight Stops") }}</h4>
 <div class="flight-stop">
 <div class="form-check">
 <input class="form-check-input" name="flight-stop" type="checkbox" value="Non Stop" id="flight-stop1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-stop1">
-Non Stop <span>(20)</span>
+{{ _("Non Stop") }} <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-stop" type="checkbox" value="1 Stop" id="flight-stop2" onclick="flight_filter()">
 <label class="form-check-label" for="flight-stop2">
-1 Stop <span>(15)</span>
+{{ _("1 Stop") }} <span>(15)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-stop" type="checkbox" value="2 Stop" id="flight-stop3" onclick="flight_filter()">
 <label class="form-check-label" for="flight-stop3">
-2 Stop <span>(18)</span>
+{{ _("2 Stops") }} <span>(18)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-stop" type="checkbox" value="3 Stop" id="flight-stop4" onclick="flight_filter()">
 <label class="form-check-label" for="flight-stop4">
-3 Stop <span>(25)</span>
+{{ _("3 Stops") }} <span>(25)</span>
 </label>
 </div>
     <div class="form-check">
 <input class="form-check-input" name="flight-stop" type="checkbox" value="Multi Stop" id="flight-stop5" onclick="flight_filter()">
 <label class="form-check-label" for="flight-stop3">
-Multi Stop <span>(18)</span>
+{{ _("Multi Stops") }}<span>(18)</span>
 </label>
 </div>
 </div>
 </div>
 <div class="booking-item">
-<h4 class="booking-title">Airlines</h4>
+<h4 class="booking-title">{{ _("Airlines") }}</h4>
 <div class="flight-airline">
 <div class="form-check">
 <input class="form-check-input" name="flight-airline" type="checkbox" value="American Airlines" id="flight-airline1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline1">
-American Airlines <span>(20)</span>
+{{ _("American Airlines") }} <span>(20)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-airline" type="checkbox" value="Delta Airlines" id="flight-airline2"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline2">
-Delta Airlines <span>(15)</span>
+{{ _("Delta Airlines") }} <span>(15)</span>
  </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-airline" type="checkbox" value="Qatar Airways" id="flight-airline3"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline3">
-Qatar Airways <span>(18)</span>
+{{ _("Qatar Airways") }} <span>(18)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-airline" type="checkbox" value="Fly Amirates" id="flight-airline4"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline4">
-Fly Amirates <span>(25)</span>
+{{ _("Fly Amirates") }} <span>(25)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-airline" type="checkbox" value="Singapore Airlines" id="flight-airline5"  onclick="flight_filter()">
 <label class="form-check-label" for="flight-airline5">
-Singapore Airlines <span>(35)</span>
+{{ _("Singapore Airlines ") }}<span>(35)</span>
 </label>
 </div>
 </div>
 </div>
 <div class="booking-item">
-<h4 class="booking-title">Refundable</h4>
+<h4 class="booking-title">{{ _("Refundable") }}</h4>
 <div class="flight-refundable">
 <div class="form-check">
 <input class="form-check-input" name="flight-refundable" type="checkbox" value="Non Refundable" id="flight-refundable1" onclick="flight_filter()">
 <label class="form-check-label" for="flight-refundable1">
-Non Refundable <span>(20)</span>
+{{ _("Non Refundable") }}<span>(20)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-refundable" type="checkbox" value="Refundable" id="flight-refundable2" onclick="flight_filter()">
 <label class="form-check-label" for="flight-refundable2">
-Refundable <span>(15)</span>
+{{ _("Refundable") }}<span>(15)</span>
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="flight-refundable" type="checkbox" value="Partially Refundable" id="flight-refundable3" onclick="flight_filter()">
 <label class="form-check-label" for="flight-refundable3">
-Partially Refundable <span>(18)</span>
+{{ _("Partially Refundable") }} <span>(18)</span>
 </label>
 </div>
 </div>
@@ -427,17 +264,17 @@ Partially Refundable <span>(18)</span>
 <div class="col-lg-8 col-xl-9">
 <div class="col-md-12">
 <div class="booking-sort">
-<h5>{{ total_flights }} Results Found</h5>
+<h5>{{ total_flights }} {{ _("Results Found") }}</h5>
 <div class="booking-sort-list-grid">
 <a class="booking-sort-grid active" href="flight-grid.html"><i class="far fa-grid-2"></i></a>
 <a class="booking-sort-list" href="flight-list.html"><i class="far fa-list-ul"></i></a>
 </div>
 <div class="col-md-3 booking-sort-box">
 <select class="select" id="sort-select-ajax" onchange="flight_filter()">
-<option value="1">Sort By Default</option>
-<option value="2">Sort By Popular</option>
-<option value="3">Sort By Low Price</option>
-<option value="4">Sort By High Price</option>
+<option value="1">{{ _("Sort By Default") }}</option>
+<option value="2">{{ _("Sort By Popular") }}</option>
+<option value="3">{{ _("Sort By Low Price") }}</option>
+<option value="4">{{ _("Sort By High Price") }}</option>
 </select>
 </div>
 </div>
@@ -480,7 +317,7 @@ Partially Refundable <span>(18)</span>
 </div>
 </div>
 <div class="flight-booking-duration">
-<span class="duration-text">{{flight.total_time}} hour(s)</span>
+<span class="duration-text">{{flight.total_time}} {{ _("hours") }} </span>
 </div>
 </div>
 </div>
@@ -489,7 +326,7 @@ Partially Refundable <span>(18)</span>
 <!-- <del class="discount-price">$5,548</del> -->
 <span class="price-amount">{{flight.price}}</span>
 </div>
-<a href="{{ url_for('flight.flightDetail', flight_id=flight.id) }}" class="theme-btn">Book Now<i class="far fa-arrow-right"></i></a>
+<a href="{{ url_for('flight.flightDetail', flight_id=flight.id) }}" class="theme-btn">{{ _("Book Now") }} <i class="far fa-arrow-right"></i></a>
 </div>
 </div>
 <div class="flight-booking-detail">
@@ -556,4 +393,7 @@ Partially Refundable <span>(18)</span>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/flightFilter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/seachbarscript.js') }}"></script>
+    <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
+
 {% endblock %}

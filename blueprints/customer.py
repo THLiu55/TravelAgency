@@ -14,6 +14,19 @@ from utils.decorators import login_required
 bp = Blueprint("customer", __name__, url_prefix="/")
 
 
+@bp.route("/get_lang", methods=["POST"])
+def get_language():
+    lang = session.get("language", "en")
+    return jsonify({"code": 200, "lang": lang})
+
+
+@bp.route("/switch_lang", methods=["POST"])
+def lang_switch():
+    lang = request.form.get("lang")
+    session["language"] = lang
+    return jsonify({"code": 200})
+
+
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
     logged = False if session.get('customer_id') is None else True
@@ -527,6 +540,10 @@ def setting():
     customer = Customer.query.get(session.get('customer_id'))
     return render_template("profile-setting.html", logged=True, customer=customer)
 
+
+@bp.route("/about_us")
+def about_us():
+    return render_template("AboutUs.html")
 
 @bp.route("/update-profile", methods=['POST'])
 def update_profile():

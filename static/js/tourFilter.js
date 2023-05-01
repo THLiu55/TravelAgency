@@ -40,7 +40,7 @@ function tour_filter(duration, min1, max1) {
           "sort_by": sort_by
       },
         success: function(response) {
-        let tours = response.tours;
+        let tours = search_now(response.tours);
         let tourList = $('#row-list-ajax');
         tourList.empty();
 
@@ -108,6 +108,35 @@ function getSortValue() {
     let index = selectElement.selectedIndex;
     let options = selectElement.options;
     return options[index].value;
+}
+
+function search_now(list) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "name",
+            "city",
+            "state",
+            "address"
+        ]
+    };
+
+    let pattern = document.getElementById("search_box_change").value;
+    if (pattern === ''){
+        return list;
+    }
+
+
+    const fuse = new Fuse(list, options);
+
+    let result = fuse.search(pattern);
+
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    console.log(result);
+    return  result;
 }
 
 

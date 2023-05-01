@@ -1,0 +1,32 @@
+{% extends "BaseManager.html" %}
+{% block title %} Manager Flights {% endblock %}
+
+{# head数据均放在该block里 #}
+{% block csslink %}
+{% endblock %}
+
+{% block body %}
+    <div class="user-profile-wrapper">
+        <div class="user-profile-card">
+            <h4 class="user-profile-card-title">{{ _("Profile Info") }}</h4>
+            <div class="col-lg-6">
+                <div class="profile-info-list">
+                    <ul>
+                        <li>{{ _("Nickname:") }} <span>111</span></li>
+                        <li>{{ _("Email:") }}<span>222</span></li>
+                        <li>{{ _("Phone:") }} <span>333</span></li>
+                        <li>{{ _("Address:") }} <span>444</span></li>
+                        <li>{{ _("Join Date:") }} <span>555</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block jsLink %}
+
+{% endblock %}

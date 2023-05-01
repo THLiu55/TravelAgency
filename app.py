@@ -1,7 +1,7 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-from flask import Flask, render_template, session, request, make_response, jsonify, send_from_directory
+from flask import Flask, render_template, session, request, make_response, jsonify, send_from_directory, g
 from dotenv import load_dotenv
 from config import config_by_name
 from blueprints import bp_register_all
@@ -28,6 +28,25 @@ app.logger.addHandler(handler)
 # blueprints and extensions
 bp_register_all(app)
 exts_load_all(app)
+
+# global decorators
+@app.before_request
+def before_request():
+    '''this is the hook before every request'''
+
+    if "customer_id" in session:
+        g.customer_id = session.get("customer_id")
+    
+    if "staff_id" in session:
+        g.staff_id = session.get("staff_id")
+        g.admin_username = os.environ.get("ADMIN_USERNAME")
+
+    return
+
+@app.after_request
+def after_request(response):
+    '''this is the hook after every request'''
+    return response
 
 
 @app.route("/set_locale")

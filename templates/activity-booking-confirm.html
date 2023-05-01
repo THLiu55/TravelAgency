@@ -27,55 +27,55 @@
                 <div class="row">
                     <div class="col-md-8 mx-auto mt-5">
                         <div class="booking-summary">
-                            <h3>Booking Summary</h3>
+                            <h3>{{ _("Booking Summary") }}</h3>
                             <div class="booking-summary-content">
                                 <div class="row g-5">
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Activity Info</h6>
+                                            <h6>{{ _("Activity Info") }}</h6>
                                             <ul>
-                                                <li>Product Type <span>Activity</span></li>
-                                                <li>Product Name <span>{{ activity.name }}</span></li>
-                                                <li>Product Category <span>{{ activity.category }}</span></li>
+                                                <li>{{ _("Product Info") }} <span>{{ _("Activity") }}</span></li>
+                                                <li>{{ _("Product Name") }} <span>{{ activity.name }}</span></li>
+                                                <li>{{ _("Product Category") }} <span>{{ activity.category }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Product Info</h6>
+                                            <h6>{{ _("Product Info") }}</h6>
                                             <ul>
-                                                <li>Activity Date <span>{{ order_date }}</span></li>
-                                                <li>Activity Price <span>{{ activity.price }}</span></li>
+                                                <li>{{ _("Activity Date") }} <span>{{ order_date }}</span></li>
+                                                <li>{{ _("Activity Price") }} <span>{{ activity.price }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Customer Info</h6>
+                                            <h6>{{ _("Customer Info") }}</h6>
                                             <ul>
-                                                <li>Name <span>{{ customer.nickname }}</span></li>
-                                                <li>Email <span>{{ customer.email }}</span>
+                                                <li>{{ _("Name") }} <span>{{ customer.nickname }}</span></li>
+                                                <li>{{ _("Email") }} <span>{{ customer.email }}</span>
                                                 </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="booking-summary-list">
-                                            <h6>Billing Info</h6>
+                                            <h6>{{ _("Billing Info") }}</h6>
                                             <ul>
-                                                <li>Tax <span class="text - success">{{ activity.price*0.05 }}</span></li>
-                                                <li>Payment Method <span>Token</span></li>
-                                                <li class="fw-bold">Total Payment <span>{{ activity.price*0.05+activity.price }}</span></li>
+                                                <li>{{ _("Tax") }} <span class="text - success">{{ activity.price*0.05 }}</span></li>
+                                                <li>{{ _("Payment Method") }}<span>{{ _("Token") }}</span></li>
+                                                <li class="fw-bold">{{ _("Total Payment") }} <span>{{ activity.price*0.05+activity.price }}</span></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-confirm-btn">
-                                <a href="{{ url_for('activity.order_success', activity_id=activity.id, date=order_date, cost=activity.price*0.05+activity.price, name=activity.name) }}" class="theme-btn"><span class="far fa-print"></span>Confirm Booking</a>
+                                <a href="{{ url_for('activity.order_success', activity_id=activity.id, date=order_date, cost=activity.price*0.05+activity.price, name=activity.name) }}" class="theme-btn"><span class="far fa-print"></span>{{ _("Confirm Booking") }}</a>
                                 <a href="{{ url_for('activity.activityDetail', activity_id=activity.id) }}" class="theme-btn cancel-booking"><span
-                                        class="far fa-xmark-circle"></span>Cancel Booking</a>
+                                        class="far fa-xmark-circle"></span>{{ _("Cancel Booking") }}</a>
                             </div>
                         </div>
                     </div>
