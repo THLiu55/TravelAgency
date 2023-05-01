@@ -112,7 +112,7 @@ function getSortValue() {
 
 function search_now(list) {
     const options = {
-        threshold: 0.4,
+        threshold: 0.2,
         tokenize:true,
         keys: [
             "name",
@@ -135,6 +135,7 @@ function search_now(list) {
     for (let i = 0; i < result.length; i++) {
         result[i] = result[i].item;
     }
+    console.log(result);
     return  result;
 }
 
