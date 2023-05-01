@@ -212,10 +212,6 @@ def logout():
     return render_template("Stafflogin.html")
 
 
-# @bp.route('/destination', methods=["POST"])
-# def destinationList():
-#     return render_template("destinations.html")
-
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
