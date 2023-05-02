@@ -58,6 +58,9 @@ $(document).ready(function () {
   });
   $("#send-message").click(function () {
     var text = $(".chat-details__input").val();
+    if (text == "") {
+      return;
+    }
     $(".chat-details__input").val("");
     socket.emit("message", {
       sender: adminUserName,
@@ -68,6 +71,9 @@ $(document).ready(function () {
   $("#chat-inputbox").keypress(function (e) {
     if (e.which == 13) {
       var text = $(".chat-details__input").val();
+      if (text == "") {
+        return;
+      }
       $(".chat-details__input").val("");
       socket.emit("message", {
         sender: adminUserName,
@@ -166,7 +172,9 @@ function clearUnreadCounterInItem(targetItem) {
 function updateUnreadCounter(senderName) {
   var correctId = "unread-counter-" + senderName;
   var targetLocation = document.getElementById(correctId);
-  console.log(targetLocation + " is the target location for sender: " + senderName);
+  // console.log(
+  //   targetLocation + " is the target location for sender: " + senderName
+  // );
   var currentCount = parseInt(targetLocation.innerText);
   targetLocation.innerText = currentCount + 1;
   targetLocation.style.removeProperty("display");
