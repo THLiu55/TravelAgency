@@ -1,3 +1,4 @@
+import ast
 import json
 import requests as req
 from sqlalchemy import func
@@ -29,8 +30,8 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @bp.route("/")
 @staff_login_required
 def manager_homepage():
-    today = datetime.now().date()
-    one_day_ago = today - timedelta(days=1)
+    today = datetime.combine(datetime.now().date(), datetime.min.time())
+    print(today < datetime.strptime('2023-05-02 01:02:34.002132', '%Y-%m-%d %H:%M:%S.%f') < (today + timedelta(days=1)))
 
     today_reviews = (
         db.session.query(func.count(ActivityReview.id))
@@ -90,7 +91,8 @@ def manager_homepage():
     today_orders += (
         db.session.query(func.count(HotelOrder.id))
         .filter(
-            HotelOrder.endTime >= today, HotelOrder.endTime < today + timedelta(days=1)
+            HotelOrder.endTime >= today,
+            HotelOrder.endTime < today + timedelta(days=1)
         )
         .scalar()
         or 0
@@ -145,27 +147,28 @@ def manager_homepage():
     profit_split = [0, 0, 0, 0]  # activity, tour, hotel, flight
     for order, i in zip([ActivityOrder, HotelOrder, TourOrder, FlightOrder], range(4)):
         tmp = (
-            db.session.query(func.date(order.startTime), func.sum(order.cost))
+            db.session.query(func.date(order.startTime if order != HotelOrder else order.endTime), func.sum(order.cost))
             .filter(
-                order.startTime <= end_date,
-                order.startTime >= start_date,
+                (order.startTime if order != HotelOrder else order.endTime) <= end_date,
+                (order.startTime if order != HotelOrder else order.endTime) >= start_date,
                 order.purchased == 1,
             )
-            .group_by(func.date(order.startTime))
+            .group_by(func.date(order.startTime if order != HotelOrder else order.endTime))
             .all()
         )
         profit_split[i] = sum([item[1] for item in tmp])
         results += tmp
 
+    print(start_date, prev_date)
     for order in [ActivityOrder, HotelOrder, TourOrder, FlightOrder]:
         results += (
-            db.session.query(func.date(order.startTime), func.sum(order.cost))
+            db.session.query(func.date(order.startTime if order != HotelOrder else order.endTime), func.sum(order.cost))
             .filter(
-                order.startTime <= start_date,
-                order.startTime >= prev_date,
+                (order.startTime if order != HotelOrder else order.endTime) <= start_date,
+                (order.startTime if order != HotelOrder else order.endTime) >= prev_date,
                 order.purchased == 1,
             )
-            .group_by(func.date(order.startTime))
+            .group_by(func.date(order.startTime if order != HotelOrder else order.endTime))
             .all()
         )
 
@@ -254,13 +257,15 @@ def add_activity():
     activity.state = request.form.get("state")
     activity.address = request.form.get("address")
     address = activity.address + " " + activity.city + " " + activity.state
-    url = "https://nominatim.openstreetmap.org/search?q={}&format=json".format(address)
-    response = req.get(url).json()
-    if len(response) > 0:
-        activity.lat = response[0]["lat"]
-        activity.lon = response[0]["lon"]
-    else:
-        return jsonify({"code": "invalid address "})
+    # url = "https://nominatim.openstreetmap.org/search?q={}&format=json".format(address)
+    # response = req.get(url).json()
+    # if len(response) > 0:
+    #     activity.lat = response[0]["lat"]
+    #     activity.lon = response[0]["lon"]
+    # else:
+    #     return jsonify({"code": "invalid address "})
+    activity.lat = 39.87391435
+    activity.lon = 116.477202420354
     activity.duration = request.form.get("duration")
     activity.group_size = int(request.form.get("group_size"))
     activity.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
@@ -847,3 +852,48 @@ def load_info():
 @staff_login_required
 def customer_detail():
     return render_template("customerDetail.html")
+
+
+@bp.route("/invoice", methods=["GET"])
+@staff_login_required
+def invoice():
+    product_type = request.args.get("type")
+    product_id = int(request.args.get("id"))
+    if product_type == "hotel":
+        order = HotelOrder.query.filter_by(id=product_id).first()
+        order.endTime = order.endTime.strftime("%Y-%m-%d %H:%M:%S")
+        customer = order.customer
+        product = order.product
+        product.amenities = ", ".join(ast.literal_eval(product.amenities)[:3])
+        room_des = json.loads(product.room_detail)['hotel_des']
+        for room in room_des:
+            if room["id"] == int(order.roomID):
+                product.room_detail = "features: " + ", ".join(room["features"]) + "; price: " + room["price"]
+                break
+        return render_template("orderInvoiceHotel.html", order=order, product=product, customer=customer)
+    if product_type == "tour":
+        order = TourOrder.query.filter_by(id=product_id).first()
+        product = order.product
+        customer = order.customer
+        return render_template("orderInvoiceTour.html", order=order, product=product, customer=customer)
+    if product_type == "flight":
+        order = FlightOrder.query.filter_by(id=product_id).first()
+        product = order.product
+        customer = order.customer
+        return render_template("orderInvoiceFlight.html", order=order, product=product, customer=customer)
+    if product_type == "activity":
+        order = ActivityOrder.query.filter_by(id=product_id).first()
+        order.startTime = order.startTime.strftime("%Y-%m-%d %H:%M:%S")
+        product = order.product
+        customer = order.customer
+        product.included = transform_string(product.included, "included")
+        product.excluded = transform_string(product.excluded, "not_included")
+        return render_template("orderInvoiceActivity.html", order=order, product=product, customer=customer)
+
+
+def transform_string(input_str, key):
+    print(input_str)
+    input_dict = json.loads(input_str)
+    included_list = input_dict.get(key, [])
+    included_list = [item for item in included_list if item is not None]
+    return ", ".join(included_list)
