@@ -909,3 +909,69 @@ def transform_string(input_str, key):
     included_list = input_dict.get(key, [])
     included_list = [item for item in included_list if item is not None]
     return ", ".join(included_list)
+
+
+def plan_obj_serializer(plan_obj):
+    return {
+        'title': plan_obj.title,
+        'start': plan_obj.start.isoformat(),
+        'end': plan_obj.end.isoformat(),
+        'color': plan_obj.color
+    }
+
+
+@bp.route("/customer_detail")
+def plan_events():
+    customer = Customer.query.filter_by(id=int(request.args.get("id"))).first()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    plan_list = []
+    for hotel_i in hotel_orders:
+        plan_object = PlanObj()
+        plan_object.title = Hotel.query.get(hotel_i.productID).name
+        if hotel_i.startTime > datetime.now():
+            plan_object.color = '#00671'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = hotel_i.startTime
+        plan_object.end = hotel_i.checkOutTime
+        plan_list.append(plan_object)
+    for tour_i in tour_orders:
+        tour_obj = Tour.query.get(tour_i.productID)
+        plan_object = PlanObj()
+        plan_object.title = Tour.query.get(tour_i.productID).name
+        if tour_i.endTime > datetime.now():
+            plan_object.color = '#009378'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = tour_i.endTime
+        plan_object.end = tour_i.endTime + timedelta(days=tour_obj.duration)
+        plan_list.append(plan_object)
+    for activity_i in activity_orders:
+        plan_object = PlanObj()
+        plan_object.title = Activity.query.get(activity_i.productID).name
+        if activity_i.endTime > datetime.now():
+            plan_object.color = '#2bb3c0'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = activity_i.endTime
+        plan_object.end = activity_i.endTime
+        plan_list.append(plan_object)
+    for flight_i in flight_orders:
+        plan_object = PlanObj()
+        flight_obj = Flight.query.get(flight_i.productID)
+        plan_object.title = flight_obj.departure + '-' + flight_obj.destination
+        if flight_i.endTime > datetime.now():
+            plan_object.color = '#e16123'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = flight_i.startTime
+        days, hours = divmod(flight_obj.total_time, 24)
+        plan_object.end = flight_i.startTime + timedelta(days=days, hours=hours)
+        plan_list.append(plan_object)
+    plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
+    json_data = json.dumps(plan_dict_list)
+
+    return jsonify(json.loads(json_data))

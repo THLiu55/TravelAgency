@@ -478,10 +478,10 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table__row">
-                                        {% if product.description|length < 25 %}
-                                        <td class="table__td"><span class="text-light-theme">{{ product.description[:25] }}</span></td>
+                                        {% if product.description|length < 60 %}
+                                        <td class="table__td"><span class="text-light-theme">{{ product.description[:60] }}</span></td>
                                         {% else %}
-                                        <td class="table__td"><span class="text-light-theme">{{ product.description[:25] }}...</span></td>
+                                        <td class="table__td"><span class="text-light-theme">{{ product.description[:60] }}...</span></td>
                                         {% endif %}
                                         <td class="table__td text-center text-dark-theme">{{ product.flight_stop }}</td>
                                         <td class="table__td text-center text-light-theme">{{ product.fare_type }}</td>
@@ -505,9 +505,9 @@
                                     <tr class="table__row">
                                             <td class="table__td"><span class="text-light-theme">{{ product.inflight_features }}</span>
                                             </td>
-                                            <td class="table__td text-center text-dark-theme">{{ customer.nickname }}</td>
-                                            <td class="table__td text-center text-light-theme">{{ customer.email }}</td>
-                                            <td class="table__td text-nowrap text-dark-theme">{{ customer.phone_number }}</td>
+                                            <td class="table__td text-center text-dark-theme">{{ product.contact_name }}</td>
+                                            <td class="table__td text-center text-light-theme">{{ product.contact_email }}</td>
+                                            <td class="table__td text-nowrap text-dark-theme">{{ product.contact_phone }}</td>
                                         </tr>
                                 </tbody>
 
