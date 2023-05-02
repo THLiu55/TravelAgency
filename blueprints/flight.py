@@ -77,10 +77,10 @@ def order_success():
     customer = Customer.query.get(session.get("customer_id"))
     cost = float(request.args.get("cost"))
     if customer.wallet >= cost:
-        activity_order = ActivityOrder()
-        activity_order.customerID = session.get('customer_id')
-        activity_order.purchased = True
-        activity_order.startTime = datetime.datetime.now()
+        flight_order = FlightOrder()
+        flight_order.customerID = session.get('customer_id')
+        flight_order.purchased = True
+        flight_order.startTime = datetime.datetime.now()
         end_date = request.args.get("date")
         try:
             date_format = "%Y/%m/%d"
@@ -88,15 +88,15 @@ def order_success():
         except ValueError:
             date_format = "%m/%d/%Y"
             datetime_obj = datetime.datetime.strptime(end_date, date_format)
-        activity_order.endTime = datetime_obj
-        activity_order.productID = request.args.get("activity_id")
-        activity_order.cost = cost
+        flight_order.endTime = datetime_obj
+        flight_order.productID = request.args.get("flight_id")
+        flight_order.cost = cost
         customer.wallet = customer.wallet - cost
-        db.session.add(activity_order)
+        db.session.add(flight_order)
         db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        return jsonify({"balance": 400})
+        return redirect(url_for('customer.profile', page='/wallet'))
 
 
 @bp.route('/flight_filter', methods=['GET', 'POST'])

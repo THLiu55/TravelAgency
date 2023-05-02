@@ -29,43 +29,42 @@ def lang_switch():
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
-    # logged = False if session.get('customer_id') is None else True
-    # total_activities = Activity.query.count()
-    # paginationActivity = Activity.query.paginate(page=int(1), per_page=9, error_out=False)
-    # activities = paginationActivity.items
-    # for activity in activities:
-    #     # noinspection PyTypeChecker
-    #     activity.images = json.loads(activity.images)['images']
-    #     activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
-    #
-    # total_flights = Flight.query.count()
-    # paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
-    # flights = paginationFlight.items
-    # for flight in flights:
-    #     # noinspection PyTypeChecker
-    #     flight.images = json.loads(flight.images)['images']
-    #     flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
-    #
-    # total_hotels = Hotel.query.count()
-    # paginationHotel = Hotel.query.paginate(page=int(1), per_page=9, error_out=False)
-    # hotels = paginationHotel.items
-    # for hotel in hotels:
-    #     # noinspection PyTypeChecker
-    #     hotel.images = json.loads(hotel.images)['images']
-    #     hotel.images[0] = hotel.images[0][hotel.images[0].index('static'):].lstrip('static')
-    #
-    # total_tours = Tour.query.count()
-    # paginationTour = Tour.query.paginate(page=int(1), per_page=9, error_out=False)
-    # tours = paginationTour.items
-    # for tour in tours:
-    #     # noinspection PyTypeChecker
-    #     tour.images = json.loads(tour.images)['images']
-    #     tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
-    # return render_template("Homepage.html", total_activities=total_activities, activities=activities,
-    #                        total_flights=total_flights,flights=flights, total_hotels=total_hotels, hotels=hotels,
-    #                        total_tours=total_tours, tours=tours,
-    #                        logged=logged)
-    return render_template("get_lan_lat.html")
+    logged = False if session.get('customer_id') is None else True
+    total_activities = Activity.query.count()
+    paginationActivity = Activity.query.paginate(page=int(1), per_page=9, error_out=False)
+    activities = paginationActivity.items
+    for activity in activities:
+        # noinspection PyTypeChecker
+        activity.images = json.loads(activity.images)['images']
+        activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
+
+    total_flights = Flight.query.count()
+    paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
+    flights = paginationFlight.items
+    for flight in flights:
+        # noinspection PyTypeChecker
+        flight.images = json.loads(flight.images)['images']
+        flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
+
+    total_hotels = Hotel.query.count()
+    paginationHotel = Hotel.query.paginate(page=int(1), per_page=9, error_out=False)
+    hotels = paginationHotel.items
+    for hotel in hotels:
+        # noinspection PyTypeChecker
+        hotel.images = json.loads(hotel.images)['images']
+        hotel.images[0] = hotel.images[0][hotel.images[0].index('static'):].lstrip('static')
+
+    total_tours = Tour.query.count()
+    paginationTour = Tour.query.paginate(page=int(1), per_page=9, error_out=False)
+    tours = paginationTour.items
+    for tour in tours:
+        # noinspection PyTypeChecker
+        tour.images = json.loads(tour.images)['images']
+        tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
+    return render_template("Homepage.html", total_activities=total_activities, activities=activities,
+                           total_flights=total_flights,flights=flights, total_hotels=total_hotels, hotels=hotels,
+                           total_tours=total_tours, tours=tours,
+                           logged=logged)
 
 
 @bp.route("/logout")

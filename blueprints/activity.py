@@ -176,7 +176,7 @@ def order_success():
         db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        return jsonify({"balance": 400})
+        return redirect(url_for('customer.profile', page='/wallet'))
 
 
 @bp.route("/add_wishlist/<activity_id>")
