@@ -109,7 +109,7 @@ function initGlobalVars() {
   theDivToInsertMessages = potentialTargetDivs[correctIdx];
 
   adminUserName = document.querySelector("#admin-username-txt").innerText;
-  firstCusListItem = $("#all-customers-list").find("li:first"); // default to the first customer
+  firstCusListItem = $("#unread-customers-list").find("li:first"); // default to the first customer
   if (firstCusListItem.length == 0) {
     throw new Error("AllClearException");
   }
