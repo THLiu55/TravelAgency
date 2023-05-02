@@ -145,6 +145,7 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -157,6 +158,32 @@ function getModifyData(id){
             setModifySelect("modify_Activity_Category", response['content']["category"]);
             setModifySelect("modify_Duration", response['content']["duration"]);
             setModifySelect("modify_group_size", response['content']["group_size"]);
+
+            // setModifySelect('modify_name', response['content']["name"];
+            setModifySelect("modify_name", response['content']["name"]);
+            setModifySelect('modify_Price', response['content']["price"]);
+            setModifySelect('modify_city', response['content']["city"]);
+            setModifySelect('modify_state', response['content']["state"]);
+            setModifySelect('modify_address', response['content']["address"]);
+            setModifySelect('modify_citylong', response['content']["city_long"]);
+            setModifySelect('modify_citylati', response['content']["state_lati"]);
+            setModifySelect('m_visitHour', response['content']["visitHour"]);
+            setModifySelect('m_contact_name', response['content']["contact_name"]);
+            setModifySelect('m_contact_email', response['content']["contact_email"]);
+            setModifySelect('m_contact_phone', response['content']["contact_phone"]);
+            setModifySelect('m_description', response['content']["description"]);
+
+            var datePicker1 = document.getElementById('m_from_date');
+            start_time = response['content']["start_time"]
+            date_str1 = start_time.split(" ")[0]
+            console.log(date_str1)
+            datePicker1.value = date_str1;
+
+            var datePicker2 = document.getElementById('m_end_date');
+            end_time = response['content']["end_time"]
+            date_str2 = end_time.split(" ")[0]
+            console.log(date_str2)
+            datePicker2.value = date_str2;
         } else {
         // 处理错误情况
             console.log('wrong');

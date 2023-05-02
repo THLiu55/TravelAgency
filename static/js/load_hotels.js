@@ -161,6 +161,19 @@ function getModifyData(id){
             setModifySelect("modify_front_desk", response['content']["front_desk"]);
             setModifySelect("modify_bathroom", response['content']["bathroom"]);
 
+            setModifySelect("m_name", response['content']["name"]);
+            setModifySelect("m_room_num", response['content']["room_num"]);
+            setModifySelect("m_min_price", response['content']["min_price"]);
+            setModifySelect("m_city", response['content']["city"]);
+            setModifySelect("m_state", response['content']["state"]);
+            setModifySelect("m_description", response['content']["description"]);
+            setModifySelect("m_typenum", response['content']["typenum"]);
+            setModifySelect("m_contact_name", response['content']["contact_name"]);
+            setModifySelect("m_email", response['content']["contact_email"]);
+            setModifySelect("m_phone", response['content']["contact_phone"]);
+            setModifySelect("inputRoomNumber1", response['content']["typenum"]);
+
+
         } else {
         // 处理错误情况
             console.log('wrong');

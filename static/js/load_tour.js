@@ -151,8 +151,20 @@ function getModifyData(id){
         // 处理服务器返回的数据
             console.log(response);
             //参数为设置的id和传入的值（值需要与select中option的value一致）
-            setModifySelect("modify_category", response['content']["category"]);
+            setModifySelect("modify_tour_category", response['content']["category"]);
             setModifySelect("modify_group_size", response['content']["group_size"]);
+
+
+            setModifySelect("m_name", response['content']["name"]);
+            setModifySelect("m_price", response['content']["price"]);
+            setModifySelect("m_city", response['content']["city"]);
+            setModifySelect("m_state", response['content']["state"]);
+            setModifySelect("m_address", response['content']["address"]);
+            setModifySelect("inputNumber_modify", response['content']["duration"]);
+            setModifySelect('m_contact_name', response['content']["contact_name"]);
+            setModifySelect('m_contact_email', response['content']["contact_email"]);
+            setModifySelect('m_contact_phone', response['content']["contact_phone"]);
+
         } else {
         // 处理错误情况
             console.log('wrong');
