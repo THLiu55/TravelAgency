@@ -150,6 +150,7 @@ function getModifyData(id){
             var response = JSON.parse(xhr.responseText);
         // 处理服务器返回的数据
             console.log(response);
+            var urls = JSON.parse(response['content']['images']);
             //参数为设置的id和传入的值（值需要与select中option的value一致）
             setModifySelect("modify_category", response['content']["category"]);
             setModifySelect("modify_group_size", response['content']["group_size"]);
@@ -166,18 +167,7 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
-            var datePicker1 = document.getElementById('m_from_date');
-            start_time = response['content']["start_time"]
-            date_str1 = start_time.split("T")[0]
-           console.log(start_time)
-            console.log(date_str1)
-            datePicker1.value = date_str1;
-
-            var datePicker2 = document.getElementById('m_end_date');
-            end_time = response['content']["end_time"]
-            date_str2 = end_time.split("T")[0]
-            console.log(date_str2)
-            datePicker2.value = date_str2;
+            setImageUrl("modify-image-input", urls.images)
 
         } else {
         // 处理错误情况
@@ -191,3 +181,31 @@ function getModifyData(id){
     fd.set('type', "tour")
     xhr.send(fd)
 }
+
+
+function extractStaticPath(url) {
+  const regex = /\/static\/(.+)/;
+  const match = url.match(regex);
+  if (match) {
+    return match[0];
+  }
+  return null;
+}
+
+
+function setImageUrl(id, urls) {
+    const inputImage = document.getElementById(id);
+    const fileList = new DataTransfer();
+
+    for (let i = 0; i < urls.length; i++) {
+        fetch(extractStaticPath(urls[i]))
+            .then((response) => response.blob())
+            .then((blob) => {
+                const file = new File([blob], `image${i}.jpg`, {type: 'image/jpeg'});
+                fileList.items.add(file);
+                console.log(fileList.files)
+            });
+    }
+    // inputImage.files = fileList.files
+}
+

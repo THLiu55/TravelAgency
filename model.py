@@ -31,7 +31,8 @@ class Customer(db.Model, UserMixin):
             'email': self.email,
             'nickname': self.nickname,
             'avatar': self.avatarURL,
-            'wallet': self.wallet
+            'wallet': self.wallet,
+            'phone': self.phone_number
         }
 
 
@@ -72,8 +73,8 @@ class ActivityOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'activity',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -217,8 +218,8 @@ class TourOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'tour',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -437,8 +438,8 @@ class HotelOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'hotel',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.checkOutTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.checkOutTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -576,8 +577,8 @@ class FlightOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'flight',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }

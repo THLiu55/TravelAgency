@@ -676,6 +676,12 @@ def wish_list():
     return render_template("customerWishlist.html")
 
 
+@bp.route("/chat")
+@staff_login_required
+def chat():
+    return render_template("chatManager.html")
+
+
 # previous order_details
 @bp.route("/activity_invoice")
 @staff_login_required
@@ -943,3 +949,9 @@ def plan_events():
     plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
     json_data = json.dumps(plan_dict_list)
     return jsonify(json.loads(json_data))
+
+
+@bp.route("/load_customers", methods=["POST"])
+def load_customers():
+    cs = Customer.query.all()
+    return jsonify({"code": 200, "data": [customer.serialize() for customer in cs]})
