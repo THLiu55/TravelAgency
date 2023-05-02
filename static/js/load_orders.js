@@ -92,7 +92,7 @@ function load_orders(category, status) {
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link" href="/manager/order_details"><span class="dropdown-items__link-icon">
+                                                        <li class="dropdown-items__item"><a class="dropdown-items__link" href="/manager/invoice?id=${items[i].id}&type=${items[i].category}"><span class="dropdown-items__link-icon">
                                     <svg class="icon-icon-view">
                                       <use xlink:href="#icon-view"></use>
                                     </svg></span>Details</a>
