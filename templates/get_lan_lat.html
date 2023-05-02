@@ -2,10 +2,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Add a geocoder</title>
+<title>Find your location</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 <link href="{{ url_for('node_file_for_map', filename='map/mapcss.css') }}" rel="stylesheet">
+<link href="{{ url_for('node_file_for_map', filename='map/locationstyle.css') }}" rel="stylesheet">
 <script src="{{ url_for('node_file_for_map', filename='map/mapjs.js') }}"></script>
+<script src="{{ url_for('node_file_for_map', filename='map/locationscript.js') }}"></script>
 <style>
 body { margin: 0; padding: 0; }
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -16,7 +18,22 @@ body { margin: 0; padding: 0; }
 
 <link rel="stylesheet" href="{{ url_for('node_file_for_map', filename='map/map/node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css') }}" type="text/css">
 
-<div id="map"></div>
+<div style="display: grid;grid-template-rows: auto;">
+    
+    <div class="card" style="z-index: 999; top:10%; left:5%;">
+        <div style="display:grid;grid-template-rows: 1fr 1fr 1fr; max-width: 90%;max-height: 90%;">
+            <span style="font-size: 0.6em;color: aliceblue; font-family: sans-serif; font-weight: 700;" >Move the point to find the location</span>
+            <p style="font-size: 0.6em;color: aliceblue; font-family: sans-serif;  font-weight: 600">Your latitude is <span id="latitude" style="font-size: 0.6em;color: rgb(246, 170, 30); font-family: sans-serif;  font-weight: 600;text-decoration: underline;"> </span></p>
+            <p style="font-size: 0.6em;color: aliceblue; font-family: sans-serif;  font-weight: 600">Your longitude is <span id="longitude" style="font-size: 0.6em;color: rgb(246, 170, 30); font-family: sans-serif;  font-weight: 600;text-decoration: underline;"> </span></p>
+            <p style="font-size: 0.6em;color: aliceblue; font-family: sans-serif;  font-weight: 600">Current location is <span id="addressnow" style="font-size: 0.6em;color: rgb(246, 170, 30); font-family: sans-serif;  font-weight: 600;text-decoration: underline;"> </span></p>
+        </div>
+       
+      </div>
+    <div id="map">
+    
+    </div>
+</div>
+
 
 <script>
 	// TO MAKE THE MAP APPEAR YOU MUST
@@ -51,15 +68,19 @@ body { margin: 0; padding: 0; }
 
     marker.on('dragend', (event) => {
     const lngLat = marker.getLngLat();
-    alert("lat is: "+lngLat.lat);
-    alert("lng is: "+lngLat.lng);
+    document.getElementById('latitude').innerHTML = lngLat.lat;
+    document.getElementById('longitude').innerHTML = lngLat.lng;
+
+    // alert("Your latitude is: "+lngLat.lat + " and longitude is: "+lngLat.lng);
+    // alert("lng is: "+lngLat.lng);
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lngLat.lng},${lngLat.lat}.json?access_token=${mapboxgl.accessToken}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
             const [location] = data.features;
             const address = location.place_name;
-            alert(address);
+            document.getElementById('addressnow').innerHTML = address;
+            // alert(address);
         })
         .catch(error => console.error(error));
     });
