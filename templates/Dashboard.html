@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-theme="light">
+
+{% extends "BaseManager.html" %}
+{% block title %} Manager Dashboard {% endblock %}
+
+{# head数据均放在该block里 #}
+{% block csslink %}
+{% endblock %}
+
+{% block body %}
+    <div class="sidebar-backdrop"></div>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="header__inner">
+                <div class="container-fluid">
+                    <div class="header__row row justify-content-between">
+                        <div class="header__col-left col d-flex align-items-center">
+                            <div class="header__left-toggle">
+                                <button class="header__toggle-menu toggle-sidebar" type="button">
+                                    <svg class="icon-icon-menu">
+                                        <use xlink:href="#icon-menu"></use>
+                                    </svg>
+                                </button>
+                                <button class="header__toggle-search toggle-search">
+                                    <svg class="icon-icon-search">
+                                        <use xlink:href="#icon-search"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="header__search">
+                                <form class="form-search" action="#" method="GET">
+                                    <div class="form-search__container"><span class="form-search__icon-left">
+                        <svg class="icon-icon-search">
+                          <use xlink:href="#icon-search"></use>
+                        </svg></span>
+                                        <input class="form-search__input" type="text" placeholder="Search..." />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="header__col-right col d-flex align-items-center">
+                            <div class="header__language dropdown">
+                                <button class="header__toggle-language" type="button" data-toggle="dropdown" data-tippy-content="Language" data-tippy-placement="bottom">
+                                    <svg class="icon-icon-language">
+                                        <use xlink:href="#icon-language"></use>
+                                    </svg> <span class="icon-arrow-down">
+                      <svg class="icon-icon-arrow-down">
+                        <use xlink:href="#icon-arrow-down"></use>
+                      </svg></span>
+                                </button>
+                                <div class="lang-menu dropdown-menu">
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/us.svg" alt="#" /><span class="lang-menu__text">En</span>
+                                    </button>
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/gb.svg" alt="#" /><span class="lang-menu__text">Gb</span>
+                                    </button>
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/ru.svg" alt="#" /><span class="lang-menu__text">Ru</span>
+                                    </button>
+                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                        <img class="lang-menu__icon" src="../static/img/content/flags/cn.svg" alt="#" /><span class="lang-menu__text">Cn</span>
+                                    </button>
+                                    <div class="lang-menu__separate"></div><a class="lang-menu__button lang-menu__button--all dropdown-menu__item" href="#" tabindex="0">Learn</a>
+                                </div>
+                            </div>
+                            <div class="header__tools">
+                                <div class="header__notes header__tools-item">
+                                    <a class="header__tools-toggle header__tools-toggle--message" href="#" data-tippy-content="Notifications" data-tippy-placement="bottom" data-toggle="dropdown">
+                                        <svg class="icon-icon-message">
+                                            <use xlink:href="#icon-message"></use>
+                                        </svg> <span class="badge-signal"></span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu__top dropdown-menu__item"><span class="dropdown-menu__title">Notifications</span><span class="badge badge--red">5</span><a class="dropdown-menu__clear-all" href="#" role="button">Clear All</a>
+                                        </div>
+                                        <div class="dropdown-menu__items scrollbar-thin scrollbar-visible" data-simplebar="data-simplebar">
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-green">
+                                                            <svg class="icon-icon-cart">
+                                                                <use xlink:href="#icon-cart"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New Order Received</h4><span class="dropdown-menu__item-time">25 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <svg class="icon-icon-bill">
+                                                                <use xlink:href="#icon-bill"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New invoice received</h4><span class="dropdown-menu__item-time">5 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-teal">
+                                                            <svg class="icon-icon-truck">
+                                                                <use xlink:href="#icon-truck"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">new batch is shipped</h4><span class="dropdown-menu__item-time">10 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-green">
+                                                            <svg class="icon-icon-cart">
+                                                                <use xlink:href="#icon-cart"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New Order Received</h4><span class="dropdown-menu__item-time">25 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <svg class="icon-icon-bill">
+                                                                <use xlink:href="#icon-bill"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <h4 class="dropdown-menu__item-title">New invoice received</h4><span class="dropdown-menu__item-time">5 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu__divider"></div><a class="dropdown-menu__item dropdown-menu__link-all" href="#">View all Notifications
+                        <svg class="icon-icon-keyboard-right">
+                          <use xlink:href="#icon-keyboard-right"></use>
+                        </svg></a>
+                                    </div>
+                                </div>
+                                <div class="header__messages header__tools-item">
+                                    <a class="header__tools-toggle header__tools-toggle--bell" href="#" data-tippy-content="Messages" data-tippy-placement="bottom" data-toggle="dropdown">
+                                        <svg class="icon-icon-bell">
+                                            <use xlink:href="#icon-bell"></use>
+                                        </svg> <span class="badge-signal"></span>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu__top dropdown-menu__item"><span class="dropdown-menu__title">Messages</span><span class="badge badge--red">7</span><a class="dropdown-menu__clear-all" href="#" role="button">Clear All</a>
+                                        </div>
+                                        <div class="dropdown-menu__items scrollbar-thin scrollbar-visible" data-simplebar="data-simplebar">
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-teal">
+                                                            <div class="dropdown-menu__item-icon-text">MA</div>
+                                                            <img src="../static/img/content/humans/item-4.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--green"></div>
+                                                    </div>
+{#                                                    <div class="dropdown-menu__item-right">#}
+{#                                                        <div class="dropdown-menu__item-column">#}
+{#                                                            <h4 class="dropdown-menu__item-title">Mark Anderson</h4>#}
+{#                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>#}
+{#                                                        </div><span class="dropdown-menu__item-time">25 min ago</span>#}
+{#                                                    </div>#}
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange-dark">
+                                                            <div class="dropdown-menu__item-icon-text">JT</div>
+                                                            <img src="../static/img/content/humans/item-1.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--green"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Jennifer Tang</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">3 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <div class="dropdown-menu__item-icon-text">SA</div>
+                                                            <img src="../static/img/content/humans/item-5.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Stephen Allen</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">10 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-red">
+                                                            <div class="dropdown-menu__item-icon-text">WS</div>
+                                                            <img src="../static/img/content/humans/item-6.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--red"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Walter Sanders</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">30 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-blue">
+                                                            <div class="dropdown-menu__item-icon-text">SA</div>
+                                                            <img src="../static/img/content/humans/item-5.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--green"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Stephen Allen</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">2h hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-green">
+                                                            <div class="dropdown-menu__item-icon-text">JH</div>
+                                                            <img src="../static/img/content/humans/item-7.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">John Hendrix</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">8 hours ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="dropdown-menu__item">
+                                                <a class="dropdown-menu__item-remove" href="#">
+                                                    <svg class="icon-icon-cross">
+                                                        <use xlink:href="#icon-cross"></use>
+                                                    </svg>
+                                                </a>
+                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
+                                                    <div class="dropdown-menu__item-left">
+                                                        <div class="dropdown-menu__item-icon color-orange">
+                                                            <div class="dropdown-menu__item-icon-text">RH</div>
+                                                            <img src="../static/img/content/humans/item-8.jpg" alt="#" />
+                                                        </div>
+                                                        <div class="badge-signal badge-signal--red"></div>
+                                                    </div>
+                                                    <div class="dropdown-menu__item-right">
+                                                        <div class="dropdown-menu__item-column">
+                                                            <h4 class="dropdown-menu__item-title">Ryan Henderson</h4>
+                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem Nemo enim ipsam voluptatem</p>
+                                                        </div><span class="dropdown-menu__item-time">5 min ago</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu__divider"></div><a class="dropdown-menu__item dropdown-menu__link-all" href="#">View all Messages
+                        <svg class="icon-icon-keyboard-right">
+                          <use xlink:href="#icon-keyboard-right"></use>
+                        </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="page-content">
+            <div class="container">
+                <div class="widgets">
+                    <div class="widgets__row row gutter-bottom-xl">
+                        <div class="col-12 col-md-6 col-xl-4 d-flex">
+                            <div class="widget">
+                                <div class="widget__wrapper">
+                                    <div class="widget__row">
+                                        <div class="widget__left">
+                                            <h3 class="widget__title">Comments</h3>
+                                            <div class="widget__status-title text-grey"> Comments Today</div>
+                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.reviews_today }}</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="widget__chart">
+                                            <div class="widget__chart-inner">
+                                                <div class="widget__chart-percentage">{{ upper_data.reviews_percent }}<small>%</small>
+                                                </div>
+                                                <div class="widget__chart-caption"> New Comments</div>
+                                            </div>
+                                            <div class="widget__chart-canvas js-progress-circle" data-value="{{ upper_data.reviews_percent / 100 }}" data-color="#22CCE2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4 d-flex">
+                            <div class="widget">
+                                <div class="widget__wrapper">
+                                    <div class="widget__row">
+                                        <div class="widget__left">
+                                            <h3 class="widget__title">Bookings</h3>
+                                            <div class="widget__status-title text-grey"> Bookings Today</div>
+                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.order_today }}</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="widget__chart">
+                                            <div class="widget__chart-inner">
+                                                <div class="widget__chart-percentage">{{ upper_data.order_percent }}<small>%</small>
+                                                </div>
+                                                <div class="widget__chart-caption">New Bookings</div>
+                                            </div>
+                                            <div class="widget__chart-canvas js-progress-circle" data-value="{{ upper_data.order_percent / 100}}" data-color="#FDBF5E"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4 d-flex">
+                            <div class="widget">
+                                <div class="widget__wrapper">
+                                    <div class="widget__row">
+                                        <div class="widget__left">
+                                            <h3 class="widget__title">Sign-Ups</h3>
+                                            <div class="widget__status-title text-grey"> Sign-Ups Today</div>
+                                            <div class="widget__trade"><span class="widget__trade-count">{{ upper_data.customer_today }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="widget__chart">
+                                            <div class="widget__chart-inner">
+                                                <div class="widget__chart-percentage">{{ upper_data.customer_percent }}<small>%</small>
+                                                </div>
+                                                <div class="widget__chart-caption">New Sign-Ups</div>
+                                            </div>
+                                            <div class="widget__chart-canvas js-progress-circle" data-value="{{ upper_data.customer_percent / 100 }}" data-color="#FF3D57"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section class="section">
+                    <div class="section__title d-none">
+                        <h2>Section</h2>
+                    </div>
+                    <div class="row justify-content-center gutter-bottom-xl">
+                        <div class="col-12 col-lg-7 col-xl-8 d-flex">
+                            <div class="card">
+                                <div class="card__wrapper">
+                                    <div class="card__container">
+                                        <div class="card__header">
+                                            <div class="card__header-left">
+                                                <h3 class="card__header-title">Revenue</h3>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="card__body">
+                                            <div class="card__widgets">
+                                                <div class="card__widgets-row gutter-bottom-sm">
+                                                    <div class="card-widget">
+                                                        <h4 class="card-widget__title">Current week</h4>
+                                                        <div class="card-widget__trade"><span class="card-widget__count text-red">${{ (data.profit_this)|round(2) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-widget">
+                                                        <h4 class="card-widget__title">Previous week</h4>
+                                                        <div class="card-widget__trade"><span class="card-widget__count text-grey">${{ (data.profit_prev)|round(2) }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card__chart">
+                                                <div class="card__container card__container--gutter-sm">
+                                                    <div class="card__chart-item chart-revenue" id="revenueChart" data-series="{{ data.profit_list }}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-5 col-xl-4 d-flex">
+                            <div class="card">
+                                <div class="card__wrapper">
+                                    <div class="card__container">
+                                        <div class="card__header mb-0">
+                                            <div class="card__header-left">
+                                                <h3 class="card__header-title">Profit</h3>
+                                            </div>
+                                        </div>
+                                        <div class="card__body">
+                                            <div class="card__chart">
+                                                <div class="card__chart-item chart-profit" id="profitPieChart" data-series="{{ data.profit_split }}"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card__footer">
+                                            <div class="card__container">
+                                                <table class="card__stat">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><span class="signal" style="color: #FF3D57;"></span><span>Activity</span>
+                                                            </td>
+                                                            <td><span>${{ (data.profit_split[0])|round(2) }}</span>
+                                                            </td>
+                                                            <td><span class="text-grey">{{ (data.percent[0])|round(2) }}%</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="signal" style="color: #FDBF5E;"></span><span>Hotel</span>
+                                                            </td>
+                                                            <td><span>${{ (data.profit_split[1])|round(2) }}</span>
+                                                            </td>
+                                                            <td><span class="text-grey">{{ (data.percent[1])|round(2) }}%</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="signal" style="color: #22CCE2;"></span><span>Flight</span>
+                                                            </td>
+                                                            <td><span>${{ (data.profit_split[3])|round(2) }}</span>
+                                                            </td>
+                                                            <td><span class="text-grey">{{ (data.percent[3])|round(2) }}%</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="signal" style="color: #eef213;"></span><span>Tour</span>
+                                                            </td>
+                                                            <td><span>${{ (data.profit_split[2])|round(2) }}</span>
+                                                            </td>
+                                                            <td><span class="text-grey">{{ (data.percent[2])|round(2) }}%</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+        </main>
+{% endblock %}
+
+<!-- jQuery and JavaScript Bundle with Popper -->
+{% block jsLink %}
+    <script src="{{ url_for('static', filename='js/gsap/gsap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gsap/ScrollToPlugin.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gsap/ScrollTrigger.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/simplebar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/tippy-bundle.umd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/grid/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/grid/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/charts/circle-progress.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/charts/echarts.common.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/charts/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/cleave/cleave.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/cleave/addons/cleave-phone.us.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/jqvmap/jquery.vmap.world.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/jqvmap/jquery.vmap.sampledata.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/jquery.star-rating-svg.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/calendar/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/calendar/flatpickr/en.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/select2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/editors/quill.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/filepond/filepond-plugin-image-preview.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/filepond/filepond.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/swiper-bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/scrollmagic/ScrollMagic.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//vendor/scrollmagic/debug.addIndicators.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//components.js') }}"></script>
+    <script src="{{ url_for('static', filename='js//common.js') }}"></script>
+{% endblock %}

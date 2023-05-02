@@ -1,0 +1,290 @@
+﻿{% extends "base.html" %}
+{% block title %} Tours Grid {% endblock %}
+
+{% block csslink %}
+    <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/seachbarstyle.css') }}">
+{% endblock %}
+
+{% block body %}
+{% include 'chatRoom.html' %}
+
+<main class="main">
+
+<div class="site-breadcrumb" style="padding-top:200px;background: url(../static/image/bg3.jpg)">
+    <div class="container">
+        <h2 class="breadcrumb-title">{{ _("Hotel") }}</h2>
+        <ul class="breadcrumb-menu">
+        <!-- <li><a href="manager.html">Home</a></li> -->
+        <!-- <li class="active">Activity</li> -->
+        </ul>
+        </div>
+</div>
+
+<div class="search-area" style="margin-top: 4%;">
+<div class="container">
+<div class="search-wrapper">
+
+<div class="search-box activity-search" style="background-color: transparent;">
+<div class="search-form">
+<form action="#">
+<div class="activity-search-wrapper">
+    <div class="seachbarcontainer" style="margin-left: 50%;margin-right: 50%;">
+        <form autocomplete="off">
+          <div class="finder">
+            <div class="finder__outer">
+              <div class="finder__inner">
+                <div class="finder__icon" ref="icon"></div>
+                <input id="search_box_change" class="finder__input" type="text" name="q" />
+              </div>
+            </div>
+          </div>
+          <div class="search-btn" >
+            <button type="button" style="margin-left: 50%;"onclick="activity_filter(3)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+            </div>
+        </form>
+      </div>
+<!-- <input id="search_box_change"> -->
+<!-- <div class="search-btn">
+<button type="button" onclick="hotel_filter()" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+</div> -->
+</div>
+</form>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<div class="activity-grid py-120">
+<div class="container">
+<div class="row">
+
+<div class="col-lg-4 col-xl-3 mb-4">
+<div class="booking-sidebar" >
+<div class="booking-item">
+<h4 class="booking-title">{{ _("Facilities") }}</h4>
+<div class="activity-type">
+<div class="form-check">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Free Parking" id="activity-type1" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-type1">
+{{ _("Free Parking") }} <span>(20)</span>
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Restaurant" id="activity-type2" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-type2">
+{{ _("Restaurant") }} <span>(15)</span>
+</label>
+</div>
+<div class="form-check">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Pets Allowed" id="activity-type3" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-type3">
+ {{ _("Pets Allowed ") }} <span>(18)</span>
+</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" name="activity-type" type="checkbox" value="Airport Transportation" id="activity-type3" onclick="hotel_filter()">
+    <label class="form-check-label" for="activity-type3">
+       {{ _("Airport Transportation") }}  <span>(18)</span>
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" name="activity-type" type="checkbox" value="Fitness Facility" id="activity-type3" onclick="hotel_filter()">
+    <label class="form-check-label" for="activity-type3">
+       {{ _("Fitness Facility") }}  <span>(18)</span>
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" name="activity-type" type="checkbox" value="WiFi" id="activity-type3" onclick="hotel_filter()">
+    <label class="form-check-label" for="activity-type3">
+       {{ _("WiFi") }}   <span>(18)</span>
+    </label>
+</div>
+<div class="form-check">
+<input class="form-check-input" name="activity-type" type="checkbox" value="Air Conditioning" id="activity-type4" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-type4">
+    {{ _("Air Conditioning") }} <span>(35)</span>
+</label>
+</div>
+</div>
+</div>
+<div class="booking-item">
+<h4 class="booking-title">{{ _("Hotel Price") }}</h4>
+<div class="activity-price"  >
+<div class="price-range-slider">
+<div class="price-range-info">
+<label for="priceRange1">{{ _("Price:") }}</label>
+<input type="text" class="priceRange" id="priceRange1" readonly>
+<input id="page-ajax" value="1" hidden>
+</div>
+<div id="price-range1" class="price-range slider"></div>
+</div>
+</div>
+</div>
+<div class="booking-item">
+<h4 class="booking-title">{{ _("Hotel Star") }}</h4>
+<div class="activity-duration">
+<div class="form-check">
+<input class="form-check-input" name="activity-duration" type="checkbox" value="5" id="activity-duration5" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-duration1">
+{{ _("5 Star") }}<span>(20)</span>
+</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" name="activity-duration" type="checkbox" value="4" id="activity-duration4" onclick="hotel_filter()">
+    <label class="form-check-label" for="activity-duration1">{{ _("4 Star") }} <span>(20)</span>
+    </label>
+    </div>
+<div class="form-check">
+<input class="form-check-input" name="activity-duration" type="checkbox" value="3" id="activity-duration3" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-duration2">
+{{ _("3 Star") }}<span>(15)</span>
+</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" name="activity-duration" type="checkbox" value="2" id="activity-duration2" onclick="hotel_filter()">
+    <label class="form-check-label" for="activity-duration2">
+    {{ _("2 Star") }}<span>(15)</span>
+    </label>
+    </div>
+<div class="form-check">
+<input class="form-check-input" name="activity-duration" type="checkbox" value="1" id="activity-duration1" onclick="hotel_filter()">
+<label class="form-check-label" for="activity-duration4">
+{{ _("1 Star") }} <span>(25)</span>
+</label>
+</div>
+</div>
+</div>
+<div class="booking-item" onclick="">
+</div>
+</div>
+</div>
+
+<div class="col-lg-8 col-xl-9">
+<div class="col-md-12">
+<div class="booking-sort">
+<h5>{{ total_hotels }} {{ _("Results Found") }}</h5>
+<div class="booking-sort-list-grid">
+<a class="booking-sort-grid active" href="activity-grid.html"><i class="far fa-grid-2"></i></a>
+<a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
+</div>
+<div class="col-md-3 booking-sort-box">
+<select class="select" id="sort-select-ajax" onchange="hotel_filter()">
+<option value="1" >{{ _("Sort By Default") }}</option>
+<option value="2" >{{ _("Sort By Popular") }}</option>
+<option value="3" >{{ _("Sort By Low Price") }}</option>
+<option value="4" >{{ _("Sort By High Price") }}</option>
+</select>
+</div>
+</div>
+</div>
+<div class="row" id="row-list-ajax">
+
+    {% for hotel in hotels %}
+<div class="col-md-6 col-lg-4">
+<div class="activity-item">
+<div class="activity-img">
+<img src="{{ url_for('static', filename=hotel.images[0].replace('\\','/')) }}" alt="" style="width:500px; height:200px">
+<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+</div>
+<div class="activity-content">
+<h4 class="activity-title"><a href="#">{{ hotel.name }}</a></h4>
+<p><i class="far fa-location-dot"></i>{{ hotel.address }}, {{ hotel.city }}</p>
+<div class="activity-rate">
+<span class="badge"><i class="fal fa-star"></i> 5.0</span>
+<span class="activity-rate-type">{{ _("Excellent") }} </span>
+<span class="activity-rate-review">({{ hotel.review_num }} {{ _("Reviews") }})</span>
+</div>
+<div class="activity-bottom">
+<div class="activity-price">
+<span class="activity-price-amount">${{ hotel.min_price }}+</span>
+</div>
+<div class="activity-text-btn">
+<a href="{{ url_for('hotel.hotelDetail', hotel_id=hotel.id) }}">{{ _("See Details") }} <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- <div class="pagination-area">
+<div aria-label="Page navigation example">
+<ul class="pagination">
+<li class="page-item">
+<a class="page-link" href="#" aria-label="Previous">
+<span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
+</a>
+</li>
+<li class="page-item active"><a class="page-link" href="#">1</a></li>
+<li class="page-item"><a class="page-link" href="#">2</a></li>
+<li class="page-item"><a class="page-link" href="#">3</a></li>
+<li class="page-item">
+<a class="page-link" href="#" aria-label="Next">
+<span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
+</a>
+</li>
+</ul>
+</div>
+
+</div> -->
+</div>
+</div>
+</div>
+</div>
+
+</main>
+
+
+
+
+{% endblock %}
+
+
+{% block jsLink %}
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/hotelFilter.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/seachbarscript.js') }}"></script>
+    <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
+{% endblock %}

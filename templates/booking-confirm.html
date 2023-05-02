@@ -1,0 +1,142 @@
+﻿{% extends "base.html" %}
+{% block title %} Booking Confirm {% endblock %}
+
+{% block csslink %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/02.jpg)">
+            <!-- <div class="container">
+                <h2 class="breadcrumb-title">Booking Confirm</h2>
+                <ul class="breadcrumb-menu">
+                    <li><a href="Dashboard.html">Home</a></li>
+                    <li class="active">Booking Confirm</li>
+                </ul>
+            </div> -->
+        </div>
+
+        <div class="booking-confirm py-120">
+            <div class="container">
+                <div class="row">
+                    <!-- <div class="col-md-8 mx-auto">
+                        <div class="booking-confirm-content">
+                            <div class="booking-confirm-icon"><i class="far fa-check"></i></div>
+                            <h3>Your Booking Roltak Hotel Is Confirmed.</h3>
+                            <p>There are many variations of passages available but the majority have suffered alteration
+                                in some form by injected humour or randomised words.</p>
+                            <a href="#" class="theme-btn">Book More Now<i class="far fa-arrow-right"></i></a>
+                        </div>
+                    </div> -->
+                    <div class="col-md-8 mx-auto mt-5">
+                        <div class="booking-summary">
+                            <h3>Booking Summary (#124586)</h3>
+                            <div class="booking-summary-content">
+                                <div class="row g-5">
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Booking Info</h6>
+                                            <ul>
+                                                <li>Product Type <span>Activity</span></li>
+                                                <li>Product Name <span>Snow Mountain Climbing</span></li>
+                                                <li>Product Price <span>$25</span></li>
+                                                <li>Childs <span>2</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Booking Date & Time</h6>
+                                            <ul>
+                                                <li>Check In <span>20 Aug 2022 at 10:10 AM</span></li>
+                                                <li>Check Out <span>25 Aug 2022 at 10:10 AM</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Extra Services</h6>
+                                            <ul>
+                                                <li>Cleaning, Airport Pickup</li>
+                                                <li>Breakfast, Parking</li>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Billing Info</h6>
+                                            <ul>
+                                                <li>Name <span>Nikola Jonson</span></li>
+                                                <li>Email <span>12345678@email.com</span>
+                                                </li>
+                                                <li>Phone <span>+123 456 789</span></li>
+                                            
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="booking-summary-list">
+                                            <h6>Order Info</h6>
+                                            <ul>
+                                                <li>Order Id <span>#124586</span></li>
+                                                <li>Payment Status <span class="text-success">Completed</span></li>
+                                                <li>Payment Method <span>Card</span></li>
+                                                <li class="fw-bold">Total Payment <span>$51,543.00</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="cancel-booking-note">
+                                            <p>Note: If you want to cancel your booking cancellation cost from now on:
+                                                $50</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-confirm-btn">
+                                <a href="#" class="theme-btn"><span class="far fa-print"></span>Comfirm Booking</a>
+                                <a href="#" class="theme-btn cancel-booking"><span
+                                        class="far fa-xmark-circle"></span>Cancel Booking</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}
+
+
+{% block jsLink %}
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+{% endblock %}

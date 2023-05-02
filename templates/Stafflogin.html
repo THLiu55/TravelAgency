@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> login and registration </title>
+    <link rel="stylesheet" href="../static/css/loginpage.css">
+</head>
+<body>
+        <!--    staff sign in   -->
+        <div class="wrapper">
+            <div class="form-wrapper staff-sign-in">
+                <form id="staffin-form" action="{{ url_for('manager.login') }}" method="post">
+                    <h2>{{ _("Staff Login") }}</h2>
+                    <div class="input-group">
+                        <input name="username" id="staff-name" type="text" required>
+                        <label for="staff-name">{{ _("Staff name") }}</label>
+                    </div>
+                    <div class="input-group">
+                        <input name="password" id="staff-password" type="password" required>
+                        <label for="staff-password">{{ _("Password") }}</label>
+                    </div>
+                    <button type="submit" class="btn" onclick="">{{ _("Login") }}</button>
+                </form>
+            </div>
+        </div>
+
+</body>
+</html>

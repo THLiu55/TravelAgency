@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> login and registration </title>
+    <link rel="stylesheet" href="../static/css/loginpage.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <!--    forget password   -->
+        <div class="form-wrapper forget-password">
+            <form id="forgetpassword-form" method="post">
+                <h2>{{ _("Change Password") }}</h2>
+                <div class="input-group">
+                    <input id="forgetpass-email" name="forgetpass-email" oninput="forget_email_listener()" type="text" required>
+                    <label for="forgetpass-email">{{ _("Email") }}</label>
+                    <div class="send-btn-frame">
+                        <button type="button" id="forget-email-btn" class="send-email-btn" onclick="forget_email_send()" >
+                            <div id="forget-count">{{ _("SEND") }}</div>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="input-group">
+                    <input id="forgetpass-captcha" name="forgetpass-captcha" oninput="forget_captcha_listener()"  type="text" required>
+                    <label for="forgetpass-captcha">{{ _("Captcha") }}</label>
+                    <div class="wrong_error" id="forget_captcha_error"></div>
+                </div>
+                {# todo: 将文字部分改为 22，25，32 行格式#}
+                <div class="input-group">
+                    <input id="forgetpass-password" oninput="forget_password_listener()" maxlength="20" type="password" required>
+                    <label for="forgetpass-password">{{ _("Reset Password") }}</label>
+                    <div class="wrong_error" id="forget_password_error"></div>
+                </div>
+                <div class="input-group">
+                    <input id="forgetpass-repassword" oninput="forget_re_password_listener()" maxlength="20" type="password" required>
+                    <label for="forgetpass-repassword">{{ _("Confirm Password") }}</label>
+                    <div class="wrong_error" id="forget_Repassword_error"></div>
+                </div>
+                <button type="button" class="btn" onclick="resetPassword()">{{ _("Reset") }}</button>
+                <div class="sign-link">
+                    <p><a href="#" class="goback-link">{{ _("Go Back") }}</a></p>
+                </div>
+            </form>
+        </div>
+
+{#        <!--    staff sign in   -->#}
+{#        <div class="form-wrapper staff-sign-in">#}
+{#            <form id="staffin-form" method="post">#}
+{#                <h2>Staff Login</h2>#}
+{#                <div class="input-group">#}
+{#                    <input id="staff-name" type="text" required>#}
+{#                    <label for="staff-name">Staff name</label>#}
+{#                </div>#}
+{#                <div class="input-group">#}
+{#                    <input id="staff-password" type="password" required>#}
+{#                    <label for="staff-password">Password</label>#}
+{#                </div>#}
+{#                <button type="submit" class="btn" onclick="">Login</button>#}
+{#                <div class="sign-link">#}
+{#                    <p><a href="#" class="customerSignIn-link">Login as a customer?</a></p>#}
+{#                </div>#}
+{#            </form>#}
+{#        </div>#}
+
+        <!--    sign up card    -->
+        <div class="form-wrapper sign-up">
+            <form id="signup-form" method="post">
+                <h2>{{ _("Sign Up") }}</h2>
+                <div class="input-group">
+                    <input name="url" value="{{ url }}" hidden>
+                    <input id="signup-username" name="signup-username" oninput="username_listener_sign_up()" type="text" maxlength="15" required>
+                    <label for="signup-username">{{ _("Username") }}</label>
+                    <div class="wrong_error" id="username_error"></div>
+                </div>
+                <div class="input-group">
+                    <input id="signup-email" name="signup-email" oninput="email_listener_sign_up()" type="text" required>
+                    <label for="signup-email">{{ _("Email") }}</label>
+                    <div class="send-btn-frame">
+                        <button type="button" id="register-email-btn" class="send-email-btn" onclick="send_email()" >
+                            <div id="register-count">{{ _("SEND") }}</div>
+                        </button>
+                    </div>
+                    <div class="wrong_error" id="email_error"></div>
+                </div>
+                <div class="input-group">
+                    <input id="signup-password" name="signup-password" oninput="password_listener_sign_up()" maxlength="20" type="password" required>
+                    <label for="signup-password">{{ _("Password") }}</label>
+                    <div class="wrong_error" id="password_error"></div>
+                </div>
+                <div class="input-group">
+                    <input id="signup-confirm-password" oninput="rePassword_listener_sign_up()" maxlength="20" type="password" required>
+                    <label for="signup-confirm-password">{{ _("Confirm Password") }}</label>
+                    <div class="wrong_error" id="Repassword_error"></div>
+                </div>
+                <div class="input-group">
+                    <input id="signup-captcha" name="signup-captcha" oninput="captcha_listener_sign_up()" type="text" required>
+                    <label for="signup-captcha">{{ _("Captcha") }}</label>
+                    <div class="wrong_error" id="captcha_error"></div>
+                </div>
+                <button type="button" class="btn" onclick="SignUp()">{{ _("Sign Up") }}</button>
+                <div class="sign-link">
+                    <p>{{ _("Already have an account?") }} <a href="#" class="signIn-link">{{ _("Sign In") }}</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!--    sign in card    -->
+        <div class="form-wrapper sign-in">
+            <form id="signin-form" method="post">
+                <h2>{{ _("Login") }}</h2>
+                <div class="input-group">
+                    <input id="signin-email" name="signin-email" type="text" required>
+                    <input name="url" value="{{ url }}" hidden>
+                    <label for="signin-email">{{ _("Email") }}</label>
+                </div>
+                <div class="input-group">
+                    <input id="signin-password" name="signin-password" maxlength="20" type="password" required>
+                    <label for="signin-password">{{ _("Password") }}</label>
+                </div>
+                <div class="forgot-pass">
+                    <a href="#" class="forgetpassword-link">{{ _("Forgot password?") }}</a>
+                </div>
+                <button type="button" class="btn" onclick="SignIn()">{{ _("Login") }}</button>
+                <div id="signup-platform" class="sign-link">
+                    <p>{{ _("Don't have an account?") }} <a href="#" class="signUp-link">{{ _("Sign Up") }}</a></p>
+                </div>
+                <div id="home-platform" class="sign-link">
+                    <p><a href="{{ url_for('customer.homepage') }}" class="staffSignIn-link">{{ _("Return to home page") }} </a></p>
+                </div>
+                <div id="staff-platform" class="sign-link">
+                    <p><a href="{{ url_for('manager.manager_homepage') }}" class="staffSignIn-link">{{ _("Link to staff panel") }} </a></p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+<script type="text/javascript" src="../static/js/loginutils.js"></script>
+<script type="text/javascript" src="../static/js/loginlogic.js"></script>
+<script type="text/javascript" src="../static/js/findbackpassword.js"></script>
+
+</html>

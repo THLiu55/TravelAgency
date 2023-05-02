@@ -1,0 +1,395 @@
+﻿<div class="alert alert-danger alert-dismissible fade" role="alert" id="clear-alert">
+    <strong> {{ _("Clear your calendar successfully!") }}</strong>
+    
+  </div>
+<div class="user-profile-wrapper">
+    <div class="user-profile-card">
+        <div class="alert alert-success alert-dismissible fade" role="alert" id="success-alert" style="position: relative;">
+            <strong> {{ _("Add to your calendar successfully!") }}</strong> {{ _("Click the button below to have a look!") }}
+            
+          </div>
+          <div style="display: grid; grid-template-columns: 70% 30%; align-items: start">
+        <h4 class="user-profile-card-title">{{ _("My Wishlist") }}</h4>
+        <!-- <button  type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Clear the items in wishlist calendar" data-content="Clear the items in wishlist calendar">Click to clear</button> -->
+        <button  id="clearCalendar" class="btn btn-danger">{{ _("Clear calendar") }}</button>
+        
+    </div>
+
+            <div class="row mt-30">
+
+                {% for i in sorted_orders %}
+            <div class="col-md-6 col-lg-4">
+                <div class="hotel-item">
+                    <div class="hotel-img">
+                        <span class="badge">{{ i.type_ }}</span>
+                        <img src="{{ i.photo_url }}" alt="">
+                        <a href="#" class="add-wishlist"  data-order-id="{{ i.id }}" data-order-type="{{ i.type_ }}"id="addtoWishListCalender"><i class="far fa-calendar-plus"></i></a>
+                    </div>
+                    <div class="hotel-content">
+                        <h4 class="hotel-title"><a href="#">{{ i.title }}</a></h4>
+                        <p><i class="far fa-location-dot"></i>{{ i.second_line }}</p>
+                        <div class="hotel-rate">
+                            <span class="badge"><i class="fal fa-star"></i> {{ i.star }}</span>
+                            <span class="hotel-rate-type">{{ i.star_des }}</span>
+                            <span class="hotel-rate-review">({{ i.review_num }} {{ _("Reviews") }})</span>
+                        </div>
+                        <div class="hotel-bottom">
+                            <div class="hotel-price">
+<span class="hotel-price-amount">${{ i.price }} <span class="hotel-price-type"></span></span>
+                            </div>
+                            <div class="hotel-text-btn">
+                                <a href="{{ i.url }}">{{ _("See Details") }} <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+
+        </div>
+
+      
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="test"> {{ _("Plan them in my calendar") }}</button>
+
+
+
+
+        <!-- <div class="pagination-area my-4">
+            <div aria-label="Page navigation example">
+                <ul class="pagination mt-0">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
+                        </a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true"><i
+                                                        class="far fa-angle-double-right"></i></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+
+        <!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 999999;" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          
+          
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+        <div class="modal-body">
+            {% block body %}
+            <div id="calendarApp" class="calendar--app"></div>
+            {% endblock %}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _("Close") }}</button>
+          <button type="button" class="btn btn-primary">{{ _("Save Changes") }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+    $(".add-wishlist").click(function (event) {
+        event.preventDefault();
+        // $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        //let alert show
+        $('.alert-success').addClass('show');
+        //hide alert after 3 seconds
+        setTimeout(function() {
+            $('.alert-success').removeClass('show');
+        }, 3000);
+        var order_id = $(this).data("order-id");
+        var order_type = $(this).data("order-type");
+        var retrieved_events
+        $.ajax({
+            url: "/wishlist_calendar",
+            type: "POST",
+            data: {
+                order_id: order_id,
+                order_type: order_type
+                
+            },
+        //     success: function (response) {
+        //         console.log(response);
+        //         $(function () {
+        
+        // $.ajax({
+        //       url: '../wishlist_calendar',
+        //       method: 'POST', // 可以是 GET 或 POST
+        //       dataType: 'json', // 返回的数据类型
+              success: function(data) {
+                console.log("test");
+                // 成功获取数据后的处理
+                console.log(data);
+               
+                retrieved_events = data;
+                // replace events list with retrieved data
+                $calendarApp.fullCalendar('removeEvents');
+                $calendarApp.fullCalendar('addEventSource', retrieved_events);
+              },
+              error: function(xhr, status, error) {
+                // 获取数据失败后的处理
+                console.log("Error: " + error);
+              }
+        });
+
+        /* ------------------------------------------------------------------------- *
+         * CALENDAR EVENTS
+         * ------------------------------------------------------------------------- */
+        var $calendarEvents = $('.calendar--events'),
+            $calendarEventsEl = $calendarEvents.children('.fc-events'),
+            $calendarEventEl = $calendarEventsEl.children('.fc-event'),
+            $calendarEventsInput = $calendarEvents.find('.form-check-input');
+
+        if ( $calendarEvents.length ) {
+            $calendarEventEl.each(function () {
+                var $el = $(this),
+                    bgColor = $el.css('background-color');
+
+                $el.draggable({
+                        revert: true,
+                        revertDuration: 0,
+                        zIndex: 999
+                    })
+                    .css({
+                        'border-color': bgColor
+                    })
+                    .data('event', {
+                        title: $el.text(),
+                        color: bgColor,
+                        stick: true
+                    });
+            });
+        }
+
+        $calendarEvents.on('click', '.calendar--event__colors li', function () {
+            var $el = $(this);
+
+            $el.addClass('active').siblings().removeClass('active');
+        });
+
+        $calendarEvents.on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            var $el = $(this),
+                $input = $el.children('input'),
+                $event = $('<div></div>'),
+                $colorClass = $calendarEvents.find('.calendar--event__colors .active'),
+                $bdColor = $colorClass.css('background-color');
+
+            $event.draggable({
+                    revert: true,
+                    revertDuration: 0,
+                    zIndex: 999
+                })
+                .css({
+                    'border-color': $bdColor
+                })
+                .data('event', {
+                    title: $input.val(),
+                    color: $bdColor,
+                    stick: true
+                })
+                .addClass( ' fc-event ' + $colorClass.attr('class') )
+                .text( $input.val() )
+                .appendTo($calendarEventsEl);
+
+        });
+
+        /* ------------------------------------------------------------------------- *
+         * CALENDAR APP
+         * ------------------------------------------------------------------------- */
+        var $calendarApp = $('#calendarApp');
+
+        if ( $calendarApp.length ) {
+            $calendarApp.fullCalendar({
+                header: {
+                    left: '',
+                    center: 'prev next title',
+                    right: 'today basicDay basicWeek month'
+                },
+                // locale:'zh-cn',
+                editable: true,
+                droppable: true,
+                drop: function () {
+                    if ( $calendarEventsInput.is(':checked') ) {
+                        $(this).remove();
+                    }
+                },
+                timeFormat: 'h(:mm)a',
+                events: retrieved_events
+
+            });
+        }
+        // 删除事件
+        $(document).on('click', '.btn_del', function () {
+            $calendarApp.fullCalendar('removeEvents');
+            //下面是删除某个，加载事件的时候添加id
+            //id可以取数据库里的唯一编号
+            //$calendarApp.fullCalendar('removeEvents',[id])
+        });
+    });
+//             },
+//             error: function (error) {
+//                 console.log(error);
+//             }
+//         });
+//     });
+    $("#clearCalendar").click(function(event){
+        console.log("clear");
+        $(".add-wishlist").find("i").removeClass("fas fa-calendar-check");
+        $(".add-wishlist").find("i").addClass("far fa-calendar-plus");
+        $('.alert-danger').addClass('show');
+        //hide alert after 3 seconds
+        setTimeout(function() {
+            $('.alert-danger').removeClass('show');
+        }, 3000);
+        $(function () {
+        var retrieved_events
+        $.ajax({
+              url: '../plan_events',
+              method: 'GET', // 可以是 GET 或 POST
+              dataType: 'json', // 返回的数据类型
+              success: function(data) {
+                // 成功获取数据后的处理
+                console.log(data);
+                retrieved_events = data;
+                // replace events list with retrieved data
+                $calendarApp.fullCalendar('removeEvents');
+                $calendarApp.fullCalendar('addEventSource', retrieved_events);
+              },
+              error: function(xhr, status, error) {
+                // 获取数据失败后的处理
+                console.log("Error: " + error);
+              }
+        });
+
+        /* ------------------------------------------------------------------------- *
+         * CALENDAR EVENTS
+         * ------------------------------------------------------------------------- */
+        var $calendarEvents = $('.calendar--events'),
+            $calendarEventsEl = $calendarEvents.children('.fc-events'),
+            $calendarEventEl = $calendarEventsEl.children('.fc-event'),
+            $calendarEventsInput = $calendarEvents.find('.form-check-input');
+
+        if ( $calendarEvents.length ) {
+            $calendarEventEl.each(function () {
+                var $el = $(this),
+                    bgColor = $el.css('background-color');
+
+                $el.draggable({
+                        revert: true,
+                        revertDuration: 0,
+                        zIndex: 999
+                    })
+                    .css({
+                        'border-color': bgColor
+                    })
+                    .data('event', {
+                        title: $el.text(),
+                        color: bgColor,
+                        stick: true
+                    });
+            });
+        }
+
+        $calendarEvents.on('click', '.calendar--event__colors li', function () {
+            var $el = $(this);
+
+            $el.addClass('active').siblings().removeClass('active');
+        });
+
+        $calendarEvents.on('submit', 'form', function (e) {
+            e.preventDefault();
+
+            var $el = $(this),
+                $input = $el.children('input'),
+                $event = $('<div></div>'),
+                $colorClass = $calendarEvents.find('.calendar--event__colors .active'),
+                $bdColor = $colorClass.css('background-color');
+
+            $event.draggable({
+                    revert: true,
+                    revertDuration: 0,
+                    zIndex: 999
+                })
+                .css({
+                    'border-color': $bdColor
+                })
+                .data('event', {
+                    title: $input.val(),
+                    color: $bdColor,
+                    stick: true
+                })
+                .addClass( ' fc-event ' + $colorClass.attr('class') )
+                .text( $input.val() )
+                .appendTo($calendarEventsEl);
+
+        });
+
+        /* ------------------------------------------------------------------------- *
+         * CALENDAR APP
+         * ------------------------------------------------------------------------- */
+        var $calendarApp = $('#calendarApp');
+
+        if ( $calendarApp.length ) {
+            $calendarApp.fullCalendar({
+                header: {
+                    left: '',
+                    center: 'prev next title',
+                    right: 'today basicDay basicWeek month'
+                },
+                // locale:'zh-cn',
+                editable: true,
+                droppable: true,
+                drop: function () {
+                    if ( $calendarEventsInput.is(':checked') ) {
+                        $(this).remove();
+                    }
+                },
+                timeFormat: 'h(:mm)a',
+                events: retrieved_events
+
+            });
+        }
+        // 删除事件
+        $(document).on('click', '.btn_del', function () {
+            $calendarApp.fullCalendar('removeEvents');
+            //下面是删除某个，加载事件的时候添加id
+            //id可以取数据库里的唯一编号
+            //$calendarApp.fullCalendar('removeEvents',[id])
+        });
+    });
+
+        
+    })
+});
+
+
+
+  
+</script>
+{% block jsLink %}
+{#  calendar js  #}
+    <script src="{{ url_for('static', filename='css/calendar/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/fullcalendar.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/page/calendarwishlist.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/calendar/js/locale-all.js') }}"></script>
+{% endblock %}
+</main>

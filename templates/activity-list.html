@@ -1,0 +1,565 @@
+﻿{% extends "base.html" %}
+{% block title %} Activities List {% endblock %}
+
+{% block csslink %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <main class="main">
+
+        <div class="site-breadcrumb" style="background: url(assets/img/breadcrumb/06.jpg)">
+            <div class="container">
+                <h2 class="breadcrumb-title">Activity List</h2>
+                </ul>
+            </div>
+        </div>
+
+        <div class="search-area">
+            <div class="container">
+                <div class="search-wrapper">
+
+                    <div class="search-box activity-search">
+                        <div class="search-form">
+                            <form action="#">
+                                <div class="activity-search-wrapper">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Location</label>
+                                                <div class="form-group-icon">
+                                                    <input type="text" name="location" class="form-control"
+                                                           value="New York, United States">
+                                                    <i class="fal fa-earth-americas"></i>
+                                                </div>
+                                                <p>Where Are You Going?</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <div class="search-form-date">
+                                                    <div class="search-form-journey">
+                                                        <label>Check In</label>
+                                                        <div class="form-group-icon">
+                                                            <input type="text" name="journey-date"
+                                                                   class="form-control date-picker journey-date">
+                                                            <i class="fal fa-calendar-days"></i>
+                                                        </div>
+                                                        <p class="journey-day-name"></p>
+                                                    </div>
+                                                    <div class="search-form-return">
+                                                        <label>Check Out</label>
+                                                        <div class="form-group-icon">
+                                                            <input type="text" name="return-date"
+                                                                   class="form-control date-picker return-date">
+                                                        </div>
+                                                        <p class="return-day-name"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group dropdown passenger-box">
+                                                <div class="passenger-class" role="menu" data-bs-toggle="dropdown"
+                                                     aria-expanded="false">
+                                                    <label>Rooms, Guests</label>
+                                                    <div class="form-group-icon">
+                                                        <div class="passenger-total">
+                                                            <span class="passenger-total-room">2</span> Rooms,
+                                                            <span class="passenger-total-amount">2</span> Guests
+                                                        </div>
+                                                        <i class="fal fa-user-plus"></i>
+                                                    </div>
+                                                    <p class="passenger-class-name">Double Room</p>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <div class="dropdown-item">
+                                                        <div class="passenger-item">
+                                                            <div class="passenger-info">
+                                                                <h6>Adults</h6>
+                                                                <p>12+ Years</p>
+                                                            </div>
+                                                            <div class="passenger-qty">
+                                                                <button type="button" class="minus-btn"><i
+                                                                        class="far fa-minus"></i></button>
+                                                                <input type="text" name="adult"
+                                                                       class="qty-amount passenger-adult" value="2"
+                                                                       readonly>
+                                                                <button type="button" class="plus-btn"><i
+                                                                        class="far fa-plus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <div class="passenger-item">
+                                                            <div class="passenger-info">
+                                                                <h6>Children</h6>
+                                                                <p>2-12 Years</p>
+                                                            </div>
+                                                            <div class="passenger-qty">
+                                                                <button type="button" class="minus-btn"><i
+                                                                        class="far fa-minus"></i></button>
+                                                                <input type="text" name="children"
+                                                                       class="qty-amount passenger-children" value="0"
+                                                                       readonly>
+                                                                <button type="button" class="plus-btn"><i
+                                                                        class="far fa-plus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <div class="passenger-item">
+                                                            <div class="passenger-info">
+                                                                <h6>Infant</h6>
+                                                                <p>Below 2 Years</p>
+                                                            </div>
+                                                            <div class="passenger-qty">
+                                                                <button type="button" class="minus-btn"><i
+                                                                        class="far fa-minus"></i></button>
+                                                                <input type="text" name="infant"
+                                                                       class="qty-amount passenger-infant" value="0"
+                                                                       readonly>
+                                                                <button type="button" class="plus-btn"><i
+                                                                        class="far fa-plus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <div class="passenger-item">
+                                                            <div class="passenger-info">
+                                                                <h6>Rooms</h6>
+                                                            </div>
+                                                            <div class="passenger-qty">
+                                                                <button type="button" class="minus-btn"><i
+                                                                        class="far fa-minus"></i></button>
+                                                                <input type="text" name="room"
+                                                                       class="qty-amount passenger-room" value="2" readonly>
+                                                                <button type="button" class="plus-btn"><i
+                                                                        class="far fa-plus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="dropdown-item">
+                                                        <h6 class="mb-3 mt-2">Room Type</h6>
+                                                        <div class="passenger-class-info">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                       value="Single Room" name="room-type" id="room-type4">
+                                                                <label class="form-check-label" for="room-type4">
+                                                                    Single Room
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" checked type="radio"
+                                                                       value="Double Room" name="room-type" id="room-type5">
+                                                                <label class="form-check-label" for="room-type5">
+                                                                    Double Room
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio"
+                                                                       value="Deluxe Room" name="room-type" id="room-type6">
+                                                                <label class="form-check-label" for="room-type6">
+                                                                    Deluxe Room
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="search-btn">
+                                        <button type="submit" class="theme-btn"><span class="far fa-search"></span>Search
+                                            Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="activity-list py-120">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-xl-3 mb-4">
+                        <div class="booking-sidebar">
+                            <div class="booking-item">
+                                <h4 class="booking-title">Activity Type</h4>
+                                <div class="activity-type">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="1"
+                                               id="activity-type1">
+                                        <label class="form-check-label" for="activity-type1">
+                                            Food & Nightlife <span>(20)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="2"
+                                               id="activity-type2">
+                                        <label class="form-check-label" for="activity-type2">
+                                            Hot Air Balloon <span>(15)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="3"
+                                               id="activity-type3">
+                                        <label class="form-check-label" for="activity-type3">
+                                            Mountain Climbing <span>(18)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-type" type="checkbox" value="4"
+                                               id="activity-type4">
+                                        <label class="form-check-label" for="activity-type4">
+                                            Bike Ride <span>(35)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-item">
+                                <h4 class="booking-title">Activity Price</h4>
+                                <div class="activity-price">
+                                    <div class="price-range-slider">
+                                        <div class="price-range-info">
+                                            <label for="priceRange1">Price:</label>
+                                            <input type="text" class="priceRange" id="priceRange1" readonly>
+                                        </div>
+                                        <div id="price-range1" class="price-range slider"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-item">
+                                <h4 class="booking-title">Activity Duration</h4>
+                                <div class="activity-duration">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="1"
+                                               id="activity-duration1">
+                                        <label class="form-check-label" for="activity-duration1">
+                                            Up to 1 hour <span>(20)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="2"
+                                               id="activity-duration2">
+                                        <label class="form-check-label" for="activity-duration2">
+                                            1 to 4 hours <span>(15)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="3"
+                                               id="activity-duration3">
+                                        <label class="form-check-label" for="activity-duration3">
+                                            4 hours to 1 day <span>(18)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-duration" type="checkbox" value="4"
+                                               id="activity-duration4">
+                                        <label class="form-check-label" for="activity-duration4">
+                                            1 to 10 days <span>(25)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-item">
+                                <h4 class="booking-title">Languages</h4>
+                                <div class="activity-language">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-language" type="checkbox" value="1"
+                                               id="activity-language1">
+                                        <label class="form-check-label" for="activity-language1">
+                                            English <span>(20)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-language" type="checkbox" value="2"
+                                               id="activity-language2">
+                                        <label class="form-check-label" for="activity-language2">
+                                            Spanish <span>(15)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-language" type="checkbox" value="3"
+                                               id="activity-language3">
+                                        <label class="form-check-label" for="activity-language3">
+                                            French <span>(18)</span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="activity-language" type="checkbox" value="4"
+                                               id="activity-language4">
+                                        <label class="form-check-label" for="activity-language4">
+                                            Turkish <span>(25)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 col-xl-9">
+                        <div class="col-md-12">
+                            <div class="booking-sort">
+                                <h5>2,350 Results Found</h5>
+                                <div class="booking-sort-list-grid">
+                                    <a class="booking-sort-grid" href="activity-grid.html"><i class="far fa-grid-2"></i></a>
+                                    <a class="booking-sort-list active" href="activity-list.html"><i
+                                            class="far fa-list-ul"></i></a>
+                                </div>
+                                <div class="col-md-3 booking-sort-box">
+                                    <select class="select">
+                                        <option value="1">Sort By Default</option>
+                                        <option value="2">Sort By Popular</option>
+                                        <option value="3">Sort By Low Price</option>
+                                        <option value="4">Sort By High Price</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <img src="assets/img/activity/01.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <img src="assets/img/activity/02.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <span class="badge">Featured</span>
+                                        <img src="assets/img/activity/03.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <img src="assets/img/activity/04.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <img src="assets/img/activity/05.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <span class="badge">Featured</span>
+                                        <img src="assets/img/activity/06.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="activity-item">
+                                    <div class="activity-img">
+                                        <span class="badge badge-discount">25% Save</span>
+                                        <img src="assets/img/activity/07.jpg" alt="">
+                                        <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4 class="activity-title"><a href="#">Snow Mountain Climbing</a></h4>
+                                        <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                                        <div class="activity-rate">
+                                            <span class="badge"><i class="fal fa-star"></i> 5.0</span>
+                                            <span class="activity-rate-type">Excellent</span>
+                                            <span class="activity-rate-review">(2.5k Reviews)</span>
+                                        </div>
+                                        <div class="activity-bottom">
+                                            <div class="activity-price">
+                                                <span class="activity-price-amount">$300</span>
+                                            </div>
+                                            <div class="activity-text-btn">
+                                                <a href="#">See Details <i class="fas fa-arrow-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="pagination-area">
+                                <div aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true"><i class="far fa-angle-double-left"></i></span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true"><i class="far fa-angle-double-right"></i></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+{% endblock %}
+
+
+{% block jsLink %}
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+{% endblock %}

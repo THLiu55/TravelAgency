@@ -1,0 +1,32 @@
+{% for products in product_list %}
+<div class="cardcontainer">
+    <div class="displaycardcontainer">
+        <div>
+        <a class="areasubtitle" href="#" >{{ products.type }}</a></div>
+        <div>
+        <a class="moretext" href="#" >More >></a></div>
+    </div>
+    <div class="cards">
+        <div class="card">
+            <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+            <div class="cardtitle">Library</div>
+            <div class="cardinfo">{{ products.description }}</div>
+        </div>
+        <div class="card">
+            <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+            <div class="cardtitle">Library</div>
+            <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+        </div>
+        <div class="card">
+            <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+            <div class="cardtitle">Library</div>
+            <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+        </div>
+        <div class="card">
+            <div class="cardimg"><img src="../static/img/library.jpg" style="height: 100%;width:100%;"></div>
+            <div class="cardtitle">Library</div>
+            <div class="cardinfo">Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.Very good library located in BJUT.</div>
+        </div>
+    </div>
+</div>
+{% endfor %}

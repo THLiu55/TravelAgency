@@ -1,0 +1,436 @@
+{% extends "base.html" %}
+{% block title %} Activity Detail Page {% endblock %}
+
+{% block csslink %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/all-fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/magnific-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/nice-select.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}" >
+{% endblock %}
+
+
+{% block body %}
+
+    <main class="main">
+
+        <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
+            <div class="container">
+
+            </div>
+        </div>
+
+        <div class="tour-single py-120">
+            <div class="container">
+                <div class="listing-wrapper">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="listing-content">
+                                <div class="listing-slider owl-carousel owl-theme">
+                                    {% for image in images %}
+                                    <img src="{{ url_for('static', filename=image.replace('\\','/')) }}" alt="" >
+                                    {% endfor %}
+                                </div>
+                                <div class="listing-header">
+                                    <div class="listing-header-info">
+                                        <h4 class="listing-title">{{ activity.name }}</h4>
+                                        <p class="listing-location"><i class="far fa-location-dot"></i> {{ activity.address }}</p>
+                                    </div>
+                                    <div class="listing-rate">
+                                        <span class="badge"><i class="fal fa-star"></i> {{ star_score }} </span>
+                                        <span class="listing-rate-type">{{ _("Excellent") }}</span>
+                                        <span class="listing-rate-review">( {{ review_num }} {{ _("Reviews") }})</span>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="listing-feature">
+                                                <div class="listing-feature-icon">
+                                                    <i class="far fa-clock"></i>
+                                                </div>
+                                                <div class="listing-feature-content">
+                                                    <h6>{{ _("Duration") }}</h6>
+                                                    <span>{{ activity.duration }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="listing-feature">
+                                                <div class="listing-feature-icon">
+                                                    <i class="far fa-calendar-days"></i>
+                                                </div>
+                                                <div class="listing-feature-content">
+                                                    <h6>Date</h6>
+                                                    <span>{{ activity.start_time }} - {{ activity.end_time }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="listing-feature">
+                                                <div class="listing-feature-icon">
+                                                    <i class="far fa-users"></i>
+                                                </div>
+                                                <div class="listing-feature-content">
+                                                    <h6>{{ _("Group Size") }}</h6>
+                                                    <span>{{ activity.group_size }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="listing-feature">
+                                                <div class="listing-feature-icon">
+                                                    <i class="far fa-earth-americas"></i>
+                                                </div>
+                                                <div class="listing-feature-content">
+                                                    <h6>{{ _("Activity Type") }}</h6>
+                                                    <span>{{ activity.category }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <h4 class="mb-3">{{ _("Description") }}</h4>
+                                    <p>{{ activity.description }} </p>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="listing-included">
+                                                <h5>{{ _("Included") }}</h5>
+                                                <ul class="list">
+                                                    {% for item in activity.included %}
+                                                    <li>{{ item }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="listing-notincluded">
+                                                <h5>{{ _("Not Included") }}</h5>
+                                                <ul class="list">
+                                                    {% for item in activity.excluded %}
+                                                    <li>{{ item }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="listing-item">
+                                    <h4 class="mb-4">{{ _("Location Map") }}</h4>
+                                    <div id="mapid"  style="width: 600px; height: 400px;">
+                                        <input id="lat" value="{{ lat }}" hidden>
+                                        <input id="lon" value="{{ lon }}" hidden>
+                                    </div>
+
+
+
+{#                                    <div class="contact-map">#}
+{#                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"#}
+{#                                                style="border:0;" allowfullscreen="" loading="lazy"></iframe>#}
+{#                                    </div>#}
+
+
+
+
+
+                                </div>
+
+                                <div class="listing-item">
+                                    <h4 class="mb-3">{{ _("Reviews") }}</h4>
+                                    <div class="listing-rating-box">
+                                        <div class="listing-review-rating">
+                                            <div class="listing-rating-count">
+                                                <h2>{{ star_score }}</h2>
+                                                <div class="listing-rating-star">
+                                                    {% for i in range(star_score_ceil) %}
+                                                    <i class="fas fa-star"></i>
+                                                    {% endfor %}
+                                                </div>
+                                                <p>{{ _("Based On") }} {{ review_num }} {{ _("Reviews") }}</p>
+                                            </div>
+                                            <div class="listing-rating-range">
+                                                <div class="listing-rating-range-item">
+                                                    <div class="listing-rating-range-star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <div class="listing-rating-range-bar">
+                                                        <div class="listing-progress">
+                                                            <div class="listing-progress-width" style="width: {{ 100*star_detail[4]/(5*activity.review_num) }}%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-rating-range-percentage">
+                                                        <span>{{ (100*star_detail[4]/(5*activity.review_num))|int }}%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="listing-rating-range-item">
+                                                    <div class="listing-rating-range-star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="listing-rating-range-bar">
+                                                        <div class="listing-progress">
+                                                            <div class="listing-progress-width" style="width: {{ 100*star_detail[3]/(4*activity.review_num) }}%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-rating-range-percentage">
+                                                        <span>{{ (100*star_detail[3]/(4*activity.review_num))|int }}%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="listing-rating-range-item">
+                                                    <div class="listing-rating-range-star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="listing-rating-range-bar">
+                                                        <div class="listing-progress">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[2]/(3*activity.review_num))|int }}%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-rating-range-percentage">
+                                                        <span>{{ (100*star_detail[2]/(3*activity.review_num))|int }}%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="listing-rating-range-item">
+                                                    <div class="listing-rating-range-star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="listing-rating-range-bar">
+                                                        <div class="listing-progress">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[1]/(2*activity.review_num))|int }}%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-rating-range-percentage">
+                                                        <span>{{ (100*star_detail[1]/(2*activity.review_num))|int }}%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="listing-rating-range-item">
+                                                    <div class="listing-rating-range-star">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="listing-rating-range-bar">
+                                                        <div class="listing-progress">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[0]/(1*activity.review_num))|int }}%">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="listing-rating-range-percentage">
+                                                        <span>{{ (100*star_detail[0]/(1*activity.review_num))|int }}%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="listing-review">
+                                            <h5>{{ _("Showing") }} {{ review_num }} {{ _("Reviews") }}</h5>
+                                            {% for review in reviews %}
+                                            <div class="listing-review-item">
+                                                <div class="listing-review-author">
+
+                                                    <img src="https://avatar.oxro.io/avatar.svg?name={{ review.customerID }}" alt="">
+                                                    <!-- <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt=""> -->
+                                                    <div class="listing-review-author-info">
+                                                        <div>
+                                                            <h6>{{ review.customerID }}</h6>
+                                                            <span><i class="far fa-clock"></i>{{ review.issueTime }}</span>
+                                                        </div>
+                                                        <div class="listing-review-author-rating">
+                                                            {% for i in range(review.rating) %}
+                                                                <i class="fas fa-star"></i>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    {{ review.content }}
+                                                </p>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        {% if purchased %}
+                                        <div class="listing-review-form">
+                                            <h4>{{ _("Leave a Review") }}</h4>
+                                            <form action="{{ url_for('activity.add_review')}}" method="post">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-3">
+                                                        <input name="productId" value="{{ activity.id }}" hidden>
+                                                        <label class="star-label">{{ _("Your Rating") }}</label>
+                                                        <div class="listing-review-form-star">
+                                                            <div class="star-rating-wrapper">
+                                                                <div class="star-rating-box">
+                                                                    <input type="radio" name="rating" value="5"
+                                                                           id="star-5">
+                                                                    <label for="star-5">&#9733;</label>
+                                                                    <input type="radio" name="rating" value="4"
+                                                                           id="star-4">
+                                                                    <label for="star-4">&#9733;</label>
+                                                                    <input type="radio" name="rating" value="3"
+                                                                           id="star-3">
+                                                                    <label for="star-3">&#9733;</label>
+                                                                    <input type="radio" name="rating" value="2"
+                                                                           id="star-2">
+                                                                    <label for="star-2">&#9733;</label>
+                                                                    <input type="radio" name="rating" value="1"
+                                                                           id="star-1">
+                                                                    <label for="star-1">&#9733;</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                <textarea class="form-control" cols="30" rows="5" name="content"
+                                                          placeholder="Write Your Review*"></textarea>
+                                                </div>
+                                                <button class="theme-btn" type="submit">{{ _("Leave A Review") }}</button>
+                                            </form>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="booking-sidebar listing-side-content">
+                                <div class="booking-item">
+                                    <div class="listing-price">
+                                        <h4 class="listing-price-tag">{{ _("Book the Activity") }}</h4>
+                                    </div>
+                                    <div class="search-form">
+                                        <form action="{{ url_for('activity.order_confirm') }}" method="post">
+                                            <input name="activity_id" value="{{ activity.id }}" hidden>
+                                            <div class="tour-search-wrapper">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <div class="search-form-date">
+                                                                <div class="search-form-journey">
+                                                                    <label>Journey Date</label>
+                                                                    <div class="form-group-icon">
+                                                                        <input type="text" name="journey-date"
+                                                                               class="form-control date-picker journey-date">
+                                                                        <i class="fal fa-calendar-days"></i>
+                                                                    </div>
+                                                                    <p class="journey-day-name"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="listing-side-btn">
+                                                    <button type="submit" class="theme-btn"><span
+                                                            class="far fa-shopping-bag"></span>{{ _("Book Now") }}
+                                                    </button>
+                                                {% if logged %}
+                                                    {% if added %}
+                                                        <a href="{{ url_for('activity.remove_wishlist', activity_id=activity.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i>{{ _("Remove From Wishlist") }} </a>
+                                                    {% else %}
+                                                        <a href="{{ url_for('activity.add_wishlist', activity_id=activity.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                {% endif %}
+
+
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="listing-side-share">
+                                        <a href="#"><i class="far fa-share-nodes"></i> {{ _("Share") }}</a>
+                                        <span><i class="far fa-eye"></i> {{ activity.view_num }} {{ _("Views") }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="booking-sidebar listing-side-content mt-4">
+                                <h4 class="booking-title">{{ _("Get A Question?") }}</h4>
+                                <p>{{ _("It is a long established fact that a reader will be distracted by the readable
+                                    content
+                                    layout.") }}</p>
+                                <ul class="listing-side-list">
+                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">{{ activity.contact_phone }}</a></li>
+                                    <li><i class="far fa-envelope"></i><a
+                                            href="/cdn-cgi/l/email-protection#721b1c141d32170a131f021e175c111d1f"><span
+                                            class="__cf_email__" data-cfemail="e78e898188a7829f868a978b82c984888a">{{ activity.contact_email }}</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+     
+
+
+
+
+    </main>
+
+
+
+{% endblock %}
+
+{% block jsLink %}
+    <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.appear.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/counter-up.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+
+
+    <script>
+        const lat = document.getElementById("lat").value;
+        const lon = document.getElementById("lon").value;
+        const mymap = L.map('mapid').setView([lat, lon], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        }).addTo(mymap);
+        L.marker([lat, lon]).addTo(mymap);
+    </script>
+{% endblock %}
+

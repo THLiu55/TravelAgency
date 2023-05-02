@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" data-theme="light">
+
+{% extends "BaseManager.html" %}
+{% block title %} Manager Customer WishList {% endblock %}
+
+{# head数据均放在该block里 #}
+{% block csslink %}
+{% endblock %}
+
+{% block body %}
+    <div class="sidebar-backdrop"></div>
+    <div class="page-wrapper">
+        <main class="page-content">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-header__title">Wish List</h1>
+                </div>
+                <div class="page-tools">
+                    <div class="page-tools__breadcrumbs">
+                        <div class="breadcrumbs">
+                            <div class="breadcrumbs__container">
+                                <ol class="breadcrumbs__list">
+
+                                    <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Travel-Booking</span>
+                        <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
+                          <use xlink:href="#icon-keyboard-right"></use>
+                        </svg></a>
+                                    </li>
+                                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="customerAccount.html"><span>Account</span>
+                        <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
+                          <use xlink:href="#icon-keyboard-right"></use>
+                        </svg></a>
+                                    </li>
+                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Wish List</span>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cart card">
+                    <div class="card__wrapper">
+                        <div class="card__body">
+                            <div class="cart__header">
+                                <div class="cart__header-title">Product</div>
+                                <div class="cart__header-title text-center">Quantity</div>
+                                <div class="cart__header-title text-center">Price</div>
+                                <div class="cart__header-title"></div>
+                            </div>
+                            <div class="cart__items">
+                                <div class="product-cart">
+                                    <div class="product-cart__column product-cart__column--item-1">
+                                        <div class="product-cart__item">
+                                            <a class="product-cart__image" href="#">
+                                                <img src="../static/img/content/product/item-1.jpg" srcset="../static/img/content/product/item-1.jpg 2x" alt="#" />
+                                            </a>
+                                            <ul class="product-cart__params">
+                                                <li><b>Apple Watch Series 4</b>
+                                                </li>
+                                                <li>Product ID: 790841</li>
+                                                <li>Color: Gold</li>
+                                                <li>Size: 44mm</li>
+                                                <li><span class="label label--primary">In Stock</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <div class="product-cart__quantity input-group input-group--white">
+                                            <input class="input" type="number" min="0" max="99" value="0" />
+                                        </div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <div class="product-cart__price">$399</div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <button class="product-cart__remove" type="button">
+                                            <svg class="icon-icon-trash">
+                                                <use xlink:href="#icon-trash"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-cart product-cart--light">
+                                    <div class="product-cart__column product-cart__column--item-1">
+                                        <div class="product-cart__item">
+                                            <a class="product-cart__image" href="#">
+                                                <img src="../static/img/content/product/item-2.jpg" srcset="../static/img/content/product/item-2.jpg 2x" alt="#" />
+                                            </a>
+                                            <ul class="product-cart__params">
+                                                <li><b>Apple Watch Series 4</b>
+                                                </li>
+                                                <li>Product ID: 790841</li>
+                                                <li>Color: Gold</li>
+                                                <li>Size: 44mm</li>
+                                                <li><span class="label label--primary">In Stock</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <div class="product-cart__quantity input-group">
+                                            <input class="input" type="number" min="0" max="99" value="0" />
+                                        </div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <div class="product-cart__price">$499</div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <button class="product-cart__remove" type="button">
+                                            <svg class="icon-icon-trash">
+                                                <use xlink:href="#icon-trash"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-cart">
+                                    <div class="product-cart__column product-cart__column--item-1">
+                                        <div class="product-cart__item">
+                                            <a class="product-cart__image" href="#">
+                                                <img src="../static/img/content/product/item-3.jpg" srcset="../static/img/content/product/item-3.jpg 2x" alt="#" />
+                                            </a>
+                                            <ul class="product-cart__params">
+                                                <li><b>Apple Watch Series 4</b>
+                                                </li>
+                                                <li>Product ID: 790841</li>
+                                                <li>Color: Gold</li>
+                                                <li>Size: 44mm</li>
+                                                <li><span class="label label--primary">In Stock</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <div class="product-cart__quantity input-group input-group--white">
+                                            <input class="input" type="number" min="0" max="99" value="0" />
+                                        </div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <div class="product-cart__price">$199</div>
+                                    </div>
+                                    <div class="product-cart__column">
+                                        <button class="product-cart__remove" type="button">
+                                            <svg class="icon-icon-trash">
+                                                <use xlink:href="#icon-trash"></use>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+<!-- jQuery and JavaScript Bundle with Popper -->
+{% block jsLink %}
+{% endblock %}

@@ -1,0 +1,1514 @@
+# Translations template for PROJECT.
+# Copyright (C) 2023 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2023-04-29 12:22+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: templates/Homepage.html:34
+msgid "Explore The BJUT Together"
+msgstr ""
+
+#: templates/Homepage.html:35 templates/Homepage.html:816
+msgid ""
+"Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
+"University of Technology."
+msgstr ""
+
+#: templates/Homepage.html:48
+msgid "Explore The Temple of Heaven"
+msgstr ""
+
+#: templates/Homepage.html:49 templates/Homepage.html:828
+msgid ""
+"The Temple of Heaven is a complex of religious buildings situated in the "
+"central Beijing."
+msgstr ""
+
+#: templates/Homepage.html:63
+msgid "Explore The City Together"
+msgstr ""
+
+#: templates/Homepage.html:64
+msgid "Find awesome flight, accommodation, destination, and attractions"
+msgstr ""
+
+#: templates/Homepage.html:83
+msgid "Flights"
+msgstr ""
+
+#: templates/Homepage.html:84
+msgid "Choose flights according to your needs. "
+msgstr ""
+
+#: templates/Homepage.html:90
+msgid "Accomodation"
+msgstr ""
+
+#: templates/Homepage.html:91
+msgid "Ranging from cozy to luxury."
+msgstr ""
+
+#: templates/Homepage.html:98
+msgid "Tourist attraction"
+msgstr ""
+
+#: templates/Homepage.html:99
+msgid "Famous and representative tourist attractions."
+msgstr ""
+
+#: templates/Homepage.html:105
+msgid "Tranportation"
+msgstr ""
+
+#: templates/Homepage.html:106
+msgid "Train, Plane, bus and everything."
+msgstr ""
+
+#: templates/Homepage.html:112
+msgid "Tours"
+msgstr ""
+
+#: templates/Homepage.html:113
+msgid "Pick some popular destinations for travel!"
+msgstr ""
+
+#: templates/Homepage.html:144 templates/flight-booking-confirm.html:40
+msgid "Destination"
+msgstr ""
+
+#: templates/Homepage.html:145
+msgid "Our Most Popular Destinations"
+msgstr ""
+
+#: templates/Homepage.html:314 templates/base.html:71
+#: templates/flight-booking-confirm.html:37 templates/flight-detail.html:22
+#: templates/profile-base.html:94
+msgid "Flight"
+msgstr ""
+
+#: templates/Homepage.html:315
+msgid "Our Most Popular Flights"
+msgstr ""
+
+#: templates/Homepage.html:340 templates/activity-grid.html:188
+#: templates/hotel-grid.html:219 templates/profile-wishlist.html:41
+#: templates/tour-grid.html:328
+msgid "See Details"
+msgstr ""
+
+#: templates/Homepage.html:349
+msgid "Discover More"
+msgstr ""
+
+#: templates/Homepage.html:361 templates/base.html:74
+#: templates/hotel-booking-confirm.html:37 templates/hotel-grid.html:29
+#: templates/profile-base.html:97
+msgid "Hotel"
+msgstr ""
+
+#: templates/Homepage.html:362
+msgid "Our Most Popular Hotels"
+msgstr ""
+
+#: templates/Homepage.html:388
+msgid "See Details "
+msgstr ""
+
+#: templates/Homepage.html:524 templates/base.html:84
+#: templates/profile-base.html:107 templates/tour-booking-confirm.html:37
+#: templates/tour-detail.html:24 templates/tour-grid.html:27
+msgid "Tour"
+msgstr ""
+
+#: templates/Homepage.html:525
+msgid "Our Most Popular Tours"
+msgstr ""
+
+#: templates/Homepage.html:529
+msgid "All Tour"
+msgstr ""
+
+#: templates/Homepage.html:530
+msgid "Historical"
+msgstr ""
+
+#: templates/Homepage.html:531
+msgid "Weekend Trip"
+msgstr ""
+
+#: templates/Homepage.html:532
+msgid "Special Tour"
+msgstr ""
+
+#: templates/Homepage.html:533
+msgid "Holiday Tour"
+msgstr ""
+
+#: templates/Homepage.html:814
+msgid "The Library"
+msgstr ""
+
+#: templates/Homepage.html:815
+msgid "Yifu Library"
+msgstr ""
+
+#: templates/Homepage.html:817 templates/Homepage.html:832
+#: templates/Homepage.html:847 templates/Homepage.html:861
+#: templates/Homepage.html:875
+msgid "Explore the tour"
+msgstr ""
+
+#: templates/Homepage.html:825
+msgid "Tourism Atrraction"
+msgstr ""
+
+#: templates/Homepage.html:826
+msgid "Temple of Heaven"
+msgstr ""
+
+#: templates/Homepage.html:841
+msgid "Tropical area"
+msgstr ""
+
+#: templates/Homepage.html:842
+msgid "The beach"
+msgstr ""
+
+#: templates/Homepage.html:844
+msgid ""
+"The beach is very beautiful, the water is very clear, the sand is very "
+"white, and the sea is very blue."
+msgstr ""
+
+#: templates/Homepage.html:856
+msgid "Temple"
+msgstr ""
+
+#: templates/Homepage.html:857
+msgid "Special temple"
+msgstr ""
+
+#: templates/Homepage.html:859
+msgid "Good place to have a temple run."
+msgstr ""
+
+#: templates/Homepage.html:870
+msgid "The white building"
+msgstr ""
+
+#: templates/Homepage.html:871
+msgid "White building"
+msgstr ""
+
+#: templates/Homepage.html:873
+msgid "White building is white."
+msgstr ""
+
+#: templates/Homepage.html:891
+msgid "We are GROUP7 travel agency!"
+msgstr ""
+
+#: templates/Homepage.html:892
+msgid "Family hold company for"
+msgstr ""
+
+#: templates/Homepage.html:893
+msgid "travel!"
+msgstr ""
+
+#: templates/Homepage.html:894
+msgid ""
+"Made up of six team members with rich experience and good service "
+"attitude to ensure your good travel experience!"
+msgstr ""
+
+#: templates/Homepage.html:903
+msgid "Beijing, China"
+msgstr ""
+
+#: templates/Homepage.html:965 templates/MainTopbar.html:103
+#: templates/base.html:132 templates/profile-base.html:207
+msgid "Group 7 NULLGROUPNAMEEXCEPTION"
+msgstr ""
+
+#: templates/Homepage.html:966 templates/MainTopbar.html:104
+#: templates/base.html:133 templates/profile-base.html:208
+msgid "Fourth Teach Building, Beijing"
+msgstr ""
+
+#: templates/Homepage.html:967 templates/MainTopbar.html:105
+#: templates/base.html:134 templates/profile-base.html:209
+msgid "Tel: 123456"
+msgstr ""
+
+#: templates/Homepage.html:968 templates/MainTopbar.html:106
+#: templates/base.html:135 templates/profile-base.html:210
+msgid "Handcrafted with love by Group 7"
+msgstr ""
+
+#: templates/SignInUp.html:19
+msgid "Change Password"
+msgstr ""
+
+#: templates/SignInUp.html:22 templates/SignInUp.html:84
+#: templates/SignInUp.html:121 templates/activity-booking-confirm.html:58
+#: templates/hotel-booking-confirm.html:59 templates/profile-setting.html:18
+#: templates/tour-booking-confirm.html:58
+msgid "Email"
+msgstr ""
+
+#: templates/SignInUp.html:25 templates/SignInUp.html:87
+msgid "SEND"
+msgstr ""
+
+#: templates/SignInUp.html:32 templates/SignInUp.html:104
+msgid "Captcha"
+msgstr ""
+
+#: templates/SignInUp.html:38
+msgid "Reset Password"
+msgstr ""
+
+#: templates/SignInUp.html:43 templates/SignInUp.html:99
+msgid "Confirm Password"
+msgstr ""
+
+#: templates/SignInUp.html:46
+msgid "Reset"
+msgstr ""
+
+#: templates/SignInUp.html:48
+msgid "Go Back"
+msgstr ""
+
+#: templates/SignInUp.html:75 templates/SignInUp.html:107
+#: templates/SignInUp.html:132
+msgid "Sign Up"
+msgstr ""
+
+#: templates/SignInUp.html:79
+msgid "Username"
+msgstr ""
+
+#: templates/SignInUp.html:94 templates/SignInUp.html:125
+#: templates/Stafflogin.html:22
+msgid "Password"
+msgstr ""
+
+#: templates/SignInUp.html:109
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/SignInUp.html:109
+msgid "Sign In"
+msgstr ""
+
+#: templates/SignInUp.html:117 templates/SignInUp.html:130
+#: templates/Stafflogin.html:24
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:4
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/login_user.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_login.html:3
+msgid "Login"
+msgstr ""
+
+#: templates/SignInUp.html:128
+msgid "Forgot password?"
+msgstr ""
+
+#: templates/SignInUp.html:132
+msgid "Don't have an account?"
+msgstr ""
+
+#: templates/SignInUp.html:135
+msgid "Return to home page"
+msgstr ""
+
+#: templates/SignInUp.html:138
+msgid "Link to staff panel"
+msgstr ""
+
+#: templates/Stafflogin.html:15
+msgid "Staff Login"
+msgstr ""
+
+#: templates/Stafflogin.html:18
+msgid "Staff name"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:30
+#: templates/flight-booking-confirm.html:30
+#: templates/hotel-booking-confirm.html:30
+#: templates/tour-booking-confirm.html:30
+msgid "Booking Summary"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:35
+msgid "Activity Info"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:37
+#: templates/activity-booking-confirm.html:46
+#: templates/flight-booking-confirm.html:47
+#: templates/hotel-booking-confirm.html:46
+msgid "Product Info"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:37 templates/activity-grid.html:29
+#: templates/base.html:79 templates/profile-base.html:102
+msgid "Activity"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:38
+#: templates/hotel-booking-confirm.html:38
+msgid "Product Name"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:39
+msgid "Product Category"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:48
+msgid "Activity Date"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:49 templates/activity-grid.html:108
+msgid "Activity Price"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:55
+#: templates/hotel-booking-confirm.html:56
+msgid "Customer Info"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:57
+#: templates/hotel-booking-confirm.html:58
+#: templates/tour-booking-confirm.html:57
+msgid "Name"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:65
+#: templates/hotel-booking-confirm.html:66
+#: templates/tour-booking-confirm.html:65
+msgid "Billing Info"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:67
+#: templates/hotel-booking-confirm.html:68
+msgid "Tax"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:68
+#: templates/hotel-booking-confirm.html:69
+#: templates/tour-booking-confirm.html:68
+msgid "Payment Method"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:68
+#: templates/hotel-booking-confirm.html:69
+#: templates/tour-booking-confirm.html:68
+msgid "Token"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:69
+#: templates/hotel-booking-confirm.html:70
+#: templates/tour-booking-confirm.html:69
+msgid "Total Payment"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:76
+#: templates/hotel-booking-confirm.html:77
+#: templates/tour-booking-confirm.html:76
+msgid "Confirm Booking"
+msgstr ""
+
+#: templates/activity-booking-confirm.html:78
+#: templates/hotel-booking-confirm.html:79
+#: templates/tour-booking-confirm.html:78
+msgid "Cancel Booking"
+msgstr ""
+
+#: templates/activity-detail.html:47 templates/activity-grid.html:180
+#: templates/flight-detail.html:51 templates/hotel-detail.html:52
+#: templates/hotel-grid.html:211 templates/tour-detail.html:47
+#: templates/tour-grid.html:320
+msgid "Excellent"
+msgstr ""
+
+#: templates/activity-detail.html:48 templates/activity-detail.html:146
+#: templates/activity-detail.html:156 templates/activity-detail.html:252
+#: templates/activity-grid.html:181 templates/flight-detail.html:272
+#: templates/hotel-detail.html:53 templates/hotel-detail.html:333
+#: templates/hotel-detail.html:439 templates/hotel-grid.html:212
+#: templates/profile-wishlist.html:34 templates/tour-detail.html:48
+#: templates/tour-detail.html:151 templates/tour-detail.html:161
+#: templates/tour-detail.html:257 templates/tour-grid.html:321
+msgid "Reviews"
+msgstr ""
+
+#: templates/activity-detail.html:59 templates/tour-detail.html:59
+msgid "Duration"
+msgstr ""
+
+#: templates/activity-detail.html:81 templates/tour-detail.html:81
+msgid "Group Size"
+msgstr ""
+
+#: templates/activity-detail.html:92 templates/activity-grid.html:79
+msgid "Activity Type"
+msgstr ""
+
+#: templates/activity-detail.html:100 templates/hotel-detail.html:109
+#: templates/tour-detail.html:100
+msgid "Description"
+msgstr ""
+
+#: templates/activity-detail.html:105 templates/tour-detail.html:105
+msgid "Included"
+msgstr ""
+
+#: templates/activity-detail.html:115 templates/tour-detail.html:115
+msgid "Not Included"
+msgstr ""
+
+#: templates/activity-detail.html:126 templates/hotel-detail.html:326
+#: templates/tour-detail.html:144
+msgid "Location Map"
+msgstr ""
+
+#: templates/activity-detail.html:156
+msgid "Based On"
+msgstr ""
+
+#: templates/activity-detail.html:252 templates/hotel-detail.html:439
+msgid "Showing"
+msgstr ""
+
+#: templates/activity-detail.html:280
+msgid "Leave a Review"
+msgstr ""
+
+#: templates/activity-detail.html:285 templates/flight-detail.html:499
+#: templates/hotel-detail.html:471 templates/tour-detail.html:289
+msgid "Your Rating"
+msgstr ""
+
+#: templates/activity-detail.html:313 templates/flight-detail.html:495
+#: templates/hotel-detail.html:466 templates/hotel-detail.html:499
+#: templates/tour-detail.html:285 templates/tour-detail.html:318
+msgid "Leave A Review"
+msgstr ""
+
+#: templates/activity-detail.html:325
+msgid "Book the Activity"
+msgstr ""
+
+#: templates/activity-detail.html:350 templates/flight-detail.html:576
+#: templates/flight-grid.html:492 templates/hotel-detail.html:561
+#: templates/hotel-detail.html:565
+msgid "Book Now"
+msgstr ""
+
+#: templates/activity-detail.html:354 templates/flight-detail.html:580
+#: templates/hotel-detail.html:573
+msgid "Remove From Wishlist"
+msgstr ""
+
+#: templates/activity-detail.html:356 templates/activity-detail.html:359
+#: templates/flight-detail.html:582 templates/flight-detail.html:585
+#: templates/hotel-detail.html:575 templates/hotel-detail.html:578
+#: templates/tour-detail.html:364 templates/tour-detail.html:367
+msgid "Add To Wishlist"
+msgstr ""
+
+#: templates/activity-detail.html:368 templates/flight-detail.html:592
+#: templates/hotel-detail.html:585 templates/tour-detail.html:374
+msgid "Share"
+msgstr ""
+
+#: templates/activity-detail.html:369 templates/flight-detail.html:593
+#: templates/hotel-detail.html:586 templates/tour-detail.html:375
+msgid "Views"
+msgstr ""
+
+#: templates/activity-detail.html:374 templates/flight-detail.html:598
+#: templates/hotel-detail.html:591 templates/tour-detail.html:380
+msgid "Get A Question?"
+msgstr ""
+
+#: templates/activity-detail.html:375 templates/tour-detail.html:381
+msgid ""
+"It is a long established fact that a reader will be distracted by the "
+"readable\n"
+"                                    content\n"
+"                                    layout."
+msgstr ""
+
+#: templates/activity-grid.html:84
+msgid "Food & Nightlife"
+msgstr ""
+
+#: templates/activity-grid.html:90
+msgid "Hot Air Balloon"
+msgstr ""
+
+#: templates/activity-grid.html:96
+msgid "Mountain Climbing"
+msgstr ""
+
+#: templates/activity-grid.html:102
+msgid "Bike Ride "
+msgstr ""
+
+#: templates/activity-grid.html:121
+msgid "Activity Duration"
+msgstr ""
+
+#: templates/activity-grid.html:126
+msgid "Up to 4 hour"
+msgstr ""
+
+#: templates/activity-grid.html:132
+msgid "4 to 8 hours"
+msgstr ""
+
+#: templates/activity-grid.html:138
+msgid "8 hours to 1 day"
+msgstr ""
+
+#: templates/activity-grid.html:151 templates/flight-grid.html:430
+#: templates/hotel-grid.html:182 templates/tour-grid.html:289
+msgid "Results Found"
+msgstr ""
+
+#: templates/activity-grid.html:158 templates/flight-grid.html:437
+#: templates/hotel-grid.html:189 templates/tour-grid.html:297
+msgid "Sort By Default"
+msgstr ""
+
+#: templates/activity-grid.html:159 templates/flight-grid.html:438
+#: templates/hotel-grid.html:190 templates/tour-grid.html:298
+msgid "Sort By Popular"
+msgstr ""
+
+#: templates/activity-grid.html:160 templates/flight-grid.html:439
+#: templates/hotel-grid.html:191 templates/tour-grid.html:299
+msgid "Sort By Low Price"
+msgstr ""
+
+#: templates/activity-grid.html:161
+msgid "Sort By High Pricw"
+msgstr ""
+
+#: templates/base.html:39 templates/profile-base.html:62
+msgid "ENG"
+msgstr ""
+
+#: templates/base.html:40 templates/profile-base.html:63
+msgid "CHN"
+msgstr ""
+
+#: templates/base.html:68 templates/profile-base.html:91
+msgid "Home"
+msgstr ""
+
+#: templates/base.html:96 templates/profile-base.html:119
+msgid "Contact"
+msgstr ""
+
+#: templates/base.html:99 templates/profile-base.html:122
+msgid "Profile"
+msgstr ""
+
+#: templates/base.html:102 templates/profile-base.html:125
+msgid "Sign in/up"
+msgstr ""
+
+#: templates/chatRoom.html:12
+msgid "Travel Agency Name"
+msgstr ""
+
+#: templates/chatRoom.html:13
+msgid "24H chat robot"
+msgstr ""
+
+#: templates/chatRoom.html:26
+msgid "Send"
+msgstr ""
+
+#: templates/flight-booking-confirm.html:35
+msgid "Flight Info"
+msgstr ""
+
+#: templates/flight-booking-confirm.html:37
+#: templates/hotel-booking-confirm.html:37
+msgid "Product Type"
+msgstr ""
+
+#: templates/flight-booking-confirm.html:38
+msgid "Company"
+msgstr ""
+
+#: templates/flight-booking-confirm.html:39
+msgid "Departure"
+msgstr ""
+
+#: templates/flight-booking-confirm.html:49
+msgid "Departure Time "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:50
+msgid "Landing time "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:57
+#: templates/tour-booking-confirm.html:55
+msgid "Customer Info "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:59
+msgid "Name "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:60
+msgid "Email "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:67
+msgid "Billing Info "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:69
+msgid "Tax "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:70
+msgid "Payment Method "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:70
+msgid "Token "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:71
+msgid "Total Payment "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:78
+msgid "Confirm Booking "
+msgstr ""
+
+#: templates/flight-booking-confirm.html:80
+msgid "Cancel Booking "
+msgstr ""
+
+#: templates/flight-detail.html:52
+msgid "reviews"
+msgstr ""
+
+#: templates/flight-detail.html:75
+msgid "Flight Type"
+msgstr ""
+
+#: templates/flight-detail.html:86
+msgid "Fare Type"
+msgstr ""
+
+#: templates/flight-detail.html:97
+msgid "Cancellation Fee"
+msgstr ""
+
+#: templates/flight-detail.html:108
+msgid "Flight Change"
+msgstr ""
+
+#: templates/flight-detail.html:119
+msgid "Seats & Baggage"
+msgstr ""
+
+#: templates/flight-detail.html:130 templates/flight-detail.html:155
+msgid "Inflight Features"
+msgstr ""
+
+#: templates/flight-detail.html:131
+msgid "Available"
+msgstr ""
+
+#: templates/flight-detail.html:141
+msgid "Taxes & Fees"
+msgstr ""
+
+#: templates/flight-detail.html:150
+msgid "About"
+msgstr ""
+
+#: templates/flight-detail.html:161
+msgid "Wifi"
+msgstr ""
+
+#: templates/flight-detail.html:168 templates/hotel-detail.html:184
+msgid "Television"
+msgstr ""
+
+#: templates/flight-detail.html:175 templates/hotel-detail.html:234
+msgid "Entertainment"
+msgstr ""
+
+#: templates/flight-detail.html:182 templates/hotel-detail.html:199
+msgid "Coffee"
+msgstr ""
+
+#: templates/flight-detail.html:189 templates/hotel-grid.html:122
+msgid "Air Conditioning"
+msgstr ""
+
+#: templates/flight-detail.html:196
+msgid "Food"
+msgstr ""
+
+#: templates/flight-detail.html:203
+msgid "Games"
+msgstr ""
+
+#: templates/flight-detail.html:210
+msgid "Wines"
+msgstr ""
+
+#: templates/flight-detail.html:217
+msgid "Comfort"
+msgstr ""
+
+#: templates/flight-detail.html:224
+msgid "Magazines"
+msgstr ""
+
+#: templates/flight-detail.html:233
+msgid "Fare Rules For Your Flight"
+msgstr ""
+
+#: templates/flight-detail.html:238
+msgid "Rules And Policies"
+msgstr ""
+
+#: templates/flight-detail.html:243
+msgid "Flight Changes"
+msgstr ""
+
+#: templates/flight-detail.html:248
+msgid "Refunds"
+msgstr ""
+
+#: templates/flight-detail.html:253
+msgid "Airline Penalties"
+msgstr ""
+
+#: templates/flight-detail.html:258
+msgid "Flight Cancellation"
+msgstr ""
+
+#: templates/flight-detail.html:263
+msgid "Airline Terms Of Use"
+msgstr ""
+
+#: templates/flight-detail.html:284
+msgid "Base On 15.5k Review"
+msgstr ""
+
+#: templates/flight-detail.html:562
+msgid "Journey Date"
+msgstr ""
+
+#: templates/flight-detail.html:599
+msgid ""
+"t is a long-established fact that a reader will be distracted by the "
+"readable\n"
+"                                    content\n"
+"                                    layout."
+msgstr ""
+
+#: templates/flight-detail.html:611 templates/hotel-detail.html:603
+msgid "Organized By"
+msgstr ""
+
+#: templates/flight-detail.html:617 templates/hotel-detail.html:609
+msgid "Roltak Travel Agency"
+msgstr ""
+
+#: templates/flight-detail.html:618 templates/hotel-detail.html:610
+msgid "Member Since 2021"
+msgstr ""
+
+#: templates/flight-detail.html:619
+msgid "Sendd Message"
+msgstr ""
+
+#: templates/flight-grid.html:47
+msgid "One Way"
+msgstr ""
+
+#: templates/flight-grid.html:53
+msgid "Round Way"
+msgstr ""
+
+#: templates/flight-grid.html:59
+msgid "Multi City"
+msgstr ""
+
+#: templates/flight-grid.html:268
+msgid "Flight Class"
+msgstr ""
+
+#: templates/flight-grid.html:273
+msgid "Business"
+msgstr ""
+
+#: templates/flight-grid.html:279
+msgid "First Class"
+msgstr ""
+
+#: templates/flight-grid.html:285
+msgid "Economy"
+msgstr ""
+
+#: templates/flight-grid.html:291
+msgid "Flight Price"
+msgstr ""
+
+#: templates/flight-grid.html:303
+msgid "Flight Time"
+msgstr ""
+
+#: templates/flight-grid.html:332
+msgid "Flight Stops"
+msgstr ""
+
+#: templates/flight-grid.html:337
+msgid "Non Stop"
+msgstr ""
+
+#: templates/flight-grid.html:343
+msgid "1 Stop"
+msgstr ""
+
+#: templates/flight-grid.html:349
+msgid "2 Stops"
+msgstr ""
+
+#: templates/flight-grid.html:355
+msgid "3 Stops"
+msgstr ""
+
+#: templates/flight-grid.html:361
+msgid "Multi Stops"
+msgstr ""
+
+#: templates/flight-grid.html:367
+msgid "Airlines"
+msgstr ""
+
+#: templates/flight-grid.html:372
+msgid "American Airlines"
+msgstr ""
+
+#: templates/flight-grid.html:378
+msgid "Delta Airlines"
+msgstr ""
+
+#: templates/flight-grid.html:384
+msgid "Qatar Airways"
+msgstr ""
+
+#: templates/flight-grid.html:390
+msgid "Fly Amirates"
+msgstr ""
+
+#: templates/flight-grid.html:396
+msgid "Singapore Airlines "
+msgstr ""
+
+#: templates/flight-grid.html:402 templates/flight-grid.html:413
+msgid "Refundable"
+msgstr ""
+
+#: templates/flight-grid.html:407
+msgid "Non Refundable"
+msgstr ""
+
+#: templates/flight-grid.html:419
+msgid "Partially Refundable"
+msgstr ""
+
+#: templates/flight-grid.html:440 templates/hotel-grid.html:192
+#: templates/tour-grid.html:300
+msgid "Sort By High Price"
+msgstr ""
+
+#: templates/flight-grid.html:483
+msgid "hours"
+msgstr ""
+
+#: templates/hotel-booking-confirm.html:35
+msgid "Hotel Info"
+msgstr ""
+
+#: templates/hotel-booking-confirm.html:39
+msgid "Room Name"
+msgstr ""
+
+#: templates/hotel-booking-confirm.html:48
+msgid "Check In Date"
+msgstr ""
+
+#: templates/hotel-booking-confirm.html:49
+msgid "Check Out Date"
+msgstr ""
+
+#: templates/hotel-booking-confirm.html:50 templates/hotel-grid.html:128
+msgid "Hotel Price"
+msgstr ""
+
+#: templates/hotel-detail.html:22
+msgid "Accommodation"
+msgstr ""
+
+#: templates/hotel-detail.html:65
+msgid "Hotel Type"
+msgstr ""
+
+#: templates/hotel-detail.html:66 templates/hotel-grid.html:146
+msgid "5 Star"
+msgstr ""
+
+#: templates/hotel-detail.html:76
+msgid "Minimum Stay"
+msgstr ""
+
+#: templates/hotel-detail.html:77
+msgid "Nights"
+msgstr ""
+
+#: templates/hotel-detail.html:88
+msgid "Country"
+msgstr ""
+
+#: templates/hotel-detail.html:99
+msgid "City"
+msgstr ""
+
+#: templates/hotel-detail.html:114
+msgid "Available Rooms"
+msgstr ""
+
+#: templates/hotel-detail.html:128
+msgid "Free Wi-Fi"
+msgstr ""
+
+#: templates/hotel-detail.html:131
+msgid "1 Single beds"
+msgstr ""
+
+#: templates/hotel-detail.html:134
+msgid "2 Single beds"
+msgstr ""
+
+#: templates/hotel-detail.html:143
+msgid "Free Toiletries"
+msgstr ""
+
+#: templates/hotel-detail.html:146
+msgid "Shower And Bathtub"
+msgstr ""
+
+#: templates/hotel-detail.html:151
+msgid "/Per Day"
+msgstr ""
+
+#: templates/hotel-detail.html:158
+msgid "Select Room"
+msgstr ""
+
+#: templates/hotel-detail.html:171
+msgid "Amenities"
+msgstr ""
+
+#: templates/hotel-detail.html:191
+msgid "Swimming Pool"
+msgstr ""
+
+#: templates/hotel-detail.html:206
+msgid "Air Condition"
+msgstr ""
+
+#: templates/hotel-detail.html:213 templates/hotel-grid.html:110
+msgid "Fitness Facility"
+msgstr ""
+
+#: templates/hotel-detail.html:220
+msgid "Bar / Lounge"
+msgstr ""
+
+#: templates/hotel-detail.html:227
+msgid "Wine Bar"
+msgstr ""
+
+#: templates/hotel-detail.html:241
+msgid "Secure Vault"
+msgstr ""
+
+#: templates/hotel-detail.html:248 templates/hotel-grid.html:104
+msgid "Airport Transportation"
+msgstr ""
+
+#: templates/hotel-detail.html:255
+msgid "Room Service"
+msgstr ""
+
+#: templates/hotel-detail.html:262
+msgid "Pets Allowed"
+msgstr ""
+
+#: templates/hotel-detail.html:269
+msgid "Breakfast"
+msgstr ""
+
+#: templates/hotel-detail.html:276 templates/hotel-grid.html:86
+msgid "Free Parking"
+msgstr ""
+
+#: templates/hotel-detail.html:283
+msgid "Fire Place"
+msgstr ""
+
+#: templates/hotel-detail.html:290
+msgid "Handicap Accessible"
+msgstr ""
+
+#: templates/hotel-detail.html:297
+msgid "Doorman"
+msgstr ""
+
+#: templates/hotel-detail.html:304
+msgid "Elevator In Building"
+msgstr ""
+
+#: templates/hotel-detail.html:311
+msgid "Suitable For Events"
+msgstr ""
+
+#: templates/hotel-detail.html:318
+msgid "Play Place"
+msgstr ""
+
+#: templates/hotel-detail.html:343
+msgid "Based on"
+msgstr ""
+
+#: templates/hotel-detail.html:343
+msgid "Review"
+msgstr ""
+
+#: templates/hotel-detail.html:513
+msgid "Bestseller"
+msgstr ""
+
+#: templates/hotel-detail.html:515
+msgid "From"
+msgstr ""
+
+#: templates/hotel-detail.html:527
+msgid "Check In"
+msgstr ""
+
+#: templates/hotel-detail.html:542
+msgid "Check Out"
+msgstr ""
+
+#: templates/hotel-detail.html:592
+msgid ""
+"It is a long established fact that a reader will be distracted by the "
+"readable\n"
+"                                    content layout."
+msgstr ""
+
+#: templates/hotel-detail.html:611
+msgid "Send Message"
+msgstr ""
+
+#: templates/hotel-grid.html:81
+msgid "Facilities"
+msgstr ""
+
+#: templates/hotel-grid.html:92
+msgid "Restaurant"
+msgstr ""
+
+#: templates/hotel-grid.html:98
+msgid "Pets Allowed "
+msgstr ""
+
+#: templates/hotel-grid.html:116
+msgid "WiFi"
+msgstr ""
+
+#: templates/hotel-grid.html:132 templates/tour-grid.html:247
+msgid "Price:"
+msgstr ""
+
+#: templates/hotel-grid.html:141
+msgid "Hotel Star"
+msgstr ""
+
+#: templates/hotel-grid.html:151
+msgid "4 Star"
+msgstr ""
+
+#: templates/hotel-grid.html:157
+msgid "3 Star"
+msgstr ""
+
+#: templates/hotel-grid.html:163
+msgid "2 Star"
+msgstr ""
+
+#: templates/hotel-grid.html:169
+msgid "1 Star"
+msgstr ""
+
+#: templates/profile-base.html:170 templates/profile-booking.html:4
+msgid "My Booking"
+msgstr ""
+
+#: templates/profile-base.html:171
+msgid "My Profile"
+msgstr ""
+
+#: templates/profile-base.html:173 templates/profile-wishlist.html:12
+msgid "My Wishlist"
+msgstr ""
+
+#: templates/profile-base.html:175
+msgid "My Wallet"
+msgstr ""
+
+#: templates/profile-base.html:177
+msgid "Settings"
+msgstr ""
+
+#: templates/profile-base.html:178
+msgid "Logout"
+msgstr ""
+
+#: templates/profile-booking.html:9
+msgid "No"
+msgstr ""
+
+#: templates/profile-booking.html:10
+msgid "Booking Name"
+msgstr ""
+
+#: templates/profile-booking.html:11
+msgid "Type"
+msgstr ""
+
+#: templates/profile-booking.html:12 templates/tour-detail.html:70
+msgid "Date"
+msgstr ""
+
+#: templates/profile-booking.html:13
+msgid "Price"
+msgstr ""
+
+#: templates/profile-booking.html:14
+msgid "Status"
+msgstr ""
+
+#: templates/profile-booking.html:15
+msgid "Action"
+msgstr ""
+
+#: templates/profile-booking.html:27
+msgid "Finished"
+msgstr ""
+
+#: templates/profile-booking.html:29
+msgid "Upcoming"
+msgstr ""
+
+#: templates/profile-booking.html:35
+msgid "Cancel"
+msgstr ""
+
+#: templates/profile-setting.html:5 templates/profile-setting.html:37
+msgid "Update Profile Info"
+msgstr ""
+
+#: templates/profile-setting.html:11
+msgid "User Name"
+msgstr ""
+
+#: templates/profile-setting.html:25
+msgid "Phone"
+msgstr ""
+
+#: templates/profile-setting.html:32
+msgid "Address"
+msgstr ""
+
+#: templates/profile-wallet.html:9
+msgid "Wallet Balance"
+msgstr ""
+
+#: templates/profile-wallet.html:41
+msgid "Add Balance"
+msgstr ""
+
+#: templates/profile-wallet.html:47
+msgid "Add Amount"
+msgstr ""
+
+#: templates/profile-wallet.html:51
+msgid "Add Now"
+msgstr ""
+
+#: templates/profile-wishlist.html:2
+msgid "Clear your calendar successfully!"
+msgstr ""
+
+#: templates/profile-wishlist.html:8
+msgid "Add to your calendar successfully!"
+msgstr ""
+
+#: templates/profile-wishlist.html:8
+msgid "Click the button below to have a look!"
+msgstr ""
+
+#: templates/profile-wishlist.html:14
+msgid "Clear calendar"
+msgstr ""
+
+#: templates/profile-wishlist.html:52
+msgid "Plan them in my calendar"
+msgstr ""
+
+#: templates/profile-wishlist.html:95
+msgid "Close"
+msgstr ""
+
+#: templates/profile-wishlist.html:96
+msgid "Save Changes"
+msgstr ""
+
+#: templates/profile.html:3
+msgid "Profile Info"
+msgstr ""
+
+#: templates/profile.html:7
+msgid "Nickname:"
+msgstr ""
+
+#: templates/profile.html:8
+msgid "Email:"
+msgstr ""
+
+#: templates/profile.html:9
+msgid "Phone:"
+msgstr ""
+
+#: templates/profile.html:10
+msgid "Address:"
+msgstr ""
+
+#: templates/profile.html:11
+msgid "Join Date:"
+msgstr ""
+
+#: templates/tour-booking-confirm.html:35
+msgid "Tour Info"
+msgstr ""
+
+#: templates/tour-booking-confirm.html:37
+msgid "Product Type "
+msgstr ""
+
+#: templates/tour-booking-confirm.html:38
+msgid "Product Name "
+msgstr ""
+
+#: templates/tour-booking-confirm.html:39
+msgid "Product Category "
+msgstr ""
+
+#: templates/tour-booking-confirm.html:46
+msgid "Product Info "
+msgstr ""
+
+#: templates/tour-booking-confirm.html:48
+msgid "Tour Date "
+msgstr ""
+
+#: templates/tour-booking-confirm.html:49
+msgid "Tour Price "
+msgstr ""
+
+#: templates/tour-detail.html:60
+msgid "Days"
+msgstr ""
+
+#: templates/tour-detail.html:92 templates/tour-grid.html:210
+msgid "Tour Type"
+msgstr ""
+
+#: templates/tour-detail.html:126
+msgid "Itinerary"
+msgstr ""
+
+#: templates/tour-detail.html:161
+msgid "Base On "
+msgstr ""
+
+#: templates/tour-detail.html:257
+msgid "Showing "
+msgstr ""
+
+#: templates/tour-detail.html:332
+msgid "Book the tour"
+msgstr ""
+
+#: templates/tour-detail.html:357
+msgid "Book now"
+msgstr ""
+
+#: templates/tour-detail.html:361
+msgid ""
+"Remove From\n"
+"                                                        Wishlist"
+msgstr ""
+
+#: templates/tour-grid.html:216
+msgid "Cultural tourism"
+msgstr ""
+
+#: templates/tour-grid.html:223
+msgid "Wildlife observation"
+msgstr ""
+
+#: templates/tour-grid.html:230
+msgid "Cruises"
+msgstr ""
+
+#: templates/tour-grid.html:237
+msgid "Grass Skyline"
+msgstr ""
+
+#: templates/tour-grid.html:243
+msgid "Tour Price"
+msgstr ""
+
+#: templates/tour-grid.html:256
+msgid "Tour Duration"
+msgstr ""
+
+#: templates/tour-grid.html:262
+msgid "1 to 2 days"
+msgstr ""
+
+#: templates/tour-grid.html:269
+msgid "3 to 5 days "
+msgstr ""
+
+#: templates/tour-grid.html:276
+msgid "More than 5 days"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:2
+msgid "Menu"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:6
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/register_user.html:3
+msgid "Register"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:9
+msgid "Forgot password"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:12
+msgid "Confirm account"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/change_password.html:3
+msgid "Change password"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/forgot_password.html:3
+msgid "Send password reset instructions"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/reset_password.html:3
+msgid "Reset password"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_confirmation.html:3
+msgid "Resend confirmation instructions"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:1
+msgid "Your password has been changed."
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
+msgid "If you did not change your password,"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
+msgid "click here to reset it"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
+msgid "Please confirm your email through the link below:"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:6
+msgid "Confirm my account"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:1
+#, python-format
+msgid "Welcome %(email)s!"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:3
+msgid "You can log into your account through the link below:"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:5
+msgid "Login now"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_instructions.html:1
+msgid "Click here to reset your password"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_notice.html:1
+msgid "Your password has been reset"
+msgstr ""
+
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:4
+msgid "You can confirm your email through the link below:"
+msgstr ""
+

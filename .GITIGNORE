@@ -1,8 +1,25 @@
-startvenv.ps1
+startvenv.*
 
 .idea
 .vscode
 .github
 __pycache__
 
+temp.*
+test.*
+
+migrations
+userdata
+
+.env
 venv
+venv/
+
+*.db
+*.sqlite3
+*.log
+
+
+# User data folders by now
+userdata/
+activity_img/
