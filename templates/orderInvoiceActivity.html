@@ -421,7 +421,7 @@
                             <div class="card__header">
                                 <div class="row gutter-bottom-xs justify-content-between flex-grow-1">
                                     <div class="col">
-                                        <h2 class="order-invoice__title"><b class="text-uppercase">Activity Invoice</b> <br> #order number</h2>
+                                        <h2 class="order-invoice__title"><b class="text-uppercase">Activity Invoice</b> <br> #{{ order.id }}</h2>
                                         <div class="order-invoice__address"><span class="text-grey-dark">Group7</span>
                                             <br>Beijing University of Technology
                                             <br> <a href="#">+1 (070) 123-4567</a>
@@ -548,7 +548,7 @@
                                         <ul class="card-order__total">
                                             <li class="card-order__total-item">
                                                 <div class="card-order__total-title">Subtotal:</div>
-                                                <div class="card-order__total-value">${{ (order.cost)|round(2) }}</div>
+                                                <div class="card-order__total-value">${{ (order.cost)|round(2) - (order.cost * 0.05)|round(2) }}</div>
                                             </li>
                                             <li class="card-order__total-item">
                                                 <div class="card-order__total-title">TAX(5%):</div>
@@ -556,7 +556,7 @@
                                             </li>
                                             <li class="card-order__total-item card-order__total-footer">
                                                 <div class="card-order__total-title">total:</div>
-                                                <div class="card-order__total-value">${{ (order.cost)|round(2) + (order.cost * 0.05)|round(2) }}</div>
+                                                <div class="card-order__total-value">${{ (order.cost)|round(2) }}</div>
                                             </li>
                                         </ul>
                                     </div>
