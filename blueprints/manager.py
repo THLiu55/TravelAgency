@@ -856,11 +856,11 @@ def load_info():
 def customer_detail():
     customer = Customer.query.filter_by(id=int(request.args.get("id"))).first()
     orders = []
-    orders += [val for val in HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
-    orders += [val for val in TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
-    orders += [val for val in ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
-    orders += [val for val in FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
-    return render_template("customerDetail.html", customer=customer, orders = orders)
+    orders += [val.serialize() for val in HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    orders += [val.serialize() for val in TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    orders += [val.serialize() for val in ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    orders += [val.serialize() for val in FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    return render_template("customerDetail.html", customer=customer, orders=orders)
 
 
 @bp.route("/invoice", methods=["GET"])
