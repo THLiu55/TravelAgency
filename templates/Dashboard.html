@@ -450,12 +450,12 @@
                                                 <div class="card__widgets-row gutter-bottom-sm">
                                                     <div class="card-widget">
                                                         <h4 class="card-widget__title">Current week</h4>
-                                                        <div class="card-widget__trade"><span class="card-widget__count text-red">${{ data.profit_this }}</span>
+                                                        <div class="card-widget__trade"><span class="card-widget__count text-red">${{ (data.profit_this)|round(2) }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="card-widget">
                                                         <h4 class="card-widget__title">Previous week</h4>
-                                                        <div class="card-widget__trade"><span class="card-widget__count text-grey">${{ data.profit_prev }}</span>
+                                                        <div class="card-widget__trade"><span class="card-widget__count text-grey">${{ (data.profit_prev)|round(2) }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -491,33 +491,33 @@
                                                         <tr>
                                                             <td><span class="signal" style="color: #FF3D57;"></span><span>Activity</span>
                                                             </td>
-                                                            <td><span>${{ data.profit_split[0] }}</span>
+                                                            <td><span>${{ (data.profit_split[0])|round(2) }}</span>
                                                             </td>
-                                                            <td><span class="text-grey">{{ data.percent[0] }}%</span>
+                                                            <td><span class="text-grey">{{ (data.percent[0])|round(2) }}%</span>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td><span class="signal" style="color: #FDBF5E;"></span><span>Hotel</span>
                                                             </td>
-                                                            <td><span>${{ data.profit_split[2] }}</span>
+                                                            <td><span>${{ (data.profit_split[2])|round(2) }}</span>
                                                             </td>
-                                                            <td><span class="text-grey">{{ data.percent[2] }}%</span>
+                                                            <td><span class="text-grey">{{ (data.percent[2])|round(2) }}%</span>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td><span class="signal" style="color: #22CCE2;"></span><span>Flight</span>
                                                             </td>
-                                                            <td><span>${{ data.profit_split[3] }}</span>
+                                                            <td><span>${{ (data.profit_split[3])|round(2) }}</span>
                                                             </td>
-                                                            <td><span class="text-grey">{{ data.percent[3] }}%</span>
+                                                            <td><span class="text-grey">{{ (data.percent[3])|round(2) }}%</span>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td><span class="signal" style="color: #eef213;"></span><span>Tour</span>
                                                             </td>
-                                                            <td><span>${{ data.profit_split[1] }}</span>
+                                                            <td><span>${{ (data.profit_split[1])|round(2) }}</span>
                                                             </td>
-                                                            <td><span class="text-grey">{{ data.percent[1] }}%</span>
+                                                            <td><span class="text-grey">{{ (data.percent[1])|round(2) }}%</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
