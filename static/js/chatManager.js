@@ -77,6 +77,9 @@ $(document).ready(function () {
     }
   });
   $(".chat-users__list-item").click(function () {
+    if ($(this).find(".chat-users__item").hasClass("active")) {
+      return;
+    }
     socket.emit("leave", {
       target_customer_id: selectedCustomerId, // leave the previous room
     });
@@ -155,9 +158,6 @@ function updateCusSelection(clickedLoc) {
       console.log(data);
     },
   });
-  // then send 'read' event to socket
-
-  // then update the unread counter and last message preview of the selected customer
 }
 
 function clearUnreadCounterInItem(targetItem) {
