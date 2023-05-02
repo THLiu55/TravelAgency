@@ -47,6 +47,11 @@
 </div>
 </div>
 
+<form action="{{ url_for('customer.recognize') }}" method="POST" enctype="multipart/form-data">
+    <input name="photo-to-recognize" type="file">
+    <button type="submit">recognize</button>
+</form>
+
 </main>
 
 

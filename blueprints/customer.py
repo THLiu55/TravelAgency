@@ -1,3 +1,4 @@
+import os.path
 from datetime import datetime, timedelta
 import json
 
@@ -10,6 +11,7 @@ from flask_mail import Message
 from utils.generate_hash import check_hash_time, get_hash_time
 from flask_babel import Babel, gettext as _, refresh
 from utils.decorators import login_required
+from recognize import main
 
 bp = Blueprint("customer", __name__, url_prefix="/")
 
@@ -65,6 +67,7 @@ def homepage():
                            total_flights=total_flights, flights=flights, total_hotels=total_hotels, hotels=hotels,
                            total_tours=total_tours, tours=tours,
                            logged=logged)
+
 
 @bp.route("/getLocation", methods=["GET", "POST"])
 def get_location():
@@ -594,3 +597,9 @@ def update_profile():
     customer.address = request.form.get("address")
     db.session.commit()
     return redirect(url_for('customer.profile'))
+
+
+@bp.route("/recognize", methods=['POST'])
+def recognize():
+    photo = request.files['photo-to-recognize']
+    return jsonify({"result":main(photo)})

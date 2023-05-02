@@ -3,7 +3,7 @@ import os
 
 class Config(object):
     DEBUG = False
-
+    JSON_AS_ASCII = False
     # SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getenv("DB_URI")
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.getenv("ENV_NAME") + ".sqlite3"
     MAIL_SERVER = os.getenv("MAIL_SERVER")
