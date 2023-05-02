@@ -2,7 +2,7 @@ import json
 import datetime
 import math
 
-from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for
+from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for, flash
 from model import *
 from exts import db
 from utils.decorators import login_required
@@ -176,6 +176,7 @@ def order_success():
         db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
+        flash("Insufficient balance in your wallet, please top up first")
         return redirect(url_for('customer.profile', page='/wallet'))
 
 

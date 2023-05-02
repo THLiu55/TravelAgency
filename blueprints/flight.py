@@ -1,7 +1,7 @@
 import json
 import math
 
-from flask import Blueprint, session, render_template, request, url_for, redirect, jsonify
+from flask import Blueprint, session, render_template, request, url_for, redirect, jsonify, flash
 from model import Flight, FlightOrder, FlightReview, Customer, Activity, ActivityOrder
 import datetime
 from exts import db
@@ -109,6 +109,7 @@ def order_success():
         db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
+        flash("Insufficient balance in your wallet, please top up first")
         return redirect(url_for('customer.profile', page='/wallet'))
 
 

@@ -1,7 +1,7 @@
 import datetime
 import json, math
 
-from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for
+from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for, flash
 from model import *
 from exts import db
 from sqlalchemy import or_
@@ -219,6 +219,7 @@ def order_success():
         db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"))
     else:
+        flash("Insufficient balance in your wallet, please top up first")
         return redirect(url_for('customer.profile', page='/wallet'))
 
 

@@ -13,7 +13,17 @@
 </div>
 </div>
 </div>
-<!-- <div class="col-md-6 col-lg-4">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for message in messages %}
+        <li style="color: rgb(255, 128, 0);font-weight: 700; font-size: 1.2em;    font-family: 'Roboto', sans-serif;">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<!-- 
+<div class="col-md-6 col-lg-4">
 <div class="dashboard-widget dashboard-widget-color-3">
 <div class="dashboard-widget-info">
 <h1>$50,000</h1>
@@ -24,6 +34,9 @@
 </div>
 </div>
 </div>
+
+
+
 <div class="col-md-6 col-lg-4">
 <div class="dashboard-widget dashboard-widget-color-1">
 <div class="dashboard-widget-info">
