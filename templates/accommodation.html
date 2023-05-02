@@ -1213,6 +1213,7 @@
                                                     <div class="col-lg-6">
                                                     </div>
                                                     <h5 class="my-4">Location</h5>
+                                                    <div class="row align-items-center">
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>City</label>
@@ -1227,6 +1228,23 @@
                                                                 placeholder="Enter state">
                                                         </div>
                                                     </div>
+                                                    <div></div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Longitude</label>
+                                                            <input type="text" class="form-control" name="city"
+                                                                placeholder="longitude of your location">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>latitude</label>
+                                                            <input type="text" class="form-control" name="state"
+                                                                placeholder="latitude of your location">
+                                                        </div>
+                                                    </div>
+                                                    <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+                                                </div>
                                                     <!-- <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Zip Code</label>

@@ -66,6 +66,10 @@ def homepage():
                            total_tours=total_tours, tours=tours,
                            logged=logged)
 
+@bp.route("/getLocation", methods=["GET", "POST"])
+def get_location():
+    return render_template('get_lan_lat.html')
+
 
 @bp.route("/logout")
 def logout():

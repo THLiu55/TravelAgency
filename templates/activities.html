@@ -281,6 +281,24 @@
                                                                     placeholder="Enter address">
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Longitude</label>
+                                                                <input type="text" class="form-control" name="city"
+                                                                    placeholder="longitude of your location">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>latitude</label>
+                                                                <input type="text" class="form-control" name="state"
+                                                                    placeholder="latitude of your location">
+                                                            </div>
+                                                        </div>
+                                                        <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+                                                    
+
                                                         <h5 class="my-4">Your Activity Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4" style="max-width: none;">
@@ -655,6 +673,22 @@
                                                                     placeholder="Enter address">
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Longitude</label>
+                                                                <input type="text" class="form-control" name="city"
+                                                                    placeholder="longitude">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>latitude</label>
+                                                                <input type="text" class="form-control" name="state"
+                                                                    placeholder="latitude">
+                                                            </div>
+                                                        </div>
+                                                        <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+                                                    </div>
 
                                                         <h5 class="my-4">Your Activity Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
