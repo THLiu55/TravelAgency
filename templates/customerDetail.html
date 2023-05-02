@@ -21,11 +21,11 @@
                     <div class="col-lg-6">
                         <div class="profile-info-list">
                             <ul>
-                                <li>{{ _("Nickname:") }} <span>111</span></li>
-                                <li>{{ _("Email:") }}<span>222</span></li>
-                                <li>{{ _("Phone:") }} <span>333</span></li>
-                                <li>{{ _("Address:") }} <span>444</span></li>
-                                <li>{{ _("Join Date:") }} <span>555</span></li>
+                                <li>{{ _("Nickname:") }} <span>{{ customer.nickname }}</span></li>
+                                <li>{{ _("Email:") }}<span>{{ customer.email }}</span></li>
+                                <li>{{ _("Phone:") }} <span>{{ customer.phone_number }}</span></li>
+                                <li>{{ _("Address:") }} <span>{{ customer.address }}</span></li>
+                                <li>{{ _("Join Date:") }} <span>{{ customer.join_date }}</span></li>
                             </ul>
                         </div>
                     </div>
@@ -62,6 +62,8 @@
                                             </label>
                                         </div>
                                     </th>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">ID</span><span class="sort sort--down"></span>
+                                    </th>
                                     <th class="table__th-sort"><span class="align-middle">Product Type</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Total</span><span class="sort sort--down"></span>
@@ -70,13 +72,35 @@
                                     </th>
                                     <th class="table__th-sort"><span class="align-middle">End Date</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
-                                    </th>
                                     <th class="table__actions"></th>
                                 </tr>
                             </thead>
                             <tbody id="tour-container">
-
+                                {% for order in orders %}
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="d-none d-sm-table-cell table__td">
+                                            {{ order['id'] }}
+                                        </td>
+                                        <td class="table__td">{{ order['category'] }}</td>
+                                        <td class="table__td"><span class="text-grey">{{ order['cost'] }}</span>
+                                        </td>
+                                        <td class="table__td"><span>{{ order['start_time'] }}</span>
+                                        </td>
+                                        <td class="d-none d-lg-table-cell table__td"><span
+                                                class="text-grey">{{ order['end_time'] }}</span>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     <div class="table-wrapper__footer">
@@ -100,7 +124,6 @@
     <script src="{{ url_for('static', filename='css/calendar/js/fullcalendar.js') }}"></script>
     <script src="{{ url_for('static', filename='css/calendar/js/page/calendarCustomerDetail.js') }}"></script>
     <script src="{{ url_for('static', filename='css/calendar/js/locale-all.js') }}"></script>
-
 {% endblock %}
 
 </html>

@@ -33,93 +33,93 @@ def manager_homepage():
     today = datetime.combine(datetime.now().date(), datetime.min.time())
 
     today_reviews = (
-        db.session.query(func.count(ActivityReview.id))
-        .filter(
-            ActivityReview.issueTime >= today,
-            ActivityReview.issueTime < today + timedelta(days=1),
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(ActivityReview.id))
+            .filter(
+                ActivityReview.issueTime >= today,
+                ActivityReview.issueTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
     )
     today_reviews += (
-        db.session.query(func.count(TourReview.id))
-        .filter(
-            TourReview.issueTime >= today,
-            TourReview.issueTime < today + timedelta(days=1),
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(TourReview.id))
+            .filter(
+                TourReview.issueTime >= today,
+                TourReview.issueTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
     )
     today_reviews += (
-        db.session.query(func.count(HotelReview.id))
-        .filter(
-            HotelReview.issueTime >= today,
-            HotelReview.issueTime < today + timedelta(days=1),
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(HotelReview.id))
+            .filter(
+                HotelReview.issueTime >= today,
+                HotelReview.issueTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
     )
 
     today_customers = (
-        db.session.query(func.count())
-        .filter(
-            Customer.join_date >= today, Customer.join_date < today + timedelta(days=1)
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count())
+            .filter(
+                Customer.join_date >= today, Customer.join_date < today + timedelta(days=1)
+            )
+            .scalar()
+            or 0
     )
 
     today_orders = (
-        db.session.query(func.count(ActivityOrder.id))
-        .filter(
-            ActivityOrder.startTime >= today,
-            ActivityOrder.startTime < today + timedelta(days=1),
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(ActivityOrder.id))
+            .filter(
+                ActivityOrder.startTime >= today,
+                ActivityOrder.startTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
     )
     today_orders += (
-        db.session.query(func.count(TourOrder.id))
-        .filter(
-            TourOrder.startTime >= today,
-            TourOrder.startTime < today + timedelta(days=1),
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(TourOrder.id))
+            .filter(
+                TourOrder.startTime >= today,
+                TourOrder.startTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
     )
     today_orders += (
-        db.session.query(func.count(HotelOrder.id))
-        .filter(
-            HotelOrder.endTime >= today,
-            HotelOrder.endTime < today + timedelta(days=1)
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(HotelOrder.id))
+            .filter(
+                HotelOrder.endTime >= today,
+                HotelOrder.endTime < today + timedelta(days=1)
+            )
+            .scalar()
+            or 0
     )
     today_orders += (
-        db.session.query(func.count(FlightOrder.id))
-        .filter(
-            FlightOrder.startTime >= today,
-            FlightOrder.startTime < today + timedelta(days=1),
-        )
-        .scalar()
-        or 0
+            db.session.query(func.count(FlightOrder.id))
+            .filter(
+                FlightOrder.startTime >= today,
+                FlightOrder.startTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
     )
 
     total_reviews = (
-        db.session.query(
-            func.coalesce(func.sum(Activity.review_num), 0)
-            + func.coalesce(func.sum(Tour.review_num), 0)
-            + func.coalesce(func.sum(Hotel.review_num), 0)
-        ).scalar()
-        or 0
+            db.session.query(
+                func.coalesce(func.sum(Activity.review_num), 0)
+                + func.coalesce(func.sum(Tour.review_num), 0)
+                + func.coalesce(func.sum(Hotel.review_num), 0)
+            ).scalar()
+            or 0
     )
 
     total_orders = (
-        (db.session.query(func.count(TourOrder.id)).scalar() or 0)
-        + (db.session.query(func.count(HotelOrder.id)).scalar() or 0)
-        + (db.session.query(func.count(ActivityOrder.id)).scalar() or 0)
-        + (db.session.query(func.count(FlightOrder.id)).scalar() or 0)
+            (db.session.query(func.count(TourOrder.id)).scalar() or 0)
+            + (db.session.query(func.count(HotelOrder.id)).scalar() or 0)
+            + (db.session.query(func.count(ActivityOrder.id)).scalar() or 0)
+            + (db.session.query(func.count(FlightOrder.id)).scalar() or 0)
     )
 
     num_customers = db.session.query(func.count(Customer.id)).scalar() or 0
@@ -147,13 +147,13 @@ def manager_homepage():
     for order, i in zip([ActivityOrder, HotelOrder, TourOrder, FlightOrder], range(4)):
         tmp = (
             db.session.query(func.date(order.startTime if order != HotelOrder else order.endTime), func.sum(order.cost))
-            .filter(
+                .filter(
                 (order.startTime if order != HotelOrder else order.endTime) <= end_date,
                 (order.startTime if order != HotelOrder else order.endTime) >= start_date,
                 order.purchased == 1,
             )
-            .group_by(func.date(order.startTime if order != HotelOrder else order.endTime))
-            .all()
+                .group_by(func.date(order.startTime if order != HotelOrder else order.endTime))
+                .all()
         )
         profit_split[i] = sum([item[1] for item in tmp])
         results += tmp
@@ -162,13 +162,13 @@ def manager_homepage():
     for order in [ActivityOrder, HotelOrder, TourOrder, FlightOrder]:
         results += (
             db.session.query(func.date(order.startTime if order != HotelOrder else order.endTime), func.sum(order.cost))
-            .filter(
+                .filter(
                 (order.startTime if order != HotelOrder else order.endTime) <= start_date,
                 (order.startTime if order != HotelOrder else order.endTime) >= prev_date,
                 order.purchased == 1,
             )
-            .group_by(func.date(order.startTime if order != HotelOrder else order.endTime))
-            .all()
+                .group_by(func.date(order.startTime if order != HotelOrder else order.endTime))
+                .all()
         )
 
     print(results)
@@ -854,7 +854,13 @@ def load_info():
 @bp.route("/customer_detail", methods=["POST", "GET"])
 @staff_login_required
 def customer_detail():
-    return render_template("customerDetail.html")
+    customer = Customer.query.filter_by(id=int(request.args.get("id"))).first()
+    orders = []
+    orders += [val.serialize() for val in HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    orders += [val.serialize() for val in TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    orders += [val.serialize() for val in ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    orders += [val.serialize() for val in FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()]
+    return render_template("customerDetail.html", customer=customer, orders=orders)
 
 
 @bp.route("/invoice", methods=["GET"])
@@ -920,7 +926,7 @@ def plan_obj_serializer(plan_obj):
     }
 
 
-@bp.route("/customer_detail")
+@bp.route("/customer_info", methods=["POST"])
 def plan_events():
     customer = Customer.query.filter_by(id=int(request.args.get("id"))).first()
     hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
@@ -973,5 +979,4 @@ def plan_events():
         plan_list.append(plan_object)
     plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
     json_data = json.dumps(plan_dict_list)
-
     return jsonify(json.loads(json_data))
