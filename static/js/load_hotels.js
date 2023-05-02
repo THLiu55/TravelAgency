@@ -138,14 +138,29 @@ function clearInputs(){
     location.reload();
 }
 
+function setModifySelect(id,value) {
+    const select = $("#"+id);
+    select.val(value)
+    select.niceSelect("update");
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            var response = xhr.responseText;
+       if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
         // 处理服务器返回的数据
             console.log(response);
+            //参数为设置的id和传入的值（值需要与select中option的value一致）
+            setModifySelect("modify_hotel_star", response['content']["hotel_star"]);
+            setModifySelect("modify_min_stay", response['content']["min_stay"]);
+            setModifySelect("modify_security", response['content']["security"]);
+            setModifySelect("modify_on_site_staff", response['content']["on_site_staff"]);
+            setModifySelect("modify_house_keeping", response['content']["house_keeping"]);
+            setModifySelect("modify_front_desk", response['content']["front_desk"]);
+            setModifySelect("modify_bathroom", response['content']["bathroom"]);
+
         } else {
         // 处理错误情况
             console.log('wrong');

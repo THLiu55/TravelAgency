@@ -139,14 +139,24 @@ function clearInputs(){
     location.reload();
 }
 
+function setModifySelect(id,value) {
+    const select = $("#"+id);
+    select.val(value)
+    select.niceSelect("update");
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-            var response = xhr.responseText;
+       if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
         // 处理服务器返回的数据
             console.log(response);
+            //参数为设置的id和传入的值（值需要与select中option的value一致）
+            setModifySelect("modify_Activity_Category", response['content']["category"]);
+            setModifySelect("modify_Duration", response['content']["duration"]);
+            setModifySelect("modify_group_size", response['content']["group_size"]);
         } else {
         // 处理错误情况
             console.log('wrong');
