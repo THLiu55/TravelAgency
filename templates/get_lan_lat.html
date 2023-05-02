@@ -36,28 +36,34 @@ body { margin: 0; padding: 0; }
     const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl,
-        language: 'zh-Hans'
+        language: 'en'
     });
 
     // Add the control to the map.
     map.addControl(geocoder);
 
-
-    // 创建一个Marker对象
     const marker = new mapboxgl.Marker({
-        draggable: true // 允许拖拽
+        draggable: true
     })
-    .setLngLat([116.47697557677532, 39.87322752073521]) // 设置Marker的初始位置
-    .addTo(map); // 添加到地图上
+    .setLngLat([116.47697557677532, 39.87322752073521])
+    .addTo(map);
 
-    // 监听dragend事件，获取Marker的经纬度坐标
+
     marker.on('dragend', (event) => {
-        const lngLat = marker.getLngLat(); // 获取Marker的经纬度坐标
-        console.log(`Marker position: ${lngLat.lng}, ${lngLat.lat}`); // 在控制台输出经纬度信息
-
-        const positionElement = document.getElementById('position');
-
+    const lngLat = marker.getLngLat();
+    alert("lat is: "+lngLat.lat);
+    alert("lng is: "+lngLat.lng);
+    const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${lngLat.lng},${lngLat.lat}.json?access_token=${mapboxgl.accessToken}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const [location] = data.features;
+            const address = location.place_name;
+            alert(address);
+        })
+        .catch(error => console.error(error));
     });
+
 
 
     const inputElement = document.querySelector('.mapboxgl-ctrl-geocoder--input');
@@ -65,9 +71,6 @@ body { margin: 0; padding: 0; }
 
     const iconElement = document.querySelector('.mapboxgl-ctrl-geocoder--icon-search');
     iconElement.style.display = 'none';
-
-    let aa = geocoder.getLanguage();
-    alert(aa);
 
 
 
