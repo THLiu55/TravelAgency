@@ -166,6 +166,19 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
+            var datePicker1 = document.getElementById('m_from_date');
+            start_time = response['content']["start_time"]
+            date_str1 = start_time.split("T")[0]
+           console.log(start_time)
+            console.log(date_str1)
+            datePicker1.value = date_str1;
+
+            var datePicker2 = document.getElementById('m_end_date');
+            end_time = response['content']["end_time"]
+            date_str2 = end_time.split("T")[0]
+            console.log(date_str2)
+            datePicker2.value = date_str2;
+
         } else {
         // 处理错误情况
             console.log('wrong');

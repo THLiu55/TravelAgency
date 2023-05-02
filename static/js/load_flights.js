@@ -175,7 +175,16 @@ function getModifyData(id){
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
 
-
+            var datePicker1 = document.getElementById('modify-take-off-time');
+            start_time = response['content']["takeoff_time"]
+            console.log(111)
+            console.log(start_time)
+            datePicker1.value = start_time;
+            //
+            var datePicker2 = document.getElementById('modify-landing-time');
+            end_time = response['content']["landing_time"]
+            console.log(222)
+            datePicker2.value = end_time;
 
         } else {
         // 处理错误情况

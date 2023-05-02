@@ -184,6 +184,10 @@ function getModifyData(id){
             date_str2 = end_time.split(" ")[0]
             console.log(date_str2)
             datePicker2.value = date_str2;
+
+            var datePicker3 = document.getElementById('m_open_hour');
+            open_hour = response['content']["openHour"]
+            datePicker3.value = open_hour;
         } else {
         // 处理错误情况
             console.log('wrong');
