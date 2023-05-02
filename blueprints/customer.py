@@ -62,7 +62,7 @@ def homepage():
         tour.images = json.loads(tour.images)['images']
         tour.images[0] = tour.images[0][tour.images[0].index('static'):].lstrip('static')
     return render_template("Homepage.html", total_activities=total_activities, activities=activities,
-                           total_flights=total_flights,flights=flights, total_hotels=total_hotels, hotels=hotels,
+                           total_flights=total_flights, flights=flights, total_hotels=total_hotels, hotels=hotels,
                            total_tours=total_tours, tours=tours,
                            logged=logged)
 
@@ -193,7 +193,7 @@ def profilepage():
 
 
 @bp.route("/plan_events_wishlist", methods=["GET"])
-def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
+def plan_events_wishlist(flightlist, hotelList, tourList, activityList):
     customer = Customer.query.get(session.get('customer_id'))
     hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
@@ -275,7 +275,7 @@ def plan_events_wishlist(flightlist,hotelList, tourList, activityList):
         plan_list.append(plan_object)
     plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
     json_data = json.dumps(plan_dict_list)
-    print(json_data,"-----------------")
+    print(json_data, "-----------------")
 
     return jsonify(json.loads(json_data))
 
@@ -389,7 +389,7 @@ def wishlist():
                                    flight_obj.review_num, flight_obj.price,
                                    flight_obj.images[0],
                                    url_for('flight.flightDetail', flight_id=flight_obj.id), flight_i.startTime,
-                                   "Flight",flight_i.productID)
+                                   "Flight", flight_i.productID)
         order_list.append(order_obj)
     for hotel_i in hotel_orders:
         hotel_obj = Hotel.query.get(hotel_i.productID)
@@ -397,7 +397,8 @@ def wishlist():
         hotel_obj.images[0] = hotel_obj.images[0][hotel_obj.images[0].index('static'):]
         order_object = WishListObject(hotel_obj.name, hotel_obj.address + " " + hotel_obj.city, 5, "Excellent",
                                       hotel_obj.review_num, hotel_obj.min_price, hotel_obj.images[0],
-                                      url_for('hotel.hotelDetail', hotel_id=hotel_obj.id), hotel_i.endTime, "Hotel",hotel_i.id)
+                                      url_for('hotel.hotelDetail', hotel_id=hotel_obj.id), hotel_i.endTime, "Hotel",
+                                      hotel_i.id)
         order_list.append(order_object)
     for tour_i in tour_orders:
         tour_object = Tour.query.get(tour_i.productID)
@@ -405,7 +406,8 @@ def wishlist():
         tour_object.images[0] = tour_object.images[0][tour_object.images[0].index('static'):]
         order_object = WishListObject(tour_object.name, tour_object.address + " " + tour_object.city, 5, "Excellent",
                                       tour_object.review_num, tour_object.price, tour_object.images[0],
-                                      url_for('tour.tourDetail', tour_id=tour_object.id), tour_i.startTime, "Tour",tour_i.id)
+                                      url_for('tour.tourDetail', tour_id=tour_object.id), tour_i.startTime, "Tour",
+                                      tour_i.id)
         order_list.append(order_object)
     for activity_i in activity_orders:
         activity_object = Activity.query.get(activity_i.productID)
@@ -415,7 +417,7 @@ def wishlist():
                                       "Excellent", activity_object.review_num, activity_i.cost,
                                       activity_object.images[0],
                                       url_for('activity.activityDetail', activity_id=activity_i.productID),
-                                      activity_i.startTime, "Activity",activity_i.productID)
+                                      activity_i.startTime, "Activity", activity_i.productID)
         order_list.append(order_object)
     sorted_orders = sorted(order_list, key=lambda obj: obj.time, reverse=True)
     length = len(sorted_orders)
@@ -482,7 +484,6 @@ def plan_wishlist():
         plan_object.end = activity_i.endTime
         plan_list.append(plan_object)
 
-
     for hotel_ii in hotelList:
         plan_object = PlanObj()
         plan_object.title = Hotel.query.get(hotel_ii.productID).name
@@ -517,22 +518,32 @@ def plan_wishlist():
         print(plan_object.start, plan_object.end)
         plan_list.append(plan_object)
 
-
     plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
     json_data = json.dumps(plan_dict_list)
-    print(plan_dict_list,"-----------------")
-    print(json_data,"-----------------")
-    print(json.loads(json_data),"-----------------")
+    print(plan_dict_list, "-----------------")
+    print(json_data, "-----------------")
+    print(json.loads(json_data), "-----------------")
 
     return jsonify(json.loads(json_data))
     # return redirect(url_for('customer.wishlist'))
-
 
 
 @bp.route("/wallet")
 def wallet():
     customer = Customer.query.get(session.get('customer_id'))
     return render_template("profile-wallet.html", logged=True, customer=customer)
+
+
+@bp.route("/top_up", methods=['POST'])
+def top_up():
+    cdk = request.form.get("cdk-number")
+    customer = Customer.query.get(session.get('customer_id'))
+    if cdk == "ZXCV-0205-BNML-0375":
+        customer.wallet = customer.wallet + 50000
+    elif cdk == "POIU-1998-YTRE-2580":
+        customer.wallet = customer.wallet + 10000
+    db.session.commit()
+    return redirect(url_for('customer.profile', page='/wallet'))
 
 
 @bp.route("/setting")
@@ -544,6 +555,7 @@ def setting():
 @bp.route("/about_us")
 def about_us():
     return render_template("AboutUs.html")
+
 
 @bp.route("/update-profile", methods=['POST'])
 def update_profile():
