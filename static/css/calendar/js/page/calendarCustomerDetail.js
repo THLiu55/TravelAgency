@@ -21,8 +21,8 @@ Author URI  : http://www.bootstrapmb.com/item/2664
         var id = $(location).attr('search').split('id=')[1];
         var retrieved_events
         $.ajax({
-              url: '../manager/customer_detail?id=${id}',
-              method: 'GET', // 可以是 GET 或 POST
+              url: `../manager/customer_info?id=${id}`,
+              method: 'POST', // 可以是 GET 或 POST
               dataType: 'json', // 返回的数据类型
               success: function(data) {
                 // 成功获取数据后的处理
