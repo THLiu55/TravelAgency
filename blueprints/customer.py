@@ -339,6 +339,7 @@ def booking():
     hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     order_list = []
     for hotel_i in hotel_orders:
         order_object = OrderObject()
@@ -366,6 +367,16 @@ def booking():
         order_object.url = url_for('activity.activityDetail', activity_id=activity_i.productID)
         order_object.status = True if activity_i.endTime < datetime.now() else False
         order_object.time = activity_i.startTime.strftime('%y-%m-%d %H:%M')
+        order_list.append(order_object)
+    for flight_i in flight_orders:
+        order_object = OrderObject()
+        order_object.price = flight_i.cost
+        flight_obj = Flight.query.get(flight_i.productID)
+        order_object.name = flight_obj.departure + ' - ' + flight_obj.destination
+        order_object.type = 'Flight'
+        order_object.url = url_for('flight.flightDetail', flight_id=flight_i.productID)
+        order_object.status = True if flight_i.endTime < datetime.now() else False
+        order_object.time = flight_i.startTime.strftime('%y-%m-%d %H:%M')
         order_list.append(order_object)
     sorted_orders = sorted(order_list, key=lambda obj: obj.time, reverse=True)
     length = len(sorted_orders)
