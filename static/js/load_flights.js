@@ -161,6 +161,22 @@ function getModifyData(id){
             setModifySelect("modify-base-fare", response['content']["base_fare"]);
             setModifySelect("modify-taxes-fees", response['content']["taxes"]);
 
+
+            setModifySelect("modify-departure-from", response['content']["departure"]);
+            setModifySelect("modify-destination", response['content']["destination"]);
+            setModifySelect("modify-take-off-time", response['content']["take_off_time"]);
+            setModifySelect("modify-landing-time", response['content']["landing_time"]);
+            setModifySelect("m_total_time", response['content']["total_time"]);
+            setModifySelect("m_price", response['content']["price"]);
+            setModifySelect("modify-day-of-week", response['content']["day_of_week"]);
+
+            setModifySelect("m_Description", response['content']["description"]);
+            setModifySelect('m_contact_name', response['content']["contact_name"]);
+            setModifySelect('m_contact_email', response['content']["contact_email"]);
+            setModifySelect('m_contact_phone', response['content']["contact_phone"]);
+
+
+
         } else {
         // 处理错误情况
             console.log('wrong');
