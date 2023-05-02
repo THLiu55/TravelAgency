@@ -1,4 +1,5 @@
 import json
+import math
 
 from flask import Blueprint, session, render_template, request, url_for, redirect, jsonify
 from model import Flight, FlightOrder, FlightReview, Customer, Activity, ActivityOrder
@@ -47,14 +48,26 @@ def flightDetail(flight_id):
     wishlist_exists = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                                   productID=flight_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
+    logged = session.get("customer_id")
     purchased = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                             productID=flight_id, purchased=True).first()
     purchased = True if (purchased is not None and logged is not None) else False
+    star_detail = json.loads(flight.star_detail)['star_detail']
+    star_score = round(sum(star_detail) / flight.review_num, 1) if flight.review_num != 0 else 0
+    star_score_ceil = math.floor(star_score)
+    review_num = flight.review_num
+    flight.review_num = 10000 if flight.review_num == 0 else flight.review_num
+    reviews = flight.review
+    for review in reviews:
+        review.customerID = Customer.query.get(review.customerID).nickname
+        review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
     return render_template("flight-detail.html", logged=logged, flight=flight, images=images, wifi=wifi,
                            air_condition=air_condition, coffee=coffee
                            , entertainment=entertainment, food=food, drink=drink, wines=wines, comfort=comfort,
                            television=television, shopping=shopping, magazines=magazines, game=game,
-                           day_of_week=flight.week_day, added=added, purchased=purchased)
+                           star_score=star_score, star_score_ceil=star_score_ceil,
+                           day_of_week=flight.week_day, added=added, purchased=purchased, star_detail=star_detail,
+                           review_num=review_num, reviews=reviews)
 
 
 @bp.route("/order-confirm", methods=['POST'])
@@ -189,3 +202,22 @@ def remove_wishlist(flight_id):
     db.session.delete(flight_order)
     db.session.commit()
     return redirect(url_for('customer.profile', page="/wishlist"))
+
+
+@bp.route('/add_review', methods=['POST'])
+def add_review():
+    flight_id = request.form.get('productId')
+    customer_id = session.get('customer_id')
+    content = request.form.get('content')
+    flight = Flight.query.get(flight_id)
+    flight.review_num = flight.review_num + 1
+    star = int(request.form.get("rating"))
+    star_index = star - 1
+    star_detail = json.loads(flight.star_detail)["star_detail"]
+    star_detail[star_index] = star_detail[star_index] + star
+    flight.star_detail = json.dumps({"star_detail": star_detail})
+    review = FlightReview(rating=star, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
+                          productID=flight_id)
+    db.session.add(review)
+    db.session.commit()
+    return redirect(url_for('flight.flightDetail', flight_id=int(flight_id)))

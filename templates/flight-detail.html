@@ -49,7 +49,7 @@
                                         <!-- overall review -->
                                         <span class="badge"><i class="fal fa-star"></i> 5.0</span>
                                         <span class="listing-rate-type">{{ _("Excellent") }}</span>
-                                        <span class="listing-rate-review">({{ flight.review_num }} {{ _("reviews") }})</span>
+                                        <span class="listing-rate-review">({{ review_num }} {{ _("reviews") }})</span>
                                     </div>
                                 </div>
                                 <!-- flight attr -->
@@ -273,15 +273,13 @@
                                     <div class="listing-rating-box">
                                         <div class="listing-review-rating">
                                             <div class="listing-rating-count">
-                                                <h2>4.5</h2>
+                                                <h2>{{ star_score }}</h2>
                                                 <div class="listing-rating-star">
+                                                    {% for i in range(star_score_ceil) %}
                                                     <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
+                                                    {% endfor %}
                                                 </div>
-                                                <p>{{ _("Base On 15.5k Review") }}</p>
+                                               <p>{{ _("Based On") }} {{ review_num }} {{ _("Reviews") }}</p>
                                             </div>
                                             <div class="listing-rating-range">
                                                 <div class="listing-rating-range-item">
@@ -294,12 +292,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 90%">
+                                                            <div class="listing-progress-width" style="width: {{ 100*star_detail[4]/(5*flight.review_num) }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>90%</span>
+                                                        <span>{{ (100*star_detail[4]/(5*flight.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -312,12 +310,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 80%">
+                                                            <div class="listing-progress-width" style="width: {{ 100*star_detail[3]/(4*flight.review_num) }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>80%</span>
+                                                        <span>{{ (100*star_detail[3]/(4*flight.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -330,12 +328,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 59%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[2]/(3*flight.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>59%</span>
+                                                        <span>{{ (100*star_detail[2]/(3*flight.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -348,12 +346,12 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 70%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[1]/(2*flight.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>70%</span>
+                                                        <span>{{ (100*star_detail[1]/(2*flight.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                                 <div class="listing-rating-range-item">
@@ -366,136 +364,50 @@
                                                     </div>
                                                     <div class="listing-rating-range-bar">
                                                         <div class="listing-progress">
-                                                            <div class="listing-progress-width" style="width: 49%">
+                                                            <div class="listing-progress-width" style="width: {{ (100*star_detail[0]/(1*flight.review_num))|int }}%">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="listing-rating-range-percentage">
-                                                        <span>49%</span>
+                                                        <span>{{ (100*star_detail[0]/(1*flight.review_num))|int }}%</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="listing-review">
-                                            <h5>Showing 1.2k Reviews</h5>
+                                            <h5>{{ _("Showing") }} {{ review_num }} {{ _("Reviews") }}</h5>
+                                            {% for review in reviews %}
                                             <div class="listing-review-item">
                                                 <div class="listing-review-author">
-                                                    <img src="assets/img/account/01.jpg" alt="">
+
+                                                    <img src="https://avatar.oxro.io/avatar.svg?name={{ review.customerID }}" alt="">
+                                                    <!-- <img src="{{ url_for('static', filename='css/assets/img/account/01.jpg') }}" alt=""> -->
                                                     <div class="listing-review-author-info">
                                                         <div>
-                                                            <h6>Kenneth Evans</h6>
-                                                            <span><i class="far fa-clock"></i> 1 day ago</span>
+                                                            <h6>{{ review.customerID }}</h6>
+                                                            <span><i class="far fa-clock"></i>{{ review.issueTime }}</span>
                                                         </div>
                                                         <div class="listing-review-author-rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
+                                                            {% for i in range(review.rating) %}
+                                                                <i class="fas fa-star"></i>
+                                                            {% endfor %}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <p>
-                                                    There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humourmust explain to you how all this mistaken idea of
-                                                    denouncing pleasure words.
+                                                    {{ review.content }}
                                                 </p>
-                                                <div class="listing-review-reply">
-                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
-                                                        Reply</a>
-                                                    <div class="review-reaction">
-                                                        <a href="#" class="review-like active"><i
-                                                                class="fal fa-thumbs-up"></i> 15</a>
-                                                        <a href="#" class="review-dislike"><i
-                                                                class="fal fa-thumbs-down"></i> 05</a>
-                                                        <a href="#" class="review-love"><i class="fal fa-heart"></i>
-                                                            50</a>
-                                                    </div>
-                                                </div>
                                             </div>
-                                            <div class="listing-review-item review-reply-item">
-                                                <div class="listing-review-author">
-                                                    <img src="assets/img/account/02.jpg" alt="">
-                                                    <div class="listing-review-author-info">
-                                                        <div>
-                                                            <h6>Erich T. Genao</h6>
-                                                            <span><i class="far fa-clock"></i> 1 day ago</span>
-                                                        </div>
-                                                        <div class="listing-review-author-rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humour, or randomised words.
-                                                </p>
-                                                <div class="listing-review-reply">
-                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
-                                                        Reply</a>
-                                                    <div class="review-reaction">
-                                                        <a href="#" class="review-like"><i class="fal fa-thumbs-up"></i>
-                                                            15</a>
-                                                        <a href="#" class="review-dislike active"><i
-                                                                class="fal fa-thumbs-down"></i> 05</a>
-                                                        <a href="#" class="review-love"><i class="fal fa-heart"></i>
-                                                            50</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="listing-review-item">
-                                                <div class="listing-review-author">
-                                                    <img src="assets/img/account/03.jpg" alt="">
-                                                    <div class="listing-review-author-info">
-                                                        <div>
-                                                            <h6>Jesse Sinkler</h6>
-                                                            <span><i class="far fa-clock"></i> 1 day ago</span>
-                                                        </div>
-                                                        <div class="listing-review-author-rating">
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <p>
-                                                    There are many variations of passages of Lorem Ipsum available,
-                                                    but the majority have suffered alteration in some form, by
-                                                    injected humourmust explain to you how all this mistaken idea of
-                                                    denouncing pleasure words.
-                                                </p>
-                                                <div class="listing-review-reply">
-                                                    <a href="#" class="review-reply-btn"><i class="fal fa-reply"></i>
-                                                        Reply</a>
-                                                    <div class="review-reaction">
-                                                        <a href="#" class="review-like"><i class="fal fa-thumbs-up"></i>
-                                                            15</a>
-                                                        <a href="#" class="review-dislike"><i
-                                                                class="fal fa-thumbs-down"></i> 05</a>
-                                                        <a href="#" class="review-love active"><i
-                                                                class="fal fa-heart"></i>
-                                                            50</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="text-center my-4">
-                                                <a href="#" class="theme-btn"> <span class="far fa-sync-alt"></span>
-                                                    Load More</a>
-                                            </div>
+                                            {% endfor %}
                                         </div>
+
+                                        {% if purchased %}
                                         <div class="listing-review-form">
-                                            <h4>{{ _("Leave A Review") }}</h4>
-                                            <form action="#">
+                                            <h4>{{ _("Leave a Review") }}</h4>
+                                            <form action="{{ url_for('flight.add_review')}}" method="post">
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
+                                                        <input name="productId" value="{{ flight.id }}" hidden>
                                                         <label class="star-label">{{ _("Your Rating") }}</label>
                                                         <div class="listing-review-form-star">
                                                             <div class="star-rating-wrapper">
@@ -520,27 +432,15 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Your Name*">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="form-group">
-                                                            <input type="email" class="form-control"
-                                                                   placeholder="Your Email*">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="form-group">
-                                                <textarea class="form-control" cols="30" rows="5"
+                                                <textarea class="form-control" cols="30" rows="5" name="content"
                                                           placeholder="Write Your Review*"></textarea>
                                                 </div>
-                                                <button class="theme-btn" type="button">Leave A Review</button>
+                                                <button class="theme-btn" type="submit">{{ _("Leave A Review") }}</button>
                                             </form>
                                         </div>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>

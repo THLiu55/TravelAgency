@@ -290,6 +290,7 @@ def plan_events():
     hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
@@ -316,11 +317,23 @@ def plan_events():
         plan_object = PlanObj()
         plan_object.title = Activity.query.get(activity_i.productID).name
         if activity_i.endTime > datetime.now():
-            plan_object.color = '#2bb3c0'  # #e16123
+            plan_object.color = '#2bb3c0'
         else:
             plan_object.color = '#ea5050'
         plan_object.start = activity_i.endTime
         plan_object.end = activity_i.endTime
+        plan_list.append(plan_object)
+    for flight_i in flight_orders:
+        plan_object = PlanObj()
+        flight_obj = Flight.query.get(flight_i.productID)
+        plan_object.title = flight_obj.departure + '-' + flight_obj.destination
+        if flight_i.endTime > datetime.now():
+            plan_object.color = '#e16123'
+        else:
+            plan_object.color = '#ea5050'
+        plan_object.start = flight_i.startTime
+        days, hours = divmod(flight_obj.total_time, 24)
+        plan_object.end = flight_i.startTime + timedelta(days=days, hours=hours)
         plan_list.append(plan_object)
     plan_dict_list = [plan_obj_serializer(p) for p in plan_list]
     json_data = json.dumps(plan_dict_list)
