@@ -338,43 +338,12 @@ def activities():
 
 
 ### CHAT RELATED ###
-@bp.route("/responding/<target_customer_id>/", methods=["GET", "POST"])
+
+@bp.route("/chat")
 @staff_login_required
-def respond_view(target_customer_id):
-    """manager bargaining with target customer
-
-    Args:
-        targetcustomer_id (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-
-    target_customer = Customer.query.filter_by(id=target_customer_id).first()
-    if target_customer:
-        # TODO: load previous chat history from target_customer.messages
-        return render_template("chatManager.html", target_customer=target_customer)
-    else:
-        return False
-
-
-@bp.route("/chat_test", methods=["GET", "POST"])
-def respond_test():
-    """manager bargaining with target customer
-
-    Args:
-        targetcustomer_id (_type_): _description_
-
-    Returns:
-        _type_: _description_
-    """
-    # target_user = Customer.query.filter_by(id=target_customer_id).first()
-    # if target_user == None:
-    #     return False
-    # manager = g.admin
-    # TODO: finish this function
-    return render_template("Test.html")
-
+def chat():
+    customers = Customer.query.filter(Customer.amount_unread_msgs>-1).order_by(Customer.amount_unread_msgs.desc()).all() # -1 means no chat history at all
+    return render_template("chatManager.html", customers=customers)
 
 ### END CHAT RELATED ###
 
@@ -705,12 +674,6 @@ def customers():
 @staff_login_required
 def wish_list():
     return render_template("customerWishlist.html")
-
-
-@bp.route("/chat")
-@staff_login_required
-def chat():
-    return render_template("chatManager.html")
 
 
 # previous order_details

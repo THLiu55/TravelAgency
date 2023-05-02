@@ -77,9 +77,6 @@ $(document).ready(function () {
     }
   });
   $(".chat-users__list-item").click(function () {
-    if ($(this).find(".chat-users__item").hasClass("active")) {
-      return;
-    }
     socket.emit("leave", {
       target_customer_id: selectedCustomerId, // leave the previous room
     });
