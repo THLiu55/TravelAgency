@@ -31,7 +31,6 @@ bp = Blueprint("manager", __name__, url_prefix="/manager")
 @staff_login_required
 def manager_homepage():
     today = datetime.combine(datetime.now().date(), datetime.min.time())
-    print(today < datetime.strptime('2023-05-02 01:02:34.002132', '%Y-%m-%d %H:%M:%S.%f') < (today + timedelta(days=1)))
 
     today_reviews = (
         db.session.query(func.count(ActivityReview.id))
@@ -201,6 +200,8 @@ def manager_homepage():
     for i in range(len(ordered_values[0])):
         ordered_values[0][i] = float("{:.2f}".format(ordered_values[0][i]))
         ordered_values[1][i] = float("{:.2f}".format(ordered_values[1][i]))
+    for i in range(4):
+        profit_split[i] = float("{:.2f}".format(profit_split[i]))
     data = {
         "profit_list": ordered_values,
         "profit_this": float("{:.2f}".format(sum(ordered_values[1]))),
@@ -875,13 +876,22 @@ def invoice():
         return render_template("orderInvoiceHotel.html", order=order, product=product, customer=customer)
     if product_type == "tour":
         order = TourOrder.query.filter_by(id=product_id).first()
+        order.endTime = order.endTime.strftime("%Y-%m-%d %H:%M:%S")
         product = order.product
         customer = order.customer
-        return render_template("orderInvoiceTour.html", order=order, product=product, customer=customer)
+        print(order.endTime)
+        print(type(order.endTime))
+        order.endTime = datetime.strptime(order.endTime, "%Y-%m-%d %H:%M:%S")
+        endTime = order.endTime + timedelta(days=product.duration)
+        product.included = transform_string(product.included, "included")
+        product.excluded = transform_string(product.excluded, "not_included")
+        return render_template("orderInvoiceTour.html", order=order, product=product, customer=customer, endTime=endTime)
     if product_type == "flight":
         order = FlightOrder.query.filter_by(id=product_id).first()
         product = order.product
         customer = order.customer
+        order.startTime = order.startTime.strftime("%Y-%m-%d %H:%M:%S")
+        product.inflight_features = ", ".join(ast.literal_eval(product.inflight_features))
         return render_template("orderInvoiceFlight.html", order=order, product=product, customer=customer)
     if product_type == "activity":
         order = ActivityOrder.query.filter_by(id=product_id).first()

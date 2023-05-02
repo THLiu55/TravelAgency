@@ -388,7 +388,7 @@
         <main class="page-content page-content--order-header">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Flight Invoice <span class="text-grey"> #order number</span></h1>
+                    <h1 class="page-header__title">Flight Invoice <span class="text-grey"> #{{ order.id }}</span></h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -420,7 +420,7 @@
                             <div class="card__header">
                                 <div class="row gutter-bottom-xs justify-content-between flex-grow-1">
                                     <div class="col">
-                                        <h2 class="order-invoice__title"><b class="text-uppercase">Flight Invoice</b> <br> #order number</h2>
+                                        <h2 class="order-invoice__title"><b class="text-uppercase">Flight Invoice</b> <br> #{{ order.id }}</h2>
                                         <div class="order-invoice__address"><span class="text-grey-dark">Group7</span>
                                             <br>Beijing University of Technology
                                             <br> <a href="#">+1 (070) 123-4567</a>
@@ -428,7 +428,7 @@
                                         </div>
                                     </div>
                                     <div class="order-invoice__header-right col-12 col-md-auto">
-                                        <div class="card__date">Placed on 12.04.2023 10:00</div>
+                                        <div class="card__date">Placed on {{ order.startTime }}</div>
                                         <div class="order-invoice__logo"></div>
                                     </div>
                                 </div>
@@ -456,11 +456,11 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table__row">
-                                        <td class="table__td">Flight from Beijing to Dublin<span class="text-light-theme"></span>
+                                        <td class="table__td">{{ product.departure }} -> {{ product.destination }}<span class="text-light-theme"></span>
                                         </td>
-                                        <td class="table__td text-center text-dark-theme">Flight</td>
-                                        <td class="table__td text-center text-light-theme">10</td>
-                                        <td class="table__td text-nowrap text-dark-theme">$25,000</td>
+                                        <td class="table__td text-center text-dark-theme">{{ product.flight_type }}</td>
+                                        <td class="table__td text-center text-light-theme">{{ product.takeoff_time }}</td>
+                                        <td class="table__td text-nowrap text-dark-theme">{{ product.landing_time }}</td>
                                     </tr>
                                 </tbody>
 
@@ -478,11 +478,14 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table__row">
-                                        <td class="table__td"><span class="text-light-theme">Western Grant Park Hotel</span>
-                                        </td>
-                                        <td class="table__td text-center text-dark-theme">Accommodation</td>
-                                        <td class="table__td text-center text-light-theme">10</td>
-                                        <td class="table__td text-nowrap text-dark-theme">$25,000</td>
+                                        {% if product.description|length < 25 %}
+                                        <td class="table__td"><span class="text-light-theme">{{ product.description[:25] }}</span></td>
+                                        {% else %}
+                                        <td class="table__td"><span class="text-light-theme">{{ product.description[:25] }}...</span></td>
+                                        {% endif %}
+                                        <td class="table__td text-center text-dark-theme">{{ product.flight_stop }}</td>
+                                        <td class="table__td text-center text-light-theme">{{ product.fare_type }}</td>
+                                        <td class="table__td text-nowrap text-dark-theme">{{ product.flight_charge }}</td>
                                     </tr>
                                 </tbody>
 
@@ -500,11 +503,11 @@
                                 </thead>
                                 <tbody>
                                     <tr class="table__row">
-                                            <td class="table__td"><span class="text-light-theme">fdsafds, fdsfadsfds, dfsadfsaf, erweewr</span>
+                                            <td class="table__td"><span class="text-light-theme">{{ product.inflight_features }}</span>
                                             </td>
-                                            <td class="table__td text-center text-dark-theme">Accommodation</td>
-                                            <td class="table__td text-center text-light-theme">10</td>
-                                            <td class="table__td text-nowrap text-dark-theme">$25,000</td>
+                                            <td class="table__td text-center text-dark-theme">{{ customer.nickname }}</td>
+                                            <td class="table__td text-center text-light-theme">{{ customer.email }}</td>
+                                            <td class="table__td text-nowrap text-dark-theme">{{ customer.phone_number }}</td>
                                         </tr>
                                 </tbody>
 
@@ -518,15 +521,15 @@
                                         <ul class="card-order__total">
                                             <li class="card-order__total-item">
                                                 <div class="card-order__total-title">Subtotal:</div>
-                                                <div class="card-order__total-value">$75,000</div>
+                                                <div class="card-order__total-value">${{ (order.cost)|round(2) - (order.cost * 0.05)|round(2) }}</div>
                                             </li>
                                             <li class="card-order__total-item">
                                                 <div class="card-order__total-title">TAX(5%):</div>
-                                                <div class="card-order__total-value">$90,000</div>
+                                                <div class="card-order__total-value">${{ (order.cost * 0.05)|round(2) }}</div>
                                             </li>
                                             <li class="card-order__total-item card-order__total-footer">
                                                 <div class="card-order__total-title">total:</div>
-                                                <div class="card-order__total-value">$81,000</div>
+                                                <div class="card-order__total-value">${{ (order.cost)|round(2) }}</div>
                                             </li>
                                         </ul>
                                     </div>
