@@ -235,15 +235,23 @@ def handle_req4history(data):
     room = get_fuzzed_room_name(cusId)
     messages = get_history_by_cus_id(cusId)
     for message in messages:
-        if message.isByCustomer:  # TODO: Pic related logic
+        sender = ""
+        if message.isByCustomer:
             sender = message.customer.nickname
         else:
             sender = ADMIN_USERNAME
+        content = message.content
+        if message.isPic:
+            # load it from /static/userdata/chat/pic
+            pic_filename = content  # if it's a pic, the content is the filename
+            # TODO: file extention is now included in the filename, but it should be extracted
+            pic_url = url_for("static", filename="userdata/chat/pic/" + pic_filename)
+            content = "<img src='" + pic_url + "'/>"
         sending_data = {
             "isHistory": True,
             "sentTime": message.sentTime.strftime("%Y-%m-%d %H:%M:%S"),
             "sender": sender,
-            "text": message.content,
+            "text": content,
         }
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
 
