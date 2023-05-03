@@ -45,14 +45,14 @@ def add_review():
 def activityList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_activities = Activity.query.count()
-    pagination = Activity.query.paginate(page=int(page_num), per_page=9, error_out=False)
+    pagination = Activity.query.paginate(page=int(page_num), per_page=18, error_out=False)
     activities = pagination.items
     for activity in activities:
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
-                           page_num=page_num, logged=logged,)
+                           page_num=page_num, logged=logged)
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])
@@ -117,7 +117,7 @@ def activity_filter():  # ajax activity filter
                                       )
 
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=9)
+    pagination = query.paginate(page=page, per_page=18)
     activities = pagination.items
     for activity_i in activities:
         activity_i.contact_email = url_for('activity.activityDetail', activity_id=activity_i.id)

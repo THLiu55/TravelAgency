@@ -75,6 +75,7 @@ function flight_filter() {
             let flights = search_now(response.flights);
             let flightList = $('#row-list-ajax');
             flightList.empty();
+            document.getElementById("total_activities").innerHTML = flights.length.toString();
 
             for (let i = 0; i < flights.length; i++) {
                 let flight = flights[i];

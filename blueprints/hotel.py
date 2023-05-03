@@ -13,7 +13,7 @@ bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 def hotelList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_hotels = Hotel.query.count()
-    pagination = Hotel.query.paginate(page=int(page_num), per_page=9, error_out=False)
+    pagination = Hotel.query.paginate(page=int(page_num), per_page=18, error_out=False)
     hotels = pagination.items
     for single_hotel in hotels:
         # noinspection PyTypeChecker
@@ -40,7 +40,7 @@ def hotel_filter():
     query = Hotel.query.filter(Hotel.min_price.between(mi_price, max_price), Hotel.star.in_(hotel_star),
                                or_(*[Hotel.amenities.like(f'%{word}%') for word in hotel_type]))
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=9)
+    pagination = query.paginate(page=page, per_page=18)
     hotels = pagination.items
     for hotel_i in hotels:
         hotel_i.contact_email = url_for('hotel.hotelDetail', hotel_id=hotel_i.id)

@@ -676,10 +676,10 @@ def wish_list():
     return render_template("customerWishlist.html")
 
 
-@bp.route("/chat")
-@staff_login_required
-def chat():
-    return render_template("chatManager.html")
+# @bp.route("/chat")
+# @staff_login_required
+# def chat():
+#     return render_template("chatManager.html")
 
 
 # previous order_details

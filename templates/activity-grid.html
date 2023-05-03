@@ -1,5 +1,5 @@
 ﻿{% extends "base.html" %}
-{% block title %} Activities Grid{% endblock %}
+{% block title %} Activity{% endblock %}
 
 {% block csslink %}
     <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}" type="text/javascript"></script>
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div class="search-btn" >
-            <button type="button" style="margin-left: 50%;"onclick="activity_filter(3)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
+            <button type="button" style="margin-left: 50%;" onclick="activity_filter(3)" class="theme-btn"><span class="far fa-search"></span>Search Now</button>
             </div>
         </form>
       </div>
@@ -81,25 +81,25 @@
 <div class="form-check">
 <input class="form-check-input" name="activity-type" type="checkbox" value="Food & Nightlife" id="activity-type1" onclick="activity_filter(3)">
 <label class="form-check-label" for="activity-type1">
-{{ _("Food & Nightlife") }} <span>(20)</span>
+{{ _("Food & Nightlife") }}
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="activity-type" type="checkbox" value="Hot Air Balloon" id="activity-type2" onclick="activity_filter(3)">
 <label class="form-check-label" for="activity-type2">
-{{ _("Hot Air Balloon") }} <span>(15)</span>
+{{ _("Hot Air Balloon") }}
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="activity-type" type="checkbox" value="Mountain Climbing" id="activity-type3" onclick="activity_filter(3)">
 <label class="form-check-label" for="activity-type3">
-{{ _("Mountain Climbing") }} <span>(18)</span>
+{{ _("Mountain Climbing") }}
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="activity-type" type="checkbox" value="Bike Ride" id="activity-type4" onclick="activity_filter(3)">
 <label class="form-check-label" for="activity-type4">
-{{ _("Bike Ride ") }}<span>(35)</span>
+{{ _("Bike Ride ") }}
 </label>
 </div>
 </div>
@@ -123,19 +123,19 @@
 <div class="form-check">
 <input class="form-check-input" name="activity-duration" type="checkbox" value="0-4" id="activity-duration1" onclick="activity_filter(0)">
 <label class="form-check-label" for="activity-duration1">
-{{ _("Up to 4 hour") }} <span>(20)</span>
+{{ _("Up to 4 hour") }}
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="activity-duration" type="checkbox" value="4-8" id="activity-duration2" onclick="activity_filter(1)">
 <label class="form-check-label" for="activity-duration2">
-{{ _("4 to 8 hours") }} <span>(15)</span>
+{{ _("4 to 8 hours") }}
 </label>
 </div>
 <div class="form-check">
 <input class="form-check-input" name="activity-duration" type="checkbox" value="8-24" id="activity-duration3" onclick="activity_filter(2)">
 <label class="form-check-label" for="activity-duration4">
-{{ _("8 hours to 1 day") }} <span>(25)</span>
+{{ _("8 hours to 1 day") }}
 </label>
 </div>
 </div>
@@ -148,7 +148,7 @@
 <div class="col-lg-8 col-xl-9">
 <div class="col-md-12">
 <div class="booking-sort">
-<h5>{{ total_activities }} {{ _("Results Found") }} </h5>
+<h5 id="total_activities">{{ total_activities }}  </h5> <span><h5>{{ _("Results Found") }}</h5></span>
 <div class="booking-sort-list-grid">
 <a class="booking-sort-grid active" href="activity-grid.html"><i class="far fa-grid-2"></i></a>
 <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>

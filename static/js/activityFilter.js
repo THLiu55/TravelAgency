@@ -43,6 +43,7 @@ function activity_filter(duration, min1, max1) {
         let activities = search_now(response.activities);
         let activityList = $('#row-list-ajax');
         activityList.empty();
+        document.getElementById("total_activities").innerHTML = activityList.length.toString();
 
         for (let i = 0; i < activities.length; i++) {
             let activity = activities[i];

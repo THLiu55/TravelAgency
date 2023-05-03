@@ -12,7 +12,7 @@ bp = Blueprint("tour", __name__, url_prefix="/tour")
 @bp.route("/<page_num>")
 def tourList(page_num):
     total_tours = Tour.query.count()
-    pagination = Tour.query.paginate(page=int(page_num), per_page=9, error_out=False)
+    pagination = Tour.query.paginate(page=int(page_num), per_page=18, error_out=False)
     tours = pagination.items
     for single_tour in tours:
         # noinspection PyTypeChecker
@@ -110,7 +110,7 @@ def tour_filter():
                                   Tour.duration.between(min_hour, max_hour)
                                   )
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=9)
+    pagination = query.paginate(page=page, per_page=18)
     tours = pagination.items
     for tour_i in tours:
         tour_i.contact_email = url_for('tour.tourDetail', tour_id=tour_i.id)

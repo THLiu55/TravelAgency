@@ -15,7 +15,7 @@ bp = Blueprint("flight", __name__, url_prefix="/flight")
 def flightList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_flights = Flight.query.count()
-    pagination = Flight.query.paginate(page=int(page_num), per_page=9, error_out=False)
+    pagination = Flight.query.paginate(page=int(page_num), per_page=18, error_out=False)
     flights = pagination.items
     for flight in flights:
         # noinspection PyTypeChecker
@@ -48,7 +48,6 @@ def flightDetail(flight_id):
     wishlist_exists = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                                   productID=flight_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
-    logged = session.get("customer_id")
     purchased = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                             productID=flight_id, purchased=True).first()
     purchased = True if (purchased is not None and logged is not None) else False
@@ -164,7 +163,7 @@ def flight_filter():
             or_(*filters)
         )
     page = int(request.form.get('page'))
-    pagination = queries.paginate(page=page, per_page=9)
+    pagination = queries.paginate(page=page, per_page=18)
     flights = pagination.items
     for flight_i in flights:
         flight_i.contact_name = url_for('flight.flightDetail', flight_id=flight_i.id)

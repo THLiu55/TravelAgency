@@ -42,6 +42,7 @@ function hotel_filter() {
         let hotels = search_now(response.hotels);
         let hotelList = $('#row-list-ajax');
         hotelList.empty();
+        document.getElementById("total_activities").innerHTML = hotels.length.toString();
 
         for (let i = 0; i < hotels.length; i++) {
             let hotel = hotels[i];

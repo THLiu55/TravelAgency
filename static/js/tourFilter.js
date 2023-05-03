@@ -43,6 +43,7 @@ function tour_filter(duration, min1, max1) {
         let tours = search_now(response.tours);
         let tourList = $('#row-list-ajax');
         tourList.empty();
+        document.getElementById("total_activities").innerHTML = tours.length.toString();
 
         for (let i = 0; i < tours.length; i++) {
             let activity = tours[i];
