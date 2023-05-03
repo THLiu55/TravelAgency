@@ -1095,11 +1095,11 @@
                                                             <div class="form-group">
                                                                <label>Room Type numbers</label>
                                                                <input type="number" class="form-control" min="0" max="7" name="typenum"
-                                                                   placeholder="Enter room type numbers" id="inputRoomNumber1" required>
+                                                                   placeholder="Enter room type numbers" id="inputRoomNumber_modify" required>
                                                            </div>
                                                        </div>
                                                        <h5 class="my-4">Room Information</h5>
-                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer1">
+                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer_modify">
                                                        </div>
                                                         <h5 class="my-4">Contact Information</h5>
                                                         <div
@@ -1861,6 +1861,107 @@
 					formGroup.append(fileNameInput);
 
 					$("#divRoomContainer").append(formGroup);
+
+				}
+			});
+
+            $("#inputRoomNumber_modify").on("input", function() {
+				var num = $(this).val();
+				$("#divRoomContainer_modify").empty();
+                // 清空表单容器
+
+				// 根据输入数字生成表单
+				for (var i = 1; i <= num; i++) {
+					var formGroup = $('<div class="form-group"></div>');
+                    var labelname = $('<label for="hotelroom_name_' + i + '">Room Name - Room Type' + i + '</label>');
+                    var inputname = $('<input name="hotelroom_name_' + i + '" type="text" class="form-control" placeholder="Enter room name">');
+
+                    var inputformGroup = $('<div class="input-form-group" style="display: grid;grid-template-columns: 1fr 1fr 1fr;justify-items: start;margin-left: 5%;margin-top:2%;"></div>');
+                    var labelWifi = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_wifi_' + i + '">Wifi</label></div>');
+                    var checkboxWifi = $('<input name="feature_1_' + i + '" type="checkbox" class="form-check-input" value="WiFi" style="-webkit-appearance:checkbox;">');
+
+                    var labelBed = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_1bed_' + i + '">1 Single bed</label></div>');
+                    var checkboxBed = $('<input name="feature_2_' + i + '" type="checkbox" class="form-check-input" value="1 Single bed" style="-webkit-appearance:checkbox;">');
+
+                    var label2Beds = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_2bed_' + i + '">2 Single beds</label></div>');
+                    var checkbox2Beds = $('<input name="feature_3_' + i + '" type="checkbox" class="form-check-input" value="2 single beds" style="-webkit-appearance:checkbox;">');
+
+                    var labelRoomArea15 = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Area15_' + i + '">15 ㎡</label></div>');
+                    var checkboxRoomArea15 = $('<input name="feature_4_' + i + '" type="checkbox" class="form-check-input" value="15 ㎡" style="-webkit-appearance:checkbox;">');
+
+                    var labelRoomArea25 = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Area25_' + i + '">25 ㎡</label></div>');
+                    var checkboxRoomArea25 = $('<input name="feature_5_' + i + '" type="checkbox" class="form-check-input" value="25 ㎡" style="-webkit-appearance:checkbox;">');
+
+                    var labelBath = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Bath_' + i + '">Shower And Bathtub</label></div>');
+                    var checkboxBath = $('<input name="feature_6_' + i + '" type="checkbox" class="form-check-input" value="Shower And Bathtub" style="-webkit-appearance:checkbox;">');
+
+                    var labelToiletries = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Toiletries_' + i + '">Free Toiletries</label></div>');
+                    var checkboxToiletries = $('<input name="feature_7_' + i + '" type="checkbox" class="form-check-input" value="Free Toiletries" style="-webkit-appearance:checkbox;">');
+
+                    var labelprice = $('<label for="hotelroom_price_' + i + '">Room Price</label>');
+                    var inputprice = $('<input name="hotelroom_price_' + i + '" type="number" min=0 class="form-control" placeholder="Enter room price">');
+					var label = $('<label for="fileInput' + i + '"></label>');
+					var customFile = $('<div class="custom-file"></div>');
+					var fileInput = $('<input type="file" class="custom-file-input" name="fileInput' + i + '" id="fileInput' + i + '" style="display:none;">');
+					var fileLabel = $('<label class="custom-file-label" for="fileInput' + i + '" style="margin-top:20px; border-radius:10px;">Upload pictures</label>');
+					var fileNameInput = $('<input type="text" class="form-control" id="fileNameInput' + i + '" style="display:none;" readonly>');
+
+					// 将文件名显示在对应的文本框中
+					fileInput.on("change", function() {
+						var fileName = $(this).val().split("\\").pop();
+						var index = $(this).attr("id").match(/\d+/)[0]; // 提取文件上传控件的索引号
+						$("#fileNameInput" + index).val(fileName);
+						$(this).next(".custom-file-label").html(fileName);
+					});
+
+
+
+					customFile.append(fileInput);
+					customFile.append(fileLabel);
+                    formGroup.append(labelname);
+                    formGroup.append(inputname);
+
+                    // inputformGroup.append(checkboxWifi);
+                    labelWifi.append(checkboxWifi);
+                    inputformGroup.append(labelWifi);
+
+
+                    // inputformGroup.append(checkboxBed);
+                    labelBed.append(checkboxBed);
+                    inputformGroup.append(labelBed);
+
+
+                    label2Beds.append(checkbox2Beds);
+                    // inputformGroup.append(checkbox2Beds);
+                    inputformGroup.append(label2Beds);
+
+
+                    // inputformGroup.append(checkboxRoomArea15);
+                    labelRoomArea15.append(checkboxRoomArea15);
+                    inputformGroup.append(labelRoomArea15);
+
+
+                    // inputformGroup.append(checkboxRoomArea25);
+                    labelRoomArea25.append(checkboxRoomArea25);
+                    inputformGroup.append(labelRoomArea25);
+
+
+                    // inputformGroup.append(checkboxBath);
+                    labelBath.append(checkboxBath);
+                    inputformGroup.append(labelBath);
+
+
+                    // inputformGroup.append(checkboxToiletries);
+                    labelToiletries.append(checkboxToiletries);
+                    inputformGroup.append(labelToiletries);
+                    formGroup.append(inputformGroup);
+                    formGroup.append(labelprice);
+                    formGroup.append(inputprice);
+					formGroup.append(label);
+					formGroup.append(customFile);
+					formGroup.append(fileNameInput);
+
+					$("#divRoomContainer_modify").append(formGroup);
 
 				}
 			});
