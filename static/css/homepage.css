@@ -1071,6 +1071,11 @@ Messages
           animation-delay: 0.3s;
 }
 
+.history-loader{
+  text-decoration: none;
+  color: #fff;
+}
+
 /*--------------------
 Message Box
 --------------------*/
