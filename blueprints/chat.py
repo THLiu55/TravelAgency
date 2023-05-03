@@ -98,6 +98,7 @@ def staff_load_chat_history(customer_id):
     return jsonify(to_return)
     # return jsonify(get_history_by_cus_id(customer_id))
 
+
 @bp.route("/upload_pic", methods=["POST"])
 def upload_pic():
     if session.get("staff_id"):
@@ -119,6 +120,7 @@ def upload_pic():
     else:
         print("pic not saved because no pic found.")
         return jsonify({"code": 1})
+
 
 ### END CHATBOT ROUTERS ###
 
@@ -144,16 +146,15 @@ def handle_connect():
             room = get_fuzzed_room_name(customer.id)
             join_room(room)
             print("customer " + customer.nickname + " joined room: " + str(room))
-            io.emit(
-                "message",
-                {
+            io.send(
+                data={
                     "sender": "system",
                     "text": "Welcome "
                     + customer.nickname
                     + " to the chat room, <a class='history-loader' onclick='requestForHistory()'>click here to load history</a>",
                 },
-                broadcast=False,
                 namespace=NAMESPACE,
+                to=room,
             )
         else:
             raise ConnectionRefusedError("User not found.")
@@ -243,7 +244,9 @@ def handle_message(data):
         if customer.nickname != sender_name:
             raise ConnectionRefusedError("User not found.")
         room = get_fuzzed_room_name(customer.id)
-        print(sender_name + " sending message: " + msg_content + " to room: " + str(room))
+        print(
+            sender_name + " sending message: " + msg_content + " to room: " + str(room)
+        )
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
         new_message = Message(
             customerID=customer_id,
@@ -256,11 +259,17 @@ def handle_message(data):
         db.session.add(new_message)
         db.session.commit()
 
+
 @io.on("pic_message", namespace=NAMESPACE)
 def handle_pic_message(data):
     sender_name = data["sender"]
     pic_filename = data["pic_filename"]
-    sending_data = {"sender": sender_name, "text": "<img src='" + url_for('static', filename='userdata/chat/pic/' + pic_filename) + "'/>"}
+    sending_data = {
+        "sender": sender_name,
+        "text": "<img src='"
+        + url_for("static", filename="userdata/chat/pic/" + pic_filename)
+        + "'/>",
+    }
     if sender_name == ADMIN_USERNAME:
         target_customer_id = data["target_customer_id"]
         target_customer = Customer.query.filter_by(id=target_customer_id).first()
@@ -310,6 +319,7 @@ def handle_pic_message(data):
         customer.amount_unread_msgs += 1
         db.session.add(new_message)
         db.session.commit()
+
 
 @io.on("req4history", namespace=NAMESPACE)
 @login_required
