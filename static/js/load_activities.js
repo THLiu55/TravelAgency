@@ -213,7 +213,7 @@ function getModifyData(id){
        if (xhr.status === 200) {
             var response = JSON.parse(xhr.responseText);
         // 处理服务器返回的数据
-            console.log(response);
+            console.log(response['content']);
             //参数为设置的id和传入的值（值需要与select中option的value一致）
             setModifySelect("modify_Activity_Category", response['content']["category"]);
             setModifySelect("modify_Duration", response['content']["duration"]);
@@ -232,6 +232,8 @@ function getModifyData(id){
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
+
+            setModifySelect('m_pri', response['content']["pri"]);
 
             var datePicker1 = document.getElementById('m_from_date');
             start_time = response['content']["start_time"]

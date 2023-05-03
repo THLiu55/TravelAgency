@@ -240,6 +240,8 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
+            setModifySelect('m_pri', response['content']["pri"]);
+
             const init_num = parseInt(response['content']["duration"])
             initItinerary(init_num)
 

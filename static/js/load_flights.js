@@ -261,6 +261,8 @@ function getModifyData(id){
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
 
+            setModifySelect('m_pri', response['content']["pri"]);
+
             var datePicker1 = document.getElementById('modify-take-off-time');
             start_time = response['content']["takeoff_time"]
             console.log(111)

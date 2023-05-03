@@ -411,6 +411,8 @@ function getModifyData(id){
             setModifySelect("m_phone", response['content']["contact_phone"]);
             setModifySelect("inputRoomNumber_modify", response['content']["room_type_num"]);
 
+            setModifySelect('m_pri', response['content']["pri"]);
+
             initRoomType(response['content']["room_type_num"])
 
             const tick_array = response['content']["amenities"]
