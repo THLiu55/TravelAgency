@@ -5,6 +5,7 @@ from flask import Blueprint, render_template, request, jsonify, current_app, ses
 from model import *
 from exts import db
 import math
+from translations.translator import translator
 
 bp = Blueprint("tour", __name__, url_prefix="/tour")
 
@@ -92,6 +93,11 @@ def add_review():
 def tour_filter():
     tour_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if session["language"] == 'zh':
+        key_word = request.form.get('key-word')
+        key_word = translator(key_word, 'zh', 'en')
+    else:
+        key_word = request.form.get('key-word')
     if tour_type[0] == '':
         tour_type = ['Cultural tourism', 'Wildlife observation', 'Cruises', 'Grass Skyline']
     tour_price = request.form.get('tourPrice')
@@ -131,7 +137,7 @@ def tour_filter():
         tours = sorted(tours, key=lambda tour: tour.price, reverse=True)
 
     tours = [tour.to_dict() for tour in tours]
-    return jsonify({"tours": tours, "page": 1})
+    return jsonify({"tours": tours, "page": 1, "keyword": key_word})
 
 
 @bp.route("/order-confirm", methods=['POST'])

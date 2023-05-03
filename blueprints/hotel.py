@@ -5,6 +5,7 @@ from flask import Blueprint, render_template, request, jsonify, current_app, ses
 from model import *
 from exts import db
 from sqlalchemy import or_
+from translations.translator import translator
 
 bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 
@@ -29,6 +30,11 @@ def hotelList(page_num):
 def hotel_filter():
     hotel_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if session["language"] == 'zh':
+        key_word = request.form.get('key-word')
+        key_word = translator(key_word, 'zh', 'en')
+    else:
+        key_word = request.form.get('key-word')
     if hotel_type[0] == '':
         hotel_type = ['Free Parking', 'Restaurant', 'Pets Allowed', 'Airport Transportation', 'Fitness Facility',
                       'WiFi', 'Air Conditioning']
@@ -60,7 +66,7 @@ def hotel_filter():
     if to_sort == '4':
         hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=True)
     hotels = [hotel.to_dict() for hotel in hotels]
-    return jsonify({"hotels": hotels, "page": 1})
+    return jsonify({"hotels": hotels, "page": 1, "keyword": key_word})
 
 
 @bp.route('/details/<hotel_id>/', methods=['GET', 'POST'])

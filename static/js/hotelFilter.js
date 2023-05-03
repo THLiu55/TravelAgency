@@ -36,10 +36,11 @@ function hotel_filter() {
           "activityPrice": activityPrice.toString(),
           "hotel_star": selectedValues1.toString(),
           "page": page,
-          "sort_by": sort_by
+          "sort_by": sort_by,
+          "key-word": document.getElementById("search_box_change").value
       },
         success: function(response) {
-        let hotels = search_now(response.hotels);
+        let hotels = search_now(response.hotels, response.keyword);
         let hotelList = $('#row-list-ajax');
         hotelList.empty();
         document.getElementById("total_activities").innerHTML = hotels.length.toString();
@@ -98,7 +99,7 @@ function getSortValue() {
     return options[index].value;
 }
 
-function search_now(list) {
+function search_now(list, pattern) {
     const options = {
         threshold: 0.2,
         tokenize:true,
@@ -109,11 +110,9 @@ function search_now(list) {
         ]
     };
 
-    let pattern = document.getElementById("search_box_change").value;
     if (pattern === ''){
         return list;
     }
-
 
     const fuse = new Fuse(list, options);
 

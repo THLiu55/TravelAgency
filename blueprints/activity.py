@@ -7,6 +7,7 @@ from model import *
 from exts import db
 from utils.decorators import login_required
 import requests as req
+from translations.translator import translator
 
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
@@ -98,6 +99,11 @@ def activityDetail(activity_id):
 def activity_filter():  # ajax activity filter
     activity_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if session["language"] == 'zh':
+        key_word = request.form.get('key-word')
+        key_word = translator(key_word, 'zh', 'en')
+    else:
+        key_word = request.form.get('key-word')
     if activity_type[0] == '':
         activity_type = ['Food & Nightlife', 'Hot Air Balloon', 'Mountain Climbing', 'Bike Ride']
     activity_price = request.form.get('activityPrice')
@@ -136,9 +142,8 @@ def activity_filter():  # ajax activity filter
 
     if to_sort == '4':
         activities = sorted(activities, key=lambda activity: activity.price, reverse=True)
-
     activities = [activity.to_dict() for activity in activities]
-    return jsonify({"activities": activities, "page": 1})
+    return jsonify({"activities": activities, "page": 1, "keyword": key_word})
 
 
 @bp.route("/order-confirm", methods=['POST'])

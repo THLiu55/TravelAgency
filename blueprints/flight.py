@@ -7,6 +7,7 @@ import datetime
 from exts import db
 from datetime import time
 from sqlalchemy import or_
+from translations.translator import translator
 
 bp = Blueprint("flight", __name__, url_prefix="/flight")
 
@@ -117,6 +118,11 @@ def order_success():
 def flight_filter():
     class_type = request.form.get('class_type').split(",")
     to_sort = request.form.get('sort_by')
+    if session["language"] == 'zh':
+        key_word = request.form.get('key-word')
+        key_word = translator(key_word, 'zh', 'en')
+    else:
+        key_word = request.form.get('key-word')
     if class_type[0] == '':
         class_type = ['Economy', 'Business', 'First Class']
     flight_price = request.form.get('flightPrice')
@@ -182,7 +188,7 @@ def flight_filter():
         flights = sorted(flights, key=lambda flight: flight.price, reverse=True)
 
     flights = [flight.to_dict() for flight in flights]
-    return jsonify({"flights": flights, "page": 1})
+    return jsonify({"flights": flights, "page": 1, "keyword": key_word})
 
 
 @bp.route("/add_wishlist/<flight_id>")
