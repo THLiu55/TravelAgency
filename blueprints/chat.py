@@ -104,7 +104,7 @@ def upload_pic():
     if session.get("staff_id"):
         print("admin uploading pic.")
     elif session.get("customer_id"):
-        print("customer " + session.get("customer_id") + " uploading pic.")
+        print("customer " + str(session.get("customer_id")) + " uploading pic.")
     else:
         return jsonify({"code": 2})
     pic = request.files.get("pic")
