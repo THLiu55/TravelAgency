@@ -141,7 +141,8 @@ class Activity(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
-            'price': self.price
+            'price': self.price,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -170,6 +171,7 @@ class Activity(db.Model):
             'contact_name': self.contact_name,
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -199,7 +201,8 @@ class Activity(db.Model):
             'contact_phone': self.contact_phone,
             'view_num': self.view_num,
             'lat': self.lat,
-            'lon': self.lon
+            'lon': self.lon,
+            'pri': self.priority
         }
 
 
@@ -284,7 +287,8 @@ class Tour(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
-            'price': self.price
+            'price': self.price,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -300,7 +304,8 @@ class Tour(db.Model):
             'total_star': self.total_star,
             'review_num': self.review_num,
             'star_detail': self.star_detail,
-            "contact_email": self.contact_email
+            "contact_email": self.contact_email,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -328,7 +333,8 @@ class Tour(db.Model):
             "contact_name": self.contact_name,
             "contact_email": self.contact_email,
             "contact_phone": self.contact_phone,
-            "review_num": self.review_num
+            "review_num": self.review_num,
+            'pri': self.priority
         }
 
 
@@ -374,7 +380,8 @@ class Hotel(db.Model):
             'name': self.name,
             'price': self.min_price,
             'city': self.city,
-            'room_num': self.room_num
+            'room_num': self.room_num,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -387,6 +394,7 @@ class Hotel(db.Model):
             "review_num": self.review_num,
             "min_price": self.min_price,
             "contact_email": self.contact_email,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -418,7 +426,8 @@ class Hotel(db.Model):
             "contact_phone": self.contact_phone,
             "view_num": self.view_num,
             "lat": self.lat,
-            "lon": self.lon
+            "lon": self.lon,
+            'pri': self.priority
         }
         return serialized_hotel
 
@@ -513,7 +522,8 @@ class Flight(db.Model):
             'departure': self.departure,
             'destination': self.destination,
             'take_off_time': self.takeoff_time.isoformat(),
-            'landing_time': self.landing_time.isoformat()
+            'landing_time': self.landing_time.isoformat(),
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -528,7 +538,8 @@ class Flight(db.Model):
             'fare_type': self.fare_type,
             'departure': self.departure,
             'contact_name': self.contact_name,
-            'images': self.images
+            'images': self.images,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -561,6 +572,7 @@ class Flight(db.Model):
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
             'view_num': self.view_num,
+            'pri': self.priority
         }
         return info
 
