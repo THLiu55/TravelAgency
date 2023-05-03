@@ -142,6 +142,20 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
+function initItinerary(init_num){
+    // {#  modify dynamic itinerary  #}
+    var container_modify = document.getElementById("divContainer_modify");
+    // {# initialize #}
+    container_modify.innerHTML = "";
+    console.log(init_num)
+    for (var i = 0; i < init_num; i++) {
+        console.log(i)
+        var div = document.createElement("div");
+        div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_desc_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
+        container_modify.appendChild(div);
+    }
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -150,7 +164,6 @@ function getModifyData(id){
             var response = JSON.parse(xhr.responseText);
         // 处理服务器返回的数据
             console.log(response);
-            var urls = JSON.parse(response['content']['images']);
             //参数为设置的id和传入的值（值需要与select中option的value一致）
             setModifySelect("modify_category", response['content']["category"]);
             setModifySelect("modify_group_size", response['content']["group_size"]);
@@ -167,7 +180,8 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
-            setImageUrl("modify-image-input", urls.images)
+            const init_num = parseInt(response['content']["duration"])
+            initItinerary(init_num)
 
         } else {
         // 处理错误情况
@@ -181,31 +195,3 @@ function getModifyData(id){
     fd.set('type', "tour")
     xhr.send(fd)
 }
-
-
-function extractStaticPath(url) {
-  const regex = /\/static\/(.+)/;
-  const match = url.match(regex);
-  if (match) {
-    return match[0];
-  }
-  return null;
-}
-
-
-function setImageUrl(id, urls) {
-    const inputImage = document.getElementById(id);
-    const fileList = new DataTransfer();
-
-    for (let i = 0; i < urls.length; i++) {
-        fetch(extractStaticPath(urls[i]))
-            .then((response) => response.blob())
-            .then((blob) => {
-                const file = new File([blob], `image${i}.jpg`, {type: 'image/jpeg'});
-                fileList.items.add(file);
-                console.log(fileList.files)
-            });
-    }
-    // inputImage.files = fileList.files
-}
-
