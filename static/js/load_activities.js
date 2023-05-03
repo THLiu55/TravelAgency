@@ -145,6 +145,66 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
+function checkedInitIncluded(checked_array){
+    var incheck1 = document.getElementById('m_included1');
+    if (checked_array[0] != null){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_included2');
+    if (checked_array[1] != null){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_included3');
+    if (checked_array[2] != null){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_included4');
+    if (checked_array[3] != null){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+}
+
+function checkedInitNotIncluded(checked_array){
+    var incheck1 = document.getElementById('m_not-included1');
+    if (checked_array[0] != null){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_not-included2');
+    if (checked_array[1] != null){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_not-included3');
+    if (checked_array[2] != null){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_not-included4');
+    if (checked_array[3] != null){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+}
+
 
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
@@ -188,6 +248,12 @@ function getModifyData(id){
             var datePicker3 = document.getElementById('m_open_hour');
             open_hour = response['content']["openHour"]
             datePicker3.value = open_hour;
+
+            const tick_array = JSON.parse(response['content']["included"])
+            const tick_array_not = JSON.parse(response["content"]["excluded"])
+            checkedInitIncluded(tick_array.included)
+            checkedInitNotIncluded(tick_array_not.not_included)
+
         } else {
         // 处理错误情况
             console.log('wrong');

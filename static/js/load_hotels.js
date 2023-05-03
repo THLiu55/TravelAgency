@@ -241,6 +241,148 @@ function initRoomType(init_num){
 
 }
 
+function checkedInitIncluded(checked_array){
+    var incheck1 = document.getElementById('m_included1');
+    if (checked_array.includes(incheck1.value)){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_included2');
+    if (checked_array.includes(incheck2.value)){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_included3');
+    if (checked_array.includes(incheck3.value)){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_included4');
+    if (checked_array.includes(incheck4.value)){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+
+    var incheck5 = document.getElementById('m_included5');
+    if (checked_array.includes(incheck5.value)){
+        incheck5.checked = true;
+    }else {
+        incheck5.checked = false;
+    }
+
+    var incheck6 = document.getElementById('m_included6');
+    if (checked_array.includes(incheck6.value)){
+        incheck6.checked = true;
+    }else {
+        incheck6.checked = false;
+    }
+
+    var incheck7 = document.getElementById('m_included7');
+    if (checked_array.includes(incheck7.value)){
+        incheck7.checked = true;
+    }else {
+        incheck7.checked = false;
+    }
+
+    var incheck8 = document.getElementById('m_included8');
+    if (checked_array.includes(incheck8.value)){
+        incheck8.checked = true;
+    }else {
+        incheck8.checked = false;
+    }
+
+    var incheck9 = document.getElementById('m_included9');
+    if (checked_array.includes(incheck9.value)){
+        incheck9.checked = true;
+    }else {
+        incheck9.checked = false;
+    }
+
+    var incheck10 = document.getElementById('m_included10');
+    if (checked_array.includes(incheck10.value)){
+        incheck10.checked = true;
+    }else {
+        incheck10.checked = false;
+    }
+
+    var incheck11 = document.getElementById('m_included11');
+    if (checked_array.includes(incheck11.value)){
+        incheck11.checked = true;
+    }else {
+        incheck11.checked = false;
+    }
+
+    var incheck12 = document.getElementById('m_included12');
+    if (checked_array.includes(incheck12.value)){
+        incheck12.checked = true;
+    }else {
+        incheck12.checked = false;
+    }
+
+    var incheck13 = document.getElementById('m_included13');
+    if (checked_array.includes(incheck13.value)){
+        incheck13.checked = true;
+    }else {
+        incheck13.checked = false;
+    }
+
+    var incheck14 = document.getElementById('m_included14');
+    if (checked_array.includes(incheck14.value)){
+        incheck14.checked = true;
+    }else {
+        incheck14.checked = false;
+    }
+
+    var incheck15 = document.getElementById('m_included15');
+    if (checked_array.includes(incheck15.value)){
+        incheck15.checked = true;
+    }else {
+        incheck15.checked = false;
+    }
+
+    var incheck16 = document.getElementById('m_included16');
+    if (checked_array.includes(incheck16.value)){
+        incheck16.checked = true;
+    }else {
+        incheck16.checked = false;
+    }
+
+    var incheck17 = document.getElementById('m_included17');
+    if (checked_array.includes(incheck17.value)){
+        incheck17.checked = true;
+    }else {
+        incheck17.checked = false;
+    }
+
+    var incheck18 = document.getElementById('m_included18');
+    if (checked_array.includes(incheck18.value)){
+        incheck18.checked = true;
+    }else {
+        incheck18.checked = false;
+    }
+
+    var incheck19 = document.getElementById('m_included19');
+    if (checked_array.includes(incheck19.value)){
+        incheck19.checked = true;
+    }else {
+        incheck19.checked = false;
+    }
+
+    var incheck20 = document.getElementById('m_included20');
+    if (checked_array.includes(incheck20.value)){
+        incheck20.checked = true;
+    }else {
+        incheck20.checked = false;
+    }
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -270,6 +412,9 @@ function getModifyData(id){
             setModifySelect("inputRoomNumber_modify", response['content']["room_type_num"]);
 
             initRoomType(response['content']["room_type_num"])
+
+            const tick_array = response['content']["amenities"]
+            checkedInitIncluded(tick_array)
         } else {
         // 处理错误情况
             console.log('wrong');
