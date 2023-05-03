@@ -147,13 +147,14 @@
 
 <div class="col-lg-8 col-xl-9">
 <div class="col-md-12">
-<div class="booking-sort">
-<h5 id="total_activities">{{ total_activities }}  </h5> <span><h5>{{ _("Results Found") }}</h5></span>
-<div class="booking-sort-list-grid">
+<div class="booking-sort" style="justify-content: flex-start;">
+
+<h5 id="total_activities">{{ total_activities }}  </h5> <span style="margin-left: 1%;"><h5>{{ _("Results Found") }}</h5></span>
+<!-- <div class="booking-sort-list-grid">
 <a class="booking-sort-grid active" href="activity-grid.html"><i class="far fa-grid-2"></i></a>
 <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
-</div>
-<div class="col-md-3 booking-sort-box">
+</div> -->
+<div class="col-md-3 booking-sort-box" style="margin-left: 5%;">
 <select class="select" id="sort-select-ajax" onchange="activity_filter(3)">
 <option value="1" >{{ _("Sort By Default") }}</option>
 <option value="2" >{{ _("Sort By Popular") }}</option>
