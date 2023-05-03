@@ -1077,6 +1077,28 @@
 				container.appendChild(div);
 			}
 		});
+
+        {#  modify dynamic itinerary  #}
+        var input_modify = document.getElementById("inputNumber_modify");
+        var container_modify = document.getElementById("divContainer_modify");
+        {# listen to change #}
+        input_modify.addEventListener("blur", function () {
+            var num = input_modify.value;
+            num = parseInt(num);
+            if (isNaN(num)) {
+				alert("please input a number");
+				input_modify.focus();
+				return;
+			}
+            container_modify.innerHTML = "";
+            for (var i = 0; i < num; i++) {
+                console.log(i)
+				var div = document.createElement("div");
+                div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_desc_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
+				container_modify.appendChild(div);
+			}
+        })
+
 	</script>
 {% endblock %}
 
