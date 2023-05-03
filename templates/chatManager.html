@@ -282,7 +282,10 @@
                     <div class="chat-details__input-group input-group input-group--white">
                         <div class="chat-details__input-prepend">
                             <label class="button-icon button-icon--transparent">
-                                <input type="file" multiple><span class="button-icon__icon">
+                                <input id="pic-input" type="file" accept=".jpg, .jpeg, .png, .bmp, .gif, .svg"
+                                    maxlength="10485760">
+                                <!-- TODO: multiple pic upload refactor -->
+                                <span class="button-icon__icon">
                                     <svg class="icon-icon-attachment">
                                         <use xlink:href="#icon-attachment"></use>
                                     </svg></span>

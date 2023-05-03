@@ -56,6 +56,8 @@ $(document).ready(function () {
       }
     }
   });
+
+  // start of listeners
   $("#send-message").click(function () {
     var text = $(".chat-details__input").val();
     if (text == "") {
@@ -68,6 +70,7 @@ $(document).ready(function () {
       target_customer_id: selectedCustomerId,
     });
   });
+
   $("#chat-inputbox").keypress(function (e) {
     if (e.which == 13) {
       var text = $(".chat-details__input").val();
@@ -82,6 +85,35 @@ $(document).ready(function () {
       });
     }
   });
+
+  $("#pic-input").on("change", function () {
+    var formData = new FormData();
+    var pic = $(this).get(0).files[0];
+    formData.append("pic", pic);
+    $.ajax({
+      url: "/upload_pic",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        if (data.code === 0) {
+          hashed_filename = data.hashed_filename;
+          console.log("Successfully uploaded file " + hashed_filename);
+          // then we send the pic message
+          socket.emit("pic_message", {
+            sender: adminUserName,
+            pic_filename: hashed_filename,
+            target_customer_id: selectedCustomerId,
+          });
+        } else {
+          console.log("Failed to upload file with error code " + data.code);
+        }
+        $("#pic-input").val("");
+      },
+    });
+  });
+
   $(".chat-users__list-item").click(function () {
     socket.emit("leave", {
       target_customer_id: selectedCustomerId, // leave the previous room
@@ -95,6 +127,8 @@ $(document).ready(function () {
     });
     clearUnreadCounterInItem($(this));
   });
+
+  // end of listeners
 });
 
 function initGlobalVars() {

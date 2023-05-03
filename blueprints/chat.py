@@ -18,7 +18,7 @@ from utils.bot import (
     get_wxbot_signature,
     get_wxbot_answer,
 )
-from utils.toys import get_fuzzed_room_name
+from utils.toys import get_fuzzed_room_name, hash_filename
 from utils.decorators import login_required, staff_login_required
 from model import Customer, Message
 from time import time
@@ -89,6 +89,27 @@ def staff_load_chat_history(customer_id):
     return jsonify(to_return)
     # return jsonify(get_history_by_cus_id(customer_id))
 
+@bp.route("/upload_pic", methods=["POST"])
+def upload_pic():
+    if session.get("staff_id"):
+        print("admin uploading pic.")
+    elif session.get("customer_id"):
+        print("customer " + session.get("customer_id") + " uploading pic.")
+    else:
+        return jsonify({"code": 2})
+    pic = request.files.get("pic")
+    if pic:
+        # save the pic to /static/userdata/chat/pic folder
+        hashed_filename = hash_filename(pic.filename)
+        save_url = url_for("static", filename="userdata/chat/pic/" + hashed_filename)
+        print("pic save url: " + save_url)
+        pic.save(current_app.root_path + save_url)
+        # TODO: use secure_filename to prevent malicious file name
+        print("pic saved successfully.")
+        return jsonify({"code": 0, "hashed_filename": hashed_filename})
+    else:
+        print("pic not saved because no pic found.")
+        return jsonify({"code": 1})
 
 ### END CHATBOT ROUTERS ###
 
@@ -180,8 +201,8 @@ def handle_leave(data):
 @io.on("message", namespace=NAMESPACE)
 def handle_message(data):
     sender_name = data["sender"]
-    msg_text = data["text"]
-    sending_data = {"sender": sender_name, "text": msg_text}
+    msg_content = data["text"]
+    sending_data = {"sender": sender_name, "text": msg_content}
     if sender_name == "system":
         io.emit("message", sending_data, broadcast=False, namespace=NAMESPACE)
     elif sender_name == ADMIN_USERNAME:
@@ -191,7 +212,7 @@ def handle_message(data):
         print(
             sender_name
             + " sending message: "
-            + msg_text
+            + msg_content
             + " to room: "
             + str(target_room)
         )
@@ -199,7 +220,7 @@ def handle_message(data):
         new_message = Message(
             customerID=target_customer_id,
             sentTime=datetime.now(),
-            content=msg_text,
+            content=msg_content,
             isPic=False,
             isByCustomer=False,
         )
@@ -213,12 +234,12 @@ def handle_message(data):
         if customer.nickname != sender_name:
             raise ConnectionRefusedError("User not found.")
         room = get_fuzzed_room_name(customer.id)
-        print(sender_name + " sending message: " + msg_text + " to room: " + str(room))
+        print(sender_name + " sending message: " + msg_content + " to room: " + str(room))
         io.send(data=sending_data, namespace=NAMESPACE, to=room)
         new_message = Message(
             customerID=customer_id,
             isPic=False,
-            content=msg_text,
+            content=msg_content,
             sentTime=datetime.now(),
             isByCustomer=True,
         )
@@ -226,6 +247,60 @@ def handle_message(data):
         db.session.add(new_message)
         db.session.commit()
 
+@io.on("pic_message", namespace=NAMESPACE)
+def handle_pic_message(data):
+    sender_name = data["sender"]
+    pic_filename = data["pic_filename"]
+    sending_data = {"sender": sender_name, "text": "<img src='" + url_for('static', filename='userdata/chat/pic/' + pic_filename) + "'/>"}
+    if sender_name == ADMIN_USERNAME:
+        target_customer_id = data["target_customer_id"]
+        target_customer = Customer.query.filter_by(id=target_customer_id).first()
+        target_room = get_fuzzed_room_name(target_customer_id)
+        print(
+            sender_name
+            + " sending pic: "
+            + pic_filename
+            + " to room: "
+            + str(target_room)
+        )
+        io.send(
+            data=sending_data,
+            namespace=NAMESPACE,
+            to=target_room,
+        )
+        new_message = Message(
+            customerID=target_customer_id,
+            sentTime=datetime.now(),
+            content=pic_filename,
+            isPic=True,
+            isByCustomer=False,
+        )
+        target_customer.amount_unread_msgs += 1
+        db.session.add(new_message)
+        db.session.commit()
+    else:
+        # theoretically, this is for customer
+        customer_id = session.get("customer_id")
+        customer = Customer.query.filter_by(id=customer_id).first()
+        if customer.nickname != sender_name:
+            raise ConnectionRefusedError("User not found.")
+        room = get_fuzzed_room_name(customer.id)
+        print(sender_name + " sending pic: " + pic_filename + " to room: " + str(room))
+        io.send(
+            data=sending_data,
+            namespace=NAMESPACE,
+            to=room,
+        )
+        new_message = Message(
+            customerID=customer_id,
+            isPic=True,
+            content=pic_filename,
+            sentTime=datetime.now(),
+            isByCustomer=True,
+        )
+        customer.amount_unread_msgs += 1
+        db.session.add(new_message)
+        db.session.commit()
 
 @io.on("req4history", namespace=NAMESPACE)
 @login_required
