@@ -30,6 +30,7 @@ $(document).ready(function () {
     socket.emit("join", {
       target_customer_id: selectedCustomerId,
     });
+    // TODO: refactor to join all rooms
     console.log("joinning room: " + selectedCustomerId);
     socket.emit("read", {
       cusId: selectedCustomerId,
@@ -115,9 +116,10 @@ $(document).ready(function () {
   });
 
   $(".chat-users__list-item").click(function () {
-    socket.emit("leave", {
-      target_customer_id: selectedCustomerId, // leave the previous room
-    });
+    // socket.emit("leave", {
+    //   target_customer_id: selectedCustomerId, // leave the previous room
+    // });
+    // TODO: should not leave the previous room in order to keep the unread counter
     updateCusSelection($(this));
     socket.emit("join", {
       target_customer_id: selectedCustomerId, // join the new room
