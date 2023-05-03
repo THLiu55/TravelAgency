@@ -177,14 +177,15 @@ function updateCusSelection(clickedLoc) {
       console.log(data);
       for (let i = 0; i < data.length; i++) {
         const msg = data[i];
+        var content = msg.content;
         if (msg.isByCustomer == true) {
           insertRespMessage(
             selectedCustomerName,
-            msg.content,
+            content,
             new Date(msg.sentTime)
           );
         } else if (msg.isByCustomer == false) {
-          insertMyMessage(msg.content, new Date(msg.sentTime));
+          insertMyMessage(content, new Date(msg.sentTime));
         } else {
           console.log("error: isByCustomer is not defined");
         }
@@ -200,7 +201,7 @@ function updateCusSelection(clickedLoc) {
 function clearUnreadCounterInItem(targetItem) {
   targetCounter = targetItem.find(".unread-counter");
   targetCounter.text("0");
-  targetCounter.style.display = "none";
+  targetCounter.hide();
 }
 
 function updateUnreadCounter(senderName) {
@@ -211,7 +212,7 @@ function updateUnreadCounter(senderName) {
   // );
   var currentCount = parseInt(targetLocation.innerText);
   targetLocation.innerText = currentCount + 1;
-  targetLocation.style.removeProperty("display");
+  targetLocation.show();
 }
 
 function updateUnreadMsgPreview(senderName, msg) {

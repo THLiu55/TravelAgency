@@ -85,7 +85,16 @@ def get_bot_cmd_resp_dict():
 @staff_login_required
 def staff_load_chat_history(customer_id):
     target_customer = Customer.query.filter_by(id=customer_id).first()
-    to_return = [message.to_dict() for message in target_customer.messages]
+    # to_return = [message.to_dict() for message in target_customer.messages]
+    to_return = []
+    for message in target_customer.messages:
+        todicted_message = message.to_dict()
+        if bool(todicted_message["isPic"]) == True:
+            pic_url = url_for(
+                "static", filename="userdata/chat/pic/" + todicted_message["content"]
+            )
+            todicted_message["content"] = "<img src='" + pic_url + "' />"
+        to_return.append(todicted_message)
     return jsonify(to_return)
     # return jsonify(get_history_by_cus_id(customer_id))
 
