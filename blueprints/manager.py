@@ -276,6 +276,7 @@ def add_activity():
     activity.description = request.form.get("description")
     activity.openHour = datetime.strptime(request.form.get("openHour"), "%H:%M")
     activity.visitHour = request.form.get("visitHour")
+    activity.priority = int(request.form.get("pri"))
     # noinspection DuplicatedCode
     included1 = request.form.get("included1")
     included2 = request.form.get("included2")
@@ -361,6 +362,7 @@ def add_tour():
     tour.address = request.form.get("address")
     tour.duration = request.form.get("duration")
     tour.group_size = int(request.form.get("group_size"))
+    tour.priority = int(request.form.get("pri"))
     tour.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
     tour.end_time = datetime.strptime(request.form.get("end_time"), "%Y-%m-%d")
     tour.description = request.form.get("description")
@@ -465,6 +467,7 @@ def add_hotel():
     #     return jsonify({"code": "invalid address "})
     hotel.min_stay = request.form.get("min_stay")
     hotel.security = request.form.get("security")
+    hotel.priority = int(request.form.get("pri"))
     hotel.on_site_staff = request.form.get("on_site_staff")
     hotel.house_keeping = request.form.get("house_keeping")
     hotel.front_desk = request.form.get("front_desk")
@@ -594,6 +597,7 @@ def add_flight():
         request.form.get("landing_time"), "%H:%M"
     ).time()
     flight.week_day = request.form.get("day_of_week")
+    flight.priority = int(request.form.get("pri"))
     flight.flight_stop = request.form.get("flight_stop")
     flight.company = request.form.get("company")
     print(request.form.get("total_time"))
