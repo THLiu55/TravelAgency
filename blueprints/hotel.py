@@ -20,8 +20,9 @@ def hotelList(page_num):
         single_hotel.images = json.loads(single_hotel.images)['images']
         single_hotel.images[0] = single_hotel.images[0][single_hotel.images[0].index('static'):].lstrip('static')
     hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
+    result = request.args.get('result')
     return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged,
-                           page_num=page_num)
+                           page_num=page_num, result=result)
 
 
 @bp.route("/hotel_filter", methods=['POST', 'GET'])

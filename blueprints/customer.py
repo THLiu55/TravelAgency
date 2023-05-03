@@ -12,6 +12,7 @@ from utils.generate_hash import check_hash_time, get_hash_time
 from flask_babel import Babel, gettext as _, refresh
 from utils.decorators import login_required
 from recognize import main
+from translations.translator import translator
 
 bp = Blueprint("customer", __name__, url_prefix="/")
 
@@ -601,5 +602,11 @@ def update_profile():
 
 @bp.route("/recognize", methods=['POST'])
 def recognize():
+    name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
-    return jsonify({"result":main(photo)})
+    result = json.loads(main(photo))['result'][0]['keyword']
+    if session["language"] != 'zh':
+        result = translator(result, 'zh', 'en')
+    else:
+        result = result
+    return redirect(url_for(name, page_num=1, result=result))

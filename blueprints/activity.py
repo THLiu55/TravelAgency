@@ -52,8 +52,9 @@ def activityList(page_num):
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
     activities = sorted(activities, key=lambda i: i.priority, reverse=True)
+    result = request.args.get('result')
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
-                           page_num=page_num, logged=logged)
+                           page_num=page_num, logged=logged, result=result)
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])

@@ -48,7 +48,11 @@
             <div class="finder__outer">
               <div class="finder__inner">
                 <div class="finder__icon" ref="icon"></div>
-                <input id="search_box_change" class="finder__input" type="text" name="q" />
+                {% if result %}
+                  <input id="search_box_change" class="finder__input" type="text" name="q" value="{{ result }}" />
+                  {% else %}
+                  <input id="search_box_change" class="finder__input" type="text" name="q" />
+                  {% endif %}
               </div>
             </div>
           </div>
@@ -93,7 +97,7 @@
   <form action="{{ url_for('customer.recognize') }}" method="POST" enctype="multipart/form-data">
 
    <input style="margin-top: 15%;" type="file" class="custom-file-input" id="searchpicture" name="photo-to-recognize" accept="image/png, image/jpeg" required>
- 
+ <input value="hotel.hotelList" name="category-name" hidden>
    <button style="margin-top: 2%;" type="submit" class="btn btn-primary">recognize</button>
  </form>
 </div>

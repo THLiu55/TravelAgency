@@ -20,7 +20,8 @@ def tourList(page_num):
         single_tour.images[0] = single_tour.images[0][single_tour.images[0].index('static'):].lstrip('static')
     tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
     logged = True if session.get("customer_id") else False
-    return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged)
+    result = request.args.get('result')
+    return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged, result=result)
 
 
 @bp.route('/details/<tour_id>/', methods=['GET'])
