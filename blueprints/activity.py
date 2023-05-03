@@ -45,12 +45,13 @@ def add_review():
 def activityList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_activities = Activity.query.count()
-    pagination = Activity.query.paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Activity.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
     activities = pagination.items
     for activity in activities:
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
+    activities = sorted(activities, key=lambda i: i.priority, reverse=True)
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
                            page_num=page_num, logged=logged)
 
@@ -123,6 +124,8 @@ def activity_filter():  # ajax activity filter
         activity_i.contact_email = url_for('activity.activityDetail', activity_id=activity_i.id)
         activity_i.images = json.loads(activity_i.images)['images']
         activity_i.images[0] = "../" + activity_i.images[0][activity_i.images[0].index('static'):].replace('\\', '/')
+    if to_sort == '1':
+        activities = sorted(activities, key=lambda i: i.priority, reverse=True)
 
     if to_sort == '2':
         activities = sorted(activities, key=lambda activity: activity.view_num, reverse=True)

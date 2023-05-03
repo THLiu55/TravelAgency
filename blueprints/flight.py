@@ -15,12 +15,13 @@ bp = Blueprint("flight", __name__, url_prefix="/flight")
 def flightList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_flights = Flight.query.count()
-    pagination = Flight.query.paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Flight.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
     flights = pagination.items
     for flight in flights:
         # noinspection PyTypeChecker
         flight.images = json.loads(flight.images)['images']
         flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
+    flights = sorted(flights, key=lambda i: i.priority, reverse=True)
     return render_template("flight-grid.html", total_flights=total_flights, flights=flights, page_num=page_num,
                            logged=logged)
 
@@ -169,6 +170,9 @@ def flight_filter():
         flight_i.contact_name = url_for('flight.flightDetail', flight_id=flight_i.id)
         flight_i.images = json.loads(flight_i.images)['images']
         flight_i.images[0] = "../" + flight_i.images[0][flight_i.images[0].index('static'):].replace('\\', '/')
+    if to_sort == '1':
+        flights = sorted(flights, key=lambda flight: flight.priority, reverse=True)
+
     if to_sort == '2':
         flights = sorted(flights, key=lambda flight: flight.view_num, reverse=True)
 

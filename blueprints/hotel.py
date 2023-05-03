@@ -13,12 +13,13 @@ bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 def hotelList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_hotels = Hotel.query.count()
-    pagination = Hotel.query.paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Hotel.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
     hotels = pagination.items
     for single_hotel in hotels:
         # noinspection PyTypeChecker
         single_hotel.images = json.loads(single_hotel.images)['images']
         single_hotel.images[0] = single_hotel.images[0][single_hotel.images[0].index('static'):].lstrip('static')
+    hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
     return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged,
                            page_num=page_num)
 
@@ -46,6 +47,8 @@ def hotel_filter():
         hotel_i.contact_email = url_for('hotel.hotelDetail', hotel_id=hotel_i.id)
         hotel_i.images = json.loads(hotel_i.images)['images']
         hotel_i.images[0] = "../" + hotel_i.images[0][hotel_i.images[0].index('static'):].replace('\\', '/')
+    if to_sort == '1':
+        hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
 
     if to_sort == '2':
         hotels = sorted(hotels, key=lambda hotel: hotel.view_num, reverse=True)

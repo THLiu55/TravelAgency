@@ -12,12 +12,13 @@ bp = Blueprint("tour", __name__, url_prefix="/tour")
 @bp.route("/<page_num>")
 def tourList(page_num):
     total_tours = Tour.query.count()
-    pagination = Tour.query.paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Tour.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
     tours = pagination.items
     for single_tour in tours:
         # noinspection PyTypeChecker
         single_tour.images = json.loads(single_tour.images)['images']
         single_tour.images[0] = single_tour.images[0][single_tour.images[0].index('static'):].lstrip('static')
+    tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
     logged = True if session.get("customer_id") else False
     return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged)
 
@@ -116,6 +117,8 @@ def tour_filter():
         tour_i.contact_email = url_for('tour.tourDetail', tour_id=tour_i.id)
         tour_i.images = json.loads(tour_i.images)['images']
         tour_i.images[0] = "../" + tour_i.images[0][tour_i.images[0].index('static'):].replace('\\', '/')
+    if to_sort == '1':
+        tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
 
     if to_sort == '2':
         tours = sorted(tours, key=lambda tour: tour.view_num, reverse=True)
