@@ -23,7 +23,10 @@
                     <div class="hotel-img">
                         <span class="badge">{{ i.type_ }}</span>
                         <img src="{{ i.photo_url }}" alt="">
+                        {% if i.type_ == "Activity" or i.type_ == "Tour" %}
                         <a href="#" class="add-wishlist"  data-order-id="{{ i.id }}" data-order-type="{{ i.type_ }}"id="addtoWishListCalender"><i class="far fa-calendar-plus"></i></a>
+                        {% else %}
+                        {% endif %}
                     </div>
                     <div class="hotel-content">
                         <h4 class="hotel-title"><a href="#">{{ i.title }}</a></h4>

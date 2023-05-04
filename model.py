@@ -76,7 +76,8 @@ class ActivityOrder(db.Model):
             'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
             'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID
         }
 
 
@@ -225,7 +226,8 @@ class TourOrder(db.Model):
             'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
             'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID
         }
 
 
@@ -265,6 +267,8 @@ class Tour(db.Model):
     itineraries = db.Column(db.Text)
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
+    lat = db.Column(db.Double)
+    lon = db.Column(db.Double)
     images = db.Column(db.Text)
     priority = db.Column(db.Integer, default=0)
     description = db.Column(db.Text)
@@ -287,6 +291,8 @@ class Tour(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
+            "lat": self.lat,
+            "lon": self.lon,
             'price': self.price,
             'pri': self.priority
         }
@@ -305,6 +311,8 @@ class Tour(db.Model):
             'review_num': self.review_num,
             'star_detail': self.star_detail,
             "contact_email": self.contact_email,
+            "lat": self.lat,
+            "lon": self.lon,
             'pri': self.priority
         }
 
@@ -334,7 +342,9 @@ class Tour(db.Model):
             "contact_email": self.contact_email,
             "contact_phone": self.contact_phone,
             "review_num": self.review_num,
-            'pri': self.priority
+            'pri': self.priority,
+            "lat": self.lat,
+            "lon": self.lon,
         }
 
 
@@ -453,7 +463,8 @@ class HotelOrder(db.Model):
             'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
             'end_time': self.checkOutTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID
         }
 
 
@@ -596,7 +607,8 @@ class FlightOrder(db.Model):
             'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
             'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID
         }
 
 
