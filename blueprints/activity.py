@@ -99,11 +99,14 @@ def activityDetail(activity_id):
 def activity_filter():  # ajax activity filter
     activity_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
-    if session["language"] == 'zh':
-        key_word = request.form.get('key-word')
-        key_word = translator(key_word, 'zh', 'en')
+    if 'language' in session:
+        if session["language"] == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
     else:
-        key_word = request.form.get('key-word')
+        key_word = ''
     if activity_type[0] == '':
         activity_type = ['Food & Nightlife', 'Hot Air Balloon', 'Mountain Climbing', 'Bike Ride']
     activity_price = request.form.get('activityPrice')
