@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery-ui.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/jquery.timepicker.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}" >
 {% endblock %}
 
 {% block body %}
@@ -325,9 +324,9 @@
                                 </div>
                                 <div class="listing-item">
                                     <h4 class="mb-4">{{ _("Location Map") }}</h4>
-                                    <div id="mapid"  style="width: 600px; height: 400px;">
-                                        <input id="lat" value="{{ lat }}" hidden>
-                                        <input id="lon" value="{{ lon }}" hidden>
+                                    <div class="contact-map">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447748!3d40.759040329405195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a01c8df6fb3cb8!2sSolomon%20R.%20Guggenheim%20Museum!5e0!3m2!1sen!2sbd!4v1619410634508!5m2!1sen!2s"
+                                                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                                     </div>
                                 </div>
                                 <div class="listing-item">
@@ -512,6 +511,10 @@
                                 <div class="booking-item">
                                     <div class="listing-price">
                                         <h4 class="listing-price-tag">{{ _("Bestseller") }}</h4>
+                                        <div class="listing-price-amount">
+                                            {{ _("From") }} <span>$450.00</span>
+                                            <del>$590.00</del>
+                                        </div>
                                     </div>
                                     <div class="search-form">
                                         <form action="{{ url_for('hotel.order_confirm') }}" method="post">
@@ -569,10 +572,10 @@
                                                     {% if added %}
                                                         <a href="{{ url_for('hotel.remove_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn"><i class="far fa-heart"></i>{{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('hotel.add_wishlist', hotel_id=hotel.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i>{{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
-                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                    <a href="{{ url_for('customer.re_jump') }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                 {% endif %}
                                                 </div>
                                             </div>
@@ -589,12 +592,25 @@
                                 <p>{{ _("It is a long established fact that a reader will be distracted by the readable
                                     content layout.") }}</p>
                                 <ul class="listing-side-list">
-                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">{{ hotel.contact_phone }}</a></li>
+                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
                                     <li><i class="far fa-envelope"></i><a
                                             href="/cdn-cgi/l/email-protection#036a6d656c43667b626e736f662d606c6e"><span
-                                            class="__cf_email__" data-cfemail="b7ded9d1d8f7d2cfd6dac7dbd299d4d8da">{{ hotel.contact_email }}</span></a>
+                                            class="__cf_email__" data-cfemail="b7ded9d1d8f7d2cfd6dac7dbd299d4d8da">[email&#160;protected]</span></a>
                                     </li>
                                 </ul>
+                            </div>
+                            <div class="booking-sidebar listing-side-content mt-4">
+                                <h4 class="booking-title">{{ _("Organized By") }}</h4>
+                                <div class="listing-side-organizer">
+                                    <div class="listing-side-organizer-img">
+                                        <img src="assets/img/account/01.jpg" alt="">
+                                    </div>
+                                    <div class="listing-side-organizer-info">
+                                        <h5 class="listing-side-organizer-name">{{ _("Roltak Travel Agency") }}</h5>
+                                        <p>{{ _("Member Since 2021") }}</p>
+                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span> {{ _("Send Message") }}</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -607,7 +623,6 @@
 {% endblock %}
 
 {% block jsLink %}
-    <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
     <script src="{{ url_for('static', filename='js/selectOne.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/modernizr.min.js') }}"></script>
@@ -625,14 +640,4 @@
     <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
-    <script>
-        const lat = document.getElementById("lat").value;
-        const lon = document.getElementById("lon").value;
-        const mymap = L.map('mapid').setView([lat, lon], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18
-        }).addTo(mymap);
-        L.marker([lat, lon]).addTo(mymap);
-    </script>
-
 {% endblock %}

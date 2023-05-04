@@ -479,7 +479,7 @@
                                                     {% if added %}
                                                         <a href="{{ url_for('flight.remove_wishlist', flight_id=flight.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
                                                     <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
@@ -500,19 +500,31 @@
                                     content
                                     layout.") }}</p>
                                 <ul class="listing-side-list">
-                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">{{ flight.contact_phone }}</a></li>
+                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
                                     <li><i class="far fa-envelope"></i><a
                                             href="/cdn-cgi/l/email-protection#3c55525a537c59445d514c5059125f5351"><span
-                                            class="__cf_email__" data-cfemail="1970777f76597c61787469757c377a7674">{{ flight.contact_email }}</span></a>
+                                            class="__cf_email__" data-cfemail="1970777f76597c61787469757c377a7674">[email&#160;protected]</span></a>
                                     </li>
                                 </ul>
+                            </div>
+                            <div class="booking-sidebar listing-side-content mt-4">
+                                <h4 class="booking-title">{{ _("Organized By") }}</h4>
+                                <div class="listing-side-organizer">
+                                    <div class="listing-side-organizer-img">
+                                        <img src="assets/img/account/01.jpg" alt="">
+                                    </div>
+                                    <div class="listing-side-organizer-info">
+                                        <h5 class="listing-side-organizer-name">{{ _("Roltak Travel Agency") }}</h5>
+                                        <p>{{ _("Member Since 2021") }}</p>
+                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span>{{ _("Send Message") }} </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <input id="allowedDates" value="{{ day_of_week }}" hidden>
 
     </main>
 {% endblock %}

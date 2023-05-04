@@ -69,14 +69,12 @@ function flight_filter() {
             "flight-stop": selectedValues3.toString(),
             "flight-refundable": selectedValues4.toString(),
             "page": 1,
-            "sort_by": sort_by,
-            "key-word": document.getElementById("search_box_change").value
+            "sort_by": sort_by
         },
         success: function (response) {
-            let flights = search_now(response.flights, response.keyword);
+            let flights = search_now(response.flights);
             let flightList = $('#row-list-ajax');
             flightList.empty();
-            document.getElementById("total_activities").innerHTML = flights.length.toString();
 
             for (let i = 0; i < flights.length; i++) {
                 let flight = flights[i];
@@ -150,7 +148,7 @@ function getSortValue() {
     return options[index].value;
 }
 
-function search_now(list, pattern) {
+function search_now(list) {
     const options = {
         threshold: 0.2,
         tokenize:true,
@@ -161,6 +159,7 @@ function search_now(list, pattern) {
         ]
     };
 
+    let pattern = document.getElementById("search_box_change").value;
     if (pattern === ''){
         return list;
     }

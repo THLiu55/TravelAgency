@@ -30,7 +30,6 @@ $(document).ready(function () {
     socket.emit("join", {
       target_customer_id: selectedCustomerId,
     });
-    // TODO: refactor to join all rooms
     console.log("joinning room: " + selectedCustomerId);
     socket.emit("read", {
       cusId: selectedCustomerId,
@@ -47,7 +46,7 @@ $(document).ready(function () {
       if (sender == selectedCustomerName) {
         insertRespMessageNow(sender, t);
         // TODO: scroll to bottom of chat
-      } else if (sender === adminUserName) {
+      } else if (sender == adminUserName) {
         insertMyMessageNow(t);
       } else if (sender == "system") {
         console.log("system message received: " + t);
@@ -57,8 +56,6 @@ $(document).ready(function () {
       }
     }
   });
-
-  // start of listeners
   $("#send-message").click(function () {
     var text = $(".chat-details__input").val();
     if (text == "") {
@@ -71,7 +68,6 @@ $(document).ready(function () {
       target_customer_id: selectedCustomerId,
     });
   });
-
   $("#chat-inputbox").keypress(function (e) {
     if (e.which == 13) {
       var text = $(".chat-details__input").val();
@@ -86,40 +82,10 @@ $(document).ready(function () {
       });
     }
   });
-
-  $("#pic-input").on("change", function () {
-    var formData = new FormData();
-    var pic = $(this).get(0).files[0];
-    formData.append("pic", pic);
-    $.ajax({
-      url: "/upload_pic",
-      type: "POST",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function (data) {
-        if (data.code === 0) {
-          hashed_filename = data.hashed_filename;
-          console.log("Successfully uploaded file " + hashed_filename);
-          // then we send the pic message
-          socket.emit("pic_message", {
-            sender: adminUserName,
-            pic_filename: hashed_filename,
-            target_customer_id: selectedCustomerId,
-          });
-        } else {
-          console.log("Failed to upload file with error code " + data.code);
-        }
-        $("#pic-input").val("");
-      },
-    });
-  });
-
   $(".chat-users__list-item").click(function () {
-    // socket.emit("leave", {
-    //   target_customer_id: selectedCustomerId, // leave the previous room
-    // });
-    // TODO: should not leave the previous room in order to keep the unread counter
+    socket.emit("leave", {
+      target_customer_id: selectedCustomerId, // leave the previous room
+    });
     updateCusSelection($(this));
     socket.emit("join", {
       target_customer_id: selectedCustomerId, // join the new room
@@ -129,8 +95,6 @@ $(document).ready(function () {
     });
     clearUnreadCounterInItem($(this));
   });
-
-  // end of listeners
 });
 
 function initGlobalVars() {
@@ -179,15 +143,14 @@ function updateCusSelection(clickedLoc) {
       console.log(data);
       for (let i = 0; i < data.length; i++) {
         const msg = data[i];
-        var content = msg.content;
         if (msg.isByCustomer == true) {
           insertRespMessage(
             selectedCustomerName,
-            content,
+            msg.content,
             new Date(msg.sentTime)
           );
         } else if (msg.isByCustomer == false) {
-          insertMyMessage(content, new Date(msg.sentTime));
+          insertMyMessage(msg.content, new Date(msg.sentTime));
         } else {
           console.log("error: isByCustomer is not defined");
         }
@@ -203,7 +166,7 @@ function updateCusSelection(clickedLoc) {
 function clearUnreadCounterInItem(targetItem) {
   targetCounter = targetItem.find(".unread-counter");
   targetCounter.text("0");
-  targetCounter.hide();
+  targetCounter.style.display = "none";
 }
 
 function updateUnreadCounter(senderName) {
@@ -214,7 +177,7 @@ function updateUnreadCounter(senderName) {
   // );
   var currentCount = parseInt(targetLocation.innerText);
   targetLocation.innerText = currentCount + 1;
-  targetLocation.show();
+  targetLocation.style.removeProperty("display");
 }
 
 function updateUnreadMsgPreview(senderName, msg) {

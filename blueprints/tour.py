@@ -5,7 +5,6 @@ from flask import Blueprint, render_template, request, jsonify, current_app, ses
 from model import *
 from exts import db
 import math
-from translations.translator import translator
 
 bp = Blueprint("tour", __name__, url_prefix="/tour")
 
@@ -13,16 +12,14 @@ bp = Blueprint("tour", __name__, url_prefix="/tour")
 @bp.route("/<page_num>")
 def tourList(page_num):
     total_tours = Tour.query.count()
-    pagination = Tour.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Tour.query.paginate(page=int(page_num), per_page=9, error_out=False)
     tours = pagination.items
     for single_tour in tours:
         # noinspection PyTypeChecker
         single_tour.images = json.loads(single_tour.images)['images']
         single_tour.images[0] = single_tour.images[0][single_tour.images[0].index('static'):].lstrip('static')
-    tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
     logged = True if session.get("customer_id") else False
-    result = request.args.get('result')
-    return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged, result=result)
+    return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged)
 
 
 @bp.route('/details/<tour_id>/', methods=['GET'])
@@ -93,14 +90,6 @@ def add_review():
 def tour_filter():
     tour_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
-    if 'language' in session:
-        if session["language"] == 'zh':
-            key_word = request.form.get('key-word')
-            key_word = translator(key_word, 'zh', 'en')
-        else:
-            key_word = request.form.get('key-word')
-    else:
-        key_word = ''
     if tour_type[0] == '':
         tour_type = ['Cultural tourism', 'Wildlife observation', 'Cruises', 'Grass Skyline']
     tour_price = request.form.get('tourPrice')
@@ -121,14 +110,12 @@ def tour_filter():
                                   Tour.duration.between(min_hour, max_hour)
                                   )
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=18)
+    pagination = query.paginate(page=page, per_page=9)
     tours = pagination.items
     for tour_i in tours:
         tour_i.contact_email = url_for('tour.tourDetail', tour_id=tour_i.id)
         tour_i.images = json.loads(tour_i.images)['images']
         tour_i.images[0] = "../" + tour_i.images[0][tour_i.images[0].index('static'):].replace('\\', '/')
-    if to_sort == '1':
-        tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
 
     if to_sort == '2':
         tours = sorted(tours, key=lambda tour: tour.view_num, reverse=True)
@@ -140,7 +127,7 @@ def tour_filter():
         tours = sorted(tours, key=lambda tour: tour.price, reverse=True)
 
     tours = [tour.to_dict() for tour in tours]
-    return jsonify({"tours": tours, "page": 1, "keyword": key_word})
+    return jsonify({"tours": tours, "page": 1})
 
 
 @bp.route("/order-confirm", methods=['POST'])

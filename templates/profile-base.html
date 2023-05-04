@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title> {% block title %} My Wishlist {% endblock %} </title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/image/travel.svg') }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/topbar.css') }}">
@@ -46,9 +45,9 @@
 
                         <div class="top-contact-info">
                             <ul>
-                                <li><a href="{{ url_for('customer.about_us') }}"><i
+                                <li><a href="tel:+1234567777"><i
                                         class="far fa-phone-arrow-down-left"></i>+86 15214257799</a></li>
-                                <li><a href="{{ url_for('customer.about_us') }}"><i
+                                <li><a href="/cdn-cgi/l/email-protection#d4bdbab2bb94b1acb5b9a4b8b1fab7bbb9"><i
                                         class="far fa-envelopes"></i><span class="__cf_email__"
                                                                            data-cfemail="7811161e17381d00191508141d561b1715">[email&#160;ziqi.guo@ucdconnect.ie@ucdconnect.ie]</span></a>
                                 </li>
@@ -117,7 +116,7 @@
                                 <li><a class="dropdown-item" href="tour-add.html">Add Tour</a></li>
                                 </ul> -->
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.about_us') }}">{{ _("About US") }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.about_us') }}">{{ _("Contact") }}</a></li>
 
                             {% if logged %}
                                 <li class="nav-item"><a class="nav-link active" href="{{ url_for('customer.profile') }}">{{ _("Profile") }}</a>
@@ -172,7 +171,7 @@
     <li id="profile-menu"><a href="{{ url_for('customer.profilepage') }}" onclick="selected1(this)"><i class="far fa-user"></i> <span>{{ _("My Profile") }}</span></a></li>
 
     <li id="profile-menu"><a href="{{ url_for('customer.wishlist') }}" onclick="selected1(this)"><i class="far fa-heart"></i> <span>{{ _("My Wishlist") }}</span></a></li>
-    <!-- <li id="profile-menu"><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge">02</span></a></li> -->
+    <li id="profile-menu"><a href="profile-message.html"><i class="far fa-envelope"></i> Messages <span class="badge">02</span></a></li>
     <li id="profile-menu"><a href="{{ url_for('customer.wallet') }}" onclick="selected1(this)"><i class="far fa-wallet"></i><span> {{ _("My Wallet") }}</span></a></li>
     <!-- <li><a href="profile-notification.html"><i class="far fa-bell"></i> Notifications <span class="badge">05</span></a></li> -->
     <li id="profile-menu"><a href="{{ url_for('customer.setting') }}" onclick="selected1(this)"><i class="far fa-cog"></i> <span>{{ _("Settings") }}</span></a></li>

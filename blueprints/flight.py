@@ -7,8 +7,6 @@ import datetime
 from exts import db
 from datetime import time
 from sqlalchemy import or_
-from translations.translator import translator
-from datetime import date, timedelta
 
 bp = Blueprint("flight", __name__, url_prefix="/flight")
 
@@ -17,13 +15,12 @@ bp = Blueprint("flight", __name__, url_prefix="/flight")
 def flightList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_flights = Flight.query.count()
-    pagination = Flight.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Flight.query.paginate(page=int(page_num), per_page=9, error_out=False)
     flights = pagination.items
     for flight in flights:
         # noinspection PyTypeChecker
         flight.images = json.loads(flight.images)['images']
         flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
-    flights = sorted(flights, key=lambda i: i.priority, reverse=True)
     return render_template("flight-grid.html", total_flights=total_flights, flights=flights, page_num=page_num,
                            logged=logged)
 
@@ -51,6 +48,7 @@ def flightDetail(flight_id):
     wishlist_exists = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                                   productID=flight_id, purchased=False).first()
     added = True if wishlist_exists is not None else False
+    logged = session.get("customer_id")
     purchased = FlightOrder.query.filter_by(customerID=session.get("customer_id"),
                                             productID=flight_id, purchased=True).first()
     purchased = True if (purchased is not None and logged is not None) else False
@@ -63,19 +61,12 @@ def flightDetail(flight_id):
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
-    start_date = date.today()
-    end_date = start_date + timedelta(days=5 * 30)
-    week_days = []
-    while start_date <= end_date:
-        if start_date.weekday() == int(flight.week_day)-1:
-            week_days.append(start_date.strftime("%Y-%m-%d")+',')
-        start_date += timedelta(days=1)
     return render_template("flight-detail.html", logged=logged, flight=flight, images=images, wifi=wifi,
                            air_condition=air_condition, coffee=coffee
                            , entertainment=entertainment, food=food, drink=drink, wines=wines, comfort=comfort,
                            television=television, shopping=shopping, magazines=magazines, game=game,
                            star_score=star_score, star_score_ceil=star_score_ceil,
-                           day_of_week=''.join(week_days), added=added, purchased=purchased, star_detail=star_detail,
+                           day_of_week=flight.week_day, added=added, purchased=purchased, star_detail=star_detail,
                            review_num=review_num, reviews=reviews)
 
 
@@ -126,14 +117,6 @@ def order_success():
 def flight_filter():
     class_type = request.form.get('class_type').split(",")
     to_sort = request.form.get('sort_by')
-    if 'language' in session:
-        if session["language"] == 'zh':
-            key_word = request.form.get('key-word')
-            key_word = translator(key_word, 'zh', 'en')
-        else:
-            key_word = request.form.get('key-word')
-    else:
-        key_word = ''
     if class_type[0] == '':
         class_type = ['Economy', 'Business', 'First Class']
     flight_price = request.form.get('flightPrice')
@@ -181,15 +164,12 @@ def flight_filter():
             or_(*filters)
         )
     page = int(request.form.get('page'))
-    pagination = queries.paginate(page=page, per_page=18)
+    pagination = queries.paginate(page=page, per_page=9)
     flights = pagination.items
     for flight_i in flights:
         flight_i.contact_name = url_for('flight.flightDetail', flight_id=flight_i.id)
         flight_i.images = json.loads(flight_i.images)['images']
         flight_i.images[0] = "../" + flight_i.images[0][flight_i.images[0].index('static'):].replace('\\', '/')
-    if to_sort == '1':
-        flights = sorted(flights, key=lambda flight: flight.priority, reverse=True)
-
     if to_sort == '2':
         flights = sorted(flights, key=lambda flight: flight.view_num, reverse=True)
 
@@ -199,7 +179,7 @@ def flight_filter():
         flights = sorted(flights, key=lambda flight: flight.price, reverse=True)
 
     flights = [flight.to_dict() for flight in flights]
-    return jsonify({"flights": flights, "page": 1, "keyword": key_word})
+    return jsonify({"flights": flights, "page": 1})
 
 
 @bp.route("/add_wishlist/<flight_id>")

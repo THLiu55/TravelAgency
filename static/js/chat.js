@@ -5,6 +5,7 @@ var $messages = $(".messages-content"),
   loginPageUrl = "",
   usingBot = true, // use bot by default
   botAvatarUrl = window.botAvatarUrl,
+  botCmdRespDict = null,
   socket = null,
   namespace = null,
   h,
@@ -12,7 +13,6 @@ var $messages = $(".messages-content"),
 
 $(window).load(function () {
   initGlobalVars();
-  $("#to-show-pic-upload").hide();
   $messages.mCustomScrollbar();
   setTimeout(function () {
     botMessage =
@@ -21,7 +21,6 @@ $(window).load(function () {
       "! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
     insertRespMessage(botMessage);
   }, 100);
-  setupListeners();
 });
 
 function initGlobalVars() {
@@ -50,43 +49,24 @@ function initGlobalVars() {
     },
   });
 
+  // get the bot cmd resp dict
+  $.ajax({
+    type: "GET",
+    url: "/get_bot_cmd_resp_dict",
+    // data: {},
+    timeout: 15000, // timeout after 15 seconds
+    success: function (responseFromServer) {
+      console.log("responseFromServer: " + responseFromServer + " with type: " + typeof responseFromServer);
+      botCmdRespDict = JSON.parse(responseFromServer);
+    },
+    error: function (xhr, status, error) {
+      // an error occurred
+      console.log("ERROR_" + status + "_" + error.message);
+    },
+  });
+
   // currently we set namespace to /chat
   namespace = "/chat";
-}
-
-function setupListeners() {
-  // $(".history-loader").click(function () {
-  //   socket.emit("req4history", { cusId: customerId });
-  //   // then we remove the click2loadHistoryTxt
-  //   $(".mCSB_container .history-loader").remove();
-  // });
-
-  $("#send-pic").on("change", function () {
-    var formData = new FormData();
-    var pic = $(this).get(0).files[0];
-    formData.append("pic", pic);
-    $.ajax({
-      url: "/upload_pic",
-      type: "POST",
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function (data) {
-        if (data.code === 0) {
-          hashed_filename = data.hashed_filename;
-          console.log("Successfully uploaded file " + hashed_filename);
-          // then we send the pic message
-          socket.emit("pic_message", {
-            sender: customerName,
-            pic_filename: hashed_filename,
-          });
-        } else {
-          console.log("Failed to upload file with error code " + data.code);
-        }
-        $("#send-pic").val("");
-      },
-    });
-  });
 }
 
 function updateScrollbar() {
@@ -199,6 +179,12 @@ $(window).on("keydown", function (e) {
   }
 });
 
+// $(".history-loader").click(function () {
+//   socket.emit("req4history", { cusId: customerId });
+//   // then we remove the click2loadHistoryTxt
+//   $(".mCSB_container .history-loader").remove();
+// });
+
 function requestForHistory() {
   socket.emit("req4history", { cusId: customerId });
   // then we remove the click2loadHistoryTxt
@@ -208,15 +194,13 @@ function requestForHistory() {
 function doSend() {
   customerMessage = $(".message-input").val();
 
-  // if (customerMessage == "change to real person customer service") {
-  //   // currently there are only one keyword to change to real person customer service
-  //   clearInputBox();
-  //   insertMyMessage(customerMessage);
-  //   customerMessage = "";
-  //   changeToRealPersonCustomerService();
-  // }
-
-  // above is legacy implementation
+  if (customerMessage == "change to real person customer service") {
+    // currently there are only one keyword to change to real person customer service
+    clearInputBox();
+    insertMyMessage(customerMessage);
+    customerMessage = "";
+    changeToRealPersonCustomerService();
+  }
 
   if ($.trim(customerMessage) == "") {
     return false; // do not send empty message
@@ -224,7 +208,15 @@ function doSend() {
 
   if (usingBot) {
     insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
-    getAndInsertRespMessageFromBot(customerMessage);
+    // TODO: TEST APPROACH CHANGE IMMEDIATELY
+    console.log(botCmdRespDict)
+    if (customerMessage in botCmdRespDict) {
+      // if the message is a bot command
+      var botCmdResp = botCmdRespDict[customerMessage];
+      insertRespMessage(botCmdResp);
+    } else {
+      getAndInsertRespMessageFromBot(customerMessage);
+    }
   } else {
     // need not to insert message manually, because the server will send back the message to the client
     var text = customerMessage;
@@ -250,35 +242,8 @@ function getAndInsertRespMessageFromBot(yourMessage) {
     },
     timeout: 15000, // timeout after 15 seconds
     success: function (chatbotAnswer) {
-      // a response was received
-      // if the response starts with a "#" then it is a command we parse it using ajax to post to /parse_bot_cmd
-      if (chatbotAnswer.startsWith("#")) {
-        // then it is a command
-        $.ajax({
-          type: "POST",
-          url: "/parse_bot_cmd",
-          data: {
-            cmd: chatbotAnswer,
-          },
-          timeout: 15000,
-          success: function (cmdParserResp) {
-            if (cmdParserResp.do == "SWITCH") {
-              changeToRealPersonCustomerService();
-            } else if (cmdParserResp.do == "REDIRECT") {
-              // redirect to the url using jquery's window.location.href
-              window.location.href = cmdParserResp.redirect_url;
-            } else if (cmdParserResp.do == "TEXT") {
-              // just a text response
-              $(".message.loading").remove();
-              insertRespMessage(cmdParserResp.to_show);
-            }
-          },
-        });
-      } else {
-        // just a text response
-        $(".message.loading").remove();
-        insertRespMessage(chatbotAnswer);
-      }
+      $(".message.loading").remove();
+      insertRespMessage(chatbotAnswer);
     },
     error: function (xhr, status, error) {
       // an error occurred
@@ -292,7 +257,6 @@ function getAndInsertRespMessageFromBot(yourMessage) {
 }
 
 function changeToRealPersonCustomerService() {
-  $("#to-show-pic-upload").show();
   if (isLoggedIn == false) {
     window.location.href = loginPageUrl;
     return;
@@ -339,10 +303,6 @@ function changeToRealPersonCustomerService() {
       }
     }
   });
-}
-
-function clickProfile() {
-  toClick = document.getElementById("profile");
 }
 
 /* FRONT END JS */

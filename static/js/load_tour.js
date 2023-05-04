@@ -142,80 +142,6 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
-function checkedInitIncluded(checked_array){
-    var incheck1 = document.getElementById('m_included1');
-    if (checked_array[0] != null){
-        incheck1.checked = true;
-    }else {
-        incheck1.checked = false;
-    }
-
-    var incheck2 = document.getElementById('m_included2');
-    if (checked_array[1] != null){
-        incheck2.checked = true;
-    }else {
-        incheck2.checked = false;
-    }
-
-    var incheck3 = document.getElementById('m_included3');
-    if (checked_array[2] != null){
-        incheck3.checked = true;
-    }else {
-        incheck3.checked = false;
-    }
-
-    var incheck4 = document.getElementById('m_included4');
-    if (checked_array[3] != null){
-        incheck4.checked = true;
-    }else {
-        incheck4.checked = false;
-    }
-}
-
-function checkedInitNotIncluded(checked_array){
-    var incheck1 = document.getElementById('m_not-included1');
-    if (checked_array[0] != null){
-        incheck1.checked = true;
-    }else {
-        incheck1.checked = false;
-    }
-
-    var incheck2 = document.getElementById('m_not-included2');
-    if (checked_array[1] != null){
-        incheck2.checked = true;
-    }else {
-        incheck2.checked = false;
-    }
-
-    var incheck3 = document.getElementById('m_not-included3');
-    if (checked_array[2] != null){
-        incheck3.checked = true;
-    }else {
-        incheck3.checked = false;
-    }
-
-    var incheck4 = document.getElementById('m_not-included4');
-    if (checked_array[3] != null){
-        incheck4.checked = true;
-    }else {
-        incheck4.checked = false;
-    }
-}
-
-function initItinerary(init_num){
-    // {#  modify dynamic itinerary  #}
-    var container_modify = document.getElementById("divContainer_modify");
-    // {# initialize #}
-    container_modify.innerHTML = "";
-    console.log(init_num)
-    for (var i = 0; i < init_num; i++) {
-        console.log(i)
-        var div = document.createElement("div");
-        div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_desc_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
-        container_modify.appendChild(div);
-    }
-}
-
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -240,15 +166,18 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
-            setModifySelect('m_pri', response['content']["pri"]);
+            var datePicker1 = document.getElementById('m_from_date');
+            start_time = response['content']["start_time"]
+            date_str1 = start_time.split("T")[0]
+           console.log(start_time)
+            console.log(date_str1)
+            datePicker1.value = date_str1;
 
-            const init_num = parseInt(response['content']["duration"])
-            initItinerary(init_num)
-
-            const tick_array = JSON.parse(response['content']["included"])
-            const tick_array_not = JSON.parse(response["content"]["excluded"])
-            checkedInitIncluded(tick_array.included)
-            checkedInitNotIncluded(tick_array_not.not_included)
+            var datePicker2 = document.getElementById('m_end_date');
+            end_time = response['content']["end_time"]
+            date_str2 = end_time.split("T")[0]
+            console.log(date_str2)
+            datePicker2.value = date_str2;
 
         } else {
         // 处理错误情况

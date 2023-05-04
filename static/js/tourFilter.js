@@ -37,14 +37,12 @@ function tour_filter(duration, min1, max1) {
           "tourPrice": activityPrice.toString(),
           "tourDuration": selectedValues1.toString(),
           "page": page,
-          "sort_by": sort_by,
-          "key-word": document.getElementById("search_box_change").value
+          "sort_by": sort_by
       },
         success: function(response) {
-        let tours = search_now(response.tours, response.keyword);
+        let tours = search_now(response.tours);
         let tourList = $('#row-list-ajax');
         tourList.empty();
-        document.getElementById("total_activities").innerHTML = tours.length.toString();
 
         for (let i = 0; i < tours.length; i++) {
             let activity = tours[i];
@@ -112,7 +110,7 @@ function getSortValue() {
     return options[index].value;
 }
 
-function search_now(list, pattern) {
+function search_now(list) {
     const options = {
         threshold: 0.2,
         tokenize:true,
@@ -124,6 +122,7 @@ function search_now(list, pattern) {
         ]
     };
 
+    let pattern = document.getElementById("search_box_change").value;
     if (pattern === ''){
         return list;
     }
