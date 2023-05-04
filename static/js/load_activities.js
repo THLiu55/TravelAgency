@@ -225,13 +225,13 @@ function getModifyData(id){
             setModifySelect('modify_city', response['content']["city"]);
             setModifySelect('modify_state', response['content']["state"]);
             setModifySelect('modify_address', response['content']["address"]);
-            setModifySelect('modify_citylong', response['content']["city_long"]);
-            setModifySelect('modify_citylati', response['content']["state_lati"]);
             setModifySelect('m_visitHour', response['content']["visitHour"]);
             setModifySelect('m_contact_name', response['content']["contact_name"]);
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
+            setModifySelect('modify_citylong', response['content']['lon'])
+            setModifySelect('modify_citylati', response['content']['lat'])
 
             setModifySelect('m_pri', response['content']["pri"]);
 

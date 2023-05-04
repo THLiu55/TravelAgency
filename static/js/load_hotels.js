@@ -413,6 +413,9 @@ function getModifyData(id){
 
             setModifySelect('m_pri', response['content']["pri"]);
 
+            setModifySelect('modify_citylong', response['content']['lon'])
+            setModifySelect('modify_citylati', response['content']['lat'])
+
             initRoomType(response['content']["room_type_num"])
 
             const tick_array = response['content']["amenities"]

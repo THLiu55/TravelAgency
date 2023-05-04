@@ -240,6 +240,9 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
+            setModifySelect('modify_citylong', response['content']['lon'])
+            setModifySelect('modify_citylati', response['content']['lat'])
+
             setModifySelect('m_pri', response['content']["pri"]);
 
             const init_num = parseInt(response['content']["duration"])
