@@ -3722,11 +3722,11 @@ listing single css
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: rgba(136, 169, 234, 0.2);
+  background: rgba(162, 206, 240, 0.2);
   border-radius: 12px;
   font-size: 18px;
   text-align: center;
-  color: #547cf1;
+  color: #0e71c8;
 }
 
 .listing-feature-content span{
@@ -3849,8 +3849,8 @@ listing single css
   border-radius: 50px;
   font-size: 14px;
   text-align: center;
-  color: #7167FF;
-  background: rgba(113, 103, 255, .1);
+  color: #0e71c8;
+  background: rgba(103, 182, 255, 0.1);
 }
 
 .listing-amenity-item .list li{
@@ -4384,18 +4384,19 @@ listing single css
 }
 
 .listing-side-btn .border-btn{
-  border: 2px solid #ededf1;
+  border: 2px solid #edeff1;
   margin-top: 25px;
   text-align: center;
   font-weight: 500;
   padding: 9px 20px;
   border-radius: 12px;
-  color: white;
+  background-color: #0e71c8;
+  color: rgb(249, 251, 253);
 }
 
 .listing-side-btn .border-btn:hover{
-  background: #7167FF;
-  color: rgb(241, 161, 161);
+  background: #074199;
+  color: rgb(161, 206, 241);
 }
 
 .listing-side-share{
@@ -4717,7 +4718,7 @@ booking sidebar
 .booking-sidebar .flight-time .form-check{
   padding: 10px 15px 10px 38px;
   border-radius: 8px;
-  background: rgba(113, 103, 255, .1);
+  background: rgba(103, 194, 255, 0.1);
 }
 
 .booking-sidebar .flight-time .form-check-label i{

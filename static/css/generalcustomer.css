@@ -3707,7 +3707,7 @@ listing single css
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: rgba(113, 103, 255, .2);
+  background: rgba(120, 180, 225, 0.2);
   border-radius: 12px;
   font-size: 18px;
   text-align: center;
@@ -3835,7 +3835,7 @@ listing single css
   font-size: 14px;
   text-align: center;
   color: #0e71c8;
-  background: rgba(113, 103, 255, .1);
+  background: rgba(103, 182, 255, 0.1);
 }
 
 .listing-amenity-item .list li{
@@ -4701,7 +4701,7 @@ booking sidebar
 .booking-sidebar .flight-time .form-check{
   padding: 10px 15px 10px 38px;
   border-radius: 8px;
-  background: rgba(113, 103, 255, .1);
+  background: rgba(103, 189, 255, 0.1);
 }
 
 .booking-sidebar .flight-time .form-check-label i{
