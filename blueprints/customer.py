@@ -483,10 +483,14 @@ def plan_wishlist():
         order = HotelOrder.query.get(order_id)
         hotelList.append(order)
     elif order_type == "Tour":
-        order = TourOrder.query.get(order_id)
+        ordertemp = TourOrder.query.get(order_id)
+        temp = ordertemp.productID
+        order = Tour.query.get(temp)
         tourList.append(order)
     elif order_type == "Activity":
-        order = ActivityOrder.query.get(order_id)
+        ordertemp = ActivityOrder.query.get(order_id)
+        temp = ordertemp.productID
+        order = Activity.query.get(temp)
         activityList.append(order)
     # print(flightList, hotelList, tourList, activityList,"flightList, hotelList, tourList, activityList")
     customer = Customer.query.get(session.get('customer_id'))
@@ -537,26 +541,26 @@ def plan_wishlist():
         plan_object.end = hotel_ii.checkOutTime
         plan_list.append(plan_object)
     for tour_ii in tourList:
-        tour_obj = Tour.query.get(tour_ii.productID)
+        tour_obj = Tour.query.get(tour_ii.id)
         plan_object = PlanObj()
-        plan_object.title = Tour.query.get(tour_ii.productID).name
-        if tour_ii.endTime > datetime.now():
+        plan_object.title = Tour.query.get(tour_ii.id).name
+        if tour_ii.start_time > datetime.now():
             plan_object.color = '#009378'
         else:
             plan_object.color = '#ea5050'
-        plan_object.start = tour_ii.startTime
-        plan_object.end = tour_ii.endTime + timedelta(days=tour_obj.duration)
+        plan_object.start = tour_ii.start_time
+        plan_object.end = tour_ii.end_time + timedelta(days=tour_obj.duration)
         print(plan_object.start, plan_object.end)
         plan_list.append(plan_object)
     for activity_ii in activityList:
         plan_object = PlanObj()
-        plan_object.title = Activity.query.get(activity_ii.productID).name
-        if activity_ii.endTime > datetime.now():
+        plan_object.title = Activity.query.get(activity_ii.id).name
+        if activity_ii.end_time > datetime.now():
             plan_object.color = '#2bb3c0'  # #e16123
         else:
             plan_object.color = '#ea5050'
-        plan_object.start = activity_ii.startTime
-        plan_object.end = activity_ii.endTime
+        plan_object.start = activity_ii.start_time
+        plan_object.end = activity_ii.end_time
         print(plan_object.start, plan_object.end)
         plan_list.append(plan_object)
 
