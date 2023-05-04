@@ -68,14 +68,14 @@ def flightDetail(flight_id):
     week_days = []
     while start_date <= end_date:
         if start_date.weekday() == int(flight.week_day)-1:
-            week_days.append(start_date.strftime("%Y-%m-%d"))
+            week_days.append(start_date.strftime("%Y-%m-%d")+',')
         start_date += timedelta(days=1)
     return render_template("flight-detail.html", logged=logged, flight=flight, images=images, wifi=wifi,
                            air_condition=air_condition, coffee=coffee
                            , entertainment=entertainment, food=food, drink=drink, wines=wines, comfort=comfort,
                            television=television, shopping=shopping, magazines=magazines, game=game,
                            star_score=star_score, star_score_ceil=star_score_ceil,
-                           day_of_week=week_days, added=added, purchased=purchased, star_detail=star_detail,
+                           day_of_week=''.join(week_days), added=added, purchased=purchased, star_detail=star_detail,
                            review_num=review_num, reviews=reviews)
 
 
