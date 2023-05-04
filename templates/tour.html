@@ -279,31 +279,41 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>City</label>
-                                                                <input type="text" class="form-control" name="city" id="m_city"
+                                                                <input type="text" class="form-control" name="city"
                                                                     placeholder="Enter city" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>State</label>
-                                                                <input type="text" class="form-control" name="state" id="m_state"
+                                                                <input type="text" class="form-control" name="state"
                                                                     placeholder="Enter state" required>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter zip code">
-                                                            </div>
-                                                        </div> -->
+
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label>Address</label>
-                                                                <input type="text" class="form-control" name="address" id="m_address"
+                                                                <input type="text" class="form-control" name="address"
                                                                     placeholder="Enter address" required>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Longitude</label>
+                                                                <input type="text" class="form-control" name="lon"
+                                                                    placeholder="longitude">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>latitude</label>
+                                                                <input type="text" class="form-control" name="lat"
+                                                                    placeholder="latitude">
+                                                            </div>
+                                                        </div>
+                                                        <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+                                                    </div>
                                                         <h5 class="my-4">Your Tour Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                             <div class="col-lg-12">
@@ -686,13 +696,7 @@
                                                                     placeholder="Enter state" required>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter zip code">
-                                                            </div>
-                                                        </div> -->
+
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label>Address</label>
@@ -700,6 +704,22 @@
                                                                     placeholder="Enter address" required>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Longitude</label>
+                                                                <input type="text" class="form-control" name="lon"
+                                                                    placeholder="longitude">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>latitude</label>
+                                                                <input type="text" class="form-control" name="lat"
+                                                                    placeholder="latitude">
+                                                            </div>
+                                                        </div>
+                                                        <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+
                                                         <h5 class="my-4">Your Tour Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                             <div class="col-lg-12">
