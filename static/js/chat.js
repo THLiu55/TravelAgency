@@ -5,7 +5,6 @@ var $messages = $(".messages-content"),
   loginPageUrl = "",
   usingBot = true, // use bot by default
   botAvatarUrl = window.botAvatarUrl,
-  botCmdRespDict = null,
   socket = null,
   namespace = null,
   h,
@@ -48,27 +47,6 @@ function initGlobalVars() {
       // an error occurred
       console.log("ERROR_" + status + "_" + error.message);
       customerName = "anon"; // fallback to anon
-    },
-  });
-
-  // get the bot cmd resp dict
-  $.ajax({
-    type: "GET",
-    url: "/get_bot_cmd_resp_dict",
-    // data: {},
-    timeout: 15000, // timeout after 15 seconds
-    success: function (responseFromServer) {
-      console.log(
-        "responseFromServer: " +
-          responseFromServer +
-          " with type: " +
-          typeof responseFromServer
-      );
-      botCmdRespDict = JSON.parse(responseFromServer);
-    },
-    error: function (xhr, status, error) {
-      // an error occurred
-      console.log("ERROR_" + status + "_" + error.message);
     },
   });
 
@@ -230,13 +208,15 @@ function requestForHistory() {
 function doSend() {
   customerMessage = $(".message-input").val();
 
-  if (customerMessage == "change to real person customer service") {
-    // currently there are only one keyword to change to real person customer service
-    clearInputBox();
-    insertMyMessage(customerMessage);
-    customerMessage = "";
-    changeToRealPersonCustomerService();
-  }
+  // if (customerMessage == "change to real person customer service") {
+  //   // currently there are only one keyword to change to real person customer service
+  //   clearInputBox();
+  //   insertMyMessage(customerMessage);
+  //   customerMessage = "";
+  //   changeToRealPersonCustomerService();
+  // }
+
+  // above is legacy implementation
 
   if ($.trim(customerMessage) == "") {
     return false; // do not send empty message
@@ -244,15 +224,7 @@ function doSend() {
 
   if (usingBot) {
     insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
-    // TODO: TEST APPROACH CHANGE IMMEDIATELY
-    console.log(botCmdRespDict);
-    if (customerMessage in botCmdRespDict) {
-      // if the message is a bot command
-      var botCmdResp = botCmdRespDict[customerMessage];
-      insertRespMessage(botCmdResp);
-    } else {
-      getAndInsertRespMessageFromBot(customerMessage);
-    }
+    getAndInsertRespMessageFromBot(customerMessage);
   } else {
     // need not to insert message manually, because the server will send back the message to the client
     var text = customerMessage;
@@ -278,8 +250,35 @@ function getAndInsertRespMessageFromBot(yourMessage) {
     },
     timeout: 15000, // timeout after 15 seconds
     success: function (chatbotAnswer) {
-      $(".message.loading").remove();
-      insertRespMessage(chatbotAnswer);
+      // a response was received
+      // if the response starts with a "#" then it is a command we parse it using ajax to post to /parse_bot_cmd
+      if (chatbotAnswer.startsWith("#")) {
+        // then it is a command
+        $.ajax({
+          type: "POST",
+          url: "/parse_bot_cmd",
+          data: {
+            cmd: chatbotAnswer,
+          },
+          timeout: 15000,
+          success: function (cmdParserResp) {
+            if (cmdParserResp.do == "SWITCH") {
+              changeToRealPersonCustomerService();
+            } else if (cmdParserResp.do == "REDIRECT") {
+              // redirect to the url using jquery's window.location.href
+              window.location.href = cmdParserResp.redirect_url;
+            } else if (cmdParserResp.do == "TEXT") {
+              // just a text response
+              $(".message.loading").remove();
+              insertRespMessage(cmdParserResp.to_show);
+            }
+          },
+        });
+      } else {
+        // just a text response
+        $(".message.loading").remove();
+        insertRespMessage(chatbotAnswer);
+      }
     },
     error: function (xhr, status, error) {
       // an error occurred
@@ -340,6 +339,10 @@ function changeToRealPersonCustomerService() {
       }
     }
   });
+}
+
+function clickProfile() {
+  toClick = document.getElementById("profile");
 }
 
 /* FRONT END JS */

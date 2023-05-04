@@ -32,8 +32,6 @@ bp = Blueprint("chat", __name__, url_prefix="/")
 NAMESPACE = "/chat"
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")
 
-
-### CHATBOT ROUTERS ###
 @bp.route("/get_chatbot_answer", methods=["POST"])
 def get_chatbot_answer():
     answer = ""
@@ -60,6 +58,24 @@ def get_chatbot_answer():
 
     return answer
 
+@bp.route("/parse_bot_cmd", methods=["POST"])
+def parse_bot_cmd():
+    the_cmd = request.form.get("cmd").strip("#")
+    print("received cmd: " + the_cmd + ".")
+    if the_cmd in BOT_CMD_RESP_DICT.keys():
+        operation = BOT_CMD_RESP_DICT[the_cmd].split(" ")[0]
+        if operation == "REDIRECT":
+            target_route_str = BOT_CMD_RESP_DICT[the_cmd].split(" ")[1]
+            return jsonify({"code": 0, "do": operation, "redirect_url": url_for(target_route_str)})
+        elif operation == "TEXT":
+            to_show = BOT_CMD_RESP_DICT[the_cmd].split(" ")[1]
+            return jsonify({"code": 0, "do": operation, "to_show": to_show})
+        elif operation == "SWITCH":
+            return jsonify({"code": 0, "do": operation})
+    else:
+        print("the command", the_cmd, "is not in BOT_CMD_RESP_DICT which has keys:", BOT_CMD_RESP_DICT.keys())
+        return jsonify({"code": 1, "do": "TEXT", "to_show": "指令不存在"})
+    
 
 @bp.route("/get_session_customer_info", methods=["GET"])
 def get_session_customer_info():
@@ -76,9 +92,9 @@ def get_session_customer_info():
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
 
 
-@bp.route("/get_bot_cmd_resp_dict", methods=["GET"])
-def get_bot_cmd_resp_dict():
-    return jsonify(BOT_CMD_RESP_DICT)
+# @bp.route("/get_bot_cmd_resp_dict", methods=["GET"])
+# def get_bot_cmd_resp_dict():
+#     return jsonify(BOT_CMD_RESP_DICT)
 
 
 @bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
@@ -121,8 +137,6 @@ def upload_pic():
         print("pic not saved because no pic found.")
         return jsonify({"code": 1})
 
-
-### END CHATBOT ROUTERS ###
 
 
 ### SOCKETIO EVENT HANDLERS ###
