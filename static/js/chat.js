@@ -13,6 +13,7 @@ var $messages = $(".messages-content"),
 
 $(window).load(function () {
   initGlobalVars();
+  $("#to-show-pic-upload").hide();
   $messages.mCustomScrollbar();
   setTimeout(function () {
     botMessage =
@@ -21,6 +22,7 @@ $(window).load(function () {
       "! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
     insertRespMessage(botMessage);
   }, 100);
+  setupListeners();
 });
 
 function initGlobalVars() {
@@ -56,7 +58,12 @@ function initGlobalVars() {
     // data: {},
     timeout: 15000, // timeout after 15 seconds
     success: function (responseFromServer) {
-      console.log("responseFromServer: " + responseFromServer + " with type: " + typeof responseFromServer);
+      console.log(
+        "responseFromServer: " +
+          responseFromServer +
+          " with type: " +
+          typeof responseFromServer
+      );
       botCmdRespDict = JSON.parse(responseFromServer);
     },
     error: function (xhr, status, error) {
@@ -67,6 +74,41 @@ function initGlobalVars() {
 
   // currently we set namespace to /chat
   namespace = "/chat";
+}
+
+function setupListeners() {
+  // $(".history-loader").click(function () {
+  //   socket.emit("req4history", { cusId: customerId });
+  //   // then we remove the click2loadHistoryTxt
+  //   $(".mCSB_container .history-loader").remove();
+  // });
+
+  $("#send-pic").on("change", function () {
+    var formData = new FormData();
+    var pic = $(this).get(0).files[0];
+    formData.append("pic", pic);
+    $.ajax({
+      url: "/upload_pic",
+      type: "POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        if (data.code === 0) {
+          hashed_filename = data.hashed_filename;
+          console.log("Successfully uploaded file " + hashed_filename);
+          // then we send the pic message
+          socket.emit("pic_message", {
+            sender: customerName,
+            pic_filename: hashed_filename,
+          });
+        } else {
+          console.log("Failed to upload file with error code " + data.code);
+        }
+        $("#send-pic").val("");
+      },
+    });
+  });
 }
 
 function updateScrollbar() {
@@ -179,12 +221,6 @@ $(window).on("keydown", function (e) {
   }
 });
 
-// $(".history-loader").click(function () {
-//   socket.emit("req4history", { cusId: customerId });
-//   // then we remove the click2loadHistoryTxt
-//   $(".mCSB_container .history-loader").remove();
-// });
-
 function requestForHistory() {
   socket.emit("req4history", { cusId: customerId });
   // then we remove the click2loadHistoryTxt
@@ -209,7 +245,7 @@ function doSend() {
   if (usingBot) {
     insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
     // TODO: TEST APPROACH CHANGE IMMEDIATELY
-    console.log(botCmdRespDict)
+    console.log(botCmdRespDict);
     if (customerMessage in botCmdRespDict) {
       // if the message is a bot command
       var botCmdResp = botCmdRespDict[customerMessage];
@@ -257,6 +293,7 @@ function getAndInsertRespMessageFromBot(yourMessage) {
 }
 
 function changeToRealPersonCustomerService() {
+  $("#to-show-pic-upload").show();
   if (isLoggedIn == false) {
     window.location.href = loginPageUrl;
     return;
