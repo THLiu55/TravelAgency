@@ -563,14 +563,14 @@
                     <use xlink:href="#icon-dashboard"></use>
                   </svg></span><span class="sidebar__link-text">{{ _("Dashboard") }}</span></a>
                         </li>
-                        <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html" data-toggle="collapse" data-target="#Travel-Booking" aria-expanded="false"><span class="sidebar__link-icon">
+                        <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html" data-toggle="collapse" data-target="#{{ _("Travel-Booking") }}" aria-expanded="false"><span class="sidebar__link-icon">
                   <svg class="icon-icon-cart">
                     <use xlink:href="#icon-cart"></use>
                   </svg></span><span class="sidebar__link-text">{{ _("Product & Orders") }}</span><span class="sidebar__link-arrow">
                   <svg class="icon-icon-keyboard-down">
                     <use xlink:href="#icon-keyboard-down"></use>
                   </svg></span></a>
-                            <div class="collapse" id="Travel-Booking">
+                            <div class="collapse" id="{{ _("Travel-Booking") }}">
                                 <ul class="sidebar__collapse-menu">
                                     <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.activities') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Activity") }}</span></a>
                                     </li>
