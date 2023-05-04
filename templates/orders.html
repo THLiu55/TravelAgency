@@ -88,6 +88,29 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
+                                    <div class="toolbox__status input-group input-group--white input-group--append">
+                                        <input class="input input--select" type="text" value="Sort"
+                                            data-toggle="dropdown" readonly><span class="input-group__arrow">
+                                            <svg class="icon-icon-keyboard-down">
+                                                <use xlink:href="#icon-keyboard-down"></use>
+                                            </svg></span>
+                                        <div
+                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
+                                            <a onclick="load_orders('all', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="Sort"><span class="marker-item"></span> Sort</a>
+                                            <a onclick="load_orders('By Time', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="By Time"><span class="marker-item "></span>
+                                                By Time</a>
+                                            <a onclick="load_orders('By Price', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="By Price"><span class="marker-item "></span>
+                                                By Price</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
 
