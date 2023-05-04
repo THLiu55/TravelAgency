@@ -502,17 +502,15 @@
                                     </svg></span>
                             </button>
                             <div class="lang-menu dropdown-menu">
-                                <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                <button class="lang-menu__button dropdown-menu__item" tabindex="0" onclick="switchLanguage('en')">
                                     <img class="lang-menu__icon" src="{{ url_for('static', filename='img/content/flags/us.svg') }}"
                                         alt="#" /><span class="lang-menu__text">En</span>
                                 </button>
-                                <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                <button class="lang-menu__button dropdown-menu__item" tabindex="0" onclick="switchLanguage('zh')">
                                     <img class="lang-menu__icon" src="{{ url_for('static', filename='img/content/flags/cn.svg') }}"
                                         alt="#" /><span class="lang-menu__text">Cn</span>
                                 </button>
-                                <div class="lang-menu__separate"></div><a
-                                    class="lang-menu__button lang-menu__button--all dropdown-menu__item" href="#"
-                                    tabindex="0">Learn</a>
+
                             </div>
                         </div>
                         <div class="header__profile dropdown">
@@ -657,6 +655,7 @@
 <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/translate_staff.js') }}"></script>
 {% block jsLink %}
 {% endblock %}
 </html>
