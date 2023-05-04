@@ -93,11 +93,14 @@ def add_review():
 def tour_filter():
     tour_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
-    if session["language"] == 'zh':
-        key_word = request.form.get('key-word')
-        key_word = translator(key_word, 'zh', 'en')
+    if 'language' in session:
+        if session["language"] == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
     else:
-        key_word = request.form.get('key-word')
+        key_word = ''
     if tour_type[0] == '':
         tour_type = ['Cultural tourism', 'Wildlife observation', 'Cruises', 'Grass Skyline']
     tour_price = request.form.get('tourPrice')

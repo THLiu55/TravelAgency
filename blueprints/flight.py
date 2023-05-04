@@ -118,11 +118,14 @@ def order_success():
 def flight_filter():
     class_type = request.form.get('class_type').split(",")
     to_sort = request.form.get('sort_by')
-    if session["language"] == 'zh':
-        key_word = request.form.get('key-word')
-        key_word = translator(key_word, 'zh', 'en')
+    if 'language' in session:
+        if session["language"] == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
     else:
-        key_word = request.form.get('key-word')
+        key_word = ''
     if class_type[0] == '':
         class_type = ['Economy', 'Business', 'First Class']
     flight_price = request.form.get('flightPrice')
