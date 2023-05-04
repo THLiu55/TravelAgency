@@ -14,7 +14,7 @@ class Customer(db.Model, UserMixin):
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
-    amount_unread_msgs = db.Column(db.Integer, default=0)
+    amount_unread_msgs = db.Column(db.Integer, default=-1) # -1 means never chatted
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
