@@ -110,7 +110,9 @@
     $(".add-wishlist").click(function (event) {
         event.preventDefault();
         // $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
-        $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        // $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        $(this).find("i").removeClass("far fa-calendar-plus");
+        $(this).find("i").addClass("fas fa-calendar-check");
         //let alert show
         $('.alert-success').addClass('show');
         //hide alert after 3 seconds
