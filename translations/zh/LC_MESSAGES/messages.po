@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-04 16:38+0800\n"
+"POT-Creation-Date: 2023-05-04 17:23+0800\n"
 "PO-Revision-Date: 2023-04-24 17:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Explore The BJUT Together"
 msgstr "一起探索BJUT"
 
-#: templates/Homepage.html:35 templates/Homepage.html:818
+#: templates/Homepage.html:35 templates/Homepage.html:807
 msgid ""
 "Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
 "University of Technology."
@@ -32,7 +32,7 @@ msgstr "非常好的图书馆，从早上7点开放到晚上10点半，位于北
 msgid "Explore The Temple of Heaven"
 msgstr "探索天坛"
 
-#: templates/Homepage.html:49 templates/Homepage.html:830
+#: templates/Homepage.html:49 templates/Homepage.html:819
 msgid ""
 "The Temple of Heaven is a complex of religious buildings situated in the "
 "central Beijing."
@@ -86,199 +86,267 @@ msgstr "旅行"
 msgid "Pick some popular destinations for travel!"
 msgstr "选择一些热门的旅行目的地！"
 
-#: templates/Homepage.html:144 templates/flight-booking-confirm.html:40
-msgid "Destination"
-msgstr "目的地"
+#: templates/Homepage.html:144
+msgid "Activities"
+msgstr "活动"
 
 #: templates/Homepage.html:145
-msgid "Our Most Popular Destinations"
-msgstr "选择一些热门的旅行目的地！"
+msgid "Our Most Popular Activities"
+msgstr "我们最受欢迎的活动"
 
-#: templates/Homepage.html:314 templates/base.html:67
+#: templates/Homepage.html:156
+msgid "Lady White Legend"
+msgstr ""
+
+#: templates/Homepage.html:163
+msgid "Hiking activity"
+msgstr "远足活动"
+
+#: templates/Homepage.html:167
+msgid "Mount Qingcheng, Sichuan"
+msgstr "青城山，四川"
+
+#: templates/Homepage.html:180
+msgid "Fragrant Hill"
+msgstr "香山"
+
+#: templates/Homepage.html:187
+msgid "Amusement Park"
+msgstr "游乐园"
+
+#: templates/Homepage.html:191
+msgid "Fragrant Hill, Beijing"
+msgstr "香山，北京"
+
+#: templates/Homepage.html:204
+msgid "Love song of Kangding"
+msgstr "康定情歌"
+
+#: templates/Homepage.html:211
+msgid "Music Festival"
+msgstr "音乐节"
+
+#: templates/Homepage.html:215
+msgid "Kang ding, Sichuan"
+msgstr "康定，四川"
+
+#: templates/Homepage.html:228
+msgid "Cycling around Beijing"
+msgstr "环京城骑行"
+
+#: templates/Homepage.html:235
+msgid "Cycling"
+msgstr "骑行"
+
+#: templates/Homepage.html:239 templates/Homepage.html:264
+msgid "Shunyi, Beijing"
+msgstr "顺义，北京"
+
+#: templates/Homepage.html:253
+msgid "Hot air balloon"
+msgstr "热气球"
+
+#: templates/Homepage.html:260
+msgid "Flying hot air balloon"
+msgstr "热气球"
+
+#: templates/Homepage.html:277
+msgid "Bonfire Party"
+msgstr "篝火晚会"
+
+#: templates/Homepage.html:284
+msgid "Party Activity"
+msgstr "派对活动"
+
+#: templates/Homepage.html:288
+msgid "Beijing University of Technology"
+msgstr "北京工业大学"
+
+#: templates/Homepage.html:303 templates/base.html:67
 #: templates/flight-booking-confirm.html:37 templates/flight-detail.html:22
 #: templates/profile-base.html:94
 msgid "Flight"
 msgstr "航班"
 
-#: templates/Homepage.html:315
+#: templates/Homepage.html:304
 msgid "Our Most Popular Flights"
 msgstr "我们最受欢迎的航班"
 
-#: templates/Homepage.html:340 templates/activity-grid.html:229
+#: templates/Homepage.html:329 templates/activity-grid.html:229
 #: templates/hotel-grid.html:256 templates/profile-wishlist.html:41
 #: templates/tour-grid.html:231
 msgid "See Details"
 msgstr "请参阅详细信息"
 
-#: templates/Homepage.html:349
+#: templates/Homepage.html:338
 msgid "Discover More"
 msgstr "发现更多"
 
-#: templates/Homepage.html:361 templates/base.html:70
+#: templates/Homepage.html:350 templates/base.html:70
 #: templates/hotel-booking-confirm.html:37 templates/hotel-grid.html:29
 #: templates/profile-base.html:97
 msgid "Hotel"
 msgstr "酒店"
 
-#: templates/Homepage.html:362
+#: templates/Homepage.html:351
 msgid "Our Most Popular Hotels"
 msgstr "我们最受欢迎的酒店"
 
-#: templates/Homepage.html:388
+#: templates/Homepage.html:377
 msgid "See Details "
 msgstr "请参阅详细信息"
 
-#: templates/Homepage.html:524 templates/base.html:80
+#: templates/Homepage.html:513 templates/base.html:80
 #: templates/profile-base.html:107 templates/tour-booking-confirm.html:37
 #: templates/tour-detail.html:24 templates/tour-grid.html:28
 msgid "Tour"
 msgstr "旅行"
 
-#: templates/Homepage.html:525
+#: templates/Homepage.html:514
 msgid "Our Most Popular Tours"
 msgstr "我们最受欢迎的旅游"
 
-#: templates/Homepage.html:529
+#: templates/Homepage.html:518
 msgid "All Tour"
 msgstr "旅行"
 
-#: templates/Homepage.html:530
+#: templates/Homepage.html:519
 msgid "Historical"
 msgstr "历史的"
 
-#: templates/Homepage.html:531
+#: templates/Homepage.html:520
 msgid "Weekend Trip"
 msgstr "周末旅行"
 
-#: templates/Homepage.html:532
+#: templates/Homepage.html:521
 msgid "Special Tour"
 msgstr "特殊寺庙"
 
-#: templates/Homepage.html:533
+#: templates/Homepage.html:522
 msgid "Holiday Tour"
 msgstr "假日旅游"
 
-#: templates/Homepage.html:551
+#: templates/Homepage.html:540
 msgid " Place(s)"
 msgstr ""
 
-#: templates/Homepage.html:557 templates/activity-detail.html:47
+#: templates/Homepage.html:546 templates/activity-detail.html:47
 #: templates/activity-grid.html:221 templates/flight-detail.html:51
 #: templates/hotel-detail.html:52 templates/hotel-grid.html:248
 #: templates/tour-detail.html:47 templates/tour-grid.html:223
 msgid "Excellent"
 msgstr "好评众多"
 
-#: templates/Homepage.html:558
+#: templates/Homepage.html:547
 msgid "Reviews)"
 msgstr "评论"
 
-#: templates/Homepage.html:560
+#: templates/Homepage.html:549
 msgid "day(s)"
 msgstr "天"
 
-#: templates/Homepage.html:563 templates/hotel-detail.html:515
+#: templates/Homepage.html:552 templates/hotel-detail.html:515
 msgid "From"
 msgstr "从"
 
-#: templates/Homepage.html:816
+#: templates/Homepage.html:805
 msgid "The Library"
 msgstr "图书馆"
 
-#: templates/Homepage.html:817
+#: templates/Homepage.html:806
 msgid "Yifu Library"
 msgstr "逸夫图书馆"
 
-#: templates/Homepage.html:819 templates/Homepage.html:834
-#: templates/Homepage.html:849 templates/Homepage.html:863
-#: templates/Homepage.html:877
+#: templates/Homepage.html:808 templates/Homepage.html:823
+#: templates/Homepage.html:838 templates/Homepage.html:852
+#: templates/Homepage.html:866
 msgid "Explore the tour"
 msgstr "探索旅程"
 
-#: templates/Homepage.html:827
+#: templates/Homepage.html:816
 msgid "Tourism Atrraction"
 msgstr "旅游胜地"
 
-#: templates/Homepage.html:828
+#: templates/Homepage.html:817
 msgid "Temple of Heaven"
 msgstr "天坛"
 
-#: templates/Homepage.html:843
+#: templates/Homepage.html:832
 msgid "Tropical area"
 msgstr "热带地区"
 
-#: templates/Homepage.html:844
+#: templates/Homepage.html:833
 msgid "The beach"
 msgstr "海滩"
 
-#: templates/Homepage.html:846
+#: templates/Homepage.html:835
 msgid ""
 "The beach is very beautiful, the water is very clear, the sand is very "
 "white, and the sea is very blue."
 msgstr "海滩很漂亮，水很清澈，沙子很白，大海很蓝。"
 
-#: templates/Homepage.html:858
+#: templates/Homepage.html:847
 msgid "Temple"
 msgstr "寺庙"
 
-#: templates/Homepage.html:859
+#: templates/Homepage.html:848
 msgid "Special temple"
 msgstr "特殊寺庙"
 
-#: templates/Homepage.html:861
+#: templates/Homepage.html:850
 msgid "Good place to have a temple run."
 msgstr "这是一个寺庙逃亡的好地方。"
 
-#: templates/Homepage.html:872
+#: templates/Homepage.html:861
 msgid "The white building"
 msgstr "白色建筑"
 
-#: templates/Homepage.html:873
+#: templates/Homepage.html:862
 msgid "White building"
 msgstr "白色建筑"
 
-#: templates/Homepage.html:875
+#: templates/Homepage.html:864
 msgid "White building is white."
 msgstr "白色建筑是白色的。"
 
-#: templates/Homepage.html:893
+#: templates/Homepage.html:882
 msgid "We are GROUP7 travel agency!"
 msgstr "我们是GROUP7旅行社！"
 
-#: templates/Homepage.html:894
+#: templates/Homepage.html:883
 msgid "Family hold company for"
 msgstr "家族控股公司"
 
-#: templates/Homepage.html:895
+#: templates/Homepage.html:884
 msgid "travel!"
-msgstr "旅游！"
+msgstr "长途旅行！"
 
-#: templates/Homepage.html:896
+#: templates/Homepage.html:885
 msgid ""
 "Made up of six team members with rich experience and good service "
 "attitude to ensure your good travel experience!"
 msgstr "由六名经验丰富、服务周到的团队成员组成的态度，保证您良好的旅行体验!"
 
-#: templates/Homepage.html:905
+#: templates/Homepage.html:894
 msgid "Beijing, China"
 msgstr "中国北京"
 
-#: templates/Homepage.html:967 templates/MainTopbar.html:103
+#: templates/Homepage.html:956 templates/MainTopbar.html:103
 #: templates/base.html:128 templates/profile-base.html:207
 msgid "Group 7 NULLGROUPNAMEEXCEPTION"
 msgstr "第7组NULLGROUPNAMEEXCEPTION"
 
-#: templates/Homepage.html:968 templates/MainTopbar.html:104
+#: templates/Homepage.html:957 templates/MainTopbar.html:104
 #: templates/base.html:129 templates/profile-base.html:208
 msgid "Fourth Teach Building, Beijing"
 msgstr "北京第四教学楼"
 
-#: templates/Homepage.html:969 templates/MainTopbar.html:105
+#: templates/Homepage.html:958 templates/MainTopbar.html:105
 #: templates/base.html:130 templates/profile-base.html:209
 msgid "Tel: 123456"
 msgstr "电话：123456"
 
-#: templates/Homepage.html:970 templates/MainTopbar.html:106
+#: templates/Homepage.html:959 templates/MainTopbar.html:106
 #: templates/base.html:131 templates/profile-base.html:210
 msgid "Handcrafted with love by Group 7"
 msgstr "第七组用爱手工制作"
@@ -631,7 +699,7 @@ msgstr "按高优先级排序"
 
 #: templates/base.html:64 templates/profile-base.html:91
 msgid "Home"
-msgstr "家"
+msgstr "主页"
 
 #: templates/base.html:92 templates/profile-base.html:119
 #, fuzzy
@@ -698,6 +766,10 @@ msgstr "公司"
 #: templates/flight-booking-confirm.html:39
 msgid "Departure"
 msgstr "离开"
+
+#: templates/flight-booking-confirm.html:40
+msgid "Destination"
+msgstr "目的地"
 
 #: templates/flight-booking-confirm.html:49
 msgid "Departure Time "
@@ -1242,7 +1314,7 @@ msgstr "注销"
 
 #: templates/profile-booking.html:9
 msgid "No"
-msgstr "不"
+msgstr "No."
 
 #: templates/profile-booking.html:10
 msgid "Booking Name"
@@ -1262,19 +1334,19 @@ msgstr "价格"
 
 #: templates/profile-booking.html:14
 msgid "Status"
-msgstr "地位"
+msgstr "状态"
 
 #: templates/profile-booking.html:15
 msgid "Action"
-msgstr "活动"
+msgstr "查看"
 
 #: templates/profile-booking.html:27
 msgid "Finished"
-msgstr "完成了"
+msgstr "已完成"
 
 #: templates/profile-booking.html:29
 msgid "Upcoming"
-msgstr "即将到来的"
+msgstr "即将到来"
 
 #: templates/profile-booking.html:35
 msgid "Cancel"
@@ -1282,7 +1354,7 @@ msgstr "取消"
 
 #: templates/profile-setting.html:5 templates/profile-setting.html:37
 msgid "Update Profile Info"
-msgstr "更新配置文件信息"
+msgstr "更新用户信息"
 
 #: templates/profile-setting.html:11
 msgid "User Name"
@@ -1442,7 +1514,7 @@ msgstr "超过5天"
 #~ msgstr "联系"
 
 #~ msgid "Base On 15.5k Review"
-#~ msgstr "基于15.5k审查"
+#~ msgstr "基于15.5k评价"
 
 #~ msgid "Menu"
 #~ msgstr "菜单"
@@ -1500,4 +1572,7 @@ msgstr "超过5天"
 
 #~ msgid "You can confirm your email through the link below:"
 #~ msgstr "您可以通过以下链接确认您的电子邮件："
+
+#~ msgid "Our Most Popular Destinations"
+#~ msgstr "选择一些热门的旅行目的地！"
 

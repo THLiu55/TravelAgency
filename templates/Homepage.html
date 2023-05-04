@@ -141,8 +141,8 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">{{ _("Destination") }}</span>
-                        <h2 class="site-title">{{ _("Our Most Popular Destinations") }}</h2>
+                        <span class="site-title-tagline">{{ _("Activities") }}</span>
+                        <h2 class="site-title">{{ _("Our Most Popular Activities") }}</h2>
                     </div>
                 </div>
             </div>
@@ -150,157 +150,146 @@
                 <div class="col-md-12 col-lg-6">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/01.jpg" alt="">
+                            <img src="../static/destination/011.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>New York City</h4>
+                            <h4>{{ _("Lady White Legend") }}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <i class="fas fa-star"></i>
+                                <span>{{ _("Hiking activity") }}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Mount Qingcheng, Sichuan") }}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/02.jpg" alt="">
+                            <img src="../static/destination/021.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>San Francisco</h4>
+                            <h4>{{ _("Fragrant Hill")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <i class="fas fa-star"></i>
+                                <span>{{ _("Amusement Park")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Fragrant Hill, Beijing")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/03.jpg"" alt="">
+                            <img src="../static/destination/031.jpg"" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>Las Vegas</h4>
+                            <h4>{{ _("Love song of Kangding")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <i class="fas fa-star"></i>
+                                <span>{{ _("Music Festival")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Kang ding, Sichuan")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/04.jpg" alt="">
+                            <img src="../static/destination/041.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>Los Angeles</h4>
+                            <h4>{{ _("Cycling around Beijing")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <span>{{ _("Cycling")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Shunyi, Beijing")}}</li>
+
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/05.jpg" alt="">
+                            <img src="../static/destination/051.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>Sydney</h4>
+                            <h4>{{ _("Hot air balloon")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <span>{{ _("Flying hot air balloon")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Shunyi, Beijing")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/06.jpg" alt="">
+                            <img src="../static/destination/066.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>New Orleans</h4>
+                            <h4>{{ _("Bonfire Party")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <span>{{ _("Party Activity")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Beijing University of Technology")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -907,7 +896,7 @@
                         </div>
 
                         <div class="profile-card-ctr">
-                            <button class="profile-card__button button--blue js-message-btn">Message</button>
+                            <!-- <button class="profile-card__button button--blue js-message-btn">Message</button> -->
 
                         </div>
                     </div>
