@@ -479,7 +479,7 @@
                                                     {% if added %}
                                                         <a href="{{ url_for('flight.remove_wishlist', flight_id=flight.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
                                                     <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>

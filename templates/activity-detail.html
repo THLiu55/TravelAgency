@@ -353,7 +353,7 @@
                                                     {% if added %}
                                                         <a href="{{ url_for('activity.remove_wishlist', activity_id=activity.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i>{{ _("Remove From Wishlist") }} </a>
                                                     {% else %}
-                                                        <a href="{{ url_for('activity.add_wishlist', activity_id=activity.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('activity.add_wishlist', activity_id=activity.id) }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
                                                     <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
