@@ -47,11 +47,7 @@
                                             <div class="finder__outer">
                                               <div class="finder__inner">
                                                 <div class="finder__icon" ref="icon"></div>
-                                                {% if result %}
-                                                    <input id="search_box_change" class="finder__input" type="text" name="q" value="{{ result }}" />
-                                                {% else %}
-                                                    <input id="search_box_change" class="finder__input" type="text" name="q" />
-                                                {% endif %}
+                                                <input id="search_box_change" class="finder__input" type="text" name="q" />
                                               </div>
                                             </div>
                                           </div>
@@ -64,40 +60,7 @@
                             </form>
                         </div>
                     </div>
-                    <button id="searchPic" class="btn btn-primary">Search by picture</button>
-                    <div class="popup-container" id="popup-container" style="position: absolute;z-index: 100;left: 5%;top: 20%;display: none;align-items: center;justify-content: center;">
-                     <div class="popup-box" style="background-color: #fff;
-                     padding-left: 40px;
-                     padding-right: 40px;
-                     padding-top: 30px;
-                     border-radius: 10px;
-                     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-                     position: relative;
-                     max-width: 80%;
-                     max-height: 80%;
-                     /* overflow: auto; */
-                     display: grid; grid-template-rows: 1fr 1fr;">
-                     <div style="height: 40px;">
-                       <span class="close-btn" style="position: absolute;
-                       top: 5px;
-                       right: 5px;
-                       font-size: 24px;
-                       font-weight: bold;
-                       cursor: pointer;
-                       color: #333;" onclick="closePopup()">&times;</span>
-                       <h4>Choose the picture you want to search!</h4>
-                     </div>
-                    
-                      <div style="height: 90px;">
-                      <form action="{{ url_for('customer.recognize') }}" method="POST" enctype="multipart/form-data">
-                    
-                       <input style="margin-top: 15%;" type="file" class="custom-file-input" id="searchpicture" name="photo-to-recognize" accept="image/png, image/jpeg" required>
-                     <input value="tour.tourList" name="category-name" hidden>
-                       <button style="margin-top: 2%;" type="submit" class="btn btn-primary">recognize</button>
-                     </form>
-                    </div>
-                    </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -188,14 +151,14 @@
 
                     <div class="col-lg-8 col-xl-9">
                         <div class="col-md-12">
-                            <div class="booking-sort" style="justify-content: flex-start;">
-                                <h5 id="total_activities">{{ total_tours }}  </h5> <span style="margin-left: 1%;"> <h5>{{ _("Results Found") }}</h5></span>
-                                <!-- <div class="booking-sort-list-grid">
+                            <div class="booking-sort">
+                                <h5>{{ total_activities }} {{ _("Results Found") }}</h5>
+                                <div class="booking-sort-list-grid">
                                     <a class="booking-sort-grid active" href="activity-grid.html"><i
                                             class="far fa-grid-2"></i></a>
                                     <a class="booking-sort-list" href="./activity-list.html"><i class="far fa-list-ul"></i></a>
-                                </div> -->
-                                <div class="col-md-3 booking-sort-box" style="margin-left: 5%;">
+                                </div>
+                                <div class="col-md-3 booking-sort-box">
                                     <select class="select" id="sort-select-ajax" onchange="tour_filter(3)">
                                         <option value="1">{{ _("Sort By Default") }}</option>
                                         <option value="2">{{ _("Sort By Popular") }}</option>
@@ -274,24 +237,6 @@
         </div>
 
     </main>
-    <script>
-        // find the button through id
-        var mybutton = document.getElementById("searchPic");
-        // when button is clicked, use the function openPopup
-        mybutton.addEventListener("click", function() {
-          document.getElementById("popup-container").style.display = "flex";
-          console.log("clicked");
-        });
-        
-        function openPopup() {
-           document.getElementById("popup-container").style.display = "flex";
-          }
-        
-          function closePopup() {
-           document.getElementById("popup-container").style.display = "none";
-          }
-        </script>
-        
 {% endblock %}
 
 

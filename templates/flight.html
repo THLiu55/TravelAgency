@@ -488,6 +488,18 @@
                         </div>
                         <div class="toolbox__right col-12 col-lg-auto">
                             <div class="toolbox__right-row row row--xs flex-nowrap">
+                                <div class="col col-lg-auto">
+                                    <form class="toolbox__search" method="GET">
+                                        <div class="input-group input-group--white input-group--prepend">
+                                            <div class="input-group__prepend">
+                                                <svg class="icon-icon-search">
+                                                    <use xlink:href="#icon-search"></use>
+                                                </svg>
+                                            </div>
+                                            <input class="input" type="text" placeholder="Search product">
+                                        </div>
+                                    </form>
+                                </div>
                                 <div class="col-auto">
                                     <button class="button-add button-add--blue" data-modal="#addProduct"><span
                                             class="button-add__icon">
@@ -612,20 +624,6 @@
                                             {# <form action="#">#}
                                                 <div class="row align-items-center" style="width: 100%;">
                                                     <div style="display: grid; grid-template-columns: auto;">
-
-                                                        <div class="col-lg-6" style="max-width: none;">
-                                                            <div class="form-group">
-                                                                <label>Priority</label>
-                                                                <select class="select" name="pri" id="pri" required>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
                                                     <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Type</label>
@@ -694,6 +692,7 @@
                                                             <div class="form-group">
                                                             <label>Airline</label>
                                                             <select name="company" class="select" id="modify-airline">
+                                                            <option value="">Select Airline Company</option>
                                                             <option value="American Airlines">American Airlines</option>
                                                             <option value="Delta Airlines">Delta Airlines</option>
                                                             <option value="Qatar Airways">Qatar Airways</option>
@@ -731,6 +730,7 @@
                                                             <div class="form-group" >
                                                             <label>Fare Type</label>
                                                             <select name="fare_type" class="select" id="modify-fare-type">
+                                                            <option value="">Select The Fare Type</option>
                                                             <option value="Refundable">Refundable</option>
                                                             <option value="Partially Refundable">Partially Refundable</option>
                                                             <option value="Non Refundable">Non Refundable</option>
@@ -741,6 +741,7 @@
                                                             <div class="form-group">
                                                             <label>Flight Class</label>
                                                             <select name="flight_class" class="select" id="modify-flight-class">
+                                                            <option value="">Select Class</option>
                                                             <option value="Economy">Economy</option>
                                                             <option value="Business">Business</option>
                                                             <option value="First Class">First Class</option>
@@ -751,6 +752,7 @@
                                                             <div class="form-group">
                                                             <label>Cancellation Charge</label>
                                                             <select name="cancellation_charge" class="select" id="modify-cancellation-charge">
+                                                            <option value="">Select Cancellation Charge</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
                                                             <option value="$90 / Per Person">$90 / Per Person</option>
@@ -761,6 +763,7 @@
                                                              <div class="form-group">
                                                             <label>Flight Charge</label>
                                                             <select name="flight_charge" class="select" id="modify-flight-charge">
+                                                            <option value="">Select Charge</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
                                                             <option value="$90 / Per Person">$90 / Per Person</option>
@@ -771,6 +774,7 @@
                                                             <div class="form-group">
                                                             <label>Seats & Baggage</label>
                                                             <select name="seat_baggage" class="select" id="modify-seats-baggage">
+                                                            <option value="">Select Seats & Baggage</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
                                                             <option value="$90 / Per Person">$90 / Per Person</option>
@@ -791,6 +795,7 @@
                                                             <div class="form-group">
                                                             <label>Base Fare</label>
                                                             <select name="base_fare" class="select" id="modify-base-fare">
+                                                            <option value="">Select Base Fare</option>
                                                             <option value="$400">$400</option>
                                                             <option value="$680">$680</option>
                                                             <option value="$950">$950</option>
@@ -801,6 +806,7 @@
                                                             <div class="form-group">
                                                             <label>Taxes & Fees</label>
                                                             <select name="taxes" class="select" id="modify-taxes-fees">
+                                                            <option value="">Select Base Fare</option>
                                                             <option value="$100">$100</option>
                                                             <option value="$280">$280</option>
                                                             <option value="$350">$350</option>
@@ -924,7 +930,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-air-conditioning">
                                                                 <input class="form-check-input" name="inflight1"
-                                                                    type="checkbox" value="Air Conditioning" id="m_included1" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Air Conditioning" id="inflight1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight1">
                                                                     Air Conditioning
                                                                 </label>
@@ -933,7 +939,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-WiFi">
                                                                 <input class="form-check-input" name="inflight2"
-                                                                    type="checkbox" value="WiFi" id="m_included2" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="WiFi" id="inflight2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight2">
                                                                     WiFi
                                                                 </label>
@@ -942,7 +948,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-coffee">
                                                                 <input class="form-check-input" name="inflight3"
-                                                                    type="checkbox" value="Coffee" id="m_included3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Coffee" id="inflight3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight3">
                                                                     Coffee
                                                                 </label>
@@ -951,7 +957,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-entertainment">
                                                                 <input class="form-check-input" name="inflight4"
-                                                                    type="checkbox" value="Entertainment" id="m_included4" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Entertainment" id="inflight4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight4">
                                                                     Entertainment
                                                                 </label>
@@ -960,7 +966,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-food">
                                                                 <input class="form-check-input" name="inflight5"
-                                                                    type="checkbox" value="Food" id="m_included5" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Food" id="inflight5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight5">
                                                                     Food
                                                                 </label>
@@ -969,7 +975,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-drink">
                                                                 <input class="form-check-input" name="inflight6"
-                                                                    type="checkbox" value="Drink" id="m_included6" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Drink" id="inflight6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight6">
                                                                     Drink
                                                                 </label>
@@ -978,7 +984,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-wines">
                                                                 <input class="form-check-input" name="inflight7"
-                                                                    type="checkbox" value="Wines" id="m_included7" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Wines" id="inflight7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight7">
                                                                     Wines
                                                                 </label>
@@ -987,7 +993,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-comfort">
                                                                 <input class="form-check-input" name="inflight8"
-                                                                    type="checkbox" value="Comfort" id="m_included8" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Comfort" id="inflight8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight8">
                                                                     Comfort
                                                                 </label>
@@ -996,7 +1002,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-television">
                                                                 <input class="form-check-input" name="inflight9"
-                                                                    type="checkbox" value="Television" id="m_included9" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Television" id="inflight9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight9">
                                                                     Television
                                                                 </label>
@@ -1005,7 +1011,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-games">
                                                                 <input class="form-check-input" name="inflight10"
-                                                                    type="checkbox" value="Games" id="m_included10" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Games" id="inflight10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight10">
                                                                     Games
                                                                 </label>
@@ -1014,7 +1020,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-shopping">
                                                                 <input class="form-check-input" name="inflight11"
-                                                                    type="checkbox" value="Shopping" id="m_included11" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Shopping" id="inflight11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight11">
                                                                     Shopping
                                                                 </label>
@@ -1023,7 +1029,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check" id="modify-magazines">
                                                                 <input class="form-check-input" name="inflight12"
-                                                                    type="checkbox" value="Magazines" id="m_included12" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Magazines" id="inflight12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight12">
                                                                     Magazines
                                                                 </label>
@@ -1127,24 +1133,11 @@
                                             {# <form action="#">#}
                                                 <div class="row align-items-center" style="width: 100%;">
                                                     <div style="display: grid; grid-template-columns: auto;">
-
-                                                        <div class="col-lg-6" style="max-width: none;">
-                                                            <div class="form-group">
-                                                                <label>Priority</label>
-                                                                <select class="select" name="pri" id="pri" required>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                    <option value="3">3</option>
-                                                                    <option value="4">4</option>
-                                                                    <option value="5">5</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
                                                     <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
                                                         <label>Flight Type</label>
                                                         <select name="flight_type" class="select">
+                                                        <option value="">Select Flight Type</option>
                                                         <option value="One Way Flight">One Way Flight</option>
                                                         <option value="Round Trip Flight">Round Trip Flight</option>
                                                         <option value="Multi City Flight">Multi City Flight</option>
@@ -1191,6 +1184,7 @@
                                                         <div class="form-group">
                                                         <label>Flight Stop</label>
                                                         <select name="flight_stop" class="select">
+                                                        <option value="">Select Stop</option>
                                                         <option value="Non Stop">Non Stop</option>
                                                         <option value="1 Stop">1 Stop</option>
                                                         <option value="2 Stop">2 Stop</option>
@@ -1207,6 +1201,7 @@
                                                             <div class="form-group">
                                                             <label>Airline</label>
                                                             <select name="company" class="select">
+                                                            <option value="">Select Airline Company</option>
                                                             <option value="American Airlines">American Airlines</option>
                                                             <option value="Delta Airlines">Delta Airlines</option>
                                                             <option value="Qatar Airways">Qatar Airways</option>
@@ -1244,6 +1239,7 @@
                                                             <div class="form-group">
                                                             <label>Fare Type</label>
                                                             <select name="fare_type" class="select">
+                                                            <option value="">Select The Fare Type</option>
                                                             <option value="Refundable">Refundable</option>
                                                             <option value="Partially Refundable">Partially Refundable</option>
                                                             <option value="Non Refundable">Non Refundable</option>
@@ -1254,6 +1250,7 @@
                                                             <div class="form-group">
                                                             <label>Flight Class</label>
                                                             <select name="flight_class" class="select">
+                                                            <option value="">Select Class</option>
                                                             <option value="Economy">Economy</option>
                                                             <option value="Business">Business</option>
                                                             <option value="First Class">First Class</option>
@@ -1264,6 +1261,7 @@
                                                             <div class="form-group">
                                                             <label>Cancellation Charge</label>
                                                             <select name="cancellation_charge" class="select">
+                                                            <option value="">Select Cancellation Charge</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
                                                             <option value="$90 / Per Person">$90 / Per Person</option>
@@ -1274,6 +1272,7 @@
                                                              <div class="form-group">
                                                             <label>Flight Charge</label>
                                                             <select name="flight_charge" class="select">
+                                                            <option value="">Select Charge</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
                                                             <option value="$90 / Per Person">$90 / Per Person</option>
@@ -1284,6 +1283,7 @@
                                                             <div class="form-group">
                                                             <label>Seats & Baggage</label>
                                                             <select name="seat_baggage" class="select">
+                                                            <option value="">Select Seats & Baggage</option>
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
                                                             <option value="$90 / Per Person">$90 / Per Person</option>
@@ -1304,6 +1304,7 @@
                                                             <div class="form-group">
                                                             <label>Base Fare</label>
                                                             <select name="base_fare" class="select">
+                                                            <option value="">Select Base Fare</option>
                                                             <option value="$400">$400</option>
                                                             <option value="$680">$680</option>
                                                             <option value="$950">$950</option>
@@ -1314,6 +1315,7 @@
                                                             <div class="form-group">
                                                             <label>Taxes & Fees</label>
                                                             <select name="taxes" class="select">
+                                                            <option value="">Select Base Fare</option>
                                                             <option value="$100">$100</option>
                                                             <option value="$280">$280</option>
                                                             <option value="$350">$350</option>

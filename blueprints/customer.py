@@ -12,9 +12,7 @@ from utils.generate_hash import check_hash_time, get_hash_time
 from flask_babel import Babel, gettext as _, refresh
 from utils.decorators import login_required
 from recognize import main
-from translations.translator import translator
 
-ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
 bp = Blueprint("customer", __name__, url_prefix="/")
 
 
@@ -123,25 +121,16 @@ def register():
         return jsonify({"code": 400, "message": "captcha wrong"})
     password = request.form.get("signup-password")
     nickname = request.form.get("signup-username")
-    if check_nickname_legality(nickname):
-        new_customer = Customer()
-        new_customer.email = email
-        new_customer.nickname = nickname
-        new_customer.password = generate_password_hash(password)
-        new_customer.join_date = datetime.now()
-        new_customer.wallet = 0
-        db.session.add(new_customer)
-        db.session.commit()
-        return jsonify({"code": 200})
-    else:
-        return jsonify({"code": 400, "message": "nickname illegal"})
+    new_customer = Customer()
+    new_customer.email = email
+    new_customer.nickname = nickname
+    new_customer.password = generate_password_hash(password)
+    new_customer.join_date = datetime.now()
+    new_customer.wallet = 0
+    db.session.add(new_customer)
+    db.session.commit()
+    return jsonify({"code": 200})
 
-def check_nickname_legality(nickname):
-    if nickname in ["", None, " ", ADMIN_USERNAME]:
-        return False
-    elif (len(nickname) > 20):
-        return False
-    return True
 
 @bp.route("/captcha", methods=["POST"])
 def captcha():
@@ -602,25 +591,15 @@ def about_us():
 @bp.route("/update-profile", methods=['POST'])
 def update_profile():
     customer = Customer.query.get(session.get("customer_id"))
-    nickname_to_check = request.form.get("name")
-    if check_nickname_legality(nickname_to_check):
-        customer.nickname = nickname_to_check
-        customer.email = request.form.get("email")
-        customer.phone_number = request.form.get("phone")
-        customer.address = request.form.get("address")
-        db.session.commit()
-        return redirect(url_for('customer.profile'))
-    else:
-        return redirect(url_for('customer.profile', page='/setting'))
+    customer.email = request.form.get("email")
+    customer.nickname = request.form.get("name")
+    customer.phone_number = request.form.get("phone")
+    customer.address = request.form.get("address")
+    db.session.commit()
+    return redirect(url_for('customer.profile'))
 
 
 @bp.route("/recognize", methods=['POST'])
 def recognize():
-    name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
-    result = json.loads(main(photo))['result'][0]['keyword']
-    if session["language"] != 'zh':
-        result = translator(result, 'zh', 'en')
-    else:
-        result = result
-    return redirect(url_for(name, page_num=1, result=result))
+    return jsonify({"result":main(photo)})

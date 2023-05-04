@@ -14,7 +14,7 @@
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Customer Contacts <span class="text-grey"></span></h1>
+                    <h1 class="page-header__title">Customer Contacts <span class="text-grey">(60)</span></h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__right">
@@ -34,33 +34,33 @@
                 </div>
                 <div class="toolbox">
                     <div class="toolbox__row row gutter-bottom-xs">
-{#                        <div class="toolbox__left col-12 col-lg">#}
-{#                            <div class="toolbox__left-row row row--xs gutter-bottom-xs">#}
-{#                                <div class="form-group form-group--inline col-12 col-sm-auto">#}
-{#                                    <label class="form-label">Show</label>#}
-{#                                    <div class="input-group input-group--white input-group--append">#}
-{#                                        <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">#}
-{#                        <svg class="icon-icon-keyboard-down">#}
-{#                          <use xlink:href="#icon-keyboard-down"></use>#}
-{#                        </svg></span>#}
-{#                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>#}
-{#                                            <a#}
-{#                                            class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="form-group form-group--inline col-12 col-sm-auto">#}
-{#                                    <div class="toolbox__status input-group input-group--white input-group--append">#}
-{#                                        <input class="input input--select" type="text" value="Newest" data-toggle="dropdown" readonly><span class="input-group__arrow">#}
-{#                        <svg class="icon-icon-keyboard-down">#}
-{#                          <use xlink:href="#icon-keyboard-down"></use>#}
-{#                        </svg></span>#}
-{#                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="Newest">Newest</a>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
+                        <div class="toolbox__left col-12 col-lg">
+                            <div class="toolbox__left-row row row--xs gutter-bottom-xs">
+                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                    <label class="form-label">Show</label>
+                                    <div class="input-group input-group--white input-group--append">
+                                        <input class="input input--select" type="text" value="10" size="1" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                        <svg class="icon-icon-keyboard-down">
+                          <use xlink:href="#icon-keyboard-down"></use>
+                        </svg></span>
+                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="10">10</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="15">15</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="20">20</a>
+                                            <a
+                                            class="dropdown-menu__item" href="#" tabindex="0" data-value="25">25</a><a class="dropdown-menu__item" href="#" tabindex="0" data-value="50">50</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group--inline col-12 col-sm-auto">
+                                    <div class="toolbox__status input-group input-group--white input-group--append">
+                                        <input class="input input--select" type="text" value="Newest" data-toggle="dropdown" readonly><span class="input-group__arrow">
+                        <svg class="icon-icon-keyboard-down">
+                          <use xlink:href="#icon-keyboard-down"></use>
+                        </svg></span>
+                                        <div class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select"><a class="dropdown-menu__item active" href="#" tabindex="0" data-value="Newest">Newest</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="toolbox__right col-12 col-lg-auto">
                             <div class="toolbox__right-row row row--xs flex-nowrap">
                                 <div class="col col-lg-auto">
@@ -114,8 +114,674 @@
                                         <th class="table__actions"></th>
                                     </tr>
                                 </thead>
-                                <tbody id="item-container">
-
+                                <tbody>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="{{ url_for('manager.customer_detail') }}">
+                                                    <div class="media-item__icon-text">FB</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-1.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Felecia Burke</a></h5>
+                                                    <div class="text-sm text-grey">Type A</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">4532</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">SH</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-2.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Sophia Hale</a></h5>
+                                                    <div class="text-sm text-grey">Type B</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Boston, USA</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">PG</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-3.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Pamela Garza</a></h5>
+                                                    <div class="text-sm text-grey">Founder</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">New York, USA</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">AJ</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-4.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Addison James</a></h5>
+                                                    <div class="text-sm text-grey">Director</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Sydney, Australia</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">JR</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-5.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Jamie Rhodes</a></h5>
+                                                    <div class="text-sm text-grey">Lead Developer</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Los Angeles, USA</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">AJ</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-6.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Addison Jones</a></h5>
+                                                    <div class="text-sm text-grey">Product Manager</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Miami, USA</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">AD</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-7.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Allen Dunn</a></h5>
+                                                    <div class="text-sm text-grey">Marketing Director</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Cape Town, South Africa</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">JM</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-8.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Jim Murphy</a></h5>
+                                                    <div class="text-sm text-grey">Manager</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Los Angeles, USA</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right dropdown-items--up">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">LG</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-9.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Lynn George</a></h5>
+                                                    <div class="text-sm text-grey">Foundere</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Shanghai, China</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right dropdown-items--up">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="table__space">
+                                        <td colspan="6"></td>
+                                    </tr>
+                                    <tr class="table__row">
+                                        <td class="table__td">
+                                            <div class="table__checkbox table__checkbox--all">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" data-checkbox="product"><span class="checkbox__marker"><span class="checkbox__marker-icon">
+                                <svg class="icon-icon-checked">
+                                  <use xlink:href="#icon-checked"></use>
+                                </svg></span></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="table__td">
+                                            <div class="media-item media-item--medium">
+                                                <a class="media-item__icon color-red" href="customerAccount.html">
+                                                    <div class="media-item__icon-text">CL</div>
+                                                    <img class="media-item__thumb" src="../static/img/content/humans/item-10.jpg" alt="#">
+                                                </a>
+                                                <div class="media-item__right">
+                                                    <h5 class="media-item__title"><a href="customerAccount.html">Christine Lewis</a></h5>
+                                                    <div class="text-sm text-grey">Manager</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="table__td text-light-theme"><a href="mailto:#">example@mail.com</a>
+                                        </td>
+                                        <td class="table__td text-dark-theme">Sydney, Australia</td>
+                                        <td class="table__td text-light-theme text-nowrap"><a href="tel:#">+1 (070) 123-4567</a>
+                                        </td>
+                                        <td class="table__td table__actions">
+                                            <div class="items-more">
+                                                <button class="items-more__button">
+                                                    <svg class="icon-icon-more">
+                                                        <use xlink:href="#icon-more"></use>
+                                                    </svg>
+                                                </button>
+                                                <div class="dropdown-items dropdown-items--right dropdown-items--up">
+                                                    <div class="dropdown-items__container">
+                                                        <ul class="dropdown-items__list">
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link" href="orderDetails.html"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-view">
+                                        <use xlink:href="#icon-view"></use>
+                                      </svg></span>Details</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-duplicate">
+                                        <use xlink:href="#icon-duplicate"></use>
+                                      </svg></span>Duplicate</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-archive">
+                                        <use xlink:href="#icon-archive"></use>
+                                      </svg></span>Archive</a>
+                                                            </li>
+                                                            <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                      <svg class="icon-icon-trash">
+                                        <use xlink:href="#icon-trash"></use>
+                                      </svg></span>Delete</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -161,5 +827,4 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
-    <script src="{{ url_for('static', filename='js/load_customers.js') }}"></script>
 {% endblock %}

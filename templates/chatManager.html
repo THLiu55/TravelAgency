@@ -205,8 +205,7 @@
                                     <div class="chat-users__item-message">
                                         <div class="chat-users__item-badge"><span
                                                 class="badge badge--small badge--red unread-counter"
-                                                id="unread-counter-{{ customer.nickname }}"
-                                                style="{% if customer.amount_unread_msgs == 0 %} display: none; {% endif %}">{{
+                                                id="unread-counter-{{ customer.nickname }}">{{
                                                 customer.amount_unread_msgs
                                                 }}</span>
                                         </div>
@@ -283,10 +282,7 @@
                     <div class="chat-details__input-group input-group input-group--white">
                         <div class="chat-details__input-prepend">
                             <label class="button-icon button-icon--transparent">
-                                <input id="pic-input" type="file" accept=".jpg, .jpeg, .png, .bmp, .gif, .svg"
-                                    maxlength="10485760">
-                                <!-- TODO: multiple pic upload refactor -->
-                                <span class="button-icon__icon">
+                                <input type="file" multiple><span class="button-icon__icon">
                                     <svg class="icon-icon-attachment">
                                         <use xlink:href="#icon-attachment"></use>
                                     </svg></span>

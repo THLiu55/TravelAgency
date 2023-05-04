@@ -7,7 +7,6 @@ from model import *
 from exts import db
 from utils.decorators import login_required
 import requests as req
-from translations.translator import translator
 
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
@@ -46,16 +45,14 @@ def add_review():
 def activityList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_activities = Activity.query.count()
-    pagination = Activity.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    pagination = Activity.query.paginate(page=int(page_num), per_page=9, error_out=False)
     activities = pagination.items
     for activity in activities:
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
-    activities = sorted(activities, key=lambda i: i.priority, reverse=True)
-    result = request.args.get('result')
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
-                           page_num=page_num, logged=logged, result=result)
+                           page_num=page_num, logged=logged,)
 
 
 @bp.route('/details/<activity_id>/', methods=['GET', 'POST'])
@@ -99,14 +96,6 @@ def activityDetail(activity_id):
 def activity_filter():  # ajax activity filter
     activity_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
-    if 'language' in session:
-        if session["language"] == 'zh':
-            key_word = request.form.get('key-word')
-            key_word = translator(key_word, 'zh', 'en')
-        else:
-            key_word = request.form.get('key-word')
-    else:
-        key_word = ''
     if activity_type[0] == '':
         activity_type = ['Food & Nightlife', 'Hot Air Balloon', 'Mountain Climbing', 'Bike Ride']
     activity_price = request.form.get('activityPrice')
@@ -128,14 +117,12 @@ def activity_filter():  # ajax activity filter
                                       )
 
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=18)
+    pagination = query.paginate(page=page, per_page=9)
     activities = pagination.items
     for activity_i in activities:
         activity_i.contact_email = url_for('activity.activityDetail', activity_id=activity_i.id)
         activity_i.images = json.loads(activity_i.images)['images']
         activity_i.images[0] = "../" + activity_i.images[0][activity_i.images[0].index('static'):].replace('\\', '/')
-    if to_sort == '1':
-        activities = sorted(activities, key=lambda i: i.priority, reverse=True)
 
     if to_sort == '2':
         activities = sorted(activities, key=lambda activity: activity.view_num, reverse=True)
@@ -145,8 +132,9 @@ def activity_filter():  # ajax activity filter
 
     if to_sort == '4':
         activities = sorted(activities, key=lambda activity: activity.price, reverse=True)
+
     activities = [activity.to_dict() for activity in activities]
-    return jsonify({"activities": activities, "page": 1, "keyword": key_word})
+    return jsonify({"activities": activities, "page": 1})
 
 
 @bp.route("/order-confirm", methods=['POST'])

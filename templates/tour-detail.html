@@ -18,7 +18,8 @@
 {% block body %}
 
     <main class="main">
-            <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='image/bg3.jpg') }})">
+
+        <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
             <div class="container">
                 <h2 class="breadcrumb-title">{{ _("Tour") }}</h2>
 
@@ -360,7 +361,7 @@
                                                         <a href="{{ url_for('tour.remove_wishlist', tour_id=tour.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From
                                                         Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('tour.add_wishlist', tour_id=tour.id) }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('tour.add_wishlist', tour_id=tour.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else%}
                                                     <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>

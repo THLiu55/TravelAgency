@@ -843,43 +843,6 @@ header top css
 
 @media all and (max-width: 991px) {
   .header-top {
-    /* display: none; */
-  }
-  .left{
-    display: none;
-  }
-  .right{
-    display: none;
-  }
-  .top-contact-info{
-    display: none;
-  }
-  .header-top-right{
-    margin-right: 15%;
-  }
-  .mobile-menu-right{
-    margin-top: 2%;
-  }
-  .containermenu{
-    display: none;
-  }
-  .sicons{
-    width: 90%;
-
-  }
-  #shopincart {
-    position: fixed;
-    margin-left: 85%;
-    margin-top: 95%;
-    z-index: 9999;
-}
-  .chatposition{
-    position: fixed;
-    margin-left: 50%;
-    margin-top: 80%;
-    z-index: 999;
-  }
-  .container1{
     display: none;
   }
 }
@@ -1789,9 +1752,6 @@ search css
 }
 
 @media all and (max-width: 991px) {
-  .search-area .container{
-    max-width: 70%;
-  }
   .search-nav{
     border-radius: 20px;
   }
@@ -3722,11 +3682,11 @@ listing single css
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: rgba(162, 206, 240, 0.2);
+  background: rgba(136, 169, 234, 0.2);
   border-radius: 12px;
   font-size: 18px;
   text-align: center;
-  color: #0e71c8;
+  color: #547cf1;
 }
 
 .listing-feature-content span{
@@ -3849,8 +3809,8 @@ listing single css
   border-radius: 50px;
   font-size: 14px;
   text-align: center;
-  color: #0e71c8;
-  background: rgba(103, 182, 255, 0.1);
+  color: #7167FF;
+  background: rgba(113, 103, 255, .1);
 }
 
 .listing-amenity-item .list li{
@@ -4384,19 +4344,18 @@ listing single css
 }
 
 .listing-side-btn .border-btn{
-  border: 2px solid #edeff1;
+  border: 2px solid #ededf1;
   margin-top: 25px;
   text-align: center;
   font-weight: 500;
   padding: 9px 20px;
   border-radius: 12px;
-  background-color: #0e71c8;
-  color: rgb(249, 251, 253);
+  color: white;
 }
 
 .listing-side-btn .border-btn:hover{
-  background: #074199;
-  color: rgb(161, 206, 241);
+  background: #7167FF;
+  color: rgb(241, 161, 161);
 }
 
 .listing-side-share{
@@ -4718,7 +4677,7 @@ booking sidebar
 .booking-sidebar .flight-time .form-check{
   padding: 10px 15px 10px 38px;
   border-radius: 8px;
-  background: rgba(103, 194, 255, 0.1);
+  background: rgba(113, 103, 255, .1);
 }
 
 .booking-sidebar .flight-time .form-check-label i{
