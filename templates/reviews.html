@@ -92,17 +92,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="toolbox__right col-12 col-lg-auto">
-                            <div class="toolbox__right-row row row--xs flex-nowrap">
-                                <div class="col-auto ml-auto">
-                                    <button class="button-add button-add--blue" data-modal="#addReview"><span class="button-add__icon">
-                        <svg class="icon-icon-plus">
-                          <use xlink:href="#icon-plus"></use>
-                        </svg></span><span class="button-add__text"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="table-wrapper">
@@ -245,85 +234,6 @@
                 </div>
             </div>
         </main>
-    </div>
-    <div class="modal modal-compact modal-add-review scrollbar-thin" id="addReview" data-simplebar>
-        <div class="modal__overlay" data-dismiss="modal"></div>
-        <div class="modal__wrap">
-            <div class="modal__window">
-                <div class="modal__content">
-                    <button class="modal__close" data-dismiss="modal" onclick="clearInputs()">
-                        <svg class="icon-icon-cross">
-                            <use xlink:href="#icon-cross"></use>
-                        </svg>
-                    </button>
-                    <div class="modal__header">
-                        <div class="modal__container">
-                            <h2 class="modal__title">Edit review</h2>
-                        </div>
-                    </div>
-                    <div class="modal__body">
-                        <div class="modal__container">
-                            <form method="POST">
-                                <div class="row">
-                                    <div class="col-12 form-group form-group--lg">
-                                        <label class="form-label form-label--sm">Product</label>
-                                        <div class="input-group">
-                                            <input class="input" type="text" value="Apple Watch Series 4" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 form-group form-group--lg">
-                                        <label class="form-label form-label--sm">Author</label>
-                                        <div class="input-group">
-                                            <input class="input" type="text" value="Sophia Hale" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 form-group form-group--lg">
-                                        <label class="form-label form-label--sm">Text of review</label>
-                                        <div class="input-group">
-                                            <textarea class="input" rows="6" required></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 form-group form-group--lg">
-                                        <label class="form-label form-label--sm">Rating</label>
-                                        <div class="input-group">
-                                            <div class="rating rating--md js-rating-stars" data-rating="5"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 form-group form-group--lg mb-0">
-                                        <label class="form-label form-label--sm">Status</label>
-                                        <div class="input-group input-group--append">
-                                            <select class="input js-input-select input--fluid" data-placeholder="">
-                                                <option value="1" selected="selected">Published
-                                                </option>
-                                                <option value="2">Canceled
-                                                </option>
-                                            </select><span class="input-group__arrow">
-                          <svg class="icon-icon-keyboard-down">
-                            <use xlink:href="#icon-keyboard-down"></use>
-                          </svg></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal__footer">
-                        <div class="modal__container">
-                            <div class="modal__footer-buttons">
-                                <div class="modal__footer-button"></div>
-                                <div class="modal__footer-button">
-                                    <button class="button button--primary button--block" type="submit" data-dismiss="modal"><span class="button__icon button__icon--left">
-                        <svg class="icon-icon-save">
-                          <use xlink:href="#icon-save"></use>
-                        </svg></span><span class="button__text">Save</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 {% endblock %}
 
