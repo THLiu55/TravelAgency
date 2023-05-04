@@ -141,8 +141,8 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="site-heading text-center">
-                        <span class="site-title-tagline">{{ _("Destination") }}</span>
-                        <h2 class="site-title">{{ _("Our Most Popular Destinations") }}</h2>
+                        <span class="site-title-tagline">{{ _("Activities") }}</span>
+                        <h2 class="site-title">{{ _("Our Most Popular Activities") }}</h2>
                     </div>
                 </div>
             </div>
@@ -150,157 +150,146 @@
                 <div class="col-md-12 col-lg-6">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/01.jpg" alt="">
+                            <img src="../static/destination/011.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>New York City</h4>
+                            <h4>{{ _("Lady White Legend") }}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <i class="fas fa-star"></i>
+                                <span>{{ _("Hiking activity") }}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Mount Qingcheng, Sichuan") }}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/02.jpg" alt="">
+                            <img src="../static/destination/021.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>San Francisco</h4>
+                            <h4>{{ _("Fragrant Hill")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <i class="fas fa-star"></i>
+                                <span>{{ _("Amusement Park")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Fragrant Hill, Beijing")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/03.jpg"" alt="">
+                            <img src="../static/destination/031.jpg"" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>Las Vegas</h4>
+                            <h4>{{ _("Love song of Kangding")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <i class="fas fa-star"></i>
+                                <span>{{ _("Music Festival")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Kang ding, Sichuan")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/04.jpg" alt="">
+                            <img src="../static/destination/041.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>Los Angeles</h4>
+                            <h4>{{ _("Cycling around Beijing")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <span>{{ _("Cycling")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Shunyi, Beijing")}}</li>
+
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/05.jpg" alt="">
+                            <img src="../static/destination/051.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>Sydney</h4>
+                            <h4>{{ _("Hot air balloon")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <span>{{ _("Flying hot air balloon")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Shunyi, Beijing")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6">
                     <div class="destination-item">
                         <div class="destination-img">
-                            <img src="../static/destination/06.jpg" alt="">
+                            <img src="../static/destination/066.jpg" alt="">
                         </div>
                         <div class="destination-info">
-                            <h4>New Orleans</h4>
+                            <h4>{{ _("Bonfire Party")}}</h4>
                             <div class="destination-rate">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fal fa-star"></i>
-                                <span>(2.5k Reviews)</span>
+                                <span>{{ _("Party Activity")}}</span>
                             </div>
                             <div class="destination-more-info">
                                 <ul>
-                                    <li><i class="far fa-earth-americas"></i> 30 Tour</li>
-                                    <li><i class="far fa-hotel"></i> 35 Hotel</li>
-                                    <li><i class="far fa-ship"></i> 15 Cruise</li>
+                                    <li><i class="far fa-earth-americas"></i>{{ _("Beijing University of Technology")}}</li>
                                 </ul>
                             </div>
                         </div>
-                        <a href="#" class="destination-btn"><i class="far fa-arrow-right"></i></a>
+                        <a href="{{ url_for('activity.activityList', page_num=1) }}" class="destination-btn"><i class="far fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -337,7 +326,7 @@
                                     From <span>${{flight.price}}</span>
                                 </div>
                                 <div class="flight-text-btn">
-                                    <a href="#">{{ _("See Details") }} <i class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ url_for('flight.flightDetail', flight_id=flight.id) }}">{{ _("See Details") }} <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -346,7 +335,7 @@
                 {% endfor %}
                 
                 <div class="text-center mt-3">
-                    <a href="#" class="theme-btn">{{ _("Discover More") }}<i class="far fa-arrow-right"></i></a>
+                    <a href="{{ url_for('flight.flightList', page_num=1) }}" class="theme-btn">{{ _("Discover More") }}<i class="far fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -385,7 +374,7 @@
     Night</span></span>
                             </div>
                             <div class="hotel-text-btn">
-                                <a href="#">{{ _("See Details ") }}<i class="fas fa-arrow-right"></i></a>
+                                <a href="{{ url_for('hotel.hotelDetail', hotel_id=hotel.id) }}">{{ _("See Details ") }}<i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -524,7 +513,7 @@
                         <span class="site-title-tagline">{{ _("Tour") }}</span>
                         <h2 class="site-title">{{ _("Our Most Popular Tours") }}</h2>
                     </div>
-                    <div class="filter-controls">
+                    <!-- <div class="filter-controls">
                         <ul class="filter-btns">
                             <li class="active" data-filter="*">{{ _("All Tour") }}</li>
                             <li data-filter=".cat1">{{ _("Historical") }}</li>
@@ -532,43 +521,45 @@
                             <li data-filter=".cat3">{{ _("Special Tour") }}</li>
                             <li data-filter=".cat4">{{ _("Holiday Tour") }}</li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="row filter-box">
-                
+                {% for tour in tours %}
                 <div class="col-md-6 col-lg-3 filter-item cat1">
                     <div class="tour-item">
                         <div class="tour-img">
-                            <span class="badge badge-discount">25% Save</span>
-                            <img src="../static/tour/01.jpg" alt="">
+                            <!-- <span class="badge badge-discount">25% Save</span> -->
+                            <!-- <img src="../static/image/bg1.jpg" alt=""> -->
+                            <img src="{{ url_for('static', filename=tour.images[0].replace('\\','/')) }}" alt="">
                             <a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
                         </div>
                         <div class="tour-content">
                             <div class="tour-top">
-                                <a href="#" class="tour-category"><i class="far fa-tag"></i> Historical</a>
-                                <span class="tour-place"><i class="far fa-earth-americas"></i> 10 Places</span>
+                                <a href="#" class="tour-category"><i class="far fa-tag"></i> {{tour.category}}</a>
+                                <span class="tour-place"><i class="far fa-earth-americas"></i> {{tour.duration}}{{ _(" Place(s)") }}</span>
                             </div>
-                            <h4 class="tour-title"><a href="#">Canada Historical Tour</a></h4>
-                            <p><i class="far fa-location-dot"></i> 25/B Milford Road, New York</p>
+                            <h4 class="tour-title"><a href="#">{{tour.name}}</a></h4>
+                            <p><i class="far fa-location-dot"></i>{{tour.address}}</p>
                             <div class="hotel-rate">
-                                <span class="badge"><i class="fal fa-star"></i> 5.0</span>
-                                <span class="hotel-rate-type">Excellent</span>
-                                <span class="hotel-rate-review">(2.5k Reviews)</span>
+                                <span class="badge"><i class="fal fa-star"></i>{{tour.total_star}}</span>
+                                <span class="hotel-rate-type">{{ _("Excellent") }} </span>
+                                <span class="hotel-rate-review">({{tour.review_num}} {{ _("Reviews)") }}</span>
                             </div>
-                            <div class="tour-duration"><i class="far fa-clock"></i> 5 Days 4 Nights Trip</div>
+                            <div class="tour-duration"><i class="far fa-clock"></i> {{tour.duration}}  {{ _("day(s)") }}</div>
                             <div class="tour-bottom">
                                 <div class="tour-price">
-                                    From <span>$500</span>
+                                    {{ _("From") }} <span>${{tour.price}}</span>
                                 </div>
                                 <div class="tour-text-btn">
-                                    <a href="#">See More <i class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ url_for('tour.tourDetail', tour_id=tour.id) }}">See More <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 filter-item cat2">
+                {% endfor %}
+                <!-- <div class="col-md-6 col-lg-3 filter-item cat2">
                     <div class="tour-item">
                         <div class="tour-img">
                             <img src="../static/tour/02.jpg" alt="">
@@ -779,7 +770,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -905,7 +896,7 @@
                         </div>
 
                         <div class="profile-card-ctr">
-                            <button class="profile-card__button button--blue js-message-btn">Message</button>
+                            <!-- <button class="profile-card__button button--blue js-message-btn">Message</button> -->
 
                         </div>
                     </div>
@@ -1013,5 +1004,10 @@
         myLi2.click(function(){
             window.location.href="{{ url_for('tour.tourList', page_num=1) }}";
         });
+        var myLi2=$('#destination');
+        myLi2.click(function(){
+            window.location.href="{{ url_for('flight.flightList', page_num=1) }}";
+        });
+
     </script>
 {% endblock %}

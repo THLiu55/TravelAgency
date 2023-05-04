@@ -843,6 +843,43 @@ header top css
 
 @media all and (max-width: 991px) {
   .header-top {
+    /* display: none; */
+  }
+  .left{
+    display: none;
+  }
+  .right{
+    display: none;
+  }
+  .top-contact-info{
+    display: none;
+  }
+  .header-top-right{
+    margin-right: 15%;
+  }
+  .mobile-menu-right{
+    margin-top: 2%;
+  }
+  .containermenu{
+    display: none;
+  }
+  .sicons{
+    width: 90%;
+
+  }
+  #shopincart {
+    position: fixed;
+    margin-left: 85%;
+    margin-top: 95%;
+    z-index: 9999;
+}
+  .chatposition{
+    position: fixed;
+    margin-left: 50%;
+    margin-top: 80%;
+    z-index: 999;
+  }
+  .container1{
     display: none;
   }
 }

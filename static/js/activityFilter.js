@@ -37,12 +37,14 @@ function activity_filter(duration, min1, max1) {
           "activityPrice": activityPrice.toString(),
           "activityDuration": selectedValues1.toString(),
           "page": page,
-          "sort_by": sort_by
+          "sort_by": sort_by,
+          "key-word": document.getElementById("search_box_change").value
       },
         success: function(response) {
-        let activities = search_now(response.activities);
+        let activities = search_now(response.activities, response.keyword);
         let activityList = $('#row-list-ajax');
         activityList.empty();
+        document.getElementById("total_activities").innerHTML = activities.length.toString();
 
         for (let i = 0; i < activities.length; i++) {
             let activity = activities[i];
@@ -109,7 +111,7 @@ function getSortValue() {
 }
 
 
-function search_now(list) {
+function search_now(list, pattern) {
     const options = {
         threshold: 0.2,
         tokenize:true,
@@ -122,7 +124,6 @@ function search_now(list) {
         ]
     };
 
-    let pattern = document.getElementById("search_box_change").value;
     if (pattern === ''){
         return list;
     }
