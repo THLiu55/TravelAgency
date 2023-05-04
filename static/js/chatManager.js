@@ -47,7 +47,7 @@ $(document).ready(function () {
       if (sender == selectedCustomerName) {
         insertRespMessageNow(sender, t);
         // TODO: scroll to bottom of chat
-      } else if (sender == adminUserName) {
+      } else if (sender === adminUserName) {
         insertMyMessageNow(t);
       } else if (sender == "system") {
         console.log("system message received: " + t);
