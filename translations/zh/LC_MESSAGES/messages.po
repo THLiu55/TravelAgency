@@ -702,9 +702,8 @@ msgid "Home"
 msgstr "主页"
 
 #: templates/base.html:92 templates/profile-base.html:119
-#, fuzzy
 msgid "About US"
-msgstr "关于"
+msgstr "关于我们"
 
 #: templates/base.html:95 templates/profile-base.html:122
 msgid "Profile"
