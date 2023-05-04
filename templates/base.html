@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title> {% block title %} {% endblock %} </title>
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/logo/favicon.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/image/travel.svg') }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/topbar.css') }}">
@@ -22,9 +22,9 @@
 
                         <div class="top-contact-info">
                             <ul>
-                                <li><a href="tel:+1234567777"><i
+                                <li><a href="{{ url_for('customer.about_us') }}"><i
                                         class="far fa-phone-arrow-down-left"></i>+86 15214257799</a></li>
-                                <li><a href="/cdn-cgi/l/email-protection#d4bdbab2bb94b1acb5b9a4b8b1fab7bbb9"><i
+                                <li><a href="{{ url_for('customer.about_us') }}"><i
                                         class="far fa-envelopes"></i><span class="__cf_email__"
                                                                            data-cfemail="7811161e17381d00191508141d561b1715">[email&#160;ziqi.guo@ucdconnect.ie]</span></a>
                                 </li>
@@ -61,23 +61,23 @@
                     <div class="collapse navbar-collapse" id="main_nav">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown" id="navi-menu">
-                                <a class="nav-link" href="{{ url_for('customer.homepage') }}">Home</a>
+                                <a class="nav-link" href="{{ url_for('customer.homepage') }}">{{ _("Home") }}</a>
                             </li>
                             <li class="nav-item dropdown" id="navi-menu">
-                                <a class="nav-link" href="{{ url_for('flight.flightList', page_num=1) }}">Flight</a>
+                                <a class="nav-link" href="{{ url_for('flight.flightList', page_num=1) }}">{{ _("Flight") }}</a>
                             </li>
                             <li class="nav-item dropdown" id="navi-menu">
-                                <a class="nav-link" href="{{ url_for('hotel.hotelList', page_num=1) }}">Hotel</a>
+                                <a class="nav-link" href="{{ url_for('hotel.hotelList', page_num=1) }}">{{ _("Hotel") }}</a>
 
                             </li>
                             <li class="nav-item dropdown" id="navi-menu">
                                 <a class="nav-link"
-                                   href="{{ url_for('activity.activityList', page_num=1) }}">Activity</a>
+                                   href="{{ url_for('activity.activityList', page_num=1) }}">{{ _("Activity") }}</a>
                             </li>
 
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ url_for('tour.tourList', page_num=1) }}">Tour</a>
+                                <a class="nav-link" href="{{ url_for('tour.tourList', page_num=1) }}">{{ _("Tour") }}</a>
                                 <!-- <ul class="dropdown-menu fade-down">
                                 <li><a class="dropdown-item" href="tour-grid.html">Tour Grid</a></li>
                                 <li><a class="dropdown-item" href="tour-list.html">Tour List</a></li>
@@ -89,14 +89,13 @@
                                 <li><a class="dropdown-item" href="tour-add.html">Add Tour</a></li>
                                 </ul> -->
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.about_us') }}">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.about_us') }}">{{ _("About US") }}</a></li>
 
                             {% if logged %}
-                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.profile') }}">Profile</a>
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.profile') }}">{{ _("Profile") }}</a>
                                 </li>
                             {% else %}
-                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.re_jump') }}">Sign
-                                    in/up</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ url_for('customer.re_jump') }}">{{ _("Sign in/up") }}</a></li>
                             {% endif %}
 
                         </ul>

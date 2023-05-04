@@ -14,7 +14,7 @@ class Customer(db.Model, UserMixin):
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
-    amount_unread_msgs = db.Column(db.Integer, default=0)
+    amount_unread_msgs = db.Column(db.Integer, default=-1) # -1 means never chatted
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
@@ -31,7 +31,8 @@ class Customer(db.Model, UserMixin):
             'email': self.email,
             'nickname': self.nickname,
             'avatar': self.avatarURL,
-            'wallet': self.wallet
+            'wallet': self.wallet,
+            'phone': self.phone_number
         }
 
 
@@ -72,8 +73,8 @@ class ActivityOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'activity',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -107,6 +108,7 @@ class Activity(db.Model):
     category = db.Column(db.String(255))
     status = db.Column(db.String(255))
     price = db.Column(db.Float)
+    priority = db.Column(db.Integer, default=0)
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
     address = db.Column(db.Text)
@@ -139,7 +141,8 @@ class Activity(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
-            'price': self.price
+            'price': self.price,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -168,6 +171,7 @@ class Activity(db.Model):
             'contact_name': self.contact_name,
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -197,7 +201,8 @@ class Activity(db.Model):
             'contact_phone': self.contact_phone,
             'view_num': self.view_num,
             'lat': self.lat,
-            'lon': self.lon
+            'lon': self.lon,
+            'pri': self.priority
         }
 
 
@@ -217,8 +222,8 @@ class TourOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'tour',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -261,6 +266,7 @@ class Tour(db.Model):
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
     images = db.Column(db.Text)
+    priority = db.Column(db.Integer, default=0)
     description = db.Column(db.Text)
     included = db.Column(db.Text)
     excluded = db.Column(db.Text)
@@ -281,7 +287,8 @@ class Tour(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
-            'price': self.price
+            'price': self.price,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -297,7 +304,8 @@ class Tour(db.Model):
             'total_star': self.total_star,
             'review_num': self.review_num,
             'star_detail': self.star_detail,
-            "contact_email": self.contact_email
+            "contact_email": self.contact_email,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -325,7 +333,8 @@ class Tour(db.Model):
             "contact_name": self.contact_name,
             "contact_email": self.contact_email,
             "contact_phone": self.contact_phone,
-            "review_num": self.review_num
+            "review_num": self.review_num,
+            'pri': self.priority
         }
 
 
@@ -347,6 +356,7 @@ class Hotel(db.Model):
     bathroom = db.Column(db.String(255))
     star = db.Column(db.String(255))
     room_type_num = db.Column(db.Integer)
+    priority = db.Column(db.Integer, default=0)
     images = db.Column(db.Text)
     description = db.Column(db.Text)
     room_detail = db.Column(db.Text)
@@ -370,7 +380,8 @@ class Hotel(db.Model):
             'name': self.name,
             'price': self.min_price,
             'city': self.city,
-            'room_num': self.room_num
+            'room_num': self.room_num,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -383,6 +394,7 @@ class Hotel(db.Model):
             "review_num": self.review_num,
             "min_price": self.min_price,
             "contact_email": self.contact_email,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -414,7 +426,8 @@ class Hotel(db.Model):
             "contact_phone": self.contact_phone,
             "view_num": self.view_num,
             "lat": self.lat,
-            "lon": self.lon
+            "lon": self.lon,
+            'pri': self.priority
         }
         return serialized_hotel
 
@@ -437,8 +450,8 @@ class HotelOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'hotel',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.checkOutTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.checkOutTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }
@@ -484,6 +497,7 @@ class Flight(db.Model):
     fare_type = db.Column(db.String(255))
     flight_class = db.Column(db.String(255))
     cancellation_charge = db.Column(db.String(255))
+    priority = db.Column(db.Integer, default=0)
     flight_charge = db.Column(db.String(255))
     seat_baggage = db.Column(db.String(255))
     base_fare = db.Column(db.String(255))
@@ -508,7 +522,8 @@ class Flight(db.Model):
             'departure': self.departure,
             'destination': self.destination,
             'take_off_time': self.takeoff_time.isoformat(),
-            'landing_time': self.landing_time.isoformat()
+            'landing_time': self.landing_time.isoformat(),
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -523,7 +538,8 @@ class Flight(db.Model):
             'fare_type': self.fare_type,
             'departure': self.departure,
             'contact_name': self.contact_name,
-            'images': self.images
+            'images': self.images,
+            'pri': self.priority
         }
 
     def serialize_info(self):
@@ -556,6 +572,7 @@ class Flight(db.Model):
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
             'view_num': self.view_num,
+            'pri': self.priority
         }
         return info
 
@@ -576,8 +593,8 @@ class FlightOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'flight',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased
         }

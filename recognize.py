@@ -9,17 +9,14 @@ SECRET_KEY = "0x4q77up034G8ed2prWVyfrg8YKy0Fb0"
 def main(file):
     url = "https://aip.baidubce.com/rest/2.0/image-classify/v2/advanced_general?access_token=" + get_access_token()
 
-    # image 可以通过 get_file_content_as_base64("C:\fakepath\167764702943312_P3261642.jpeg",True) 方法获取
     payload = get_file_content_as_base64(file, True)
     payload = "image=" + payload
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
     }
 
     response = requests.request("POST", url, headers=headers, data=payload)
-
-    print(response.text)
 
     return response.text
 

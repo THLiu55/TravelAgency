@@ -96,19 +96,6 @@
                         </div>
                         <div class="toolbox__right col-12 col-lg-auto">
                             <div class="toolbox__right-row row row--xs flex-nowrap">
-                                <div class="col col-lg-auto">
-                                    <form class="toolbox__search" method="GET">
-                                        <div class="input-group input-group--white input-group--prepend">
-                                            <div class="input-group__prepend">
-                                                <svg class="icon-icon-search">
-                                                    <use xlink:href="#icon-search"></use>
-                                                </svg>
-                                            </div>
-                                            <input class="input" type="text" placeholder="Search product">
-                                        </div>
-                                    </form>
-                                </div>
-
                                 <div class="col-auto">
                                     <button class="button-add button-add--blue" data-modal="#addProduct"><span
                                             class="button-add__icon">
@@ -117,7 +104,6 @@
                                             </svg></span><span class="button-add__text"></span>
                                     </button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -235,6 +221,18 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
+                                                                <label>Priority</label>
+                                                                <select class="select" name="pri" id="m_pri" required>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
                                                                 <label>Official Place Name</label>
                                                                 <input type="text" class="form-control" name="name" id="modify_name"
                                                                     placeholder="Enter place name" required>
@@ -244,7 +242,6 @@
                                                             <div class="form-group">
                                                                 <label>Activity Category</label>
                                                                 <select class="select" name="category" id="modify_Activity_Category" required>
-                                                                    <option value="1">Select Category</option>
                                                                     <option value="Food & Nightlife">Food & Nightlife</option>
                                                                     <option value="Hot Air Balloon">Hot Air Balloon</option>
                                                                     <option value="Mountain Climbing">Mountain Climbing</option>
@@ -305,7 +302,6 @@
                                                             <div class="form-group">
                                                                 <label>Duration</label>
                                                                 <select class="select" name="duration" id="modify_Duration">
-                                                                    <option value="">Select Duration</option>
                                                                     <option value="1">1 Day</option>
                                                                     <option value="2">2 Days</option>
                                                                     <option value="3">3 Days</option>
@@ -318,7 +314,6 @@
                                                             <div class="form-group">
                                                                 <label>Group Size</label>
                                                                 <select class="select" name="group_size" id="modify_group_size" style="padding-left: -14px;margin-left: -15px;">
-                                                                    <option value="">Select Group Size</option>
                                                                     <option value="10">10 People</option>
                                                                     <option value="20">20 People</option>
                                                                     <option value="30">30 People</option>
@@ -434,7 +429,7 @@
                                                             <div class="col-6 col-md-3">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" name="included1"
-                                                                        type="checkbox" value="Airfare" id="included1" style="-webkit-appearance:checkbox;">
+                                                                        type="checkbox" value="Airfare" id="m_included1" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included1">
                                                                         Airfare
                                                                     </label>
@@ -445,7 +440,7 @@
                                                             <div class="col-6 col-md-3">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" name="included2"
-                                                                        type="checkbox" value="Local Transportation" id="included2" style="-webkit-appearance:checkbox;">
+                                                                        type="checkbox" value="Local Transportation" id="m_included2" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included2">
                                                                         Local Transportation
                                                                     </label>
@@ -456,7 +451,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="included3"
-                                                                    type="checkbox" value="Accommodation" id="included3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Accommodation" id="m_included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included3">
                                                                     Accommodation
                                                                 </label>
@@ -464,7 +459,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="included4"
+                                                                <input class="form-check-input" name="m_included4"
                                                                     type="checkbox" value="Tour Guide" id="included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included4">
                                                                     <span>Tour Guide</span>
@@ -481,7 +476,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included1"
-                                                                    type="checkbox" value="Entrance Fees" id="not-included1" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Entrance Fees" id="m_not-included1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included1">
                                                                     Entrance Fees
                                                                 </label>
@@ -490,7 +485,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included2"
-                                                                    type="checkbox" value="Guide Gratuity" id="not-included2" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Guide Gratuity" id="m_not-included2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included2">
                                                                     Guide Gratuity
                                                                 </label>
@@ -499,7 +494,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included3"
-                                                                    type="checkbox" value="Lunch" id="not-included3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Lunch" id="m_not-included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included3">
                                                                     Lunch
                                                                 </label>
@@ -507,7 +502,7 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="not-included4"
+                                                                <input class="form-check-input" name="m_not-included4"
                                                                     type="checkbox" value="Dinner" id="not-included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included4">
                                                                     Dinner
@@ -623,6 +618,18 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
+                                                                <label>Priority</label>
+                                                                <select class="select" name="pri" id="pri" required>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
                                                                 <label>Official Place Name</label>
                                                                 <input type="text" class="form-control" name="name"
                                                                     placeholder="Enter the place name" required>
@@ -632,7 +639,6 @@
                                                             <div class="form-group">
                                                                 <label>Activity Category</label>
                                                                 <select class="select" name="category" required>
-                                                                    <option value="1">Select Category</option>
                                                                     <option value="Food & Nightlife">Food & Nightlife</option>
                                                                     <option value="Hot Air Balloon">Hot Air Balloon</option>
                                                                     <option value="Mountain Climbing">Mountain Climbing</option>
@@ -646,9 +652,6 @@
                                                                 <input type="num" class="form-control" name="price" min="0"
                                                                     placeholder="Enter price" required>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-
                                                         </div>
                                                         <h5 class="my-4">Location</h5>
                                                         <div class="col-lg-4">
@@ -696,7 +699,6 @@
                                                             <div class="form-group">
                                                                 <label>Duration</label>
                                                                 <select class="select" name="duration">
-                                                                    <option value="">Select Duration</option>
                                                                     <option value="1">1 Day</option>
                                                                     <option value="2">2 Days</option>
                                                                     <option value="3">3 Days</option>
@@ -709,7 +711,6 @@
                                                             <div class="form-group">
                                                                 <label>Group Size</label>
                                                                 <select class="select" name="group_size" style="padding-left: -14px;margin-left: -15px;">
-                                                                    <option value="">Select Group Size</option>
                                                                     <option value="10">10 People</option>
                                                                     <option value="20">20 People</option>
                                                                     <option value="30">30 People</option>

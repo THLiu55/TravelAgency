@@ -8,6 +8,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Group 7 About us</title>
+		<link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/image/travel.svg') }}"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="HTML5 Template by NINETHEME" />
 		<meta name="keywords" content="bootstrap, html5, css3, mobile first, responsive" />
@@ -69,13 +70,13 @@
 			<div class="container">
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 template-logo">
 					<a href="#" class="js-template-mobile-toggle template-nav-toggle"><i></i></a>
-					<a href="{{ url_for('customer.homepage') }}">Group 7</a>
+					<a href="{{ url_for('customer.homepage') }}">{{ _("Group 7")}}</a>
 				</div>
 				<div class="col-lg-6 col-md-5 col-sm-5 text-center template-link-wrap">
 					<ul data-offcanvass="yes">
-						<li class="active"><a href="#about">About</a></li>
-						<li><a href="#projects">Projects</a></li>
-						<li><a href="#story">Milestones</a></li>
+						<li class="active"><a href="#about">{{ _("About")}}</a></li>
+						<li><a href="#projects">{{ _("Projects")}}</a></li>
+						<li><a href="#story">{{ _("Milestones")}}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -96,17 +97,17 @@
 							<div class="template-cover-intro">
 
 								<h2 class="cd-headline hero-headline letters rotate-3">
-									<span class="cd-words-wrapper"><b class="is-visible">Group7</b><b>quality</b><b>trust</b><b>passion</b></span>
+									<span class="cd-words-wrapper"><b class="is-visible">{{ _("Group7")}}</b><b>{{ _("quality")}}</b><b>{{ _("trust")}}</b><b>{{ _("passion")}}</b></span>
 								</h2>
 
 								<h2 class="cover-text-sublead wow" data-wow-duration="1s" data-wow-delay=".8s">
-									We are development Team 7, a passionate and trusting team.</h2>
+									{{ _("We are development Team 7, a passionate and trusting team.")}}</h2>
 								<h2 class="cover-text-sublead wow" data-wow-duration="1s" data-wow-delay=".8s">
-									We encourage innovation, try new ideas, and work hard to achieve our goals.</h2>
+									{{ _("We encourage innovation, try new ideas, and work hard to achieve our goals.")}}</h2>
 								<h2 class="cover-text-sublead wow" data-wow-duration="1s" data-wow-delay=".8s">
-									We are committed to providing quality products and services to our customers, constantly learning and improving.</h2>
+									{{ _("We are committed to providing quality products and services to our customers, constantly learning and improving.")}}</h2>
 								<h2 class="cover-text-sublead wow" data-wow-duration="1s" data-wow-delay=".8s">
-									We believe that only through mutual cooperation and support can we succeed in COMP3030J !</h2>
+									{{ _("We believe that only through mutual cooperation and support can we succeed in COMP3030J !")}}</h2>
 								<p class="wow" data-wow-duration="1s" data-wow-delay="1.1s"><a href="#projects" class="btn btn-primary btn-outline btn-lg">See Our Work</a></p>
 							</div>
 						</div>
@@ -120,42 +121,38 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3 text-center">
 						<h2 class="cd-headline slide">
-							<span>Our priorities is </span>
-							<span class="cd-words-wrapper"><b class="is-visible">passion</b><b>quality</b><b>trust</b></span>
+							<span>{{ _("Our priorities is ")}}</span>
+							<span class="cd-words-wrapper"><b class="is-visible">{{ _("passion")}}</b><b>{{ _("quality")}}</b><b>{{ _("trust")}}</b></span>
 						</h2>
 					</div>
 
 					<div class="col-md-4">
 						<div class="fifth-border color-fourth colored-boxes lg-margin-b-30 border-radius-off">
 							<span class="colored-lable wow absolute color-white bg-color-second" data-wow-duration="1s" data-wow-delay=".5s">Design</span>
-							<h3 class="template-heading wow" data-wow-duration="1s" data-wow-delay=".5s">What we do?</h3>
-							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">As a family-owned shop that previously relied on walk-in customers, it needs to enter the online market with a new website that meets requirements for ease of use, quality communication, and bilingual support.</p>
-							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">For the sake of a successful transformation from a basic walk-in travel agency to an online shop, our software engineering team has been hired to design and develop a website that meets user requirements and basic functionalities.</p>
+							<h3 class="template-heading wow" data-wow-duration="1s" data-wow-delay=".5s">{{ _("What we do?")}}</h3>
+							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">{{ _("As a family-owned shop that previously relied on walk-in customers, it needs to enter the online market with a new website that meets requirements for ease of use, quality communication, and bilingual support.")}}</p>
+							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">{{ _("For the sake of a successful transformation from a basic walk-in travel agency to an online shop, our software engineering team has been hired to design and develop a website that meets user requirements and basic functionalities.")}}</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="fifth-border color-white border-color-blue  colored-boxes bg-color-blue lg-margin-b-30 border-radius-off">
-							<h3 class="template-heading wow color-white" data-wow-duration="1s" data-wow-delay=".3s">Customer Portal</h3>
+							<h3 class="template-heading wow color-white" data-wow-duration="1s" data-wow-delay=".3s">{{ _("Customer Portal")}}</h3>
 							<p class="wow" data-wow-duration="1s" data-wow-delay="1s">
-								Provides information on travel destinations, attractions, reviews, and accommodation, as well as booking and planning tools.
+								{{ _("Provides information on travel destinations, attractions, reviews, and accommodation, as well as booking and planning tools.")}}
 							</p>
 						</div>
 						<div class="fifth-border color-white border-color-green  colored-boxes bg-color-green lg-margin-b-30 border-radius-off">
-							<h3 class="template-heading wow color-white" data-wow-duration="1s" data-wow-delay=".3s">Staff Portal</h3>
-							<p class="wow" data-wow-duration="1s" data-wow-delay="1s">Allows employees to organize, modify, prioritize, update, and keep track of bookings in the system.</p>
+							<h3 class="template-heading wow color-white" data-wow-duration="1s" data-wow-delay=".3s">{{ _("Staff Portal")}}</h3>
+							<p class="wow" data-wow-duration="1s" data-wow-delay="1s">{{ _("Allows employees to organize, modify, prioritize, update, and keep track of bookings in the system.")}}</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="fifth-border color-fourth colored-boxes lg-margin-b-30 border-radius-off">
 							<span class="colored-lable wow absolute color-white bg-color-second" data-wow-duration="1s" data-wow-delay=".5s">Best idea</span>
-							<h3 class="template-heading wow" data-wow-duration="1s" data-wow-delay=".5s">Our Best Projects</h3>
-							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">Incorporate a map display feature into the website to help customers
-								visualize their travel destinations and plan their trips more effectively.</p>
-							<p class="wow " data-wow-duration="1s" data-wow-delay=".8s">To improve the customer using experiences, a smart chatting bot (AI
-								customer service) is supported in our system. Reviews, machine learning based recommendations is
-								also embedded.</p>
-							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">There is an individual calendar for every customer to visualize
-								his traveling planning</p>
+							<h3 class="template-heading wow" data-wow-duration="1s" data-wow-delay=".5s">{{ _("Our Best Projects")}}</h3>
+							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">{{ _("Incorporate a map display feature into the website to help customers visualize their travel destinations and plan their trips more effectively.")}}</p>
+							<p class="wow " data-wow-duration="1s" data-wow-delay=".8s">{{ _("To improve the customer using experiences, a smart chatting bot (AI customer service) is supported in our system. Reviews, machine learning based recommendations is also embedded.")}}</p>
+							<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">{{ _("There is an individual calendar for every customer to visualize his traveling planning")}}</p>
 						</div>
 					</div>
 				</div>
@@ -181,7 +178,7 @@
 								<div class="template-text">
 									<div class="template-text-inner">
 										<div class="row">
-											<div class="col-md-6"><h3>Project Name #1</h3></div>
+											<div class="col-md-6"><h3>{{ _("Project Name #1")}}</h3></div>
 											<div class="col-md-6"><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></div>
 										</div>
 									</div>
@@ -254,32 +251,32 @@
 				</div> <!-- .events-wrapper -->
 
 				<ul class="cd-timeline-navigation">
-					<li><a href="#0" class="prev inactive">Prev</a></li>
-					<li><a href="#0" class="next">Next</a></li>
+					<li><a href="#0" class="prev inactive">{{ _("Prev")}}</a></li>
+					<li><a href="#0" class="next">{{ _("Next")}}</a></li>
 				</ul> <!-- .cd-timeline-navigation -->
 			</div> <!-- .timeline -->
 
 			<div class="events-content">
 				<ol>
 					<li class="selected" data-date="16/01/2014">
-						<h2>MileStone 1</h2>
-						<em>January 16th, 2014</em>
+						<h2>{{ _("MileStone 1")}}</h2>
+						<em>{{ _("January 16th, 2014")}}</em>
 						<p>
-							In the first milestone, we are required to finish collecting, organizing and documenting user requirements. Further system design and UI design based on requirements need to be finished in these requirements as well.						</p>
+							{{ _("In the first milestone, we are required to finish collecting, organizing and documenting user requirements. Further system design and UI design based on requirements need to be finished in these requirements as well.")}}				</p>
 					</li>
 
 					<li data-date="28/02/2014">
-						<h2>MileStone 2</h2>
-						<em>February 28th, 2014</em>
+						<h2>{{ _("MileStone 2")}}</h2>
+						<em>{{ _("February 28th, 2014")}}</em>
 						<p>
-							In the second milestone, we are supposed to finish the basic web pages including the customer portal and staff portal. Basic functionalities (front-end \& back-end) like login and sign up, staff login, tour-related information presentation and staff data presentation need to be completed in this milestone.						</p>
+							{{ _("In the second milestone, we are supposed to finish the basic web pages including the customer portal and staff portal. Basic functionalities (front-end \& back-end) like login and sign up, staff login, tour-related information presentation and staff data presentation need to be completed in this milestone.	")}}					</p>
 					</li>
 
 					<li data-date="20/04/2014">
-						<h2>Then we were very excited.</h2>
-						<em>March 20th, 2014</em>
+						<h2>{{ _("Then we were very excited.")}}</h2>
+						<em>{{ _("March 20th, 2014")}}</em>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+							{{ _("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.")}}
 						</p>
 					</li>
 
@@ -368,50 +365,50 @@
 								<img src="{{ url_for('static', filename='images/lth.png') }}" style="min-height: 200px;min-width: 150px;max-height:200px;max-width:150px;">
 <!--								<i class="icon-ribbon"></i>-->
 							</div>
-							<h3>Group Leader</h3>
-							<h3>Backend developer</h3>
-							<p>TianHao Liu</p>
+							<h3>{{ _("Group Leader")}}</h3>
+							<h3>{{ _("Backend developer")}}</h3>
+							<p>{{ _("TianHao Liu")}}</p>
 						</div>
 						<div class="template-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
 							<div class="icon">
 								<img src="{{ url_for('static', filename='images/gzq.jpg') }}" style="min-height: 200px;min-width: 150px;max-height:200px;max-width:150px;">
 							</div>
-								<h3>Maintainer</h3>
-							<h3>Backend manager</h3>
-							<p>Ziqi Guo</p>
+								<h3>{{ _("Maintainer")}}</h3>
+							<h3>{{ _("Backend manager")}}</h3>
+							<p>{{ _("Ziqi Guo")}}</p>
 						</div>
 						<div class="template-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
 							<div class="icon">
 								<img src="{{ url_for('static', filename='images/lzx.jpg') }}" style="min-height: 200px;min-width: 150px;max-height:200px;max-width:150px;">
 							</div>
-							<h3>Resource Manager</h3>
-							<h3>Backend developer </h3>
-							<p>ZeXuan Lv</p>
+							<h3>{{ _("Resource Manager")}}</h3>
+							<h3>{{ _("Backend developer")}} </h3>
+							<p>{{ _("ZeXuan Lv")}}</p>
 						</div>
 
 						<div class="template-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay=".7s">
 							<div class="icon">
 								<img src="{{ url_for('static', filename='images/zyc.png') }}" style="min-height: 200px;min-width: 150px;max-height:200px;max-width:150px;">
 							</div>
-							<h3>Testing Engineer</h3>
-							<h3>Frontend manager</h3>
-							<p>Yuchen Zhang</p>
+							<h3>{{ _("Testing Engineer")}}</h3>
+							<h3>{{ _("Frontend manager")}}</h3>
+							<p>{{ _("Yuchen Zhang")}}</p>
 						</div>
 						<div class="template-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="1s">
 							<div class="icon">
 								<img src="{{ url_for('static', filename='images/xzy.jpg') }}" style="min-height: 200px;min-width: 150px;max-height:200px;max-width:150px;">
 							</div>
-							<h3>Project Manager</h3>
-							<h3>Frontend developer</h3>
-							<p>Zhiyou Xiao</p>
+							<h3>{{ _("Project Manager")}}</h3>
+							<h3>{{ _("Frontend developer")}}</h3>
+							<p>{{ _("Zhiyou Xiao")}}</p>
 						</div>
 						<div class="template-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="1.3s">
 							<div class="icon">
 								<img src="{{ url_for('static', filename='images/sq.jpg') }}" style="min-height: 200px;min-width: 150px;max-height:200px;max-width:150px;">
 							</div>
-							<h3>Project Manager</h3>
-							<h3>Frontend developer</h3>
-							<p>Qi Sun</p>
+							<h3>{{ _("Project Manager")}}</h3>
+							<h3>{{ _("Frontend developer")}}</h3>
+							<p>{{ _("Qi Sun")}}</p>
 						</div>
 
 					</div>

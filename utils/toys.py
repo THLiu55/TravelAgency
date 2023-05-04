@@ -16,6 +16,11 @@ def get_fuzzed_room_name(customer_id):
     # my impl is to hash the customer_id to get a room name
     return hashlib.sha256(str(customer_id).encode("utf-8")).hexdigest()[:10]
 
+def hash_filename(filename):
+    ext = filename.split(".")[-1]
+    filename_without_ext = filename[: -len(ext) - 1]
+    to_hash = filename_without_ext + str(datetime.datetime.now())
+    return hashlib.sha256(to_hash.encode("utf-8")).hexdigest() + "." + ext
 
 ### END CHAT RELATED ###
 

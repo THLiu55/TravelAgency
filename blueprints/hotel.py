@@ -5,6 +5,7 @@ from flask import Blueprint, render_template, request, jsonify, current_app, ses
 from model import *
 from exts import db
 from sqlalchemy import or_
+from translations.translator import translator
 
 bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 
@@ -13,20 +14,30 @@ bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 def hotelList(page_num):
     logged = False if session.get('customer_id') is None else True
     total_hotels = Hotel.query.count()
-    pagination = Hotel.query.paginate(page=int(page_num), per_page=9, error_out=False)
+    pagination = Hotel.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
     hotels = pagination.items
     for single_hotel in hotels:
         # noinspection PyTypeChecker
         single_hotel.images = json.loads(single_hotel.images)['images']
         single_hotel.images[0] = single_hotel.images[0][single_hotel.images[0].index('static'):].lstrip('static')
+    hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
+    result = request.args.get('result')
     return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged,
-                           page_num=page_num)
+                           page_num=page_num, result=result)
 
 
 @bp.route("/hotel_filter", methods=['POST', 'GET'])
 def hotel_filter():
     hotel_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if 'language' in session:
+        if session["language"] == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
+    else:
+        key_word = ''
     if hotel_type[0] == '':
         hotel_type = ['Free Parking', 'Restaurant', 'Pets Allowed', 'Airport Transportation', 'Fitness Facility',
                       'WiFi', 'Air Conditioning']
@@ -40,12 +51,14 @@ def hotel_filter():
     query = Hotel.query.filter(Hotel.min_price.between(mi_price, max_price), Hotel.star.in_(hotel_star),
                                or_(*[Hotel.amenities.like(f'%{word}%') for word in hotel_type]))
     page = int(request.form.get('page'))
-    pagination = query.paginate(page=page, per_page=9)
+    pagination = query.paginate(page=page, per_page=18)
     hotels = pagination.items
     for hotel_i in hotels:
         hotel_i.contact_email = url_for('hotel.hotelDetail', hotel_id=hotel_i.id)
         hotel_i.images = json.loads(hotel_i.images)['images']
         hotel_i.images[0] = "../" + hotel_i.images[0][hotel_i.images[0].index('static'):].replace('\\', '/')
+    if to_sort == '1':
+        hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
 
     if to_sort == '2':
         hotels = sorted(hotels, key=lambda hotel: hotel.view_num, reverse=True)
@@ -56,7 +69,7 @@ def hotel_filter():
     if to_sort == '4':
         hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=True)
     hotels = [hotel.to_dict() for hotel in hotels]
-    return jsonify({"hotels": hotels, "page": 1})
+    return jsonify({"hotels": hotels, "page": 1, "keyword": key_word})
 
 
 @bp.route('/details/<hotel_id>/', methods=['GET', 'POST'])

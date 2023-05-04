@@ -20,7 +20,7 @@
 
     <main class="main">
 
-        <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='css/assets/img/breadcrumb/01.jpg') }})">
+        <div class="site-breadcrumb" style="padding-top:100px;background: url({{ url_for('static', filename='image/bg3.jpg') }})">
             <div class="container">
 
             </div>
@@ -353,7 +353,7 @@
                                                     {% if added %}
                                                         <a href="{{ url_for('activity.remove_wishlist', activity_id=activity.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i>{{ _("Remove From Wishlist") }} </a>
                                                     {% else %}
-                                                        <a href="{{ url_for('activity.add_wishlist', activity_id=activity.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('activity.add_wishlist', activity_id=activity.id) }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
                                                     <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
@@ -427,7 +427,6 @@
         const lon = document.getElementById("lon").value;
         const mymap = L.map('mapid').setView([lat, lon], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
             maxZoom: 18
         }).addTo(mymap);
         L.marker([lat, lon]).addTo(mymap);

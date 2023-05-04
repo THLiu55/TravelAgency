@@ -139,6 +139,92 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
+function checkedInitIncluded(checked_array){
+    var incheck1 = document.getElementById('m_included1');
+    if (checked_array.includes(incheck1.value)){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_included2');
+    if (checked_array.includes(incheck2.value)){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_included3');
+    if (checked_array.includes(incheck3.value)){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_included4');
+    if (checked_array.includes(incheck4.value)){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+
+    var incheck5 = document.getElementById('m_included5');
+    if (checked_array.includes(incheck5.value)){
+        incheck5.checked = true;
+    }else {
+        incheck5.checked = false;
+    }
+
+    var incheck6 = document.getElementById('m_included6');
+    if (checked_array.includes(incheck6.value)){
+        incheck6.checked = true;
+    }else {
+        incheck6.checked = false;
+    }
+
+    var incheck7 = document.getElementById('m_included7');
+    if (checked_array.includes(incheck7.value)){
+        incheck7.checked = true;
+    }else {
+        incheck7.checked = false;
+    }
+
+    var incheck8 = document.getElementById('m_included8');
+    if (checked_array.includes(incheck8.value)){
+        incheck8.checked = true;
+    }else {
+        incheck8.checked = false;
+    }
+
+    var incheck9 = document.getElementById('m_included9');
+    if (checked_array.includes(incheck9.value)){
+        incheck9.checked = true;
+    }else {
+        incheck9.checked = false;
+    }
+
+    var incheck10 = document.getElementById('m_included10');
+    if (checked_array.includes(incheck10.value)){
+        incheck10.checked = true;
+    }else {
+        incheck10.checked = false;
+    }
+
+    var incheck11 = document.getElementById('m_included11');
+    if (checked_array.includes(incheck11.value)){
+        incheck11.checked = true;
+    }else {
+        incheck11.checked = false;
+    }
+
+    var incheck12 = document.getElementById('m_included12');
+    if (checked_array.includes(incheck12.value)){
+        incheck12.checked = true;
+    }else {
+        incheck12.checked = false;
+    }
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -175,6 +261,8 @@ function getModifyData(id){
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
 
+            setModifySelect('m_pri', response['content']["pri"]);
+
             var datePicker1 = document.getElementById('modify-take-off-time');
             start_time = response['content']["takeoff_time"]
             console.log(111)
@@ -185,6 +273,9 @@ function getModifyData(id){
             end_time = response['content']["landing_time"]
             console.log(222)
             datePicker2.value = end_time;
+
+            const tick_array = response['content']["inflight_features"]
+            checkedInitIncluded(tick_array)
 
         } else {
         // 处理错误情况

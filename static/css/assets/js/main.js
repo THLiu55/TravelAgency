@@ -405,7 +405,7 @@ Version         : 1.0
         // an array of specific dates to allow selection for
         // initialize the datepicker and set the beforeShowDay option
         if ($('.date-picker').hasClass('flight-special-date')){
-            var allowedDates = ["2023-04-22", "2023-04-25", "2023-04-30"];
+            let allowedDates = document.getElementById('allowedDates').value.split(',');
             $(".date-picker").datepicker({
             beforeShowDay: function(date) {
                 // convert date to a string in yyyy-mm-dd format
