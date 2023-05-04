@@ -1,5 +1,7 @@
 let cur_category = 'all'
 let cur_status = 'all'
+let cur_key = ''
+let cur_sort_by = 0
 const item_container = document.getElementById("item-container")
 let BASE_URL = window.location.origin
 
@@ -18,7 +20,13 @@ function checkTimeStatus(start, end) {
   }
 }
 
-function load_orders(category, status) {
+function query() {
+    let search_box = document.getElementById("search_box")
+    let q = search_box.value
+    load_orders(null, null, q)
+}
+
+function load_orders(category, status, key=null, sort_by=null) {
     console.log('here')
     if (category == null) {
         category = cur_category
@@ -26,8 +34,16 @@ function load_orders(category, status) {
     if (status == null) {
         status = cur_status
     }
+    if (key === null) {
+        key = cur_key
+    }
+    if (sort_by === null) {
+        sort_by = cur_sort_by
+    }
     cur_category = category
     cur_status = status
+    cur_key = key
+    cur_sort_by = sort_by
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('category', category)
@@ -38,6 +54,12 @@ function load_orders(category, status) {
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
         item_container.innerHTML = ''
+        console.log(items[0])
+        if (cur_sort_by === 0) {
+            items.sort((a, b) => { if (a.end_time < b.end_time) return -1; if (a.end_time > b.end_time) return 1; return 0;});
+        } else {
+            items.sort((a, b) => a.cost - b.cost).reverse();
+        }
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -49,6 +71,10 @@ function load_orders(category, status) {
             }
 
             if (cur_category !== items[i].category && cur_category !== 'all') {
+                continue;
+            }
+
+            if (cur_key !== items[i].productID.toString() && cur_key !== '') {
                 continue;
             }
 

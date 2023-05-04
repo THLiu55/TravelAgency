@@ -457,14 +457,8 @@ def add_hotel():
     hotel.city = request.form.get("city")
     hotel.state = request.form.get("state")
     hotel.address = request.form.get("address")
-    # address = hotel.address + " " + hotel.city + " " + hotel.state
-    # url = 'https://nominatim.openstreetmap.org/search?q={}&format=json'.format(address)
-    # response = req.get(url).json()
-    # if len(response) > 0:
-    #     hotel.lat = response[0]['lat']
-    #     hotel.lon = response[0]['lon']
-    # else:
-    #     return jsonify({"code": "invalid address "})
+    hotel.lat = request.form.get("lat")
+    hotel.lon = request.form.get("lon")
     hotel.min_stay = request.form.get("min_stay")
     hotel.security = request.form.get("security")
     hotel.priority = int(request.form.get("pri"))
@@ -959,3 +953,27 @@ def plan_events():
 def load_customers():
     cs = Customer.query.all()
     return jsonify({"code": 200, "data": [customer.serialize() for customer in cs]})
+
+
+# modify_hotel?id=xxx
+@bp.route("/modify_hotel", methods=["POST"])
+@staff_login_required
+def modify_hotel():
+    hotel = Hotel.query.filter_by(id=int(request.args.get("id")))
+    hotel.name = request.form.get("name")
+    hotel.min_price = float(request.form.get("min_price"))
+    hotel.room_num = int(request.form.get("room_num"))
+    hotel.city = request.form.get("city")
+    hotel.state = request.form.get("state")
+    hotel.address = request.form.get("address")
+    hotel.lat = request.form.get("lat")
+    hotel.lon = request.form.get("lon")
+    hotel.min_stay = request.form.get("min_stay")
+    hotel.security = request.form.get("security")
+    hotel.priority = int(request.form.get("pri"))
+    hotel.on_site_staff = request.form.get("on_site_staff")
+    hotel.house_keeping = request.form.get("house_keeping")
+    hotel.front_desk = request.form.get("front_desk")
+    hotel.bathroom = request.form.get("bathroom")
+    hotel.room_type_num = request.form.get("typenum")
+    hotel.description = request.form.get("description")
