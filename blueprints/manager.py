@@ -1,5 +1,7 @@
 import ast
 import json
+import shutil
+
 import requests as req
 from sqlalchemy import func
 from datetime import datetime, timedelta
@@ -470,18 +472,18 @@ def add_hotel():
     hotel.description = request.form.get("description")
     hotel.view_num = 0
     hotel.star = request.form.get("hotel_star")
-    images = request.files.getlist("images")
     max_id = db.session.query(db.func.max(Hotel.id)).scalar()
     if max_id is None:
         max_id = 1
     else:
         max_id = max_id + 1
-    img_routes = []
     folder_path = os.path.join(
         current_app.root_path, "static", "hotel_img", str(max_id)
     )
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
+    img_routes = []
+    images = request.files.getlist("images")
     for image in images:
         save_path = os.path.join(folder_path, image.filename)
         image.save(save_path)
@@ -945,11 +947,11 @@ def load_customers():
     return jsonify({"code": 200, "data": [customer.serialize() for customer in cs]})
 
 
-# modify_hotel?id=xxx
 @bp.route("/modify_hotel", methods=["POST"])
 @staff_login_required
 def modify_hotel():
-    hotel = Hotel.query.filter_by(id=int(request.args.get("id")))
+    id = int(request.args.get("id"))
+    hotel = Hotel.query.filter_by(id=id).first()
     hotel.name = request.form.get("name")
     hotel.min_price = float(request.form.get("min_price"))
     hotel.room_num = int(request.form.get("room_num"))
@@ -957,6 +959,7 @@ def modify_hotel():
     hotel.state = request.form.get("state")
     hotel.address = request.form.get("address")
     hotel.lat = request.form.get("lat")
+    hotel.star = request.form.get("hotel_star")
     hotel.lon = request.form.get("lon")
     hotel.min_stay = request.form.get("min_stay")
     hotel.security = request.form.get("security")
@@ -967,3 +970,129 @@ def modify_hotel():
     hotel.bathroom = request.form.get("bathroom")
     hotel.room_type_num = request.form.get("typenum")
     hotel.description = request.form.get("description")
+    folder_path = os.path.join(
+        current_app.root_path, "static", "hotel_img", str(id)
+    )
+    removeDirContent(folder_path)
+    images = request.files.getlist("images")
+    img_routes = []
+    for image in images:
+        save_path = os.path.join(folder_path, image.filename)
+        image.save(save_path)
+        img_routes.append(save_path)
+    hotel.images = json.dumps({"images": img_routes})
+    hotel.contact_name = request.form.get("contact_name")
+    hotel.contact_email = request.form.get("contact_email")
+    hotel.contact_phone = request.form.get("contact_phone")
+    type_num = int(hotel.room_type_num)
+    des = []
+    i = 1
+    while i <= type_num:
+        sub_folder_path = os.path.join(folder_path, str(i))
+        if not os.path.exists(sub_folder_path):
+            os.makedirs(sub_folder_path)
+        image = request.files.get(f"fileInput{i}")
+        route = os.path.join(sub_folder_path, image.filename)
+        image.save(route)
+        features = []
+        for j in range(1, 8):
+            if request.form.get(f"feature_{j}_{i}") is not None:
+                features.append(request.form.get(f"feature_{j}_{i}"))
+        des.append(
+            {
+                "id": i,
+                "name": request.form.get(f"hotelroom_name_{i}"),
+                "features": features,
+                "price": request.form.get(f"hotelroom_price_{i}"),
+                "picture": route,
+            }
+        )
+        i = i + 1
+    hotel.room_detail = json.dumps({"hotel_des": des})
+    amenities = []
+    for i in range(1, 21):
+        amin = request.form.get(f"aminity{i}")
+        if amin is not None:
+            amenities.append(amin)
+    hotel.amenities = str(amenities)
+    db.session.add(hotel)
+    db.session.commit()
+    return redirect(url_for("manager.accommodations"))
+
+
+@bp.route("/modify_tour", methods=["POST"])
+@staff_login_required
+def modify_tour():
+    id = int(request.args.get("id"))
+    tour = Tour.query.filter_by(id=id).first()
+    tour.name = request.form.get("name")
+    tour.category = request.form.get("category")
+    tour.price = float(request.form.get("price"))
+    tour.city = request.form.get("city")
+    tour.state = request.form.get("state")
+    tour.address = request.form.get("address")
+    tour.duration = request.form.get("duration")
+    tour.group_size = int(request.form.get("group_size"))
+    tour.priority = int(request.form.get("pri"))
+    tour.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
+    tour.end_time = datetime.strptime(request.form.get("end_time"), "%Y-%m-%d")
+    tour.description = request.form.get("description")
+    # noinspection DuplicatedCode
+    included1 = request.form.get("included1")
+    included2 = request.form.get("included2")
+    included3 = request.form.get("included3")
+    included4 = request.form.get("included4")
+    not_included1 = request.form.get("not-included1")
+    not_included2 = request.form.get("not-included2")
+    not_included3 = request.form.get("not-included3")
+    not_included4 = request.form.get("not-included4")
+    tour.included = json.dumps(
+        {"included": [included1, included2, included3, included4]}
+    )
+    tour.excluded = json.dumps(
+        {"not_included": [not_included1, not_included2, not_included3, not_included4]}
+    )
+    images = request.files.getlist("images")
+    img_routes = []
+    folder_path = os.path.join(
+        current_app.root_path, "static", "tour_img", str(id)
+    )
+    removeDirContent(folder_path)
+    for image in images:
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        save_path = os.path.join(folder_path, image.filename)
+        image.save(save_path)
+        img_routes.append(save_path)
+    tour.images = json.dumps({"images": img_routes})
+    tour.contact_name = request.form.get("contact_name")
+    tour.contact_email = request.form.get("contact_email")
+    tour.contact_phone = request.form.get("contact_phone")
+    days = int(tour.duration)
+    des = []
+    i = 1
+    while i <= days:
+        des.append(
+            {
+                request.form.get(
+                    "itinerary_name_{day}".format(day=i)
+                ): request.form.get("itinerary_desc_{day}".format(day=i))
+            }
+        )
+        i = i + 1
+    tour.itineraries = json.dumps({"tour_des": des})
+    db.session.add(tour)
+    db.session.commit()
+    return redirect(url_for("manager.tours"))
+
+
+def removeDirContent(folder_path):
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))

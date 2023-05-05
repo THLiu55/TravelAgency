@@ -1,5 +1,6 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("tour-container")
 const modifyProduct = document.getElementById("modifyProduct")
 let BASE_URL = window.location.origin
@@ -217,6 +218,7 @@ function initItinerary(init_num){
 }
 
 function getModifyData(id){
+    modify_form.action = `/manager/modify_tour?id=${id}`
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
