@@ -1,7 +1,7 @@
 import json
 import datetime
 import math
-
+from datetime import timedelta
 from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for, flash
 from model import *
 from exts import db
@@ -90,9 +90,23 @@ def activityDetail(activity_id):
     activity.end_time = activity.end_time.strftime("%Y-%m-%d")
     lat = activity.lat
     lon = activity.lon
+    available_days = []
+    s_date = datetime.datetime.strptime(activity.start_time, '%Y-%m-%d')
+    e_date = datetime.datetime.strptime(activity.end_time, '%Y-%m-%d')
+    delta = timedelta(days=1)
+    today = datetime.datetime.today().date()
+    if today > s_date.date():
+        while today <= e_date.date():
+            available_days.append(today.strftime("%Y-%m-%d") + ',')
+            today += delta
+    else:
+        while s_date <= e_date:
+            available_days.append(s_date.strftime("%Y-%m-%d") + ',')
+            s_date += delta
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
                            added=added, purchased=purchased, star_score=star_score, star_score_ceil=star_score_ceil,
-                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon)
+                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon,
+                           available_days=''.join(available_days))
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])
@@ -184,8 +198,12 @@ def order_success():
         activity_order.productID = request.args.get("activity_id")
         activity_order.cost = cost
         customer.wallet = customer.wallet - cost
-        db.session.add(activity_order)
-        db.session.commit()
+        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        last_order = ActivityOrder.query.filter_by(customerID=customer.id, productID=activity_order.productID).filter(
+            ActivityOrder.startTime >= one_hour_ago).all()
+        if len(last_order) == 0:
+            db.session.add(activity_order)
+            db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
         flash("Insufficient balance in your wallet, please top up first")
