@@ -265,6 +265,8 @@ function getAndInsertRespMessageFromBot(yourMessage) {
             if (cmdParserResp.do == "SWITCH") {
               changeToRealPersonCustomerService();
             } else if (cmdParserResp.do == "REDIRECT") {
+              $(".message.loading").remove();
+              insertRespMessage("redirecting you to: " + cmdParserResp.redirect_url);
               // redirect to the url using jquery's window.location.href
               window.location.href = cmdParserResp.redirect_url;
             } else if (cmdParserResp.do == "TEXT") {
