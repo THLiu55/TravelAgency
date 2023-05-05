@@ -61,7 +61,7 @@ def get_chatbot_answer():
             )
 
         answer = get_wxbot_answer(message, signature)
-        print("answer from wxbot: " + answer + ".")
+        # print("answer from wxbot: " + answer + ".")
         
         if lang == "en" and not answer.startswith("#"):
             answer = translate_message(answer, "zh", lang)
