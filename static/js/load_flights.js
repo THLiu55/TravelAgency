@@ -276,6 +276,11 @@ function getModifyData(id){
             console.log(222)
             datePicker2.value = end_time;
 
+            var dow = document.getElementById('modify-day-of-week');
+            a = response['content']["week_day"]
+            console.log(a)
+            dow.value=a
+
             const tick_array = response['content']["inflight_features"]
             checkedInitIncluded(tick_array)
 

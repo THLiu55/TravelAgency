@@ -255,6 +255,24 @@ function getModifyData(id){
             checkedInitIncluded(tick_array.included)
             checkedInitNotIncluded(tick_array_not.not_included)
 
+           function convertToDateString(timestamp) {
+                const date = new Date(timestamp);
+                const dateString = date.toISOString().substring(0, 10);  // 截取字符串获取日期部分，即"2023-05-21"
+                return dateString;
+            }
+
+           var datePicker1 = document.getElementById('m_from_date');
+            start_time = response['content']["start_time"]
+            date_str1 = convertToDateString(start_time);
+            console.log(date_str1)
+            datePicker1.value = date_str1;
+
+            var datePicker2 = document.getElementById('m_end_date');
+            end_time = response['content']["end_time"]
+            date_str2 = convertToDateString(end_time);
+            console.log(date_str2)
+            datePicker2.value = date_str2;
+
         } else {
         // 处理错误情况
             console.log('wrong');
