@@ -1827,7 +1827,7 @@ date picker
 }
 
 .ui-datepicker .ui-widget-header{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -1880,7 +1880,7 @@ date picker
 
 .ui-state-active,
 .ui-widget-content .ui-state-active{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -3463,7 +3463,7 @@ activity css
 }
 
 .activity-text-btn a {
-  color: #4F4B8B;
+  color: #13318d;
   font-weight: 500;
 }
 
@@ -3472,7 +3472,7 @@ activity css
 }
 
 .activity-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 /* activity list */
