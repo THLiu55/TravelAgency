@@ -214,9 +214,9 @@ def profilepage():
 @bp.route("/plan_events_wishlist", methods=["GET"])
 def plan_events_wishlist(flightlist, hotelList, tourList, activityList):
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
@@ -302,10 +302,10 @@ def plan_events_wishlist(flightlist, hotelList, tourList, activityList):
 @bp.route("/plan_events")
 def plan_events():
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
@@ -368,10 +368,10 @@ def plan_obj_serializer(plan_obj):
 @bp.route("/booking")
 def booking():
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     order_list = []
     for hotel_i in hotel_orders:
         order_object = OrderObject()
@@ -495,9 +495,9 @@ def plan_wishlist():
         activityList.append(order)
     # print(flightList, hotelList, tourList, activityList,"flightList, hotelList, tourList, activityList")
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
