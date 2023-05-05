@@ -43,7 +43,6 @@ def get_chatbot_answer():
 
         message = request.form.get("msg")
         if lang == "en":
-            # TODO: here we need to translate the message to zh-CN
             message = translate_message(message, lang, "zh")
 
         signature = session.get("signature")

@@ -14,14 +14,8 @@ $(window).load(function () {
   initGlobalVars();
   $("#to-show-pic-upload").hide();
   $messages.mCustomScrollbar();
-  setTimeout(function () {
-    botMessage =
-      "Hello, " +
-      customerName +
-      "! I am a chatbot, ask me anything you want to know about our products and services.";
-    insertRespMessage(botMessage);
-  }, 100);
   setupListeners();
+  doSend("Hello")
 });
 
 function initGlobalVars() {
@@ -187,13 +181,21 @@ function insertSysBroadcastWithTime(txtToInsert, dateTimeStr) {
 }
 
 $(".message-submit").click(function () {
-  doSend();
+  customerMessage = $(".message-input").val();
+  if ($.trim(customerMessage) == "") {
+    return false; // do not send empty message
+  }
+  doSend(customerMessage);
   clearInputBox();
 });
 
 $(window).on("keydown", function (e) {
   if (e.which == 13) {
-    doSend();
+    customerMessage = $(".message-input").val();
+    if ($.trim(customerMessage) == "") {
+      return false; // do not send empty message
+    }
+    doSend(customerMessage);
     clearInputBox();
     return false; // to prevent the page from refreshing
   }
@@ -205,23 +207,7 @@ function requestForHistory() {
   $(".mCSB_container .history-loader").remove();
 }
 
-function doSend() {
-  customerMessage = $(".message-input").val();
-
-  // if (customerMessage == "change to real person customer service") {
-  //   // currently there are only one keyword to change to real person customer service
-  //   clearInputBox();
-  //   insertMyMessage(customerMessage);
-  //   customerMessage = "";
-  //   changeToRealPersonCustomerService();
-  // }
-
-  // above is legacy implementation
-
-  if ($.trim(customerMessage) == "") {
-    return false; // do not send empty message
-  }
-
+function doSend(customerMessage) {
   if (usingBot) {
     insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
     getAndInsertRespMessageFromBot(customerMessage);
@@ -262,16 +248,15 @@ function getAndInsertRespMessageFromBot(yourMessage) {
           },
           timeout: 15000,
           success: function (cmdParserResp) {
+            $(".message.loading").remove();
             if (cmdParserResp.do == "SWITCH") {
               changeToRealPersonCustomerService();
             } else if (cmdParserResp.do == "REDIRECT") {
-              $(".message.loading").remove();
               insertRespMessage("redirecting you to: " + cmdParserResp.redirect_url);
               // redirect to the url using jquery's window.location.href
               window.location.href = cmdParserResp.redirect_url;
             } else if (cmdParserResp.do == "TEXT") {
               // just a text response
-              $(".message.loading").remove();
               insertRespMessage(cmdParserResp.to_show);
             }
           },
