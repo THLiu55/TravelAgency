@@ -1,5 +1,6 @@
 import datetime
 import json, math
+from datetime import timedelta
 
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for, flash
 from model import *
@@ -228,8 +229,12 @@ def order_success():
         hotel_order.checkOutTime = datetime_e
         hotel_order.endTime = datetime.datetime.now()
         customer.wallet = customer.wallet - cost
-        db.session.add(hotel_order)
-        db.session.commit()
+        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        last_order = HotelOrder.query.filter_by(customerID=customer.id, productID=hotel_order.productID).filter(
+            HotelOrder.endTime >= one_hour_ago).all()
+        if len(last_order) == 0:
+            db.session.add(hotel_order)
+            db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"))
     else:
         flash("Insufficient balance in your wallet, please top up first")

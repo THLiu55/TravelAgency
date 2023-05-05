@@ -114,8 +114,12 @@ def order_success():
         flight_order.productID = request.args.get("flight_id")
         flight_order.cost = cost
         customer.wallet = customer.wallet - cost
-        db.session.add(flight_order)
-        db.session.commit()
+        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        last_order = FlightOrder.query.filter_by(customerID=customer.id, productID=flight_order.productID).filter(
+            FlightOrder.startTime >= one_hour_ago).all()
+        if len(last_order) == 0:
+            db.session.add(flight_order)
+            db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
         flash("Insufficient balance in your wallet, please top up first")
