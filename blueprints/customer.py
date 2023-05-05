@@ -192,6 +192,7 @@ def resetPassword():
 
 
 @bp.route("/profile")
+@login_required
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
     customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
@@ -604,6 +605,7 @@ def about_us():
 
 
 @bp.route("/update-profile", methods=['POST'])
+@login_required
 def update_profile():
     customer = Customer.query.get(session.get("customer_id"))
     nickname_to_check = request.form.get("name")
