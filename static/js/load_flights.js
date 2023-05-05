@@ -1,5 +1,6 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("item-container")
 const modifyProduct = document.getElementById("modifyProduct")
 let BASE_URL = window.location.origin
@@ -227,6 +228,7 @@ function checkedInitIncluded(checked_array){
 
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
+    modify_form.action = `/manager/modify_flight?id=${id}`
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {

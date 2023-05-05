@@ -210,7 +210,7 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-                            <form action="{{ url_for('manager.add_activity') }}" method="POST" enctype="multipart/form-data">
+                            <form id="modify_form" action="{{ url_for('manager.add_activity') }}" method="POST" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="user-profile-card add-listing">
                                         <h4 class="user-profile-card-title">Modify Activity</h4>
@@ -459,8 +459,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="m_included4"
-                                                                    type="checkbox" value="Tour Guide" id="included4" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="included4"
+                                                                    type="checkbox" value="Tour Guide" id="m_included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included4">
                                                                     <span>Tour Guide</span>
                                                                 </label>
@@ -502,8 +502,8 @@
                                                         </div>
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" name="m_not-included4"
-                                                                    type="checkbox" value="Dinner" id="not-included4" style="-webkit-appearance:checkbox;">
+                                                                <input class="form-check-input" name="not-included4"
+                                                                    type="checkbox" value="Dinner" id="m_not-included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included4">
                                                                     Dinner
                                                                 </label>

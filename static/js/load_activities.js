@@ -2,6 +2,7 @@ let cur_status = "All Status"
 let cur_category = "All Category"
 const item_container = document.getElementById("item-container")
 const modifyProduct = document.getElementById("modifyProduct")
+const modify_form = document.getElementById("modify_form")
 let BASE_URL = window.location.origin
 
 console.log(modifyProduct)
@@ -208,6 +209,7 @@ function checkedInitNotIncluded(checked_array){
 
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
+    modify_form.action = `/manager/modify_activity?id=${id}`
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
        if (xhr.status === 200) {
