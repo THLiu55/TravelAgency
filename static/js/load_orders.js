@@ -86,6 +86,10 @@ function load_orders(category, status, key=null, sort_by=null) {
                 status_s = `<div className="table__status"><span class="marker-item color-green"></span> Complete</div>`
             }
 
+            if (items[i].isDeleted) {
+                status_s = `<div className="table__status"><span class="marker-item color-red"></span> Deleted </div>`
+            }
+
             s = `<tr class="table__row">
                                     <td class="table__td">
                                         <div class="table__checkbox table__checkbox--all">
@@ -123,7 +127,7 @@ function load_orders(category, status, key=null, sort_by=null) {
                                       <use xlink:href="#icon-view"></use>
                                     </svg></span>Details</a>
                                                         </li>                                                     
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
+                                                        <li class="dropdown-items__item"><a class="dropdown-items__link" onclick="delete_order(${items[i].id}, '${items[i].category}')"><span class="dropdown-items__link-icon">
                                     <svg class="icon-icon-trash">
                                       <use xlink:href="#icon-trash"></use>
                                     </svg></span>Delete</a>
@@ -144,4 +148,19 @@ load_orders(cur_category, 'all')
 
 function clearInputs(){
     location.reload();
+}
+
+function delete_order(id, type) {
+    console.log('deleting')
+    let xhr = new XMLHttpRequest()
+    const fd = new FormData()
+    fd.set('id', id)
+    fd.set('type', type)
+    xhr.open('POST', '/manager/delete_order', true)
+    xhr.send(fd)
+
+    // set animation after email send / error notification for registered email
+    xhr.onload = function() {
+        location.reload();
+    }
 }

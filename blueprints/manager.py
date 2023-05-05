@@ -1191,6 +1191,20 @@ def modify_flight():
     return redirect(url_for("manager.flights"))
 
 
+@bp.route("/delete_order", methods=["POST"])
+@staff_login_required
+def delete_order():
+    type = request.form.get("type")
+    order_id = request.form.get("id")
+    print(type)
+    # todo send email here
+    Order = TourOrder if type == "tour" else ActivityOrder if type == "activity" else FlightOrder if type == "flight" else HotelOrder
+    order = Order.query.get(order_id)
+    order.deleted = True
+    db.session.commit()
+    return jsonify({"code": 200})
+
+
 def removeDirContent(folder_path):
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
@@ -1201,3 +1215,4 @@ def removeDirContent(folder_path):
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
+

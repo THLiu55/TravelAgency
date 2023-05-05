@@ -64,6 +64,7 @@ class ActivityOrder(db.Model):
     startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    deleted = db.Column(db.Boolean, default=False)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -77,7 +78,8 @@ class ActivityOrder(db.Model):
             'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased,
-            'productID': self.productID
+            'productID': self.productID,
+            'isDeleted': self.deleted
         }
 
 
@@ -214,6 +216,7 @@ class TourOrder(db.Model):
     startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    deleted = db.Column(db.Boolean, default=False)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('tours.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -227,6 +230,7 @@ class TourOrder(db.Model):
             'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased,
+            'isDeleted': self.deleted,
             'productID': self.productID
         }
 
@@ -451,6 +455,7 @@ class HotelOrder(db.Model):
     checkOutTime = db.Column(db.DateTime)  # check out time
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
+    deleted = db.Column(db.Boolean, default=False)
     roomID = db.Column(db.String(255))
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -464,7 +469,8 @@ class HotelOrder(db.Model):
             'end_time': self.checkOutTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased,
-            'productID': self.productID
+            'productID': self.productID,
+            'isDeleted': self.deleted
         }
 
 
@@ -595,6 +601,7 @@ class FlightOrder(db.Model):
     startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    deleted = db.Column(db.Boolean, default=False)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -608,7 +615,8 @@ class FlightOrder(db.Model):
             'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
             'purchased': self.purchased,
-            'productID': self.productID
+            'productID': self.productID,
+            'isDeleted': self.deleted
         }
 
 
