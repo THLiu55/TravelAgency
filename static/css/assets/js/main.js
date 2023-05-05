@@ -421,6 +421,60 @@ Version         : 1.0
                 }
             }
             });
+        }else if ($('.date-picker').hasClass('tour-special-date')){
+            // tour
+            let allowedDates = []
+            $(".date-picker").datepicker({
+            beforeShowDay: function(date) {
+                // convert date to a string in yyyy-mm-dd format
+                var dateString = $.datepicker.formatDate('yy-mm-dd', date);
+
+                // check if the date is in the allowedDates array
+                if ($.inArray(dateString, allowedDates) !== -1) {
+                    // if it is, return an array with the 'enabled' class and an empty tooltip
+                    return [true, 'enabled', ''];
+                } else {
+                    // if it's not, return an array with the 'disabled' class and a tooltip indicating that the date is unavailable
+                    return [false, 'disabled', 'This date is unavailable'];
+                }
+            }
+            });
+        }else if ($('.date-picker').hasClass('activity-special-date')){
+            // activity
+            let allowedDates = []
+            $(".date-picker").datepicker({
+            beforeShowDay: function(date) {
+                // convert date to a string in yyyy-mm-dd format
+                var dateString = $.datepicker.formatDate('yy-mm-dd', date);
+
+                // check if the date is in the allowedDates array
+                if ($.inArray(dateString, allowedDates) !== -1) {
+                    // if it is, return an array with the 'enabled' class and an empty tooltip
+                    return [true, 'enabled', ''];
+                } else {
+                    // if it's not, return an array with the 'disabled' class and a tooltip indicating that the date is unavailable
+                    return [false, 'disabled', 'This date is unavailable'];
+                }
+            }
+            });
+        }else if ($('.date-picker').hasClass('hotel-special-date')){
+            // hotel
+            let allowedDates = []
+            $(".date-picker").datepicker({
+            beforeShowDay: function(date) {
+                // convert date to a string in yyyy-mm-dd format
+                var dateString = $.datepicker.formatDate('yy-mm-dd', date);
+
+                // check if the date is in the allowedDates array
+                if ($.inArray(dateString, allowedDates) !== -1) {
+                    // if it is, return an array with the 'enabled' class and an empty tooltip
+                    return [true, 'enabled', ''];
+                } else {
+                    // if it's not, return an array with the 'disabled' class and a tooltip indicating that the date is unavailable
+                    return [false, 'disabled', 'This date is unavailable'];
+                }
+            }
+            });
         }else {
             $(".date-picker").datepicker()
         }
