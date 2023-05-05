@@ -392,7 +392,7 @@ function getModifyData(id){
         // 处理服务器返回的数据
             console.log(response);
             //参数为设置的id和传入的值（值需要与select中option的value一致）
-            setModifySelect("modify_hotel_star", response['content']["hotel_star"]);
+            setModifySelect("modify_hotel_star", response['content']["star"]);
             setModifySelect("modify_min_stay", response['content']["min_stay"]);
             setModifySelect("modify_security", response['content']["security"]);
             setModifySelect("modify_on_site_staff", response['content']["on_site_staff"]);
@@ -405,6 +405,7 @@ function getModifyData(id){
             setModifySelect("m_min_price", response['content']["min_price"]);
             setModifySelect("m_city", response['content']["city"]);
             setModifySelect("m_state", response['content']["state"]);
+            setModifySelect("m_address", response['content']["address"])
             setModifySelect("m_description", response['content']["description"]);
             setModifySelect("m_contact_name", response['content']["contact_name"]);
             setModifySelect("m_email", response['content']["contact_email"]);
