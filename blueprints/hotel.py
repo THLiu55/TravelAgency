@@ -1,6 +1,5 @@
-import datetime
 import json, math
-from datetime import timedelta
+from datetime import timedelta, date, datetime
 
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for, flash
 from model import *
@@ -135,6 +134,12 @@ def hotelDetail(hotel_id):
     else:
         min_stay = "2 Nights Or Less"
         hotel.min_stay = False
+    available_days = []
+    start_date = date.today()
+    end_date = start_date + timedelta(days=3 * 30)
+    while start_date <= end_date:
+        available_days.append(start_date.strftime("%Y-%m-%d") + ',')
+        start_date += timedelta(days=1)
     return render_template("hotel-detail.html", hotel=hotel, logged=logged, reviews=reviews, images=images,
                            review_num=review_num, added=added, purchased=purchased, star_score=star_score,
                            star_score_ceil=star_score_ceil, star_detail=star_detail, rooms=rooms_dic, wine_bar=wine_bar,
@@ -143,7 +148,7 @@ def hotelDetail(hotel_id):
                            room_service=True, fire_place=True, breakfast=breakfast, fitness_facility=fitness_facility,
                            elevator=elevator, entertainment=entertainment, air_conditioning=air_conditioning,
                            coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play, room_num=len(rooms),
-                           min_stay=min_stay, lat=hotel.lat, lon=hotel.lon)
+                           min_stay=min_stay, lat=hotel.lat, lon=hotel.lon, available_days=''.join(available_days))
 
 
 @bp.route("/add_wishlist/<hotel_id>")
@@ -154,7 +159,7 @@ def add_wishlist(hotel_id):
     hotel_order.productID = hotel_id
     hotel_order.cost = aimed_hotel.min_price
     hotel_order.purchased = False
-    hotel_order.endTime = datetime.datetime.now()
+    hotel_order.endTime = datetime.now()
     db.session.add(hotel_order)
     db.session.commit()
     return redirect((url_for('customer.profile', page="/wishlist")))
@@ -213,23 +218,23 @@ def order_success():
         e_date = request.args.get("e_date")
         try:
             date_format = "%Y/%m/%d"
-            datetime_s = datetime.datetime.strptime(s_date, date_format)
+            datetime_s = datetime.strptime(s_date, date_format)
         except ValueError:
             date_format = "%m/%d/%Y"
-            datetime_s = datetime.datetime.strptime(s_date, date_format)
+            datetime_s = datetime.strptime(s_date, date_format)
         try:
             date_format = "%Y/%m/%d"
-            datetime_e = datetime.datetime.strptime(e_date, date_format)
+            datetime_e = datetime.strptime(e_date, date_format)
         except ValueError:
             date_format = "%m/%d/%Y"
-            datetime_e = datetime.datetime.strptime(e_date, date_format)
+            datetime_e = datetime.strptime(e_date, date_format)
         hotel_order.startTime = datetime_s
         hotel_order.productID = request.args.get("hotel_id")
         hotel_order.cost = float(request.args.get("cost"))
         hotel_order.checkOutTime = datetime_e
-        hotel_order.endTime = datetime.datetime.now()
+        hotel_order.endTime = datetime.now()
         customer.wallet = customer.wallet - cost
-        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        one_hour_ago = datetime.now() - timedelta(hours=1)
         last_order = HotelOrder.query.filter_by(customerID=customer.id, productID=hotel_order.productID).filter(
             HotelOrder.endTime >= one_hour_ago).all()
         if len(last_order) == 0:
@@ -248,7 +253,7 @@ def add_review():
     rating = request.form.get('rating')
     content = request.form.get('content')
     hotel = Hotel.query.get(hotel_id)
-    review = HotelReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
+    review = HotelReview(rating=rating, issueTime=datetime.now(), content=content, customerID=customer_id,
                          productID=hotel_id)
     hotel.review_num = hotel.review_num + 1
     star = int(request.form.get("rating"))

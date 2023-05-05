@@ -62,9 +62,23 @@ def tourDetail(tour_id):
     tour.review_num = 10000 if tour.review_num == 0 else tour.review_num
     lat = tour.lat
     lon = tour.lon
+    available_days = []
+    s_date = datetime.datetime.strptime(tour.start_time, '%Y-%m-%d')
+    e_date = datetime.datetime.strptime(tour.end_time, '%Y-%m-%d')
+    delta = timedelta(days=1)
+    today = datetime.datetime.today().date()
+    if today > s_date.date():
+        while today <= e_date.date():
+            available_days.append(today.strftime("%Y-%m-%d") + ',')
+            today += delta
+    else:
+        while s_date <= e_date:
+            available_days.append(s_date.strftime("%Y-%m-%d") + ',')
+            s_date += delta
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
                            purchased=purchased, logged=logged, star_score=star_score, star_score_ceil=star_score_ceil,
-                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon)
+                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon,
+                           available_days=''.join(available_days))
 
 
 @bp.route('/add_review', methods=['POST'])

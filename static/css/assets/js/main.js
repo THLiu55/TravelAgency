@@ -423,7 +423,7 @@ Version         : 1.0
             });
         }else if ($('.date-picker').hasClass('tour-special-date')){
             // tour
-            let allowedDates = []
+            let allowedDates = document.getElementById('allowedDates').value.split(',');
             $(".date-picker").datepicker({
             beforeShowDay: function(date) {
                 // convert date to a string in yyyy-mm-dd format
@@ -441,7 +441,7 @@ Version         : 1.0
             });
         }else if ($('.date-picker').hasClass('activity-special-date')){
             // activity
-            let allowedDates = []
+            let allowedDates = document.getElementById('allowedDates').value.split(',');
             $(".date-picker").datepicker({
             beforeShowDay: function(date) {
                 // convert date to a string in yyyy-mm-dd format
@@ -459,7 +459,7 @@ Version         : 1.0
             });
         }else if ($('.date-picker').hasClass('hotel-special-date')){
             // hotel
-            let allowedDates = []
+            let allowedDates = document.getElementById('allowedDates').value.split(',');
             $(".date-picker").datepicker({
             beforeShowDay: function(date) {
                 // convert date to a string in yyyy-mm-dd format
