@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class="table-wrapper">
-{#                    <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>#}
+                    <div class="table-wrapper__content table-collapse scrollbar-thin scrollbar-visible" data-simplebar>
                         <table class="table table--lines">
                             <colgroup>
                                 <col width="90px">
@@ -175,42 +175,60 @@
                             <tbody id="item-container">
                             </tbody>
                         </table>
-{#                    </div>#}
+                    </div>
                     <div class="table-wrapper__footer">
                         <div class="row">
-{#                            <div class="table-wrapper__pagination col-auto">#}
-{#                                <ol class="pagination">#}
-{#                                    <li class="pagination__item">#}
-{#                                        <a class="pagination__arrow pagination__arrow--prev" href="#">#}
-{#                                            <svg class="icon-icon-keyboard-left">#}
-{#                                                <use xlink:href="#icon-keyboard-left"></use>#}
-{#                                            </svg>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item active"><a class="pagination__link" href="#">1</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">2</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">3</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item pagination__item--dots">...</li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">10</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item">#}
-{#                                        <a class="pagination__arrow pagination__arrow--next" href="#">#}
-{#                                            <svg class="icon-icon-keyboard-right">#}
-{#                                                <use xlink:href="#icon-keyboard-right"></use>#}
-{#                                            </svg>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                </ol>#}
-{#                            </div>#}
+                            <div class="table-wrapper__pagination col-auto">
+                                <ol class="pagination">
+                                    <li class="pagination__item">
+                                        <a class="pagination__arrow pagination__arrow--prev" href="#">
+                                            <svg class="icon-icon-keyboard-left">
+                                                <use xlink:href="#icon-keyboard-left"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="pagination__item active"><a class="pagination__link" href="#">1</a>
+                                    </li>
+                                    <li class="pagination__item"><a class="pagination__link" href="#">2</a>
+                                    </li>
+                                    <li class="pagination__item"><a class="pagination__link" href="#">3</a>
+                                    </li>
+                                    <li class="pagination__item pagination__item--dots">...</li>
+                                    <li class="pagination__item"><a class="pagination__link" href="#">10</a>
+                                    </li>
+                                    <li class="pagination__item">
+                                        <a class="pagination__arrow pagination__arrow--next" href="#">
+                                            <svg class="icon-icon-keyboard-right">
+                                                <use xlink:href="#icon-keyboard-right"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
+    <div class="modal modal--panel modal--right" id="deleteOrder" aria-hidden="false">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">提示</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                          </div>
+                          <div class="modal-body">
+                            <p>确定要删除该订单吗？</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-danger">确认</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
  {% endblock %}
 
 <!-- jQuery and JavaScript Bundle with Popper -->

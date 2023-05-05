@@ -3,7 +3,10 @@ let cur_status = 'all'
 let cur_key = ''
 let cur_sort_by = 0
 const item_container = document.getElementById("item-container")
+const deleteProduct = document.getElementById("deleteProduct")
 let BASE_URL = window.location.origin
+
+
 
 function checkTimeStatus(start, end) {
   const now = new Date(); // get current date and time
@@ -122,16 +125,29 @@ function load_orders(category, status, key=null, sort_by=null) {
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link" href="/manager/invoice?id=${items[i].id}&type=${items[i].category}"><span class="dropdown-items__link-icon">
-                                    <svg class="icon-icon-view">
-                                      <use xlink:href="#icon-view"></use>
-                                    </svg></span>Details</a>
-                                                        </li>                                                     
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link" onclick="delete_order(${items[i].id}, '${items[i].category}')"><span class="dropdown-items__link-icon">
-                                    <svg class="icon-icon-trash">
-                                      <use xlink:href="#icon-trash"></use>
-                                    </svg></span>Delete</a>
-                                                        </li>
+                                                        <li class="dropdown-items__item">
+                                                        <a class="dropdown-items__link" onclick="getModifyData(${items[i].id})">
+                                                            <span class="dropdown-items__link-icon" onclick="modify(${items[i].id})" style="padding-left: 50%;">
+                                                                <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
+                                                                <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
+                                                                    <use xlink:href="#icon-view"></use>
+                                                                </svg>Modify
+                                                                </button>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="dropdown-items__item" >
+                                                        <a class="dropdown-items__link" >
+<!--                                                        onclick="delete_order(${items[i].id})"-->
+                                                        <span class="dropdown-items__link-icon" style="padding-left: 50%;">
+                                                            <button onclick="alert('确认删除？')" data-toggle="modal"  data-target="#deleteOrder" data-modal="#button_Delete" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
+                                                                <svg class="icon-icon-trash">
+                                                                    <use xlink:href="#icon-trash"></use>
+                                                                </svg>Delete
+                                                            </button>
+                                                        </span>
+                                                        </a>
+                                                    </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -141,6 +157,13 @@ function load_orders(category, status, key=null, sort_by=null) {
             tr.innerHTML = s
             item_container.appendChild(tr)
         }
+
+        const button_Delete = document.querySelectorAll("#button_Delete")
+        button_Delete.forEach(item => {
+            item.addEventListener('click', () => {
+                deleteProduct.classList.add("is-active", "is-animate")
+            })
+        })
     }
 }
 

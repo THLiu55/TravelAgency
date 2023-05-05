@@ -81,7 +81,7 @@ function load_hotels(published, category) {
                                                                 <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
                                                                 <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
                                                                     <use xlink:href="#icon-view"></use>
-                                                                </svg>{{ _("Modify") }}
+                                                                </svg>Modify
                                                                 </button>
                                                             </span>
                                                         </a>
@@ -89,10 +89,10 @@ function load_hotels(published, category) {
                                                     <li class="dropdown-items__item" >
                                                         <a class="dropdown-items__link" onclick="delete_item(${items[i].id})">
                                                         <span class="dropdown-items__link-icon" style="padding-left: 50%;">
-                                                                <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
+                                                            <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
-                                                                </svg>{{ _("Delete") }}
+                                                                </svg>Delete
                                                             </button>
                                                         </span>
                                                         </a>
@@ -107,7 +107,7 @@ function load_hotels(published, category) {
             item_container.appendChild(tr)
         }
 
-                const button_Modify = document.querySelectorAll("#button_Modify")
+        const button_Modify = document.querySelectorAll("#button_Modify")
 
         // for (let i = 1; i < button_Modify.length; i++) {
         //
