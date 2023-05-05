@@ -102,7 +102,7 @@ def tour_filter():
         else:
             key_word = request.form.get('key-word')
     else:
-        key_word = ''
+        key_word = request.form.get('key-word')
     if tour_type[0] == '':
         tour_type = ['Cultural tourism', 'Wildlife observation', 'Cruises', 'Grass Skyline']
     tour_price = request.form.get('tourPrice')

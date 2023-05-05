@@ -133,7 +133,7 @@ def flight_filter():
         else:
             key_word = request.form.get('key-word')
     else:
-        key_word = ''
+        key_word = request.form.get('key-word')
     if class_type[0] == '':
         class_type = ['Economy', 'Business', 'First Class']
     flight_price = request.form.get('flightPrice')

@@ -106,7 +106,7 @@ def activity_filter():  # ajax activity filter
         else:
             key_word = request.form.get('key-word')
     else:
-        key_word = ''
+        key_word = request.form.get('key-word')
     if activity_type[0] == '':
         activity_type = ['Food & Nightlife', 'Hot Air Balloon', 'Mountain Climbing', 'Bike Ride']
     activity_price = request.form.get('activityPrice')

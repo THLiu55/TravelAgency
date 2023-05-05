@@ -37,7 +37,7 @@ def hotel_filter():
         else:
             key_word = request.form.get('key-word')
     else:
-        key_word = ''
+        key_word = request.form.get('key-word')
     if hotel_type[0] == '':
         hotel_type = ['Free Parking', 'Restaurant', 'Pets Allowed', 'Airport Transportation', 'Fitness Facility',
                       'WiFi', 'Air Conditioning']
