@@ -59,9 +59,11 @@ def tourDetail(tour_id):
     star_score_ceil = math.floor(star_score)
     review_num = tour.review_num
     tour.review_num = 10000 if tour.review_num == 0 else tour.review_num
+    lat = tour.lat
+    lon = tour.lon
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
                            purchased=purchased, logged=logged, star_score=star_score, star_score_ceil=star_score_ceil,
-                           star_detail=star_detail, review_num=review_num)
+                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon)
 
 
 @bp.route('/add_review', methods=['POST'])
