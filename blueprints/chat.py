@@ -63,10 +63,15 @@ def parse_bot_cmd():
     the_cmd = request.form.get("cmd").strip("#")
     print("received cmd: " + the_cmd + ".")
     if the_cmd in BOT_CMD_RESP_DICT.keys():
-        operation = BOT_CMD_RESP_DICT[the_cmd].split(" ")[0]
+        what_to_do = BOT_CMD_RESP_DICT[the_cmd].split(" ")
+        operation = what_to_do[0]
         if operation == "REDIRECT":
-            target_route_str = BOT_CMD_RESP_DICT[the_cmd].split(" ")[1]
-            return jsonify({"code": 0, "do": operation, "redirect_url": url_for(target_route_str)})
+            target_route_str = what_to_do[1]
+            if len(what_to_do) > 2:
+                target_page_str = "/" + what_to_do[2]
+                return jsonify({"code": 0, "do": operation, "redirect_url": url_for(target_route_str, page=target_page_str)})
+            else:
+                return jsonify({"code": 0, "do": operation, "redirect_url": url_for(target_route_str)})
         elif operation == "TEXT":
             to_show = BOT_CMD_RESP_DICT[the_cmd].split(" ")[1]
             return jsonify({"code": 0, "do": operation, "to_show": to_show})
@@ -74,7 +79,8 @@ def parse_bot_cmd():
             return jsonify({"code": 0, "do": operation})
     else:
         print("the command", the_cmd, "is not in BOT_CMD_RESP_DICT which has keys:", BOT_CMD_RESP_DICT.keys())
-        return jsonify({"code": 1, "do": "TEXT", "to_show": "指令不存在"})
+        current_app.logger.error("command", the_cmd, "not found, contact admin please")
+        return jsonify({"code": 1, "do": "TEXT", "to_show": "command not found, contact admin please"})
     
 
 @bp.route("/get_session_customer_info", methods=["GET"])
