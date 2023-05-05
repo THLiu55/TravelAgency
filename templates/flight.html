@@ -452,7 +452,7 @@
                                             </svg></a>
                                     </li>
                                     <li class="breadcrumbs__item active"><span
-                                            class="breadcrumbs__link">Flights</span>
+                                            class="breadcrumbs__link">{{ _("Flights") }}</span>
                                     </li>
                                 </ol>
                             </div>
@@ -466,21 +466,21 @@
                             <div class="toolbox__left-row row row--xs gutter-bottom-xs">
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status"
+                                        <input class="input input--select" type="text" value="{{ _("All status") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_flights('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All status"><span class="marker-item"></span> All status</a>
-                                            <a onclick="load_flights('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Published"><span class="marker-item color-green"></span>
-                                                Published</a>
-                                            <a onclick="load_flights('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted</a>
+                                            <a onclick="load_flights('{{ _("All status") }}', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="{{ _("All status") }}"><span class="marker-item"></span> {{ _("All status") }}</a>
+                                            <a onclick="load_flights('{{ _("published") }}', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("published") }}"><span class="marker-item color-green"></span>
+                                                {{ _("published") }}</a>
+                                            <a onclick="load_flights('{{ _("deleted") }}', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("deleted") }}"><span class="marker-item color-red"></span>
+                                                {{ _("deleted") }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -527,22 +527,22 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th class="d-none d-lg-table-cell"><span>ID</span>
+                                    <th class="d-none d-lg-table-cell"><span>{{ _("ID") }}</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Departure</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Departure") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Destination</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Destination") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Take Off time</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Take Off time") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-lg-table-cell"><span
-                                            class="align-middle">landing time</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Landing time") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span
-                                            class="align-middle">Status</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Status") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>
@@ -653,7 +653,7 @@
 
                                                         <div class="col-lg-6">
                                                         <div class="form-group">
-                                                        <label>Take Off Time</label>
+                                                        <label>{{ _("Take Off time") }}</label>
                                                         <input name="take_off_time"  id="modify-take-off-time" type="time" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>
@@ -661,7 +661,7 @@
 
                                                         <div class="col-lg-6">
                                                          <div class="form-group" >
-                                                        <label>Landing Time</label>
+                                                        <label>{{ _("Landing time") }}</label>
                                                         <input name="landing_time" id="modify-landing-time" type="time" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>
@@ -1168,14 +1168,14 @@
                                                         </div>
                                                                                                                 <div class="col-lg-6">
                                                         <div class="form-group">
-                                                        <label>Take Off Time</label>
+                                                        <label>{{ _("Take Off time") }}</label>
                                                         <input name="take_off_time" type="time" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
-                                                        <label>Landing Time</label>
+                                                        <label>{{ _("Landing time") }}</label>
                                                         <input name="landing_time" type="time" class="form-control" placeholder="Enter Take Off Time" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>

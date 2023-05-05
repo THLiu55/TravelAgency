@@ -51,20 +51,20 @@
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_activities(null, {{ _("All Category") }} )" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All Category"><span class="marker-item"></span>{{ _("All Category") }}
+                                            <a onclick="load_activities(null, 'All Category' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("All Category") }}"><span class="marker-item"></span>{{ _("All Category") }}
                                             </a>
-                                            <a onclick="load_activities(null, {{ _("Food & Nightlife") }} )" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Food & Nightlife"><span class="marker-item"></span>{{ _("Food & Nightlife") }}
+                                            <a onclick="load_activities(null, 'Food & Nightlife' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Food & Nightlife") }}"><span class="marker-item"></span>{{ _("Food & Nightlife") }}
                                             </a>
-                                            <a onclick="load_activities(null, {{ _("Hot Air Balloon") }} )" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Hot Air Balloon"><span class="marker-item"></span>{{ _("Hot Air Balloon") }}
+                                            <a onclick="load_activities(null, 'Hot Air Balloon' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Hot Air Balloon") }}"><span class="marker-item"></span>{{ _("Hot Air Balloon") }}
                                             </a>
-                                            <a onclick="load_activities(null, {{ _("Mountain Climbing") }} )" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Mountain Climbing"><span class="marker-item"></span>{{ _("Mountain Climbing") }}
+                                            <a onclick="load_activities(null, 'Mountain Climbing' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Mountain Climbing") }}"><span class="marker-item"></span>{{ _("Mountain Climbing") }}
                                             </a>
-                                            <a onclick="load_activities(null, {{ _("Bike Ride") }})" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Bike Ride"><span class="marker-item"></span>{{ _("Bike Ride") }}
+                                            <a onclick="load_activities(null, 'Bike Ride')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="{{ _("Bike Ride") }}"><span class="marker-item"></span>{{ _("Bike Ride") }}
                                             </a>
                                         </div>
                                     </div>
@@ -78,14 +78,14 @@
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_activities({{ _("All status") }}, null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                            <a onclick="load_activities('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
                                                 data-value="{{ _("All status") }}"><span class="marker-item"></span>{{ _("All status") }}
                                             </a>
-                                            <a onclick="load_activities({{ _("Published") }}, null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                            <a onclick="load_activities('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
                                                 data-value="{{ _("Published") }}"><span class="marker-item color-green"></span>
                                                 {{ _("Published") }}
                                             </a>
-                                            <a onclick="load_activities({{ _("Deleted") }}, null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                            <a onclick="load_activities('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
                                                 data-value="{{ _("Deleted") }}"><span class="marker-item color-red"></span>
                                                 {{ _("Deleted") }}
                                             </a>

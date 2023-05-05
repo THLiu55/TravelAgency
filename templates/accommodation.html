@@ -30,7 +30,7 @@
                                             </svg></a>
                                     </li>
                                     <li class="breadcrumbs__item active"><span
-                                            class="breadcrumbs__link">Accommodations</span>
+                                            class="breadcrumbs__link">{{ _("Accommodations") }}</span>
                                     </li>
                                 </ol>
                             </div>
@@ -88,7 +88,7 @@
 {#                                    </div>#}
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status"
+                                        <input class="input input--select" type="text" value="{{ _("All Status") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -96,15 +96,15 @@
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
                                             <a onclick="load_hotels('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All status"><span class="marker-item"></span> All status
+                                                data-value="{{ _("All Status") }}"><span class="marker-item"></span> {{ _("All Status") }}
                                             </a>
                                             <a onclick="load_hotels('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Published"><span class="marker-item color-green"></span>
-                                                Published
+                                                data-value="{{ _("published") }}"><span class="marker-item color-green"></span>
+                                                {{ _("published") }}
                                             </a>
                                             <a onclick="load_hotels('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted
+                                                data-value="{{ _("deleted") }}"><span class="marker-item color-red"></span>
+                                                {{ _("deleted") }}
                                             </a>
                                         </div>
                                     </div>
@@ -152,22 +152,22 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th class="d-none d-lg-table-cell"><span>ID</span>
+                                    <th class="d-none d-lg-table-cell"><span>{{ _("ID") }}</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Product Name</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Product Name") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Number Of Rooms</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Number Of Rooms") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Price</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Price") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-lg-table-cell"><span
-                                            class="align-middle">City</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("City") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span
-                                            class="align-middle">Status</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Status") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-04 23:27+0800\n"
+"POT-Creation-Date: 2023-05-05 13:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,29 +261,54 @@ msgstr ""
 msgid "Qi Sun"
 msgstr ""
 
+#: templates/BaseManager.html:533
+msgid "My chat"
+msgstr ""
+
+#: templates/BaseManager.html:539 templates/BaseManager.html:600
+#: templates/profile-base.html:179
+msgid "Logout"
+msgstr ""
+
 #: templates/BaseManager.html:564
 msgid "Dashboard"
+msgstr ""
+
+#: templates/BaseManager.html:566 templates/BaseManager.html:573
+#: templates/accommodation.html:27 templates/activities.html:26
+#: templates/customerAccount.html:25 templates/customerWishlist.html:25
+#: templates/customers.html:399 templates/flight.html:449
+#: templates/orderInvoiceActivity.html:399
+#: templates/orderInvoiceFlight.html:399 templates/orderInvoiceHotel.html:398
+#: templates/orderInvoiceTour.html:399 templates/orderMessages.html:456
+#: templates/orders.html:25 templates/reviews.html:25 templates/tour.html:27
+msgid "Travel-Booking"
 msgstr ""
 
 #: templates/BaseManager.html:569
 msgid "Product & Orders"
 msgstr ""
 
-#: templates/BaseManager.html:575 templates/activity-booking-confirm.html:37
-#: templates/activity-grid.html:32 templates/base.html:75
-#: templates/profile-base.html:103
+#: templates/BaseManager.html:575 templates/Dashboard.html:148
+#: templates/activity-booking-confirm.html:37 templates/activity-grid.html:32
+#: templates/base.html:75 templates/profile-base.html:103
 msgid "Activity"
 msgstr ""
 
 #: templates/BaseManager.html:577 templates/Homepage.html:112
+#: templates/orders.html:57 templates/orders.html:58 templates/reviews.html:56
+#: templates/reviews.html:57 templates/tour.html:18 templates/tour.html:32
 msgid "Tours"
 msgstr ""
 
-#: templates/BaseManager.html:579
+#: templates/BaseManager.html:579 templates/accommodation.html:18
+#: templates/accommodation.html:33
 msgid "Accommodations"
 msgstr ""
 
 #: templates/BaseManager.html:581 templates/Homepage.html:83
+#: templates/flight.html:431 templates/flight.html:455 templates/orders.html:63
+#: templates/orders.html:64
 msgid "Flights"
 msgstr ""
 
@@ -302,9 +327,9 @@ msgstr ""
 #: templates/flight-detail.html:378 templates/hotel-detail.html:54
 #: templates/hotel-detail.html:334 templates/hotel-detail.html:440
 #: templates/hotel-grid.html:249 templates/profile-wishlist.html:37
-#: templates/tour-detail.html:47 templates/tour-detail.html:150
-#: templates/tour-detail.html:160 templates/tour-detail.html:256
-#: templates/tour-grid.html:224
+#: templates/reviews.html:17 templates/tour-detail.html:47
+#: templates/tour-detail.html:150 templates/tour-detail.html:160
+#: templates/tour-detail.html:256 templates/tour-grid.html:224
 msgid "Reviews"
 msgstr ""
 
@@ -312,8 +337,76 @@ msgstr ""
 msgid "Chat"
 msgstr ""
 
-#: templates/BaseManager.html:600 templates/profile-base.html:179
-msgid "Logout"
+#: templates/Dashboard.html:23
+msgid "Comments"
+msgstr ""
+
+#: templates/Dashboard.html:24
+msgid "Comments Today"
+msgstr ""
+
+#: templates/Dashboard.html:33
+msgid " New Comments"
+msgstr ""
+
+#: templates/Dashboard.html:46
+msgid "Bookings"
+msgstr ""
+
+#: templates/Dashboard.html:47
+msgid "Bookings Today"
+msgstr ""
+
+#: templates/Dashboard.html:56
+msgid "New Bookings"
+msgstr ""
+
+#: templates/Dashboard.html:69
+msgid "Sign-Ups"
+msgstr ""
+
+#: templates/Dashboard.html:70
+msgid "Sign-Ups Today"
+msgstr ""
+
+#: templates/Dashboard.html:78
+msgid "New Sign-Ups"
+msgstr ""
+
+#: templates/Dashboard.html:99
+msgid "Revenue"
+msgstr ""
+
+#: templates/Dashboard.html:108
+msgid "Current week"
+msgstr ""
+
+#: templates/Dashboard.html:113
+msgid "Previous week"
+msgstr ""
+
+#: templates/Dashboard.html:135
+msgid "Profit"
+msgstr ""
+
+#: templates/Dashboard.html:156 templates/Homepage.html:350
+#: templates/base.html:70 templates/hotel-booking-confirm.html:37
+#: templates/hotel-grid.html:29 templates/profile-base.html:98
+msgid "Hotel"
+msgstr ""
+
+#: templates/Dashboard.html:164 templates/Homepage.html:303
+#: templates/base.html:67 templates/flight-booking-confirm.html:37
+#: templates/flight-detail.html:22 templates/profile-base.html:95
+#: templates/reviews.html:62 templates/reviews.html:63
+msgid "Flight"
+msgstr ""
+
+#: templates/Dashboard.html:172 templates/Homepage.html:513
+#: templates/base.html:80 templates/profile-base.html:108
+#: templates/tour-booking-confirm.html:37 templates/tour-detail.html:23
+#: templates/tour-grid.html:28
+msgid "Tour"
 msgstr ""
 
 #: templates/Homepage.html:34
@@ -376,7 +469,9 @@ msgstr ""
 msgid "Pick some popular destinations for travel!"
 msgstr ""
 
-#: templates/Homepage.html:144
+#: templates/Homepage.html:144 templates/activities.html:17
+#: templates/activities.html:31 templates/orders.html:54
+#: templates/orders.html:55 templates/reviews.html:53 templates/reviews.html:54
 msgid "Activities"
 msgstr ""
 
@@ -452,12 +547,6 @@ msgstr ""
 msgid "Beijing University of Technology"
 msgstr ""
 
-#: templates/Homepage.html:303 templates/base.html:67
-#: templates/flight-booking-confirm.html:37 templates/flight-detail.html:22
-#: templates/profile-base.html:95
-msgid "Flight"
-msgstr ""
-
 #: templates/Homepage.html:304
 msgid "Our Most Popular Flights"
 msgstr ""
@@ -472,24 +561,12 @@ msgstr ""
 msgid "Discover More"
 msgstr ""
 
-#: templates/Homepage.html:350 templates/base.html:70
-#: templates/hotel-booking-confirm.html:37 templates/hotel-grid.html:29
-#: templates/profile-base.html:98
-msgid "Hotel"
-msgstr ""
-
 #: templates/Homepage.html:351
 msgid "Our Most Popular Hotels"
 msgstr ""
 
 #: templates/Homepage.html:377
 msgid "See Details "
-msgstr ""
-
-#: templates/Homepage.html:513 templates/base.html:80
-#: templates/profile-base.html:108 templates/tour-booking-confirm.html:37
-#: templates/tour-detail.html:23 templates/tour-grid.html:28
-msgid "Tour"
 msgstr ""
 
 #: templates/Homepage.html:514
@@ -647,8 +724,8 @@ msgstr ""
 
 #: templates/SignInUp.html:23 templates/SignInUp.html:85
 #: templates/SignInUp.html:122 templates/activity-booking-confirm.html:58
-#: templates/hotel-booking-confirm.html:59 templates/profile-setting.html:18
-#: templates/tour-booking-confirm.html:58
+#: templates/contacts.html:108 templates/hotel-booking-confirm.html:59
+#: templates/profile-setting.html:18 templates/tour-booking-confirm.html:58
 msgid "Email"
 msgstr ""
 
@@ -730,6 +807,101 @@ msgstr ""
 msgid "Staff name"
 msgstr ""
 
+#: templates/accommodation.html:91 templates/accommodation.html:99
+#: templates/activities.html:74 templates/orders.html:70
+msgid "All Status"
+msgstr ""
+
+#: templates/accommodation.html:102 templates/accommodation.html:103
+#: templates/flight.html:478 templates/flight.html:479
+#: templates/flight.html:480
+msgid "published"
+msgstr ""
+
+#: templates/accommodation.html:106 templates/accommodation.html:107
+#: templates/flight.html:481 templates/flight.html:482
+#: templates/flight.html:483
+msgid "deleted"
+msgstr ""
+
+#: templates/accommodation.html:155 templates/flight.html:530
+#: templates/tour.html:135
+msgid "ID"
+msgstr ""
+
+#: templates/accommodation.html:157 templates/activities.html:140
+#: templates/activity-booking-confirm.html:38
+#: templates/hotel-booking-confirm.html:38 templates/tour.html:137
+msgid "Product Name"
+msgstr ""
+
+#: templates/accommodation.html:160
+msgid "Number Of Rooms"
+msgstr ""
+
+#: templates/accommodation.html:163 templates/activities.html:146
+#: templates/profile-booking.html:13 templates/tour.html:143
+msgid "Price"
+msgstr ""
+
+#: templates/accommodation.html:167 templates/hotel-detail.html:100
+msgid "City"
+msgstr ""
+
+#: templates/accommodation.html:170 templates/activities.html:153
+#: templates/flight.html:545 templates/orders.html:170
+#: templates/profile-booking.html:14 templates/reviews.html:135
+#: templates/tour.html:150
+msgid "Status"
+msgstr ""
+
+#: templates/activities.html:47 templates/activities.html:55
+#: templates/orders.html:44 templates/orders.html:52 templates/reviews.html:43
+#: templates/reviews.html:51 templates/tour.html:45 templates/tour.html:52
+#: templates/tour.html:53
+msgid "All Category"
+msgstr ""
+
+#: templates/activities.html:58 templates/activity-grid.html:124
+msgid "Food & Nightlife"
+msgstr ""
+
+#: templates/activities.html:61 templates/activity-grid.html:130
+msgid "Hot Air Balloon"
+msgstr ""
+
+#: templates/activities.html:64 templates/activity-grid.html:136
+msgid "Mountain Climbing"
+msgstr ""
+
+#: templates/activities.html:67
+msgid "Bike Ride"
+msgstr ""
+
+#: templates/activities.html:82 templates/flight.html:469
+#: templates/flight.html:476 templates/flight.html:477 templates/tour.html:71
+#: templates/tour.html:79
+msgid "All status"
+msgstr ""
+
+#: templates/activities.html:85 templates/activities.html:86
+#: templates/tour.html:82 templates/tour.html:83
+msgid "Published"
+msgstr ""
+
+#: templates/activities.html:89 templates/activities.html:90
+#: templates/tour.html:86 templates/tour.html:87
+msgid "Deleted"
+msgstr ""
+
+#: templates/activities.html:143 templates/tour.html:140
+msgid "Category"
+msgstr ""
+
+#: templates/activities.html:150 templates/tour.html:147
+msgid "Start Time"
+msgstr ""
+
 #: templates/activity-booking-confirm.html:30
 #: templates/flight-booking-confirm.html:30
 #: templates/hotel-booking-confirm.html:30
@@ -746,11 +918,6 @@ msgstr ""
 #: templates/flight-booking-confirm.html:47
 #: templates/hotel-booking-confirm.html:46
 msgid "Product Info"
-msgstr ""
-
-#: templates/activity-booking-confirm.html:38
-#: templates/hotel-booking-confirm.html:38
-msgid "Product Name"
 msgstr ""
 
 #: templates/activity-booking-confirm.html:39
@@ -770,7 +937,7 @@ msgstr ""
 msgid "Customer Info"
 msgstr ""
 
-#: templates/activity-booking-confirm.html:57
+#: templates/activity-booking-confirm.html:57 templates/contacts.html:106
 #: templates/hotel-booking-confirm.html:58
 #: templates/tour-booking-confirm.html:57
 msgid "Name"
@@ -916,18 +1083,6 @@ msgid ""
 "                                    layout."
 msgstr ""
 
-#: templates/activity-grid.html:124
-msgid "Food & Nightlife"
-msgstr ""
-
-#: templates/activity-grid.html:130
-msgid "Hot Air Balloon"
-msgstr ""
-
-#: templates/activity-grid.html:136
-msgid "Mountain Climbing"
-msgstr ""
-
 #: templates/activity-grid.html:142
 msgid "Bike Ride "
 msgstr ""
@@ -1004,6 +1159,30 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
+#: templates/contacts.html:17
+msgid "Customer Contacts "
+msgstr ""
+
+#: templates/contacts.html:74
+msgid "Search Contacts"
+msgstr ""
+
+#: templates/contacts.html:110
+msgid "Wallet"
+msgstr ""
+
+#: templates/contacts.html:112 templates/profile-setting.html:25
+msgid "Phone"
+msgstr ""
+
+#: templates/customerAccount.html:17
+msgid "Customer Account"
+msgstr ""
+
+#: templates/customerAccount.html:30
+msgid "Account"
+msgstr ""
+
 #: templates/customerDetail.html:20 templates/profile.html:3
 msgid "Profile Info"
 msgstr ""
@@ -1028,12 +1207,25 @@ msgstr ""
 msgid "Join Date:"
 msgstr ""
 
+#: templates/customerDetail.html:35 templates/orders.html:17
+#: templates/orders.html:30
+msgid "Orders"
+msgstr ""
+
+#: templates/customerWishlist.html:17
+msgid "Wish List"
+msgstr ""
+
+#: templates/customers.html:391
+msgid "Customers "
+msgstr ""
+
 #: templates/flight-booking-confirm.html:35
 msgid "Flight Info"
 msgstr ""
 
 #: templates/flight-booking-confirm.html:37
-#: templates/hotel-booking-confirm.html:37
+#: templates/hotel-booking-confirm.html:37 templates/orders.html:162
 msgid "Product Type"
 msgstr ""
 
@@ -1041,11 +1233,11 @@ msgstr ""
 msgid "Company"
 msgstr ""
 
-#: templates/flight-booking-confirm.html:39
+#: templates/flight-booking-confirm.html:39 templates/flight.html:532
 msgid "Departure"
 msgstr ""
 
-#: templates/flight-booking-confirm.html:40
+#: templates/flight-booking-confirm.html:40 templates/flight.html:535
 msgid "Destination"
 msgstr ""
 
@@ -1319,6 +1511,16 @@ msgstr ""
 msgid "hours"
 msgstr ""
 
+#: templates/flight.html:538 templates/flight.html:656
+#: templates/flight.html:1171
+msgid "Take Off time"
+msgstr ""
+
+#: templates/flight.html:542 templates/flight.html:664
+#: templates/flight.html:1178
+msgid "Landing time"
+msgstr ""
+
 #: templates/hotel-booking-confirm.html:35
 msgid "Hotel Info"
 msgstr ""
@@ -1361,10 +1563,6 @@ msgstr ""
 
 #: templates/hotel-detail.html:89
 msgid "Country"
-msgstr ""
-
-#: templates/hotel-detail.html:100
-msgid "City"
 msgstr ""
 
 #: templates/hotel-detail.html:115
@@ -1475,7 +1673,7 @@ msgstr ""
 msgid "Based on"
 msgstr ""
 
-#: templates/hotel-detail.html:344
+#: templates/hotel-detail.html:344 templates/reviews.html:129
 msgid "Review"
 msgstr ""
 
@@ -1538,8 +1736,57 @@ msgstr ""
 msgid "1 Star"
 msgstr ""
 
-#: templates/orders.html:30
-msgid "Orders"
+#: templates/orderInvoiceActivity.html:391
+msgid "Activity Invoice"
+msgstr ""
+
+#: templates/orderInvoiceFlight.html:391
+msgid "Flight Invoice "
+msgstr ""
+
+#: templates/orderInvoiceHotel.html:391
+msgid "Accommodation Invoice"
+msgstr ""
+
+#: templates/orderInvoiceTour.html:391
+msgid "Tour Invoice"
+msgstr ""
+
+#: templates/orderMessages.html:448
+msgid "Orders "
+msgstr ""
+
+#: templates/orders.html:60 templates/orders.html:61 templates/reviews.html:59
+#: templates/reviews.html:60
+msgid "Hotels"
+msgstr ""
+
+#: templates/orders.html:95 templates/orders.html:103
+msgid "Sort"
+msgstr ""
+
+#: templates/orders.html:105 templates/orders.html:106
+msgid "By Time"
+msgstr ""
+
+#: templates/orders.html:108 templates/orders.html:109
+msgid "By Price"
+msgstr ""
+
+#: templates/orders.html:160 templates/reviews.html:127
+msgid "Customer"
+msgstr ""
+
+#: templates/orders.html:164
+msgid "Total"
+msgstr ""
+
+#: templates/orders.html:166
+msgid "Booking Date"
+msgstr ""
+
+#: templates/orders.html:168
+msgid "Start Date"
 msgstr ""
 
 #: templates/profile-base.html:63
@@ -1582,16 +1829,9 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: templates/profile-booking.html:12 templates/tour-detail.html:69
+#: templates/profile-booking.html:12 templates/reviews.html:133
+#: templates/tour-detail.html:69
 msgid "Date"
-msgstr ""
-
-#: templates/profile-booking.html:13
-msgid "Price"
-msgstr ""
-
-#: templates/profile-booking.html:14
-msgid "Status"
 msgstr ""
 
 #: templates/profile-booking.html:15
@@ -1616,10 +1856,6 @@ msgstr ""
 
 #: templates/profile-setting.html:11
 msgid "User Name"
-msgstr ""
-
-#: templates/profile-setting.html:25
-msgid "Phone"
 msgstr ""
 
 #: templates/profile-setting.html:32
@@ -1668,6 +1904,18 @@ msgstr ""
 
 #: templates/profile-wishlist.html:99
 msgid "Save Changes"
+msgstr ""
+
+#: templates/reviews.html:69 templates/reviews.html:77
+msgid "All Ratings"
+msgstr ""
+
+#: templates/reviews.html:125
+msgid "Product"
+msgstr ""
+
+#: templates/reviews.html:131
+msgid "Rating"
 msgstr ""
 
 #: templates/tour-booking-confirm.html:35
@@ -1732,19 +1980,19 @@ msgid ""
 "                                                        Wishlist"
 msgstr ""
 
-#: templates/tour-grid.html:119
+#: templates/tour-grid.html:119 templates/tour.html:55 templates/tour.html:56
 msgid "Cultural tourism"
 msgstr ""
 
-#: templates/tour-grid.html:126
+#: templates/tour-grid.html:126 templates/tour.html:58 templates/tour.html:59
 msgid "Wildlife observation"
 msgstr ""
 
-#: templates/tour-grid.html:133
+#: templates/tour-grid.html:133 templates/tour.html:61 templates/tour.html:62
 msgid "Cruises"
 msgstr ""
 
-#: templates/tour-grid.html:140
+#: templates/tour-grid.html:140 templates/tour.html:64 templates/tour.html:65
 msgid "Grass Skyline"
 msgstr ""
 

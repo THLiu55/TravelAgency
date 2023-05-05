@@ -80,7 +80,7 @@ function load_hotels(published, category) {
                                                                 <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
                                                                 <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
                                                                     <use xlink:href="#icon-view"></use>
-                                                                </svg>Modify
+                                                                </svg>{{ _("Modify") }}
                                                                 </button>
                                                             </span>
                                                         </a>
@@ -91,7 +91,7 @@ function load_hotels(published, category) {
                                                                 <button data-modal="#deleteProduct" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
-                                                                </svg>Delete
+                                                                </svg>{{ _("Delete") }}
                                                             </button>
                                                         </span>
                                                         </a>
