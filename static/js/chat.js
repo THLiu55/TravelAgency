@@ -18,7 +18,7 @@ $(window).load(function () {
     botMessage =
       "Hello, " +
       customerName +
-      "! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
+      "! I am a chatbot, ask me anything you want to know about our products and services.";
     insertRespMessage(botMessage);
   }, 100);
   setupListeners();

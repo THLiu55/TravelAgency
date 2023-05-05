@@ -17,6 +17,7 @@ from utils.bot import (
     BOT_CMD_RESP_DICT,
     get_wxbot_signature,
     get_wxbot_answer,
+    translate_message,
 )
 from utils.toys import get_fuzzed_room_name, hash_filename
 from utils.decorators import login_required, staff_login_required
@@ -37,7 +38,13 @@ def get_chatbot_answer():
     answer = ""
 
     if BOT_CHOICE == "WXBOT":
+        # WX Bot only have CN lang version
+        lang = session.get("language", "en")
+
         message = request.form.get("msg")
+        if lang == "en":
+            # TODO: here we need to translate the message to zh-CN
+            message = translate_message(message, lang, "zh")
 
         signature = session.get("signature")
         signature_timestamp = session.get("signature_timestamp")
@@ -55,6 +62,10 @@ def get_chatbot_answer():
             )
 
         answer = get_wxbot_answer(message, signature)
+        print("answer from wxbot: " + answer + ".")
+        
+        if lang == "en" and not answer.startswith("#"):
+            answer = translate_message(answer, "zh", lang)
 
     return answer
 
@@ -96,11 +107,6 @@ def get_session_customer_info():
                 }
             )
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
-
-
-# @bp.route("/get_bot_cmd_resp_dict", methods=["GET"])
-# def get_bot_cmd_resp_dict():
-#     return jsonify(BOT_CMD_RESP_DICT)
 
 
 @bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])
