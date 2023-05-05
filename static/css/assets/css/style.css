@@ -2743,14 +2743,14 @@ room css
 }
 
 .room-info-list i{
-  color: #7167FF;
+  color: #0e71c8;
   margin-right: 6px;
 }
 
 .room-detail-btn a{
   margin-top: 8px;
   text-decoration: underline;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .room-detail-btn a:hover{
