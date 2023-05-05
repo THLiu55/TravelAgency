@@ -14,7 +14,7 @@
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Orders</h1>
+                    <h1 class="page-header__title">{{ _("Orders") }}</h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -22,12 +22,12 @@
                             <div class="breadcrumbs__container">
                                 <ol class="breadcrumbs__list">
 
-                                    <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>Travel-Booking</span>
+                                    <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link" href="#"><span>{{ _("Travel-Booking") }}</span>
                         <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                           <use xlink:href="#icon-keyboard-right"></use>
                         </svg></a>
                                     </li>
-                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Orders</span>
+                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">{{ _("Orders") }}</span>
                                     </li>
                                 </ol>
                             </div>
@@ -41,7 +41,7 @@
 
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All Category"
+                                        <input class="input input--select" type="text" value="{{ _("All Category") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -49,25 +49,25 @@
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
                                             <a onclick="load_orders('all', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All Category"><span class="marker-item"></span> All Category</a>
+                                                data-value="{{ _("All Category") }}"><span class="marker-item"></span>{{ _("All Category") }}</a>
                                             <a onclick="load_orders('activity', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Activities"><span class="marker-item "></span>
-                                                Activities</a>
+                                                data-value="{{ _("Activities") }}"><span class="marker-item "></span>
+                                                {{ _("Activities") }}</a>
                                             <a onclick="load_orders('tour', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Tours"><span class="marker-item "></span>
-                                                Tours</a>
+                                                data-value="{{ _("Tours") }}"><span class="marker-item "></span>
+                                                {{ _("Tours") }}</a>
                                             <a onclick="load_orders('hotel', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Hotels"><span class="marker-item "></span>
-                                                Hotels</a>
+                                                data-value="{{ _("Hotels") }}"><span class="marker-item "></span>
+                                                {{ _("Hotels") }}</a>
                                             <a onclick="load_orders('flight', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Flights"><span class="marker-item "></span>
-                                                Flights</a>
+                                                data-value="{{ _("Flights") }}"><span class="marker-item "></span>
+                                                {{ _("Flights") }}</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status"
+                                        <input class="input input--select" type="text" value="{{ _("All Status") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -92,7 +92,7 @@
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
 
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="Sort"
+                                        <input class="input input--select" type="text" value="{{ _("Sort") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -100,13 +100,13 @@
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
                                             <a onclick="load_orders('all', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Sort"><span class="marker-item"></span> Sort</a>
+                                                data-value="{{ _("Sort") }}"><span class="marker-item"></span> {{ _("Sort") }}</a>
                                             <a onclick="load_orders(null, null, null, 0)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="By Time"><span class="marker-item "></span>
-                                                By Time</a>
+                                                data-value="{{ _("By Time") }}"><span class="marker-item "></span>
+                                                {{ _("By Time") }}</a>
                                             <a onclick="load_orders(null, null, null, 1)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="By Price"><span class="marker-item "></span>
-                                                By Price</a>
+                                                data-value="{{ _("By Price") }}"><span class="marker-item "></span>
+                                                {{ _("By Price") }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -157,17 +157,17 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th class="d-none d-lg-table-cell"><span>Customer</span>
+                                    <th class="d-none d-lg-table-cell"><span>{{ _("Customer") }}</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Product Type</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Product Type") }}</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Total</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">{{ _("Total") }}</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Booking Date</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Booking Date") }}</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Start Date</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Start Date") }}</span><span class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">Status</span><span class="sort sort--down"></span>
+                                    <th class="table__th-sort d-none d-sm-table-cell"><span class="align-middle">{{ _("Status") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>
@@ -178,8 +178,6 @@
 {#                    </div>#}
                     <div class="table-wrapper__footer">
                         <div class="row">
-                            <div class="table-wrapper__show-result col text-grey"><span class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span class="d-none d-sm-inline-block">of 50 items</span>
-                            </div>
 {#                            <div class="table-wrapper__pagination col-auto">#}
 {#                                <ol class="pagination">#}
 {#                                    <li class="pagination__item">#}

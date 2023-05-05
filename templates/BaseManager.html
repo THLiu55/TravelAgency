@@ -502,17 +502,15 @@
                                     </svg></span>
                             </button>
                             <div class="lang-menu dropdown-menu">
-                                <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                <button class="lang-menu__button dropdown-menu__item" tabindex="0" onclick="switchLanguage('en')">
                                     <img class="lang-menu__icon" src="{{ url_for('static', filename='img/content/flags/us.svg') }}"
                                         alt="#" /><span class="lang-menu__text">En</span>
                                 </button>
-                                <button class="lang-menu__button dropdown-menu__item" tabindex="0">
+                                <button class="lang-menu__button dropdown-menu__item" tabindex="0" onclick="switchLanguage('zh')">
                                     <img class="lang-menu__icon" src="{{ url_for('static', filename='img/content/flags/cn.svg') }}"
                                         alt="#" /><span class="lang-menu__text">Cn</span>
                                 </button>
-                                <div class="lang-menu__separate"></div><a
-                                    class="lang-menu__button lang-menu__button--all dropdown-menu__item" href="#"
-                                    tabindex="0">Learn</a>
+
                             </div>
                         </div>
                         <div class="header__profile dropdown">
@@ -532,13 +530,13 @@
                                         class="profile-dropdown__icon">
                                         <svg class="icon-icon-chat">
                                             <use xlink:href="#icon-chat"></use>
-                                        </svg></span><span>My chat</span></a>
+                                        </svg></span><span>{{ _("My chat") }}</span></a>
                                 <div class="dropdown-menu__divider"></div><a
                                     class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
                                         class="profile-dropdown__icon">
                                         <svg class="icon-icon-logout">
                                             <use xlink:href="#icon-logout"></use>
-                                        </svg></span><span>Logout</span></a>
+                                        </svg></span><span>{{ _("Logout") }}</span></a>
                             </div>
                         </div>
                     </div>
@@ -563,30 +561,30 @@
                         <li class="sidebar__menu-item"><a class="sidebar__link active" href="{{ url_for('manager.manager_homepage') }}" aria-expanded="true"><span class="sidebar__link-icon">
                   <svg class="icon-icon-dashboard">
                     <use xlink:href="#icon-dashboard"></use>
-                  </svg></span><span class="sidebar__link-text">Dashboard</span></a>
+                  </svg></span><span class="sidebar__link-text">{{ _("Dashboard") }}</span></a>
                         </li>
-                        <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html" data-toggle="collapse" data-target="#Travel-Booking" aria-expanded="false"><span class="sidebar__link-icon">
+                        <li class="sidebar__menu-item"><a class="sidebar__link" href="products.html" data-toggle="collapse" data-target="#{{ _("Travel-Booking") }}" aria-expanded="false"><span class="sidebar__link-icon">
                   <svg class="icon-icon-cart">
                     <use xlink:href="#icon-cart"></use>
-                  </svg></span><span class="sidebar__link-text">Product & Orders</span><span class="sidebar__link-arrow">
+                  </svg></span><span class="sidebar__link-text">{{ _("Product & Orders") }}</span><span class="sidebar__link-arrow">
                   <svg class="icon-icon-keyboard-down">
                     <use xlink:href="#icon-keyboard-down"></use>
                   </svg></span></a>
-                            <div class="collapse" id="Travel-Booking">
+                            <div class="collapse" id="{{ _("Travel-Booking") }}">
                                 <ul class="sidebar__collapse-menu">
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.activities') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Activities</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.activities') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Activity") }}</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.tours') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Tours</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.tours') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Tours") }}</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.accommodations') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Accommodations</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.accommodations') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Accommodations") }}</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.flights') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Flights</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.flights') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Flights") }}</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.total_orders') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Total Orders</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.total_orders') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Total Orders") }}</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.customers') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Customers</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.customers') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Customers") }}</span></a>
                                     </li>
-                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.reviews') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">Reviews</span></a>
+                                    <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.reviews') }}"><span class="sidebar__link-signal"></span><span class="sidebar__link-text">{{ _("Reviews") }}</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -594,12 +592,12 @@
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.chat') }}" aria-expanded="false"><span class="sidebar__link-icon">
                   <svg class="icon-icon-chat">
                     <use xlink:href="#icon-chat"></use>
-                  </svg></span><span class="sidebar__link-text" href="{{ url_for('manager.chat') }}">Chat</span><span class="badge badge--red">20</span></a>
+                  </svg></span><span class="sidebar__link-text" href="{{ url_for('manager.chat') }}">{{ _("Chat") }}</span><span class="badge badge--red">20</span></a>
                         </li>
                         <li class="sidebar__menu-item"><a class="sidebar__link" href="{{ url_for('manager.logout') }}" aria-expanded="false"><span class="sidebar__link-icon">
                   <svg class="icon-icon-contacts">
                     <use xlink:href="#icon-contacts"></use>
-                  </svg></span><span class="sidebar__link-text">Logout</span></a>
+                  </svg></span><span class="sidebar__link-text">{{ _("Logout") }}</span></a>
                         </li>
                     </ul>
                 </nav>
@@ -657,6 +655,7 @@
 <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
 <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/translate_staff.js') }}"></script>
 {% block jsLink %}
 {% endblock %}
 </html>

@@ -488,9 +488,9 @@ def plan_wishlist():
         order = Tour.query.get(temp)
         tourList.append(order)
     elif order_type == "Activity":
-        ordertemp = ActivityOrder.query.get(order_id)
-        temp = ordertemp.productID
-        order = Activity.query.get(temp)
+        # ordertemp = ActivityOrder.query.get(order_id)
+        # temp = ordertemp.productID
+        order = Activity.query.get(order_id)
         activityList.append(order)
     # print(flightList, hotelList, tourList, activityList,"flightList, hotelList, tourList, activityList")
     customer = Customer.query.get(session.get('customer_id'))

@@ -14,7 +14,7 @@
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Activities</h1>
+                    <h1 class="page-header__title">{{ _("Activities") }}</h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -23,12 +23,12 @@
                                 <ol class="breadcrumbs__list">
 
                                     <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link"
-                                            href="#"><span>Travel-Booking</span>
+                                            href="#"><span>{{ _("Travel-Booking") }}</span>
                                             <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                                 <use xlink:href="#icon-keyboard-right"></use>
                                             </svg></a>
                                     </li>
-                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Attractions</span>
+                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">{{ _("Activities") }}</span>
                                     </li>
                                 </ol>
                             </div>
@@ -44,34 +44,34 @@
                                 </div>
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append"  style="width:200px;">
-                                        <input class="input input--select" type="text" value="All Category"
+                                        <input class="input input--select" type="text" value="{{ _("All Category") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_activities(null, 'All Category')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All Category"><span class="marker-item"></span> All Category
+                                            <a onclick="load_activities(null, 'All Category' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("All Category") }}"><span class="marker-item"></span>{{ _("All Category") }}
                                             </a>
-                                            <a onclick="load_activities(null, 'Food & Nightlife')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Food & Nightlife"><span class="marker-item"></span> Food & Nightlife
+                                            <a onclick="load_activities(null, 'Food & Nightlife' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Food & Nightlife") }}"><span class="marker-item"></span>{{ _("Food & Nightlife") }}
                                             </a>
-                                            <a onclick="load_activities(null, 'Hot Air Balloon')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Hot Air Balloon"><span class="marker-item"></span> Hot Air Balloon
+                                            <a onclick="load_activities(null, 'Hot Air Balloon' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Hot Air Balloon") }}"><span class="marker-item"></span>{{ _("Hot Air Balloon") }}
                                             </a>
-                                            <a onclick="load_activities(null, 'Mountain Climbing')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Mountain Climbing"><span class="marker-item"></span> Mountain Climbing
+                                            <a onclick="load_activities(null, 'Mountain Climbing' )" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Mountain Climbing") }}"><span class="marker-item"></span>{{ _("Mountain Climbing") }}
                                             </a>
                                             <a onclick="load_activities(null, 'Bike Ride')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Bike Ride"><span class="marker-item"></span> Bike Ride
+                                                data-value="{{ _("Bike Ride") }}"><span class="marker-item"></span>{{ _("Bike Ride") }}
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status"
+                                        <input class="input input--select" type="text" value="{{ _("All Status") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -79,15 +79,15 @@
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
                                             <a onclick="load_activities('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All status"><span class="marker-item"></span> All status
+                                                data-value="{{ _("All status") }}"><span class="marker-item"></span>{{ _("All status") }}
                                             </a>
                                             <a onclick="load_activities('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Published"><span class="marker-item color-green"></span>
-                                                Published
+                                                data-value="{{ _("Published") }}"><span class="marker-item color-green"></span>
+                                                {{ _("Published") }}
                                             </a>
                                             <a onclick="load_activities('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted
+                                                data-value="{{ _("Deleted") }}"><span class="marker-item color-red"></span>
+                                                {{ _("Deleted") }}
                                             </a>
                                         </div>
                                     </div>
@@ -137,20 +137,20 @@
                                     </th>
                                     <th class="d-none d-lg-table-cell"><span>ID</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Product Name</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Product Name") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Category</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Category") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Price</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Price") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-lg-table-cell"><span
-                                            class="align-middle">Start Time</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Start Time") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span
-                                            class="align-middle">Status</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Status") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>

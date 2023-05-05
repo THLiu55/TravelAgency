@@ -705,16 +705,6 @@ def flight_invoice():
     return render_template("orderInvoiceFlight.html")
 
 
-@bp.route("/order_history")
-@staff_login_required
-def order_history():
-    return render_template("orderHistory.html")
-
-
-@bp.route("/order_status")
-@staff_login_required
-def order_status():
-    return render_template("orderStatus.html")
 
 
 @bp.route("/order_message")
