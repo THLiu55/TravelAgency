@@ -1,5 +1,12 @@
 const item_container = document.getElementById("item-container")
-function load_customers() {
+const search_box = document.getElementById("search_box")
+
+function search_customers() {
+    let q = search_box.value
+    load_customers(q)
+}
+
+function load_customers(pattern) {
 
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
@@ -9,6 +16,9 @@ function load_customers() {
     // set animation after email send / error notification for registered email
     xhr.onload = function () {
         items = JSON.parse(xhr.responseText)['data']
+        console.log(items)
+        console.log(pattern)
+        items = search_now(items, pattern)
         item_container.innerHTML = ''
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
@@ -72,3 +82,26 @@ function load_customers() {
 
 load_customers()
 console.log('loading customer')
+
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "email",
+            "id",
+            "nickname",
+            "phone",
+        ]
+    };
+
+    if (pattern === ''){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}

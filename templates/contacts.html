@@ -71,7 +71,7 @@
                                                     <use xlink:href="#icon-search"></use>
                                                 </svg>
                                             </div>
-                                            <input class="input" type="text" placeholder="{{ _("Search Contacts") }}">
+                                            <input id="search_box" class="input" oninput="search_customers()" type="text" placeholder="{{ _('Search Contacts') }}">
                                         </div>
                                     </form>
                                 </div>
@@ -161,5 +161,6 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+    <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/load_customers.js') }}"></script>
 {% endblock %}
