@@ -261,16 +261,8 @@ def add_activity():
     activity.city = request.form.get("city")
     activity.state = request.form.get("state")
     activity.address = request.form.get("address")
-    address = activity.address + " " + activity.city + " " + activity.state
-    # url = "https://nominatim.openstreetmap.org/search?q={}&format=json".format(address)
-    # response = req.get(url).json()
-    # if len(response) > 0:
-    #     activity.lat = response[0]["lat"]
-    #     activity.lon = response[0]["lon"]
-    # else:
-    #     return jsonify({"code": "invalid address "})
-    activity.lat = 39.87391435
-    activity.lon = 116.477202420354
+    activity.lat = request.form.get("lat")
+    activity.lon = request.form.get("lon")
     activity.duration = request.form.get("duration")
     activity.group_size = int(request.form.get("group_size"))
     activity.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
@@ -362,6 +354,8 @@ def add_tour():
     tour.city = request.form.get("city")
     tour.state = request.form.get("state")
     tour.address = request.form.get("address")
+    tour.lat = request.form.get("lat")
+    tour.lon = request.form.get("lon")
     tour.duration = request.form.get("duration")
     tour.group_size = int(request.form.get("group_size"))
     tour.priority = int(request.form.get("pri"))
@@ -1027,6 +1021,8 @@ def modify_tour():
     tour = Tour.query.filter_by(id=id).first()
     tour.name = request.form.get("name")
     tour.category = request.form.get("category")
+    tour.lat = request.form.get("lat")
+    tour.lon = request.form.get("lon")
     tour.price = float(request.form.get("price"))
     tour.city = request.form.get("city")
     tour.state = request.form.get("state")
@@ -1037,7 +1033,6 @@ def modify_tour():
     tour.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
     tour.end_time = datetime.strptime(request.form.get("end_time"), "%Y-%m-%d")
     tour.description = request.form.get("description")
-    # noinspection DuplicatedCode
     included1 = request.form.get("included1")
     included2 = request.form.get("included2")
     included3 = request.form.get("included3")
@@ -1084,6 +1079,116 @@ def modify_tour():
     db.session.add(tour)
     db.session.commit()
     return redirect(url_for("manager.tours"))
+
+
+@bp.route("/modify_activity", methods=["POST"])
+@staff_login_required
+def modify_activity():
+    id = int(request.args.get("id"))
+    activity = Activity.query.filter_by(id=id).first()
+    activity.name = request.form.get("name")
+    activity.category = request.form.get("category")
+    activity.price = float(request.form.get("price"))
+    activity.city = request.form.get("city")
+    activity.state = request.form.get("state")
+    activity.address = request.form.get("address")
+    activity.lat = request.form.get("lat")
+    activity.lon = request.form.get("lon")
+    activity.duration = request.form.get("duration")
+    activity.group_size = int(request.form.get("group_size"))
+    activity.start_time = datetime.strptime(request.form.get("start_time"), "%Y-%m-%d")
+    activity.end_time = datetime.strptime(request.form.get("end_time"), "%Y-%m-%d")
+    activity.description = request.form.get("description")
+    activity.openHour = datetime.strptime(":".join((request.form.get("openHour")).split(':')[:2]), "%H:%M")
+    activity.visitHour = request.form.get("visitHour")
+    activity.priority = int(request.form.get("pri"))
+    included1 = request.form.get("included1")
+    included2 = request.form.get("included2")
+    included3 = request.form.get("included3")
+    included4 = request.form.get("included4")
+    not_included1 = request.form.get("not-included1")
+    not_included2 = request.form.get("not-included2")
+    not_included3 = request.form.get("not-included3")
+    not_included4 = request.form.get("not-included4")
+    activity.included = json.dumps(
+        {"included": [included1, included2, included3, included4]}
+    )
+    activity.excluded = json.dumps(
+        {"not_included": [not_included1, not_included2, not_included3, not_included4]}
+    )
+    images = request.files.getlist("images")
+    img_routes = []
+    folder_path = os.path.join(
+        current_app.root_path, "static", "activity_img", str(id)
+    )
+    removeDirContent(folder_path)
+    for image in images:
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        save_path = os.path.join(folder_path, image.filename)
+        image.save(save_path)
+        img_routes.append(save_path)
+    activity.images = json.dumps({"images": img_routes})
+    activity.contact_name = request.form.get("contact_name")
+    activity.contact_email = request.form.get("contact_email")
+    activity.contact_phone = request.form.get("contact_phone")
+    db.session.add(activity)
+    db.session.commit()
+    return redirect(url_for("manager.activities"))
+
+
+@bp.route("/modify_flight", methods=["POST"])
+@staff_login_required
+def modify_flight():
+    id = int(request.args.get("id"))
+    flight = Flight.query.filter_by(id=id).first()
+    flight.departure = request.form.get("departure")
+    flight.destination = request.form.get("destination")
+    flight.flight_type = request.form.get("flight_type")
+    flight.takeoff_time = datetime.strptime(
+        ":".join(request.form.get("take_off_time").split(':')[:2]), "%H:%M"
+    ).time()
+    flight.landing_time = datetime.strptime(
+        ":".join(request.form.get("landing_time").split(':')[:2]), "%H:%M"
+    ).time()
+    flight.week_day = request.form.get("day_of_week")
+    flight.priority = int(request.form.get("pri"))
+    flight.flight_stop = request.form.get("flight_stop")
+    flight.company = request.form.get("company")
+    flight.total_time = float(request.form.get("total_time"))
+    flight.price = float(request.form.get("price"))
+    flight.fare_type = request.form.get("fare_type")
+    flight.flight_class = request.form.get("flight_class")
+    flight.cancellation_charge = request.form.get("cancellation_charge")
+    flight.flight_charge = request.form.get("flight_charge")
+    flight.seat_baggage = request.form.get("seat_baggage")
+    flight.base_fare = request.form.get("base_fare")
+    flight.taxes = request.form.get("taxes")
+    images = request.files.getlist("images")
+    img_routes = []
+    folder_path = os.path.join(
+        current_app.root_path, "static", "flight_img", str(id)
+    )
+    removeDirContent(folder_path)
+    for image in images:
+        save_path = os.path.join(folder_path, image.filename)
+        image.save(save_path)
+        img_routes.append(save_path)
+    flight.images = json.dumps({"images": img_routes})
+    flight.description = request.form.get("description")
+    inflight_features = []
+    for i in range(1, 13):
+        amin = request.form.get(f"inflight{i}")
+        if amin is not None:
+            inflight_features.append(amin)
+    flight.inflight_features = str(inflight_features)
+    flight.contact_name = request.form.get("contact_name")
+    flight.contact_email = request.form.get("contact_email")
+    flight.contact_phone = request.form.get("contact_phone")
+    flight.view_num = 0
+    db.session.add(flight)
+    db.session.commit()
+    return redirect(url_for("manager.flights"))
 
 
 def removeDirContent(folder_path):
