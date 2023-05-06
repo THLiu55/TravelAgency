@@ -200,14 +200,14 @@ def manager_homepage():
         [costs_dict[k] for k in sorted(costs_dict.keys())][7:],
     ]
     for i in range(len(ordered_values[0])):
-        ordered_values[0][i] = float("{:.2f}".format(ordered_values[0][i]))
-        ordered_values[1][i] = float("{:.2f}".format(ordered_values[1][i]))
+        ordered_values[0][i] = float("{:.1f}".format(ordered_values[0][i]))
+        ordered_values[1][i] = float("{:.1f}".format(ordered_values[1][i]))
     for i in range(4):
-        profit_split[i] = float("{:.2f}".format(profit_split[i]))
+        profit_split[i] = float("{:.1f}".format(profit_split[i]))
     data = {
         "profit_list": ordered_values,
-        "profit_this": float("{:.2f}".format(sum(ordered_values[1]))),
-        "profit_prev": float("{:.2f}".format(sum(ordered_values[0]))),
+        "profit_this": float("{:.1f}".format(sum(ordered_values[1]))),
+        "profit_prev": float("{:.1f}".format(sum(ordered_values[0]))),
         "profit_split": profit_split,
         "percent": percent,
     }
