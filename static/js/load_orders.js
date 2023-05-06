@@ -32,7 +32,6 @@ function query() {
 }
 
 function load_orders(category, status, key=null, sort_by=null, page=0) {
-    console.log('here')
     if (category == null) {
         category = cur_category
     }
