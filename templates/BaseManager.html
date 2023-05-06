@@ -527,13 +527,13 @@
                                     </svg></span>
                             </a>
                             <div class="profile-dropdown dropdown-menu dropdown-menu--right"><a
-                                    class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                    href="{{ url_for('manager.chat') }}" class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
                                         class="profile-dropdown__icon">
                                         <svg class="icon-icon-chat">
                                             <use xlink:href="#icon-chat"></use>
                                         </svg></span><span>{{ _("My chat") }}</span></a>
                                 <div class="dropdown-menu__divider"></div><a
-                                    class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
+                                    href="{{ url_for('manager.logout') }}" class="profile-dropdown__item dropdown-menu__item" href="#" tabindex="0"><span
                                         class="profile-dropdown__icon">
                                         <svg class="icon-icon-logout">
                                             <use xlink:href="#icon-logout"></use>
