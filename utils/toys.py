@@ -66,7 +66,7 @@ def generate_pile_of_cdkeys(cipher, date_str, start_idx, end_idx, value):
     for i in range(start_idx, end_idx):
         eight_digit_idx = str(i).zfill(8)
         cdkeys.append(
-            generate_cdkey(date_str, eight_digit_idx, four_digit_value, cipher)
+            generate_cdkey(cipher, date_str, eight_digit_idx, four_digit_value)
         )
     return cdkeys
 
@@ -117,9 +117,19 @@ def validate_decrypted_attrs(dec_date_str, dec_serial_str, dec_value_str):
             return False
         return True
 
-# a, b, c = decrypt_cdkey(get_cipher(), generate_cdkey(get_cipher(), "20230505", "00000001", "2333"))
+### END CDKEY RELATED ###
+
+
+### TEST TRASH CODE
+# test_cdkey = generate_cdkey(get_cipher(), "20230505", "00000001", "2333")
+# print("test_cdkey: " + test_cdkey)
+
+# test_cdkey_list = generate_pile_of_cdkeys(get_cipher(), "20230505", 1, 10, 2333)
+# for cdkey in test_cdkey_list:
+#     print(cdkey)
+
+# a, b, c = decrypt_cdkey(get_cipher(), test_cdkey)
 # if validate_decrypted_attrs( a, b, c ):
 #     print("validation passed")
 # else:
 #     print("validation failed")
-### END CDKEY RELATED ###
