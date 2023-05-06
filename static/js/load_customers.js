@@ -18,7 +18,7 @@ function load_customers(pattern) {
         items = JSON.parse(xhr.responseText)['data']
         console.log(items)
         console.log(pattern)
-        items = search_now(items, pattern)
+        // items = search_now(items, pattern)
         item_container.innerHTML = ''
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");

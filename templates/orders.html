@@ -182,16 +182,17 @@
                             <div class="table-wrapper__pagination col-auto">
                                 <ol class="pagination">
                                     <li class="pagination__item">
-                                        <a class="pagination__arrow pagination__arrow--prev" href="#">
+                                        <a onclick="next_page()" class="pagination__arrow pagination__arrow--prev" href="#">
                                             <svg class="icon-icon-keyboard-left">
                                                 <use xlink:href="#icon-keyboard-left"></use>
                                             </svg>
                                         </a>
                                     </li>
-                                    <li class="pagination__item active"><a class="pagination__link" style="background-color: white; color: black;" href="#">2/10</a>
+                                    <li class="pagination__item active">
+                                        <a id="cur_page_num" class="pagination__link" style="background-color: white; color: black;" href="#">2/10</a>
                                     </li>
                                     <li class="pagination__item">
-                                        <a class="pagination__arrow pagination__arrow--next" href="#">
+                                        <a onclick="prev_page()" class="pagination__arrow pagination__arrow--next" href="#">
                                             <svg class="icon-icon-keyboard-right">
                                                 <use xlink:href="#icon-keyboard-right"></use>
                                             </svg>

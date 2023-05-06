@@ -2,8 +2,10 @@ let cur_category = 'all'
 let cur_status = 'all'
 let cur_key = ''
 let cur_sort_by = 0
+let cur_page = 0
 const item_container = document.getElementById("item-container")
 const deleteProduct = document.getElementById("deleteProduct")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
 
@@ -29,7 +31,7 @@ function query() {
     load_orders(null, null, q)
 }
 
-function load_orders(category, status, key=null, sort_by=null) {
+function load_orders(category, status, key=null, sort_by=null, page=0) {
     console.log('here')
     if (category == null) {
         category = cur_category
@@ -47,6 +49,7 @@ function load_orders(category, status, key=null, sort_by=null) {
     cur_status = status
     cur_key = key
     cur_sort_by = sort_by
+    cur_page = page
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('category', category)
@@ -63,24 +66,30 @@ function load_orders(category, status, key=null, sort_by=null) {
         } else {
             items.sort((a, b) => a.cost - b.cost).reverse();
         }
+        tmp = []
         for (let i = 0; i < items.length; i++) {
-            let tr = document.createElement("tr");
-            tr.className = "table__row";
             order_status = checkTimeStatus(items[i].start_time, items[i].end_time)
-
-
             if (cur_status !== order_status && cur_status !== 'all') {
                 continue;
             }
-
             if (cur_category !== items[i].category && cur_category !== 'all') {
                 continue;
             }
-
             if (cur_key !== items[i].productID.toString() && cur_key !== '') {
                 continue;
             }
-
+            tmp.push(items[i])
+        }
+        tmp = convertTo2DList(tmp)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        items = tmp[cur_page]
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
+        console.log(items.length)
+        for (let i = 0; i < items.length; i++) {
+            let tr = document.createElement("tr");
+            tr.className = "table__row";
             if (order_status === 'waiting') {
                 status_s = `<div className="table__status"><span class="marker-item color-blue"></span></span> Waiting</div>`
             } else if (order_status === 'processing') {
@@ -186,4 +195,33 @@ function delete_order(id, type) {
     xhr.onload = function() {
         location.reload();
     }
+}
+
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}
+
+function prev_page() {
+    load_orders(null, null, null, null, cur_page + 1)
+}
+
+function next_page() {
+    load_orders(null, null, null, null, Math.max(cur_page - 1, 0))
 }
