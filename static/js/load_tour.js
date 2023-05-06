@@ -1,10 +1,12 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
 let cur_pattern = ''
+let cur_page = 0
 const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("tour-container")
 const modifyProduct = document.getElementById("modifyProduct")
 const search_box = document.getElementById("search_box")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
 function search_tours() {
@@ -12,7 +14,7 @@ function search_tours() {
     load_tours(null, null, q)
 }
 
-function load_tours(published, category, pattern=null) {
+function load_tours(published, category, pattern=null, page=0) {
     if (published == null) {
         published = cur_status
     }
@@ -24,6 +26,7 @@ function load_tours(published, category, pattern=null) {
     }
     cur_category = category
     cur_status = published
+    cur_page = page
     cur_pattern = pattern
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
@@ -37,6 +40,14 @@ function load_tours(published, category, pattern=null) {
         items = JSON.parse(xhr.responseText)['content']
         item_container.innerHTML = ''
         items = search_now(items, cur_pattern)
+
+        tmp = convertTo2DList(items)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        items = tmp[cur_page]
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
+
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -316,4 +327,34 @@ function search_now(list, pattern) {
         result[i] = result[i].item;
     }
     return  result;
+}
+
+
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}
+
+function prev_page() {
+    load_tours(null, null, null, cur_page + 1)
+}
+
+function next_page() {
+    load_tours(null, null, null, Math.max(0, cur_page - 1))
 }
