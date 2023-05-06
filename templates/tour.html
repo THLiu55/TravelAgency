@@ -277,20 +277,20 @@
                                                             <div class="form-group">
                                                                 <label>Address</label>
                                                                 <input id="m_address" type="text" class="form-control" name="address"
-                                                                    placeholder="Enter address" required>
+                                                                    placeholder="paste address" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Longitude</label>
-                                                                <input id="modify_citylong" type="text" class="form-control" name="lon"
-                                                                    placeholder="longitude">
+                                                                <input id="modify_citylong" type="number" class="form-control" name="lon"
+                                                                    placeholder="paste longitude" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>latitude</label>
-                                                                <input id="modify_citylati" type="text" class="form-control" name="lat"
+                                                                <input id="modify_citylati" type="number" class="form-control" name="lat"
                                                                     placeholder="latitude">
                                                             </div>
                                                         </div>
@@ -683,21 +683,21 @@
                                                             <div class="form-group">
                                                                 <label>Address</label>
                                                                 <input type="text" class="form-control" name="address"
-                                                                    placeholder="Enter address" required>
+                                                                    placeholder="address" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Longitude</label>
-                                                                <input type="text" class="form-control" name="lon"
-                                                                    placeholder="longitude">
+                                                                <input type="number" class="form-control" name="lon"
+                                                                    placeholder="longitude" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>latitude</label>
-                                                                <input type="text" class="form-control" name="lat"
-                                                                    placeholder="latitude">
+                                                                <input type="number" class="form-control" name="lat"
+                                                                    placeholder="latitude" required>
                                                             </div>
                                                         </div>
                                                         <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>

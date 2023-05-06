@@ -284,14 +284,14 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Longitude</label>
-                                                                <input type="text" class="form-control" name="lon" id="modify_citylong"
+                                                                <input type="number" class="form-control" name="lon" id="modify_citylong"
                                                                     placeholder="longitude of your location" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>latitude</label>
-                                                                <input type="text" class="form-control" name="lat" id="modify_citylati"
+                                                                <input type="number" class="form-control" name="lat" id="modify_citylati"
                                                                     placeholder="latitude of your location" required>
                                                             </div>
                                                         </div>
@@ -681,15 +681,16 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Longitude</label>
-                                                                <input type="text" class="form-control" name="lon"
-                                                                    placeholder="longitude">
+                                                                <input type="number" class="form-control" name="lon"
+                                                                    placeholder="Paste float" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>latitude</label>
-                                                                <input type="text" class="form-control" name="lat"
-                                                                    placeholder="latitude">
+                                                                <input type="number" class="form-control" name="lat"
+                                                                    placeholder="Paste float" required>
+                                                                <p id="message"></p>
                                                             </div>
                                                         </div>
                                                         <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>

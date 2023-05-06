@@ -1781,11 +1781,11 @@ msgstr "客户"
 
 #: templates/orders.html:164
 msgid "Total"
-msgstr "酒店"
+msgstr "总金额"
 
 #: templates/orders.html:166
 msgid "Booking Date"
-msgstr "预订名称"
+msgstr "预订日期"
 
 #: templates/orders.html:168
 msgid "Start Date"
