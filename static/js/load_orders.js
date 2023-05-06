@@ -9,22 +9,6 @@ const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
 
-
-function checkTimeStatus(start, end) {
-  const now = new Date(); // get current date and time
-
-  const startTime = new Date(start);
-  const endTime = new Date(end);
-
-  if (now < startTime) {
-    return "waiting"; // the current time is before the start time
-  } else if (now >= startTime && now <= endTime) {
-    return "processing"; // the current time is between the start and end times
-  } else {
-    return "done"; // the current time is after the end time
-  }
-}
-
 function query() {
     let search_box = document.getElementById("search_box")
     let q = search_box.value
@@ -67,10 +51,6 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
         }
         tmp = []
         for (let i = 0; i < items.length; i++) {
-            order_status = checkTimeStatus(items[i].start_time, items[i].end_time)
-            if (cur_status !== order_status && cur_status !== 'all') {
-                continue;
-            }
             if (cur_category !== items[i].category && cur_category !== 'all') {
                 continue;
             }
@@ -88,16 +68,11 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
-            if (order_status === 'waiting') {
-                status_s = `<div className="table__status"><span class="marker-item color-blue"></span></span> Waiting</div>`
-            } else if (order_status === 'processing') {
-                status_s = `<div className="table__status"><span class="marker-item color-orange"></span> Processing</div>`
-            } else {
-                status_s = `<div className="table__status"><span class="marker-item color-green"></span> Complete</div>`
-            }
 
             if (items[i].isDeleted) {
                 status_s = `<div className="table__status"><span class="marker-item color-red"></span> Deleted </div>`
+            } else {
+                status_s = `<div className="table__status"><span class="marker-item color-green"></span> Active </div>`
             }
 
             s = `<tr class="table__row">
@@ -132,17 +107,11 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                 <li class="dropdown-items__item">
-                                                        <a class="dropdown-items__link" onclick="getModifyData(${items[i].id})">
-                                                            <span class="dropdown-items__link-icon" onclick="modify(${items[i].id})" style="padding-left: 50%;">
-                                                                <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
-                                                                <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
-                                                                    <use xlink:href="#icon-view"></use>
-                                                                </svg>Details
-                                                                </button>
-                                                            </span>
-                                                        </a>
-                                                    </li>
+                                                 <li class="dropdown-items__item"><a class="dropdown-items__link" href="/manager/invoice?id=${items[i].id}&type=${items[i].category}"><span class="dropdown-items__link-icon">
+                                    <svg class="icon-icon-view">
+                                      <use xlink:href="#icon-view"></use>
+                                    </svg></span>Details</a>
+                                                        </li>   
                                                     <li class="dropdown-items__item" >
                                                         <a class="dropdown-items__link" >
 <!--                                                        onclick="delete_order(${items[i].id})"-->
