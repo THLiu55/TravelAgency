@@ -2,7 +2,9 @@ import ast
 import json
 import shutil
 
+import flask_mail
 import requests as req
+import sender as sender
 from sqlalchemy import func
 from datetime import datetime, timedelta
 
@@ -18,9 +20,8 @@ from flask import (
     g,
 )
 from model import *
-from exts import db
+from exts import db, mail
 import os
-
 
 from utils.decorators import staff_login_required
 
@@ -1195,14 +1196,22 @@ def modify_flight():
 @staff_login_required
 def delete_order():
     type = request.form.get("type")
+    reason = request.form.get("reason")
     order_id = request.form.get("id")
-    print(type)
-    # todo send email here
     Order = TourOrder if type == "tour" else ActivityOrder if type == "activity" else FlightOrder if type == "flight" else HotelOrder
     order = Order.query.get(order_id)
+    notify(order.customer.email, reason, order_id)
     order.deleted = True
     db.session.commit()
     return jsonify({"code": 200})
+
+
+def notify(email, reason, id):
+    message = flask_mail.Message(sender=("Travel Agency", current_app.config.get("MAIL_USERNAME")),
+                                 subject=f"your order {id} has been canceled",
+                                 recipients=[email],
+                                 body=reason)
+    mail.send(message)
 
 
 def removeDirContent(folder_path):

@@ -116,7 +116,7 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
                                                         <a class="dropdown-items__link" >
 <!--                                                        onclick="delete_order(${items[i].id})"-->
                                                         <span class="dropdown-items__link-icon" style="padding-left: 50%;">
-                                                            <button id="orderDelete" onclick="DeleteSpan()" data-toggle="modal"  data-target="#deleteOrder" data-modal="#button_Delete" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
+                                                            <button id="orderDelete" onclick="DeleteSpan(${items[i].id}, '${items[i].category}')" data-toggle="modal"  data-target="#deleteOrder" data-modal="#button_Delete" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg>Delete
@@ -149,12 +149,13 @@ function clearInputs(){
     location.reload();
 }
 
-function delete_order(id, type) {
-    console.log('deleting')
+function delete_order(id, type, reason) {
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('id', id)
     fd.set('type', type)
+    console.log(reason)
+    fd.set('reason', reason)
     xhr.open('POST', '/manager/delete_order', true)
     xhr.send(fd)
 
@@ -165,14 +166,15 @@ function delete_order(id, type) {
 }
 
 // 当用户点击按钮时打开模态框
-function DeleteSpan () {
+function DeleteSpan (id, type) {
     var modal = document.getElementById("DeleteModal");
     modal.style.display = "block";
-}
-
-function ConfirmDelete () {
-    var modal = document.getElementById("DeleteModal");
-    modal.style.display = "none";
+    var confirm_btn = document.getElementById("confirmButton")
+    confirm_btn.onclick = function() {
+        var inputText = document.getElementById('reason_delete').value;
+        delete_order(id, type, inputText)
+        modal.style.display = "none";
+    }
 }
 
 function CancelDelete () {
