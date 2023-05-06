@@ -95,7 +95,7 @@ function search_now(list, pattern) {
         ]
     };
 
-    if (pattern === ''){
+    if (pattern === '' || pattern == null){
         return list;
     }
     const fuse = new Fuse(list, options);

@@ -59,14 +59,10 @@
                 <div class="col-md-5">
                     <div class="header-top-right">
                         <div class="lang" style="z-index: 99999;">
-                            <select name="lang" class="select" onchange="switchLanguage(this.value)">
+                            <select id="langSwitcher" name="lang" class="select" onchange="switchLanguage(this.value)">
                                 <option value="en">{{ _("ENG") }}</option>
                                 <option value="zh">{{ _("CHN") }}</option>
                             </select>
-                            <!-- <div class="account">
-                            <a href="{{ url_for('customer.login') }}"><i class="far fa-sign-in"></i>Login</a>
-                            <a href="{{ url_for('customer.login') }}"><i class="far fa-user-tie"></i>Sign Up</a>
-                        </div> -->
                         </div>
                     </div>
                 </div>
