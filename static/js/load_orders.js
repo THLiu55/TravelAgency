@@ -134,22 +134,12 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
                                             <div class="dropdown-items dropdown-items--right">
                                                 <div class="dropdown-items__container">
                                                     <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item">
-                                                        <a class="dropdown-items__link" onclick="getModifyData(${items[i].id})">
-                                                            <span class="dropdown-items__link-icon" onclick="modify(${items[i].id})" style="padding-left: 50%;">
-                                                                <button id="button_Modify" style="max-width: 100px;max-height: 30px; white-space: nowrap;">
-                                                                <svg class="icon-icon-view" style="max-width: 60px;max-height: 10px;">
-                                                                    <use xlink:href="#icon-view"></use>
-                                                                </svg>Modify
-                                                                </button>
-                                                            </span>
-                                                        </a>
-                                                    </li>
+                                                 
                                                     <li class="dropdown-items__item" >
                                                         <a class="dropdown-items__link" >
 <!--                                                        onclick="delete_order(${items[i].id})"-->
                                                         <span class="dropdown-items__link-icon" style="padding-left: 50%;">
-                                                            <button onclick="alert('确认删除？')" data-toggle="modal"  data-target="#deleteOrder" data-modal="#button_Delete" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
+                                                            <button id="orderDelete" onclick="DeleteSpan()" data-toggle="modal"  data-target="#deleteOrder" data-modal="#button_Delete" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
                                                                 </svg>Delete
@@ -196,6 +186,23 @@ function delete_order(id, type) {
         location.reload();
     }
 }
+
+// 当用户点击按钮时打开模态框
+function DeleteSpan () {
+    var modal = document.getElementById("DeleteModal");
+    modal.style.display = "block";
+}
+
+function ConfirmDelete () {
+    var modal = document.getElementById("DeleteModal");
+    modal.style.display = "none";
+}
+
+function CancelDelete () {
+    var modal = document.getElementById("DeleteModal");
+    modal.style.display = "none";
+}
+
 
 function convertTo2DList(inputList) {
   var outputList = [];

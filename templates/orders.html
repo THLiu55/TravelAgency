@@ -6,7 +6,7 @@
 
 {# head数据均放在该block里 #}
 {% block csslink %}
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/orderDelete.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -206,25 +206,17 @@
             </div>
         </main>
     </div>
-    <div class="modal modal--panel modal--right" id="deleteOrder" aria-hidden="false">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title">提示</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                          </div>
-                          <div class="modal-body">
-                            <p>确定要删除该订单吗？</p>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-danger">确认</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
 
- {% endblock %}
+    <div id="DeleteModal" class="D_modal">
+        <div class="D-modal-content">
+            <h3 class="page-header__title">The reason for deleting</h3>
+            <textarea id="reason_delete" rows="15" placeholder="Why do you want to delete this order?" class="form-control" style="resize: none" name="delete_reason"></textarea>
+            <button type="button" id="confirm" class="theme-btn" onclick="ConfirmDelete()" id="confirmButton">Confirm</button>
+            <button type="button" id="cancel" class="theme-btn" onclick="CancelDelete()" id="cancelDelete">Cancel</button>
+        </div>
+    </div>
+
+{% endblock %}
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
