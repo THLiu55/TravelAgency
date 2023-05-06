@@ -1,19 +1,30 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+let cur_pattern = ''
 const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("item-container")
 const modifyProduct = document.getElementById("modifyProduct")
+const search_box = document.getElementById("search_box")
 let BASE_URL = window.location.origin
 
-function load_flights(published, category) {
+function search_flights() {
+    let q = search_box.value
+    load_flights(null, null, q)
+}
+
+function load_flights(published, category, pattern=null) {
     if (published == null) {
         published = cur_status
     }
     if (category == null) {
         category = cur_category
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = published
+    cur_pattern = pattern
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('publish', published)
@@ -24,6 +35,7 @@ function load_flights(published, category) {
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
+        items = search_now(items, cur_pattern)
         item_container.innerHTML = ''
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
@@ -316,4 +328,25 @@ function clearInputs() {
     // }
 
     location.reload();
+}
+
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "departure",
+            "destination"
+        ]
+    };
+
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
 }

@@ -1,18 +1,29 @@
 let cur_category = 'all'
 let cur_status = 'all'
+let cur_pattern = ''
 const item_container = document.getElementById("item-container")
+const search_box = document.getElementById("search_box")
 let BASE_URL = window.location.origin
 
 
-function load_reviews(category, status) {
+function search_reviews() {
+    let q = search_box.value
+    load_reviews(null, null, q)
+}
+
+function load_reviews(category, status, pattern=null) {
     if (category == null) {
         category = cur_category
     }
     if (status == null) {
         status = cur_status
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = status
+    cur_pattern = pattern
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('category', category)
@@ -22,6 +33,7 @@ function load_reviews(category, status) {
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
+        items = search_now(items, cur_pattern)
         item_container.innerHTML = ''
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
@@ -54,7 +66,7 @@ function load_reviews(category, status) {
                                     </td>
                                     <td class="table__td"><span class="text-light-theme">${items[i].reviewed_product.name}</span>
                                     </td>
-                                    <td class="table__td text-dark-theme">${items[i].customer.nickname}</td>
+                                    <td class="table__td text-dark-theme">${items[i].customer.email}</td>
                                     <td class="table__td text-overflow maxw-260"><span class="text-light-theme">${items[i].content}</span>
                                     </td>
                                     <td class="table__td">
@@ -81,5 +93,23 @@ function clearInputs(){
     location.reload();
 }
 
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "customer.email"
+        ]
+    };
 
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}
 

@@ -1,19 +1,30 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+let cur_pattern = ''
 const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("tour-container")
 const modifyProduct = document.getElementById("modifyProduct")
+const search_box = document.getElementById("search_box")
 let BASE_URL = window.location.origin
 
-function load_tours(published, category) {
+function search_tours() {
+    let q = search_box.value
+    load_tours(null, null, q)
+}
+
+function load_tours(published, category, pattern=null) {
     if (published == null) {
         published = cur_status
     }
     if (category == null) {
         category = cur_category
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = published
+    cur_pattern = pattern
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('publish', published)
@@ -25,6 +36,7 @@ function load_tours(published, category) {
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
         item_container.innerHTML = ''
+        items = search_now(items, cur_pattern)
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -284,4 +296,24 @@ function getModifyData(id){
     fd.set('id', id)
     fd.set('type', "tour")
     xhr.send(fd)
+}
+
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "name"
+        ]
+    };
+
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
 }

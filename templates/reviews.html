@@ -105,7 +105,7 @@
                                                     <use xlink:href="#icon-search"></use>
                                                 </svg>
                                             </div>
-                                            <input id="search_box" oninput="query()" class="input" type="text" placeholder="Search">
+                                            <input id="search_box" oninput="search_reviews()" class="input" type="text" placeholder="Search by Email">
                                         </div>
                                     <!-- </form> -->
                                 </div>
@@ -215,5 +215,6 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+<script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/load_reviews.js') }}"></script>
 {% endblock %}

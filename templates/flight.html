@@ -473,13 +473,13 @@
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_flights('{{ _("All status") }}', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="{{ _("All status") }}"><span class="marker-item"></span> {{ _("All status") }}</a>
-                                            <a onclick="load_flights('{{ _("published") }}', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="{{ _("published") }}"><span class="marker-item color-green"></span>
+                                            <a onclick="load_flights('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="All status"><span class="marker-item"></span> {{ _("All status") }}</a>
+                                            <a onclick="load_flights('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="published"><span class="marker-item color-green"></span>
                                                 {{ _("published") }}</a>
-                                            <a onclick="load_flights('{{ _("deleted") }}', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="{{ _("deleted") }}"><span class="marker-item color-red"></span>
+                                            <a onclick="load_flights('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="deleted"><span class="marker-item color-red"></span>
                                                 {{ _("deleted") }}</a>
                                         </div>
                                     </div>
@@ -496,7 +496,7 @@
                                                     <use xlink:href="#icon-search"></use>
                                                 </svg>
                                             </div>
-                                            <input class="input" type="text" placeholder="Search product">
+                                            <input id="search_box" oninput="search_flights()" class="input" type="text" placeholder="Search by Departure/Destination">
                                         </div>
                                     </form>
                                 </div>
@@ -1654,5 +1654,6 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+<script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/load_flights.js') }}"></script>
 {% endblock %}
