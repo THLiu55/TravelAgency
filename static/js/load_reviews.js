@@ -124,12 +124,12 @@ function search_now(list, pattern) {
 
 function prev_page() {
     console.log(cur_page + 1)
-    load_reviews(null, null, null, cur_page + 1)
+    load_reviews(null, null, null, Math.max(0, cur_page - 1))
 }
 
 function next_page() {
     console.log(Math.max(cur_page - 1, 0))
-    load_reviews(null, null, null, Math.max(cur_page - 1, 0))
+    load_reviews(null, null, null, cur_page + 1)
 }
 
 
