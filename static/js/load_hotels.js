@@ -1,10 +1,12 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
 let cur_pattern = ''
+let cur_page = 0
 const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("item-container")
 const modifyProduct = document.getElementById("modifyProduct")
 const search_box = document.getElementById("search_box")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
 
@@ -13,7 +15,7 @@ function search_hotels() {
     load_hotels(null, null, q)
 }
 
-function load_hotels(published, category, pattern=null) {
+function load_hotels(published, category, pattern=null, page=0) {
     if (published == null) {
         published = cur_status
     }
@@ -26,6 +28,7 @@ function load_hotels(published, category, pattern=null) {
     cur_category = category
     cur_status = published
     cur_pattern = pattern
+    cur_page = page
     console.log("here")
     console.log(BASE_URL)
     let xhr = new XMLHttpRequest()
@@ -40,6 +43,12 @@ function load_hotels(published, category, pattern=null) {
         items = JSON.parse(xhr.responseText)['content']
         items = search_now(items, cur_pattern)
         item_container.innerHTML = ''
+        tmp = convertTo2DList(items)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        items = tmp[cur_page]
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -469,4 +478,33 @@ function search_now(list, pattern) {
         result[i] = result[i].item;
     }
     return  result;
+}
+
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}
+
+function prev_page() {
+    load_hotels(null, null, null, cur_page + 1)
+}
+
+function next_page() {
+    load_hotels(null, null, null, Math.max(cur_page - 1, 0))
 }
