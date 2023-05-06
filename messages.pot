@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-05 13:49+0800\n"
+"POT-Creation-Date: 2023-05-06 18:04+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -139,8 +139,54 @@ msgid ""
 "traveling planning"
 msgstr ""
 
+#: templates/AboutUs.html:166
+msgid "Project Selling Points"
+msgstr ""
+
+#: templates/AboutUs.html:167
+msgid ""
+"We have the following outstanding selling points that make us stand out "
+"from our peers"
+msgstr ""
+
+#: templates/AboutUs.html:168
+msgid "Check Our Project"
+msgstr ""
+
 #: templates/AboutUs.html:181
-msgid "Project Name #1"
+msgid "Selling Point #1"
+msgstr ""
+
+#: templates/AboutUs.html:182
+msgid ""
+"The well-trained AI robot based on Microsoft dialoGPT for 24 hours, "
+"provide comprehensive and in place customer service, and solve the basic "
+"problems of 'order view', 'account management' and so on."
+msgstr ""
+
+#: templates/AboutUs.html:196
+msgid "Selling Point #2"
+msgstr ""
+
+#: templates/AboutUs.html:197
+msgid ""
+"Based on the advanced image recognition technology in the field of "
+"artificial intelligence, Baidu's image recognition API is used to realize"
+" that users can find the services they are interested in by uploading "
+"pictures to this website."
+msgstr ""
+
+#: templates/AboutUs.html:211
+msgid "Selling Point #3"
+msgstr ""
+
+#: templates/AboutUs.html:212
+msgid ""
+"Accurate map positioning is used in the product details page, so that "
+"customers can have a more accurate understanding of the travel place. At "
+"the same time, MapBox API is used, so that employees can click any "
+"location on the map to get the address and latitude and longitude, so as "
+"to upload accurate address easily."
 msgstr ""
 
 #: templates/AboutUs.html:254
@@ -156,7 +202,7 @@ msgid "MileStone 1"
 msgstr ""
 
 #: templates/AboutUs.html:263
-msgid "January 16th, 2014"
+msgid "March 7th, 2023"
 msgstr ""
 
 #: templates/AboutUs.html:265
@@ -171,7 +217,7 @@ msgid "MileStone 2"
 msgstr ""
 
 #: templates/AboutUs.html:270
-msgid "February 28th, 2014"
+msgid "March 28th, 2023"
 msgstr ""
 
 #: templates/AboutUs.html:272
@@ -184,21 +230,64 @@ msgid ""
 msgstr ""
 
 #: templates/AboutUs.html:276
-msgid "Then we were very excited."
+msgid "MileStone 3"
 msgstr ""
 
 #: templates/AboutUs.html:277
-msgid "March 20th, 2014"
+msgid "Aprill 18th, 2023"
 msgstr ""
 
 #: templates/AboutUs.html:279
 msgid ""
-"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum "
-"praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? "
-"Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur "
-"quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! "
-"Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, "
-"temporibus dolores porro doloribus."
+"Before the mid-semester assessment, our project is supposed to be able to"
+" support all the basic tour related services like customers’ bookings, "
+"planning tool as well as functionalities like staffs’ information "
+"management, order management, data management. A basic chatting bot needs"
+" to be provided in this milestone. The initial parts of system and user "
+"documents are required to be finished."
+msgstr ""
+
+#: templates/AboutUs.html:284
+msgid "MileStone 4"
+msgstr ""
+
+#: templates/AboutUs.html:285
+msgid "May 8th, 2023"
+msgstr ""
+
+#: templates/AboutUs.html:287
+msgid ""
+"Extensive functionalities like smart replying of chatting bot, reviews "
+"and recommendations based on machine learning algorithms need to be "
+"completed in this milestone. Finish the relevant user document and system"
+" document."
+msgstr ""
+
+#: templates/AboutUs.html:292
+msgid "MileStone 5"
+msgstr ""
+
+#: templates/AboutUs.html:293
+msgid "May 20th, 2023"
+msgstr ""
+
+#: templates/AboutUs.html:295
+msgid ""
+"In the last milestone, we work together for the final release of out "
+"project. Comprehensive testing works including integration and "
+"application tests need to be completed in this milestone."
+msgstr ""
+
+#: templates/AboutUs.html:300
+msgid "Final"
+msgstr ""
+
+#: templates/AboutUs.html:301
+msgid "May 27th, 2023"
+msgstr ""
+
+#: templates/AboutUs.html:303
+msgid "Final release of our project."
 msgstr ""
 
 #: templates/AboutUs.html:368
@@ -261,79 +350,79 @@ msgstr ""
 msgid "Qi Sun"
 msgstr ""
 
-#: templates/BaseManager.html:533
+#: templates/BaseManager.html:534
 msgid "My chat"
 msgstr ""
 
-#: templates/BaseManager.html:539 templates/BaseManager.html:600
-#: templates/profile-base.html:179
+#: templates/BaseManager.html:540 templates/BaseManager.html:601
+#: templates/profile-base.html:175
 msgid "Logout"
 msgstr ""
 
-#: templates/BaseManager.html:564
+#: templates/BaseManager.html:565
 msgid "Dashboard"
 msgstr ""
 
-#: templates/BaseManager.html:566 templates/BaseManager.html:573
+#: templates/BaseManager.html:567 templates/BaseManager.html:574
 #: templates/accommodation.html:27 templates/activities.html:26
 #: templates/customerAccount.html:25 templates/customerWishlist.html:25
 #: templates/customers.html:399 templates/flight.html:449
 #: templates/orderInvoiceActivity.html:399
 #: templates/orderInvoiceFlight.html:399 templates/orderInvoiceHotel.html:398
 #: templates/orderInvoiceTour.html:399 templates/orderMessages.html:456
-#: templates/orders.html:25 templates/reviews.html:25 templates/tour.html:27
+#: templates/orders.html:26 templates/reviews.html:25 templates/tour.html:27
 msgid "Travel-Booking"
 msgstr ""
 
-#: templates/BaseManager.html:569
+#: templates/BaseManager.html:570
 msgid "Product & Orders"
 msgstr ""
 
-#: templates/BaseManager.html:575 templates/Dashboard.html:148
+#: templates/BaseManager.html:576 templates/Dashboard.html:148
 #: templates/activity-booking-confirm.html:37 templates/activity-grid.html:32
-#: templates/base.html:75 templates/profile-base.html:103
+#: templates/base.html:75 templates/profile-base.html:99
 msgid "Activity"
 msgstr ""
 
-#: templates/BaseManager.html:577 templates/Homepage.html:112
-#: templates/orders.html:57 templates/orders.html:58 templates/reviews.html:56
+#: templates/BaseManager.html:578 templates/Homepage.html:112
+#: templates/orders.html:58 templates/orders.html:59 templates/reviews.html:56
 #: templates/reviews.html:57 templates/tour.html:18 templates/tour.html:32
 msgid "Tours"
 msgstr ""
 
-#: templates/BaseManager.html:579 templates/accommodation.html:18
+#: templates/BaseManager.html:580 templates/accommodation.html:18
 #: templates/accommodation.html:33
 msgid "Accommodations"
 msgstr ""
 
-#: templates/BaseManager.html:581 templates/Homepage.html:83
-#: templates/flight.html:431 templates/flight.html:455 templates/orders.html:63
-#: templates/orders.html:64
+#: templates/BaseManager.html:582 templates/Homepage.html:83
+#: templates/flight.html:431 templates/flight.html:455 templates/orders.html:64
+#: templates/orders.html:65
 msgid "Flights"
 msgstr ""
 
-#: templates/BaseManager.html:583
+#: templates/BaseManager.html:584
 msgid "Total Orders"
 msgstr ""
 
-#: templates/BaseManager.html:585
+#: templates/BaseManager.html:586
 msgid "Customers"
 msgstr ""
 
-#: templates/BaseManager.html:587 templates/activity-detail.html:48
+#: templates/BaseManager.html:588 templates/activity-detail.html:48
 #: templates/activity-detail.html:146 templates/activity-detail.html:156
 #: templates/activity-detail.html:252 templates/activity-grid.html:222
 #: templates/flight-detail.html:272 templates/flight-detail.html:282
 #: templates/flight-detail.html:378 templates/hotel-detail.html:54
 #: templates/hotel-detail.html:334 templates/hotel-detail.html:440
 #: templates/hotel-grid.html:249 templates/profile-wishlist.html:37
-#: templates/reviews.html:17 templates/tour-detail.html:47
-#: templates/tour-detail.html:150 templates/tour-detail.html:160
-#: templates/tour-detail.html:256 templates/tour-grid.html:224
+#: templates/reviews.html:17 templates/tour-detail.html:48
+#: templates/tour-detail.html:151 templates/tour-detail.html:161
+#: templates/tour-detail.html:257 templates/tour-grid.html:224
 msgid "Reviews"
 msgstr ""
 
-#: templates/BaseManager.html:595
+#: templates/BaseManager.html:596
 msgid "Chat"
 msgstr ""
 
@@ -391,20 +480,20 @@ msgstr ""
 
 #: templates/Dashboard.html:156 templates/Homepage.html:350
 #: templates/base.html:70 templates/hotel-booking-confirm.html:37
-#: templates/hotel-grid.html:29 templates/profile-base.html:98
+#: templates/hotel-grid.html:29 templates/profile-base.html:94
 msgid "Hotel"
 msgstr ""
 
 #: templates/Dashboard.html:164 templates/Homepage.html:303
 #: templates/base.html:67 templates/flight-booking-confirm.html:37
-#: templates/flight-detail.html:22 templates/profile-base.html:95
+#: templates/flight-detail.html:22 templates/profile-base.html:91
 #: templates/reviews.html:62 templates/reviews.html:63
 msgid "Flight"
 msgstr ""
 
 #: templates/Dashboard.html:172 templates/Homepage.html:513
-#: templates/base.html:80 templates/profile-base.html:108
-#: templates/tour-booking-confirm.html:37 templates/tour-detail.html:23
+#: templates/base.html:80 templates/profile-base.html:104
+#: templates/tour-booking-confirm.html:37 templates/tour-detail.html:24
 #: templates/tour-grid.html:28
 msgid "Tour"
 msgstr ""
@@ -470,8 +559,8 @@ msgid "Pick some popular destinations for travel!"
 msgstr ""
 
 #: templates/Homepage.html:144 templates/activities.html:17
-#: templates/activities.html:31 templates/orders.html:54
-#: templates/orders.html:55 templates/reviews.html:53 templates/reviews.html:54
+#: templates/activities.html:31 templates/orders.html:55
+#: templates/orders.html:56 templates/reviews.html:53 templates/reviews.html:54
 msgid "Activities"
 msgstr ""
 
@@ -600,7 +689,7 @@ msgstr ""
 #: templates/Homepage.html:546 templates/activity-detail.html:47
 #: templates/activity-grid.html:221 templates/flight-detail.html:51
 #: templates/hotel-detail.html:53 templates/hotel-grid.html:248
-#: templates/tour-detail.html:46 templates/tour-grid.html:223
+#: templates/tour-detail.html:47 templates/tour-grid.html:223
 msgid "Excellent"
 msgstr ""
 
@@ -699,22 +788,22 @@ msgid "Beijing, China"
 msgstr ""
 
 #: templates/Homepage.html:956 templates/MainTopbar.html:103
-#: templates/base.html:128 templates/profile-base.html:208
+#: templates/base.html:128 templates/profile-base.html:204
 msgid "Group 7 NULLGROUPNAMEEXCEPTION"
 msgstr ""
 
 #: templates/Homepage.html:957 templates/MainTopbar.html:104
-#: templates/base.html:129 templates/profile-base.html:209
+#: templates/base.html:129 templates/profile-base.html:205
 msgid "Fourth Teach Building, Beijing"
 msgstr ""
 
 #: templates/Homepage.html:958 templates/MainTopbar.html:105
-#: templates/base.html:130 templates/profile-base.html:210
+#: templates/base.html:130 templates/profile-base.html:206
 msgid "Tel: 123456"
 msgstr ""
 
 #: templates/Homepage.html:959 templates/MainTopbar.html:106
-#: templates/base.html:131 templates/profile-base.html:211
+#: templates/base.html:131 templates/profile-base.html:207
 msgid "Handcrafted with love by Group 7"
 msgstr ""
 
@@ -777,9 +866,6 @@ msgstr ""
 
 #: templates/SignInUp.html:118 templates/SignInUp.html:131
 #: templates/Stafflogin.html:24
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:4
-#: venv/Lib/site-packages/flask_security/templates/security/login_user.html:3
-#: venv/Lib/site-packages/flask_security/templates/security/send_login.html:3
 msgid "Login"
 msgstr ""
 
@@ -808,55 +894,53 @@ msgid "Staff name"
 msgstr ""
 
 #: templates/accommodation.html:91 templates/accommodation.html:99
-#: templates/activities.html:74 templates/orders.html:70
+#: templates/activities.html:74 templates/orders.html:71
 msgid "All Status"
 msgstr ""
 
 #: templates/accommodation.html:102 templates/accommodation.html:103
-#: templates/flight.html:478 templates/flight.html:479
 #: templates/flight.html:480
 msgid "published"
 msgstr ""
 
 #: templates/accommodation.html:106 templates/accommodation.html:107
-#: templates/flight.html:481 templates/flight.html:482
 #: templates/flight.html:483
 msgid "deleted"
 msgstr ""
 
-#: templates/accommodation.html:155 templates/flight.html:530
-#: templates/tour.html:135
+#: templates/accommodation.html:167 templates/flight.html:542
+#: templates/tour.html:147
 msgid "ID"
 msgstr ""
 
-#: templates/accommodation.html:157 templates/activities.html:140
+#: templates/accommodation.html:169 templates/activities.html:152
 #: templates/activity-booking-confirm.html:38
-#: templates/hotel-booking-confirm.html:38 templates/tour.html:137
+#: templates/hotel-booking-confirm.html:38 templates/tour.html:149
 msgid "Product Name"
 msgstr ""
 
-#: templates/accommodation.html:160
+#: templates/accommodation.html:172
 msgid "Number Of Rooms"
 msgstr ""
 
-#: templates/accommodation.html:163 templates/activities.html:146
-#: templates/profile-booking.html:13 templates/tour.html:143
+#: templates/accommodation.html:175 templates/activities.html:158
+#: templates/profile-booking.html:13 templates/tour.html:155
 msgid "Price"
 msgstr ""
 
-#: templates/accommodation.html:167 templates/hotel-detail.html:100
+#: templates/accommodation.html:179 templates/hotel-detail.html:100
 msgid "City"
 msgstr ""
 
-#: templates/accommodation.html:170 templates/activities.html:153
-#: templates/flight.html:545 templates/orders.html:170
-#: templates/profile-booking.html:14 templates/reviews.html:135
-#: templates/tour.html:150
+#: templates/accommodation.html:182 templates/activities.html:165
+#: templates/flight.html:557 templates/orders.html:171
+#: templates/profile-booking.html:14 templates/reviews.html:151
+#: templates/tour.html:162
 msgid "Status"
 msgstr ""
 
 #: templates/activities.html:47 templates/activities.html:55
-#: templates/orders.html:44 templates/orders.html:52 templates/reviews.html:43
+#: templates/orders.html:45 templates/orders.html:53 templates/reviews.html:43
 #: templates/reviews.html:51 templates/tour.html:45 templates/tour.html:52
 #: templates/tour.html:53
 msgid "All Category"
@@ -879,8 +963,7 @@ msgid "Bike Ride"
 msgstr ""
 
 #: templates/activities.html:82 templates/flight.html:469
-#: templates/flight.html:476 templates/flight.html:477 templates/tour.html:71
-#: templates/tour.html:79
+#: templates/flight.html:477 templates/tour.html:71 templates/tour.html:79
 msgid "All status"
 msgstr ""
 
@@ -894,11 +977,11 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
-#: templates/activities.html:143 templates/tour.html:140
+#: templates/activities.html:155 templates/tour.html:152
 msgid "Category"
 msgstr ""
 
-#: templates/activities.html:150 templates/tour.html:147
+#: templates/activities.html:162 templates/tour.html:159
 msgid "Start Time"
 msgstr ""
 
@@ -984,11 +1067,11 @@ msgstr ""
 msgid "Cancel Booking"
 msgstr ""
 
-#: templates/activity-detail.html:59 templates/tour-detail.html:58
+#: templates/activity-detail.html:59 templates/tour-detail.html:59
 msgid "Duration"
 msgstr ""
 
-#: templates/activity-detail.html:81 templates/tour-detail.html:80
+#: templates/activity-detail.html:81 templates/tour-detail.html:81
 msgid "Group Size"
 msgstr ""
 
@@ -997,20 +1080,20 @@ msgid "Activity Type"
 msgstr ""
 
 #: templates/activity-detail.html:100 templates/hotel-detail.html:110
-#: templates/tour-detail.html:99
+#: templates/tour-detail.html:100
 msgid "Description"
 msgstr ""
 
-#: templates/activity-detail.html:105 templates/tour-detail.html:104
+#: templates/activity-detail.html:105 templates/tour-detail.html:105
 msgid "Included"
 msgstr ""
 
-#: templates/activity-detail.html:115 templates/tour-detail.html:114
+#: templates/activity-detail.html:115 templates/tour-detail.html:115
 msgid "Not Included"
 msgstr ""
 
 #: templates/activity-detail.html:126 templates/hotel-detail.html:327
-#: templates/tour-detail.html:143
+#: templates/tour-detail.html:144
 msgid "Location Map"
 msgstr ""
 
@@ -1028,13 +1111,13 @@ msgid "Leave a Review"
 msgstr ""
 
 #: templates/activity-detail.html:285 templates/flight-detail.html:411
-#: templates/hotel-detail.html:472 templates/tour-detail.html:288
+#: templates/hotel-detail.html:472 templates/tour-detail.html:289
 msgid "Your Rating"
 msgstr ""
 
 #: templates/activity-detail.html:313 templates/flight-detail.html:439
 #: templates/hotel-detail.html:467 templates/hotel-detail.html:500
-#: templates/tour-detail.html:284 templates/tour-detail.html:317
+#: templates/tour-detail.html:285 templates/tour-detail.html:318
 msgid "Leave A Review"
 msgstr ""
 
@@ -1056,31 +1139,23 @@ msgstr ""
 #: templates/activity-detail.html:356 templates/activity-detail.html:359
 #: templates/flight-detail.html:482 templates/flight-detail.html:485
 #: templates/hotel-detail.html:572 templates/hotel-detail.html:575
-#: templates/tour-detail.html:363 templates/tour-detail.html:366
+#: templates/tour-detail.html:364 templates/tour-detail.html:367
 msgid "Add To Wishlist"
 msgstr ""
 
 #: templates/activity-detail.html:368 templates/flight-detail.html:492
-#: templates/hotel-detail.html:582 templates/tour-detail.html:373
+#: templates/hotel-detail.html:582 templates/tour-detail.html:374
 msgid "Share"
 msgstr ""
 
 #: templates/activity-detail.html:369 templates/flight-detail.html:493
-#: templates/hotel-detail.html:583 templates/tour-detail.html:374
+#: templates/hotel-detail.html:583 templates/tour-detail.html:375
 msgid "Views"
 msgstr ""
 
 #: templates/activity-detail.html:374 templates/flight-detail.html:498
-#: templates/hotel-detail.html:588 templates/tour-detail.html:379
+#: templates/hotel-detail.html:588 templates/tour-detail.html:380
 msgid "Get A Question?"
-msgstr ""
-
-#: templates/activity-detail.html:375 templates/tour-detail.html:380
-msgid ""
-"It is a long established fact that a reader will be distracted by the "
-"readable\n"
-"                                    content\n"
-"                                    layout."
 msgstr ""
 
 #: templates/activity-grid.html:142
@@ -1127,19 +1202,19 @@ msgstr ""
 msgid "Sort By High Pricw"
 msgstr ""
 
-#: templates/base.html:64 templates/profile-base.html:92
+#: templates/base.html:64 templates/profile-base.html:88
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:92 templates/profile-base.html:120
+#: templates/base.html:92 templates/profile-base.html:116
 msgid "About US"
 msgstr ""
 
-#: templates/base.html:95 templates/profile-base.html:123
+#: templates/base.html:95 templates/profile-base.html:119
 msgid "Profile"
 msgstr ""
 
-#: templates/base.html:98 templates/profile-base.html:126
+#: templates/base.html:98 templates/profile-base.html:122
 msgid "Sign in/up"
 msgstr ""
 
@@ -1164,7 +1239,7 @@ msgid "Customer Contacts "
 msgstr ""
 
 #: templates/contacts.html:74
-msgid "Search Contacts"
+msgid "By ID/Email/Phone/Name"
 msgstr ""
 
 #: templates/contacts.html:110
@@ -1207,8 +1282,8 @@ msgstr ""
 msgid "Join Date:"
 msgstr ""
 
-#: templates/customerDetail.html:35 templates/orders.html:17
-#: templates/orders.html:30
+#: templates/customerDetail.html:35 templates/orders.html:18
+#: templates/orders.html:31
 msgid "Orders"
 msgstr ""
 
@@ -1225,7 +1300,7 @@ msgid "Flight Info"
 msgstr ""
 
 #: templates/flight-booking-confirm.html:37
-#: templates/hotel-booking-confirm.html:37 templates/orders.html:162
+#: templates/hotel-booking-confirm.html:37 templates/orders.html:163
 msgid "Product Type"
 msgstr ""
 
@@ -1233,11 +1308,11 @@ msgstr ""
 msgid "Company"
 msgstr ""
 
-#: templates/flight-booking-confirm.html:39 templates/flight.html:532
+#: templates/flight-booking-confirm.html:39 templates/flight.html:544
 msgid "Departure"
 msgstr ""
 
-#: templates/flight-booking-confirm.html:40 templates/flight.html:535
+#: templates/flight-booking-confirm.html:40 templates/flight.html:547
 msgid "Destination"
 msgstr ""
 
@@ -1398,14 +1473,6 @@ msgstr ""
 msgid "Journey Date"
 msgstr ""
 
-#: templates/flight-detail.html:499
-msgid ""
-"t is a long-established fact that a reader will be distracted by the "
-"readable\n"
-"                                    content\n"
-"                                    layout."
-msgstr ""
-
 #: templates/flight-grid.html:48
 msgid "One Way"
 msgstr ""
@@ -1511,13 +1578,13 @@ msgstr ""
 msgid "hours"
 msgstr ""
 
-#: templates/flight.html:538 templates/flight.html:656
-#: templates/flight.html:1171
+#: templates/flight.html:550 templates/flight.html:658
+#: templates/flight.html:1173
 msgid "Take Off time"
 msgstr ""
 
-#: templates/flight.html:542 templates/flight.html:664
-#: templates/flight.html:1178
+#: templates/flight.html:554 templates/flight.html:666
+#: templates/flight.html:1180
 msgid "Landing time"
 msgstr ""
 
@@ -1673,12 +1740,12 @@ msgstr ""
 msgid "Based on"
 msgstr ""
 
-#: templates/hotel-detail.html:344 templates/reviews.html:129
+#: templates/hotel-detail.html:344 templates/reviews.html:145
 msgid "Review"
 msgstr ""
 
 #: templates/hotel-detail.html:514
-msgid "Bestseller"
+msgid "Book the hotel"
 msgstr ""
 
 #: templates/hotel-detail.html:524
@@ -1687,13 +1754,6 @@ msgstr ""
 
 #: templates/hotel-detail.html:539
 msgid "Check Out"
-msgstr ""
-
-#: templates/hotel-detail.html:589
-msgid ""
-"It is a long established fact that a reader will be distracted by the "
-"readable\n"
-"                                    content layout."
 msgstr ""
 
 #: templates/hotel-grid.html:118
@@ -1756,36 +1816,36 @@ msgstr ""
 msgid "Orders "
 msgstr ""
 
-#: templates/orders.html:60 templates/orders.html:61 templates/reviews.html:59
+#: templates/orders.html:61 templates/orders.html:62 templates/reviews.html:59
 #: templates/reviews.html:60
 msgid "Hotels"
 msgstr ""
 
-#: templates/orders.html:95 templates/orders.html:103
+#: templates/orders.html:96 templates/orders.html:104
 msgid "Sort"
 msgstr ""
 
-#: templates/orders.html:105 templates/orders.html:106
+#: templates/orders.html:106 templates/orders.html:107
 msgid "By Time"
 msgstr ""
 
-#: templates/orders.html:108 templates/orders.html:109
+#: templates/orders.html:109 templates/orders.html:110
 msgid "By Price"
 msgstr ""
 
-#: templates/orders.html:160 templates/reviews.html:127
+#: templates/orders.html:161 templates/reviews.html:143
 msgid "Customer"
 msgstr ""
 
-#: templates/orders.html:164
+#: templates/orders.html:165
 msgid "Total"
 msgstr ""
 
-#: templates/orders.html:166
+#: templates/orders.html:167
 msgid "Booking Date"
 msgstr ""
 
-#: templates/orders.html:168
+#: templates/orders.html:169
 msgid "Start Date"
 msgstr ""
 
@@ -1797,24 +1857,24 @@ msgstr ""
 msgid "CHN"
 msgstr ""
 
-#: templates/profile-base.html:171 templates/profile-booking.html:4
+#: templates/profile-base.html:167 templates/profile-booking.html:4
 msgid "My Booking"
 msgstr ""
 
-#: templates/profile-base.html:172
+#: templates/profile-base.html:168
 msgid "My Profile"
 msgstr ""
 
-#: templates/profile-base.html:174 templates/profile-wishlist.html:12
+#: templates/profile-base.html:170 templates/profile-wishlist.html:12
 msgid "My Wishlist"
 msgstr ""
 
-#: templates/profile-base.html:176
+#: templates/profile-base.html:172
 msgid "My Wallet"
 msgstr ""
 
-#: templates/profile-base.html:178
-msgid "Settings"
+#: templates/profile-base.html:174
+msgid "Update profile"
 msgstr ""
 
 #: templates/profile-booking.html:9
@@ -1829,8 +1889,8 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: templates/profile-booking.html:12 templates/reviews.html:133
-#: templates/tour-detail.html:69
+#: templates/profile-booking.html:12 templates/reviews.html:149
+#: templates/tour-detail.html:70
 msgid "Date"
 msgstr ""
 
@@ -1895,7 +1955,7 @@ msgid "Clear calendar"
 msgstr ""
 
 #: templates/profile-wishlist.html:55
-msgid "Plan them in my calendar"
+msgid "Plan in my calendar"
 msgstr ""
 
 #: templates/profile-wishlist.html:98
@@ -1910,11 +1970,11 @@ msgstr ""
 msgid "All Ratings"
 msgstr ""
 
-#: templates/reviews.html:125
+#: templates/reviews.html:141
 msgid "Product"
 msgstr ""
 
-#: templates/reviews.html:131
+#: templates/reviews.html:147
 msgid "Rating"
 msgstr ""
 
@@ -1946,35 +2006,35 @@ msgstr ""
 msgid "Tour Price "
 msgstr ""
 
-#: templates/tour-detail.html:59
+#: templates/tour-detail.html:60
 msgid "Days"
 msgstr ""
 
-#: templates/tour-detail.html:91 templates/tour-grid.html:113
+#: templates/tour-detail.html:92 templates/tour-grid.html:113
 msgid "Tour Type"
 msgstr ""
 
-#: templates/tour-detail.html:125
+#: templates/tour-detail.html:126
 msgid "Itinerary"
 msgstr ""
 
-#: templates/tour-detail.html:160
+#: templates/tour-detail.html:161
 msgid "Base On "
 msgstr ""
 
-#: templates/tour-detail.html:256
+#: templates/tour-detail.html:257
 msgid "Showing "
 msgstr ""
 
-#: templates/tour-detail.html:331
+#: templates/tour-detail.html:332
 msgid "Book the tour"
 msgstr ""
 
-#: templates/tour-detail.html:356
+#: templates/tour-detail.html:357
 msgid "Book now"
 msgstr ""
 
-#: templates/tour-detail.html:360
+#: templates/tour-detail.html:361
 msgid ""
 "Remove From\n"
 "                                                        Wishlist"
@@ -2014,85 +2074,5 @@ msgstr ""
 
 #: templates/tour-grid.html:179
 msgid "More than 5 days"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:2
-msgid "Menu"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:6
-#: venv/Lib/site-packages/flask_security/templates/security/register_user.html:3
-msgid "Register"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:9
-msgid "Forgot password"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:12
-msgid "Confirm account"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/change_password.html:3
-msgid "Change password"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/forgot_password.html:3
-msgid "Send password reset instructions"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/reset_password.html:3
-msgid "Reset password"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/send_confirmation.html:3
-msgid "Resend confirmation instructions"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:1
-msgid "Your password has been changed."
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
-msgid "If you did not change your password,"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
-msgid "click here to reset it"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
-msgid "Please confirm your email through the link below:"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:6
-msgid "Confirm my account"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:1
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:1
-#, python-format
-msgid "Welcome %(email)s!"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:3
-msgid "You can log into your account through the link below:"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:5
-msgid "Login now"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/reset_instructions.html:1
-msgid "Click here to reset your password"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/reset_notice.html:1
-msgid "Your password has been reset"
-msgstr ""
-
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:4
-msgid "You can confirm your email through the link below:"
 msgstr ""
 

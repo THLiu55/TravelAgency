@@ -163,9 +163,9 @@
 			<div class="container">
 				<div class="row p-b">
 					<div class="col-md-6 col-md-offset-3 text-center">
-						<h2 class="template-heading wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Our Best Projects</h2>
-						<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
-						<p class="wow" data-wow-duration="1s" data-wow-delay="1.1s"><a href="{{ url_for('customer.homepage') }}" class="btn btn-success btn-lg">Our Project</a></p>
+						<h2 class="template-heading wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">{{ _("Project Selling Points")}}</h2>
+						<p class="wow" data-wow-duration="1s" data-wow-delay=".8s">{{_("We have the following outstanding selling points that make us stand out from our peers")}}</p>
+						<p class="wow" data-wow-duration="1s" data-wow-delay="1.1s"><a href="{{ url_for('customer.homepage') }}" class="btn btn-success btn-lg">{{ _("Check Our Project")}}</a></p>
 					</div>
 				</div>
 			</div>
@@ -178,8 +178,8 @@
 								<div class="template-text">
 									<div class="template-text-inner">
 										<div class="row">
-											<div class="col-md-6"><h3>{{ _("Project Name #1")}}</h3></div>
-											<div class="col-md-6"><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></div>
+											<div class="col-md-6"><h3>{{ _("Selling Point #1")}}</h3></div>
+											<div class="col-md-6"><p>{{ _("The well-trained AI robot based on Microsoft dialoGPT for 24 hours, provide comprehensive and in place customer service, and solve the basic problems of 'order view', 'account management' and so on.")}}</p></div>
 										</div>
 									</div>
 								</div>
@@ -193,8 +193,8 @@
 								<div class="template-text">
 									<div class="template-text-inner">
 										<div class="row">
-											<div class="col-md-6"><h3>Project Name #2</h3></div>
-											<div class="col-md-6"><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></div>
+											<div class="col-md-6"><h3>{{ _("Selling Point #2")}}</h3></div>
+											<div class="col-md-6"><p>{{ _("Based on the advanced image recognition technology in the field of artificial intelligence, Baidu's image recognition API is used to realize that users can find the services they are interested in by uploading pictures to this website.")}}</p></div>
 										</div>
 									</div>
 								</div>
@@ -208,8 +208,8 @@
 								<div class="template-text">
 									<div class="template-text-inner">
 										<div class="row">
-											<div class="col-md-6"><h3>Project Name #3</h3></div>
-											<div class="col-md-6"><p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p></div>
+											<div class="col-md-6"><h3>{{ _("Selling Point #3")}}</h3></div>
+											<div class="col-md-6"><p>{{ _("Accurate map positioning is used in the product details page, so that customers can have a more accurate understanding of the travel place. At the same time, MapBox API is used, so that employees can click any location on the map to get the address and latitude and longitude, so as to upload accurate address easily.")}}</p></div>
 										</div>
 									</div>
 								</div>
@@ -233,17 +233,17 @@
 				<div class="events-wrapper">
 					<div class="events">
 						<ol>
-							<li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
-							<li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-							<li><a href="#0" data-date="20/04/2014">20 Mar</a></li>
-							<li><a href="#0" data-date="20/05/2014">20 May</a></li>
-							<li><a href="#0" data-date="09/07/2014">09 Jul</a></li>
-							<li><a href="#0" data-date="30/08/2014">30 Aug</a></li>
-							<li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
+							<li><a href="#0" data-date="16/01/2014" class="selected">7 Mar</a></li>
+							<li><a href="#0" data-date="28/02/2014">28 Mar</a></li>
+							<li><a href="#0" data-date="20/04/2014">18 Apr</a></li>
+							<li><a href="#0" data-date="20/05/2014">8 May</a></li>
+							<li><a href="#0" data-date="09/07/2014">20 May</a></li>
+							<li><a href="#0" data-date="30/08/2014">27 May</a></li>
+							<!-- <li><a href="#0" data-date="15/09/2014">15 Sep</a></li>
 							<li><a href="#0" data-date="01/11/2014">01 Nov</a></li>
 							<li><a href="#0" data-date="10/12/2014">10 Dec</a></li>
 							<li><a href="#0" data-date="19/01/2015">29 Jan</a></li>
-							<li><a href="#0" data-date="03/03/2015">3 Mar</a></li>
+							<li><a href="#0" data-date="03/03/2015">3 Mar</a></li> -->
 						</ol>
 
 						<span class="filling-line" aria-hidden="true"></span>
@@ -252,7 +252,7 @@
 
 				<ul class="cd-timeline-navigation">
 					<li><a href="#0" class="prev inactive">{{ _("Prev")}}</a></li>
-					<li><a href="#0" class="next">{{ _("Next")}}</a></li>
+					<li><a href="#" class="next">{{ _("Next")}}</a></li>
 				</ul> <!-- .cd-timeline-navigation -->
 			</div> <!-- .timeline -->
 
@@ -260,47 +260,47 @@
 				<ol>
 					<li class="selected" data-date="16/01/2014">
 						<h2>{{ _("MileStone 1")}}</h2>
-						<em>{{ _("January 16th, 2014")}}</em>
+						<em>{{ _("March 7th, 2023")}}</em>
 						<p>
 							{{ _("In the first milestone, we are required to finish collecting, organizing and documenting user requirements. Further system design and UI design based on requirements need to be finished in these requirements as well.")}}				</p>
 					</li>
 
 					<li data-date="28/02/2014">
 						<h2>{{ _("MileStone 2")}}</h2>
-						<em>{{ _("February 28th, 2014")}}</em>
+						<em>{{ _("March 28th, 2023")}}</em>
 						<p>
 							{{ _("In the second milestone, we are supposed to finish the basic web pages including the customer portal and staff portal. Basic functionalities (front-end \& back-end) like login and sign up, staff login, tour-related information presentation and staff data presentation need to be completed in this milestone.	")}}					</p>
 					</li>
 
 					<li data-date="20/04/2014">
-						<h2>{{ _("Then we were very excited.")}}</h2>
-						<em>{{ _("March 20th, 2014")}}</em>
+						<h2>{{ _("MileStone 3")}}</h2>
+						<em>{{ _("Aprill 18th, 2023")}}</em>
 						<p>
-							{{ _("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.")}}
+							{{ _("Before the mid-semester assessment, our project is supposed to be able to support all the basic tour related services like customers’ bookings, planning tool as well as functionalities like staffs’ information management, order management, data management. A basic chatting bot needs to be provided in this milestone. The initial parts of system and user documents are required to be finished.")}}
 						</p>
 					</li>
 
 					<li data-date="20/05/2014">
-						<h2>Event title here</h2>
-						<em>May 20th, 2014</em>
+						<h2>{{ _("MileStone 4")}}</h2>
+						<em>{{ _("May 8th, 2023")}}</em>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+							{{ _("Extensive functionalities like smart replying of chatting bot, reviews and recommendations based on machine learning algorithms need to be completed in this milestone. Finish the relevant user document and system document.")}}
 						</p>
 					</li>
 
 					<li data-date="09/07/2014">
-						<h2>Event title here</h2>
-						<em>July 9th, 2014</em>
+						<h2>{{ _("MileStone 5")}}</h2>
+						<em>{{ _("May 20th, 2023")}}</em>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+							{{ _("In the last milestone, we work together for the final release of out project. Comprehensive testing works including integration and application tests need to be completed in this milestone.")}}
 						</p>
 					</li>
 
 					<li data-date="30/08/2014">
-						<h2>Event title here</h2>
-						<em>August 30th, 2014</em>
+						<h2>{{ _("Final")}}</h2>
+						<em>{{ _("May 27th, 2023")}}</em>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
+							{{ _("Final release of our project.")}}
 						</p>
 					</li>
 
@@ -416,7 +416,7 @@
 			</div>
 		</div>
 
-		<div class="template-features-style-2 section-class-scroll">
+		<!-- <div class="template-features-style-2 section-class-scroll">
 			<div class="container">
 				<div class="row p-b">
 					<div class="col-md-6 col-md-offset-3 text-center">
@@ -472,13 +472,13 @@
 				<div class="clearfix visible-sm-block visible-xs-block"></div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div id="contact" class="template-footer-style-3 section-class-scroll">
 			<div class="container">
 				<div class="row template-made">
 					<div class="col-md-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".5s">
-						<p>&copy; 2023 Group 7. All Rights Reserved. <i class="heart icon-heart"></i> in BDIC</p>
+						<p>&copy; 2023 Group 7 <i class="heart icon-heart"></i> in BDIC</p>
 					</div>
 				</div>
 			</div>
