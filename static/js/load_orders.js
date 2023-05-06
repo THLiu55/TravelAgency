@@ -86,7 +86,6 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
         }
         items = tmp[cur_page]
         page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
-        console.log(items.length)
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -226,9 +225,9 @@ function convertTo2DList(inputList) {
 }
 
 function prev_page() {
-    load_orders(null, null, null, null, cur_page + 1)
+    load_orders(null, null, null, null, Math.max(cur_page - 1, 0))
 }
 
 function next_page() {
-    load_orders(null, null, null, null, Math.max(cur_page - 1, 0))
+    load_orders(null, null, null, null, cur_page + 1)
 }

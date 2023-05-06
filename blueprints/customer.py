@@ -13,6 +13,12 @@ from flask_babel import Babel, gettext as _, refresh
 from utils.decorators import login_required
 from recognize import main
 from translations.translator import translator
+from sqlalchemy.exc import IntegrityError
+from utils.toys import (
+    get_cipher,
+    decrypt_cdkey,
+    validate_decrypted_attrs,
+)
 
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
 bp = Blueprint("customer", __name__, url_prefix="/")
@@ -581,16 +587,35 @@ def wallet():
     return render_template("profile-wallet.html", logged=True, customer=customer)
 
 
-@bp.route("/top_up", methods=['POST'])
+@bp.route("/top_up", methods=["POST"])
 def top_up():
     cdk = request.form.get("cdk-number")
-    customer = Customer.query.get(session.get('customer_id'))
-    if cdk == "ZXCV-0205-BNML-0375":
-        customer.wallet = customer.wallet + 50000
-    elif cdk == "POIU-1998-YTRE-2580":
-        customer.wallet = customer.wallet + 10000
-    db.session.commit()
-    return redirect(url_for('customer.profile', page='/wallet'))
+    customer = Customer.query.get(session.get("customer_id"))
+    dec_date_str, dec_serial_str, dec_value_str = "", "", ""
+    # try:
+    dec_date_str, dec_serial_str, dec_value_str = decrypt_cdkey(get_cipher(), cdk)
+    # print("date: ", dec_date_str, "serial: ", dec_serial_str, "value: ", dec_value_str)
+    if validate_decrypted_attrs(dec_date_str, dec_serial_str, dec_value_str):
+        redeem_history = RedeemHistory(
+            cdk_generate_date=datetime.strptime(dec_date_str, "%Y%m%d"),
+            cdk_serial=int(dec_serial_str),
+            cdk_value=int(dec_value_str),
+            customerID=customer.id,
+            redeem_time=datetime.now(),
+        )
+        # use try to avoid duplicate cdk
+        try:
+            db.session.add(redeem_history)
+            customer.wallet += int(dec_value_str)
+            db.session.commit()
+        except IntegrityError:
+            print("CDK used")
+    else:
+        print("CDK invalid")
+    # except:
+    #     print("Decryption failed")
+    #     pass  # TODO: handle exception
+    return redirect(url_for("customer.profile", page="/wallet"))
 
 
 @bp.route("/setting")

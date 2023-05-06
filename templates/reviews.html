@@ -48,7 +48,7 @@
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
                                             <a onclick="load_reviews('all', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="{{ _("All Category") }}"><span class="marker-item"></span> {{ _("All Category") }}ategory</a>
+                                                data-value="{{ _("All Category") }}"><span class="marker-item"></span> {{ _("All Category") }}</a>
                                             <a onclick="load_reviews('activity', null)" class="dropdown-menu__item" href="#" tabindex="0"
                                                 data-value="{{ _("Activities") }}"><span class="marker-item "></span>
                                                 {{ _("Activities") }}</a>
@@ -105,7 +105,7 @@
                                                     <use xlink:href="#icon-search"></use>
                                                 </svg>
                                             </div>
-                                            <input id="search_box" oninput="query()" class="input" type="text" placeholder="Search">
+                                            <input id="search_box" oninput="search_reviews()" class="input" type="text" placeholder="Search by Email">
                                         </div>
                                     <!-- </form> -->
                                 </div>
@@ -186,8 +186,8 @@
                         <div class="row">
                             <div class="table-wrapper__pagination col-auto">
                                 <ol class="pagination">
-                                    <li class="pagination__item">
-                                        <a onclick="next_page()" class="pagination__arrow pagination__arrow--prev" href="#">
+                                    <li onclick="prev_page()"class="pagination__item">
+                                        <a class="pagination__arrow pagination__arrow--prev" href="#">
                                             <svg class="icon-icon-keyboard-left">
                                                 <use xlink:href="#icon-keyboard-left"></use>
                                             </svg>
@@ -196,8 +196,8 @@
                                     <li class="pagination__item active">
                                         <a id="cur_page_num" class="pagination__link" style="background-color: white; color: black;" href="#">2/10</a>
                                     </li>
-                                    <li class="pagination__item">
-                                        <a onclick="prev_page()" class="pagination__arrow pagination__arrow--next" href="#">
+                                    <li onclick="next_page()" class="pagination__item">
+                                        <a class="pagination__arrow pagination__arrow--next" href="#">
                                             <svg class="icon-icon-keyboard-right">
                                                 <use xlink:href="#icon-keyboard-right"></use>
                                             </svg>
@@ -215,5 +215,6 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+<script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/load_reviews.js') }}"></script>
 {% endblock %}

@@ -23,6 +23,7 @@ class Customer(db.Model, UserMixin):
     hotel_reviews = db.relationship('HotelReview', backref='customer')
     flight_orders = db.relationship('FlightOrder', backref='customer')
     flight_reviews = db.relationship('FlightReview', backref='customer')
+    redeemed_codes = db.relationship('RedeemHistory', backref='customer')
     messages = db.relationship('Message', backref='customer')
 
     def serialize(self):
@@ -630,6 +631,19 @@ class FlightReview(db.Model):
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
 
+class RedeemHistory(db.Model):
+    __tablename__ = 'redeem_history'
+    cdk_generate_date = db.Column(db.DateTime)
+    cdk_serial = db.Column(db.Integer)
+    cdk_value = db.Column(db.Integer)
+    
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    redeem_time = db.Column(db.DateTime)
+    
+    __table_args__ = (
+        db.PrimaryKeyConstraint('cdk_generate_date', 'cdk_serial', 'cdk_value'),
+        db.UniqueConstraint('cdk_generate_date', 'cdk_serial', 'cdk_value'),
+    )
 
 class Room:
     square_1 = False
