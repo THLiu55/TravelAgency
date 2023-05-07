@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-06 18:04+0800\n"
+"POT-Creation-Date: 2023-05-07 13:21+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 
 #: templates/AboutUs.html:152
-msgid "Our Best Projects"
+msgid "Our Project"
 msgstr ""
 
 #: templates/AboutUs.html:153
@@ -894,7 +894,7 @@ msgid "Staff name"
 msgstr ""
 
 #: templates/accommodation.html:91 templates/accommodation.html:99
-#: templates/activities.html:74 templates/orders.html:71
+#: templates/activities.html:74
 msgid "All Status"
 msgstr ""
 
@@ -933,7 +933,7 @@ msgid "City"
 msgstr ""
 
 #: templates/accommodation.html:182 templates/activities.html:165
-#: templates/flight.html:557 templates/orders.html:171
+#: templates/flight.html:557 templates/orders.html:149
 #: templates/profile-booking.html:14 templates/reviews.html:151
 #: templates/tour.html:162
 msgid "Status"
@@ -1158,6 +1158,16 @@ msgstr ""
 msgid "Get A Question?"
 msgstr ""
 
+#: templates/activity-grid.html:94 templates/hotel-grid.html:93
+#: templates/tour-grid.html:88
+msgid "Choose the picture you want to search!"
+msgstr ""
+
+#: templates/activity-grid.html:102 templates/hotel-grid.html:101
+#: templates/tour-grid.html:96
+msgid "Recognize"
+msgstr ""
+
 #: templates/activity-grid.html:142
 msgid "Bike Ride "
 msgstr ""
@@ -1300,7 +1310,7 @@ msgid "Flight Info"
 msgstr ""
 
 #: templates/flight-booking-confirm.html:37
-#: templates/hotel-booking-confirm.html:37 templates/orders.html:163
+#: templates/hotel-booking-confirm.html:37 templates/orders.html:141
 msgid "Product Type"
 msgstr ""
 
@@ -1821,31 +1831,31 @@ msgstr ""
 msgid "Hotels"
 msgstr ""
 
-#: templates/orders.html:96 templates/orders.html:104
+#: templates/orders.html:74 templates/orders.html:82
 msgid "Sort"
 msgstr ""
 
-#: templates/orders.html:106 templates/orders.html:107
+#: templates/orders.html:84 templates/orders.html:85
 msgid "By Time"
 msgstr ""
 
-#: templates/orders.html:109 templates/orders.html:110
+#: templates/orders.html:87 templates/orders.html:88
 msgid "By Price"
 msgstr ""
 
-#: templates/orders.html:161 templates/reviews.html:143
+#: templates/orders.html:139 templates/reviews.html:143
 msgid "Customer"
 msgstr ""
 
-#: templates/orders.html:165
+#: templates/orders.html:143
 msgid "Total"
 msgstr ""
 
-#: templates/orders.html:167
+#: templates/orders.html:145
 msgid "Booking Date"
 msgstr ""
 
-#: templates/orders.html:169
+#: templates/orders.html:147
 msgid "Start Date"
 msgstr ""
 

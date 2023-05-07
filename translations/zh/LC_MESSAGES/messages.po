@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-06 18:04+0800\n"
+"POT-Creation-Date: 2023-05-07 13:21+0800\n"
 "PO-Revision-Date: 2023-04-24 17:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -117,7 +117,8 @@ msgid ""
 msgstr "允许员工组织、修改、优先排序、更新和跟踪。系统中的预订。"
 
 #: templates/AboutUs.html:152
-msgid "Our Best Projects"
+#, fuzzy
+msgid "Our Project"
 msgstr "我们最好的项目"
 
 #: templates/AboutUs.html:153
@@ -188,7 +189,9 @@ msgid ""
 "the same time, MapBox API is used, so that employees can click any "
 "location on the map to get the address and latitude and longitude, so as "
 "to upload accurate address easily."
-msgstr "在商品详情页使用了精准的地图定位，使顾客可以更精准的了解旅行地点。同时使用MapBox API，使员工可以通过点击地图上的任意位置得到地址和经纬度，从而便捷地上传精确地址。"
+msgstr ""
+"在商品详情页使用了精准的地图定位，使顾客可以更精准的了解旅行地点。同时使用MapBox "
+"API，使员工可以通过点击地图上的任意位置得到地址和经纬度，从而便捷地上传精确地址。"
 
 #: templates/AboutUs.html:254
 msgid "Prev"
@@ -895,7 +898,7 @@ msgid "Staff name"
 msgstr "工作人员姓名"
 
 #: templates/accommodation.html:91 templates/accommodation.html:99
-#: templates/activities.html:74 templates/orders.html:71
+#: templates/activities.html:74
 msgid "All Status"
 msgstr "所有状态"
 
@@ -934,7 +937,7 @@ msgid "City"
 msgstr "城市"
 
 #: templates/accommodation.html:182 templates/activities.html:165
-#: templates/flight.html:557 templates/orders.html:171
+#: templates/flight.html:557 templates/orders.html:149
 #: templates/profile-booking.html:14 templates/reviews.html:151
 #: templates/tour.html:162
 msgid "Status"
@@ -1159,6 +1162,16 @@ msgstr "意见"
 msgid "Get A Question?"
 msgstr "有问题吗？"
 
+#: templates/activity-grid.html:94 templates/hotel-grid.html:93
+#: templates/tour-grid.html:88
+msgid "Choose the picture you want to search!"
+msgstr "选择你想搜索的图片!"
+
+#: templates/activity-grid.html:102 templates/hotel-grid.html:101
+#: templates/tour-grid.html:96
+msgid "Recognize"
+msgstr "识别"
+
 #: templates/activity-grid.html:142
 msgid "Bike Ride "
 msgstr "自行车骑行"
@@ -1301,7 +1314,7 @@ msgid "Flight Info"
 msgstr "航班信息"
 
 #: templates/flight-booking-confirm.html:37
-#: templates/hotel-booking-confirm.html:37 templates/orders.html:163
+#: templates/hotel-booking-confirm.html:37 templates/orders.html:141
 msgid "Product Type"
 msgstr "产品类型"
 
@@ -1822,31 +1835,31 @@ msgstr "订单总数"
 msgid "Hotels"
 msgstr "酒店"
 
-#: templates/orders.html:96 templates/orders.html:104
+#: templates/orders.html:74 templates/orders.html:82
 msgid "Sort"
 msgstr "排序"
 
-#: templates/orders.html:106 templates/orders.html:107
+#: templates/orders.html:84 templates/orders.html:85
 msgid "By Time"
 msgstr "按时间"
 
-#: templates/orders.html:109 templates/orders.html:110
+#: templates/orders.html:87 templates/orders.html:88
 msgid "By Price"
 msgstr "按价格"
 
-#: templates/orders.html:161 templates/reviews.html:143
+#: templates/orders.html:139 templates/reviews.html:143
 msgid "Customer"
 msgstr "客户"
 
-#: templates/orders.html:165
+#: templates/orders.html:143
 msgid "Total"
 msgstr "总金额"
 
-#: templates/orders.html:167
+#: templates/orders.html:145
 msgid "Booking Date"
 msgstr "预订日期"
 
-#: templates/orders.html:169
+#: templates/orders.html:147
 msgid "Start Date"
 msgstr "出发时间"
 
