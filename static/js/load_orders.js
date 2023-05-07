@@ -119,7 +119,7 @@ function load_orders(category, status, key=null, sort_by=null, page=0) {
                                                             <button id="orderDelete" onclick="DeleteSpan(${items[i].id}, '${items[i].category}')" data-toggle="modal"  data-target="#deleteOrder" data-modal="#button_Delete" style="max-width: 100px;max-height: 30px;  white-space: nowrap;">
                                                                 <svg class="icon-icon-trash">
                                                                     <use xlink:href="#icon-trash"></use>
-                                                                </svg>Delete
+                                                                </svg>Cancel
                                                             </button>
                                                         </span>
                                                         </a>
