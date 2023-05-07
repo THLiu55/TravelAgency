@@ -612,9 +612,6 @@ def top_up():
             print("CDK used")
     else:
         print("CDK invalid")
-    # except:
-    #     print("Decryption failed")
-    #     pass  # TODO: handle exception
     return redirect(url_for("customer.profile", page="/wallet"))
 
 

@@ -1318,7 +1318,7 @@ msgstr "有问题吗？"
 #: templates/activity-grid.html:94 templates/hotel-grid.html:93
 #: templates/tour-grid.html:88
 msgid "Choose the picture you want to search!"
-msgstr "选择你想搜索的图片!"
+msgstr "请选择你想搜索的图片 ！ "
 
 #: templates/activity-grid.html:102 templates/hotel-grid.html:101
 #: templates/tour-grid.html:96
