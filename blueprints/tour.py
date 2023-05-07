@@ -111,7 +111,7 @@ def tour_filter():
     tour_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
     if 'language' in session:
-        if session["language"] == 'zh':
+        if session.get("language") == 'zh':
             key_word = request.form.get('key-word')
             key_word = translator(key_word, 'zh', 'en')
         else:
