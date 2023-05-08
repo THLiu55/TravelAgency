@@ -647,7 +647,7 @@ def recognize():
     name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
     result = json.loads(main(photo))['result'][0]['keyword']
-    if session["language"] != 'zh':
+    if session.get("language") != 'zh':
         result = translator(result, 'zh', 'en')
     else:
         result = result
