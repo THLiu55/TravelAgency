@@ -284,15 +284,15 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>{{ _("Longitude") }}</label>
-                                                                <input class="form-control" name="lon" id="modify_citylong"
-                                                                    placeholder="longitude" required>
+                                                                <input type="number" class="form-control" name="lon" id="modify_citylong"
+                                                                    placeholder="longitude" step="0.00001" max="180" min="-180" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label> {{ _("latitude") }}</label>
-                                                                <input class="form-control" name="lat" id="modify_citylati"
-                                                                    placeholder="latitude" required>
+                                                                <input type="number" class="form-control" name="lat" id="modify_citylati"
+                                                                    placeholder="latitude" step="0.00001" max="90" min="-90"  required>
                                                             </div>
                                                         </div>
                                                         <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">{{ _("Click here to get your longitude and latitude") }}</a>
@@ -680,15 +680,15 @@
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>{{ _("Longitude") }}</label>
-                                                                <input class="form-control" name="lon"
-                                                                    placeholder="Paste float" required>
+                                                                <input type="number" class="form-control" name="lon"
+                                                                    placeholder="Paste float" step="0.00001" max="180" min="-180" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label> {{ _("Latitude") }}</label>
-                                                                <input class="form-control" name="lat"
-                                                                    placeholder="Paste float" required>
+                                                                <input type="number" class="form-control" name="lat"
+                                                                    placeholder="Paste float" step="0.00001" max="90" min="-90" required>
                                                                 <p id="message"></p>
                                                             </div>
                                                         </div>

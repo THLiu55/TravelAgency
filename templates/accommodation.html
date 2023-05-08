@@ -301,15 +301,15 @@
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>Longitude</label>
-                                                            <input id="modify_citylong" class="form-control" name="lon"
-                                                                placeholder="longitude of your location">
+                                                            <input type="number" id="modify_citylong" class="form-control" name="lon"
+                                                                placeholder="longitude" step="0.00001" max="180" min="-180" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>latitude</label>
-                                                            <input id="modify_citylati" class="form-control" name="lat"
-                                                                placeholder="latitude of your location">
+                                                            <input type="number" id="modify_citylati" class="form-control" name="lat"
+                                                                placeholder="latitude" step="0.00001" max="90" min="-90"  required>
                                                         </div>
                                                     </div>
                                                     <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
@@ -858,15 +858,15 @@
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>{{ _("Longitude") }}</label>
-                                                            <input class="form-control" name="lon"
-                                                                placeholder="longitude of your location">
+                                                            <input type="number" class="form-control" name="lon"
+                                                                placeholder="longitude" step="0.00001" max="180" min="-180" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>{{ _("Latitude") }}</label>
-                                                            <input class="form-control" name="lat"
-                                                                placeholder="latitude of your location">
+                                                            <input type="number" class="form-control" name="lat"
+                                                                placeholder="latitude" step="0.00001" max="90" min="-90"  required>
                                                         </div>
                                                     </div>
                                                     <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
