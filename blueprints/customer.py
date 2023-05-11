@@ -26,6 +26,7 @@ bp = Blueprint("customer", __name__, url_prefix="/")
 
 @bp.route("/get_lang", methods=["POST"])
 def get_language():
+    session.setdefault("language", "en")
     lang = session.get("language", "en")
     return jsonify({"code": 200, "lang": lang})
 
