@@ -52,10 +52,10 @@ function activity_filter(duration, min1, max1) {
                  '<div class="activity-item">' +
                  '<div class="activity-img">' +
                  '<img src="' + activity.images[0] + '" alt="" style="width:500px; height:200px">' +
-                 '<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>' +
+                 '<a href="' + activity.contact_email + '" class="add-wishlist"><i class="far fa-heart"></i></a>' +
                  '</div>' +
                  '<div class="activity-content">' +
-                 '<h4 class="activity-title"><a href="#">' + activity.name + '</a></h4>' +
+                 '<h4 class="activity-title"><a href="' + activity.contact_email + '">' + activity.name + '</a></h4>' +
                  '<p><i class="far fa-location-dot"></i>' + activity.address + ', ' + activity.city + '</p>' +
                  '<div class="activity-rate">' +
                  '<span class="badge"><i class="fal fa-star"></i> 5.0</span>' +

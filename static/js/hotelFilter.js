@@ -51,10 +51,10 @@ function hotel_filter() {
                  '<div class="activity-item">' +
                  '<div class="activity-img">' +
                  '<img src="' + hotel.images[0] + '" alt="" style="width:500px; height:200px">' +
-                 '<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>' +
+                 '<a href="' + hotel.contact_email + '" class="add-wishlist"><i class="far fa-heart"></i></a>' +
                  '</div>' +
                  '<div class="activity-content">' +
-                 '<h4 class="activity-title"><a href="#">' + hotel.name + '</a></h4>' +
+                 '<h4 class="activity-title"><a href="' + hotel.contact_email + '">' + hotel.name + '</a></h4>' +
                  '<p><i class="far fa-location-dot"></i>' + hotel.address + ', ' + hotel.city + '</p>' +
                  '<div class="activity-rate">' +
                  '<span class="badge"><i class="fal fa-star"></i> 5.0</span>' +
