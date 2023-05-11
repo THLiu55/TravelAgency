@@ -646,7 +646,10 @@ def update_profile():
 def recognize():
     name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
-    result = json.loads(main(photo))['result'][0]['keyword']
+    if len(photo.read()) > 4194304:
+        result = 'The picture size should be less than 4MB'
+    else:
+        result = json.loads(main(photo))['result'][0]['keyword']
     if session.get("language") != 'zh':
         result = translator(result, 'zh', 'en')
     else:
