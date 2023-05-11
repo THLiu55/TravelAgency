@@ -67,8 +67,8 @@ def flightDetail(flight_id):
     end_date = start_date + timedelta(days=5 * 30)
     week_days = []
     while start_date <= end_date:
-        if start_date.weekday() == int(flight.week_day)-1:
-            week_days.append(start_date.strftime("%Y-%m-%d")+',')
+        if start_date.weekday() == int(flight.week_day) - 1:
+            week_days.append(start_date.strftime("%Y-%m-%d") + ',')
         start_date += timedelta(days=1)
     return render_template("flight-detail.html", logged=logged, flight=flight, images=images, wifi=wifi,
                            air_condition=air_condition, coffee=coffee
@@ -85,10 +85,14 @@ def order_confirm():
     if customer_id:
         flight_id = request.form.get("flight_id")
         to_confirmed = Flight.query.get(flight_id)
-        order_date = request.form.get("journey-date")
+        order_date = datetime.datetime.strptime(request.form.get("journey-date"), '%Y/%m/%d').strftime(
+            '%Y/%m/%d') + ' ' + to_confirmed.takeoff_time.strftime('%H:%M')
         customer = Customer.query.get(customer_id)
+        arrive_time = datetime.datetime.strptime(request.form.get("journey-date"), '%Y/%m/%d') + timedelta(
+            days=to_confirmed.total_time // 24)
+        arrive_time = arrive_time.strftime('%Y/%m/%d') + ' ' + to_confirmed.landing_time.strftime('%H:%M')
         return render_template("flight-booking-confirm.html", flight=to_confirmed, customer=customer,
-                               order_date=order_date, logged=True)
+                               order_date=order_date, arrive_time=arrive_time, logged=True)
     else:
         url = request.referrer
         return render_template("SignInUp.html", url=url)
