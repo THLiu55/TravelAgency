@@ -238,10 +238,10 @@
 <div class="activity-item">
 <div class="activity-img">
 <img src="{{ url_for('static', filename=hotel.images[0].replace('\\','/')) }}" alt="" style="width:500px; height:200px">
-<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>
+<a href="{{ url_for('hotel.hotelDetail', hotel_id=hotel.id) }}" class="add-wishlist"><i class="far fa-heart"></i></a>
 </div>
 <div class="activity-content">
-<h4 class="activity-title"><a href="#">{{ hotel.name }}</a></h4>
+<h4 class="activity-title"><a href="{{ url_for('hotel.hotelDetail', hotel_id=hotel.id) }}">{{ hotel.name }}</a></h4>
 <p><i class="far fa-location-dot"></i>{{ hotel.address }}, {{ hotel.city }}</p>
 <div class="activity-rate">
 <span class="badge"><i class="fal fa-star"></i> 5.0</span>
