@@ -10,7 +10,7 @@ class Customer(db.Model, UserMixin):
     nickname = db.Column(db.String(255))
     password = db.Column(db.String(255))
     avatarURL = db.Column(db.Text)
-    wallet = db.Column(db.Double)
+    wallet = db.Column(db.Double, default=0.0)
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
