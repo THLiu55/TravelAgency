@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-07 17:21+0800\n"
+"POT-Creation-Date: 2023-05-11 17:00+0800\n"
 "PO-Revision-Date: 2023-04-24 17:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -815,10 +815,11 @@ msgid "Change Password"
 msgstr "修改密码"
 
 #: templates/SignInUp.html:23 templates/SignInUp.html:85
-#: templates/SignInUp.html:122 templates/activities.html:549
-#: templates/activities.html:953 templates/activity-booking-confirm.html:58
-#: templates/contacts.html:108 templates/hotel-booking-confirm.html:59
-#: templates/profile-setting.html:18 templates/tour-booking-confirm.html:58
+#: templates/SignInUp.html:122 templates/accommodation.html:1297
+#: templates/activities.html:549 templates/activities.html:953
+#: templates/activity-booking-confirm.html:58 templates/contacts.html:108
+#: templates/hotel-booking-confirm.html:59 templates/profile-setting.html:18
+#: templates/tour-booking-confirm.html:58
 msgid "Email"
 msgstr "电子邮件"
 
@@ -936,8 +937,9 @@ msgstr "房间数量"
 msgid "Price"
 msgstr "价格"
 
-#: templates/accommodation.html:179 templates/activities.html:264
-#: templates/activities.html:660 templates/hotel-detail.html:100
+#: templates/accommodation.html:179 templates/accommodation.html:839
+#: templates/activities.html:264 templates/activities.html:660
+#: templates/hotel-detail.html:100
 msgid "City"
 msgstr "城市"
 
@@ -947,6 +949,228 @@ msgstr "城市"
 #: templates/tour.html:162
 msgid "Status"
 msgstr "状态"
+
+#: templates/accommodation.html:310 templates/accommodation.html:867
+#: templates/activities.html:689 templates/tour.html:697
+msgid "Latitude"
+msgstr "经度"
+
+#: templates/accommodation.html:702 templates/accommodation.html:1273
+msgid "The infomation of Availiable Rooms"
+msgstr "可用客房"
+
+#: templates/accommodation.html:786 templates/activities.html:606
+msgid "Add Product"
+msgstr "添加产品"
+
+#: templates/accommodation.html:794
+msgid "Add Accomodation"
+msgstr "添加住宿"
+
+#: templates/accommodation.html:797 templates/activities.html:221
+#: templates/activities.html:617
+msgid "Basic Information"
+msgstr "基本信息"
+
+#: templates/accommodation.html:821
+msgid "Total Number Of Rooms & Suites"
+msgstr "房间数量"
+
+#: templates/accommodation.html:829
+msgid "Minimal Price"
+msgstr "最低价格"
+
+#: templates/accommodation.html:835 templates/activities.html:261
+#: templates/activities.html:657
+msgid "Location"
+msgstr "位置"
+
+#: templates/accommodation.html:846 templates/activities.html:271
+#: templates/activities.html:667
+msgid "State"
+msgstr "国家"
+
+#: templates/accommodation.html:853 templates/activities.html:278
+#: templates/activities.html:675 templates/profile-setting.html:32
+msgid "Address"
+msgstr "住址"
+
+#: templates/accommodation.html:860 templates/activities.html:286
+#: templates/activities.html:682 templates/tour.html:690
+msgid "Longitude"
+msgstr "经度"
+
+#: templates/accommodation.html:892 templates/hotel-grid.html:178
+msgid "Hotel Star"
+msgstr "酒店星级"
+
+#: templates/accommodation.html:911
+msgid "Your Accommodation Information"
+msgstr "您的活动信息"
+
+#: templates/accommodation.html:916 templates/hotel-detail.html:77
+msgid "Minimum Stay"
+msgstr "最低停留时间"
+
+#: templates/accommodation.html:925
+msgid "Security"
+msgstr "城市"
+
+#: templates/accommodation.html:934
+msgid "On Site Staff"
+msgstr "酒店星级"
+
+#: templates/accommodation.html:943
+msgid "Housekeeping"
+msgstr "管家"
+
+#: templates/accommodation.html:952
+msgid "Front Desk"
+msgstr "开始日期"
+
+#: templates/accommodation.html:962
+msgid "Bathroom"
+msgstr "卫生间"
+
+#: templates/accommodation.html:972 templates/activities.html:349
+#: templates/activities.html:749
+msgid "Product Images"
+msgstr "产品图片"
+
+#: templates/accommodation.html:1067 templates/activities.html:416
+#: templates/activities.html:817
+msgid "Detailed Information"
+msgstr "详细信息"
+
+#: templates/accommodation.html:1070 templates/activities.html:419
+#: templates/activities.html:820 templates/activity-detail.html:100
+#: templates/hotel-detail.html:110 templates/tour-detail.html:100
+msgid "Description"
+msgstr "描述"
+
+#: templates/accommodation.html:1079 templates/hotel-detail.html:172
+msgid "Amenities"
+msgstr "便利设施"
+
+#: templates/accommodation.html:1089 templates/hotel-detail.html:249
+#: templates/hotel-grid.html:141
+msgid "Airport Transportation"
+msgstr "机场交通"
+
+#: templates/accommodation.html:1098 templates/hotel-detail.html:221
+msgid "Bar / Lounge"
+msgstr "酒吧/休息室"
+
+#: templates/accommodation.html:1107
+msgid "Beach"
+msgstr "海滩"
+
+#: templates/accommodation.html:1116
+msgid "Beverage Selection"
+msgstr "饮料的选择"
+
+#: templates/accommodation.html:1125 templates/hotel-detail.html:192
+msgid "Swimming Pool"
+msgstr "游泳池"
+
+#: templates/accommodation.html:1134 templates/hotel-grid.html:153
+msgid "WiFi"
+msgstr "无线网络"
+
+#: templates/accommodation.html:1143 templates/flight-detail.html:182
+#: templates/hotel-detail.html:200
+msgid "Coffee"
+msgstr "咖啡"
+
+#: templates/accommodation.html:1152 templates/flight-detail.html:189
+#: templates/hotel-grid.html:159
+msgid "Air Conditioning"
+msgstr "空调"
+
+#: templates/accommodation.html:1161 templates/flight-detail.html:175
+#: templates/hotel-detail.html:235
+msgid "Entertainment"
+msgstr "娱乐片"
+
+#: templates/accommodation.html:1170 templates/hotel-detail.html:305
+msgid "Elevator In Building"
+msgstr "电梯"
+
+#: templates/accommodation.html:1179
+msgid "Wheelchair Access"
+msgstr "轮椅"
+
+#: templates/accommodation.html:1188 templates/hotel-detail.html:214
+#: templates/hotel-grid.html:147
+msgid "Fitness Facility"
+msgstr "健身设施"
+
+#: templates/accommodation.html:1197 templates/hotel-detail.html:270
+msgid "Breakfast"
+msgstr "早餐"
+
+#: templates/accommodation.html:1206 templates/hotel-detail.html:291
+msgid "Handicap Accessible"
+msgstr "残疾人无障碍"
+
+#: templates/accommodation.html:1215 templates/hotel-detail.html:263
+msgid "Pets Allowed"
+msgstr "允许携带宠物"
+
+#: templates/accommodation.html:1224 templates/hotel-detail.html:312
+msgid "Suitable For Events"
+msgstr "适用于活动"
+
+#: templates/accommodation.html:1233 templates/hotel-grid.html:129
+msgid "Restaurant"
+msgstr "餐馆"
+
+#: templates/accommodation.html:1242 templates/hotel-detail.html:298
+msgid "Doorman"
+msgstr "门卫"
+
+#: templates/accommodation.html:1251 templates/hotel-detail.html:277
+#: templates/hotel-grid.html:123
+msgid "Free Parking"
+msgstr "免费停车场"
+
+#: templates/accommodation.html:1260 templates/hotel-detail.html:228
+msgid "Wine Bar"
+msgstr "葡萄酒酒吧"
+
+#: templates/accommodation.html:1277
+msgid "Room Type numbers"
+msgstr "房间名称"
+
+#: templates/accommodation.html:1282
+msgid "Room Information"
+msgstr "房间信息"
+
+#: templates/accommodation.html:1285 templates/activities.html:538
+#: templates/activities.html:942
+msgid "Contact Information"
+msgstr "联系方式"
+
+#: templates/accommodation.html:1290 templates/activities.html:542
+#: templates/activities.html:946 templates/activity-booking-confirm.html:57
+#: templates/contacts.html:106 templates/hotel-booking-confirm.html:58
+#: templates/tour-booking-confirm.html:57
+msgid "Name"
+msgstr "名字"
+
+#: templates/accommodation.html:1304 templates/activities.html:556
+#: templates/activities.html:960 templates/contacts.html:112
+#: templates/profile-setting.html:25
+msgid "Phone"
+msgstr "手机"
+
+#: templates/accommodation.html:1321
+msgid "Submit New Accommodation"
+msgstr "住宿"
+
+#: templates/accommodation.html:1340 templates/profile-booking.html:35
+msgid "Cancel"
+msgstr "取消"
 
 #: templates/activities.html:47 templates/activities.html:55
 #: templates/orders.html:45 templates/orders.html:53 templates/reviews.html:43
@@ -994,10 +1218,6 @@ msgstr "产品类别"
 msgid "Start Time"
 msgstr "出发时间"
 
-#: templates/activities.html:221 templates/activities.html:617
-msgid "Basic Information"
-msgstr "基本信息"
-
 #: templates/activities.html:226 templates/activities.html:622
 msgid "Priority"
 msgstr "优先级"
@@ -1010,24 +1230,7 @@ msgstr "官方地名"
 msgid "Activity Category"
 msgstr "活动类型"
 
-#: templates/activities.html:261 templates/activities.html:657
-msgid "Location"
-msgstr "位置"
-
-#: templates/activities.html:271 templates/activities.html:667
-msgid "State"
-msgstr "国家"
-
-#: templates/activities.html:278 templates/activities.html:675
-#: templates/profile-setting.html:32
-msgid "Address"
-msgstr "住址"
-
-#: templates/activities.html:286 templates/activities.html:682
-msgid "Longitude"
-msgstr "经度"
-
-#: templates/activities.html:293 templates/activities.html:689
+#: templates/activities.html:293
 msgid "latitude"
 msgstr "经度"
 
@@ -1064,20 +1267,6 @@ msgstr "开始日期"
 #: templates/activities.html:339 templates/activities.html:737
 msgid "To Date"
 msgstr "结束日期"
-
-#: templates/activities.html:349 templates/activities.html:749
-msgid "Product Images"
-msgstr "产品图片"
-
-#: templates/activities.html:416 templates/activities.html:817
-msgid "Detailed Information"
-msgstr "详细信息"
-
-#: templates/activities.html:419 templates/activities.html:820
-#: templates/activity-detail.html:100 templates/hotel-detail.html:110
-#: templates/tour-detail.html:100
-msgid "Description"
-msgstr "描述"
 
 #: templates/activities.html:427 templates/activities.html:828
 #: templates/activity-detail.html:105 templates/tour-detail.html:105
@@ -1134,22 +1323,6 @@ msgstr "开放时间"
 msgid "Visit Hour"
 msgstr "参观时间"
 
-#: templates/activities.html:538 templates/activities.html:942
-msgid "Contact Information"
-msgstr "联系方式"
-
-#: templates/activities.html:542 templates/activities.html:946
-#: templates/activity-booking-confirm.html:57 templates/contacts.html:106
-#: templates/hotel-booking-confirm.html:58
-#: templates/tour-booking-confirm.html:57
-msgid "Name"
-msgstr "名字"
-
-#: templates/activities.html:556 templates/activities.html:960
-#: templates/contacts.html:112 templates/profile-setting.html:25
-msgid "Phone"
-msgstr "手机"
-
 #: templates/activities.html:566 templates/activities.html:970
 #: templates/tour.html:572 templates/tour.html:977
 msgid "I Agree With Your Terms Of Services And Privacy Policy."
@@ -1160,10 +1333,6 @@ msgid ""
 "Submit Your\n"
 "                                                                Activity"
 msgstr "提交你的活动"
-
-#: templates/activities.html:606
-msgid "Add Product"
-msgstr "添加产品"
 
 #: templates/activities.html:614
 msgid "Add Activity"
@@ -1572,18 +1741,6 @@ msgstr "无线网络"
 msgid "Television"
 msgstr "电视机"
 
-#: templates/flight-detail.html:175 templates/hotel-detail.html:235
-msgid "Entertainment"
-msgstr "娱乐片"
-
-#: templates/flight-detail.html:182 templates/hotel-detail.html:200
-msgid "Coffee"
-msgstr "咖啡"
-
-#: templates/flight-detail.html:189 templates/hotel-grid.html:159
-msgid "Air Conditioning"
-msgstr "空调"
-
 #: templates/flight-detail.html:196
 msgid "Food"
 msgstr "食物"
@@ -1779,10 +1936,6 @@ msgstr "酒店类别"
 msgid "5 Star"
 msgstr "5颗星"
 
-#: templates/hotel-detail.html:77
-msgid "Minimum Stay"
-msgstr "最低停留时间"
-
 #: templates/hotel-detail.html:78
 msgid "Nights"
 msgstr "夜晚"
@@ -1823,73 +1976,21 @@ msgstr "/每天"
 msgid "Select Room"
 msgstr "选择房间"
 
-#: templates/hotel-detail.html:172
-msgid "Amenities"
-msgstr "便利设施"
-
-#: templates/hotel-detail.html:192
-msgid "Swimming Pool"
-msgstr "游泳池"
-
 #: templates/hotel-detail.html:207
 msgid "Air Condition"
 msgstr "空调"
-
-#: templates/hotel-detail.html:214 templates/hotel-grid.html:147
-msgid "Fitness Facility"
-msgstr "健身设施"
-
-#: templates/hotel-detail.html:221
-msgid "Bar / Lounge"
-msgstr "酒吧/休息室"
-
-#: templates/hotel-detail.html:228
-msgid "Wine Bar"
-msgstr "葡萄酒酒吧"
 
 #: templates/hotel-detail.html:242
 msgid "Secure Vault"
 msgstr "安全库"
 
-#: templates/hotel-detail.html:249 templates/hotel-grid.html:141
-msgid "Airport Transportation"
-msgstr "机场交通"
-
 #: templates/hotel-detail.html:256
 msgid "Room Service"
 msgstr "客房服务"
 
-#: templates/hotel-detail.html:263
-msgid "Pets Allowed"
-msgstr "允许携带宠物"
-
-#: templates/hotel-detail.html:270
-msgid "Breakfast"
-msgstr "早餐"
-
-#: templates/hotel-detail.html:277 templates/hotel-grid.html:123
-msgid "Free Parking"
-msgstr "免费停车场"
-
 #: templates/hotel-detail.html:284
 msgid "Fire Place"
 msgstr "火灾现场"
-
-#: templates/hotel-detail.html:291
-msgid "Handicap Accessible"
-msgstr "残疾人无障碍"
-
-#: templates/hotel-detail.html:298
-msgid "Doorman"
-msgstr "门卫"
-
-#: templates/hotel-detail.html:305
-msgid "Elevator In Building"
-msgstr "电梯"
-
-#: templates/hotel-detail.html:312
-msgid "Suitable For Events"
-msgstr "适用于活动"
 
 #: templates/hotel-detail.html:319
 msgid "Play Place"
@@ -1919,25 +2020,13 @@ msgstr "退房"
 msgid "Facilities"
 msgstr "设施"
 
-#: templates/hotel-grid.html:129
-msgid "Restaurant"
-msgstr "餐馆"
-
 #: templates/hotel-grid.html:135
 msgid "Pets Allowed "
 msgstr "允许携带宠物"
 
-#: templates/hotel-grid.html:153
-msgid "WiFi"
-msgstr "无线网络"
-
 #: templates/hotel-grid.html:169 templates/tour-grid.html:150
 msgid "Price:"
 msgstr "价格："
-
-#: templates/hotel-grid.html:178
-msgid "Hotel Star"
-msgstr "酒店星级"
 
 #: templates/hotel-grid.html:188
 msgid "4 Star"
@@ -2064,10 +2153,6 @@ msgstr "已完成"
 #: templates/profile-booking.html:29
 msgid "Upcoming"
 msgstr "即将到来"
-
-#: templates/profile-booking.html:35
-msgid "Cancel"
-msgstr "取消"
 
 #: templates/profile-setting.html:5 templates/profile-setting.html:37
 msgid "Update Profile Info"

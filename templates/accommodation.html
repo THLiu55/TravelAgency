@@ -307,7 +307,7 @@
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
-                                                            <label>latitude</label>
+                                                            <label>{{ _("Latitude") }}</label>
                                                             <input type="number" id="modify_citylati" class="form-control" name="lat"
                                                                 placeholder="latitude" step="0.00001" max="90" min="-90"  required>
                                                         </div>
@@ -699,7 +699,7 @@
                                                             </div>
 
                                                         </div>
-                                                        <h5 class="my-4">The infomation of Availiable Rooms</h5>
+                                                        <h5 class="my-4">{{ _("The infomation of Availiable Rooms") }}</h5>
                                                         <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;"> -->
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
@@ -783,7 +783,7 @@
                 <div class="modal__content">
                     <div class="modal__header">
                         <div class="modal__container">
-                            <h2 class="modal__title">Add Product</h2>
+                            <h2 class="modal__title">{{ _("Add Product") }}</h2>
                         </div>
                     </div>
                     <div class="modal__body">
@@ -791,15 +791,15 @@
                             <form action="{{ url_for('manager.add_hotel') }}" method="post" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
-                                    <h4 class="user-profile-card-title">Add Accomodation</h4>
+                                    <h4 class="user-profile-card-title">{{ _("Add Accomodation") }}</h4>
                                     <div class="col-lg-12">
                                         <div class="add-listing-form">
-                                            <h5 class="mb-4">Basic Information</h5>
+                                            <h5 class="mb-4">{{ _("Basic Information") }}</h5>
                                             {# <form action="#">#}
                                                 <div class="row align-items-center">
                                                     <div class="col-lg-6">
                                                             <div class="form-group">
-                                                                <label>Priority</label>
+                                                                <label>{{ _("Priority") }}</label>
                                                                 <select class="select" name="pri" id="pri" required>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -811,14 +811,14 @@
                                                         </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Hotel Name</label>
+                                                            <label>{{ _("Hotel Name") }}</label>
                                                             <input type="text" class="form-control" name="name"
                                                                 placeholder="Enter hotel name"  required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Total Number Of Rooms & Suites</label>
+                                                            <label>{{ _("Total Number Of Rooms & Suites") }}</label>
                                                             <input type="number" class="form-control" name="room_num"
                                                                 placeholder="Enter total rooms" required>
                                                         </div>
@@ -826,31 +826,31 @@
 
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Minimal Price</label>
+                                                            <label>{{ _("Minimal Price") }}</label>
                                                             <input type="number" class="form-control" name="min_price" min="0"
                                                                 placeholder="Enter Minimal price" required>
                                                         </div>
                                                     </div>
 
-                                                    <h5 class="my-4">Location</h5>
+                                                    <h5 class="my-4">{{ _("Location") }}</h5>
                                                     <div class="row align-items-center">
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
-                                                            <label>City</label>
+                                                            <label>{{ _("City") }}</label>
                                                             <input type="text" class="form-control" name="city"
                                                                 placeholder="Enter city" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
-                                                            <label>State</label>
+                                                            <label>{{ _("State") }}</label>
                                                             <input type="text" class="form-control" name="state"
                                                                 placeholder="Enter state" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <label>Address</label>
+                                                            <label>{{ _("Address") }}</label>
                                                             <input type="text" class="form-control" name="address"
                                                                 placeholder="Enter address" required>
                                                         </div>
@@ -889,7 +889,7 @@
 
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                                <label>Hotel Star</label>
+                                                                <label>{{ _("Hotel Star") }}</label>
                                                                 <select name="hotel_star" class="select">
                                                                     <option value="1">1 Star</option>
                                                                     <option value="2">2 Star</option>
@@ -908,12 +908,12 @@
                                                                 placeholder="Enter address 2">#}
                                                             {# </div>#}
                                                         {# </div>#}
-                                                    <h5 class="my-4">Your Accommodation Information</h5>
+                                                    <h5 class="my-4">{{ _("Your Accommodation Information") }}</h5>
                                                     <div
                                                         style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Minimum Stay</label>
+                                                                <label>{{ _("Minimum Stay") }}</label>
                                                                 <select name="min_stay" class="select">
                                                                     <option value="2 Nights Or Less">2 Nights Or Less</option>
                                                                     <option value="More Than 2 Nights">More Than 2 Nights</option>
@@ -922,7 +922,7 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Security</label>
+                                                                <label>{{ _("Security") }}</label>
                                                                 <select name="security" class="select">
                                                                     <option value="On Site">On Site</option>
                                                                     <option value="None">None</option>
@@ -931,7 +931,7 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>On Site Staff</label>
+                                                                <label>{{ _("On Site Staff") }}</label>
                                                                 <select name="on_site_staff" class="select">
                                                                     <option value="Yes">Yes</option>
                                                                     <option value="No">No</option>
@@ -940,7 +940,7 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Housekeeping</label>
+                                                                <label>{{ _("Housekeeping") }}</label>
                                                                 <select name="house_keeping" class="select">
                                                                     <option value="Included In Room Rate">Included In Room Rate</option>
                                                                     <option value="Additional Fee">Additional Fee</option>
@@ -949,7 +949,7 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Front Desk</label>
+                                                                <label>{{ _("Front Desk") }}</label>
                                                                 <select name="front_desk" class="select">
                                                                     <option value="24 Hour Staffing">24 Hour Staffing</option>
                                                                     <option value="Limited Hours Staffing">Limited Hours Staffing</option>
@@ -959,7 +959,7 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Bathroom</label>
+                                                                <label>{{ _("Bathroom") }}</label>
                                                                 <select name="bathroom" class="select">
                                                                     <option value="All En Suite">All En Suite</option>
                                                                     <option value="Some En Suite">Some En Suite</option>
@@ -969,7 +969,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 form-group form-group--lg">
-                                                        <label class="form-label">Product Images</label>
+                                                        <label class="form-label">{{ _("Product Images") }}</label>
                                                         <div class="image-upload">
                                                             <div class="image-upload__drop">
                                                                 <input class="image-upload__input" type="file"
@@ -1064,10 +1064,10 @@
                                                                 </div>
                                                             </div>
                                                         </div> -->
-                                                    <h5 class="my-4">Detailed Information</h5>
+                                                    <h5 class="my-4">{{ _("Detailed Information") }}</h5>
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <label>Description</label>
+                                                            <label>{{ _("Description") }}</label>
                                                             <textarea class="form-control" name="description"
                                                                 placeholder="Write description" cols="30"
                                                                 rows="5"></textarea>
@@ -1076,7 +1076,7 @@
                                                     <div
                                                         style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%; padding-top: 15px;">
                                                         <div>
-                                                            <h5 class="my-4">Amenities</h5>
+                                                            <h5 class="my-4">{{ _("Amenities") }}</h5>
                                                         </div>
 
 <div>
@@ -1086,7 +1086,7 @@
                                                                 <input class="form-check-input" name="aminity1"
                                                                     type="checkbox" value="Airport Transportation" id="aminity1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity1">
-                                                                    Airport Transportation
+                                                                    {{ _("Airport Transportation") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1095,7 +1095,7 @@
                                                                 <input class="form-check-input" name="aminity2"
                                                                     type="checkbox" value="Bar / Lounge" id="aminity2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity2">
-                                                                    Bar / Lounge
+                                                                    {{ _("Bar / Lounge") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1104,7 +1104,7 @@
                                                                 <input class="form-check-input" name="aminity3"
                                                                     type="checkbox" value="Beach" id="aminity3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity3">
-                                                                    Beach
+                                                                    {{ _("Beach") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1113,7 +1113,7 @@
                                                                 <input class="form-check-input" name="aminity4"
                                                                     type="checkbox" value="Beverage Selection" id="aminity4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity4">
-                                                                    Beverage Selection
+                                                                    {{ _("Beverage Selection") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1122,7 +1122,7 @@
                                                                 <input class="form-check-input" name="aminity5"
                                                                     type="checkbox" value="Swimming Pool" id="aminity5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity5">
-                                                                    Swimming Pool
+                                                                    {{ _("Swimming Pool") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1131,7 +1131,7 @@
                                                                 <input class="form-check-input" name="aminity6"
                                                                     type="checkbox" value="WiFi" id="aminity6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity6">
-                                                                    WiFi
+                                                                    {{ _("WiFi") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1140,7 +1140,7 @@
                                                                 <input class="form-check-input" name="aminity7"
                                                                     type="checkbox" value="Coffee" id="aminity7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity7">
-                                                                    Coffee
+                                                                    {{ _("Coffee") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1149,7 +1149,7 @@
                                                                 <input class="form-check-input" name="aminity8"
                                                                     type="checkbox" value="Air Conditioning" id="aminity8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity8">
-                                                                    Air Conditioning
+                                                                    {{ _("Air Conditioning") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1158,7 +1158,7 @@
                                                                 <input class="form-check-input" name="aminity9"
                                                                     type="checkbox" value="Entertainment" id="aminity9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity9">
-                                                                    Entertainment
+                                                                    {{ _("Entertainment") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1167,7 +1167,7 @@
                                                                 <input class="form-check-input" name="aminity10"
                                                                     type="checkbox" value="Elevator In Building" id="aminity10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity10">
-                                                                    Elevator In Building
+                                                                    {{ _("Elevator In Building") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1176,7 +1176,7 @@
                                                                 <input class="form-check-input" name="aminity11"
                                                                     type="checkbox" value="Wheelchair Access" id="aminity11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity11">
-                                                                    Wheelchair Access
+                                                                    {{ _("Wheelchair Access") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1185,7 +1185,7 @@
                                                                 <input class="form-check-input" name="aminity12"
                                                                     type="checkbox" value="Fitness Facility" id="aminity12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity12">
-                                                                    Fitness Facility
+                                                                    {{ _("Fitness Facility") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1194,7 +1194,7 @@
                                                                 <input class="form-check-input" name="aminity13"
                                                                     type="checkbox" value="Breakfast" id="aminity13" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity13">
-                                                                    Breakfast
+                                                                    {{ _("Breakfast") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1203,7 +1203,7 @@
                                                                 <input class="form-check-input" name="aminity14"
                                                                     type="checkbox" value="Handicap Accessible" id="aminity14" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity14">
-                                                                    Handicap Accessible
+                                                                    {{ _("Handicap Accessible") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1212,7 +1212,7 @@
                                                                 <input class="form-check-input" name="aminity15"
                                                                     type="checkbox" value="Pets Allowed" id="aminity15" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity15">
-                                                                    Pets Allowed
+                                                                    {{ _("Pets Allowed") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1221,7 +1221,7 @@
                                                                 <input class="form-check-input" name="aminity16"
                                                                     type="checkbox" value="Suitable For Events" id="aminity16" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity16">
-                                                                    Suitable For Events
+                                                                    {{ _("Suitable For Events") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1230,7 +1230,7 @@
                                                                 <input class="form-check-input" name="aminity17"
                                                                     type="checkbox" value="Restaurant" id="aminity17" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity17">
-                                                                    Restaurant
+                                                                    {{ _("Restaurant") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1239,7 +1239,7 @@
                                                                 <input class="form-check-input" name="aminity18"
                                                                     type="checkbox" value="Doorman" id="aminity18" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity18">
-                                                                    Doorman
+                                                                    {{ _("Doorman") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1248,7 +1248,7 @@
                                                                 <input class="form-check-input" name="aminity19"
                                                                     type="checkbox" value="Free Parking" id="aminity19" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity19">
-                                                                    Free Parking
+                                                                    {{ _("Free Parking") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1257,7 +1257,7 @@
                                                                 <input class="form-check-input" name="aminity20"
                                                                     type="checkbox" value="Wine Bar" id="aminity20" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity20">
-                                                                    Wine Bar
+                                                                    {{ _("Wine Bar") }}
                                                                 </label>
                                                             </div>
 
@@ -1270,55 +1270,55 @@
                                                             </div>
 
                                                         </div>
-                                                        <h5 class="my-4">The infomation of Availiable Rooms</h5>
+                                                        <h5 class="my-4">{{ _("The infomation of Availiable Rooms") }}</h5>
                                                         <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;"> -->
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
-                                                               <label>Room Type numbers</label>
+                                                               <label>{{ _("Room Type numbers") }}</label>
                                                                <input type="number" class="form-control" min="0" max="7" name="typenum"
                                                                    placeholder="Enter room type numbers" id="inputRoomNumber" required>
                                                            </div>
                                                        </div>
-                                                       <h5 class="my-4">Room Information</h5>
+                                                       <h5 class="my-4">{{ _("Room Information") }}</h5>
                                                     <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer">
                                                        </div>
-                                                        <h5 class="my-4">Contact Information</h5>
+                                                        <h5 class="my-4">{{ _("Contact Information") }}</h5>
                                                         <div
                                                             style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 200%;padding-top: 15px;">
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
-                                                                    <label>Name</label>
+                                                                    <label>{{ _("Name") }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_name" placeholder="Enter name" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
-                                                                    <label>Email</label>
+                                                                    <label>{{ _("Email") }}</label>
                                                                     <input type="email" class="form-control"
                                                                         name="contact_email" placeholder="Enter email" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
-                                                                    <label>Phone</label>
+                                                                    <label>{{ _("Phone") }}</label>
                                                                     <input type="tel" class="form-control"
                                                                         name="contact_phone" placeholder="Enter phone" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 mt-4">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" name="agree"
-                                                                        type="checkbox" value="" id="agree" disabled
-                                                                        checked style="-webkit-appearance:checkbox;">
-                                                                    <label class="form-check-label" for="agree">
-                                                                        I Agree With Your Terms Of Services And Privacy
-                                                                        Policy.
-                                                                    </label>
-                                                                </div>
-                                                            </div>
+{#                                                            <div class="col-12 mt-4">#}
+{#                                                                <div class="form-check">#}
+{#                                                                    <input class="form-check-input" name="agree"#}
+{#                                                                        type="checkbox" value="" id="agree" disabled#}
+{#                                                                        checked style="-webkit-appearance:checkbox;">#}
+{#                                                                    <label class="form-check-label" for="agree">#}
+{#                                                                        I Agree With Your Terms Of Services And Privacy#}
+{#                                                                        Policy.#}
+{#                                                                    </label>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
                                                             <div class="col-lg-12 my-4">
-                                                                <button type="submit" class="theme-btn">Submit New Accommodation</button>
+                                                                <button type="submit" class="theme-btn">{{ _("Submit New Accommodation") }}</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1337,7 +1337,7 @@
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
                                     <button class="button button--secondary button--block" data-dismiss="modal"><span
-                                            class="button__text" onclick="clearInputs()">Cancel</span>
+                                            class="button__text" onclick="clearInputs()">{{ _("Cancel") }}</span>
                                     </button>
                                 </div>
                             </div>
