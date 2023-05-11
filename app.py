@@ -29,7 +29,6 @@ app.logger.addHandler(handler)
 bp_register_all(app)
 exts_load_all(app)
 
-session.setdefault("language", "en")
 
 # global decorators
 @app.before_request
