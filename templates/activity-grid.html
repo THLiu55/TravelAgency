@@ -52,7 +52,7 @@
               <div class="finder__inner">
                 <div class="finder__icon" ref="icon"></div>
                 {% if result %}
-                  <input id="search_box_change" class="finder__input" type="text" name="q" value="{{ result }}" />
+                  <input id="search_box_change" class="finder__input" type="text" name="q" />
                   {% else %}
                   <input id="search_box_change" class="finder__input" type="text" name="q" />
                   {% endif %}
@@ -235,6 +235,7 @@
     {% endfor %}
 
 </div>
+<input id="search_box_change1" value="{{ result }}" hidden>
 <div class="pagination-area">
 <!-- <div aria-label="Page navigation example">
 <ul class="pagination">
@@ -307,4 +308,22 @@ function openPopup() {
     <script src="{{ url_for('static', filename='js/activityFilter.js') }}"></script>
     <script src="{{ url_for('static', filename='js/seachbarscript.js') }}"></script>
     <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
+    <script>
+    function size_check() {
+        let input_box1 = document.getElementById('search_box_change1');
+        let val = input_box1.value;
+        if (val === "The picture size should be less than 4MB"){
+            alert("The picture size should be less than 4MB");
+        }else {
+            if (val === 'None'){
+                document.getElementById('search_box_change').value = "";
+            }else{
+                document.getElementById('search_box_change').value = val;
+            }
+
+        }
+    }
+
+    size_check();
+    </script>
 {% endblock %}
