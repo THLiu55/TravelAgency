@@ -96,10 +96,12 @@ $(function() {
 function checkbox_protect(d) {
     if (d!==3){
         let checkboxes = document.getElementsByName("activity-duration");
+        checkboxes[d].checked = !!checkboxes[d].checked;
         for (let i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = false;
+            if (i!==d){
+                checkboxes[i].checked = false;
+            }
         }
-        checkboxes[d].checked = true;
     }
 }
 
