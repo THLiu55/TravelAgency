@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-11 17:00+0800\n"
+"POT-Creation-Date: 2023-05-12 15:00+0800\n"
 "PO-Revision-Date: 2023-04-24 17:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -690,9 +690,8 @@ msgid " Place(s)"
 msgstr "地点"
 
 #: templates/Homepage.html:546 templates/activity-detail.html:47
-#: templates/activity-grid.html:221 templates/flight-detail.html:51
-#: templates/hotel-detail.html:53 templates/hotel-grid.html:248
-#: templates/tour-detail.html:47 templates/tour-grid.html:223
+#: templates/flight-detail.html:51 templates/hotel-detail.html:53
+#: templates/tour-detail.html:47
 msgid "Excellent"
 msgstr "好评众多"
 
@@ -871,9 +870,9 @@ msgstr "登录"
 
 #: templates/SignInUp.html:118 templates/SignInUp.html:131
 #: templates/Stafflogin.html:24
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:4
-#: venv/Lib/site-packages/flask_security/templates/security/login_user.html:3
-#: venv/Lib/site-packages/flask_security/templates/security/send_login.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:4
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/login_user.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_login.html:3
 msgid "Login"
 msgstr "登录"
 
@@ -971,6 +970,15 @@ msgstr "添加住宿"
 #: templates/activities.html:617
 msgid "Basic Information"
 msgstr "基本信息"
+
+#: templates/accommodation.html:802 templates/activities.html:226
+#: templates/activities.html:622
+msgid "Priority"
+msgstr "优先级"
+
+#: templates/accommodation.html:814
+msgid "Hotel Name"
+msgstr "酒店名字"
 
 #: templates/accommodation.html:821
 msgid "Total Number Of Rooms & Suites"
@@ -1217,10 +1225,6 @@ msgstr "产品类别"
 #: templates/activities.html:162 templates/tour.html:159
 msgid "Start Time"
 msgstr "出发时间"
-
-#: templates/activities.html:226 templates/activities.html:622
-msgid "Priority"
-msgstr "优先级"
 
 #: templates/activities.html:238 templates/activities.html:634
 msgid "Official Place Name"
@@ -1471,16 +1475,11 @@ msgstr "添加到心愿单"
 
 #: templates/activity-detail.html:368 templates/flight-detail.html:492
 #: templates/hotel-detail.html:582 templates/tour-detail.html:374
-msgid "Share"
-msgstr "分享"
-
-#: templates/activity-detail.html:369 templates/flight-detail.html:493
-#: templates/hotel-detail.html:583 templates/tour-detail.html:375
 msgid "Views"
 msgstr "意见"
 
-#: templates/activity-detail.html:374 templates/flight-detail.html:498
-#: templates/hotel-detail.html:588 templates/tour-detail.html:380
+#: templates/activity-detail.html:373 templates/flight-detail.html:497
+#: templates/hotel-detail.html:587 templates/tour-detail.html:379
 msgid "Get A Question?"
 msgstr "有问题吗？"
 
@@ -1553,6 +1552,22 @@ msgstr "个人简介"
 #: templates/base.html:98 templates/profile-base.html:122
 msgid "Sign in/up"
 msgstr "登录/注册"
+
+#: templates/booking-success.html:33
+msgid "Your Booking"
+msgstr "你的预定"
+
+#: templates/booking-success.html:33
+msgid "Is Confirmed."
+msgstr "已确认。"
+
+#: templates/booking-success.html:34
+msgid "Have a look about other interesting activities and tour plans!"
+msgstr "看看其他有趣的活动和旅游计划吧！"
+
+#: templates/booking-success.html:35
+msgid "See order detail"
+msgstr "请参阅订单详细信息"
 
 #: templates/chatRoom.html:12
 msgid "Group 7 Travel Agency"
@@ -1932,7 +1947,7 @@ msgstr "酒店价格"
 msgid "Hotel Type"
 msgstr "酒店类别"
 
-#: templates/hotel-detail.html:67
+#: templates/hotel-detail.html:67 templates/hotel-grid.html:182
 msgid "5 Star"
 msgstr "5颗星"
 
@@ -2316,83 +2331,83 @@ msgstr "3至5天"
 msgid "More than 5 days"
 msgstr "超过5天"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:2
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:2
 msgid "Menu"
 msgstr "菜单"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:6
-#: venv/Lib/site-packages/flask_security/templates/security/register_user.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:6
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/register_user.html:3
 msgid "Register"
 msgstr "注册"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:9
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:9
 msgid "Forgot password"
 msgstr "忘记密码？"
 
-#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:12
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:12
 msgid "Confirm account"
 msgstr "客户账户"
 
-#: venv/Lib/site-packages/flask_security/templates/security/change_password.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/change_password.html:3
 msgid "Change password"
 msgstr "修改密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/forgot_password.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/forgot_password.html:3
 msgid "Send password reset instructions"
 msgstr "发送密码重置说明"
 
-#: venv/Lib/site-packages/flask_security/templates/security/reset_password.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/reset_password.html:3
 msgid "Reset password"
 msgstr "重置密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/send_confirmation.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_confirmation.html:3
 msgid "Resend confirmation instructions"
 msgstr "重新发送确认说明"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:1
 msgid "Your password has been changed."
 msgstr "您的密码已更改。"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "If you did not change your password,"
 msgstr "如果您没有更改密码，"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "click here to reset it"
 msgstr "单击此处重置"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
 msgid "Please confirm your email through the link below:"
 msgstr "请通过以下链接确认您的电子邮件："
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:6
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:6
 msgid "Confirm my account"
 msgstr "确认我的账户"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:1
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:1
 #, python-format
 msgid "Welcome %(email)s!"
 msgstr "欢迎使用%（电子邮件）s！"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:3
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:3
 msgid "You can log into your account through the link below:"
 msgstr "您可以通过以下链接登录您的帐户："
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:5
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:5
 msgid "Login now"
 msgstr "登录"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/reset_instructions.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_instructions.html:1
 msgid "Click here to reset your password"
 msgstr "单击此处重置您的密码"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/reset_notice.html:1
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_notice.html:1
 msgid "Your password has been reset"
 msgstr "您的密码已重置"
 
-#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:4
+#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:4
 msgid "You can confirm your email through the link below:"
 msgstr "您可以通过以下链接确认您的电子邮件："
 
@@ -2530,4 +2545,7 @@ msgstr "您可以通过以下链接确认您的电子邮件："
 
 #~ msgid "Settings"
 #~ msgstr "设置"
+
+#~ msgid "Share"
+#~ msgstr "分享"
 
