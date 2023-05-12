@@ -217,8 +217,8 @@
 <h4 class="activity-title"><a href="{{ url_for('activity.activityDetail', activity_id=activity.id) }}">{{ activity.name }}</a></h4>
 <p><i class="far fa-location-dot"></i>{{ activity.address }}, {{ activity.city }}</p>
 <div class="activity-rate">
-<span class="badge"><i class="fal fa-star"></i> 5.0</span>
-<span class="activity-rate-type">{{ _("Excellent") }}</span>
+<span class="badge"><i class="fal fa-star"></i> {{ activity.score }}</span>
+<span class="activity-rate-type">{{ activity.tag }}</span>
 <span class="activity-rate-review">({{ activity.review_num }} {{ _("Reviews") }})</span>
 </div>
 <div class="activity-bottom">

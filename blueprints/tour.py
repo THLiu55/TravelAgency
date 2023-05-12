@@ -20,6 +20,18 @@ def tourList(page_num):
         # noinspection PyTypeChecker
         single_tour.images = json.loads(single_tour.images)['images']
         single_tour.images[0] = single_tour.images[0][single_tour.images[0].index('static'):].lstrip('static')
+        star_detail = json.loads(single_tour.star_detail)['star_detail']
+        single_tour.score = round(sum(star_detail) / single_tour.review_num, 1) if single_tour.review_num != 0 else 0
+        if single_tour.review_num == 0:
+            single_tour.score = 3.0
+            single_tour.tag = 'Nice'
+        else:
+            if single_tour.score >= 4:
+                single_tour.tag = 'Excellent'
+            elif single_tour.score >= 3:
+                single_tour.tag = 'Nice'
+            else:
+                single_tour.tag = 'Good'
     tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
     logged = True if session.get("customer_id") else False
     result = request.args.get('result')
@@ -155,7 +167,19 @@ def tour_filter():
 
     if to_sort == '4':
         tours = sorted(tours, key=lambda tour: tour.price, reverse=True)
-
+    for activity in tours:
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.contact_phone = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.contact_phone = '3.0'
+            activity.lat = 'Nice'
+        else:
+            if activity.contact_phone >= 4:
+                activity.lat = 'Excellent'
+            elif activity.contact_phone >= 3:
+                activity.lat = 'Nice'
+            else:
+                activity.lat = 'Good'
     tours = [tour.to_dict() for tour in tours]
     return jsonify({"tours": tours, "page": 1, "keyword": key_word})
 

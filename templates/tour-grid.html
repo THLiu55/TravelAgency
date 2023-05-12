@@ -219,8 +219,8 @@
                                             <h4 class="activity-title"><a href="{{ url_for('tour.tourDetail', tour_id=tour.id) }}">{{ tour.name }}</a></h4>
                                             <p><i class="far fa-location-dot"></i>{{ tour.address }}, {{ tour.city }}</p>
                                             <div class="activity-rate">
-                                                <span class="badge"><i class="fal fa-star"></i> 5.0</span>
-                                                <span class="activity-rate-type">{{ _("Excellent") }}</span>
+                                                <span class="badge"><i class="fal fa-star"></i>{{ tour.score }}</span>
+                                                <span class="activity-rate-type">{{ tour.tag }}</span>
                                                 <span class="activity-rate-review">({{ tour.review_num }} {{ _("Reviews") }})</span>
                                             </div>
                                             <div class="activity-bottom">

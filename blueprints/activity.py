@@ -52,6 +52,18 @@ def activityList(page_num):
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.score = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.score = 3.0
+            activity.tag = 'Nice'
+        else:
+            if activity.score >= 4:
+                activity.tag = 'Excellent'
+            elif activity.score >= 3:
+                activity.tag = 'Nice'
+            else:
+                activity.tag = 'Good'
     activities = sorted(activities, key=lambda i: i.priority, reverse=True)
     result = request.args.get('result')
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
@@ -159,6 +171,19 @@ def activity_filter():  # ajax activity filter
 
     if to_sort == '4':
         activities = sorted(activities, key=lambda activity: activity.price, reverse=True)
+    for activity in activities:
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.contact_phone = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.contact_phone = '3.0'
+            activity.lat = 'Nice'
+        else:
+            if activity.contact_phone >= 4:
+                activity.lat = 'Excellent'
+            elif activity.contact_phone >= 3:
+                activity.lat = 'Nice'
+            else:
+                activity.lat = 'Good'
     activities = [activity.to_dict() for activity in activities]
     return jsonify({"activities": activities, "page": 1, "keyword": key_word})
 

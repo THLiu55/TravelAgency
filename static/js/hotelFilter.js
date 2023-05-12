@@ -57,8 +57,8 @@ function hotel_filter() {
                  '<h4 class="activity-title"><a href="' + hotel.contact_email + '">' + hotel.name + '</a></h4>' +
                  '<p><i class="far fa-location-dot"></i>' + hotel.address + ', ' + hotel.city + '</p>' +
                  '<div class="activity-rate">' +
-                 '<span class="badge"><i class="fal fa-star"></i> 5.0</span>' +
-                 '<span class="activity-rate-type">Excellent</span>' +
+                 '<span class="badge"><i class="fal fa-star"></i>'+ hotel.contact_phone +'</span>' +
+                 '<span class="activity-rate-type">' + hotel.lat + '</span>' +
                  '<span class="activity-rate-review">(' + hotel.review_num + ' Reviews)</span>' +
                  '</div>' +
                  '<div class="activity-bottom">' +

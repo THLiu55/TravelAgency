@@ -14,7 +14,7 @@ class Customer(db.Model, UserMixin):
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
-    amount_unread_msgs = db.Column(db.Integer, default=-1) # -1 means never chatted
+    amount_unread_msgs = db.Column(db.Integer, default=-1)  # -1 means never chatted
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
@@ -46,7 +46,7 @@ class Message(db.Model):
     sentTime = db.Column(db.DateTime)
     isByCustomer = db.Column(db.Boolean)  # if False then by staff
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
-    
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -175,7 +175,8 @@ class Activity(db.Model):
             'contact_name': self.contact_name,
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
-            'pri': self.priority
+            'pri': self.priority,
+            'lat': self.lat
         }
 
     def serialize_info(self):
@@ -318,7 +319,8 @@ class Tour(db.Model):
             "contact_email": self.contact_email,
             "lat": self.lat,
             "lon": self.lon,
-            'pri': self.priority
+            'pri': self.priority,
+            'contact_phone': self.contact_phone
         }
 
     def serialize_info(self):
@@ -409,7 +411,9 @@ class Hotel(db.Model):
             "review_num": self.review_num,
             "min_price": self.min_price,
             "contact_email": self.contact_email,
-            'pri': self.priority
+            'pri': self.priority,
+            "contact_phone": self.contact_phone,
+            "lat": self.lat
         }
 
     def serialize_info(self):
@@ -631,19 +635,21 @@ class FlightReview(db.Model):
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
 
+
 class RedeemHistory(db.Model):
     __tablename__ = 'redeem_history'
     cdk_generate_date = db.Column(db.DateTime)
     cdk_serial = db.Column(db.Integer)
     cdk_value = db.Column(db.Integer)
-    
+
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     redeem_time = db.Column(db.DateTime)
-    
+
     __table_args__ = (
         db.PrimaryKeyConstraint('cdk_generate_date', 'cdk_serial', 'cdk_value'),
         db.UniqueConstraint('cdk_generate_date', 'cdk_serial', 'cdk_value'),
     )
+
 
 class Room:
     square_1 = False

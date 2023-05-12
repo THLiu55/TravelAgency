@@ -58,8 +58,8 @@ function activity_filter(duration, min1, max1) {
                  '<h4 class="activity-title"><a href="' + activity.contact_email + '">' + activity.name + '</a></h4>' +
                  '<p><i class="far fa-location-dot"></i>' + activity.address + ', ' + activity.city + '</p>' +
                  '<div class="activity-rate">' +
-                 '<span class="badge"><i class="fal fa-star"></i> 5.0</span>' +
-                 '<span class="activity-rate-type">Excellent</span>' +
+                 '<span class="badge"><i class="fal fa-star"></i>'+ activity.contact_phone +'</span>' +
+                 '<span class="activity-rate-type">' + activity.lat + '</span>' +
                  '<span class="activity-rate-review">(' + activity.review_num + ' Reviews)</span>' +
                  '</div>' +
                  '<div class="activity-bottom">' +

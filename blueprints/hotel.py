@@ -20,6 +20,18 @@ def hotelList(page_num):
         # noinspection PyTypeChecker
         single_hotel.images = json.loads(single_hotel.images)['images']
         single_hotel.images[0] = single_hotel.images[0][single_hotel.images[0].index('static'):].lstrip('static')
+        star_detail = json.loads(single_hotel.star_detail)['star_detail']
+        single_hotel.score = round(sum(star_detail) / single_hotel.review_num, 1) if single_hotel.review_num != 0 else 0
+        if single_hotel.review_num == 0:
+            single_hotel.score = 3.0
+            single_hotel.tag = 'Nice'
+        else:
+            if single_hotel.score >= 4:
+                single_hotel.tag = 'Excellent'
+            elif single_hotel.score >= 3:
+                single_hotel.tag = 'Nice'
+            else:
+                single_hotel.tag = 'Good'
     hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
     result = request.args.get('result')
     return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged,
@@ -68,6 +80,19 @@ def hotel_filter():
 
     if to_sort == '4':
         hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=True)
+    for activity in hotels:
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.contact_phone = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.contact_phone = '3.0'
+            activity.lat = 'Nice'
+        else:
+            if activity.contact_phone >= 4:
+                activity.lat = 'Excellent'
+            elif activity.contact_phone >= 3:
+                activity.lat = 'Nice'
+            else:
+                activity.lat = 'Good'
     hotels = [hotel.to_dict() for hotel in hotels]
     return jsonify({"hotels": hotels, "page": 1, "keyword": key_word})
 
