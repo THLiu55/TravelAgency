@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-05-12 15:00+0800\n"
+"POT-Creation-Date: 2023-05-15 17:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -814,8 +814,9 @@ msgstr ""
 #: templates/SignInUp.html:122 templates/accommodation.html:1297
 #: templates/activities.html:549 templates/activities.html:953
 #: templates/activity-booking-confirm.html:58 templates/contacts.html:108
-#: templates/hotel-booking-confirm.html:59 templates/profile-setting.html:18
-#: templates/tour-booking-confirm.html:58
+#: templates/flight.html:1567 templates/hotel-booking-confirm.html:59
+#: templates/profile-setting.html:18 templates/tour-booking-confirm.html:58
+#: templates/tour.html:960
 msgid "Email"
 msgstr ""
 
@@ -867,9 +868,9 @@ msgstr ""
 
 #: templates/SignInUp.html:118 templates/SignInUp.html:131
 #: templates/Stafflogin.html:24
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:4
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/login_user.html:3
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_login.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:4
+#: venv/Lib/site-packages/flask_security/templates/security/login_user.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/send_login.html:3
 msgid "Login"
 msgstr ""
 
@@ -930,6 +931,7 @@ msgstr ""
 #: templates/accommodation.html:175 templates/activities.html:158
 #: templates/activities.html:256 templates/activities.html:652
 #: templates/profile-booking.html:13 templates/tour.html:155
+#: templates/tour.html:660
 msgid "Price"
 msgstr ""
 
@@ -956,6 +958,7 @@ msgid "The infomation of Availiable Rooms"
 msgstr ""
 
 #: templates/accommodation.html:786 templates/activities.html:606
+#: templates/flight.html:1116 templates/tour.html:613
 msgid "Add Product"
 msgstr ""
 
@@ -964,12 +967,14 @@ msgid "Add Accomodation"
 msgstr ""
 
 #: templates/accommodation.html:797 templates/activities.html:221
-#: templates/activities.html:617
+#: templates/activities.html:617 templates/flight.html:1128
+#: templates/tour.html:624
 msgid "Basic Information"
 msgstr ""
 
 #: templates/accommodation.html:802 templates/activities.html:226
-#: templates/activities.html:622
+#: templates/activities.html:622 templates/flight.html:1135
+#: templates/tour.html:629
 msgid "Priority"
 msgstr ""
 
@@ -986,17 +991,18 @@ msgid "Minimal Price"
 msgstr ""
 
 #: templates/accommodation.html:835 templates/activities.html:261
-#: templates/activities.html:657
+#: templates/activities.html:657 templates/tour.html:665
 msgid "Location"
 msgstr ""
 
 #: templates/accommodation.html:846 templates/activities.html:271
-#: templates/activities.html:667
+#: templates/activities.html:667 templates/tour.html:675
 msgid "State"
 msgstr ""
 
 #: templates/accommodation.html:853 templates/activities.html:278
 #: templates/activities.html:675 templates/profile-setting.html:32
+#: templates/tour.html:683
 msgid "Address"
 msgstr ""
 
@@ -1038,18 +1044,21 @@ msgid "Bathroom"
 msgstr ""
 
 #: templates/accommodation.html:972 templates/activities.html:349
-#: templates/activities.html:749
+#: templates/activities.html:749 templates/flight.html:1331
+#: templates/tour.html:760
 msgid "Product Images"
 msgstr ""
 
 #: templates/accommodation.html:1067 templates/activities.html:416
-#: templates/activities.html:817
+#: templates/activities.html:817 templates/flight.html:1426
+#: templates/tour.html:827
 msgid "Detailed Information"
 msgstr ""
 
 #: templates/accommodation.html:1070 templates/activities.html:419
 #: templates/activities.html:820 templates/activity-detail.html:100
-#: templates/hotel-detail.html:110 templates/tour-detail.html:100
+#: templates/flight.html:1429 templates/hotel-detail.html:110
+#: templates/tour-detail.html:100 templates/tour.html:830
 msgid "Description"
 msgstr ""
 
@@ -1083,17 +1092,17 @@ msgid "WiFi"
 msgstr ""
 
 #: templates/accommodation.html:1143 templates/flight-detail.html:182
-#: templates/hotel-detail.html:200
+#: templates/flight.html:1466 templates/hotel-detail.html:200
 msgid "Coffee"
 msgstr ""
 
 #: templates/accommodation.html:1152 templates/flight-detail.html:189
-#: templates/hotel-grid.html:159
+#: templates/flight.html:1448 templates/hotel-grid.html:159
 msgid "Air Conditioning"
 msgstr ""
 
 #: templates/accommodation.html:1161 templates/flight-detail.html:175
-#: templates/hotel-detail.html:235
+#: templates/flight.html:1475 templates/hotel-detail.html:235
 msgid "Entertainment"
 msgstr ""
 
@@ -1152,20 +1161,23 @@ msgid "Room Information"
 msgstr ""
 
 #: templates/accommodation.html:1285 templates/activities.html:538
-#: templates/activities.html:942
+#: templates/activities.html:942 templates/flight.html:1555
+#: templates/tour.html:949
 msgid "Contact Information"
 msgstr ""
 
 #: templates/accommodation.html:1290 templates/activities.html:542
 #: templates/activities.html:946 templates/activity-booking-confirm.html:57
-#: templates/contacts.html:106 templates/hotel-booking-confirm.html:58
-#: templates/tour-booking-confirm.html:57
+#: templates/contacts.html:106 templates/flight.html:1560
+#: templates/hotel-booking-confirm.html:58
+#: templates/tour-booking-confirm.html:57 templates/tour.html:953
 msgid "Name"
 msgstr ""
 
 #: templates/accommodation.html:1304 templates/activities.html:556
 #: templates/activities.html:960 templates/contacts.html:112
-#: templates/profile-setting.html:25
+#: templates/flight.html:1574 templates/profile-setting.html:25
+#: templates/tour.html:967
 msgid "Phone"
 msgstr ""
 
@@ -1245,11 +1257,13 @@ msgstr ""
 
 #: templates/activities.html:305 templates/activities.html:702
 #: templates/activity-detail.html:59 templates/tour-detail.html:59
+#: templates/tour.html:708
 msgid "Duration"
 msgstr ""
 
 #: templates/activities.html:317 templates/activities.html:714
 #: templates/activity-detail.html:81 templates/tour-detail.html:81
+#: templates/tour.html:728
 msgid "Group Size"
 msgstr ""
 
@@ -1262,53 +1276,64 @@ msgid "People"
 msgstr ""
 
 #: templates/activities.html:329 templates/activities.html:727
+#: templates/tour.html:740
 msgid "From Date"
 msgstr ""
 
 #: templates/activities.html:339 templates/activities.html:737
+#: templates/tour.html:750
 msgid "To Date"
 msgstr ""
 
 #: templates/activities.html:427 templates/activities.html:828
 #: templates/activity-detail.html:105 templates/tour-detail.html:105
+#: templates/tour.html:838
 msgid "Included"
 msgstr ""
 
 #: templates/activities.html:436 templates/activities.html:839
+#: templates/tour.html:849
 msgid "Airfare"
 msgstr ""
 
 #: templates/activities.html:447 templates/activities.html:850
+#: templates/tour.html:860
 msgid "Local Transportation"
 msgstr ""
 
 #: templates/activities.html:458 templates/activities.html:861
-#: templates/hotel-detail.html:23
+#: templates/hotel-detail.html:23 templates/tour.html:871
 msgid "Accommodation"
 msgstr ""
 
 #: templates/activities.html:467 templates/activities.html:870
+#: templates/tour.html:880
 msgid "Tour Guide"
 msgstr ""
 
 #: templates/activities.html:475 templates/activities.html:878
 #: templates/activity-detail.html:115 templates/tour-detail.html:115
+#: templates/tour.html:888
 msgid "Not Included"
 msgstr ""
 
 #: templates/activities.html:483 templates/activities.html:886
+#: templates/tour.html:896
 msgid "Entrance Fees"
 msgstr ""
 
 #: templates/activities.html:492 templates/activities.html:895
+#: templates/tour.html:905
 msgid "Guide Gratuity"
 msgstr ""
 
 #: templates/activities.html:501 templates/activities.html:904
+#: templates/tour.html:914
 msgid "Lunch"
 msgstr ""
 
 #: templates/activities.html:510 templates/activities.html:913
+#: templates/tour.html:923
 msgid "Dinner"
 msgstr ""
 
@@ -1325,7 +1350,7 @@ msgid "Visit Hour"
 msgstr ""
 
 #: templates/activities.html:566 templates/activities.html:970
-#: templates/tour.html:572 templates/tour.html:977
+#: templates/flight.html:1585 templates/tour.html:572 templates/tour.html:977
 msgid "I Agree With Your Terms Of Services And Privacy Policy."
 msgstr ""
 
@@ -1657,6 +1682,7 @@ msgid "Departure"
 msgstr ""
 
 #: templates/flight-booking-confirm.html:40 templates/flight.html:547
+#: templates/flight.html:1167
 msgid "Destination"
 msgstr ""
 
@@ -1713,11 +1739,11 @@ msgstr ""
 msgid "reviews"
 msgstr ""
 
-#: templates/flight-detail.html:75
+#: templates/flight-detail.html:75 templates/flight.html:1148
 msgid "Flight Type"
 msgstr ""
 
-#: templates/flight-detail.html:86
+#: templates/flight-detail.html:86 templates/flight.html:1247
 msgid "Fare Type"
 msgstr ""
 
@@ -1729,11 +1755,12 @@ msgstr ""
 msgid "Flight Change"
 msgstr ""
 
-#: templates/flight-detail.html:119
+#: templates/flight-detail.html:119 templates/flight.html:1287
 msgid "Seats & Baggage"
 msgstr ""
 
 #: templates/flight-detail.html:130 templates/flight-detail.html:155
+#: templates/flight.html:1438
 msgid "Inflight Features"
 msgstr ""
 
@@ -1741,7 +1768,7 @@ msgstr ""
 msgid "Available"
 msgstr ""
 
-#: templates/flight-detail.html:141
+#: templates/flight-detail.html:141 templates/flight.html:1317
 msgid "Taxes & Fees"
 msgstr ""
 
@@ -1749,27 +1776,28 @@ msgstr ""
 msgid "Wifi"
 msgstr ""
 
-#: templates/flight-detail.html:168 templates/hotel-detail.html:185
+#: templates/flight-detail.html:168 templates/flight.html:1520
+#: templates/hotel-detail.html:185
 msgid "Television"
 msgstr ""
 
-#: templates/flight-detail.html:196
+#: templates/flight-detail.html:196 templates/flight.html:1484
 msgid "Food"
 msgstr ""
 
-#: templates/flight-detail.html:203
+#: templates/flight-detail.html:203 templates/flight.html:1529
 msgid "Games"
 msgstr ""
 
-#: templates/flight-detail.html:210
+#: templates/flight-detail.html:210 templates/flight.html:1502
 msgid "Wines"
 msgstr ""
 
-#: templates/flight-detail.html:217
+#: templates/flight-detail.html:217 templates/flight.html:1511
 msgid "Comfort"
 msgstr ""
 
-#: templates/flight-detail.html:224
+#: templates/flight-detail.html:224 templates/flight.html:1547
 msgid "Magazines"
 msgstr ""
 
@@ -1817,7 +1845,7 @@ msgstr ""
 msgid "Multi City"
 msgstr ""
 
-#: templates/flight-grid.html:105
+#: templates/flight-grid.html:105 templates/flight.html:1257
 msgid "Flight Class"
 msgstr ""
 
@@ -1918,6 +1946,66 @@ msgstr ""
 #: templates/flight.html:554 templates/flight.html:666
 #: templates/flight.html:1180
 msgid "Landing time"
+msgstr ""
+
+#: templates/flight.html:1125
+msgid "Add Flights"
+msgstr ""
+
+#: templates/flight.html:1150
+msgid "One Way Flight"
+msgstr ""
+
+#: templates/flight.html:1151
+msgid "Round Trip Flight"
+msgstr ""
+
+#: templates/flight.html:1152
+msgid "Multi City Flight"
+msgstr ""
+
+#: templates/flight.html:1160
+msgid "Departure From"
+msgstr ""
+
+#: templates/flight.html:1187
+msgid "Day of week"
+msgstr ""
+
+#: templates/flight.html:1194
+msgid "Flight Stop"
+msgstr ""
+
+#: templates/flight.html:1210
+msgid "Airline"
+msgstr ""
+
+#: templates/flight.html:1228
+msgid "Price (Per Person)"
+msgstr ""
+
+#: templates/flight.html:1267
+msgid "Cancellation Charge"
+msgstr ""
+
+#: templates/flight.html:1277
+msgid "Flight Charge"
+msgstr ""
+
+#: templates/flight.html:1307
+msgid "Base Fare"
+msgstr ""
+
+#: templates/flight.html:1340 templates/tour.html:768
+msgid "Drag and Drop or"
+msgstr ""
+
+#: templates/flight.html:1493
+msgid "Drink"
+msgstr ""
+
+#: templates/flight.html:1538
+msgid "Shopping"
 msgstr ""
 
 #: templates/hotel-booking-confirm.html:35
@@ -2266,7 +2354,7 @@ msgstr ""
 msgid "Tour Type"
 msgstr ""
 
-#: templates/tour-detail.html:126
+#: templates/tour-detail.html:126 templates/tour.html:930
 msgid "Itinerary"
 msgstr ""
 
@@ -2293,18 +2381,22 @@ msgid ""
 msgstr ""
 
 #: templates/tour-grid.html:119 templates/tour.html:55 templates/tour.html:56
+#: templates/tour.html:651
 msgid "Cultural tourism"
 msgstr ""
 
 #: templates/tour-grid.html:126 templates/tour.html:58 templates/tour.html:59
+#: templates/tour.html:652
 msgid "Wildlife observation"
 msgstr ""
 
 #: templates/tour-grid.html:133 templates/tour.html:61 templates/tour.html:62
+#: templates/tour.html:653
 msgid "Cruises"
 msgstr ""
 
 #: templates/tour-grid.html:140 templates/tour.html:64 templates/tour.html:65
+#: templates/tour.html:654
 msgid "Grass Skyline"
 msgstr ""
 
@@ -2328,83 +2420,103 @@ msgstr ""
 msgid "More than 5 days"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:2
+#: templates/tour.html:621
+msgid "Add Tour"
+msgstr ""
+
+#: templates/tour.html:642
+msgid "Official Tour Name"
+msgstr ""
+
+#: templates/tour.html:649
+msgid "Tour Category"
+msgstr ""
+
+#: templates/tour.html:935
+msgid "Itinerary Name"
+msgstr ""
+
+#: templates/tour.html:941
+msgid "Itinerary Description"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:2
 msgid "Menu"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:6
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/register_user.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:6
+#: venv/Lib/site-packages/flask_security/templates/security/register_user.html:3
 msgid "Register"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:9
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:9
 msgid "Forgot password"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:12
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:12
 msgid "Confirm account"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/change_password.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/change_password.html:3
 msgid "Change password"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/forgot_password.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/forgot_password.html:3
 msgid "Send password reset instructions"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/reset_password.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/reset_password.html:3
 msgid "Reset password"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_confirmation.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/send_confirmation.html:3
 msgid "Resend confirmation instructions"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:1
 msgid "Your password has been changed."
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "If you did not change your password,"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "click here to reset it"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
 msgid "Please confirm your email through the link below:"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:6
+#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:6
 msgid "Confirm my account"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:1
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:1
 #, python-format
 msgid "Welcome %(email)s!"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:3
 msgid "You can log into your account through the link below:"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:5
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:5
 msgid "Login now"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/reset_instructions.html:1
 msgid "Click here to reset your password"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_notice.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/reset_notice.html:1
 msgid "Your password has been reset"
 msgstr ""
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:4
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:4
 msgid "You can confirm your email through the link below:"
 msgstr ""
 
