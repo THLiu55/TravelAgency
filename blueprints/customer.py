@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 import json
 
 import requests
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
+from flask import Blueprint, flash, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail, socketio
@@ -591,6 +591,9 @@ def wallet():
 @bp.route("/top_up", methods=["POST"])
 def top_up():
     cdk = request.form.get("cdk-number")
+    if not cdk:
+        flash("Please enter a CDK", "error")
+        return redirect(url_for("customer.profile", page="wallet"))
     customer = Customer.query.get(session.get("customer_id"))
     dec_date_str, dec_serial_str, dec_value_str = "", "", ""
     # try:
@@ -610,9 +613,10 @@ def top_up():
             customer.wallet += int(dec_value_str)
             db.session.commit()
         except IntegrityError:
-            print("CDK used")
+            flash("CDK used", "error")
+            return redirect(url_for("customer.profile", page="wallet"))
     else:
-        print("CDK invalid")
+        flash("CDK invalid", "error")
     return redirect(url_for("customer.profile", page="/wallet"))
 
 
