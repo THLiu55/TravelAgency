@@ -1113,7 +1113,7 @@
                 <div class="modal__content">
                     <div class="modal__header">
                         <div class="modal__container">
-                            <h2 class="modal__title">Add Product</h2>
+                            <h2 class="modal__title">{{ _("Add Product") }}</h2>
                         </div>
                     </div>
                     <div class="modal__body">
@@ -1122,17 +1122,17 @@
                             <form action="{{ url_for('manager.add_flight') }}" method="POST" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
-                                    <h4 class="user-profile-card-title">Add Flights</h4>
+                                    <h4 class="user-profile-card-title">{{ _("Add Flights") }}</h4>
                                     <div class="col-lg-12">
                                         <div class="add-listing-form">
-                                            <h5 class="mb-4">Basic Information</h5>
+                                            <h5 class="mb-4">{{ _("Basic Information") }}</h5>
                                             {# <form action="#">#}
                                                 <div class="row align-items-center" style="width: 100%;">
                                                     <div style="display: grid; grid-template-columns: auto;">
 
                                                         <div class="col-lg-6" style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Priority</label>
+                                                                <label>{{ _("Priority") }}</label>
                                                                 <select class="select" name="pri" id="pri" required>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -1145,11 +1145,11 @@
 
                                                     <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
-                                                        <label>Flight Type</label>
+                                                        <label>{{ _("Flight Type") }}</label>
                                                         <select name="flight_type" class="select">
-                                                        <option value="One Way Flight">One Way Flight</option>
-                                                        <option value="Round Trip Flight">Round Trip Flight</option>
-                                                        <option value="Multi City Flight">Multi City Flight</option>
+                                                        <option value="One Way Flight">{{ _("One Way Flight") }}</option>
+                                                        <option value="Round Trip Flight">{{ _("Round Trip Flight") }}</option>
+                                                        <option value="Multi City Flight">{{ _("Multi City Flight") }}</option>
                                                         </select>
                                                         </div>
                                                         </div>
@@ -1157,14 +1157,14 @@
 
                                                         <div class="col-lg-6">
                                                          <div class="form-group">
-                                                            <label>Departure From</label>
+                                                            <label>{{ _("Departure From") }}</label>
                                                             <input name="departure" type="text" class="form-control" placeholder="Departure From" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>
 
                                                         <div class="col-lg-6">
                                                          <div class="form-group">
-                                                            <label>Destination</label>
+                                                            <label>{{ _("Destination") }}</label>
                                                             <input name="destination" type="text" class="form-control" placeholder="Destination" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>
@@ -1184,14 +1184,14 @@
 
                                                         <div class="col-lg-6">
                                                         <div class="form-group" >
-                                                        <label>Day of week</label>
+                                                        <label>{{ _("Day of week") }}</label>
                                                         <input name="day_of_week" id="modify-day-of-week" type="number" class="form-control" max="7" min="0" style="width: max-content; height: 56px;" required>
                                                         </div>
                                                         </div>
 
                                                         <div class="col-lg-6" style="max-width: none;">
                                                         <div class="form-group">
-                                                        <label>Flight Stop</label>
+                                                        <label>{{ _("Flight Stop") }}</label>
                                                         <select name="flight_stop" class="select">
                                                         <option value="Non Stop">Non Stop</option>
                                                         <option value="1 Stop">1 Stop</option>
@@ -1207,7 +1207,7 @@
                                                         style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Airline</label>
+                                                            <label>{{ _("Airline") }}</label>
                                                             <select name="company" class="select">
                                                             <option value="American Airlines">American Airlines</option>
                                                             <option value="Delta Airlines">Delta Airlines</option>
@@ -1225,7 +1225,7 @@
                                                             </div>
                                                             <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Price (Per Person)</label>
+                                                            <label>{{ _("Price (Per Person)") }}</label>
                                                              <input name="price" type="text" class="form-control" placeholder="Enter fare" style="width: max-content; height: 56px;" required>
                                                             </div>
                                                             </div>
@@ -1244,7 +1244,7 @@
                                                             </div> -->
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Fare Type</label>
+                                                            <label>{{ _("Fare Type") }}</label>
                                                             <select name="fare_type" class="select">
                                                             <option value="Refundable">Refundable</option>
                                                             <option value="Partially Refundable">Partially Refundable</option>
@@ -1254,7 +1254,7 @@
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Flight Class</label>
+                                                            <label>{{ _("Flight Class") }}</label>
                                                             <select name="flight_class" class="select">
                                                             <option value="Economy">Economy</option>
                                                             <option value="Business">Business</option>
@@ -1264,7 +1264,7 @@
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Cancellation Charge</label>
+                                                            <label>{{ _("Cancellation Charge") }}</label>
                                                             <select name="cancellation_charge" class="select">
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
@@ -1274,7 +1274,7 @@
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                              <div class="form-group">
-                                                            <label>Flight Charge</label>
+                                                            <label>{{ _("Flight Charge") }}</label>
                                                             <select name="flight_charge" class="select">
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
@@ -1284,7 +1284,7 @@
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Seats & Baggage</label>
+                                                            <label>{{ _("Seats & Baggage") }}</label>
                                                             <select name="seat_baggage" class="select">
                                                             <option value="$50 / Per Person">$50 / Per Person</option>
                                                             <option value="$70 / Per Person">$70 / Per Person</option>
@@ -1304,7 +1304,7 @@
 {#                                                            </div>#}
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Base Fare</label>
+                                                            <label>{{ _("Base Fare") }}</label>
                                                             <select name="base_fare" class="select">
                                                             <option value="$400">$400</option>
                                                             <option value="$680">$680</option>
@@ -1314,7 +1314,7 @@
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                            <label>Taxes & Fees</label>
+                                                            <label>{{ _("Taxes & Fees") }}</label>
                                                             <select name="taxes" class="select">
                                                             <option value="$100">$100</option>
                                                             <option value="$280">$280</option>
@@ -1328,7 +1328,7 @@
 
                                                     </div>
                                                     <div class="col-12 form-group form-group--lg">
-                                                        <label class="form-label">Product Images</label>
+                                                        <label class="form-label">{{ _("Product Images") }}</label>
                                                         <div class="image-upload">
                                                             <div class="image-upload__drop">
                                                                 <input class="image-upload__input" type="file"
@@ -1337,7 +1337,7 @@
                                                                 <div class="image-upload__drop-text">
                                                                     <svg class="icon-icon-upload">
                                                                         <use xlink:href="#icon-upload"></use>
-                                                                    </svg> <span>Drag and Drop or </span> <span
+                                                                    </svg> <span>{{ _("Drag and Drop or") }} </span> <span
                                                                         class="image-upload__drop-action text-blue">Browse</span>
                                                                     <span>to upload</span>
                                                                 </div>
@@ -1423,10 +1423,10 @@
                                                                 </div>
                                                             </div>
                                                         </div> -->
-                                                    <h5 class="my-4">Detailed Information</h5>
+                                                    <h5 class="my-4">{{ _("Detailed Information") }}</h5>
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <label>Description</label>
+                                                            <label>{{ _("Description") }}</label>
                                                             <textarea class="form-control" name="description"
                                                                 placeholder="Write description" cols="30"
                                                                 rows="5"></textarea>
@@ -1435,7 +1435,7 @@
                                                     <div
                                                         style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%; padding-top: 15px;">
                                                         <div>
-                                                            <h5 class="my-4">Inflight Features</h5>
+                                                            <h5 class="my-4">{{ _("Inflight Features") }}</h5>
                                                         </div>
 
 <div>
@@ -1445,7 +1445,7 @@
                                                                 <input class="form-check-input" name="inflight1"
                                                                     type="checkbox" value="Air Conditioning" id="inflight1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight1">
-                                                                    Air Conditioning
+                                                                    {{ _("Air Conditioning") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1463,7 +1463,7 @@
                                                                 <input class="form-check-input" name="inflight3"
                                                                     type="checkbox" value="Coffee" id="inflight3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight3">
-                                                                    Coffee
+                                                                    {{ _("Coffee") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1472,7 +1472,7 @@
                                                                 <input class="form-check-input" name="inflight4"
                                                                     type="checkbox" value="Entertainment" id="inflight4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight4">
-                                                                    Entertainment
+                                                                    {{ _("Entertainment") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1481,7 +1481,7 @@
                                                                 <input class="form-check-input" name="inflight5"
                                                                     type="checkbox" value="Food" id="inflight5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight5">
-                                                                    Food
+                                                                    {{ _("Food") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1490,7 +1490,7 @@
                                                                 <input class="form-check-input" name="inflight6"
                                                                     type="checkbox" value="Drink" id="inflight6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight6">
-                                                                    Drink
+                                                                    {{ _("Drink") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1499,7 +1499,7 @@
                                                                 <input class="form-check-input" name="inflight7"
                                                                     type="checkbox" value="Wines" id="inflight7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight7">
-                                                                    Wines
+                                                                    {{ _("Wines") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1508,7 +1508,7 @@
                                                                 <input class="form-check-input" name="inflight8"
                                                                     type="checkbox" value="Comfort" id="inflight8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight8">
-                                                                    Comfort
+                                                                    {{ _("Comfort") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1517,7 +1517,7 @@
                                                                 <input class="form-check-input" name="inflight9"
                                                                     type="checkbox" value="Television" id="inflight9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight9">
-                                                                    Television
+                                                                    {{ _("Television") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1526,7 +1526,7 @@
                                                                 <input class="form-check-input" name="inflight10"
                                                                     type="checkbox" value="Games" id="inflight10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight10">
-                                                                    Games
+                                                                    {{ _("Games") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1535,7 +1535,7 @@
                                                                 <input class="form-check-input" name="inflight11"
                                                                     type="checkbox" value="Shopping" id="inflight11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight11">
-                                                                    Shopping
+                                                                    {{ _("Shopping") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1544,7 +1544,7 @@
                                                                 <input class="form-check-input" name="inflight12"
                                                                     type="checkbox" value="Magazines" id="inflight12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="inflight12">
-                                                                    Magazines
+                                                                    {{ _("Magazines") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1552,26 +1552,26 @@
                                                             </div>
 
                                                         </div>
-                                                        <h5 class="my-4">Contact Information</h5>
+                                                        <h5 class="my-4">{{ _("Contact Information") }}</h5>
                                                         <div
                                                             style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 200%;padding-top: 15px;">
                                                             <div class="col-lg-4" style="max-width: none;">
                                                                 <div class="form-group">
-                                                                    <label>Name</label>
+                                                                    <label>{{ _("Name") }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_name" placeholder="Enter name" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                                 <div class="form-group">
-                                                                    <label>Email</label>
+                                                                    <label>{{ _("Email") }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_email" placeholder="Enter email" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4" style="max-width: none;">
                                                                 <div class="form-group">
-                                                                    <label>Phone</label>
+                                                                    <label>{{ _("Phone") }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_phone" placeholder="Enter phone" style="width: max-content;" required>
                                                                 </div>
@@ -1582,8 +1582,7 @@
                                                                         type="checkbox" value="" id="agree" disabled
                                                                         checked style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="agree">
-                                                                        I Agree With Your Terms Of Services And Privacy
-                                                                        Policy.
+                                                                        {{ _("I Agree With Your Terms Of Services And Privacy Policy.") }}
                                                                     </label>
                                                                 </div>
                                                             </div>
