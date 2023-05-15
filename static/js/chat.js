@@ -240,27 +240,7 @@ function getAndInsertRespMessageFromBot(yourMessage) {
       // if the response starts with a "#" then it is a command we parse it using ajax to post to /parse_bot_cmd
       if (chatbotAnswer.startsWith("#")) {
         // then it is a command
-        $.ajax({
-          type: "POST",
-          url: "/parse_bot_cmd",
-          data: {
-            cmd: chatbotAnswer,
-          },
-          timeout: 15000,
-          success: function (cmdParserResp) {
-            $(".message.loading").remove();
-            if (cmdParserResp.do == "SWITCH") {
-              changeToRealPersonCustomerService();
-            } else if (cmdParserResp.do == "REDIRECT") {
-              insertRespMessage("redirecting you to: " + cmdParserResp.redirect_url);
-              // redirect to the url using jquery's window.location.href
-              window.location.href = cmdParserResp.redirect_url;
-            } else if (cmdParserResp.do == "TEXT") {
-              // just a text response
-              insertRespMessage(cmdParserResp.to_show);
-            }
-          },
-        });
+        parseBotCmd(chatbotAnswer);
       } else {
         // just a text response
         $(".message.loading").remove();
@@ -276,6 +256,34 @@ function getAndInsertRespMessageFromBot(yourMessage) {
       );
     },
   });
+}
+
+function parseBotCmd(sharpCommandTxt) {
+  $.ajax({
+    type: "POST",
+    url: "/parse_bot_cmd",
+    data: {
+      cmd: sharpCommandTxt,
+    },
+    timeout: 15000,
+    success: function (cmdParserResp) {
+      $(".message.loading").remove();
+      execCallbackParsedCmd(cmdParserResp);
+    },
+  });
+}
+
+function execCallbackParsedCmd(parsedResp) {
+  if (parsedResp.do == "SWITCH") {
+    changeToRealPersonCustomerService();
+  } else if (parsedResp.do == "REDIRECT") {
+    insertRespMessage("redirecting you to: " + parsedResp.redirect_url);
+    // redirect to the url using jquery's window.location.href
+    window.location.href = parsedResp.redirect_url;
+  } else if (parsedResp.do == "TEXT") {
+    // just a text response
+    insertRespMessage(parsedResp.to_show);
+  }
 }
 
 function changeToRealPersonCustomerService() {

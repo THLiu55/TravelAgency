@@ -1198,6 +1198,11 @@ Messages
   color: #fff;
 }
 
+.messages .options {
+  text-decoration: none;
+  color: #fff;
+}
+
 /* optimize label */
 .message-box .file-upload-label {
   display: inline-block;

@@ -12,6 +12,8 @@ TRANSLATE_PROVIDER = os.environ.get("TRANSLATE_PROVIDER")
 LIBRETRANSLATE_URL = os.environ.get("LIBRETRANSLATE_URL")
 BAIDUBCE_TRANSLATE_URL = os.environ.get("BAIDUBCE_TRANSLATE_URL")
 BAIDUBCE_TRANSLATE_TOKEN = os.environ.get("BAIDUBCE_TRANSLATE_TOKEN")
+
+WXBOT_OPTIONS_RESP_PREFIX = os.environ.get("WXBOT_OPTIONS_RESP_PREFIX")
 # core function
 
 
@@ -24,13 +26,27 @@ def get_wxbot_signature(userid):
     return signature
 
 
-def get_wxbot_answer(message, signature):
+def get_wxbot_response(message, signature):
+    '''
+        this method is a dynamic impl
+    '''
+    response_json = get_wxbot_answer_full(message, signature)
+    return response_json
+
+def get_wxbot_answer_full(message, signature):
     url = WXBOT_GET_RESPONSE_URL_PREFIX + WXBOT_TOKEN
     response = requests.post(
         url, json={"signature": signature, "query": message}, timeout=5
     )
-    answer = json.loads(response.text)["answer"]
-    return answer
+    answer_full = json.loads(response.text)
+    if answer_full["answer"].startswith(WXBOT_OPTIONS_RESP_PREFIX):
+        print("wxbot json answer: " + str(answer_full))
+    return answer_full
+
+def get_wxbot_answer(message, signature):
+    answer_full = get_wxbot_answer_full(message, signature)
+    answer_text = answer_full["answer"]
+    return answer_text
 
 def translate_message(message, source_lang, target_lang):
     if TRANSLATE_PROVIDER == "BAIDU":
