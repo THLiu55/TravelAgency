@@ -617,7 +617,7 @@ def top_up():
             return redirect(url_for("customer.profile", page="wallet"))
     else:
         flash("CDK invalid", "error")
-    return redirect(url_for("customer.profile", page="/wallet"))
+    return redirect(url_for("customer.profile", page="wallet"))
 
 
 @bp.route("/setting")
