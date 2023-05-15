@@ -87,12 +87,14 @@ def order_confirm():
         to_confirmed = Flight.query.get(flight_id)
         order_date = datetime.datetime.strptime(request.form.get("journey-date"), '%m/%d/%Y').strftime(
             '%Y/%m/%d') + ' ' + to_confirmed.takeoff_time.strftime('%H:%M')
+        date_arg = datetime.datetime.strptime(request.form.get("journey-date"), '%m/%d/%Y').strftime(
+            '%Y/%m/%d')
         customer = Customer.query.get(customer_id)
         arrive_time = datetime.datetime.strptime(request.form.get("journey-date"), '%m/%d/%Y') + timedelta(
             days=to_confirmed.total_time // 24)
         arrive_time = arrive_time.strftime('%Y/%m/%d') + ' ' + to_confirmed.landing_time.strftime('%H:%M')
         return render_template("flight-booking-confirm.html", flight=to_confirmed, customer=customer,
-                               order_date=order_date, arrive_time=arrive_time, logged=True)
+                               order_date=order_date, arrive_time=arrive_time, logged=True, date_arg=date_arg)
     else:
         url = request.referrer
         return render_template("SignInUp.html", url=url)

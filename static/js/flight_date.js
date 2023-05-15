@@ -3,7 +3,6 @@ let allowedDates = document.getElementById('allowedDates').value.replace(/-/g, '
 const button_bookNow = document.getElementById("button_bookNow");
 
 button_bookNow.addEventListener('click', function (event) {
-    alert(allowedDates);
     const timeString = flight_choose.value;
     const date = new Date(timeString);
     const year = date.getFullYear();
