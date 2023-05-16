@@ -229,8 +229,7 @@ def order_success():
             db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"))
     else:
-        flash("Insufficient balance in your wallet, please top up first")
-        return redirect(url_for('customer.profile', page='/wallet'))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("tour_id"), type="tour"))
 
 
 @bp.route("/add_wishlist/<tour_id>")

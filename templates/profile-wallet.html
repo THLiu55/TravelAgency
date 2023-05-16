@@ -59,6 +59,9 @@
 <div class="form-group">
 <label>{{ _("Add Amount") }}</label>
 <input type="text" class="form-control" placeholder="Enter CDK Number" name="cdk-number" required>
+    {% if url_next %}
+    <input name="url_next" value="{{ url_next }}" hidden>
+    {% endif %}
 </div>
 </div>
 <button type="submit" class="theme-btn my-3">{{ _("Add Now") }}</button>

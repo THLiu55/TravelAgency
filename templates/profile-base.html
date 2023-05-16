@@ -259,16 +259,31 @@ function selected1(elem) {
                 loadPage(url);
             });
                 var url ="{{ page }}"; // fist page
+
                 // alert(url);
                 loadPage(url);
 
 
         });
         function loadPage(url){
+                var id_ ="{{ id_ }}";
+                var type_="{{ type_ }}"
+
+                if(id_ === ""){
+                    id_ = "undefined"
+                }
+
+                if(type_ === ""){
+                    type_ = "undefined"
+                }
 
                 $.ajax({
                 url: url,
                 type: 'GET',
+                data: {
+                    "id_": id_,
+                    "type_": type_
+                },
                 success: function(data){
 
 
