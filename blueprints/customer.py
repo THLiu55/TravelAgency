@@ -40,34 +40,35 @@ def lang_switch():
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
+    page_num = 1
     logged = False if session.get('customer_id') is None else True
     total_activities = Activity.query.count()
-    paginationActivity = Activity.query.paginate(page=int(1), per_page=9, error_out=False)
-    activities = paginationActivity.items
+    pagination = Activity.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    activities = pagination.items
     for activity in activities:
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
 
     total_flights = Flight.query.count()
-    paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
-    flights = paginationFlight.items
+    pagination = Flight.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    flights = pagination.items
     for flight in flights:
         # noinspection PyTypeChecker
         flight.images = json.loads(flight.images)['images']
         flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
 
     total_hotels = Hotel.query.count()
-    paginationHotel = Hotel.query.paginate(page=int(1), per_page=9, error_out=False)
-    hotels = paginationHotel.items
+    pagination = Hotel.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    hotels = pagination.items
     for hotel in hotels:
         # noinspection PyTypeChecker
         hotel.images = json.loads(hotel.images)['images']
         hotel.images[0] = hotel.images[0][hotel.images[0].index('static'):].lstrip('static')
 
     total_tours = Tour.query.count()
-    paginationTour = Tour.query.paginate(page=int(1), per_page=9, error_out=False)
-    tours = paginationTour.items
+    pagination = Tour.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    tours = pagination.items
     for tour in tours:
         # noinspection PyTypeChecker
         tour.images = json.loads(tour.images)['images']
