@@ -596,9 +596,11 @@ def top_up():
         return redirect(url_for("customer.profile", page="wallet"))
     customer = Customer.query.get(session.get("customer_id"))
     dec_date_str, dec_serial_str, dec_value_str = "", "", ""
-    # try:
-    dec_date_str, dec_serial_str, dec_value_str = decrypt_cdkey(get_cipher(), cdk)
-    # print("date: ", dec_date_str, "serial: ", dec_serial_str, "value: ", dec_value_str)
+    try:
+        dec_date_str, dec_serial_str, dec_value_str = decrypt_cdkey(get_cipher(), cdk)
+    except ValueError:
+        flash("CDK invalid", "error")
+        return redirect(url_for("customer.profile", page="wallet"))
     if validate_decrypted_attrs(dec_date_str, dec_serial_str, dec_value_str):
         redeem_history = RedeemHistory(
             cdk_generate_date=datetime.strptime(dec_date_str, "%Y%m%d"),
