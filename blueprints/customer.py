@@ -1,7 +1,7 @@
 import os.path
 from datetime import datetime, timedelta
 import json
-
+from io import BytesIO
 import requests
 from flask import Blueprint, flash, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
@@ -651,12 +651,16 @@ def update_profile():
 def recognize():
     name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
-    if len(photo.read()) > 4194304:
-        result = 'The picture size should be less than 4MB'
-    else:
-        result = json.loads(main(photo))['result'][0]['keyword']
+    photo_data = photo.read()
+    if len(photo_data) > 4194304:
+        return redirect(url_for(name, page_num=1, result='The picture size should be less than 4MB'))
+    results = json.loads(main(BytesIO(photo_data)))['result'][:3]
+    keywords = ''
     if session.get("language") != 'zh':
-        result = translator(result, 'zh', 'en')
+        for result in results[:-1]:
+            keywords = keywords + translator(result['keyword'], 'zh', 'en') + ', '
     else:
-        result = result
-    return redirect(url_for(name, page_num=1, result=result))
+        for result in results:
+            keywords = keywords + result['keyword'] + ', '
+    return redirect(url_for(name, page_num=1, result=keywords))
+
