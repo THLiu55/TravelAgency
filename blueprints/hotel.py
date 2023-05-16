@@ -261,14 +261,12 @@ def order_success():
         customer.wallet = customer.wallet - cost
         one_hour_ago = datetime.now() - timedelta(hours=1)
         last_order = HotelOrder.query.filter_by(customerID=customer.id, productID=hotel_order.productID).filter(
-            HotelOrder.endTime >= one_hour_ago).all()
-        if len(last_order) == 0:
-            db.session.add(hotel_order)
-            db.session.commit()
+            HotelOrder.endTime <= one_hour_ago).all()
+        db.session.add(hotel_order)
+        db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"))
     else:
-        flash("Insufficient balance in your wallet, please top up first")
-        return redirect(url_for('customer.profile', page='/wallet'))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("hotel_id"), type="hotel"))
 
 
 @bp.route("/add_review", methods=['POST'])
