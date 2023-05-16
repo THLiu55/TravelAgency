@@ -661,8 +661,8 @@ def recognize():
             keywords = keywords + translator(result['keyword'], 'zh', 'en') + ', '
         keywords += translator(results[-1]['keyword'], 'zh', 'en')
     else:
-        for result in results:
+        for result in results[:-1]:
             keywords = keywords + result['keyword'] + ', '
-        keywords += results[-1]
+        keywords += results[-1]['keyword']
     return redirect(url_for(name, page_num=1, result=keywords))
 
