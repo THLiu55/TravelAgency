@@ -21,4 +21,4 @@ venv/
 
 # User data folders by now
 userdata/
-activity_img/
+*_img/
