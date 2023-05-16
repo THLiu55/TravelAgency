@@ -227,9 +227,9 @@ def order_success():
         if len(last_order) == 0:
             db.session.add(tour_order)
             db.session.commit()
-        return render_template("booking-success.html", name=request.args.get("name"))
+        return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("tour_id"), type="tour"))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("tour_id"), type="tour"), logged=True)
 
 
 @bp.route("/add_wishlist/<tour_id>")
