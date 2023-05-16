@@ -768,7 +768,7 @@ def load_orders():
             if category == "hotel"
             else FlightOrder
         )
-        orders += [order.serialize() for order in order_data.query.all()]
+        orders += [order.serialize() for order in order_data.query.filter_by(purchased=True).all()]
     db.session.commit()
     return jsonify({"code": 200, "content": orders})
 
