@@ -114,13 +114,16 @@ function getSortValue() {
 
 function search_now(list, pattern) {
     const options = {
-        threshold: 0.2,
+        threshold: 0.1,
         tokenize:true,
+        ignoreCase: true,
+        ignoreLocation: true,
         keys: [
             "name",
             "city",
             "state",
-            "address"
+            "address",
+            "description"
         ]
     };
 
@@ -130,14 +133,20 @@ function search_now(list, pattern) {
 
 
     const fuse = new Fuse(list, options);
+    const patterns = pattern.split(',');
 
-    let result = fuse.search(pattern);
+    let results = new Set();
 
-    for (let i = 0; i < result.length; i++) {
-        result[i] = result[i].item;
+    for (let i = 0; i < patterns.length; i++) {
+        const currentPattern = patterns[i].trim();
+        const searchResults = fuse.search(currentPattern);
+
+        for (let j = 0; j < searchResults.length; j++) {
+            results.add(searchResults[j].item);
+        }
     }
-    console.log(result);
-    return  result;
+
+    return Array.from(results);
 }
 
 

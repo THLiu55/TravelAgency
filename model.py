@@ -312,6 +312,7 @@ class Tour(db.Model):
             'city': self.city,
             'state': self.state,
             'address': self.address,
+            'description': self.description,
             'images': self.images,
             'total_star': self.total_star,
             'review_num': self.review_num,
@@ -413,7 +414,8 @@ class Hotel(db.Model):
             "contact_email": self.contact_email,
             'pri': self.priority,
             "contact_phone": self.contact_phone,
-            "lat": self.lat
+            "lat": self.lat,
+            "description": self.description
         }
 
     def serialize_info(self):
@@ -561,7 +563,7 @@ class Flight(db.Model):
             'departure': self.departure,
             'contact_name': self.contact_name,
             'images': self.images,
-            'pri': self.priority
+            'pri': self.priority,
         }
 
     def serialize_info(self):
