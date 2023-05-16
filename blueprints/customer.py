@@ -1,8 +1,9 @@
 import os.path
 from datetime import datetime, timedelta
 import json
-from io import BytesIO
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
+
+import requests
+from flask import Blueprint, flash, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail, socketio
@@ -590,6 +591,9 @@ def wallet():
 @bp.route("/top_up", methods=["POST"])
 def top_up():
     cdk = request.form.get("cdk-number")
+    if not cdk:
+        flash("Please enter a CDK", "error")
+        return redirect(url_for("customer.profile", page="wallet"))
     customer = Customer.query.get(session.get("customer_id"))
     dec_date_str, dec_serial_str, dec_value_str = "", "", ""
     # try:
@@ -609,10 +613,11 @@ def top_up():
             customer.wallet += int(dec_value_str)
             db.session.commit()
         except IntegrityError:
-            print("CDK used")
+            flash("CDK used", "error")
+            return redirect(url_for("customer.profile", page="wallet"))
     else:
-        print("CDK invalid")
-    return redirect(url_for("customer.profile", page="/wallet"))
+        flash("CDK invalid", "error")
+    return redirect(url_for("customer.profile", page="wallet"))
 
 
 @bp.route("/setting")
@@ -646,18 +651,12 @@ def update_profile():
 def recognize():
     name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
-    photo_data = photo.read()
-    if len(photo_data) > 4194304:
-        return redirect(url_for(name, page_num=1, result='The picture size should be less than 4MB'))
-    results = json.loads(main(BytesIO(photo_data)))['result'][:3]
-    keywords = ''
-    if session.get("language") != 'zh':
-        for result in results[:-1]:
-            keywords = keywords + translator(result['keyword'], 'zh', 'en') + ', '
-        keywords += translator(results[-1]['keyword'], 'zh', 'en')
+    if len(photo.read()) > 4194304:
+        result = 'The picture size should be less than 4MB'
     else:
-        for result in results[:-1]:
-            keywords = keywords + result['keyword'] + ', '
-        keywords += results[-1]['keyword']
-    return redirect(url_for(name, page_num=1, result=keywords))
-
+        result = json.loads(main(photo))['result'][0]['keyword']
+    if session.get("language") != 'zh':
+        result = translator(result, 'zh', 'en')
+    else:
+        result = result
+    return redirect(url_for(name, page_num=1, result=result))
