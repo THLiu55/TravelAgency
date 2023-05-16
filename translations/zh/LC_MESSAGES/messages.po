@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.11.0\n"
 
 #: templates/AboutUs.html:73
 msgid "Group 7"
@@ -954,7 +954,7 @@ msgstr "状态"
 #: templates/accommodation.html:310 templates/accommodation.html:867
 #: templates/activities.html:689 templates/tour.html:697
 msgid "Latitude"
-msgstr "经度"
+msgstr "维度"
 
 #: templates/accommodation.html:702 templates/accommodation.html:1273
 msgid "The infomation of Availiable Rooms"
@@ -1952,12 +1952,10 @@ msgid "Landing time"
 msgstr "着陆时间"
 
 #: templates/flight.html:1125
- 
 msgid "Add Flights"
 msgstr "添加航班"
 
 #: templates/flight.html:1150
- 
 msgid "One Way Flight"
 msgstr "单行线"
 
@@ -1966,12 +1964,10 @@ msgid "Round Trip Flight"
 msgstr "往返航班"
 
 #: templates/flight.html:1152
- 
 msgid "Multi City Flight"
 msgstr "多城市"
 
 #: templates/flight.html:1160
- 
 msgid "Departure From"
 msgstr "出发时间"
 
@@ -1980,12 +1976,10 @@ msgid "Day of week"
 msgstr "星期几"
 
 #: templates/flight.html:1194
- 
 msgid "Flight Stop"
 msgstr "航班站点"
 
 #: templates/flight.html:1210
- 
 msgid "Airline"
 msgstr "航班"
 
@@ -1994,17 +1988,14 @@ msgid "Price (Per Person)"
 msgstr "价格（每人）"
 
 #: templates/flight.html:1267
- 
 msgid "Cancellation Charge"
 msgstr "取消费用"
 
 #: templates/flight.html:1277
- 
 msgid "Flight Charge"
 msgstr "航班改变"
 
 #: templates/flight.html:1307
- 
 msgid "Base Fare"
 msgstr "基础费用"
 
@@ -2013,12 +2004,10 @@ msgid "Drag and Drop or"
 msgstr "拖放"
 
 #: templates/flight.html:1493
- 
 msgid "Drink"
 msgstr "饮料"
 
 #: templates/flight.html:1538
- 
 msgid "Shopping"
 msgstr "显示"
 
@@ -2435,27 +2424,22 @@ msgid "More than 5 days"
 msgstr "超过5天"
 
 #: templates/tour.html:621
- 
 msgid "Add Tour"
 msgstr "添加旅行"
 
 #: templates/tour.html:642
- 
 msgid "Official Tour Name"
 msgstr "官方地名"
 
 #: templates/tour.html:649
- 
 msgid "Tour Category"
 msgstr "产品类别"
 
 #: templates/tour.html:935
- 
 msgid "Itinerary Name"
 msgstr "行程"
 
 #: templates/tour.html:941
- 
 msgid "Itinerary Description"
 msgstr "描述"
 

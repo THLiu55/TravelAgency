@@ -70,7 +70,7 @@ def get_chatbot_answer():
 def pre_process_customer_msg(message, current_lang):
     if current_lang == "en":
         message = translate_message(message, current_lang, "zh")
-    print("用户信息翻译成了: " +message+ ".")
+    # print("用户信息翻译成了: " +message+ ".")
     return message
     
 
