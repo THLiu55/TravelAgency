@@ -128,7 +128,7 @@ def order_success():
             db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("flight_id"), type="flight"), logged=True)
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("flight_id"), type="flight"))
 
 
 @bp.route('/flight_filter', methods=['GET', 'POST'])

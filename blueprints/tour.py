@@ -229,7 +229,7 @@ def order_success():
             db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("tour_id"), type="tour"), logged=True)
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("tour_id"), type="tour"))
 
 
 @bp.route("/add_wishlist/<tour_id>")

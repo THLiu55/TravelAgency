@@ -144,12 +144,14 @@ def register():
     else:
         return jsonify({"code": 400, "message": "nickname illegal"})
 
+
 def check_nickname_legality(nickname):
     if nickname in ["", None, " ", ADMIN_USERNAME]:
         return False
     elif (len(nickname) > 20):
         return False
     return True
+
 
 @bp.route("/captcha", methods=["POST"])
 def captcha():
@@ -596,6 +598,10 @@ def plan_wishlist():
 def wallet():
     customer = Customer.query.get(session.get('customer_id'))
     id_ = request.args.get("id_")
+    back = request.args.get("jump")
+    if back:
+        back_url = request.args.get("url_next")
+        return render_template("profile-wallet.html", logged=True, customer=customer, jump='jump', back_url=back_url)
     if id_ != 'undefined':
         type_ = request.args.get("type_")
         if type_ == "activity":
@@ -608,8 +614,7 @@ def wallet():
             url_next = url_for('tour.tourDetail', tour_id=id_)
         customer = Customer.query.get(session.get('customer_id'))
         return render_template("profile-wallet.html", logged=True, customer=customer, url_next=url_next)
-    else:
-        return render_template("profile-wallet.html", logged=True, customer=customer)
+    return render_template("profile-wallet.html", logged=True, customer=customer)
 
 
 @bp.route("/top_up", methods=["POST"])
@@ -647,7 +652,8 @@ def top_up():
     if not url:
         return redirect(url_for("customer.profile", page="wallet"))
     else:
-        return redirect(url)
+        return render_template("profile-base.html", customer=Customer.query.get(session.get('customer_id')),
+                               logged=True, page="wallet", back_url=url, jump="jump")
 
 
 @bp.route("/setting")
@@ -695,4 +701,3 @@ def recognize():
             keywords = keywords + result['keyword'] + ', '
         keywords += results[-1]['keyword']
     return redirect(url_for(name, page_num=1, result=keywords))
-

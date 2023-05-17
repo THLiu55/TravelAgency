@@ -1,79 +1,92 @@
-﻿
-<div class="col-lg-9">
-<div class="user-profile-wrapper">
-<div class="row">
-<div class="col-md-6 col-lg-4">
-<div class="dashboard-widget dashboard-widget-color-2">
-<div class="dashboard-widget-info">
-<h1>${{ customer.wallet }}</h1>
-<span>{{ _("Wallet Balance") }}</span>
-</div>
-<div class="dashboard-widget-icon">
-<i class="fal fa-sack-dollar"></i>
-</div>
-</div>
-</div>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class="flashes">
-      {% for message in messages %}
-        <li style="color: rgb(255, 128, 0);font-weight: 700; font-size: 1.2em;    font-family: 'Roboto', sans-serif;">{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-<!-- 
-<div class="col-md-6 col-lg-4">
-<div class="dashboard-widget dashboard-widget-color-3">
-<div class="dashboard-widget-info">
-<h1>$50,000</h1>
-<span>Total Credit</span>
-</div>
-<div class="dashboard-widget-icon">
-<i class="fal fa-sack-dollar"></i>
-</div>
-</div>
-</div>
+﻿<div class="col-lg-9">
+    <div class="user-profile-wrapper">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="dashboard-widget dashboard-widget-color-2">
+                    <div class="dashboard-widget-info">
+                        <h1>${{ customer.wallet }}</h1>
+                        <span>{{ _("Wallet Balance") }}</span>
+                    </div>
+                    <div class="dashboard-widget-icon">
+                        <i class="fal fa-sack-dollar"></i>
+                    </div>
+                </div>
+            </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li style="color: rgb(255, 128, 0);font-weight: 700; font-size: 1.2em;    font-family: 'Roboto', sans-serif;">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <!--
+            <div class="col-md-6 col-lg-4">
+            <div class="dashboard-widget dashboard-widget-color-3">
+            <div class="dashboard-widget-info">
+            <h1>$50,000</h1>
+            <span>Total Credit</span>
+            </div>
+            <div class="dashboard-widget-icon">
+            <i class="fal fa-sack-dollar"></i>
+            </div>
+            </div>
+            </div>
 
 
 
-<div class="col-md-6 col-lg-4">
-<div class="dashboard-widget dashboard-widget-color-1">
-<div class="dashboard-widget-info">
-<h1>$62,000</h1>
-<span>Total Debit</span>
-</div>
-<div class="dashboard-widget-icon">
-<i class="fal fa-sack-dollar"></i>
-</div>
-</div>
-</div>
-</div> -->
-<div class="col-lg-12">
-<div class="user-profile-card">
-<h4 class="user-profile-card-title">{{ _("Add Balance") }}</h4>
-<div class="col-lg-12">
-<div class="user-profile-form">
-<form action="{{ url_for('customer.top_up') }}" method="post">
-<div class="col-lg-6">
-<div class="form-group">
-<label>{{ _("Add Amount") }}</label>
-<input type="text" class="form-control" placeholder="Enter CDK Number" name="cdk-number" required>
-    {% if url_next %}
-    <input name="url_next" value="{{ url_next }}" hidden>
-    {% endif %}
-</div>
-</div>
-<button type="submit" class="theme-btn my-3">{{ _("Add Now") }}</button>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+            <div class="col-md-6 col-lg-4">
+            <div class="dashboard-widget dashboard-widget-color-1">
+            <div class="dashboard-widget-info">
+            <h1>$62,000</h1>
+            <span>Total Debit</span>
+            </div>
+            <div class="dashboard-widget-icon">
+            <i class="fal fa-sack-dollar"></i>
+            </div>
+            </div>
+            </div>
+            </div> -->
+            <div class="col-lg-12">
+                <div class="user-profile-card">
+                    <h4 class="user-profile-card-title">{{ _("Add Balance") }}</h4>
+                    <div class="col-lg-12">
+                        <div class="user-profile-form">
+                            <form action="{{ url_for('customer.top_up') }}" method="post">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>{{ _("Add Amount") }}</label>
+                                        <input type="text" class="form-control" placeholder="Enter CDK Number"
+                                               name="cdk-number" required>
+                                        {% if url_next %}
+                                            <input name="url_next" value="{{ url_next }}" hidden>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <button type="submit" class="theme-btn my-3">{{ _("Add Now") }}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </div>
 
 </main>
+{% if jump %}
+    <script>
+        let back_url = "{{ back_url }}";
+        re_jump(back_url);
+
+        function re_jump(back_url_is) {
+            alert("Recharge successfully, you will be automatically returned to the previous product details page 3 seconds later");
+            setTimeout(function () {
+                window.location.href = back_url_is;
+            }, 3000);
+        }
+    </script>
+{% endif %}

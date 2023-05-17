@@ -260,14 +260,19 @@ function selected1(elem) {
             });
                 var url ="{{ page }}"; // fist page
 
-                // alert(url);
+
                 loadPage(url);
-
-
         });
+
         function loadPage(url){
-                var id_ ="{{ id_ }}";
-                var type_="{{ type_ }}"
+                let id_ ="{{ id_ }}";
+                let type_="{{ type_ }}"
+
+                let jump = "{{ jump }}";
+                let  url_next = "{{ back_url }}"
+                if(jump === "jump") {
+                    jump = true;
+                }
 
                 if(id_ === ""){
                     id_ = "undefined"
@@ -282,7 +287,9 @@ function selected1(elem) {
                 type: 'GET',
                 data: {
                     "id_": id_,
-                    "type_": type_
+                    "type_": type_,
+                    "jump": jump,
+                    "url_next": url_next
                 },
                 success: function(data){
 
@@ -291,9 +298,8 @@ function selected1(elem) {
 
                 }
             });
-
-
         }
+
     </script>
     <script src="{{ url_for('static', filename='js/translation.js') }}"></script>
 
