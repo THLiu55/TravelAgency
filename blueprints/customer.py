@@ -212,6 +212,15 @@ def profile():
     return render_template("profile-base.html", customer=customer, logged=True, page=page)
 
 
+@bp.route("/wallet_re_jump")
+def wallet_re_jump():
+    id_ = request.args.get("id")
+    type_ = request.args.get("type")
+    customer = Customer.query.get(session.get('customer_id'))
+    customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
+    return render_template('profile-base.html', page='wallet', id_=id_, type_=type_, logged=True, customer=customer)
+
+
 @bp.route("/profilepage")
 def profilepage():
     customer = Customer.query.get(session.get('customer_id'))
@@ -586,12 +595,27 @@ def plan_wishlist():
 @bp.route("/wallet")
 def wallet():
     customer = Customer.query.get(session.get('customer_id'))
-    return render_template("profile-wallet.html", logged=True, customer=customer)
+    id_ = request.args.get("id_")
+    if id_ != 'undefined':
+        type_ = request.args.get("type_")
+        if type_ == "activity":
+            url_next = url_for('activity.activityDetail', activity_id=id_)
+        elif type_ == "hotel":
+            url_next = url_for('hotel.hotelDetail', hotel_id=id_)
+        elif type_ == "flight":
+            url_next = url_for('flight.flightDetail', flight_id=id_)
+        else:
+            url_next = url_for('tour.tourDetail', tour_id=id_)
+        customer = Customer.query.get(session.get('customer_id'))
+        return render_template("profile-wallet.html", logged=True, customer=customer, url_next=url_next)
+    else:
+        return render_template("profile-wallet.html", logged=True, customer=customer)
 
 
 @bp.route("/top_up", methods=["POST"])
 def top_up():
     cdk = request.form.get("cdk-number")
+    url = request.form.get('url_next')
     if not cdk:
         flash("Please enter a CDK", "error")
         return redirect(url_for("customer.profile", page="wallet"))
@@ -620,7 +644,10 @@ def top_up():
             return redirect(url_for("customer.profile", page="wallet"))
     else:
         flash("CDK invalid", "error")
-    return redirect(url_for("customer.profile", page="wallet"))
+    if not url:
+        return redirect(url_for("customer.profile", page="wallet"))
+    else:
+        return redirect(url)
 
 
 @bp.route("/setting")
