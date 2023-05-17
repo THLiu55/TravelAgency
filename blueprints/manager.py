@@ -62,6 +62,15 @@ def manager_homepage():
             .scalar()
             or 0
     )
+    today_reviews += (
+            db.session.query(func.count(FlightReview.id))
+            .filter(
+                FlightReview.issueTime >= today,
+                FlightReview.issueTime < today + timedelta(days=1),
+            )
+            .scalar()
+            or 0
+    )
 
     today_customers = (
             db.session.query(func.count())
@@ -110,11 +119,26 @@ def manager_homepage():
     )
 
     total_reviews = (
-            db.session.query(
-                func.coalesce(func.sum(Activity.review_num), 0)
-                + func.coalesce(func.sum(Tour.review_num), 0)
-                + func.coalesce(func.sum(Hotel.review_num), 0)
-            ).scalar()
+            db.session.query(func.count(FlightReview.id))
+            .scalar()
+            or 0
+    )
+
+    total_reviews += (
+            db.session.query(func.count(ActivityReview.id))
+            .scalar()
+            or 0
+    )
+
+    total_reviews += (
+            db.session.query(func.count(TourReview.id))
+            .scalar()
+            or 0
+    )
+
+    total_reviews += (
+            db.session.query(func.count(HotelReview.id))
+            .scalar()
             or 0
     )
 
