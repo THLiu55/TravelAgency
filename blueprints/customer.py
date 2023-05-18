@@ -650,6 +650,7 @@ def top_up():
     else:
         flash("CDK invalid", "error")
     if not url:
+        flash("Top Up Successfully", "success")
         return redirect(url_for("customer.profile", page="wallet"))
     else:
         return render_template("profile-base.html", customer=Customer.query.get(session.get('customer_id')),
