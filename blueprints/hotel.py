@@ -9,6 +9,9 @@ from translations.translator import translator
 
 bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 
+@bp.route('/')
+def main():
+    return redirect(url_for('hotel.hotelList', page_num=1))
 
 @bp.route("/<page_num>")
 def hotelList(page_num):

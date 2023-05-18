@@ -11,6 +11,9 @@ from translations.translator import translator
 
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
+@bp.route('/')
+def main():
+    return redirect(url_for('activity.activityList', page_num=1))
 
 @bp.route('/add_review', methods=['POST'])
 def add_review():

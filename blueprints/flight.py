@@ -12,6 +12,9 @@ from datetime import date, timedelta
 
 bp = Blueprint("flight", __name__, url_prefix="/flight")
 
+@bp.route('/')
+def main():
+    return redirect(url_for("flight.flightList", page_num=1))
 
 @bp.route('/<page_num>', methods=['POST', 'GET'])
 def flightList(page_num):

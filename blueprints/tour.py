@@ -10,6 +10,9 @@ from translations.translator import translator
 
 bp = Blueprint("tour", __name__, url_prefix="/tour")
 
+@bp.route('/')
+def main():
+    return redirect(url_for('tour.tourList', page_num=1))
 
 @bp.route("/<page_num>")
 def tourList(page_num):
