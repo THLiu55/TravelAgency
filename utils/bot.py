@@ -1,4 +1,5 @@
 import os, json, requests
+from translations.translator import translator
 
 # bot_choices = ["WXBOT", "CHATGPT", "FALLBACK"]
 BOT_CHOICE = os.environ.get("BOT_CHOICE")
@@ -49,7 +50,9 @@ def get_wxbot_answer(message, signature):
     return answer_text
 
 def translate_message(message, source_lang, target_lang):
-    if TRANSLATE_PROVIDER == "BAIDU":
+    if TRANSLATE_PROVIDER == "TRANSLATOR":
+        return translator(message, source_lang, target_lang)
+    elif TRANSLATE_PROVIDER == "BAIDU":
         if message == "":
             return ""
         token = BAIDUBCE_TRANSLATE_TOKEN
