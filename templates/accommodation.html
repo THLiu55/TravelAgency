@@ -2,415 +2,20 @@
 <html class="no-js" lang="en" data-theme="light"
 
 {% extends "BaseManager.html" %}
-{% block title %} Manager Accommodations {% endblock %}
+{% block title %} Manager Accommodations{% endblock %}
 
 {# head数据均放在该block里 #}
 {% block csslink %}
 {% endblock %}
 
-		.file-name-input {
-			display: inline-block;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			width: 70px;
-		}
-    </style>
-</head>
 
 {% block body %}
     <div class="sidebar-backdrop"></div>
     <div class="page-wrapper">
-        <header class="header">
-            <div class="header__inner">
-                <div class="container-fluid">
-                    <div class="header__row row justify-content-between">
-                        <div class="header__col-left col d-flex align-items-center">
-                            <div class="header__left-toggle">
-                                <button class="header__toggle-menu toggle-sidebar" type="button">
-                                    <svg class="icon-icon-menu">
-                                        <use xlink:href="#icon-menu"></use>
-                                    </svg>
-                                </button>
-                                <button class="header__toggle-search toggle-search">
-                                    <svg class="icon-icon-search">
-                                        <use xlink:href="#icon-search"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="header__search">
-                                <form class="form-search" action="#" method="GET">
-                                    <div class="form-search__container"><span class="form-search__icon-left">
-                                            <svg class="icon-icon-search">
-                                                <use xlink:href="#icon-search"></use>
-                                            </svg></span>
-                                        <input class="form-search__input" type="text" placeholder="Search..." />
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="header__col-right col d-flex align-items-center">
-                            <div class="header__language dropdown">
-                                <button class="header__toggle-language" type="button" data-toggle="dropdown"
-                                    data-tippy-content="Language" data-tippy-placement="bottom">
-                                    <svg class="icon-icon-language">
-                                        <use xlink:href="#icon-language"></use>
-                                    </svg> <span class="icon-arrow-down">
-                                        <svg class="icon-icon-arrow-down">
-                                            <use xlink:href="#icon-arrow-down"></use>
-                                        </svg></span>
-                                </button>
-                                <div class="lang-menu dropdown-menu">
-                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../static/img/content/flags/us.svg"
-                                            alt="#" /><span class="lang-menu__text">En</span>
-                                    </button>
-                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../static/img/content/flags/gb.svg"
-                                            alt="#" /><span class="lang-menu__text">Gb</span>
-                                    </button>
-                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../static/img/content/flags/ru.svg"
-                                            alt="#" /><span class="lang-menu__text">Ru</span>
-                                    </button>
-                                    <button class="lang-menu__button dropdown-menu__item" tabindex="0">
-                                        <img class="lang-menu__icon" src="../static/img/content/flags/cn.svg"
-                                            alt="#" /><span class="lang-menu__text">Cn</span>
-                                    </button>
-                                    <div class="lang-menu__separate"></div><a
-                                        class="lang-menu__button lang-menu__button--all dropdown-menu__item" href="#"
-                                        tabindex="0">Learn</a>
-                                </div>
-                            </div>
-                            <div class="header__tools">
-                                <div class="header__notes header__tools-item">
-                                    <a class="header__tools-toggle header__tools-toggle--message" href="#"
-                                        data-tippy-content="Notifications" data-tippy-placement="bottom"
-                                        data-toggle="dropdown">
-                                        <svg class="icon-icon-message">
-                                            <use xlink:href="#icon-message"></use>
-                                        </svg> <span class="badge-signal"></span>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <div class="dropdown-menu__top dropdown-menu__item"><span
-                                                class="dropdown-menu__title">Notifications</span><span
-                                                class="badge badge--red">5</span><a class="dropdown-menu__clear-all"
-                                                href="#" role="button">Clear All</a>
-                                        </div>
-                                        <div class="dropdown-menu__items scrollbar-thin scrollbar-visible"
-                                            data-simplebar="data-simplebar">
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-green">
-                                                            <svg class="icon-icon-cart">
-                                                                <use xlink:href="#icon-cart"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <h4 class="dropdown-menu__item-title">New Order Received</h4>
-                                                        <span class="dropdown-menu__item-time">25 min ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-orange">
-                                                            <svg class="icon-icon-bill">
-                                                                <use xlink:href="#icon-bill"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <h4 class="dropdown-menu__item-title">New invoice received</h4>
-                                                        <span class="dropdown-menu__item-time">5 hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-teal">
-                                                            <svg class="icon-icon-truck">
-                                                                <use xlink:href="#icon-truck"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <h4 class="dropdown-menu__item-title">new batch is shipped</h4>
-                                                        <span class="dropdown-menu__item-time">10 hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-green">
-                                                            <svg class="icon-icon-cart">
-                                                                <use xlink:href="#icon-cart"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <h4 class="dropdown-menu__item-title">New Order Received</h4>
-                                                        <span class="dropdown-menu__item-time">25 min ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__note" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-orange">
-                                                            <svg class="icon-icon-bill">
-                                                                <use xlink:href="#icon-bill"></use>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <h4 class="dropdown-menu__item-title">New invoice received</h4>
-                                                        <span class="dropdown-menu__item-time">5 hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-menu__divider"></div><a
-                                            class="dropdown-menu__item dropdown-menu__link-all" href="#">View all
-                                            Notifications
-                                            <svg class="icon-icon-keyboard-right">
-                                                <use xlink:href="#icon-keyboard-right"></use>
-                                            </svg></a>
-                                    </div>
-                                </div>
-                                <div class="header__messages header__tools-item">
-                                    <a class="header__tools-toggle header__tools-toggle--bell" href="#"
-                                        data-tippy-content="Messages" data-tippy-placement="bottom"
-                                        data-toggle="dropdown">
-                                        <svg class="icon-icon-bell">
-                                            <use xlink:href="#icon-bell"></use>
-                                        </svg> <span class="badge-signal"></span>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <div class="dropdown-menu__top dropdown-menu__item"><span
-                                                class="dropdown-menu__title">Messages</span><span
-                                                class="badge badge--red">7</span><a class="dropdown-menu__clear-all"
-                                                href="#" role="button">Clear All</a>
-                                        </div>
-                                        <div class="dropdown-menu__items scrollbar-thin scrollbar-visible"
-                                            data-simplebar="data-simplebar">
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-teal">
-                                                            <div class="dropdown-menu__item-icon-text">MA</div>
-                                                            <img src="../static/img/content/humans/item-4.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal badge-signal--green"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">Mark Anderson</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">25 min ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-orange-dark">
-                                                            <div class="dropdown-menu__item-icon-text">JT</div>
-                                                            <img src="../static/img/content/humans/item-1.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal badge-signal--green"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">Jennifer Tang</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">3 hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-orange">
-                                                            <div class="dropdown-menu__item-icon-text">SA</div>
-                                                            <img src="../static/img/content/humans/item-5.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">Stephen Allen</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">10 hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-red">
-                                                            <div class="dropdown-menu__item-icon-text">WS</div>
-                                                            <img src="../static/img/content/humans/item-6.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal badge-signal--red"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">Walter Sanders</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">30 min ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-blue">
-                                                            <div class="dropdown-menu__item-icon-text">SA</div>
-                                                            <img src="../static/img/content/humans/item-5.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal badge-signal--green"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">Stephen Allen</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">2h hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-green">
-                                                            <div class="dropdown-menu__item-icon-text">JH</div>
-                                                            <img src="../static/img/content/humans/item-7.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">John Hendrix</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">8 hours ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="dropdown-menu__item">
-                                                <a class="dropdown-menu__item-remove" href="#">
-                                                    <svg class="icon-icon-cross">
-                                                        <use xlink:href="#icon-cross"></use>
-                                                    </svg>
-                                                </a>
-                                                <a class="dropdown-menu__item-block dropdown-menu__message" href="#">
-                                                    <div class="dropdown-menu__item-left">
-                                                        <div class="dropdown-menu__item-icon color-orange">
-                                                            <div class="dropdown-menu__item-icon-text">RH</div>
-                                                            <img src="../static/img/content/humans/item-8.jpg"
-                                                                alt="#" />
-                                                        </div>
-                                                        <div class="badge-signal badge-signal--red"></div>
-                                                    </div>
-                                                    <div class="dropdown-menu__item-right">
-                                                        <div class="dropdown-menu__item-column">
-                                                            <h4 class="dropdown-menu__item-title">Ryan Henderson</h4>
-                                                            <p class="dropdown-menu__text">Nemo enim ipsam voluptatem
-                                                                Nemo enim ipsam voluptatem</p>
-                                                        </div><span class="dropdown-menu__item-time">5 min ago</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="dropdown-menu__divider"></div><a
-                                            class="dropdown-menu__item dropdown-menu__link-all" href="#">View all
-                                            Messages
-                                            <svg class="icon-icon-keyboard-right">
-                                                <use xlink:href="#icon-keyboard-right"></use>
-                                            </svg></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Accommodations</h1>
+                    <h1 class="page-header__title">{{ _("Accommodations") }}</h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -419,13 +24,13 @@
                                 <ol class="breadcrumbs__list">
 
                                     <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link"
-                                            href="#"><span>Travel-Booking</span>
+                                            href="#"><span>{{ _("Travel-Booking") }}</span>
                                             <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                                 <use xlink:href="#icon-keyboard-right"></use>
                                             </svg></a>
                                     </li>
                                     <li class="breadcrumbs__item active"><span
-                                            class="breadcrumbs__link">Accommodations</span>
+                                            class="breadcrumbs__link">{{ _("Accommodations") }}</span>
                                     </li>
                                 </ol>
                             </div>
@@ -483,7 +88,7 @@
 {#                                    </div>#}
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status"
+                                        <input class="input input--select" type="text" value="{{ _("All Status") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
@@ -491,15 +96,15 @@
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
                                             <a onclick="load_hotels('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All status"><span class="marker-item"></span> All status
+                                                data-value="{{ _("All Status") }}"><span class="marker-item"></span> {{ _("All Status") }}
                                             </a>
                                             <a onclick="load_hotels('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Published"><span class="marker-item color-green"></span>
-                                                Published
+                                                data-value="{{ _("published") }}"><span class="marker-item color-green"></span>
+                                                {{ _("published") }}
                                             </a>
                                             <a onclick="load_hotels('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted
+                                                data-value="{{ _("deleted") }}"><span class="marker-item color-red"></span>
+                                                {{ _("deleted") }}
                                             </a>
                                         </div>
                                     </div>
@@ -516,7 +121,7 @@
                                                     <use xlink:href="#icon-search"></use>
                                                 </svg>
                                             </div>
-                                            <input class="input" type="text" placeholder="Search product">
+                                            <input id="search_box" class="input" type="text" oninput="search_hotels()" placeholder="Search by Name">
                                         </div>
                                     </form>
                                 </div>
@@ -559,22 +164,22 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th class="d-none d-lg-table-cell"><span>ID</span>
+                                    <th class="d-none d-lg-table-cell"><span>{{ _("ID") }}</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Product Name</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Product Name") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Number Of Rooms</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Number Of Rooms") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Price</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Price") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-lg-table-cell"><span
-                                            class="align-middle">City</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("City") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span
-                                            class="align-middle">Status</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Status") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>
@@ -585,37 +190,27 @@
 {#                    </div>#}
                     <div class="table-wrapper__footer">
                         <div class="row">
-{#                            <div class="table-wrapper__show-result col text-grey"><span#}
-{#                                    class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span#}
-{#                                    class="d-none d-sm-inline-block">of 50 items</span>#}
-{#                            </div>#}
-{#                            <div class="table-wrapper__pagination col-auto">#}
-{#                                <ol class="pagination">#}
-{#                                    <li class="pagination__item">#}
-{#                                        <a class="pagination__arrow pagination__arrow--prev" href="#">#}
-{#                                            <svg class="icon-icon-keyboard-left">#}
-{#                                                <use xlink:href="#icon-keyboard-left"></use>#}
-{#                                            </svg>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item active"><a class="pagination__link" href="#">1</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">2</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">3</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item pagination__item--dots">...</li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">10</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item">#}
-{#                                        <a class="pagination__arrow pagination__arrow--next" href="#">#}
-{#                                            <svg class="icon-icon-keyboard-right">#}
-{#                                                <use xlink:href="#icon-keyboard-right"></use>#}
-{#                                            </svg>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                </ol>#}
-{#                            </div>#}
+                            <div class="table-wrapper__pagination col-auto">
+                                <ol class="pagination">
+                                    <li class="pagination__item">
+                                        <a onclick="next_page()" class="pagination__arrow pagination__arrow--prev" href="#">
+                                            <svg class="icon-icon-keyboard-left">
+                                                <use xlink:href="#icon-keyboard-left"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="pagination__item active">
+                                        <a id="cur_page_num" class="pagination__link" style="background-color: white; color: black;" href="#">2/10</a>
+                                    </li>
+                                    <li class="pagination__item">
+                                        <a onclick="prev_page()" class="pagination__arrow pagination__arrow--next" href="#">
+                                            <svg class="icon-icon-keyboard-right">
+                                                <use xlink:href="#icon-keyboard-right"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -634,7 +229,7 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-                            <form action="{{ url_for('manager.add_hotel') }}" method="post" enctype="multipart/form-data">
+                            <form id="modify_form" action="{{ url_for('manager.modify_hotel') }}" method="post" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
                                     <h4 class="user-profile-card-title">Modify Accomodation</h4>
@@ -643,6 +238,20 @@
                                             <h5 class="mb-4">Basic Information</h5>
                                             {# <form action="#">#}
                                                 <div class="row align-items-center">
+                                                    <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label>Priority</label>
+                                                                <select class="select" name="pri" id="m_pri" required>
+                                                                    <option value="0">Select Priority</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
                                                             <label>Hotel Name</label>
@@ -666,44 +275,49 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-lg-6">
-                                                    </div>
+
                                                     <h5 class="my-4">Location</h5>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>City</label>
-                                                            <input type="text" class="form-control" name="city" id="m_city"
+                                                            <input id="m_city" type="text" class="form-control" name="city"
                                                                 placeholder="Enter city" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
                                                             <label>State</label>
-                                                            <input type="text" class="form-control" name="state" id="m_state"
-                                                                placeholder="Enter state">
+                                                            <input id="m_state" type="text" class="form-control" name="state"
+                                                                placeholder="Enter state" required>
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter zip code">
-                                                            </div>
-                                                        </div> -->
-{#                                                    <div class="col-lg-12">#}
-{#                                                        <div class="form-group">#}
-{#                                                            <label>Address</label>#}
-{#                                                            <input type="text" class="form-control" name="address"#}
-{#                                                                placeholder="Enter address">#}
-{#                                                        </div>#}
-{#                                                    </div>#}
-
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label>Address</label>
+                                                            <input id="m_address" type="text" class="form-control" name="address"
+                                                                placeholder="Enter address" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>Longitude</label>
+                                                            <input type="number" id="modify_citylong" class="form-control" name="lon"
+                                                                placeholder="longitude" step="0.00001" max="180" min="-180" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>{{ _("Latitude") }}</label>
+                                                            <input type="number" id="modify_citylati" class="form-control" name="lat"
+                                                                placeholder="latitude" step="0.00001" max="90" min="-90"  required>
+                                                        </div>
+                                                    </div>
+                                                    <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
 
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
                                                                 <label>Hotel Star</label>
                                                                 <select name="hotel_star" class="select" id="modify_hotel_star">
-                                                                    <option value="">Select On Hotel Star</option>
                                                                     <option value="1">1 Star</option>
                                                                     <option value="2">2 Star</option>
                                                                     <option value="3">3 Star</option>
@@ -712,6 +326,8 @@
                                                                 </select>
                                                             </div>
                                                     </div>
+
+
 
 
                                                     {# <div class="col-lg-12">#}
@@ -728,7 +344,6 @@
                                                             <div class="form-group">
                                                                 <label>Minimum Stay</label>
                                                                 <select name="min_stay" class="select" id="modify_min_stay">
-                                                                    <option value="">Select Minimum Stay</option>
                                                                     <option value="2 Nights Or Less">2 Nights Or Less</option>
                                                                     <option value="More Than 2 Nights">More Than 2 Nights</option>
                                                                 </select>
@@ -738,7 +353,6 @@
                                                             <div class="form-group">
                                                                 <label>Security</label>
                                                                 <select name="security" class="select" id="modify_security">
-                                                                    <option value="">Select Security</option>
                                                                     <option value="On Site">On Site</option>
                                                                     <option value="None">None</option>
                                                                 </select>
@@ -748,7 +362,6 @@
                                                             <div class="form-group">
                                                                 <label>On Site Staff</label>
                                                                 <select name="on_site_staff" class="select" id="modify_on_site_staff">
-                                                                    <option value="">Select On Site Staff</option>
                                                                     <option value="Yes">Yes</option>
                                                                     <option value="No">No</option>
                                                                 </select>
@@ -758,7 +371,6 @@
                                                             <div class="form-group">
                                                                 <label>Housekeeping</label>
                                                                 <select name="house_keeping" class="select" id="modify_house_keeping">
-                                                                    <option value="">Select Housekeeping</option>
                                                                     <option value="Included In Room Rate">Included In Room Rate</option>
                                                                     <option value="Additional Fee">Additional Fee</option>
                                                                 </select>
@@ -768,7 +380,6 @@
                                                             <div class="form-group">
                                                                 <label>Front Desk</label>
                                                                 <select name="front_desk" class="select" id="modify_front_desk">
-                                                                    <option value="">Select Frequency</option>
                                                                     <option value="24 Hour Staffing">24 Hour Staffing</option>
                                                                     <option value="Limited Hours Staffing">Limited Hours Staffing</option>
                                                                     <option value="None">None</option>
@@ -779,7 +390,6 @@
                                                             <div class="form-group">
                                                                 <label>Bathroom</label>
                                                                 <select name="bathroom" class="select" id="modify_bathroom">
-                                                                    <option value="">Select Bathroom</option>
                                                                     <option value="All En Suite">All En Suite</option>
                                                                     <option value="Some En Suite">Some En Suite</option>
                                                                     <option value="Shared">Shared</option>
@@ -903,7 +513,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity1"
-                                                                    type="checkbox" value="Airport Transportation" id="aminity1" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Airport Transportation" id="m_included1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity1">
                                                                     Airport Transportation
                                                                 </label>
@@ -912,7 +522,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity2"
-                                                                    type="checkbox" value="Bar / Lounge" id="aminity2" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Bar / Lounge" id="m_included2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity2">
                                                                     Bar / Lounge
                                                                 </label>
@@ -921,7 +531,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity3"
-                                                                    type="checkbox" value="Beach" id="aminity3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Beach" id="m_included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity3">
                                                                     Beach
                                                                 </label>
@@ -930,7 +540,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity4"
-                                                                    type="checkbox" value="Beverage Selection" id="aminity4" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Beverage Selection" id="m_included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity4">
                                                                     Beverage Selection
                                                                 </label>
@@ -939,7 +549,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity5"
-                                                                    type="checkbox" value="Swimming Pool" id="aminity5" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Swimming Pool" id="m_included5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity5">
                                                                     Swimming Pool
                                                                 </label>
@@ -948,7 +558,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity6"
-                                                                    type="checkbox" value="WiFi" id="aminity6" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="WiFi" id="m_included6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity6">
                                                                     WiFi
                                                                 </label>
@@ -957,7 +567,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity7"
-                                                                    type="checkbox" value="Coffee" id="aminity7" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Coffee" id="m_included7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity7">
                                                                     Coffee
                                                                 </label>
@@ -966,7 +576,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity8"
-                                                                    type="checkbox" value="Air Conditioning" id="aminity8" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Air Conditioning" id="m_included8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity8">
                                                                     Air Conditioning
                                                                 </label>
@@ -975,7 +585,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity9"
-                                                                    type="checkbox" value="Entertainment" id="aminity9" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Entertainment" id="m_included9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity9">
                                                                     Entertainment
                                                                 </label>
@@ -984,7 +594,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity10"
-                                                                    type="checkbox" value="Elevator In Building" id="aminity10" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Elevator In Building" id="m_included10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity10">
                                                                     Elevator In Building
                                                                 </label>
@@ -993,7 +603,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity11"
-                                                                    type="checkbox" value="Wheelchair Access" id="aminity11" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Wheelchair Access" id="m_included11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity11">
                                                                     Wheelchair Access
                                                                 </label>
@@ -1002,7 +612,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity12"
-                                                                    type="checkbox" value="Fitness Facility" id="aminity12" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Fitness Facility" id="m_included12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity12">
                                                                     Fitness Facility
                                                                 </label>
@@ -1011,7 +621,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity13"
-                                                                    type="checkbox" value="Breakfast" id="aminity13" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Breakfast" id="m_included13" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity13">
                                                                     Breakfast
                                                                 </label>
@@ -1020,7 +630,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity14"
-                                                                    type="checkbox" value="Handicap Accessible" id="aminity14" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Handicap Accessible" id="m_included14" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity14">
                                                                     Handicap Accessible
                                                                 </label>
@@ -1029,7 +639,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity15"
-                                                                    type="checkbox" value="Pets Allowed" id="aminity15" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Pets Allowed" id="m_included15" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity15">
                                                                     Pets Allowed
                                                                 </label>
@@ -1038,7 +648,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity16"
-                                                                    type="checkbox" value="Suitable For Events" id="aminity16" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Suitable For Events" id="m_included16" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity16">
                                                                     Suitable For Events
                                                                 </label>
@@ -1047,7 +657,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity17"
-                                                                    type="checkbox" value="Restaurant" id="aminity17" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Restaurant" id="m_included17" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity17">
                                                                     Restaurant
                                                                 </label>
@@ -1056,7 +666,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity18"
-                                                                    type="checkbox" value="Doorman" id="aminity18" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Doorman" id="m_included18" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity18">
                                                                     Doorman
                                                                 </label>
@@ -1065,7 +675,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity19"
-                                                                    type="checkbox" value="Free Parking" id="aminity19" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Free Parking" id="m_included19" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity19">
                                                                     Free Parking
                                                                 </label>
@@ -1074,7 +684,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="aminity20"
-                                                                    type="checkbox" value="Wine Bar" id="aminity20" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Wine Bar" id="m_included20" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity20">
                                                                     Wine Bar
                                                                 </label>
@@ -1089,17 +699,17 @@
                                                             </div>
 
                                                         </div>
-                                                        <h5 class="my-4">The infomation of Availiable Rooms</h5>
+                                                        <h5 class="my-4">{{ _("The infomation of Availiable Rooms") }}</h5>
                                                         <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;"> -->
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                <label>Room Type numbers</label>
                                                                <input type="number" class="form-control" min="0" max="7" name="typenum"
-                                                                   placeholder="Enter room type numbers" id="inputRoomNumber1" required>
+                                                                   placeholder="Enter room type numbers" id="inputRoomNumber_modify" required>
                                                            </div>
                                                        </div>
                                                        <h5 class="my-4">Room Information</h5>
-                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer1">
+                                                    <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer_modify">
                                                        </div>
                                                         <h5 class="my-4">Contact Information</h5>
                                                         <div
@@ -1173,7 +783,7 @@
                 <div class="modal__content">
                     <div class="modal__header">
                         <div class="modal__container">
-                            <h2 class="modal__title">Add Product</h2>
+                            <h2 class="modal__title">{{ _("Add Product") }}</h2>
                         </div>
                     </div>
                     <div class="modal__body">
@@ -1181,22 +791,34 @@
                             <form action="{{ url_for('manager.add_hotel') }}" method="post" enctype="multipart/form-data">
                             <div class="row row--md">
                                 <div class="user-profile-card add-listing">
-                                    <h4 class="user-profile-card-title">Add Accomodation</h4>
+                                    <h4 class="user-profile-card-title">{{ _("Add Accomodation") }}</h4>
                                     <div class="col-lg-12">
                                         <div class="add-listing-form">
-                                            <h5 class="mb-4">Basic Information</h5>
+                                            <h5 class="mb-4">{{ _("Basic Information") }}</h5>
                                             {# <form action="#">#}
                                                 <div class="row align-items-center">
                                                     <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label>{{ _("Priority") }}</label>
+                                                                <select class="select" name="pri" id="pri" required>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Hotel Name</label>
+                                                            <label>{{ _("Hotel Name") }}</label>
                                                             <input type="text" class="form-control" name="name"
                                                                 placeholder="Enter hotel name"  required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Total Number Of Rooms & Suites</label>
+                                                            <label>{{ _("Total Number Of Rooms & Suites") }}</label>
                                                             <input type="number" class="form-control" name="room_num"
                                                                 placeholder="Enter total rooms" required>
                                                         </div>
@@ -1204,47 +826,51 @@
 
                                                     <div class="col-lg-6">
                                                         <div class="form-group">
-                                                            <label>Minimal Price</label>
+                                                            <label>{{ _("Minimal Price") }}</label>
                                                             <input type="number" class="form-control" name="min_price" min="0"
                                                                 placeholder="Enter Minimal price" required>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-lg-6">
-                                                    </div>
-                                                    <h5 class="my-4">Location</h5>
+                                                    <h5 class="my-4">{{ _("Location") }}</h5>
                                                     <div class="row align-items-center">
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
-                                                            <label>City</label>
+                                                            <label>{{ _("City") }}</label>
                                                             <input type="text" class="form-control" name="city"
                                                                 placeholder="Enter city" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
-                                                            <label>State</label>
+                                                            <label>{{ _("State") }}</label>
                                                             <input type="text" class="form-control" name="state"
                                                                 placeholder="Enter state" required>
                                                         </div>
                                                     </div>
-                                                    <div></div>
-                                                    <div class="col-lg-4">
+                                                    <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <label>Longitude</label>
-                                                            <input type="text" class="form-control" name="city"
-                                                                placeholder="longitude of your location">
+                                                            <label>{{ _("Address") }}</label>
+                                                            <input type="text" class="form-control" name="address"
+                                                                placeholder="Enter address" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <div class="form-group">
-                                                            <label>latitude</label>
-                                                            <input type="text" class="form-control" name="state"
-                                                                placeholder="latitude of your location">
+                                                            <label>{{ _("Longitude") }}</label>
+                                                            <input type="number" class="form-control" name="lon"
+                                                                placeholder="longitude" step="0.00001" max="180" min="-180" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="form-group">
+                                                            <label>{{ _("Latitude") }}</label>
+                                                            <input type="number" class="form-control" name="lat"
+                                                                placeholder="latitude" step="0.00001" max="90" min="-90"  required>
                                                         </div>
                                                     </div>
                                                     <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
-                                                </div>
+
                                                     <!-- <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>Zip Code</label>
@@ -1263,9 +889,8 @@
 
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                                <label>Hotel Star</label>
+                                                                <label>{{ _("Hotel Star") }}</label>
                                                                 <select name="hotel_star" class="select">
-                                                                    <option value="">Select On Hotel Star</option>
                                                                     <option value="1">1 Star</option>
                                                                     <option value="2">2 Star</option>
                                                                     <option value="3">3 Star</option>
@@ -1283,14 +908,13 @@
                                                                 placeholder="Enter address 2">#}
                                                             {# </div>#}
                                                         {# </div>#}
-                                                    <h5 class="my-4">Your Accommodation Information</h5>
+                                                    <h5 class="my-4">{{ _("Your Accommodation Information") }}</h5>
                                                     <div
                                                         style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Minimum Stay</label>
+                                                                <label>{{ _("Minimum Stay") }}</label>
                                                                 <select name="min_stay" class="select">
-                                                                    <option value="">Select Minimum Stay</option>
                                                                     <option value="2 Nights Or Less">2 Nights Or Less</option>
                                                                     <option value="More Than 2 Nights">More Than 2 Nights</option>
                                                                 </select>
@@ -1298,9 +922,8 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Security</label>
+                                                                <label>{{ _("Security") }}</label>
                                                                 <select name="security" class="select">
-                                                                    <option value="">Select Security</option>
                                                                     <option value="On Site">On Site</option>
                                                                     <option value="None">None</option>
                                                                 </select>
@@ -1308,9 +931,8 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>On Site Staff</label>
+                                                                <label>{{ _("On Site Staff") }}</label>
                                                                 <select name="on_site_staff" class="select">
-                                                                    <option value="">Select On Site Staff</option>
                                                                     <option value="Yes">Yes</option>
                                                                     <option value="No">No</option>
                                                                 </select>
@@ -1318,9 +940,8 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Housekeeping</label>
+                                                                <label>{{ _("Housekeeping") }}</label>
                                                                 <select name="house_keeping" class="select">
-                                                                    <option value="">Select Housekeeping</option>
                                                                     <option value="Included In Room Rate">Included In Room Rate</option>
                                                                     <option value="Additional Fee">Additional Fee</option>
                                                                 </select>
@@ -1328,9 +949,8 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Front Desk</label>
+                                                                <label>{{ _("Front Desk") }}</label>
                                                                 <select name="front_desk" class="select">
-                                                                    <option value="">Select Frequency</option>
                                                                     <option value="24 Hour Staffing">24 Hour Staffing</option>
                                                                     <option value="Limited Hours Staffing">Limited Hours Staffing</option>
                                                                     <option value="None">None</option>
@@ -1339,9 +959,8 @@
                                                         </div>
                                                         <div class="col-lg-4"  style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Bathroom</label>
+                                                                <label>{{ _("Bathroom") }}</label>
                                                                 <select name="bathroom" class="select">
-                                                                    <option value="">Select Bathroom</option>
                                                                     <option value="All En Suite">All En Suite</option>
                                                                     <option value="Some En Suite">Some En Suite</option>
                                                                     <option value="Shared">Shared</option>
@@ -1350,7 +969,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12 form-group form-group--lg">
-                                                        <label class="form-label">Product Images</label>
+                                                        <label class="form-label">{{ _("Product Images") }}</label>
                                                         <div class="image-upload">
                                                             <div class="image-upload__drop">
                                                                 <input class="image-upload__input" type="file"
@@ -1445,10 +1064,10 @@
                                                                 </div>
                                                             </div>
                                                         </div> -->
-                                                    <h5 class="my-4">Detailed Information</h5>
+                                                    <h5 class="my-4">{{ _("Detailed Information") }}</h5>
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <label>Description</label>
+                                                            <label>{{ _("Description") }}</label>
                                                             <textarea class="form-control" name="description"
                                                                 placeholder="Write description" cols="30"
                                                                 rows="5"></textarea>
@@ -1457,7 +1076,7 @@
                                                     <div
                                                         style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%; padding-top: 15px;">
                                                         <div>
-                                                            <h5 class="my-4">Amenities</h5>
+                                                            <h5 class="my-4">{{ _("Amenities") }}</h5>
                                                         </div>
 
 <div>
@@ -1467,7 +1086,7 @@
                                                                 <input class="form-check-input" name="aminity1"
                                                                     type="checkbox" value="Airport Transportation" id="aminity1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity1">
-                                                                    Airport Transportation
+                                                                    {{ _("Airport Transportation") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1476,7 +1095,7 @@
                                                                 <input class="form-check-input" name="aminity2"
                                                                     type="checkbox" value="Bar / Lounge" id="aminity2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity2">
-                                                                    Bar / Lounge
+                                                                    {{ _("Bar / Lounge") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1485,7 +1104,7 @@
                                                                 <input class="form-check-input" name="aminity3"
                                                                     type="checkbox" value="Beach" id="aminity3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity3">
-                                                                    Beach
+                                                                    {{ _("Beach") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1494,7 +1113,7 @@
                                                                 <input class="form-check-input" name="aminity4"
                                                                     type="checkbox" value="Beverage Selection" id="aminity4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity4">
-                                                                    Beverage Selection
+                                                                    {{ _("Beverage Selection") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1503,7 +1122,7 @@
                                                                 <input class="form-check-input" name="aminity5"
                                                                     type="checkbox" value="Swimming Pool" id="aminity5" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity5">
-                                                                    Swimming Pool
+                                                                    {{ _("Swimming Pool") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1512,7 +1131,7 @@
                                                                 <input class="form-check-input" name="aminity6"
                                                                     type="checkbox" value="WiFi" id="aminity6" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity6">
-                                                                    WiFi
+                                                                    {{ _("WiFi") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1521,7 +1140,7 @@
                                                                 <input class="form-check-input" name="aminity7"
                                                                     type="checkbox" value="Coffee" id="aminity7" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity7">
-                                                                    Coffee
+                                                                    {{ _("Coffee") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1530,7 +1149,7 @@
                                                                 <input class="form-check-input" name="aminity8"
                                                                     type="checkbox" value="Air Conditioning" id="aminity8" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity8">
-                                                                    Air Conditioning
+                                                                    {{ _("Air Conditioning") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1539,7 +1158,7 @@
                                                                 <input class="form-check-input" name="aminity9"
                                                                     type="checkbox" value="Entertainment" id="aminity9" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity9">
-                                                                    Entertainment
+                                                                    {{ _("Entertainment") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1548,7 +1167,7 @@
                                                                 <input class="form-check-input" name="aminity10"
                                                                     type="checkbox" value="Elevator In Building" id="aminity10" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity10">
-                                                                    Elevator In Building
+                                                                    {{ _("Elevator In Building") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1557,7 +1176,7 @@
                                                                 <input class="form-check-input" name="aminity11"
                                                                     type="checkbox" value="Wheelchair Access" id="aminity11" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity11">
-                                                                    Wheelchair Access
+                                                                    {{ _("Wheelchair Access") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1566,7 +1185,7 @@
                                                                 <input class="form-check-input" name="aminity12"
                                                                     type="checkbox" value="Fitness Facility" id="aminity12" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity12">
-                                                                    Fitness Facility
+                                                                    {{ _("Fitness Facility") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1575,7 +1194,7 @@
                                                                 <input class="form-check-input" name="aminity13"
                                                                     type="checkbox" value="Breakfast" id="aminity13" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity13">
-                                                                    Breakfast
+                                                                    {{ _("Breakfast") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1584,7 +1203,7 @@
                                                                 <input class="form-check-input" name="aminity14"
                                                                     type="checkbox" value="Handicap Accessible" id="aminity14" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity14">
-                                                                    Handicap Accessible
+                                                                    {{ _("Handicap Accessible") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1593,7 +1212,7 @@
                                                                 <input class="form-check-input" name="aminity15"
                                                                     type="checkbox" value="Pets Allowed" id="aminity15" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity15">
-                                                                    Pets Allowed
+                                                                    {{ _("Pets Allowed") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1602,7 +1221,7 @@
                                                                 <input class="form-check-input" name="aminity16"
                                                                     type="checkbox" value="Suitable For Events" id="aminity16" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity16">
-                                                                    Suitable For Events
+                                                                    {{ _("Suitable For Events") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1611,7 +1230,7 @@
                                                                 <input class="form-check-input" name="aminity17"
                                                                     type="checkbox" value="Restaurant" id="aminity17" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity17">
-                                                                    Restaurant
+                                                                    {{ _("Restaurant") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1620,7 +1239,7 @@
                                                                 <input class="form-check-input" name="aminity18"
                                                                     type="checkbox" value="Doorman" id="aminity18" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity18">
-                                                                    Doorman
+                                                                    {{ _("Doorman") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1629,7 +1248,7 @@
                                                                 <input class="form-check-input" name="aminity19"
                                                                     type="checkbox" value="Free Parking" id="aminity19" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity19">
-                                                                    Free Parking
+                                                                    {{ _("Free Parking") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1638,7 +1257,7 @@
                                                                 <input class="form-check-input" name="aminity20"
                                                                     type="checkbox" value="Wine Bar" id="aminity20" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="aminity20">
-                                                                    Wine Bar
+                                                                    {{ _("Wine Bar") }}
                                                                 </label>
                                                             </div>
 
@@ -1651,55 +1270,55 @@
                                                             </div>
 
                                                         </div>
-                                                        <h5 class="my-4">The infomation of Availiable Rooms</h5>
+                                                        <h5 class="my-4">{{ _("The infomation of Availiable Rooms") }}</h5>
                                                         <!-- <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;"> -->
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
-                                                               <label>Room Type numbers</label>
+                                                               <label>{{ _("Room Type numbers") }}</label>
                                                                <input type="number" class="form-control" min="0" max="7" name="typenum"
                                                                    placeholder="Enter room type numbers" id="inputRoomNumber" required>
                                                            </div>
                                                        </div>
-                                                       <h5 class="my-4">Room Information</h5>
+                                                       <h5 class="my-4">{{ _("Room Information") }}</h5>
                                                     <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;padding-bottom:35px;" id="divRoomContainer">
                                                        </div>
-                                                        <h5 class="my-4">Contact Information</h5>
+                                                        <h5 class="my-4">{{ _("Contact Information") }}</h5>
                                                         <div
                                                             style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 200%;padding-top: 15px;">
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
-                                                                    <label>Name</label>
+                                                                    <label>{{ _("Name") }}</label>
                                                                     <input type="text" class="form-control"
                                                                         name="contact_name" placeholder="Enter name" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
-                                                                    <label>Email</label>
+                                                                    <label>{{ _("Email") }}</label>
                                                                     <input type="email" class="form-control"
                                                                         name="contact_email" placeholder="Enter email" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4">
                                                                 <div class="form-group">
-                                                                    <label>Phone</label>
+                                                                    <label>{{ _("Phone") }}</label>
                                                                     <input type="tel" class="form-control"
                                                                         name="contact_phone" placeholder="Enter phone" style="width: max-content;" required>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-12 mt-4">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" name="agree"
-                                                                        type="checkbox" value="" id="agree" disabled
-                                                                        checked style="-webkit-appearance:checkbox;">
-                                                                    <label class="form-check-label" for="agree">
-                                                                        I Agree With Your Terms Of Services And Privacy
-                                                                        Policy.
-                                                                    </label>
-                                                                </div>
-                                                            </div>
+{#                                                            <div class="col-12 mt-4">#}
+{#                                                                <div class="form-check">#}
+{#                                                                    <input class="form-check-input" name="agree"#}
+{#                                                                        type="checkbox" value="" id="agree" disabled#}
+{#                                                                        checked style="-webkit-appearance:checkbox;">#}
+{#                                                                    <label class="form-check-label" for="agree">#}
+{#                                                                        I Agree With Your Terms Of Services And Privacy#}
+{#                                                                        Policy.#}
+{#                                                                    </label>#}
+{#                                                                </div>#}
+{#                                                            </div>#}
                                                             <div class="col-lg-12 my-4">
-                                                                <button type="submit" class="theme-btn">Submit New Accommodation</button>
+                                                                <button type="submit" class="theme-btn">{{ _("Submit New Accommodation") }}</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1718,7 +1337,7 @@
                             <div class="modal__footer-buttons">
                                 <div class="modal__footer-button">
                                     <button class="button button--secondary button--block" data-dismiss="modal"><span
-                                            class="button__text" onclick="clearInputs()">Cancel</span>
+                                            class="button__text" onclick="clearInputs()">{{ _("Cancel") }}</span>
                                     </button>
                                 </div>
                             </div>
@@ -1864,8 +1483,110 @@
 
 				}
 			});
+
+            $("#inputRoomNumber_modify").on("input", function() {
+				var num = $(this).val();
+				$("#divRoomContainer_modify").empty();
+                // 清空表单容器
+
+				// 根据输入数字生成表单
+				for (var i = 1; i <= num; i++) {
+					var formGroup = $('<div class="form-group"></div>');
+                    var labelname = $('<label for="hotelroom_name_' + i + '">Room Name - Room Type' + i + '</label>');
+                    var inputname = $('<input name="hotelroom_name_' + i + '" type="text" class="form-control" placeholder="Enter room name">');
+
+                    var inputformGroup = $('<div class="input-form-group" style="display: grid;grid-template-columns: 1fr 1fr 1fr;justify-items: start;margin-left: 5%;margin-top:2%;"></div>');
+                    var labelWifi = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_wifi_' + i + '">Wifi</label></div>');
+                    var checkboxWifi = $('<input name="feature_1_' + i + '" type="checkbox" class="form-check-input" value="WiFi" style="-webkit-appearance:checkbox;">');
+
+                    var labelBed = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_1bed_' + i + '">1 Single bed</label></div>');
+                    var checkboxBed = $('<input name="feature_2_' + i + '" type="checkbox" class="form-check-input" value="1 Single bed" style="-webkit-appearance:checkbox;">');
+
+                    var label2Beds = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_2bed_' + i + '">2 Single beds</label></div>');
+                    var checkbox2Beds = $('<input name="feature_3_' + i + '" type="checkbox" class="form-check-input" value="2 single beds" style="-webkit-appearance:checkbox;">');
+
+                    var labelRoomArea15 = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Area15_' + i + '">15 ㎡</label></div>');
+                    var checkboxRoomArea15 = $('<input name="feature_4_' + i + '" type="checkbox" class="form-check-input" value="15 ㎡" style="-webkit-appearance:checkbox;">');
+
+                    var labelRoomArea25 = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Area25_' + i + '">25 ㎡</label></div>');
+                    var checkboxRoomArea25 = $('<input name="feature_5_' + i + '" type="checkbox" class="form-check-input" value="25 ㎡" style="-webkit-appearance:checkbox;">');
+
+                    var labelBath = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Bath_' + i + '">Shower And Bathtub</label></div>');
+                    var checkboxBath = $('<input name="feature_6_' + i + '" type="checkbox" class="form-check-input" value="Shower And Bathtub" style="-webkit-appearance:checkbox;">');
+
+                    var labelToiletries = $('<div style="display:grid;"><label class="form-check-label" for="hotelroom_Toiletries_' + i + '">Free Toiletries</label></div>');
+                    var checkboxToiletries = $('<input name="feature_7_' + i + '" type="checkbox" class="form-check-input" value="Free Toiletries" style="-webkit-appearance:checkbox;">');
+
+                    var labelprice = $('<label for="hotelroom_price_' + i + '">Room Price</label>');
+                    var inputprice = $('<input name="hotelroom_price_' + i + '" type="number" min=0 class="form-control" placeholder="Enter room price">');
+					var label = $('<label for="fileInput' + i + '"></label>');
+					var customFile = $('<div class="custom-file"></div>');
+					var fileInput = $('<input type="file" class="custom-file-input" name="fileInput' + i + '" id="fileInput' + i + '" style="display:none;">');
+					var fileLabel = $('<label class="custom-file-label" for="fileInput' + i + '" style="margin-top:20px; border-radius:10px;">Upload pictures</label>');
+					var fileNameInput = $('<input type="text" class="form-control" id="fileNameInput' + i + '" style="display:none;" readonly>');
+
+					// 将文件名显示在对应的文本框中
+					fileInput.on("change", function() {
+						var fileName = $(this).val().split("\\").pop();
+						var index = $(this).attr("id").match(/\d+/)[0]; // 提取文件上传控件的索引号
+						$("#fileNameInput" + index).val(fileName);
+						$(this).next(".custom-file-label").html(fileName);
+					});
+
+
+
+					customFile.append(fileInput);
+					customFile.append(fileLabel);
+                    formGroup.append(labelname);
+                    formGroup.append(inputname);
+
+                    // inputformGroup.append(checkboxWifi);
+                    labelWifi.append(checkboxWifi);
+                    inputformGroup.append(labelWifi);
+
+
+                    // inputformGroup.append(checkboxBed);
+                    labelBed.append(checkboxBed);
+                    inputformGroup.append(labelBed);
+
+
+                    label2Beds.append(checkbox2Beds);
+                    // inputformGroup.append(checkbox2Beds);
+                    inputformGroup.append(label2Beds);
+
+
+                    // inputformGroup.append(checkboxRoomArea15);
+                    labelRoomArea15.append(checkboxRoomArea15);
+                    inputformGroup.append(labelRoomArea15);
+
+
+                    // inputformGroup.append(checkboxRoomArea25);
+                    labelRoomArea25.append(checkboxRoomArea25);
+                    inputformGroup.append(labelRoomArea25);
+
+
+                    // inputformGroup.append(checkboxBath);
+                    labelBath.append(checkboxBath);
+                    inputformGroup.append(labelBath);
+
+
+                    // inputformGroup.append(checkboxToiletries);
+                    labelToiletries.append(checkboxToiletries);
+                    inputformGroup.append(labelToiletries);
+                    formGroup.append(inputformGroup);
+                    formGroup.append(labelprice);
+                    formGroup.append(inputprice);
+					formGroup.append(label);
+					formGroup.append(customFile);
+					formGroup.append(fileNameInput);
+
+					$("#divRoomContainer_modify").append(formGroup);
+
+				}
+			});
 		});
 
 	</script>
+    <script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/load_hotels.js') }}"></script>
 {% endblock %}

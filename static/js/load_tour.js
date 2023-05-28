@@ -1,18 +1,33 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+let cur_pattern = ''
+let cur_page = 0
+const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("tour-container")
 const modifyProduct = document.getElementById("modifyProduct")
+const search_box = document.getElementById("search_box")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
-function load_tours(published, category) {
+function search_tours() {
+    let q = search_box.value
+    load_tours(null, null, q)
+}
+
+function load_tours(published, category, pattern=null, page=0) {
     if (published == null) {
         published = cur_status
     }
     if (category == null) {
         category = cur_category
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = published
+    cur_page = page
+    cur_pattern = pattern
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('publish', published)
@@ -24,6 +39,15 @@ function load_tours(published, category) {
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
         item_container.innerHTML = ''
+        items = search_now(items, cur_pattern)
+
+        tmp = convertTo2DList(items)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        items = tmp[cur_page]
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
+
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -142,7 +166,82 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
+function checkedInitIncluded(checked_array){
+    var incheck1 = document.getElementById('m_included1');
+    if (checked_array[0] != null){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_included2');
+    if (checked_array[1] != null){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_included3');
+    if (checked_array[2] != null){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_included4');
+    if (checked_array[3] != null){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+}
+
+function checkedInitNotIncluded(checked_array){
+    var incheck1 = document.getElementById('m_not-included1');
+    if (checked_array[0] != null){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_not-included2');
+    if (checked_array[1] != null){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_not-included3');
+    if (checked_array[2] != null){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_not-included4');
+    if (checked_array[3] != null){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+}
+
+function initItinerary(init_num){
+    // {#  modify dynamic itinerary  #}
+    var container_modify = document.getElementById("divContainer_modify");
+    // {# initialize #}
+    container_modify.innerHTML = "";
+    console.log(init_num)
+    for (var i = 0; i < init_num; i++) {
+        console.log(i)
+        var div = document.createElement("div");
+        div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_desc_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
+        container_modify.appendChild(div);
+    }
+}
+
 function getModifyData(id){
+    modify_form.action = `/manager/modify_tour?id=${id}`
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -166,16 +265,34 @@ function getModifyData(id){
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
 
-            var datePicker1 = document.getElementById('m_from_date');
+            setModifySelect('modify_citylong', response['content']['lon'])
+            setModifySelect('modify_citylati', response['content']['lat'])
+
+            setModifySelect('m_pri', response['content']["pri"]);
+
+            const init_num = parseInt(response['content']["duration"])
+            initItinerary(init_num)
+
+            const tick_array = JSON.parse(response['content']["included"])
+            const tick_array_not = JSON.parse(response["content"]["excluded"])
+            checkedInitIncluded(tick_array.included)
+            checkedInitNotIncluded(tick_array_not.not_included)
+
+           function convertToDateString(timestamp) {
+                const date = new Date(timestamp);
+                const dateString = date.toISOString().substring(0, 10);  // 截取字符串获取日期部分，即"2023-05-21"
+                return dateString;
+            }
+
+           var datePicker1 = document.getElementById('m_from_date');
             start_time = response['content']["start_time"]
-            date_str1 = start_time.split("T")[0]
-           console.log(start_time)
+            date_str1 = convertToDateString(start_time);
             console.log(date_str1)
             datePicker1.value = date_str1;
 
             var datePicker2 = document.getElementById('m_end_date');
             end_time = response['content']["end_time"]
-            date_str2 = end_time.split("T")[0]
+            date_str2 = convertToDateString(end_time);
             console.log(date_str2)
             datePicker2.value = date_str2;
 
@@ -190,4 +307,54 @@ function getModifyData(id){
     fd.set('id', id)
     fd.set('type', "tour")
     xhr.send(fd)
+}
+
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "name"
+        ]
+    };
+
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}
+
+
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}
+
+function prev_page() {
+    load_tours(null, null, null, cur_page + 1)
+}
+
+function next_page() {
+    load_tours(null, null, null, Math.max(0, cur_page - 1))
 }

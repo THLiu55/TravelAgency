@@ -10,11 +10,11 @@ class Customer(db.Model, UserMixin):
     nickname = db.Column(db.String(255))
     password = db.Column(db.String(255))
     avatarURL = db.Column(db.Text)
-    wallet = db.Column(db.Double)
+    wallet = db.Column(db.Double, default=0.0)
     join_date = db.Column(db.DateTime)
     address = db.Column(db.Text)
     phone_number = db.Column(db.String(255))
-    amount_unread_msgs = db.Column(db.Integer, default=0)
+    amount_unread_msgs = db.Column(db.Integer, default=-1)  # -1 means never chatted
     activity_orders = db.relationship('ActivityOrder', backref='customer')
     activity_reviews = db.relationship('ActivityReview', backref='customer')
     tour_orders = db.relationship('TourOrder', backref='customer')
@@ -23,6 +23,7 @@ class Customer(db.Model, UserMixin):
     hotel_reviews = db.relationship('HotelReview', backref='customer')
     flight_orders = db.relationship('FlightOrder', backref='customer')
     flight_reviews = db.relationship('FlightReview', backref='customer')
+    redeemed_codes = db.relationship('RedeemHistory', backref='customer')
     messages = db.relationship('Message', backref='customer')
 
     def serialize(self):
@@ -31,7 +32,8 @@ class Customer(db.Model, UserMixin):
             'email': self.email,
             'nickname': self.nickname,
             'avatar': self.avatarURL,
-            'wallet': self.wallet
+            'wallet': self.wallet,
+            'phone': self.phone_number
         }
 
 
@@ -44,7 +46,7 @@ class Message(db.Model):
     sentTime = db.Column(db.DateTime)
     isByCustomer = db.Column(db.Boolean)  # if False then by staff
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
-    
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -63,6 +65,7 @@ class ActivityOrder(db.Model):
     startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    deleted = db.Column(db.Boolean, default=False)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('activities.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -72,10 +75,12 @@ class ActivityOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'activity',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID,
+            'isDeleted': self.deleted
         }
 
 
@@ -107,6 +112,7 @@ class Activity(db.Model):
     category = db.Column(db.String(255))
     status = db.Column(db.String(255))
     price = db.Column(db.Float)
+    priority = db.Column(db.Integer, default=0)
     city = db.Column(db.String(255))
     state = db.Column(db.String(255))
     address = db.Column(db.Text)
@@ -139,7 +145,8 @@ class Activity(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
-            'price': self.price
+            'price': self.price,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -168,6 +175,8 @@ class Activity(db.Model):
             'contact_name': self.contact_name,
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
+            'pri': self.priority,
+            'lat': self.lat
         }
 
     def serialize_info(self):
@@ -197,7 +206,8 @@ class Activity(db.Model):
             'contact_phone': self.contact_phone,
             'view_num': self.view_num,
             'lat': self.lat,
-            'lon': self.lon
+            'lon': self.lon,
+            'pri': self.priority
         }
 
 
@@ -208,6 +218,7 @@ class TourOrder(db.Model):
     startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    deleted = db.Column(db.Boolean, default=False)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('tours.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -217,10 +228,12 @@ class TourOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'tour',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'isDeleted': self.deleted,
+            'productID': self.productID
         }
 
 
@@ -260,7 +273,10 @@ class Tour(db.Model):
     itineraries = db.Column(db.Text)
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
+    lat = db.Column(db.Double)
+    lon = db.Column(db.Double)
     images = db.Column(db.Text)
+    priority = db.Column(db.Integer, default=0)
     description = db.Column(db.Text)
     included = db.Column(db.Text)
     excluded = db.Column(db.Text)
@@ -281,7 +297,10 @@ class Tour(db.Model):
             'status': self.status,
             'name': self.name,
             'start_time': self.start_time.isoformat(),
-            'price': self.price
+            "lat": self.lat,
+            "lon": self.lon,
+            'price': self.price,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -293,11 +312,16 @@ class Tour(db.Model):
             'city': self.city,
             'state': self.state,
             'address': self.address,
+            'description': self.description,
             'images': self.images,
             'total_star': self.total_star,
             'review_num': self.review_num,
             'star_detail': self.star_detail,
-            "contact_email": self.contact_email
+            "contact_email": self.contact_email,
+            "lat": self.lat,
+            "lon": self.lon,
+            'pri': self.priority,
+            'contact_phone': self.contact_phone
         }
 
     def serialize_info(self):
@@ -325,7 +349,10 @@ class Tour(db.Model):
             "contact_name": self.contact_name,
             "contact_email": self.contact_email,
             "contact_phone": self.contact_phone,
-            "review_num": self.review_num
+            "review_num": self.review_num,
+            'pri': self.priority,
+            "lat": self.lat,
+            "lon": self.lon,
         }
 
 
@@ -347,6 +374,7 @@ class Hotel(db.Model):
     bathroom = db.Column(db.String(255))
     star = db.Column(db.String(255))
     room_type_num = db.Column(db.Integer)
+    priority = db.Column(db.Integer, default=0)
     images = db.Column(db.Text)
     description = db.Column(db.Text)
     room_detail = db.Column(db.Text)
@@ -370,7 +398,8 @@ class Hotel(db.Model):
             'name': self.name,
             'price': self.min_price,
             'city': self.city,
-            'room_num': self.room_num
+            'room_num': self.room_num,
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -383,6 +412,10 @@ class Hotel(db.Model):
             "review_num": self.review_num,
             "min_price": self.min_price,
             "contact_email": self.contact_email,
+            'pri': self.priority,
+            "contact_phone": self.contact_phone,
+            "lat": self.lat,
+            "description": self.description
         }
 
     def serialize_info(self):
@@ -414,7 +447,8 @@ class Hotel(db.Model):
             "contact_phone": self.contact_phone,
             "view_num": self.view_num,
             "lat": self.lat,
-            "lon": self.lon
+            "lon": self.lon,
+            'pri': self.priority
         }
         return serialized_hotel
 
@@ -428,6 +462,7 @@ class HotelOrder(db.Model):
     checkOutTime = db.Column(db.DateTime)  # check out time
     cost = db.Column(db.Float)
     purchased = db.Column(db.Boolean)
+    deleted = db.Column(db.Boolean, default=False)
     roomID = db.Column(db.String(255))
     productID = db.Column(db.Integer, db.ForeignKey('hotels.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -437,10 +472,12 @@ class HotelOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'hotel',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.checkOutTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.checkOutTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID,
+            'isDeleted': self.deleted
         }
 
 
@@ -484,6 +521,7 @@ class Flight(db.Model):
     fare_type = db.Column(db.String(255))
     flight_class = db.Column(db.String(255))
     cancellation_charge = db.Column(db.String(255))
+    priority = db.Column(db.Integer, default=0)
     flight_charge = db.Column(db.String(255))
     seat_baggage = db.Column(db.String(255))
     base_fare = db.Column(db.String(255))
@@ -508,7 +546,8 @@ class Flight(db.Model):
             'departure': self.departure,
             'destination': self.destination,
             'take_off_time': self.takeoff_time.isoformat(),
-            'landing_time': self.landing_time.isoformat()
+            'landing_time': self.landing_time.isoformat(),
+            'pri': self.priority
         }
 
     def to_dict(self):
@@ -523,7 +562,8 @@ class Flight(db.Model):
             'fare_type': self.fare_type,
             'departure': self.departure,
             'contact_name': self.contact_name,
-            'images': self.images
+            'images': self.images,
+            'pri': self.priority,
         }
 
     def serialize_info(self):
@@ -556,6 +596,7 @@ class Flight(db.Model):
             'contact_email': self.contact_email,
             'contact_phone': self.contact_phone,
             'view_num': self.view_num,
+            'pri': self.priority
         }
         return info
 
@@ -567,6 +608,7 @@ class FlightOrder(db.Model):
     startTime = db.Column(db.DateTime)  # order time
     endTime = db.Column(db.DateTime)
     cost = db.Column(db.Float)
+    deleted = db.Column(db.Boolean, default=False)
     purchased = db.Column(db.Boolean)
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
@@ -576,10 +618,12 @@ class FlightOrder(db.Model):
             'customer': self.customer.serialize(),
             'category': 'flight',
             'id': self.id,
-            'start_time': self.startTime.isoformat(),
-            'end_time': self.endTime.isoformat(),
+            'start_time': self.startTime.strftime('%Y-%m-%d %H:%M:%S'),
+            'end_time': self.endTime.strftime('%Y-%m-%d %H:%M:%S'),
             'cost': self.cost,
-            'purchased': self.purchased
+            'purchased': self.purchased,
+            'productID': self.productID,
+            'isDeleted': self.deleted
         }
 
 
@@ -592,6 +636,21 @@ class FlightReview(db.Model):
     content = db.Column(db.Text)
     customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
     productID = db.Column(db.Integer, db.ForeignKey('flights.id'))
+
+
+class RedeemHistory(db.Model):
+    __tablename__ = 'redeem_history'
+    cdk_generate_date = db.Column(db.DateTime)
+    cdk_serial = db.Column(db.Integer)
+    cdk_value = db.Column(db.Integer)
+
+    customerID = db.Column(db.Integer, db.ForeignKey('customers.id'))
+    redeem_time = db.Column(db.DateTime)
+
+    __table_args__ = (
+        db.PrimaryKeyConstraint('cdk_generate_date', 'cdk_serial', 'cdk_value'),
+        db.UniqueConstraint('cdk_generate_date', 'cdk_serial', 'cdk_value'),
+    )
 
 
 class Room:

@@ -1,18 +1,33 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+let cur_pattern = ''
+let cur_page = 0
+const modify_form = document.getElementById("modify_form")
 const item_container = document.getElementById("item-container")
 const modifyProduct = document.getElementById("modifyProduct")
+const search_box = document.getElementById("search_box")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
-function load_flights(published, category) {
+function search_flights() {
+    let q = search_box.value
+    load_flights(null, null, q)
+}
+
+function load_flights(published, category, pattern=null, page=0) {
     if (published == null) {
         published = cur_status
     }
     if (category == null) {
         category = cur_category
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = published
+    cur_pattern = pattern
+    cur_page = page
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('publish', published)
@@ -23,7 +38,17 @@ function load_flights(published, category) {
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
+        items = search_now(items, cur_pattern)
         item_container.innerHTML = ''
+
+        tmp = convertTo2DList(items)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        items = tmp[cur_page]
+        console.log(tmp)
+        console.log(cur_page)
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -139,8 +164,95 @@ function setModifySelect(id,value) {
     select.niceSelect("update");
 }
 
+function checkedInitIncluded(checked_array){
+    var incheck1 = document.getElementById('m_included1');
+    if (checked_array.includes(incheck1.value)){
+        incheck1.checked = true;
+    }else {
+        incheck1.checked = false;
+    }
+
+    var incheck2 = document.getElementById('m_included2');
+    if (checked_array.includes(incheck2.value)){
+        incheck2.checked = true;
+    }else {
+        incheck2.checked = false;
+    }
+
+    var incheck3 = document.getElementById('m_included3');
+    if (checked_array.includes(incheck3.value)){
+        incheck3.checked = true;
+    }else {
+        incheck3.checked = false;
+    }
+
+    var incheck4 = document.getElementById('m_included4');
+    if (checked_array.includes(incheck4.value)){
+        incheck4.checked = true;
+    }else {
+        incheck4.checked = false;
+    }
+
+    var incheck5 = document.getElementById('m_included5');
+    if (checked_array.includes(incheck5.value)){
+        incheck5.checked = true;
+    }else {
+        incheck5.checked = false;
+    }
+
+    var incheck6 = document.getElementById('m_included6');
+    if (checked_array.includes(incheck6.value)){
+        incheck6.checked = true;
+    }else {
+        incheck6.checked = false;
+    }
+
+    var incheck7 = document.getElementById('m_included7');
+    if (checked_array.includes(incheck7.value)){
+        incheck7.checked = true;
+    }else {
+        incheck7.checked = false;
+    }
+
+    var incheck8 = document.getElementById('m_included8');
+    if (checked_array.includes(incheck8.value)){
+        incheck8.checked = true;
+    }else {
+        incheck8.checked = false;
+    }
+
+    var incheck9 = document.getElementById('m_included9');
+    if (checked_array.includes(incheck9.value)){
+        incheck9.checked = true;
+    }else {
+        incheck9.checked = false;
+    }
+
+    var incheck10 = document.getElementById('m_included10');
+    if (checked_array.includes(incheck10.value)){
+        incheck10.checked = true;
+    }else {
+        incheck10.checked = false;
+    }
+
+    var incheck11 = document.getElementById('m_included11');
+    if (checked_array.includes(incheck11.value)){
+        incheck11.checked = true;
+    }else {
+        incheck11.checked = false;
+    }
+
+    var incheck12 = document.getElementById('m_included12');
+    if (checked_array.includes(incheck12.value)){
+        incheck12.checked = true;
+    }else {
+        incheck12.checked = false;
+    }
+}
+
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
+    modify_form.action = `/manager/modify_flight?id=${id}`
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
@@ -175,6 +287,8 @@ function getModifyData(id){
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
 
+            setModifySelect('m_pri', response['content']["pri"]);
+
             var datePicker1 = document.getElementById('modify-take-off-time');
             start_time = response['content']["takeoff_time"]
             console.log(111)
@@ -185,6 +299,14 @@ function getModifyData(id){
             end_time = response['content']["landing_time"]
             console.log(222)
             datePicker2.value = end_time;
+
+            var dow = document.getElementById('modify-day-of-week');
+            a = response['content']["week_day"]
+            console.log(a)
+            dow.value=a
+
+            const tick_array = response['content']["inflight_features"]
+            checkedInitIncluded(tick_array)
 
         } else {
         // 处理错误情况
@@ -218,4 +340,54 @@ function clearInputs() {
     // }
 
     location.reload();
+}
+
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "departure",
+            "destination"
+        ]
+    };
+
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}
+
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}
+
+function next_page() {
+    load_flights(null, null, null, Math.max(cur_page - 1, 0))
+}
+
+function prev_page() {
+    load_flights(null, null, null, cur_page + 1)
 }

@@ -14,13 +14,8 @@ var $messages = $(".messages-content"),
 $(window).load(function () {
   initGlobalVars();
   $messages.mCustomScrollbar();
-  setTimeout(function () {
-    botMessage =
-      "Hello, " +
-      customerName +
-      "! I am a chatbot. I can help you with your order. If you want to talk to a real person, please type 'change to real person customer service' in the chatbox below. Thank you!";
-    insertRespMessage(botMessage);
-  }, 100);
+  setupListeners();
+  doSend("Hello")
 });
 
 function initGlobalVars() {
@@ -167,13 +162,21 @@ function insertSysBroadcastWithTime(txtToInsert, dateTimeStr) {
 }
 
 $(".message-submit").click(function () {
-  doSend();
+  customerMessage = $(".message-input").val();
+  if ($.trim(customerMessage) == "") {
+    return false; // do not send empty message
+  }
+  doSend(customerMessage);
   clearInputBox();
 });
 
 $(window).on("keydown", function (e) {
   if (e.which == 13) {
-    doSend();
+    customerMessage = $(".message-input").val();
+    if ($.trim(customerMessage) == "") {
+      return false; // do not send empty message
+    }
+    doSend(customerMessage);
     clearInputBox();
     return false; // to prevent the page from refreshing
   }
@@ -191,21 +194,7 @@ function requestForHistory() {
   $(".mCSB_container .history-loader").remove();
 }
 
-function doSend() {
-  customerMessage = $(".message-input").val();
-
-  if (customerMessage == "change to real person customer service") {
-    // currently there are only one keyword to change to real person customer service
-    clearInputBox();
-    insertMyMessage(customerMessage);
-    customerMessage = "";
-    changeToRealPersonCustomerService();
-  }
-
-  if ($.trim(customerMessage) == "") {
-    return false; // do not send empty message
-  }
-
+function doSend(customerMessage) {
   if (usingBot) {
     insertMyMessage(customerMessage); // need not to check if the message is sent to server successfully
     // TODO: TEST APPROACH CHANGE IMMEDIATELY
@@ -242,8 +231,16 @@ function getAndInsertRespMessageFromBot(yourMessage) {
     },
     timeout: 15000, // timeout after 15 seconds
     success: function (chatbotAnswer) {
-      $(".message.loading").remove();
-      insertRespMessage(chatbotAnswer);
+      // a response was received
+      // if the response starts with a "#" then it is a command we parse it using ajax to post to /parse_bot_cmd
+      if (chatbotAnswer.startsWith("#")) {
+        // then it is a command
+        parseBotCmd(chatbotAnswer);
+      } else {
+        // just a text response
+        $(".message.loading").remove();
+        insertRespMessage(chatbotAnswer);
+      }
     },
     error: function (xhr, status, error) {
       // an error occurred
@@ -254,6 +251,34 @@ function getAndInsertRespMessageFromBot(yourMessage) {
       );
     },
   });
+}
+
+function parseBotCmd(sharpCommandTxt) {
+  $.ajax({
+    type: "POST",
+    url: "/parse_bot_cmd",
+    data: {
+      cmd: sharpCommandTxt,
+    },
+    timeout: 15000,
+    success: function (cmdParserResp) {
+      $(".message.loading").remove();
+      execCallbackParsedCmd(cmdParserResp);
+    },
+  });
+}
+
+function execCallbackParsedCmd(parsedResp) {
+  if (parsedResp.do == "SWITCH") {
+    changeToRealPersonCustomerService();
+  } else if (parsedResp.do == "REDIRECT") {
+    insertRespMessage("redirecting you to: " + parsedResp.redirect_url);
+    // redirect to the url using jquery's window.location.href
+    window.location.href = parsedResp.redirect_url;
+  } else if (parsedResp.do == "TEXT") {
+    // just a text response
+    insertRespMessage(parsedResp.to_show);
+  }
 }
 
 function changeToRealPersonCustomerService() {

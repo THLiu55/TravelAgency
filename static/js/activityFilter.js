@@ -37,12 +37,14 @@ function activity_filter(duration, min1, max1) {
           "activityPrice": activityPrice.toString(),
           "activityDuration": selectedValues1.toString(),
           "page": page,
-          "sort_by": sort_by
+          "sort_by": sort_by,
+          "key-word": document.getElementById("search_box_change").value
       },
         success: function(response) {
-        let activities = search_now(response.activities);
+        let activities = search_now(response.activities, response.keyword);
         let activityList = $('#row-list-ajax');
         activityList.empty();
+        document.getElementById("total_activities").innerHTML = activities.length.toString();
 
         for (let i = 0; i < activities.length; i++) {
             let activity = activities[i];
@@ -50,14 +52,14 @@ function activity_filter(duration, min1, max1) {
                  '<div class="activity-item">' +
                  '<div class="activity-img">' +
                  '<img src="' + activity.images[0] + '" alt="" style="width:500px; height:200px">' +
-                 '<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>' +
+                 '<a href="' + activity.contact_email + '" class="add-wishlist"><i class="far fa-heart"></i></a>' +
                  '</div>' +
                  '<div class="activity-content">' +
-                 '<h4 class="activity-title"><a href="#">' + activity.name + '</a></h4>' +
+                 '<h4 class="activity-title"><a href="' + activity.contact_email + '">' + activity.name + '</a></h4>' +
                  '<p><i class="far fa-location-dot"></i>' + activity.address + ', ' + activity.city + '</p>' +
                  '<div class="activity-rate">' +
-                 '<span class="badge"><i class="fal fa-star"></i> 5.0</span>' +
-                 '<span class="activity-rate-type">Excellent</span>' +
+                 '<span class="badge"><i class="fal fa-star"></i>'+ activity.contact_phone +'</span>' +
+                 '<span class="activity-rate-type">' + activity.lat + '</span>' +
                  '<span class="activity-rate-review">(' + activity.review_num + ' Reviews)</span>' +
                  '</div>' +
                  '<div class="activity-bottom">' +
@@ -94,10 +96,12 @@ $(function() {
 function checkbox_protect(d) {
     if (d!==3){
         let checkboxes = document.getElementsByName("activity-duration");
+        checkboxes[d].checked = !!checkboxes[d].checked;
         for (let i = 0; i < checkboxes.length; i++) {
-            checkboxes[i].checked = false;
+            if (i!==d){
+                checkboxes[i].checked = false;
+            }
         }
-        checkboxes[d].checked = true;
     }
 }
 
@@ -109,34 +113,43 @@ function getSortValue() {
 }
 
 
-function search_now(list) {
+function search_now(list, pattern) {
     const options = {
-        threshold: 0.2,
-        tokenize:true,
+        threshold: 0.1,
+        tokenize: true,
+        ignoreCase: true,
+        ignoreLocation: true,
         keys: [
             "name",
             "category",
             "city",
             "state",
-            "address"
+            "address",
+            "description"
         ]
     };
 
-    let pattern = document.getElementById("search_box_change").value;
-    if (pattern === ''){
+    if (pattern === '') {
         return list;
     }
 
-
     const fuse = new Fuse(list, options);
+    const patterns = pattern.split(',');
 
-    let result = fuse.search(pattern);
+    let results = new Set();
 
-    for (let i = 0; i < result.length; i++) {
-        result[i] = result[i].item;
+    for (let i = 0; i < patterns.length; i++) {
+        const currentPattern = patterns[i].trim();
+        const searchResults = fuse.search(currentPattern);
+
+        for (let j = 0; j < searchResults.length; j++) {
+            results.add(searchResults[j].item);
+        }
     }
-    return  result;
+
+    return Array.from(results);
 }
+
 
 
 

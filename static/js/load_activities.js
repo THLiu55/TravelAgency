@@ -1,19 +1,33 @@
 let cur_status = "All Status"
 let cur_category = "All Category"
+let cur_pattern = ''
+let cur_page = 0
 const item_container = document.getElementById("item-container")
 const modifyProduct = document.getElementById("modifyProduct")
+const modify_form = document.getElementById("modify_form")
+const search_box = document.getElementById("search_box")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
-console.log(modifyProduct)
-function load_activities(published, category) {
+function search_activities() {
+    let q = search_box.value
+    load_activities(null, null, q)
+}
+
+function load_activities(published, category, pattern=null, page=0) {
     if (published == null) {
         published = cur_status
     }
     if (category == null) {
         category = cur_category
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = published
+    cur_pattern = pattern
+    cur_page = page
     console.log("here")
     console.log(BASE_URL)
     let xhr = new XMLHttpRequest()
@@ -26,7 +40,16 @@ function load_activities(published, category) {
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
+        items = search_now(items, cur_pattern)
         item_container.innerHTML = ''
+
+        tmp = convertTo2DList(items)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        items = tmp[cur_page]
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
+
         for (let i = 0; i < items.length; i++) {
             let tr = document.createElement("tr");
             tr.className = "table__row";
@@ -148,6 +171,7 @@ function setModifySelect(id,value) {
 
 function getModifyData(id){
     var xhr = new XMLHttpRequest();
+    modify_form.action = `/manager/modify_activity?id=${id}`
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
        if (xhr.status === 200) {
@@ -165,13 +189,13 @@ function getModifyData(id){
             setModifySelect('modify_city', response['content']["city"]);
             setModifySelect('modify_state', response['content']["state"]);
             setModifySelect('modify_address', response['content']["address"]);
-            setModifySelect('modify_citylong', response['content']["city_long"]);
-            setModifySelect('modify_citylati', response['content']["state_lati"]);
             setModifySelect('m_visitHour', response['content']["visitHour"]);
             setModifySelect('m_contact_name', response['content']["contact_name"]);
             setModifySelect('m_contact_email', response['content']["contact_email"]);
             setModifySelect('m_contact_phone', response['content']["contact_phone"]);
             setModifySelect('m_description', response['content']["description"]);
+            setModifySelect('modify_citylong', response['content']['lon'])
+            setModifySelect('modify_citylati', response['content']['lat'])
 
             var datePicker1 = document.getElementById('m_from_date');
             start_time = response['content']["start_time"]
@@ -199,4 +223,53 @@ function getModifyData(id){
     fd.set('id', id)
     fd.set('type', "activity")
     xhr.send(fd);
+}
+
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "name"
+        ]
+    };
+
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}
+
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}
+
+function prev_page() {
+    load_activities(null, null, null, cur_page + 1)
+}
+
+function next_page() {
+    load_activities(null, null, null, Math.max(0, cur_page - 1))
 }

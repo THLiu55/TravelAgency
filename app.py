@@ -29,6 +29,7 @@ app.logger.addHandler(handler)
 bp_register_all(app)
 exts_load_all(app)
 
+
 # global decorators
 @app.before_request
 def before_request():

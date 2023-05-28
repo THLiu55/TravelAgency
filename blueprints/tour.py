@@ -1,5 +1,6 @@
 import json
 import datetime
+from datetime import timedelta
 
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for, flash
 from model import *
@@ -8,6 +9,9 @@ import math
 
 bp = Blueprint("tour", __name__, url_prefix="/tour")
 
+@bp.route('/')
+def main():
+    return redirect(url_for('tour.tourList', page_num=1))
 
 @bp.route("/<page_num>")
 def tourList(page_num):
@@ -18,6 +22,19 @@ def tourList(page_num):
         # noinspection PyTypeChecker
         single_tour.images = json.loads(single_tour.images)['images']
         single_tour.images[0] = single_tour.images[0][single_tour.images[0].index('static'):].lstrip('static')
+        star_detail = json.loads(single_tour.star_detail)['star_detail']
+        single_tour.score = round(sum(star_detail) / single_tour.review_num, 1) if single_tour.review_num != 0 else 0
+        if single_tour.review_num == 0:
+            single_tour.score = 3.0
+            single_tour.tag = 'Nice'
+        else:
+            if single_tour.score >= 4:
+                single_tour.tag = 'Excellent'
+            elif single_tour.score >= 3:
+                single_tour.tag = 'Nice'
+            else:
+                single_tour.tag = 'Good'
+    tours = sorted(tours, key=lambda tour: tour.priority, reverse=True)
     logged = True if session.get("customer_id") else False
     return render_template("tour-grid.html", total_tours=total_tours, tours=tours, logged=logged)
 
@@ -56,9 +73,25 @@ def tourDetail(tour_id):
     star_score_ceil = math.floor(star_score)
     review_num = tour.review_num
     tour.review_num = 10000 if tour.review_num == 0 else tour.review_num
+    lat = tour.lat
+    lon = tour.lon
+    available_days = []
+    s_date = datetime.datetime.strptime(tour.start_time, '%Y-%m-%d')
+    e_date = datetime.datetime.strptime(tour.end_time, '%Y-%m-%d')
+    delta = timedelta(days=1)
+    today = datetime.datetime.today().date()
+    if today > s_date.date():
+        while today <= e_date.date():
+            available_days.append(today.strftime("%Y-%m-%d") + ',')
+            today += delta
+    else:
+        while s_date <= e_date:
+            available_days.append(s_date.strftime("%Y-%m-%d") + ',')
+            s_date += delta
     return render_template("tour-detail.html", tour=tour, days=days, images=images, reviews=reviews, added=added,
                            purchased=purchased, logged=logged, star_score=star_score, star_score_ceil=star_score_ceil,
-                           star_detail=star_detail, review_num=review_num)
+                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon,
+                           available_days=''.join(available_days))
 
 
 @bp.route('/add_review', methods=['POST'])
@@ -90,6 +123,14 @@ def add_review():
 def tour_filter():
     tour_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if 'language' in session:
+        if session.get("language") == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
+    else:
+        key_word = request.form.get('key-word')
     if tour_type[0] == '':
         tour_type = ['Cultural tourism', 'Wildlife observation', 'Cruises', 'Grass Skyline']
     tour_price = request.form.get('tourPrice')
@@ -125,7 +166,19 @@ def tour_filter():
 
     if to_sort == '4':
         tours = sorted(tours, key=lambda tour: tour.price, reverse=True)
-
+    for activity in tours:
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.contact_phone = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.contact_phone = '3.0'
+            activity.lat = 'Nice'
+        else:
+            if activity.contact_phone >= 4:
+                activity.lat = 'Excellent'
+            elif activity.contact_phone >= 3:
+                activity.lat = 'Nice'
+            else:
+                activity.lat = 'Good'
     tours = [tour.to_dict() for tour in tours]
     return jsonify({"tours": tours, "page": 1})
 
@@ -167,10 +220,15 @@ def order_success():
         customer.wallet = customer.wallet - cost
         db.session.add(tour_order)
         db.session.commit()
-        return render_template("booking-success.html", name=request.args.get("name"))
+        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        last_order = TourOrder.query.filter_by(customerID=customer.id, productID=tour_order.productID).filter(
+            TourOrder.startTime >= one_hour_ago).all()
+        if len(last_order) == 0:
+            db.session.add(tour_order)
+            db.session.commit()
+        return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        flash("Insufficient balance in your wallet, please top up first")
-        return redirect(url_for('customer.profile', page='/wallet'))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("tour_id"), type="tour"))
 
 
 @bp.route("/add_wishlist/<tour_id>")

@@ -17,7 +17,7 @@
                             <div class="form-group">
                                 <label>{{ _("Email") }}</label>
                                 <input type="text" name="email" value="{{ customer.email }}" class="form-control"
-                                       placeholder="{{ customer.email }}">
+                                       placeholder="{{ customer.email }}" readonly>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -47,10 +47,10 @@
 </div>
 </div>
 
-<form action="{{ url_for('customer.recognize') }}" method="POST" enctype="multipart/form-data">
+<!-- <form action="{{ url_for('customer.recognize') }}" method="POST" enctype="multipart/form-data">
     <input name="photo-to-recognize" type="file">
     <button type="submit">recognize</button>
-</form>
+</form> -->
 
 </main>
 

@@ -1,18 +1,32 @@
 let cur_category = 'all'
 let cur_status = 'all'
+let cur_pattern = ''
+let cur_page = 0
 const item_container = document.getElementById("item-container")
+const search_box = document.getElementById("search_box")
+const page_num_text = document.getElementById("cur_page_num")
 let BASE_URL = window.location.origin
 
 
-function load_reviews(category, status) {
+function search_reviews() {
+    let q = search_box.value
+    load_reviews(null, null, q)
+}
+
+function load_reviews(category, status, pattern=null, page=0) {
     if (category == null) {
         category = cur_category
     }
     if (status == null) {
         status = cur_status
     }
+    if (pattern == null) {
+        pattern = cur_pattern
+    }
     cur_category = category
     cur_status = status
+    cur_pattern = pattern
+    cur_page = page
     let xhr = new XMLHttpRequest()
     const fd = new FormData()
     fd.set('category', category)
@@ -22,25 +36,32 @@ function load_reviews(category, status) {
     // set animation after email send / error notification for registered email
     xhr.onload = function() {
         items = JSON.parse(xhr.responseText)['content']
+        items = search_now(items, cur_pattern)
         item_container.innerHTML = ''
+        tmp = []
         for (let i = 0; i < items.length; i++) {
-            let tr = document.createElement("tr");
-            tr.className = "table__row";
-
-            console.log(items[i].category)
             if (cur_category !== items[i].category && cur_category !== 'all') {
                 continue;
             }
-
             if (cur_status !== items[i].rating.toString() && cur_status !== 'all') {
                 continue
             }
+            tmp.push(items[i])
+        }
+        tmp = convertTo2DList(tmp)
+        if (cur_page >= tmp.length) {
+            cur_page = tmp.length - 1;
+        }
+        console.log(cur_page)
+        items = tmp[cur_page]
+        page_num_text.innerHTML = `${cur_page + 1}/${tmp.length}`
+        for (let i = 0; i < items.length; i++) {
+            let tr = document.createElement("tr");
+            tr.className = "table__row";
             items[i].rating = "\u2B50".repeat(items[i].rating)
             if (items[i].content.length > 35) {
                 items[i].content = items[i].content.substring(0, 34) + "..."
             }
-
-
             s = `<tr class="table__row">
                                     <td class="table__td">
                                         <div class="table__checkbox table__checkbox--all">
@@ -54,7 +75,7 @@ function load_reviews(category, status) {
                                     </td>
                                     <td class="table__td"><span class="text-light-theme">${items[i].reviewed_product.name}</span>
                                     </td>
-                                    <td class="table__td text-dark-theme">${items[i].customer.nickname}</td>
+                                    <td class="table__td text-dark-theme">${items[i].customer.email}</td>
                                     <td class="table__td text-overflow maxw-260"><span class="text-light-theme">${items[i].content}</span>
                                     </td>
                                     <td class="table__td">
@@ -66,39 +87,7 @@ function load_reviews(category, status) {
                                         <div class="table__status"><span class="table__status-icon color-green"></span> Published</div>
                                     </td>
                                     <td class="table__td table__actions">
-                                        <div class="items-more">
-                                            <button class="items-more__button">
-                                                <svg class="icon-icon-more">
-                                                    <use xlink:href="#icon-more"></use>
-                                                </svg>
-                                            </button>
-                                            <div class="dropdown-items dropdown-items--right">
-                                                <div class="dropdown-items__container">
-                                                    <ul class="dropdown-items__list">
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                    <svg class="icon-icon-view">
-                                      <use xlink:href="#icon-view"></use>
-                                    </svg></span>Details</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                    <svg class="icon-icon-duplicate">
-                                      <use xlink:href="#icon-duplicate"></use>
-                                    </svg></span>Duplicate</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                    <svg class="icon-icon-archive">
-                                      <use xlink:href="#icon-archive"></use>
-                                    </svg></span>Archive</a>
-                                                        </li>
-                                                        <li class="dropdown-items__item"><a class="dropdown-items__link"><span class="dropdown-items__link-icon">
-                                    <svg class="icon-icon-trash">
-                                      <use xlink:href="#icon-trash"></use>
-                                    </svg></span>Delete</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                                
                                     </td>
                                 </tr>`
             tr.innerHTML = s
@@ -113,5 +102,54 @@ function clearInputs(){
     location.reload();
 }
 
+function search_now(list, pattern) {
+    const options = {
+        threshold: 0.2,
+        tokenize:true,
+        keys: [
+            "customer.email"
+        ]
+    };
+
+    if (pattern === '' || pattern == null){
+        return list;
+    }
+    const fuse = new Fuse(list, options);
+    let result = fuse.search(pattern);
+    for (let i = 0; i < result.length; i++) {
+        result[i] = result[i].item;
+    }
+    return  result;
+}
+
+function prev_page() {
+    console.log(cur_page + 1)
+    load_reviews(null, null, null, Math.max(0, cur_page - 1))
+}
+
+function next_page() {
+    console.log(Math.max(cur_page - 1, 0))
+    load_reviews(null, null, null, cur_page + 1)
+}
 
 
+function convertTo2DList(inputList) {
+  var outputList = [];
+  var sublist = [];
+
+  for (var i = 0; i < inputList.length; i++) {
+    sublist.push(inputList[i]);
+
+    if (sublist.length === 7) {
+      outputList.push(sublist);
+      sublist = [];
+    }
+  }
+
+  // If there are any remaining elements in the sublist, add them to the output list
+  if (sublist.length > 0) {
+    outputList.push(sublist);
+  }
+
+  return outputList;
+}

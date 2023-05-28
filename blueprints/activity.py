@@ -1,7 +1,7 @@
 import json
 import datetime
 import math
-
+from datetime import timedelta
 from flask import Blueprint, render_template, request, jsonify, session, redirect, url_for, flash
 from model import *
 from exts import db
@@ -10,6 +10,9 @@ import requests as req
 
 bp = Blueprint("activity", __name__, url_prefix="/activity")
 
+@bp.route('/')
+def main():
+    return redirect(url_for('activity.activityList', page_num=1))
 
 @bp.route('/add_review', methods=['POST'])
 def add_review():
@@ -51,6 +54,20 @@ def activityList(page_num):
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.score = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.score = 3.0
+            activity.tag = 'Nice'
+        else:
+            if activity.score >= 4:
+                activity.tag = 'Excellent'
+            elif activity.score >= 3:
+                activity.tag = 'Nice'
+            else:
+                activity.tag = 'Good'
+    activities = sorted(activities, key=lambda i: i.priority, reverse=True)
+    result = request.args.get('result')
     return render_template('activity-grid.html', total_activities=total_activities, activities=activities,
                            page_num=page_num, logged=logged,)
 
@@ -87,15 +104,37 @@ def activityDetail(activity_id):
     activity.end_time = activity.end_time.strftime("%Y-%m-%d")
     lat = activity.lat
     lon = activity.lon
+    available_days = []
+    s_date = datetime.datetime.strptime(activity.start_time, '%Y-%m-%d')
+    e_date = datetime.datetime.strptime(activity.end_time, '%Y-%m-%d')
+    delta = timedelta(days=1)
+    today = datetime.datetime.today().date()
+    if today > s_date.date():
+        while today <= e_date.date():
+            available_days.append(today.strftime("%Y-%m-%d") + ',')
+            today += delta
+    else:
+        while s_date <= e_date:
+            available_days.append(s_date.strftime("%Y-%m-%d") + ',')
+            s_date += delta
     return render_template("activity-detail.html", activity=activity, logged=logged, reviews=reviews, images=images,
                            added=added, purchased=purchased, star_score=star_score, star_score_ceil=star_score_ceil,
-                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon)
+                           star_detail=star_detail, review_num=review_num, lat=lat, lon=lon,
+                           available_days=''.join(available_days))
 
 
 @bp.route('/activity_filter', methods=['GET', 'POST'])
 def activity_filter():  # ajax activity filter
     activity_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if 'language' in session:
+        if session.get("language") == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
+    else:
+        key_word = request.form.get('key-word')
     if activity_type[0] == '':
         activity_type = ['Food & Nightlife', 'Hot Air Balloon', 'Mountain Climbing', 'Bike Ride']
     activity_price = request.form.get('activityPrice')
@@ -132,7 +171,19 @@ def activity_filter():  # ajax activity filter
 
     if to_sort == '4':
         activities = sorted(activities, key=lambda activity: activity.price, reverse=True)
-
+    for activity in activities:
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.contact_phone = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.contact_phone = '3.0'
+            activity.lat = 'Nice'
+        else:
+            if activity.contact_phone >= 4:
+                activity.lat = 'Excellent'
+            elif activity.contact_phone >= 3:
+                activity.lat = 'Nice'
+            else:
+                activity.lat = 'Good'
     activities = [activity.to_dict() for activity in activities]
     return jsonify({"activities": activities, "page": 1})
 
@@ -172,12 +223,15 @@ def order_success():
         activity_order.productID = request.args.get("activity_id")
         activity_order.cost = cost
         customer.wallet = customer.wallet - cost
-        db.session.add(activity_order)
-        db.session.commit()
+        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        last_order = ActivityOrder.query.filter_by(customerID=customer.id, productID=activity_order.productID).filter(
+            ActivityOrder.startTime >= one_hour_ago).all()
+        if len(last_order) == 0:
+            db.session.add(activity_order)
+            db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        flash("Insufficient balance in your wallet, please top up first")
-        return redirect(url_for('customer.profile', page='/wallet'))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("activity_id"), type="activity"))
 
 
 @bp.route("/add_wishlist/<activity_id>")

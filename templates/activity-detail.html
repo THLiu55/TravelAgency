@@ -67,7 +67,7 @@
                                                     <i class="far fa-calendar-days"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Date</h6>
+                                                    <h6>{{ _("Date") }}</h6>
                                                     <span>{{ activity.start_time }} - {{ activity.end_time }}</span>
                                                 </div>
                                             </div>
@@ -333,10 +333,10 @@
                                                         <div class="form-group">
                                                             <div class="search-form-date">
                                                                 <div class="search-form-journey">
-                                                                    <label>Journey Date</label>
+                                                                    <label>{{ _("Journey Date") }}</label>
                                                                     <div class="form-group-icon">
                                                                         <input type="text" name="journey-date"
-                                                                               class="form-control date-picker journey-date">
+                                                                               class="form-control date-picker journey-date activity-special-date">
                                                                         <i class="fal fa-calendar-days"></i>
                                                                     </div>
                                                                     <p class="journey-day-name"></p>
@@ -365,16 +365,12 @@
                                         </form>
                                     </div>
                                     <div class="listing-side-share">
-                                        <a href="#"><i class="far fa-share-nodes"></i> {{ _("Share") }}</a>
                                         <span><i class="far fa-eye"></i> {{ activity.view_num }} {{ _("Views") }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
                                 <h4 class="booking-title">{{ _("Get A Question?") }}</h4>
-                                <p>{{ _("It is a long established fact that a reader will be distracted by the readable
-                                    content
-                                    layout.") }}</p>
                                 <ul class="listing-side-list">
                                     <li><i class="far fa-phone"></i><a href="tel:+21234567897">{{ activity.contact_phone }}</a></li>
                                     <li><i class="far fa-envelope"></i><a
@@ -392,9 +388,7 @@
 
 
      
-
-
-
+    <input id="allowedDates" value="{{ available_days }}" hidden>
 
     </main>
 

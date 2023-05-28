@@ -15,8 +15,11 @@ from exts import db
 from utils.bot import (
     BOT_CHOICE,
     BOT_CMD_RESP_DICT,
+    WXBOT_OPTIONS_RESP_PREFIX,
     get_wxbot_signature,
+    get_wxbot_response,
     get_wxbot_answer,
+    translate_message,
 )
 from utils.toys import get_fuzzed_room_name
 from utils.decorators import login_required, staff_login_required
@@ -39,7 +42,11 @@ def get_chatbot_answer():
     answer = ""
 
     if BOT_CHOICE == "WXBOT":
+        # WX Bot only have CN lang version
+        lang = session.get("language", "en")
+
         message = request.form.get("msg")
+        message = pre_process_customer_msg(message, lang)
 
         signature = session.get("signature")
         signature_timestamp = session.get("signature_timestamp")
@@ -56,10 +63,69 @@ def get_chatbot_answer():
                 + str(userid)
             )
 
-        answer = get_wxbot_answer(message, signature)
-
+        response = get_wxbot_response(message, signature)
+        # print("answer from wxbot: " + answer + ".")
+        
+        answer = post_process_wxbot_resp(response, lang)
     return answer
 
+def pre_process_customer_msg(message, current_lang):
+    if current_lang == "en":
+        message = translate_message(message, current_lang, "zh")
+    # print("用户信息翻译成了: " +message+ ".")
+    return message
+    
+
+def post_process_wxbot_resp(response, current_lang):
+    answer = response["answer"]
+    if current_lang == "en" and not answer.startswith("#"):
+        # print("Bot回应未翻译: " +answer+ ".")
+        # handle special cases
+        
+        # several options list
+        if (answer.startswith(WXBOT_OPTIONS_RESP_PREFIX)):
+            answer = "Are you trying to ask:"
+            options = response["options"]
+            for option in options:
+                option["title"] = translate_message(option["title"], "zh", current_lang)
+            # print("Gottcha with options: " + str(options))
+            to_append = render_template("ul-for-wxbot-options-resp.jinja", options=options)
+            answer = answer + to_append
+        else:
+            answer = translate_message(answer, "zh", current_lang)
+    
+    if (answer.startswith(WXBOT_OPTIONS_RESP_PREFIX)):
+        options = response["options"]
+        # print("Gottcha with options: " + str(options))
+        to_append = render_template("ul-for-wxbot-options-resp.jinja", options=options)
+        answer = answer + to_append
+    
+    return answer
+
+@bp.route("/parse_bot_cmd", methods=["POST"])
+def parse_bot_cmd():
+    the_cmd = request.form.get("cmd").strip("#")
+    print("received cmd: " + the_cmd + ".")
+    if the_cmd in BOT_CMD_RESP_DICT.keys():
+        what_to_do = BOT_CMD_RESP_DICT[the_cmd].split(" ")
+        operation = what_to_do[0]
+        if operation == "REDIRECT":
+            target_route_str = what_to_do[1]
+            if len(what_to_do) > 2:
+                target_page_str = "/" + what_to_do[2]
+                return jsonify({"code": 0, "do": operation, "redirect_url": url_for(target_route_str, page=target_page_str)})
+            else:
+                return jsonify({"code": 0, "do": operation, "redirect_url": url_for(target_route_str)})
+        elif operation == "TEXT":
+            to_show = BOT_CMD_RESP_DICT[the_cmd].split(" ")[1]
+            return jsonify({"code": 0, "do": operation, "to_show": to_show})
+        elif operation == "SWITCH":
+            return jsonify({"code": 0, "do": operation})
+    else:
+        print("the command", the_cmd, "is not in BOT_CMD_RESP_DICT which has keys:", BOT_CMD_RESP_DICT.keys())
+        current_app.logger.error("command", the_cmd, "not found, contact admin please")
+        return jsonify({"code": 1, "do": "TEXT", "to_show": "command not found, contact admin please"})
+    
 
 @bp.route("/get_session_customer_info", methods=["GET"])
 def get_session_customer_info():
@@ -74,11 +140,6 @@ def get_session_customer_info():
                 }
             )
     return jsonify({"isLoggedIn": False, "loginPageUrl": url_for("customer.login")})
-
-
-@bp.route("/get_bot_cmd_resp_dict", methods=["GET"])
-def get_bot_cmd_resp_dict():
-    return jsonify(BOT_CMD_RESP_DICT)
 
 
 @bp.route("/staff_load_chat_history/<customer_id>", methods=["GET"])

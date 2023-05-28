@@ -50,14 +50,14 @@ function tour_filter(duration, min1, max1) {
                  '<div class="activity-item">' +
                  '<div class="activity-img">' +
                  '<img src="' + activity.images[0] + '" alt="" style="width:500px; height:200px">' +
-                 '<a href="#" class="add-wishlist"><i class="far fa-heart"></i></a>' +
+                 '<a href="' + activity.contact_email + '" class="add-wishlist"><i class="far fa-heart"></i></a>' +
                  '</div>' +
                  '<div class="activity-content">' +
-                 '<h4 class="activity-title"><a href="#">' + activity.name + '</a></h4>' +
+                 '<h4 class="activity-title"><a href="' + activity.contact_email + '">' + activity.name + '</a></h4>' +
                  '<p><i class="far fa-location-dot"></i>' + activity.address + ', ' + activity.city + '</p>' +
                  '<div class="activity-rate">' +
-                 '<span class="badge"><i class="fal fa-star"></i> 5.0</span>' +
-                 '<span class="activity-rate-type">Excellent</span>' +
+                 '<span class="badge"><i class="fal fa-star"></i>'+ activity.contact_phone +'</span>' +
+                 '<span class="activity-rate-type">' + activity.lat + '</span>' +
                  '<span class="activity-rate-review">(' + activity.review_num + ' Reviews)</span>' +
                  '</div>' +
                  '<div class="activity-bottom">' +
@@ -112,13 +112,16 @@ function getSortValue() {
 
 function search_now(list) {
     const options = {
-        threshold: 0.2,
+        threshold: 0.1,
         tokenize:true,
+        ignoreCase: true,
+        ignoreLocation: true,
         keys: [
             "name",
             "city",
             "state",
-            "address"
+            "address",
+            "description"
         ]
     };
 
@@ -129,14 +132,20 @@ function search_now(list) {
 
 
     const fuse = new Fuse(list, options);
+    const patterns = pattern.split(',');
 
-    let result = fuse.search(pattern);
+    let results = new Set();
 
-    for (let i = 0; i < result.length; i++) {
-        result[i] = result[i].item;
+    for (let i = 0; i < patterns.length; i++) {
+        const currentPattern = patterns[i].trim();
+        const searchResults = fuse.search(currentPattern);
+
+        for (let j = 0; j < searchResults.length; j++) {
+            results.add(searchResults[j].item);
+        }
     }
-    console.log(result);
-    return  result;
+
+    return Array.from(results);
 }
 
 

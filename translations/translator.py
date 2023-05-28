@@ -2,12 +2,23 @@ import requests
 import random
 import json
 
-
-# q: sentence in original language; from_lang: current language; dst_lang:  target language; # Return:translated sentences
 def translator(q, from_lang, to_lang):
+    # update token
+    API_KEY = "w22DiAAmDvd1aUotmZCCTFjY"
+    SECRET_KEY = "cmdgasS2vG4wgcpXyv00wGCtG10GrRad"
+    def get_access_token():
+        """
+        使用 AK，SK 生成鉴权签名（Access Token）
+        :return: access_token，或是None(如果错误)
+        """
+        url = "https://aip.baidubce.com/oauth/2.0/token"
+        params = {"grant_type": "client_credentials", "client_id": API_KEY, "client_secret": SECRET_KEY}
+        return str(requests.post(url, params=params).json().get("access_token"))
+    token = get_access_token()
+
+
     if q == "":
         return ""
-    token = '24.801b570bfa8ca04575f51d40ea7d9e3c.2592000.1684900858.282335-30852236'
     url = 'https://aip.baidubce.com/rpc/2.0/mt/texttrans/v1?access_token=' + token
 
     headers = {'Content-Type': 'application/json'}
@@ -46,7 +57,8 @@ def fill_translations(file_path, from_language, destination_language, translator
         f.truncate()
 
 
+
 if __name__ == "__main__":
-    fill_translations('./zh/LC_MESSAGES/messages.po', 'en', 'zh', translator)
-    # translator("here", "en", "zh")
+    # fill_translations('./zh/LC_MESSAGES/messages.po', 'en', 'zh', translator)
+    print(translator("here", "en", "zh"))
 

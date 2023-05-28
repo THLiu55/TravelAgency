@@ -46,8 +46,8 @@
                                         <div class="booking-summary-list">
                                             <h6>{{ _("Product Info") }}</h6>
                                             <ul>
-                                                <li>{{ _("Departure Time ") }}<span>{{ dep_time }}</span></li>
-                                                <li>{{ _("Landing time ") }} <span>{{ land_time }}</span></li>
+                                                <li>{{ _("Departure Time ") }}<span>{{ order_date }}</span></li>
+                                                <li>{{ _("Landing time ") }} <span>{{ arrive_time }}</span></li>
 
                                             </ul>
                                         </div>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="booking-confirm-btn">
-                                <a href="{{ url_for('flight.order_success', flight_id=flight.id, date=order_date, cost=flight.price*0.05+flight.price, name='Flight') }}" class="theme-btn"><span class="far fa-print"></span>{{ _("Confirm Booking ") }}</a>
+                                <a href="{{ url_for('flight.order_success', flight_id=flight.id, date=date_arg, cost=flight.price*0.05+flight.price, name='Flight') }}" class="theme-btn"><span class="far fa-print"></span>{{ _("Confirm Booking ") }}</a>
                                 <a href="{{ url_for('flight.flightDetail', flight_id=flight.id) }}" class="theme-btn cancel-booking"><span
                                         class="far fa-xmark-circle"></span>{{ _("Cancel Booking ") }}</a>
                             </div>

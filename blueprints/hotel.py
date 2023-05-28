@@ -1,5 +1,5 @@
-import datetime
 import json, math
+from datetime import timedelta, date, datetime
 
 from flask import Blueprint, render_template, request, jsonify, current_app, session, redirect, url_for, flash
 from model import *
@@ -8,6 +8,9 @@ from sqlalchemy import or_
 
 bp = Blueprint("hotel", __name__, url_prefix="/hotel")
 
+@bp.route('/')
+def main():
+    return redirect(url_for('hotel.hotelList', page_num=1))
 
 @bp.route("/<page_num>")
 def hotelList(page_num):
@@ -19,6 +22,20 @@ def hotelList(page_num):
         # noinspection PyTypeChecker
         single_hotel.images = json.loads(single_hotel.images)['images']
         single_hotel.images[0] = single_hotel.images[0][single_hotel.images[0].index('static'):].lstrip('static')
+        star_detail = json.loads(single_hotel.star_detail)['star_detail']
+        single_hotel.score = round(sum(star_detail) / single_hotel.review_num, 1) if single_hotel.review_num != 0 else 0
+        if single_hotel.review_num == 0:
+            single_hotel.score = 3.0
+            single_hotel.tag = 'Nice'
+        else:
+            if single_hotel.score >= 4:
+                single_hotel.tag = 'Excellent'
+            elif single_hotel.score >= 3:
+                single_hotel.tag = 'Nice'
+            else:
+                single_hotel.tag = 'Good'
+    hotels = sorted(hotels, key=lambda hotel: hotel.priority, reverse=True)
+    result = request.args.get('result')
     return render_template("hotel-grid.html", total_hotels=total_hotels, hotels=hotels, logged=logged,
                            page_num=page_num)
 
@@ -27,6 +44,14 @@ def hotelList(page_num):
 def hotel_filter():
     hotel_type = request.form.get("type1").split(",")
     to_sort = request.form.get('sort_by')
+    if 'language' in session:
+        if session.get("language") == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
+    else:
+        key_word = request.form.get('key-word')
     if hotel_type[0] == '':
         hotel_type = ['Free Parking', 'Restaurant', 'Pets Allowed', 'Airport Transportation', 'Fitness Facility',
                       'WiFi', 'Air Conditioning']
@@ -55,6 +80,19 @@ def hotel_filter():
 
     if to_sort == '4':
         hotels = sorted(hotels, key=lambda hotel: hotel.min_price, reverse=True)
+    for activity in hotels:
+        star_detail = json.loads(activity.star_detail)['star_detail']
+        activity.contact_phone = round(sum(star_detail) / activity.review_num, 1) if activity.review_num != 0 else 0
+        if activity.review_num == 0:
+            activity.contact_phone = '3.0'
+            activity.lat = 'Nice'
+        else:
+            if activity.contact_phone >= 4:
+                activity.lat = 'Excellent'
+            elif activity.contact_phone >= 3:
+                activity.lat = 'Nice'
+            else:
+                activity.lat = 'Good'
     hotels = [hotel.to_dict() for hotel in hotels]
     return jsonify({"hotels": hotels, "page": 1})
 
@@ -121,6 +159,12 @@ def hotelDetail(hotel_id):
     else:
         min_stay = "2 Nights Or Less"
         hotel.min_stay = False
+    available_days = []
+    start_date = date.today()
+    end_date = start_date + timedelta(days=3 * 30)
+    while start_date <= end_date:
+        available_days.append(start_date.strftime("%Y-%m-%d") + ',')
+        start_date += timedelta(days=1)
     return render_template("hotel-detail.html", hotel=hotel, logged=logged, reviews=reviews, images=images,
                            review_num=review_num, added=added, purchased=purchased, star_score=star_score,
                            star_score_ceil=star_score_ceil, star_detail=star_detail, rooms=rooms_dic, wine_bar=wine_bar,
@@ -129,7 +173,7 @@ def hotelDetail(hotel_id):
                            room_service=True, fire_place=True, breakfast=breakfast, fitness_facility=fitness_facility,
                            elevator=elevator, entertainment=entertainment, air_conditioning=air_conditioning,
                            coffee=coffee, wifi=wifi, swimming_pool=swimming_pool, play=play, room_num=len(rooms),
-                           min_stay=min_stay, lat=hotel.lat, lon=hotel.lon)
+                           min_stay=min_stay, lat=hotel.lat, lon=hotel.lon, available_days=''.join(available_days))
 
 
 @bp.route("/add_wishlist/<hotel_id>")
@@ -140,7 +184,7 @@ def add_wishlist(hotel_id):
     hotel_order.productID = hotel_id
     hotel_order.cost = aimed_hotel.min_price
     hotel_order.purchased = False
-    hotel_order.endTime = datetime.datetime.now()
+    hotel_order.endTime = datetime.now()
     db.session.add(hotel_order)
     db.session.commit()
     return redirect((url_for('customer.profile', page="/wishlist")))
@@ -199,28 +243,30 @@ def order_success():
         e_date = request.args.get("e_date")
         try:
             date_format = "%Y/%m/%d"
-            datetime_s = datetime.datetime.strptime(s_date, date_format)
+            datetime_s = datetime.strptime(s_date, date_format)
         except ValueError:
             date_format = "%m/%d/%Y"
-            datetime_s = datetime.datetime.strptime(s_date, date_format)
+            datetime_s = datetime.strptime(s_date, date_format)
         try:
             date_format = "%Y/%m/%d"
-            datetime_e = datetime.datetime.strptime(e_date, date_format)
+            datetime_e = datetime.strptime(e_date, date_format)
         except ValueError:
             date_format = "%m/%d/%Y"
-            datetime_e = datetime.datetime.strptime(e_date, date_format)
+            datetime_e = datetime.strptime(e_date, date_format)
         hotel_order.startTime = datetime_s
         hotel_order.productID = request.args.get("hotel_id")
         hotel_order.cost = float(request.args.get("cost"))
         hotel_order.checkOutTime = datetime_e
-        hotel_order.endTime = datetime.datetime.now()
+        hotel_order.endTime = datetime.now()
         customer.wallet = customer.wallet - cost
+        one_hour_ago = datetime.now() - timedelta(hours=1)
+        last_order = HotelOrder.query.filter_by(customerID=customer.id, productID=hotel_order.productID).filter(
+            HotelOrder.endTime <= one_hour_ago).all()
         db.session.add(hotel_order)
         db.session.commit()
-        return render_template("booking-success.html", name=request.args.get("name"))
+        return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        flash("Insufficient balance in your wallet, please top up first")
-        return redirect(url_for('customer.profile', page='/wallet'))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("hotel_id"), type="hotel"))
 
 
 @bp.route("/add_review", methods=['POST'])
@@ -230,7 +276,7 @@ def add_review():
     rating = request.form.get('rating')
     content = request.form.get('content')
     hotel = Hotel.query.get(hotel_id)
-    review = HotelReview(rating=rating, issueTime=datetime.datetime.now(), content=content, customerID=customer_id,
+    review = HotelReview(rating=rating, issueTime=datetime.now(), content=content, customerID=customer_id,
                          productID=hotel_id)
     hotel.review_num = hotel.review_num + 1
     star = int(request.form.get("rating"))

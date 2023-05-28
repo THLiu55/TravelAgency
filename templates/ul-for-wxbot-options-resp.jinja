@@ -1,0 +1,9 @@
+<ul>
+    {% for option in options %}
+    <li>
+        <h6 class="options" onclick='parseBotCmd("{{ option.answer }}")'>
+            {{ loop.index }}. {{ option.title }}
+        </h6>
+    </li>
+    {% endfor %}
+</ul>

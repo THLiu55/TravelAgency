@@ -23,7 +23,10 @@
                     <div class="hotel-img">
                         <span class="badge">{{ i.type_ }}</span>
                         <img src="{{ i.photo_url }}" alt="">
+                        {% if i.type_ == "Activity" or i.type_ == "Tour" %}
                         <a href="#" class="add-wishlist"  data-order-id="{{ i.id }}" data-order-type="{{ i.type_ }}"id="addtoWishListCalender"><i class="far fa-calendar-plus"></i></a>
+                        {% else %}
+                        {% endif %}
                     </div>
                     <div class="hotel-content">
                         <h4 class="hotel-title"><a href="#">{{ i.title }}</a></h4>
@@ -49,7 +52,7 @@
         </div>
 
       
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="test"> {{ _("Plan them in my calendar") }}</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="test"> {{ _("Plan in my calendar") }}</button>
 
 
 
@@ -93,7 +96,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ _("Close") }}</button>
-          <button type="button" class="btn btn-primary">{{ _("Save Changes") }}</button>
+          <!-- <button type="button" class="btn btn-primary">{{ _("Save Changes") }}</button> -->
         </div>
       </div>
     </div>
@@ -107,7 +110,9 @@
     $(".add-wishlist").click(function (event) {
         event.preventDefault();
         // $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
-        $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        // $(this).find("i").toggleClass("far fa-calendar-plus fas fa-calendar-check");
+        $(this).find("i").removeClass("far fa-calendar-plus");
+        $(this).find("i").addClass("fas fa-calendar-check");
         //let alert show
         $('.alert-success').addClass('show');
         //hide alert after 3 seconds

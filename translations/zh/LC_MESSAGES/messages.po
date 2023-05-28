@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-29 12:22+0800\n"
+"POT-Creation-Date: 2023-05-15 17:46+0800\n"
 "PO-Revision-Date: 2023-04-24 17:40+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -16,13 +16,496 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.12.1\n"
+"Generated-By: Babel 2.11.0\n"
+
+#: templates/AboutUs.html:73
+msgid "Group 7"
+msgstr "7组"
+
+#: templates/AboutUs.html:77 templates/flight-detail.html:150
+msgid "About"
+msgstr "关于"
+
+#: templates/AboutUs.html:78
+msgid "Projects"
+msgstr "项目"
+
+#: templates/AboutUs.html:79
+msgid "Milestones"
+msgstr "里程碑"
+
+#: templates/AboutUs.html:100
+msgid "Group7"
+msgstr "7组"
+
+#: templates/AboutUs.html:100 templates/AboutUs.html:125
+msgid "quality"
+msgstr "高质量"
+
+#: templates/AboutUs.html:100 templates/AboutUs.html:125
+msgid "trust"
+msgstr "信任"
+
+#: templates/AboutUs.html:100 templates/AboutUs.html:125
+msgid "passion"
+msgstr "热情"
+
+#: templates/AboutUs.html:104
+msgid "We are development Team 7, a passionate and trusting team."
+msgstr "我们是开发小组第七组，一个热情和值得信任的小组"
+
+#: templates/AboutUs.html:106
+msgid ""
+"We encourage innovation, try new ideas, and work hard to achieve our "
+"goals."
+msgstr "我们鼓励创新，尝试新想法，努力实现我们的目标。"
+
+#: templates/AboutUs.html:108
+msgid ""
+"We are committed to providing quality products and services to our "
+"customers, constantly learning and improving."
+msgstr "我们致力于为客户提供优质的产品和服务，不断学习和提高。"
+
+#: templates/AboutUs.html:110
+msgid ""
+"We believe that only through mutual cooperation and support can we "
+"succeed in COMP3030J !"
+msgstr "我们相信，只有通过相互合作和支持，我们才能在COMP3030J中取得成功"
+
+#: templates/AboutUs.html:124
+msgid "Our priorities is "
+msgstr "我们的首要任务是"
+
+#: templates/AboutUs.html:132
+msgid "What we do?"
+msgstr "我们做什么？"
+
+#: templates/AboutUs.html:133
+msgid ""
+"As a family-owned shop that previously relied on walk-in customers, it "
+"needs to enter the online market with a new website that meets "
+"requirements for ease of use, quality communication, and bilingual "
+"support."
+msgstr "作为一家以前依赖上门顾客的家族企业，它需要通过一个新的网站进入在线市场，满足对易用性、高质量沟通和双语的要求支持。"
+
+#: templates/AboutUs.html:134
+msgid ""
+"For the sake of a successful transformation from a basic walk-in travel "
+"agency to an online shop, our software engineering team has been hired to"
+" design and develop a website that meets user requirements and basic "
+"functionalities."
+msgstr "为了从基本的免预约旅行成功转型代理到一家网上商店，我们的软件工程团队已被雇用。设计和开发一个满足用户需求和基本需求的网站功能。"
+
+#: templates/AboutUs.html:139
+msgid "Customer Portal"
+msgstr "客户端"
+
+#: templates/AboutUs.html:141
+msgid ""
+"Provides information on travel destinations, attractions, reviews, and "
+"accommodation, as well as booking and planning tools."
+msgstr "提供旅游目的地、景点、评论和住宿，以及预订和规划工具。"
+
+#: templates/AboutUs.html:145
+msgid "Staff Portal"
+msgstr "工作人员端"
+
+#: templates/AboutUs.html:146
+msgid ""
+"Allows employees to organize, modify, prioritize, update, and keep track "
+"of bookings in the system."
+msgstr "允许员工组织、修改、优先排序、更新和跟踪。系统中的预订。"
+
+#: templates/AboutUs.html:152
+msgid "Our Project"
+msgstr "我们的项目"
+
+#: templates/AboutUs.html:153
+msgid ""
+"Incorporate a map display feature into the website to help customers "
+"visualize their travel destinations and plan their trips more "
+"effectively."
+msgstr "在网站中加入地图显示功能，以帮助客户。想象他们的旅行目的地，更多地计划他们的旅行有效。"
+
+#: templates/AboutUs.html:154
+msgid ""
+"To improve the customer using experiences, a smart chatting bot (AI "
+"customer service) is supported in our system. Reviews, machine learning "
+"based recommendations is also embedded."
+msgstr "为了改善客户的使用体验，智能聊天机器人(AI)我们的系统支持“客户服务。评论，机器学习的建议也被嵌入。"
+
+#: templates/AboutUs.html:155
+msgid ""
+"There is an individual calendar for every customer to visualize his "
+"traveling planning"
+msgstr ""
+
+#: templates/AboutUs.html:166
+msgid "Project Selling Points"
+msgstr "项目卖点"
+
+#: templates/AboutUs.html:167
+msgid ""
+"We have the following outstanding selling points that make us stand out "
+"from our peers"
+msgstr ""
+
+#: templates/AboutUs.html:168
+msgid "Check Our Project"
+msgstr "看我们的项目"
+
+#: templates/AboutUs.html:181
+msgid "Selling Point #1"
+msgstr "卖点1"
+
+#: templates/AboutUs.html:182
+msgid ""
+"The well-trained AI robot based on Microsoft dialoGPT for 24 hours, "
+"provide comprehensive and in place customer service, and solve the basic "
+"problems of 'order view', 'account management' and so on."
+msgstr "基于微软dialoGPT的训练有素的AI机器人24小时聊天，提供全面到位的顾客服务，解决‘订单查看’，“账户管理”等基础问题。"
+
+#: templates/AboutUs.html:196
+msgid "Selling Point #2"
+msgstr "卖点2"
+
+#: templates/AboutUs.html:197
+msgid ""
+"Based on the advanced image recognition technology in the field of "
+"artificial intelligence, Baidu's image recognition API is used to realize"
+" that users can find the services they are interested in by uploading "
+"pictures to this website."
+msgstr "基于人工智能领域的图像识别先进技术，使用了Baidu的图像识别API，实现了用户可以通过上传图片在本网站找到他们感兴趣的服务。"
+
+#: templates/AboutUs.html:211
+msgid "Selling Point #3"
+msgstr "卖点3"
+
+#: templates/AboutUs.html:212
+msgid ""
+"Accurate map positioning is used in the product details page, so that "
+"customers can have a more accurate understanding of the travel place. At "
+"the same time, MapBox API is used, so that employees can click any "
+"location on the map to get the address and latitude and longitude, so as "
+"to upload accurate address easily."
+msgstr ""
+"在商品详情页使用了精准的地图定位，使顾客可以更精准的了解旅行地点。同时使用MapBox "
+"API，使员工可以通过点击地图上的任意位置得到地址和经纬度，从而便捷地上传精确地址。"
+
+#: templates/AboutUs.html:254
+msgid "Prev"
+msgstr "前"
+
+#: templates/AboutUs.html:255
+msgid "Next"
+msgstr "后"
+
+#: templates/AboutUs.html:262
+msgid "MileStone 1"
+msgstr "里程碑1"
+
+#: templates/AboutUs.html:263
+msgid "March 7th, 2023"
+msgstr "2023年3月7日"
+
+#: templates/AboutUs.html:265
+msgid ""
+"In the first milestone, we are required to finish collecting, organizing "
+"and documenting user requirements. Further system design and UI design "
+"based on requirements need to be finished in these requirements as well."
+msgstr "在第一个里程碑中，我们被要求完成收集、组织，并记录用户需求。进一步的系统设计和用户界面设计的需求也需要在这些需求中完成。"
+
+#: templates/AboutUs.html:269
+msgid "MileStone 2"
+msgstr "里程碑2"
+
+#: templates/AboutUs.html:270
+msgid "March 28th, 2023"
+msgstr "2023年3月28日"
+
+#: templates/AboutUs.html:272
+msgid ""
+"In the second milestone, we are supposed to finish the basic web pages "
+"including the customer portal and staff portal. Basic functionalities "
+"(front-end \\& back-end) like login and sign up, staff login, tour-"
+"related information presentation and staff data presentation need to be "
+"completed in this milestone.\t"
+msgstr "“在第二个里程碑中，我们应该完成基本的网页，包括客户门户和员工门户。基本功能(前端\\&后端)像登录和报名，员工登录，游览相关信息的展示和员工数据的展示需要完成了这个里程碑。"
+
+#: templates/AboutUs.html:276
+msgid "MileStone 3"
+msgstr "里程碑2"
+
+#: templates/AboutUs.html:277
+msgid "Aprill 18th, 2023"
+msgstr "2023年4月18日"
+
+#: templates/AboutUs.html:279
+msgid ""
+"Before the mid-semester assessment, our project is supposed to be able to"
+" support all the basic tour related services like customers’ bookings, "
+"planning tool as well as functionalities like staffs’ information "
+"management, order management, data management. A basic chatting bot needs"
+" to be provided in this milestone. The initial parts of system and user "
+"documents are required to be finished."
+msgstr "在期中评估之前，我们的项目应该能够支持所有与旅游相关的基本服务，比如客户预订。规划工具以及员工信息等功能管理，订单管理，数据管理。一个基本的聊天机器人需要在这个里程碑中提供。系统和用户的初始部分文件是必须完成的。"
+
+#: templates/AboutUs.html:284
+msgid "MileStone 4"
+msgstr "里程碑4"
+
+#: templates/AboutUs.html:285
+msgid "May 8th, 2023"
+msgstr "2023年3月8日"
+
+#: templates/AboutUs.html:287
+msgid ""
+"Extensive functionalities like smart replying of chatting bot, reviews "
+"and recommendations based on machine learning algorithms need to be "
+"completed in this milestone. Finish the relevant user document and system"
+" document."
+msgstr "“广泛的功能，如聊天机器人的智能回复，评论基于机器学习算法的推荐需要是完成了这个里程碑。完成相关的用户文档和系统文档”。"
+
+#: templates/AboutUs.html:292
+msgid "MileStone 5"
+msgstr "里程碑5"
+
+#: templates/AboutUs.html:293
+msgid "May 20th, 2023"
+msgstr "2023年3月20日"
+
+#: templates/AboutUs.html:295
+msgid ""
+"In the last milestone, we work together for the final release of out "
+"project. Comprehensive testing works including integration and "
+"application tests need to be completed in this milestone."
+msgstr "“在最后一个里程碑，我们一起为最终发布而努力。综合测试工作，包括集成和应用程序测试需要在此里程碑中完成。"
+
+#: templates/AboutUs.html:300
+msgid "Final"
+msgstr "最终版"
+
+#: templates/AboutUs.html:301
+msgid "May 27th, 2023"
+msgstr "2023年3月27日"
+
+#: templates/AboutUs.html:303
+msgid "Final release of our project."
+msgstr "我们项目的最终版本"
+
+#: templates/AboutUs.html:368
+msgid "Group Leader"
+msgstr "组长"
+
+#: templates/AboutUs.html:369 templates/AboutUs.html:385
+msgid "Backend developer"
+msgstr "后端开发人员"
+
+#: templates/AboutUs.html:370
+msgid "TianHao Liu"
+msgstr "刘天昊"
+
+#: templates/AboutUs.html:376
+msgid "Maintainer"
+msgstr "维护人员"
+
+#: templates/AboutUs.html:377
+msgid "Backend manager"
+msgstr "后端开发经理"
+
+#: templates/AboutUs.html:378
+msgid "Ziqi Guo"
+msgstr "郭子齐"
+
+#: templates/AboutUs.html:384
+msgid "Resource Manager"
+msgstr "资源经理"
+
+#: templates/AboutUs.html:386
+msgid "ZeXuan Lv"
+msgstr "吕泽轩"
+
+#: templates/AboutUs.html:393
+msgid "Testing Engineer"
+msgstr "测试工程师"
+
+#: templates/AboutUs.html:394
+msgid "Frontend manager"
+msgstr "前端经理"
+
+#: templates/AboutUs.html:395
+msgid "Yuchen Zhang"
+msgstr "张雨晨"
+
+#: templates/AboutUs.html:401 templates/AboutUs.html:409
+msgid "Project Manager"
+msgstr "项目经理"
+
+#: templates/AboutUs.html:402 templates/AboutUs.html:410
+msgid "Frontend developer"
+msgstr "前端开发人员"
+
+#: templates/AboutUs.html:403
+msgid "Zhiyou Xiao"
+msgstr "肖植友"
+
+#: templates/AboutUs.html:411
+msgid "Qi Sun"
+msgstr "孙琪"
+
+#: templates/BaseManager.html:534
+msgid "My chat"
+msgstr "聊天"
+
+#: templates/BaseManager.html:540 templates/BaseManager.html:601
+#: templates/profile-base.html:175
+msgid "Logout"
+msgstr "注销"
+
+#: templates/BaseManager.html:565
+msgid "Dashboard"
+msgstr "指示板"
+
+#: templates/BaseManager.html:567 templates/BaseManager.html:574
+#: templates/accommodation.html:27 templates/activities.html:26
+#: templates/customerAccount.html:25 templates/customerWishlist.html:25
+#: templates/customers.html:399 templates/flight.html:449
+#: templates/orderInvoiceActivity.html:399
+#: templates/orderInvoiceFlight.html:399 templates/orderInvoiceHotel.html:398
+#: templates/orderInvoiceTour.html:399 templates/orderMessages.html:456
+#: templates/orders.html:26 templates/reviews.html:25 templates/tour.html:27
+msgid "Travel-Booking"
+msgstr "旅行预定"
+
+#: templates/BaseManager.html:570
+msgid "Product & Orders"
+msgstr "产品&订单"
+
+#: templates/BaseManager.html:576 templates/Dashboard.html:148
+#: templates/activity-booking-confirm.html:37 templates/activity-grid.html:32
+#: templates/base.html:75 templates/profile-base.html:99
+msgid "Activity"
+msgstr "活动"
+
+#: templates/BaseManager.html:578 templates/Homepage.html:112
+#: templates/orders.html:58 templates/orders.html:59 templates/reviews.html:56
+#: templates/reviews.html:57 templates/tour.html:18 templates/tour.html:32
+msgid "Tours"
+msgstr "旅行"
+
+#: templates/BaseManager.html:580 templates/accommodation.html:18
+#: templates/accommodation.html:33
+msgid "Accommodations"
+msgstr "住宿"
+
+#: templates/BaseManager.html:582 templates/Homepage.html:83
+#: templates/flight.html:431 templates/flight.html:455 templates/orders.html:64
+#: templates/orders.html:65
+msgid "Flights"
+msgstr "航班"
+
+#: templates/BaseManager.html:584
+msgid "Total Orders"
+msgstr "订单总数"
+
+#: templates/BaseManager.html:586
+msgid "Customers"
+msgstr "客户信息"
+
+#: templates/BaseManager.html:588 templates/activity-detail.html:48
+#: templates/activity-detail.html:146 templates/activity-detail.html:156
+#: templates/activity-detail.html:252 templates/activity-grid.html:222
+#: templates/flight-detail.html:272 templates/flight-detail.html:282
+#: templates/flight-detail.html:378 templates/hotel-detail.html:54
+#: templates/hotel-detail.html:334 templates/hotel-detail.html:440
+#: templates/hotel-grid.html:249 templates/profile-wishlist.html:37
+#: templates/reviews.html:17 templates/tour-detail.html:48
+#: templates/tour-detail.html:151 templates/tour-detail.html:161
+#: templates/tour-detail.html:257 templates/tour-grid.html:224
+msgid "Reviews"
+msgstr "评论"
+
+#: templates/BaseManager.html:596
+msgid "Chat"
+msgstr "聊天"
+
+#: templates/Dashboard.html:23
+msgid "Comments"
+msgstr "评论"
+
+#: templates/Dashboard.html:24
+msgid "Comments Today"
+msgstr "今日评论"
+
+#: templates/Dashboard.html:33
+msgid " New Comments"
+msgstr "新评论"
+
+#: templates/Dashboard.html:46
+msgid "Bookings"
+msgstr "我的预定"
+
+#: templates/Dashboard.html:47
+msgid "Bookings Today"
+msgstr "今日预订"
+
+#: templates/Dashboard.html:56
+msgid "New Bookings"
+msgstr "新预定"
+
+#: templates/Dashboard.html:69
+msgid "Sign-Ups"
+msgstr "注册"
+
+#: templates/Dashboard.html:70
+msgid "Sign-Ups Today"
+msgstr "今日注册"
+
+#: templates/Dashboard.html:78
+msgid "New Sign-Ups"
+msgstr "新注册"
+
+#: templates/Dashboard.html:99
+msgid "Revenue"
+msgstr "收入"
+
+#: templates/Dashboard.html:108
+msgid "Current week"
+msgstr "本周"
+
+#: templates/Dashboard.html:113
+msgid "Previous week"
+msgstr "上一周"
+
+#: templates/Dashboard.html:135
+msgid "Profit"
+msgstr "利润"
+
+#: templates/Dashboard.html:156 templates/Homepage.html:350
+#: templates/base.html:70 templates/hotel-booking-confirm.html:37
+#: templates/hotel-grid.html:29 templates/profile-base.html:94
+msgid "Hotel"
+msgstr "酒店"
+
+#: templates/Dashboard.html:164 templates/Homepage.html:303
+#: templates/base.html:67 templates/flight-booking-confirm.html:37
+#: templates/flight-detail.html:22 templates/profile-base.html:91
+#: templates/reviews.html:62 templates/reviews.html:63
+msgid "Flight"
+msgstr "航班"
+
+#: templates/Dashboard.html:172 templates/Homepage.html:513
+#: templates/base.html:80 templates/profile-base.html:104
+#: templates/tour-booking-confirm.html:37 templates/tour-detail.html:24
+#: templates/tour-grid.html:28
+msgid "Tour"
+msgstr "旅行"
 
 #: templates/Homepage.html:34
 msgid "Explore The BJUT Together"
 msgstr "一起探索BJUT"
 
-#: templates/Homepage.html:35 templates/Homepage.html:816
+#: templates/Homepage.html:35 templates/Homepage.html:807
 msgid ""
 "Very good library,open from 7 a.m. to 10:30 p.m, located in Beijing "
 "University of Technology."
@@ -32,7 +515,7 @@ msgstr "非常好的图书馆，从早上7点开放到晚上10点半，位于北
 msgid "Explore The Temple of Heaven"
 msgstr "探索天坛"
 
-#: templates/Homepage.html:49 templates/Homepage.html:828
+#: templates/Homepage.html:49 templates/Homepage.html:819
 msgid ""
 "The Temple of Heaven is a complex of religious buildings situated in the "
 "central Beijing."
@@ -45,10 +528,6 @@ msgstr "一起探索这个城市"
 #: templates/Homepage.html:64
 msgid "Find awesome flight, accommodation, destination, and attractions"
 msgstr "查找精彩的航班、住宿、目的地和景点"
-
-#: templates/Homepage.html:83
-msgid "Flights"
-msgstr "航班"
 
 #: templates/Homepage.html:84
 msgid "Choose flights according to your needs. "
@@ -78,266 +557,339 @@ msgstr "跨境提供"
 msgid "Train, Plane, bus and everything."
 msgstr "火车、飞机、公共汽车等等。"
 
-#: templates/Homepage.html:112
-msgid "Tours"
-msgstr "旅行"
-
 #: templates/Homepage.html:113
 msgid "Pick some popular destinations for travel!"
 msgstr "选择一些热门的旅行目的地！"
 
-#: templates/Homepage.html:144 templates/flight-booking-confirm.html:40
-msgid "Destination"
-msgstr "目的地"
+#: templates/Homepage.html:144 templates/activities.html:17
+#: templates/activities.html:31 templates/orders.html:55
+#: templates/orders.html:56 templates/reviews.html:53 templates/reviews.html:54
+msgid "Activities"
+msgstr "活动"
 
 #: templates/Homepage.html:145
-msgid "Our Most Popular Destinations"
-msgstr "选择一些热门的旅行目的地！"
+msgid "Our Most Popular Activities"
+msgstr "我们最受欢迎的活动"
 
-#: templates/Homepage.html:314 templates/base.html:71
-#: templates/flight-booking-confirm.html:37 templates/flight-detail.html:22
-#: templates/profile-base.html:94
-msgid "Flight"
-msgstr "航班"
+#: templates/Homepage.html:156
+msgid "Lady White Legend"
+msgstr "怀特女士传奇"
 
-#: templates/Homepage.html:315
+#: templates/Homepage.html:163
+msgid "Hiking activity"
+msgstr "远足活动"
+
+#: templates/Homepage.html:167
+msgid "Mount Qingcheng, Sichuan"
+msgstr "青城山，四川"
+
+#: templates/Homepage.html:180
+msgid "Fragrant Hill"
+msgstr "香山"
+
+#: templates/Homepage.html:187
+msgid "Amusement Park"
+msgstr "游乐园"
+
+#: templates/Homepage.html:191
+msgid "Fragrant Hill, Beijing"
+msgstr "香山，北京"
+
+#: templates/Homepage.html:204
+msgid "Love song of Kangding"
+msgstr "康定情歌"
+
+#: templates/Homepage.html:211
+msgid "Music Festival"
+msgstr "音乐节"
+
+#: templates/Homepage.html:215
+msgid "Kang ding, Sichuan"
+msgstr "康定，四川"
+
+#: templates/Homepage.html:228
+msgid "Cycling around Beijing"
+msgstr "环京城骑行"
+
+#: templates/Homepage.html:235
+msgid "Cycling"
+msgstr "骑行"
+
+#: templates/Homepage.html:239 templates/Homepage.html:264
+msgid "Shunyi, Beijing"
+msgstr "顺义，北京"
+
+#: templates/Homepage.html:253
+msgid "Hot air balloon"
+msgstr "热气球"
+
+#: templates/Homepage.html:260
+msgid "Flying hot air balloon"
+msgstr "热气球"
+
+#: templates/Homepage.html:277
+msgid "Bonfire Party"
+msgstr "篝火晚会"
+
+#: templates/Homepage.html:284
+msgid "Party Activity"
+msgstr "派对活动"
+
+#: templates/Homepage.html:288
+msgid "Beijing University of Technology"
+msgstr "北京工业大学"
+
+#: templates/Homepage.html:304
 msgid "Our Most Popular Flights"
 msgstr "我们最受欢迎的航班"
 
-#: templates/Homepage.html:340 templates/activity-grid.html:188
-#: templates/hotel-grid.html:219 templates/profile-wishlist.html:41
-#: templates/tour-grid.html:328
+#: templates/Homepage.html:329 templates/activity-grid.html:229
+#: templates/hotel-grid.html:256 templates/profile-wishlist.html:44
+#: templates/tour-grid.html:231
 msgid "See Details"
 msgstr "请参阅详细信息"
 
-#: templates/Homepage.html:349
+#: templates/Homepage.html:338
 msgid "Discover More"
 msgstr "发现更多"
 
-#: templates/Homepage.html:361 templates/base.html:74
-#: templates/hotel-booking-confirm.html:37 templates/hotel-grid.html:29
-#: templates/profile-base.html:97
-msgid "Hotel"
-msgstr "酒店"
-
-#: templates/Homepage.html:362
+#: templates/Homepage.html:351
 msgid "Our Most Popular Hotels"
 msgstr "我们最受欢迎的酒店"
 
-#: templates/Homepage.html:388
+#: templates/Homepage.html:377
 msgid "See Details "
 msgstr "请参阅详细信息"
 
-#: templates/Homepage.html:524 templates/base.html:84
-#: templates/profile-base.html:107 templates/tour-booking-confirm.html:37
-#: templates/tour-detail.html:24 templates/tour-grid.html:27
-msgid "Tour"
-msgstr "旅行"
-
-#: templates/Homepage.html:525
+#: templates/Homepage.html:514
 msgid "Our Most Popular Tours"
 msgstr "我们最受欢迎的旅游"
 
-#: templates/Homepage.html:529
+#: templates/Homepage.html:518
 msgid "All Tour"
 msgstr "旅行"
 
-#: templates/Homepage.html:530
+#: templates/Homepage.html:519
 msgid "Historical"
 msgstr "历史的"
 
-#: templates/Homepage.html:531
+#: templates/Homepage.html:520
 msgid "Weekend Trip"
 msgstr "周末旅行"
 
-#: templates/Homepage.html:532
+#: templates/Homepage.html:521
 msgid "Special Tour"
 msgstr "特殊寺庙"
 
-#: templates/Homepage.html:533
+#: templates/Homepage.html:522
 msgid "Holiday Tour"
 msgstr "假日旅游"
 
-#: templates/Homepage.html:814
+#: templates/Homepage.html:540
+msgid " Place(s)"
+msgstr "地点"
+
+#: templates/Homepage.html:546 templates/activity-detail.html:47
+#: templates/flight-detail.html:51 templates/hotel-detail.html:53
+#: templates/tour-detail.html:47
+msgid "Excellent"
+msgstr "好评众多"
+
+#: templates/Homepage.html:547
+msgid "Reviews)"
+msgstr "评论"
+
+#: templates/Homepage.html:549
+msgid "day(s)"
+msgstr "天"
+
+#: templates/Homepage.html:552
+msgid "From"
+msgstr "从"
+
+#: templates/Homepage.html:805
 msgid "The Library"
 msgstr "图书馆"
 
-#: templates/Homepage.html:815
+#: templates/Homepage.html:806
 msgid "Yifu Library"
 msgstr "逸夫图书馆"
 
-#: templates/Homepage.html:817 templates/Homepage.html:832
-#: templates/Homepage.html:847 templates/Homepage.html:861
-#: templates/Homepage.html:875
+#: templates/Homepage.html:808 templates/Homepage.html:823
+#: templates/Homepage.html:838 templates/Homepage.html:852
+#: templates/Homepage.html:866
 msgid "Explore the tour"
 msgstr "探索旅程"
 
-#: templates/Homepage.html:825
+#: templates/Homepage.html:816
 msgid "Tourism Atrraction"
 msgstr "旅游胜地"
 
-#: templates/Homepage.html:826
+#: templates/Homepage.html:817
 msgid "Temple of Heaven"
 msgstr "天坛"
 
-#: templates/Homepage.html:841
+#: templates/Homepage.html:832
 msgid "Tropical area"
 msgstr "热带地区"
 
-#: templates/Homepage.html:842
+#: templates/Homepage.html:833
 msgid "The beach"
 msgstr "海滩"
 
-#: templates/Homepage.html:844
+#: templates/Homepage.html:835
 msgid ""
 "The beach is very beautiful, the water is very clear, the sand is very "
 "white, and the sea is very blue."
 msgstr "海滩很漂亮，水很清澈，沙子很白，大海很蓝。"
 
-#: templates/Homepage.html:856
+#: templates/Homepage.html:847
 msgid "Temple"
 msgstr "寺庙"
 
-#: templates/Homepage.html:857
+#: templates/Homepage.html:848
 msgid "Special temple"
 msgstr "特殊寺庙"
 
-#: templates/Homepage.html:859
+#: templates/Homepage.html:850
 msgid "Good place to have a temple run."
-msgstr "这是一个经营寺庙的好地方。"
+msgstr "这是一个寺庙逃亡的好地方。"
 
-#: templates/Homepage.html:870
+#: templates/Homepage.html:861
 msgid "The white building"
 msgstr "白色建筑"
 
-#: templates/Homepage.html:871
+#: templates/Homepage.html:862
 msgid "White building"
 msgstr "白色建筑"
 
-#: templates/Homepage.html:873
+#: templates/Homepage.html:864
 msgid "White building is white."
 msgstr "白色建筑是白色的。"
 
-#: templates/Homepage.html:891
+#: templates/Homepage.html:882
 msgid "We are GROUP7 travel agency!"
 msgstr "我们是GROUP7旅行社！"
 
-#: templates/Homepage.html:892
+#: templates/Homepage.html:883
 msgid "Family hold company for"
 msgstr "家族控股公司"
 
-#: templates/Homepage.html:893
+#: templates/Homepage.html:884
 msgid "travel!"
-msgstr "长途行走"
+msgstr "长途旅行！"
 
-#: templates/Homepage.html:894
+#: templates/Homepage.html:885
 msgid ""
 "Made up of six team members with rich experience and good service "
 "attitude to ensure your good travel experience!"
 msgstr "由六名经验丰富、服务周到的团队成员组成的态度，保证您良好的旅行体验!"
 
-#: templates/Homepage.html:903
+#: templates/Homepage.html:894
 msgid "Beijing, China"
 msgstr "中国北京"
 
-#: templates/Homepage.html:965 templates/MainTopbar.html:103
-#: templates/base.html:132 templates/profile-base.html:207
+#: templates/Homepage.html:956 templates/MainTopbar.html:103
+#: templates/base.html:128 templates/profile-base.html:204
 msgid "Group 7 NULLGROUPNAMEEXCEPTION"
 msgstr "第7组NULLGROUPNAMEEXCEPTION"
 
-#: templates/Homepage.html:966 templates/MainTopbar.html:104
-#: templates/base.html:133 templates/profile-base.html:208
+#: templates/Homepage.html:957 templates/MainTopbar.html:104
+#: templates/base.html:129 templates/profile-base.html:205
 msgid "Fourth Teach Building, Beijing"
 msgstr "北京第四教学楼"
 
-#: templates/Homepage.html:967 templates/MainTopbar.html:105
-#: templates/base.html:134 templates/profile-base.html:209
+#: templates/Homepage.html:958 templates/MainTopbar.html:105
+#: templates/base.html:130 templates/profile-base.html:206
 msgid "Tel: 123456"
 msgstr "电话：123456"
 
-#: templates/Homepage.html:968 templates/MainTopbar.html:106
-#: templates/base.html:135 templates/profile-base.html:210
+#: templates/Homepage.html:959 templates/MainTopbar.html:106
+#: templates/base.html:131 templates/profile-base.html:207
 msgid "Handcrafted with love by Group 7"
 msgstr "第七组用爱手工制作"
 
-#: templates/SignInUp.html:19
+#: templates/SignInUp.html:20
 msgid "Change Password"
 msgstr "修改密码"
 
-#: templates/SignInUp.html:22 templates/SignInUp.html:84
-#: templates/SignInUp.html:121 templates/activity-booking-confirm.html:58
-#: templates/hotel-booking-confirm.html:59 templates/profile-setting.html:18
-#: templates/tour-booking-confirm.html:58
+#: templates/SignInUp.html:23 templates/SignInUp.html:85
+#: templates/SignInUp.html:122 templates/accommodation.html:1297
+#: templates/activities.html:549 templates/activities.html:953
+#: templates/activity-booking-confirm.html:58 templates/contacts.html:108
+#: templates/flight.html:1567 templates/hotel-booking-confirm.html:59
+#: templates/profile-setting.html:18 templates/tour-booking-confirm.html:58
+#: templates/tour.html:960
 msgid "Email"
 msgstr "电子邮件"
 
-#: templates/SignInUp.html:25 templates/SignInUp.html:87
+#: templates/SignInUp.html:26 templates/SignInUp.html:88
 msgid "SEND"
 msgstr "发送"
 
-#: templates/SignInUp.html:32 templates/SignInUp.html:104
+#: templates/SignInUp.html:33 templates/SignInUp.html:105
 msgid "Captcha"
 msgstr "验证码"
 
-#: templates/SignInUp.html:38
+#: templates/SignInUp.html:39
 msgid "Reset Password"
 msgstr "重置密码"
 
-#: templates/SignInUp.html:43 templates/SignInUp.html:99
+#: templates/SignInUp.html:44 templates/SignInUp.html:100
 msgid "Confirm Password"
 msgstr "确认密码"
 
-#: templates/SignInUp.html:46
+#: templates/SignInUp.html:47
 msgid "Reset"
 msgstr "重置"
 
-#: templates/SignInUp.html:48
+#: templates/SignInUp.html:49
 msgid "Go Back"
 msgstr "回去"
 
-#: templates/SignInUp.html:75 templates/SignInUp.html:107
-#: templates/SignInUp.html:132
+#: templates/SignInUp.html:76 templates/SignInUp.html:108
+#: templates/SignInUp.html:133
 msgid "Sign Up"
 msgstr "注册"
 
-#: templates/SignInUp.html:79
+#: templates/SignInUp.html:80
 msgid "Username"
 msgstr "用户名"
 
-#: templates/SignInUp.html:94 templates/SignInUp.html:125
+#: templates/SignInUp.html:95 templates/SignInUp.html:126
 #: templates/Stafflogin.html:22
 msgid "Password"
 msgstr "密码"
 
-#: templates/SignInUp.html:109
+#: templates/SignInUp.html:110
 msgid "Already have an account?"
 msgstr "已经有账户？"
 
-#: templates/SignInUp.html:109
+#: templates/SignInUp.html:110
 msgid "Sign In"
 msgstr "登录"
 
-#: templates/SignInUp.html:117 templates/SignInUp.html:130
+#: templates/SignInUp.html:118 templates/SignInUp.html:131
 #: templates/Stafflogin.html:24
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:4
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/login_user.html:3
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_login.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:4
+#: venv/Lib/site-packages/flask_security/templates/security/login_user.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/send_login.html:3
 msgid "Login"
 msgstr "登录"
 
-#: templates/SignInUp.html:128
+#: templates/SignInUp.html:129
 msgid "Forgot password?"
 msgstr "忘记密码？"
 
-#: templates/SignInUp.html:132
+#: templates/SignInUp.html:133
 msgid "Don't have an account?"
 msgstr "没有帐户？"
 
-#: templates/SignInUp.html:135
+#: templates/SignInUp.html:136
 msgid "Return to home page"
 msgstr "返回主页"
 
-#: templates/SignInUp.html:138
+#: templates/SignInUp.html:139
 msgid "Link to staff panel"
 msgstr "员工面板链接"
 
@@ -348,6 +900,472 @@ msgstr "员工登录"
 #: templates/Stafflogin.html:18
 msgid "Staff name"
 msgstr "工作人员姓名"
+
+#: templates/accommodation.html:91 templates/accommodation.html:99
+#: templates/activities.html:74
+msgid "All Status"
+msgstr "所有状态"
+
+#: templates/accommodation.html:102 templates/accommodation.html:103
+#: templates/flight.html:480
+msgid "published"
+msgstr "发布"
+
+#: templates/accommodation.html:106 templates/accommodation.html:107
+#: templates/flight.html:483
+msgid "deleted"
+msgstr "删除"
+
+#: templates/accommodation.html:167 templates/flight.html:542
+#: templates/tour.html:147
+msgid "ID"
+msgstr "ID"
+
+#: templates/accommodation.html:169 templates/activities.html:152
+#: templates/activity-booking-confirm.html:38
+#: templates/hotel-booking-confirm.html:38 templates/tour.html:149
+msgid "Product Name"
+msgstr "产品名称"
+
+#: templates/accommodation.html:172
+msgid "Number Of Rooms"
+msgstr "房间数量"
+
+#: templates/accommodation.html:175 templates/activities.html:158
+#: templates/activities.html:256 templates/activities.html:652
+#: templates/profile-booking.html:13 templates/tour.html:155
+#: templates/tour.html:660
+msgid "Price"
+msgstr "价格"
+
+#: templates/accommodation.html:179 templates/accommodation.html:839
+#: templates/activities.html:264 templates/activities.html:660
+#: templates/hotel-detail.html:100
+msgid "City"
+msgstr "城市"
+
+#: templates/accommodation.html:182 templates/activities.html:165
+#: templates/flight.html:557 templates/orders.html:149
+#: templates/profile-booking.html:14 templates/reviews.html:151
+#: templates/tour.html:162
+msgid "Status"
+msgstr "状态"
+
+#: templates/accommodation.html:310 templates/accommodation.html:867
+#: templates/activities.html:689 templates/tour.html:697
+msgid "Latitude"
+msgstr "维度"
+
+#: templates/accommodation.html:702 templates/accommodation.html:1273
+msgid "The infomation of Availiable Rooms"
+msgstr "可用客房"
+
+#: templates/accommodation.html:786 templates/activities.html:606
+#: templates/flight.html:1116 templates/tour.html:613
+msgid "Add Product"
+msgstr "添加产品"
+
+#: templates/accommodation.html:794
+msgid "Add Accomodation"
+msgstr "添加住宿"
+
+#: templates/accommodation.html:797 templates/activities.html:221
+#: templates/activities.html:617 templates/flight.html:1128
+#: templates/tour.html:624
+msgid "Basic Information"
+msgstr "基本信息"
+
+#: templates/accommodation.html:802 templates/activities.html:226
+#: templates/activities.html:622 templates/flight.html:1135
+#: templates/tour.html:629
+msgid "Priority"
+msgstr "优先级"
+
+#: templates/accommodation.html:814
+msgid "Hotel Name"
+msgstr "酒店名字"
+
+#: templates/accommodation.html:821
+msgid "Total Number Of Rooms & Suites"
+msgstr "房间数量"
+
+#: templates/accommodation.html:829
+msgid "Minimal Price"
+msgstr "最低价格"
+
+#: templates/accommodation.html:835 templates/activities.html:261
+#: templates/activities.html:657 templates/tour.html:665
+msgid "Location"
+msgstr "位置"
+
+#: templates/accommodation.html:846 templates/activities.html:271
+#: templates/activities.html:667 templates/tour.html:675
+msgid "State"
+msgstr "国家"
+
+#: templates/accommodation.html:853 templates/activities.html:278
+#: templates/activities.html:675 templates/profile-setting.html:32
+#: templates/tour.html:683
+msgid "Address"
+msgstr "住址"
+
+#: templates/accommodation.html:860 templates/activities.html:286
+#: templates/activities.html:682 templates/tour.html:690
+msgid "Longitude"
+msgstr "经度"
+
+#: templates/accommodation.html:892 templates/hotel-grid.html:178
+msgid "Hotel Star"
+msgstr "酒店星级"
+
+#: templates/accommodation.html:911
+msgid "Your Accommodation Information"
+msgstr "您的活动信息"
+
+#: templates/accommodation.html:916 templates/hotel-detail.html:77
+msgid "Minimum Stay"
+msgstr "最低停留时间"
+
+#: templates/accommodation.html:925
+msgid "Security"
+msgstr "城市"
+
+#: templates/accommodation.html:934
+msgid "On Site Staff"
+msgstr "酒店星级"
+
+#: templates/accommodation.html:943
+msgid "Housekeeping"
+msgstr "管家"
+
+#: templates/accommodation.html:952
+msgid "Front Desk"
+msgstr "开始日期"
+
+#: templates/accommodation.html:962
+msgid "Bathroom"
+msgstr "卫生间"
+
+#: templates/accommodation.html:972 templates/activities.html:349
+#: templates/activities.html:749 templates/flight.html:1331
+#: templates/tour.html:760
+msgid "Product Images"
+msgstr "产品图片"
+
+#: templates/accommodation.html:1067 templates/activities.html:416
+#: templates/activities.html:817 templates/flight.html:1426
+#: templates/tour.html:827
+msgid "Detailed Information"
+msgstr "详细信息"
+
+#: templates/accommodation.html:1070 templates/activities.html:419
+#: templates/activities.html:820 templates/activity-detail.html:100
+#: templates/flight.html:1429 templates/hotel-detail.html:110
+#: templates/tour-detail.html:100 templates/tour.html:830
+msgid "Description"
+msgstr "描述"
+
+#: templates/accommodation.html:1079 templates/hotel-detail.html:172
+msgid "Amenities"
+msgstr "便利设施"
+
+#: templates/accommodation.html:1089 templates/hotel-detail.html:249
+#: templates/hotel-grid.html:141
+msgid "Airport Transportation"
+msgstr "机场交通"
+
+#: templates/accommodation.html:1098 templates/hotel-detail.html:221
+msgid "Bar / Lounge"
+msgstr "酒吧/休息室"
+
+#: templates/accommodation.html:1107
+msgid "Beach"
+msgstr "海滩"
+
+#: templates/accommodation.html:1116
+msgid "Beverage Selection"
+msgstr "饮料的选择"
+
+#: templates/accommodation.html:1125 templates/hotel-detail.html:192
+msgid "Swimming Pool"
+msgstr "游泳池"
+
+#: templates/accommodation.html:1134 templates/hotel-grid.html:153
+msgid "WiFi"
+msgstr "无线网络"
+
+#: templates/accommodation.html:1143 templates/flight-detail.html:182
+#: templates/flight.html:1466 templates/hotel-detail.html:200
+msgid "Coffee"
+msgstr "咖啡"
+
+#: templates/accommodation.html:1152 templates/flight-detail.html:189
+#: templates/flight.html:1448 templates/hotel-grid.html:159
+msgid "Air Conditioning"
+msgstr "空调"
+
+#: templates/accommodation.html:1161 templates/flight-detail.html:175
+#: templates/flight.html:1475 templates/hotel-detail.html:235
+msgid "Entertainment"
+msgstr "娱乐片"
+
+#: templates/accommodation.html:1170 templates/hotel-detail.html:305
+msgid "Elevator In Building"
+msgstr "电梯"
+
+#: templates/accommodation.html:1179
+msgid "Wheelchair Access"
+msgstr "轮椅"
+
+#: templates/accommodation.html:1188 templates/hotel-detail.html:214
+#: templates/hotel-grid.html:147
+msgid "Fitness Facility"
+msgstr "健身设施"
+
+#: templates/accommodation.html:1197 templates/hotel-detail.html:270
+msgid "Breakfast"
+msgstr "早餐"
+
+#: templates/accommodation.html:1206 templates/hotel-detail.html:291
+msgid "Handicap Accessible"
+msgstr "残疾人无障碍"
+
+#: templates/accommodation.html:1215 templates/hotel-detail.html:263
+msgid "Pets Allowed"
+msgstr "允许携带宠物"
+
+#: templates/accommodation.html:1224 templates/hotel-detail.html:312
+msgid "Suitable For Events"
+msgstr "适用于活动"
+
+#: templates/accommodation.html:1233 templates/hotel-grid.html:129
+msgid "Restaurant"
+msgstr "餐馆"
+
+#: templates/accommodation.html:1242 templates/hotel-detail.html:298
+msgid "Doorman"
+msgstr "门卫"
+
+#: templates/accommodation.html:1251 templates/hotel-detail.html:277
+#: templates/hotel-grid.html:123
+msgid "Free Parking"
+msgstr "免费停车场"
+
+#: templates/accommodation.html:1260 templates/hotel-detail.html:228
+msgid "Wine Bar"
+msgstr "葡萄酒酒吧"
+
+#: templates/accommodation.html:1277
+msgid "Room Type numbers"
+msgstr "房间名称"
+
+#: templates/accommodation.html:1282
+msgid "Room Information"
+msgstr "房间信息"
+
+#: templates/accommodation.html:1285 templates/activities.html:538
+#: templates/activities.html:942 templates/flight.html:1555
+#: templates/tour.html:949
+msgid "Contact Information"
+msgstr "联系方式"
+
+#: templates/accommodation.html:1290 templates/activities.html:542
+#: templates/activities.html:946 templates/activity-booking-confirm.html:57
+#: templates/contacts.html:106 templates/flight.html:1560
+#: templates/hotel-booking-confirm.html:58
+#: templates/tour-booking-confirm.html:57 templates/tour.html:953
+msgid "Name"
+msgstr "名字"
+
+#: templates/accommodation.html:1304 templates/activities.html:556
+#: templates/activities.html:960 templates/contacts.html:112
+#: templates/flight.html:1574 templates/profile-setting.html:25
+#: templates/tour.html:967
+msgid "Phone"
+msgstr "手机"
+
+#: templates/accommodation.html:1321
+msgid "Submit New Accommodation"
+msgstr "住宿"
+
+#: templates/accommodation.html:1340 templates/profile-booking.html:35
+msgid "Cancel"
+msgstr "取消"
+
+#: templates/activities.html:47 templates/activities.html:55
+#: templates/orders.html:45 templates/orders.html:53 templates/reviews.html:43
+#: templates/reviews.html:51 templates/tour.html:45 templates/tour.html:52
+#: templates/tour.html:53
+msgid "All Category"
+msgstr "所有类型"
+
+#: templates/activities.html:58 templates/activity-grid.html:124
+msgid "Food & Nightlife"
+msgstr "美食与夜生活"
+
+#: templates/activities.html:61 templates/activity-grid.html:130
+msgid "Hot Air Balloon"
+msgstr "热气球"
+
+#: templates/activities.html:64 templates/activity-grid.html:136
+msgid "Mountain Climbing"
+msgstr "登山"
+
+#: templates/activities.html:67
+msgid "Bike Ride"
+msgstr "自行车骑行"
+
+#: templates/activities.html:82 templates/flight.html:469
+#: templates/flight.html:477 templates/tour.html:71 templates/tour.html:79
+msgid "All status"
+msgstr "所有状态"
+
+#: templates/activities.html:85 templates/activities.html:86
+#: templates/tour.html:82 templates/tour.html:83
+msgid "Published"
+msgstr "发布"
+
+#: templates/activities.html:89 templates/activities.html:90
+#: templates/tour.html:86 templates/tour.html:87
+msgid "Deleted"
+msgstr "删除"
+
+#: templates/activities.html:155 templates/tour.html:152
+msgid "Category"
+msgstr "产品类别"
+
+#: templates/activities.html:162 templates/tour.html:159
+msgid "Start Time"
+msgstr "出发时间"
+
+#: templates/activities.html:238 templates/activities.html:634
+msgid "Official Place Name"
+msgstr "官方地名"
+
+#: templates/activities.html:245 templates/activities.html:641
+msgid "Activity Category"
+msgstr "活动类型"
+
+#: templates/activities.html:293
+msgid "latitude"
+msgstr "经度"
+
+#: templates/activities.html:298 templates/activities.html:695
+msgid "Click here to get your longitude and latitude"
+msgstr "单击此处获取您的经度和纬度"
+
+#: templates/activities.html:301 templates/activities.html:698
+msgid "Your Activity Information"
+msgstr "您的活动信息"
+
+#: templates/activities.html:305 templates/activities.html:702
+#: templates/activity-detail.html:59 templates/tour-detail.html:59
+#: templates/tour.html:708
+msgid "Duration"
+msgstr "时段"
+
+#: templates/activities.html:317 templates/activities.html:714
+#: templates/activity-detail.html:81 templates/tour-detail.html:81
+#: templates/tour.html:728
+msgid "Group Size"
+msgstr "组大小"
+
+#: templates/activities.html:319 templates/activities.html:320
+#: templates/activities.html:321 templates/activities.html:322
+#: templates/activities.html:323 templates/activities.html:716
+#: templates/activities.html:717 templates/activities.html:718
+#: templates/activities.html:719 templates/activities.html:720
+msgid "People"
+msgstr "人"
+
+#: templates/activities.html:329 templates/activities.html:727
+#: templates/tour.html:740
+msgid "From Date"
+msgstr "开始日期"
+
+#: templates/activities.html:339 templates/activities.html:737
+#: templates/tour.html:750
+msgid "To Date"
+msgstr "结束日期"
+
+#: templates/activities.html:427 templates/activities.html:828
+#: templates/activity-detail.html:105 templates/tour-detail.html:105
+#: templates/tour.html:838
+msgid "Included"
+msgstr "包括"
+
+#: templates/activities.html:436 templates/activities.html:839
+#: templates/tour.html:849
+msgid "Airfare"
+msgstr "空运"
+
+#: templates/activities.html:447 templates/activities.html:850
+#: templates/tour.html:860
+msgid "Local Transportation"
+msgstr "本地交通"
+
+#: templates/activities.html:458 templates/activities.html:861
+#: templates/hotel-detail.html:23 templates/tour.html:871
+msgid "Accommodation"
+msgstr "住宿"
+
+#: templates/activities.html:467 templates/activities.html:870
+#: templates/tour.html:880
+msgid "Tour Guide"
+msgstr "旅行指南"
+
+#: templates/activities.html:475 templates/activities.html:878
+#: templates/activity-detail.html:115 templates/tour-detail.html:115
+#: templates/tour.html:888
+msgid "Not Included"
+msgstr "不包括在内"
+
+#: templates/activities.html:483 templates/activities.html:886
+#: templates/tour.html:896
+msgid "Entrance Fees"
+msgstr "入场费"
+
+#: templates/activities.html:492 templates/activities.html:895
+#: templates/tour.html:905
+msgid "Guide Gratuity"
+msgstr "指南小费"
+
+#: templates/activities.html:501 templates/activities.html:904
+#: templates/tour.html:914
+msgid "Lunch"
+msgstr "午餐"
+
+#: templates/activities.html:510 templates/activities.html:913
+#: templates/tour.html:923
+msgid "Dinner"
+msgstr "晚餐"
+
+#: templates/activities.html:519 templates/activities.html:922
+msgid "Activity Open Hours"
+msgstr "活动时间"
+
+#: templates/activities.html:525 templates/activities.html:928
+msgid "Open Hour"
+msgstr "开放时间"
+
+#: templates/activities.html:531 templates/activities.html:934
+msgid "Visit Hour"
+msgstr "参观时间"
+
+#: templates/activities.html:566 templates/activities.html:970
+#: templates/flight.html:1585 templates/tour.html:572 templates/tour.html:977
+msgid "I Agree With Your Terms Of Services And Privacy Policy."
+msgstr "我同意您的服务条款和隐私政策。"
+
+#: templates/activities.html:571 templates/activities.html:975
+msgid ""
+"Submit Your\n"
+"                                                                Activity"
+msgstr "提交你的活动"
+
+#: templates/activities.html:614
+msgid "Add Activity"
+msgstr "添加活动"
 
 #: templates/activity-booking-confirm.html:30
 #: templates/flight-booking-confirm.html:30
@@ -367,16 +1385,6 @@ msgstr "活动信息"
 msgid "Product Info"
 msgstr "产品信息"
 
-#: templates/activity-booking-confirm.html:37 templates/activity-grid.html:29
-#: templates/base.html:79 templates/profile-base.html:102
-msgid "Activity"
-msgstr "活动"
-
-#: templates/activity-booking-confirm.html:38
-#: templates/hotel-booking-confirm.html:38
-msgid "Product Name"
-msgstr "品名"
-
 #: templates/activity-booking-confirm.html:39
 msgid "Product Category"
 msgstr "产品类别"
@@ -385,7 +1393,7 @@ msgstr "产品类别"
 msgid "Activity Date"
 msgstr "活动日期"
 
-#: templates/activity-booking-confirm.html:49 templates/activity-grid.html:108
+#: templates/activity-booking-confirm.html:49 templates/activity-grid.html:148
 msgid "Activity Price"
 msgstr "活动类别"
 
@@ -393,12 +1401,6 @@ msgstr "活动类别"
 #: templates/hotel-booking-confirm.html:56
 msgid "Customer Info"
 msgstr "客户信息"
-
-#: templates/activity-booking-confirm.html:57
-#: templates/hotel-booking-confirm.html:58
-#: templates/tour-booking-confirm.html:57
-msgid "Name"
-msgstr "名字"
 
 #: templates/activity-booking-confirm.html:65
 #: templates/hotel-booking-confirm.html:66
@@ -441,221 +1443,236 @@ msgstr "确认预订"
 msgid "Cancel Booking"
 msgstr "取消预约"
 
-#: templates/activity-detail.html:47 templates/activity-grid.html:180
-#: templates/flight-detail.html:51 templates/hotel-detail.html:52
-#: templates/hotel-grid.html:211 templates/tour-detail.html:47
-#: templates/tour-grid.html:320
-msgid "Excellent"
-msgstr "杰出的"
-
-#: templates/activity-detail.html:48 templates/activity-detail.html:146
-#: templates/activity-detail.html:156 templates/activity-detail.html:252
-#: templates/activity-grid.html:181 templates/flight-detail.html:272
-#: templates/hotel-detail.html:53 templates/hotel-detail.html:333
-#: templates/hotel-detail.html:439 templates/hotel-grid.html:212
-#: templates/profile-wishlist.html:34 templates/tour-detail.html:48
-#: templates/tour-detail.html:151 templates/tour-detail.html:161
-#: templates/tour-detail.html:257 templates/tour-grid.html:321
-msgid "Reviews"
-msgstr "评论"
-
-#: templates/activity-detail.html:59 templates/tour-detail.html:59
-msgid "Duration"
-msgstr "时段"
-
-#: templates/activity-detail.html:81 templates/tour-detail.html:81
-msgid "Group Size"
-msgstr "组大小"
-
-#: templates/activity-detail.html:92 templates/activity-grid.html:79
+#: templates/activity-detail.html:92 templates/activity-grid.html:119
 msgid "Activity Type"
 msgstr "活动类别"
 
-#: templates/activity-detail.html:100 templates/hotel-detail.html:109
-#: templates/tour-detail.html:100
-msgid "Description"
-msgstr "描述"
-
-#: templates/activity-detail.html:105 templates/tour-detail.html:105
-msgid "Included"
-msgstr "包括"
-
-#: templates/activity-detail.html:115 templates/tour-detail.html:115
-msgid "Not Included"
-msgstr "不包括在内"
-
-#: templates/activity-detail.html:126 templates/hotel-detail.html:326
+#: templates/activity-detail.html:126 templates/hotel-detail.html:327
 #: templates/tour-detail.html:144
 msgid "Location Map"
 msgstr "位置图"
 
-#: templates/activity-detail.html:156
+#: templates/activity-detail.html:156 templates/flight-detail.html:282
 msgid "Based On"
 msgstr "基于"
 
-#: templates/activity-detail.html:252 templates/hotel-detail.html:439
+#: templates/activity-detail.html:252 templates/flight-detail.html:378
+#: templates/hotel-detail.html:440
 msgid "Showing"
 msgstr "显示"
 
-#: templates/activity-detail.html:280
+#: templates/activity-detail.html:280 templates/flight-detail.html:406
 msgid "Leave a Review"
 msgstr "留下评论"
 
-#: templates/activity-detail.html:285 templates/flight-detail.html:499
-#: templates/hotel-detail.html:471 templates/tour-detail.html:289
+#: templates/activity-detail.html:285 templates/flight-detail.html:411
+#: templates/hotel-detail.html:472 templates/tour-detail.html:289
 msgid "Your Rating"
 msgstr "您的评分"
 
-#: templates/activity-detail.html:313 templates/flight-detail.html:495
-#: templates/hotel-detail.html:466 templates/hotel-detail.html:499
+#: templates/activity-detail.html:313 templates/flight-detail.html:439
+#: templates/hotel-detail.html:467 templates/hotel-detail.html:500
 #: templates/tour-detail.html:285 templates/tour-detail.html:318
 msgid "Leave A Review"
 msgstr "留下评论"
 
 #: templates/activity-detail.html:325
-#, fuzzy
 msgid "Book the Activity"
-msgstr "活动"
+msgstr "预定活动"
 
-#: templates/activity-detail.html:350 templates/flight-detail.html:576
-#: templates/flight-grid.html:492 templates/hotel-detail.html:561
-#: templates/hotel-detail.html:565
+#: templates/activity-detail.html:350 templates/flight-detail.html:476
+#: templates/flight-grid.html:329 templates/hotel-detail.html:558
+#: templates/hotel-detail.html:562
 msgid "Book Now"
 msgstr "立即预订"
 
-#: templates/activity-detail.html:354 templates/flight-detail.html:580
-#: templates/hotel-detail.html:573
+#: templates/activity-detail.html:354 templates/flight-detail.html:480
+#: templates/hotel-detail.html:570
 msgid "Remove From Wishlist"
 msgstr "从心愿单中删除"
 
 #: templates/activity-detail.html:356 templates/activity-detail.html:359
-#: templates/flight-detail.html:582 templates/flight-detail.html:585
-#: templates/hotel-detail.html:575 templates/hotel-detail.html:578
+#: templates/flight-detail.html:482 templates/flight-detail.html:485
+#: templates/hotel-detail.html:572 templates/hotel-detail.html:575
 #: templates/tour-detail.html:364 templates/tour-detail.html:367
 msgid "Add To Wishlist"
 msgstr "添加到心愿单"
 
-#: templates/activity-detail.html:368 templates/flight-detail.html:592
-#: templates/hotel-detail.html:585 templates/tour-detail.html:374
-msgid "Share"
-msgstr "分享"
-
-#: templates/activity-detail.html:369 templates/flight-detail.html:593
-#: templates/hotel-detail.html:586 templates/tour-detail.html:375
+#: templates/activity-detail.html:368 templates/flight-detail.html:492
+#: templates/hotel-detail.html:582 templates/tour-detail.html:374
 msgid "Views"
 msgstr "意见"
 
-#: templates/activity-detail.html:374 templates/flight-detail.html:598
-#: templates/hotel-detail.html:591 templates/tour-detail.html:380
+#: templates/activity-detail.html:373 templates/flight-detail.html:497
+#: templates/hotel-detail.html:587 templates/tour-detail.html:379
 msgid "Get A Question?"
 msgstr "有问题吗？"
 
-#: templates/activity-detail.html:375 templates/tour-detail.html:381
-msgid ""
-"It is a long established fact that a reader will be distracted by the "
-"readable\n"
-"                                    content\n"
-"                                    layout."
-msgstr ""
+#: templates/activity-grid.html:94 templates/hotel-grid.html:93
+#: templates/tour-grid.html:88
+msgid "Choose the picture you want to search!"
+msgstr "请选择你想搜索的图片 ！ "
 
-#: templates/activity-grid.html:84
-msgid "Food & Nightlife"
-msgstr "美食与夜生活"
+#: templates/activity-grid.html:102 templates/hotel-grid.html:101
+#: templates/tour-grid.html:96
+msgid "Recognize"
+msgstr "识别"
 
-#: templates/activity-grid.html:90
-msgid "Hot Air Balloon"
-msgstr "热气球"
-
-#: templates/activity-grid.html:96
-msgid "Mountain Climbing"
-msgstr "登山"
-
-#: templates/activity-grid.html:102
+#: templates/activity-grid.html:142
 msgid "Bike Ride "
 msgstr "自行车骑行"
 
-#: templates/activity-grid.html:121
+#: templates/activity-grid.html:161
 msgid "Activity Duration"
 msgstr "活动时段"
 
-#: templates/activity-grid.html:126
+#: templates/activity-grid.html:166
 msgid "Up to 4 hour"
 msgstr "最长4小时"
 
-#: templates/activity-grid.html:132
+#: templates/activity-grid.html:172
 msgid "4 to 8 hours"
 msgstr "4至8小时"
 
-#: templates/activity-grid.html:138
+#: templates/activity-grid.html:178
 msgid "8 hours to 1 day"
 msgstr "8小时至1天"
 
-#: templates/activity-grid.html:151 templates/flight-grid.html:430
-#: templates/hotel-grid.html:182 templates/tour-grid.html:289
+#: templates/activity-grid.html:192 templates/flight-grid.html:267
+#: templates/hotel-grid.html:219 templates/tour-grid.html:192
 msgid "Results Found"
 msgstr "找到的结果"
 
-#: templates/activity-grid.html:158 templates/flight-grid.html:437
-#: templates/hotel-grid.html:189 templates/tour-grid.html:297
+#: templates/activity-grid.html:199 templates/flight-grid.html:274
+#: templates/hotel-grid.html:226 templates/tour-grid.html:200
 msgid "Sort By Default"
 msgstr "按默认排序"
 
-#: templates/activity-grid.html:159 templates/flight-grid.html:438
-#: templates/hotel-grid.html:190 templates/tour-grid.html:298
+#: templates/activity-grid.html:200 templates/flight-grid.html:275
+#: templates/hotel-grid.html:227 templates/tour-grid.html:201
 msgid "Sort By Popular"
 msgstr "按受欢迎程度排序"
 
-#: templates/activity-grid.html:160 templates/flight-grid.html:439
-#: templates/hotel-grid.html:191 templates/tour-grid.html:299
+#: templates/activity-grid.html:201 templates/flight-grid.html:276
+#: templates/hotel-grid.html:228 templates/tour-grid.html:202
 msgid "Sort By Low Price"
 msgstr "按低价排序"
 
-#: templates/activity-grid.html:161
+#: templates/activity-grid.html:202
 msgid "Sort By High Pricw"
 msgstr "按高优先级排序"
 
-#: templates/base.html:39 templates/profile-base.html:62
-msgid "ENG"
-msgstr "英文"
-
-#: templates/base.html:40 templates/profile-base.html:63
-msgid "CHN"
-msgstr "中文"
-
-#: templates/base.html:68 templates/profile-base.html:91
+#: templates/base.html:64 templates/profile-base.html:88
 msgid "Home"
-msgstr "家"
+msgstr "主页"
 
-#: templates/base.html:96 templates/profile-base.html:119
-msgid "Contact"
-msgstr "联系"
+#: templates/base.html:92 templates/profile-base.html:116
+msgid "About US"
+msgstr "关于我们"
 
-#: templates/base.html:99 templates/profile-base.html:122
+#: templates/base.html:95 templates/profile-base.html:119
 msgid "Profile"
 msgstr "个人简介"
 
-#: templates/base.html:102 templates/profile-base.html:125
+#: templates/base.html:98 templates/profile-base.html:122
 msgid "Sign in/up"
 msgstr "登录/注册"
 
+#: templates/booking-success.html:33
+msgid "Your Booking"
+msgstr "你的预定"
+
+#: templates/booking-success.html:33
+msgid "Is Confirmed."
+msgstr "已确认。"
+
+#: templates/booking-success.html:34
+msgid "Have a look about other interesting activities and tour plans!"
+msgstr "看看其他有趣的活动和旅游计划吧！"
+
+#: templates/booking-success.html:35
+msgid "See order detail"
+msgstr "请参阅订单详细信息"
+
 #: templates/chatRoom.html:12
-msgid "Travel Agency Name"
-msgstr "旅行社名称"
+msgid "Group 7 Travel Agency"
+msgstr "我们是GROUP7旅行社！"
 
 #: templates/chatRoom.html:13
 msgid "24H chat robot"
 msgstr "24小时聊天机器人"
 
-#: templates/chatRoom.html:26
+#: templates/chatRoom.html:29
+msgid "Choose Picture"
+msgstr "选择图片"
+
+#: templates/chatRoom.html:33
 msgid "Send"
 msgstr "发送"
+
+#: templates/contacts.html:17
+msgid "Customer Contacts "
+msgstr "联系客户"
+
+#: templates/contacts.html:74
+msgid "By ID/Email/Phone/Name"
+msgstr "按身份证/电子邮件/电话/姓名"
+
+#: templates/contacts.html:110
+msgid "Wallet"
+msgstr "我的钱包"
+
+#: templates/customerAccount.html:17
+msgid "Customer Account"
+msgstr "客户账户"
+
+#: templates/customerAccount.html:30
+msgid "Account"
+msgstr "账户"
+
+#: templates/customerDetail.html:20 templates/profile.html:3
+msgid "Profile Info"
+msgstr "个人简介"
+
+#: templates/customerDetail.html:24 templates/profile.html:7
+msgid "Nickname:"
+msgstr "昵称："
+
+#: templates/customerDetail.html:25 templates/profile.html:8
+msgid "Email:"
+msgstr "电子邮件："
+
+#: templates/customerDetail.html:26 templates/profile.html:9
+msgid "Phone:"
+msgstr "手机号："
+
+#: templates/customerDetail.html:27 templates/profile.html:10
+msgid "Address:"
+msgstr "地址："
+
+#: templates/customerDetail.html:28 templates/profile.html:11
+msgid "Join Date:"
+msgstr "加入日期："
+
+#: templates/customerDetail.html:35 templates/orders.html:18
+#: templates/orders.html:31
+msgid "Orders"
+msgstr "订单总数"
+
+#: templates/customerWishlist.html:17
+msgid "Wish List"
+msgstr "我的心愿单"
+
+#: templates/customers.html:391
+msgid "Customers "
+msgstr "客户信息"
 
 #: templates/flight-booking-confirm.html:35
 msgid "Flight Info"
 msgstr "航班信息"
 
 #: templates/flight-booking-confirm.html:37
-#: templates/hotel-booking-confirm.html:37
+#: templates/hotel-booking-confirm.html:37 templates/orders.html:141
 msgid "Product Type"
 msgstr "产品类型"
 
@@ -663,9 +1680,14 @@ msgstr "产品类型"
 msgid "Company"
 msgstr "公司"
 
-#: templates/flight-booking-confirm.html:39
+#: templates/flight-booking-confirm.html:39 templates/flight.html:544
 msgid "Departure"
 msgstr "离开"
+
+#: templates/flight-booking-confirm.html:40 templates/flight.html:547
+#: templates/flight.html:1167
+msgid "Destination"
+msgstr "目的地"
 
 #: templates/flight-booking-confirm.html:49
 msgid "Departure Time "
@@ -720,11 +1742,11 @@ msgstr "取消预约"
 msgid "reviews"
 msgstr "评论"
 
-#: templates/flight-detail.html:75
+#: templates/flight-detail.html:75 templates/flight.html:1148
 msgid "Flight Type"
 msgstr "航班类别"
 
-#: templates/flight-detail.html:86
+#: templates/flight-detail.html:86 templates/flight.html:1247
 msgid "Fare Type"
 msgstr "票价种类"
 
@@ -736,11 +1758,12 @@ msgstr "取消费用"
 msgid "Flight Change"
 msgstr "航班改变"
 
-#: templates/flight-detail.html:119
+#: templates/flight-detail.html:119 templates/flight.html:1287
 msgid "Seats & Baggage"
 msgstr "座位和行李"
 
 #: templates/flight-detail.html:130 templates/flight-detail.html:155
+#: templates/flight.html:1438
 msgid "Inflight Features"
 msgstr "空中功能"
 
@@ -748,51 +1771,36 @@ msgstr "空中功能"
 msgid "Available"
 msgstr "可获得的"
 
-#: templates/flight-detail.html:141
+#: templates/flight-detail.html:141 templates/flight.html:1317
 msgid "Taxes & Fees"
 msgstr "税费"
-
-#: templates/flight-detail.html:150
-msgid "About"
-msgstr "关于"
 
 #: templates/flight-detail.html:161
 msgid "Wifi"
 msgstr "无线网络"
 
-#: templates/flight-detail.html:168 templates/hotel-detail.html:184
+#: templates/flight-detail.html:168 templates/flight.html:1520
+#: templates/hotel-detail.html:185
 msgid "Television"
 msgstr "电视机"
 
-#: templates/flight-detail.html:175 templates/hotel-detail.html:234
-msgid "Entertainment"
-msgstr "娱乐片"
-
-#: templates/flight-detail.html:182 templates/hotel-detail.html:199
-msgid "Coffee"
-msgstr "咖啡"
-
-#: templates/flight-detail.html:189 templates/hotel-grid.html:122
-msgid "Air Conditioning"
-msgstr "空调"
-
-#: templates/flight-detail.html:196
+#: templates/flight-detail.html:196 templates/flight.html:1484
 msgid "Food"
 msgstr "食物"
 
-#: templates/flight-detail.html:203
+#: templates/flight-detail.html:203 templates/flight.html:1529
 msgid "Games"
 msgstr "游戏"
 
-#: templates/flight-detail.html:210
+#: templates/flight-detail.html:210 templates/flight.html:1502
 msgid "Wines"
 msgstr "葡萄酒"
 
-#: templates/flight-detail.html:217
+#: templates/flight-detail.html:217 templates/flight.html:1511
 msgid "Comfort"
 msgstr "安慰"
 
-#: templates/flight-detail.html:224
+#: templates/flight-detail.html:224 templates/flight.html:1547
 msgid "Magazines"
 msgstr "杂志"
 
@@ -824,142 +1832,184 @@ msgstr "航班取消"
 msgid "Airline Terms Of Use"
 msgstr "航空公司使用条款"
 
-#: templates/flight-detail.html:284
-msgid "Base On 15.5k Review"
-msgstr "基于15.5k审查"
-
-#: templates/flight-detail.html:562
+#: templates/flight-detail.html:462
 msgid "Journey Date"
 msgstr "行程日期"
 
-#: templates/flight-detail.html:599
-msgid ""
-"t is a long-established fact that a reader will be distracted by the "
-"readable\n"
-"                                    content\n"
-"                                    layout."
-msgstr ""
-
-#: templates/flight-detail.html:611 templates/hotel-detail.html:603
-msgid "Organized By"
-msgstr "组织由"
-
-#: templates/flight-detail.html:617 templates/hotel-detail.html:609
-msgid "Roltak Travel Agency"
-msgstr "Roltak旅行社"
-
-#: templates/flight-detail.html:618 templates/hotel-detail.html:610
-msgid "Member Since 2021"
-msgstr "自2021起成为会员"
-
-#: templates/flight-detail.html:619
-msgid "Send Message"
-msgstr "发送消息"
-
-#: templates/flight-grid.html:47
+#: templates/flight-grid.html:48
 msgid "One Way"
 msgstr "单行线"
 
-#: templates/flight-grid.html:53
+#: templates/flight-grid.html:54
 msgid "Round Way"
 msgstr "圆形通道"
 
-#: templates/flight-grid.html:59
+#: templates/flight-grid.html:60
 msgid "Multi City"
 msgstr "多城市"
 
-#: templates/flight-grid.html:268
+#: templates/flight-grid.html:105 templates/flight.html:1257
 msgid "Flight Class"
 msgstr "航班舱位"
 
-#: templates/flight-grid.html:273
+#: templates/flight-grid.html:110
 msgid "Business"
 msgstr "商业"
 
-#: templates/flight-grid.html:279
+#: templates/flight-grid.html:116
 msgid "First Class"
 msgstr "头等舱"
 
-#: templates/flight-grid.html:285
+#: templates/flight-grid.html:122
 msgid "Economy"
 msgstr "经济"
 
-#: templates/flight-grid.html:291
+#: templates/flight-grid.html:128
 msgid "Flight Price"
 msgstr "航班价格"
 
-#: templates/flight-grid.html:303
+#: templates/flight-grid.html:140
 msgid "Flight Time"
 msgstr "航班时间"
 
-#: templates/flight-grid.html:332
+#: templates/flight-grid.html:169
 msgid "Flight Stops"
 msgstr "航班站点"
 
-#: templates/flight-grid.html:337
+#: templates/flight-grid.html:174
 msgid "Non Stop"
 msgstr "不停站"
 
-#: templates/flight-grid.html:343
+#: templates/flight-grid.html:180
 msgid "1 Stop"
 msgstr "1个站"
 
-#: templates/flight-grid.html:349
+#: templates/flight-grid.html:186
 msgid "2 Stops"
 msgstr "2个站"
 
-#: templates/flight-grid.html:355
+#: templates/flight-grid.html:192
 msgid "3 Stops"
 msgstr "3个站"
 
-#: templates/flight-grid.html:361
+#: templates/flight-grid.html:198
 msgid "Multi Stops"
 msgstr "多站点"
 
-#: templates/flight-grid.html:367
+#: templates/flight-grid.html:204
 msgid "Airlines"
 msgstr "航班"
 
-#: templates/flight-grid.html:372
+#: templates/flight-grid.html:209
 msgid "American Airlines"
 msgstr "美国航空公司"
 
-#: templates/flight-grid.html:378
+#: templates/flight-grid.html:215
 msgid "Delta Airlines"
 msgstr "达美航空"
 
-#: templates/flight-grid.html:384
+#: templates/flight-grid.html:221
 msgid "Qatar Airways"
 msgstr "卡塔尔航空公司"
 
-#: templates/flight-grid.html:390
+#: templates/flight-grid.html:227
 msgid "Fly Amirates"
 msgstr "飞行Amirates"
 
-#: templates/flight-grid.html:396
+#: templates/flight-grid.html:233
 msgid "Singapore Airlines "
 msgstr "新加坡航空公司"
 
-#: templates/flight-grid.html:402 templates/flight-grid.html:413
+#: templates/flight-grid.html:239 templates/flight-grid.html:250
 msgid "Refundable"
 msgstr "可退款的"
 
-#: templates/flight-grid.html:407
+#: templates/flight-grid.html:244
 msgid "Non Refundable"
 msgstr "不可退款"
 
-#: templates/flight-grid.html:419
+#: templates/flight-grid.html:256
 msgid "Partially Refundable"
 msgstr "部分可退款"
 
-#: templates/flight-grid.html:440 templates/hotel-grid.html:192
-#: templates/tour-grid.html:300
+#: templates/flight-grid.html:277 templates/hotel-grid.html:229
+#: templates/tour-grid.html:203
 msgid "Sort By High Price"
 msgstr "按高价排序"
 
-#: templates/flight-grid.html:483
+#: templates/flight-grid.html:320
 msgid "hours"
 msgstr "小时"
+
+#: templates/flight.html:550 templates/flight.html:658
+#: templates/flight.html:1173
+msgid "Take Off time"
+msgstr "出发时间"
+
+#: templates/flight.html:554 templates/flight.html:666
+#: templates/flight.html:1180
+msgid "Landing time"
+msgstr "着陆时间"
+
+#: templates/flight.html:1125
+msgid "Add Flights"
+msgstr "添加航班"
+
+#: templates/flight.html:1150
+msgid "One Way Flight"
+msgstr "单行线"
+
+#: templates/flight.html:1151
+msgid "Round Trip Flight"
+msgstr "往返航班"
+
+#: templates/flight.html:1152
+msgid "Multi City Flight"
+msgstr "多城市"
+
+#: templates/flight.html:1160
+msgid "Departure From"
+msgstr "出发时间"
+
+#: templates/flight.html:1187
+msgid "Day of week"
+msgstr "星期几"
+
+#: templates/flight.html:1194
+msgid "Flight Stop"
+msgstr "航班站点"
+
+#: templates/flight.html:1210
+msgid "Airline"
+msgstr "航班"
+
+#: templates/flight.html:1228
+msgid "Price (Per Person)"
+msgstr "价格（每人）"
+
+#: templates/flight.html:1267
+msgid "Cancellation Charge"
+msgstr "取消费用"
+
+#: templates/flight.html:1277
+msgid "Flight Charge"
+msgstr "航班改变"
+
+#: templates/flight.html:1307
+msgid "Base Fare"
+msgstr "基础费用"
+
+#: templates/flight.html:1340 templates/tour.html:768
+msgid "Drag and Drop or"
+msgstr "拖放"
+
+#: templates/flight.html:1493
+msgid "Drink"
+msgstr "饮料"
+
+#: templates/flight.html:1538
+msgid "Shopping"
+msgstr "显示"
 
 #: templates/hotel-booking-confirm.html:35
 msgid "Hotel Info"
@@ -977,244 +2027,210 @@ msgstr "入住日期"
 msgid "Check Out Date"
 msgstr "退房日期"
 
-#: templates/hotel-booking-confirm.html:50 templates/hotel-grid.html:128
+#: templates/hotel-booking-confirm.html:50 templates/hotel-grid.html:165
 msgid "Hotel Price"
 msgstr "酒店价格"
 
-#: templates/hotel-detail.html:22
-msgid "Accommodation"
-msgstr "住宿"
-
-#: templates/hotel-detail.html:65
+#: templates/hotel-detail.html:66
 msgid "Hotel Type"
 msgstr "酒店类别"
 
-#: templates/hotel-detail.html:66 templates/hotel-grid.html:146
+#: templates/hotel-detail.html:67 templates/hotel-grid.html:182
 msgid "5 Star"
 msgstr "5颗星"
 
-#: templates/hotel-detail.html:76
-msgid "Minimum Stay"
-msgstr "最低停留时间"
-
-#: templates/hotel-detail.html:77
+#: templates/hotel-detail.html:78
 msgid "Nights"
 msgstr "夜晚"
 
-#: templates/hotel-detail.html:88
+#: templates/hotel-detail.html:89
 msgid "Country"
 msgstr "国家"
 
-#: templates/hotel-detail.html:99
-msgid "City"
-msgstr "城市"
-
-#: templates/hotel-detail.html:114
+#: templates/hotel-detail.html:115
 msgid "Available Rooms"
 msgstr "可用客房"
 
-#: templates/hotel-detail.html:128
+#: templates/hotel-detail.html:129
 msgid "Free Wi-Fi"
 msgstr "免费无线上网"
 
-#: templates/hotel-detail.html:131
+#: templates/hotel-detail.html:132
 msgid "1 Single beds"
 msgstr "1张单人床"
 
-#: templates/hotel-detail.html:134
+#: templates/hotel-detail.html:135
 msgid "2 Single beds"
 msgstr "2张单人床"
 
-#: templates/hotel-detail.html:143
+#: templates/hotel-detail.html:144
 msgid "Free Toiletries"
 msgstr "免费卫生间"
 
-#: templates/hotel-detail.html:146
+#: templates/hotel-detail.html:147
 msgid "Shower And Bathtub"
 msgstr "淋浴和浴缸"
 
-#: templates/hotel-detail.html:151
+#: templates/hotel-detail.html:152
 msgid "/Per Day"
 msgstr "/每天"
 
-#: templates/hotel-detail.html:158
+#: templates/hotel-detail.html:159
 msgid "Select Room"
 msgstr "选择房间"
 
-#: templates/hotel-detail.html:171
-msgid "Amenities"
-msgstr "便利设施"
-
-#: templates/hotel-detail.html:191
-msgid "Swimming Pool"
-msgstr "游泳池"
-
-#: templates/hotel-detail.html:206
+#: templates/hotel-detail.html:207
 msgid "Air Condition"
 msgstr "空调"
 
-#: templates/hotel-detail.html:213 templates/hotel-grid.html:110
-msgid "Fitness Facility"
-msgstr "健身设施"
-
-#: templates/hotel-detail.html:220
-msgid "Bar / Lounge"
-msgstr "酒吧/休息室"
-
-#: templates/hotel-detail.html:227
-msgid "Wine Bar"
-msgstr "葡萄酒酒吧"
-
-#: templates/hotel-detail.html:241
+#: templates/hotel-detail.html:242
 msgid "Secure Vault"
 msgstr "安全库"
 
-#: templates/hotel-detail.html:248 templates/hotel-grid.html:104
-msgid "Airport Transportation"
-msgstr "机场交通"
-
-#: templates/hotel-detail.html:255
+#: templates/hotel-detail.html:256
 msgid "Room Service"
 msgstr "客房服务"
 
-#: templates/hotel-detail.html:262
-msgid "Pets Allowed"
-msgstr "允许携带宠物"
-
-#: templates/hotel-detail.html:269
-msgid "Breakfast"
-msgstr "早餐"
-
-#: templates/hotel-detail.html:276 templates/hotel-grid.html:86
-msgid "Free Parking"
-msgstr "免费停车场"
-
-#: templates/hotel-detail.html:283
+#: templates/hotel-detail.html:284
 msgid "Fire Place"
 msgstr "火灾现场"
 
-#: templates/hotel-detail.html:290
-msgid "Handicap Accessible"
-msgstr "残疾人无障碍"
-
-#: templates/hotel-detail.html:297
-msgid "Doorman"
-msgstr "门卫"
-
-#: templates/hotel-detail.html:304
-msgid "Elevator In Building"
-msgstr "电梯"
-
-#: templates/hotel-detail.html:311
-msgid "Suitable For Events"
-msgstr "适用于活动"
-
-#: templates/hotel-detail.html:318
+#: templates/hotel-detail.html:319
 msgid "Play Place"
 msgstr "游戏地点"
 
-#: templates/hotel-detail.html:343
+#: templates/hotel-detail.html:344
 msgid "Based on"
 msgstr "基于"
 
-#: templates/hotel-detail.html:343
+#: templates/hotel-detail.html:344 templates/reviews.html:145
 msgid "Review"
-msgstr "回顾"
+msgstr "评价"
 
-#: templates/hotel-detail.html:513
-msgid "Bestseller"
-msgstr "畅销"
+#: templates/hotel-detail.html:514
+msgid "Book the hotel"
+msgstr "预定旅馆"
 
-#: templates/hotel-detail.html:515
-msgid "From"
-msgstr "从"
-
-#: templates/hotel-detail.html:527
+#: templates/hotel-detail.html:524
 msgid "Check In"
 msgstr "登记入住"
 
-#: templates/hotel-detail.html:542
+#: templates/hotel-detail.html:539
 msgid "Check Out"
 msgstr "退房"
 
-#: templates/hotel-detail.html:592
-msgid ""
-"It is a long established fact that a reader will be distracted by the "
-"readable\n"
-"                                    content layout."
-msgstr "这是一个早已确立的事实--读者会被可读内容布局所影响。"
-
-#: templates/hotel-detail.html:611
-msgid "Send Message"
-msgstr "发送消息"
-
-#: templates/hotel-grid.html:81
+#: templates/hotel-grid.html:118
 msgid "Facilities"
 msgstr "设施"
 
-#: templates/hotel-grid.html:92
-msgid "Restaurant"
-msgstr "餐馆"
-
-#: templates/hotel-grid.html:98
+#: templates/hotel-grid.html:135
 msgid "Pets Allowed "
 msgstr "允许携带宠物"
 
-#: templates/hotel-grid.html:116
-msgid "WiFi"
-msgstr "无线网络"
-
-#: templates/hotel-grid.html:132 templates/tour-grid.html:247
+#: templates/hotel-grid.html:169 templates/tour-grid.html:150
 msgid "Price:"
 msgstr "价格："
 
-#: templates/hotel-grid.html:141
-msgid "Hotel Star"
-msgstr "酒店星级"
-
-#: templates/hotel-grid.html:151
+#: templates/hotel-grid.html:188
 msgid "4 Star"
 msgstr "4星"
 
-#: templates/hotel-grid.html:157
+#: templates/hotel-grid.html:194
 msgid "3 Star"
 msgstr "三星"
 
-#: templates/hotel-grid.html:163
+#: templates/hotel-grid.html:200
 msgid "2 Star"
 msgstr "2星"
 
-#: templates/hotel-grid.html:169
+#: templates/hotel-grid.html:206
 msgid "1 Star"
 msgstr "1颗星"
 
-#: templates/profile-base.html:170 templates/profile-booking.html:4
+#: templates/orderInvoiceActivity.html:391
+msgid "Activity Invoice"
+msgstr "活动发票"
+
+#: templates/orderInvoiceFlight.html:391
+msgid "Flight Invoice "
+msgstr "航班发票"
+
+#: templates/orderInvoiceHotel.html:391
+msgid "Accommodation Invoice"
+msgstr "住宿发票"
+
+#: templates/orderInvoiceTour.html:391
+msgid "Tour Invoice"
+msgstr "旅行发票"
+
+#: templates/orderMessages.html:448
+msgid "Orders "
+msgstr "订单总数"
+
+#: templates/orders.html:61 templates/orders.html:62 templates/reviews.html:59
+#: templates/reviews.html:60
+msgid "Hotels"
+msgstr "酒店"
+
+#: templates/orders.html:74 templates/orders.html:82
+msgid "Sort"
+msgstr "排序"
+
+#: templates/orders.html:84 templates/orders.html:85
+msgid "By Time"
+msgstr "按时间"
+
+#: templates/orders.html:87 templates/orders.html:88
+msgid "By Price"
+msgstr "按价格"
+
+#: templates/orders.html:139 templates/reviews.html:143
+msgid "Customer"
+msgstr "客户"
+
+#: templates/orders.html:143
+msgid "Total"
+msgstr "总金额"
+
+#: templates/orders.html:145
+msgid "Booking Date"
+msgstr "预订日期"
+
+#: templates/orders.html:147
+msgid "Start Date"
+msgstr "出发时间"
+
+#: templates/profile-base.html:63
+msgid "ENG"
+msgstr "英文"
+
+#: templates/profile-base.html:64
+msgid "CHN"
+msgstr "中文"
+
+#: templates/profile-base.html:167 templates/profile-booking.html:4
 msgid "My Booking"
 msgstr "我的预定"
 
-#: templates/profile-base.html:171
+#: templates/profile-base.html:168
 msgid "My Profile"
 msgstr "我的个人简介"
 
-#: templates/profile-base.html:173 templates/profile-wishlist.html:12
+#: templates/profile-base.html:170 templates/profile-wishlist.html:12
 msgid "My Wishlist"
 msgstr "我的心愿单"
 
-#: templates/profile-base.html:175
+#: templates/profile-base.html:172
 msgid "My Wallet"
 msgstr "我的钱包"
 
-#: templates/profile-base.html:177
-msgid "Settings"
-msgstr "设置"
-
-#: templates/profile-base.html:178
-msgid "Logout"
-msgstr "注销"
+#: templates/profile-base.html:174
+msgid "Update profile"
+msgstr "更新用户信息"
 
 #: templates/profile-booking.html:9
 msgid "No"
-msgstr "不"
+msgstr "No."
 
 #: templates/profile-booking.html:10
 msgid "Booking Name"
@@ -1224,63 +2240,44 @@ msgstr "预订名称"
 msgid "Type"
 msgstr "类型"
 
-#: templates/profile-booking.html:12 templates/tour-detail.html:70
+#: templates/profile-booking.html:12 templates/reviews.html:149
+#: templates/tour-detail.html:70
 msgid "Date"
 msgstr "日期"
 
-#: templates/profile-booking.html:13
-msgid "Price"
-msgstr "价格"
-
-#: templates/profile-booking.html:14
-msgid "Status"
-msgstr "地位"
-
 #: templates/profile-booking.html:15
 msgid "Action"
-msgstr "活动"
+msgstr "查看"
 
 #: templates/profile-booking.html:27
 msgid "Finished"
-msgstr "完成了"
+msgstr "已完成"
 
 #: templates/profile-booking.html:29
 msgid "Upcoming"
-msgstr "即将到来的"
-
-#: templates/profile-booking.html:35
-msgid "Cancel"
-msgstr "取消"
+msgstr "即将到来"
 
 #: templates/profile-setting.html:5 templates/profile-setting.html:37
 msgid "Update Profile Info"
-msgstr "更新配置文件信息"
+msgstr "更新用户信息"
 
 #: templates/profile-setting.html:11
 msgid "User Name"
 msgstr "用户名"
 
-#: templates/profile-setting.html:25
-msgid "Phone"
-msgstr "手机"
-
-#: templates/profile-setting.html:32
-msgid "Address"
-msgstr "住址"
-
 #: templates/profile-wallet.html:9
 msgid "Wallet Balance"
 msgstr "钱包余额"
 
-#: templates/profile-wallet.html:41
+#: templates/profile-wallet.html:54
 msgid "Add Balance"
 msgstr "添加余额"
 
-#: templates/profile-wallet.html:47
+#: templates/profile-wallet.html:60
 msgid "Add Amount"
 msgstr "添加金额"
 
-#: templates/profile-wallet.html:51
+#: templates/profile-wallet.html:64
 msgid "Add Now"
 msgstr "立即添加"
 
@@ -1300,42 +2297,29 @@ msgstr "点击下面的按钮查看！"
 msgid "Clear calendar"
 msgstr "清除日历"
 
-#: templates/profile-wishlist.html:52
-msgid "Plan them in my calendar"
+#: templates/profile-wishlist.html:55
+msgid "Plan in my calendar"
 msgstr "在我的日历中计划它们"
 
-#: templates/profile-wishlist.html:95
+#: templates/profile-wishlist.html:98
 msgid "Close"
 msgstr "关"
 
-#: templates/profile-wishlist.html:96
+#: templates/profile-wishlist.html:99
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: templates/profile.html:3
-#, fuzzy
-msgid "Profile Info"
-msgstr "个人简介"
+#: templates/reviews.html:69 templates/reviews.html:77
+msgid "All Ratings"
+msgstr "所有状态"
 
-#: templates/profile.html:7
-msgid "Nickname:"
-msgstr "昵称："
+#: templates/reviews.html:141
+msgid "Product"
+msgstr "产品类型"
 
-#: templates/profile.html:8
-msgid "Email:"
-msgstr "电子邮件："
-
-#: templates/profile.html:9
-msgid "Phone:"
-msgstr "手机号："
-
-#: templates/profile.html:10
-msgid "Address:"
-msgstr "地址："
-
-#: templates/profile.html:11
-msgid "Join Date:"
-msgstr "加入日期："
+#: templates/reviews.html:147
+msgid "Rating"
+msgstr "时段"
 
 #: templates/tour-booking-confirm.html:35
 msgid "Tour Info"
@@ -1369,11 +2353,11 @@ msgstr "旅游价格"
 msgid "Days"
 msgstr "天"
 
-#: templates/tour-detail.html:92 templates/tour-grid.html:210
+#: templates/tour-detail.html:92 templates/tour-grid.html:113
 msgid "Tour Type"
 msgstr "旅行类别"
 
-#: templates/tour-detail.html:126
+#: templates/tour-detail.html:126 templates/tour.html:930
 msgid "Itinerary"
 msgstr "行程"
 
@@ -1399,119 +2383,281 @@ msgid ""
 "                                                        Wishlist"
 msgstr "移除愿望清单"
 
-#: templates/tour-grid.html:216
+#: templates/tour-grid.html:119 templates/tour.html:55 templates/tour.html:56
+#: templates/tour.html:651
 msgid "Cultural tourism"
 msgstr "文化旅游"
 
-#: templates/tour-grid.html:223
+#: templates/tour-grid.html:126 templates/tour.html:58 templates/tour.html:59
+#: templates/tour.html:652
 msgid "Wildlife observation"
 msgstr "野生动物观察"
 
-#: templates/tour-grid.html:230
+#: templates/tour-grid.html:133 templates/tour.html:61 templates/tour.html:62
+#: templates/tour.html:653
 msgid "Cruises"
 msgstr "邮轮"
 
-#: templates/tour-grid.html:237
+#: templates/tour-grid.html:140 templates/tour.html:64 templates/tour.html:65
+#: templates/tour.html:654
 msgid "Grass Skyline"
-msgstr "草地天际线"
+msgstr "草原天路"
 
-#: templates/tour-grid.html:243
+#: templates/tour-grid.html:146
 msgid "Tour Price"
 msgstr "旅游价格"
 
-#: templates/tour-grid.html:256
+#: templates/tour-grid.html:159
 msgid "Tour Duration"
 msgstr "旅游时段"
 
-#: templates/tour-grid.html:262
+#: templates/tour-grid.html:165
 msgid "1 to 2 days"
 msgstr "1至2天"
 
-#: templates/tour-grid.html:269
+#: templates/tour-grid.html:172
 msgid "3 to 5 days "
 msgstr "3至5天"
 
-#: templates/tour-grid.html:276
+#: templates/tour-grid.html:179
 msgid "More than 5 days"
 msgstr "超过5天"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:2
+#: templates/tour.html:621
+msgid "Add Tour"
+msgstr "添加旅行"
+
+#: templates/tour.html:642
+msgid "Official Tour Name"
+msgstr "官方地名"
+
+#: templates/tour.html:649
+msgid "Tour Category"
+msgstr "产品类别"
+
+#: templates/tour.html:935
+msgid "Itinerary Name"
+msgstr "行程"
+
+#: templates/tour.html:941
+msgid "Itinerary Description"
+msgstr "描述"
+
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:2
 msgid "Menu"
 msgstr "菜单"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:6
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/register_user.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:6
+#: venv/Lib/site-packages/flask_security/templates/security/register_user.html:3
 msgid "Register"
-msgstr "登记"
+msgstr "注册"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:9
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:9
 msgid "Forgot password"
-msgstr "忘记密码"
+msgstr "忘记密码？"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/_menu.html:12
+#: venv/Lib/site-packages/flask_security/templates/security/_menu.html:12
 msgid "Confirm account"
-msgstr "确认帐户"
+msgstr "客户账户"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/change_password.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/change_password.html:3
 msgid "Change password"
-msgstr "更改密码"
+msgstr "修改密码"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/forgot_password.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/forgot_password.html:3
 msgid "Send password reset instructions"
 msgstr "发送密码重置说明"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/reset_password.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/reset_password.html:3
 msgid "Reset password"
 msgstr "重置密码"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/send_confirmation.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/send_confirmation.html:3
 msgid "Resend confirmation instructions"
 msgstr "重新发送确认说明"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:1
 msgid "Your password has been changed."
 msgstr "您的密码已更改。"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "If you did not change your password,"
 msgstr "如果您没有更改密码，"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/change_notice.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/change_notice.html:3
 msgid "click here to reset it"
 msgstr "单击此处重置"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:1
 msgid "Please confirm your email through the link below:"
 msgstr "请通过以下链接确认您的电子邮件："
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:6
+#: venv/Lib/site-packages/flask_security/templates/security/email/confirmation_instructions.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:6
 msgid "Confirm my account"
-msgstr "确认我的帐户"
+msgstr "确认我的账户"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:1
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:1
 #, python-format
 msgid "Welcome %(email)s!"
 msgstr "欢迎使用%（电子邮件）s！"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:3
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:3
 msgid "You can log into your account through the link below:"
 msgstr "您可以通过以下链接登录您的帐户："
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/login_instructions.html:5
+#: venv/Lib/site-packages/flask_security/templates/security/email/login_instructions.html:5
 msgid "Login now"
-msgstr "立即登录"
+msgstr "登录"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_instructions.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/reset_instructions.html:1
 msgid "Click here to reset your password"
 msgstr "单击此处重置您的密码"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/reset_notice.html:1
+#: venv/Lib/site-packages/flask_security/templates/security/email/reset_notice.html:1
 msgid "Your password has been reset"
 msgstr "您的密码已重置"
 
-#: venv/lib/python3.9/site-packages/flask_security/templates/security/email/welcome.html:4
+#: venv/Lib/site-packages/flask_security/templates/security/email/welcome.html:4
 msgid "You can confirm your email through the link below:"
 msgstr "您可以通过以下链接确认您的电子邮件："
+
+#~ msgid "Contact"
+#~ msgstr "联系"
+
+#~ msgid "Base On 15.5k Review"
+#~ msgstr "基于15.5k评价"
+
+#~ msgid "Menu"
+#~ msgstr "菜单"
+
+#~ msgid "Register"
+#~ msgstr "重置"
+
+#~ msgid "Forgot password"
+#~ msgstr "忘记密码？"
+
+#~ msgid "Confirm account"
+#~ msgstr "确认预订"
+
+#~ msgid "Change password"
+#~ msgstr "修改密码"
+
+#~ msgid "Send password reset instructions"
+#~ msgstr "发送密码重置说明"
+
+#~ msgid "Reset password"
+#~ msgstr "重置密码"
+
+#~ msgid "Resend confirmation instructions"
+#~ msgstr "重新发送确认说明"
+
+#~ msgid "Your password has been changed."
+#~ msgstr "您的密码已更改。"
+
+#~ msgid "If you did not change your password,"
+#~ msgstr "如果您没有更改密码，"
+
+#~ msgid "click here to reset it"
+#~ msgstr "单击此处重置"
+
+#~ msgid "Please confirm your email through the link below:"
+#~ msgstr "请通过以下链接确认您的电子邮件："
+
+#~ msgid "Confirm my account"
+#~ msgstr "确认预订"
+
+#~ msgid "Welcome %(email)s!"
+#~ msgstr "欢迎使用%（电子邮件）s！"
+
+#~ msgid "You can log into your account through the link below:"
+#~ msgstr "您可以通过以下链接登录您的帐户："
+
+#~ msgid "Login now"
+#~ msgstr "登录"
+
+#~ msgid "Click here to reset your password"
+#~ msgstr "单击此处重置您的密码"
+
+#~ msgid "Your password has been reset"
+#~ msgstr "您的密码已重置"
+
+#~ msgid "You can confirm your email through the link below:"
+#~ msgstr "您可以通过以下链接确认您的电子邮件："
+
+#~ msgid "Our Most Popular Destinations"
+#~ msgstr "选择一些热门的旅行目的地！"
+
+#~ msgid "Organized By"
+#~ msgstr "组织由"
+
+#~ msgid "Roltak Travel Agency"
+#~ msgstr "旅行社"
+
+#~ msgid "Member Since 2021"
+#~ msgstr "自2021起成为会员"
+
+#~ msgid "Send Message"
+#~ msgstr "发送消息"
+
+#~ msgid "Travel Agency Name"
+#~ msgstr "旅行社名称"
+
+#~ msgid "Project Name #1"
+#~ msgstr "项目#1"
+
+#~ msgid "January 16th, 2014"
+#~ msgstr "1月16号，2014"
+
+#~ msgid "Then we were very excited."
+#~ msgstr "然后我们非常兴奋。"
+
+#~ msgid ""
+#~ "Lorem ipsum dolor sit amet, consectetur"
+#~ " adipisicing elit. Illum praesentium "
+#~ "officia, fugit recusandae ipsa, quia "
+#~ "velit nulla adipisci? Consequuntur aspernatur"
+#~ " at, eaque hic repellendus sit dicta"
+#~ " consequatur quae, ut harum ipsam "
+#~ "molestias maxime non nisi reiciendis "
+#~ "eligendi! Doloremque quia pariatur harum "
+#~ "ea amet quibusdam quisquam, quae, "
+#~ "temporibus dolores porro doloribus."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "It is a long established fact that"
+#~ " a reader will be distracted by "
+#~ "the readable\n"
+#~ "                                    content\n"
+#~ "                                    layout."
+#~ msgstr ""
+
+#~ msgid "Search Contacts"
+#~ msgstr "搜索客户"
+
+#~ msgid ""
+#~ "t is a long-established fact that"
+#~ " a reader will be distracted by "
+#~ "the readable\n"
+#~ "                                    content\n"
+#~ "                                    layout."
+#~ msgstr ""
+
+#~ msgid "Bestseller"
+#~ msgstr "畅销"
+
+#~ msgid ""
+#~ "It is a long established fact that"
+#~ " a reader will be distracted by "
+#~ "the readable\n"
+#~ "                                    content layout."
+#~ msgstr "这是一个早已确立的事实--读者会被可读内容布局所影响。"
+
+#~ msgid "Settings"
+#~ msgstr "设置"
+
+#~ msgid "Share"
+#~ msgstr "分享"
 

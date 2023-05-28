@@ -15,7 +15,7 @@
         <main class="page-content">
             <div class="container">
                 <div class="page-header">
-                    <h1 class="page-header__title">Tours</h1>
+                    <h1 class="page-header__title">{{ _("Tours") }}</h1>
                 </div>
                 <div class="page-tools">
                     <div class="page-tools__breadcrumbs">
@@ -24,12 +24,12 @@
                                 <ol class="breadcrumbs__list">
 
                                     <li class="breadcrumbs__item disabled"><a class="breadcrumbs__link"
-                                            href="#"><span>Travel-Booking</span>
+                                            href="#"><span>{{ _("Travel-Booking") }}</span>
                                             <svg class="icon-icon-keyboard-right breadcrumbs__arrow">
                                                 <use xlink:href="#icon-keyboard-right"></use>
                                             </svg></a>
                                     </li>
-                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">Attractions</span>
+                                    <li class="breadcrumbs__item active"><span class="breadcrumbs__link">{{ _("Tours") }}</span>
                                     </li>
                                 </ol>
                             </div>
@@ -41,70 +41,50 @@
                     <div class="toolbox__row row gutter-bottom-xs">
                         <div class="toolbox__left col-12 col-lg">
                             <div class="toolbox__left-row row row--xs gutter-bottom-xs">
-                                <div class="form-group form-group--inline col-12 col-sm-auto">
-                                    <label class="form-label">Show</label>
-{#                                    <div class="input-group input-group--white input-group--append">#}
-{#                                        <input class="input input--select" type="text" value="10" size="1"#}
-{#                                            data-toggle="dropdown" readonly><span class="input-group__arrow">#}
-{#                                            <svg class="icon-icon-keyboard-down">#}
-{#                                                <use xlink:href="#icon-keyboard-down"></use>#}
-{#                                            </svg></span>#}
-{#                                        <div#}
-{#                                            class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">#}
-{#                                            <a class="dropdown-menu__item active" href="#" tabindex="0"#}
-{#                                                data-value="10">10</a><a class="dropdown-menu__item" href="#"#}
-{#                                                tabindex="0" data-value="15">15</a><a class="dropdown-menu__item"#}
-{#                                                href="#" tabindex="0" data-value="20">20</a>#}
-{#                                            <a class="dropdown-menu__item" href="#" tabindex="0"#}
-{#                                                data-value="25">25</a><a class="dropdown-menu__item" href="#"#}
-{#                                                tabindex="0" data-value="50">50</a>#}
-{#                                        </div>#}
-{#                                    </div>#}
-                                </div>
                                 <div class="toolbox__status input-group input-group--white input-group--append"  style="width:200px;">
-                                        <input class="input input--select" type="text" value="All Category"
+                                        <input class="input input--select" type="text" value="{{ _("All Category") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_tours(null, 'All Category')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All Category"><span class="marker-item"></span> All Category
+                                            <a onclick="load_tours(null, '{{ _("All Category") }}')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("All Category") }}"><span class="marker-item"></span> {{ _("All Category") }}
                                             </a>
-                                            <a onclick="load_tours(null, 'Food & Nightlife')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Food & Nightlife"><span class="marker-item"></span> Food & Nightlife
+                                            <a onclick="load_tours(null, '{{ _("Cultural tourism") }}')" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="{{ _("Cultural tourism") }}"><span class="marker-item"></span> {{ _("Cultural tourism") }}
                                             </a>
-                                            <a onclick="load_tours(null, 'Hot Air Balloon')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Hot Air Balloon"><span class="marker-item"></span> Hot Air Balloon
+                                            <a onclick="load_tours(null, '{{ _("Wildlife observation") }}')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Wildlife observation") }}"><span class="marker-item"></span> {{ _("Wildlife observation") }}
                                             </a>
-                                            <a onclick="load_tours(null, 'Mountain Climbing')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Mountain Climbing"><span class="marker-item"></span> Mountain Climbing
+                                            <a onclick="load_tours(null, '{{ _("Cruises") }}')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Cruises") }}"><span class="marker-item"></span> {{ _("Cruises") }}
                                             </a>
-                                            <a onclick="load_tours(null, 'Bike Ride')" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="Bike Ride"><span class="marker-item"></span> Bike Ride
+                                            <a onclick="load_tours(null, '{{ _("Grass Skyline") }}')" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Grass Skyline") }}"><span class="marker-item"></span> {{ _("Grass Skyline") }}
                                             </a>
                                         </div>
                                     </div>
                                 <div class="form-group form-group--inline col-12 col-sm-auto d-none d-sm-block">
                                     <div class="toolbox__status input-group input-group--white input-group--append">
-                                        <input class="input input--select" type="text" value="All status"
+                                        <input class="input input--select" type="text" value="{{ _("All status") }}"
                                             data-toggle="dropdown" readonly><span class="input-group__arrow">
                                             <svg class="icon-icon-keyboard-down">
                                                 <use xlink:href="#icon-keyboard-down"></use>
                                             </svg></span>
                                         <div
                                             class="dropdown-menu dropdown-menu--right dropdown-menu--fluid js-dropdown-select">
-                                            <a onclick="load_tours('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
-                                                data-value="All status"><span class="marker-item"></span> All status
+                                            <a onclick="load_activities('All Status', null)" class="dropdown-menu__item active" href="#" tabindex="0"
+                                                data-value="{{ _("All status") }}"><span class="marker-item"></span>{{ _("All status") }}
                                             </a>
-                                            <a onclick="load_tours('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Published"><span class="marker-item color-green"></span>
-                                                Published
+                                            <a onclick="load_activities('published', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Published") }}"><span class="marker-item color-green"></span>
+                                                {{ _("Published") }}
                                             </a>
-                                            <a onclick="load_tours('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
-                                                data-value="Deleted"><span class="marker-item color-red"></span>
-                                                Deleted
+                                            <a onclick="load_activities('deleted', null)" class="dropdown-menu__item" href="#" tabindex="0"
+                                                data-value="{{ _("Deleted") }}"><span class="marker-item color-red"></span>
+                                                {{ _("Deleted") }}
                                             </a>
                                         </div>
                                     </div>
@@ -121,7 +101,7 @@
                                                     <use xlink:href="#icon-search"></use>
                                                 </svg>
                                             </div>
-                                            <input class="input" type="text" placeholder="Search product">
+                                            <input oninput="search_tours()" id="search_box" class="input" type="text" placeholder="Search by Name">
                                         </div>
                                     </form>
                                 </div>
@@ -164,22 +144,22 @@
                                             </label>
                                         </div>
                                     </th>
-                                    <th class="d-none d-lg-table-cell"><span>ID</span>
+                                    <th class="d-none d-lg-table-cell"><span>{{ _("ID") }}</span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Product Name</span><span
+                                    <th class="table__th-sort"><span class="align-middle"></span>{{ _("Product Name") }}<span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Category</span><span
+                                    <th class="table__th-sort"><span class="align-middle"></span>{{ _("Category") }}<span
                                             class="sort sort--down"></span>
                                     </th>
-                                    <th class="table__th-sort"><span class="align-middle">Price</span><span
+                                    <th class="table__th-sort"><span class="align-middle">{{ _("Price") }}</span><span
                                             class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-lg-table-cell"><span
-                                            class="align-middle">Start Time</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Start Time") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__th-sort d-none d-sm-table-cell"><span
-                                            class="align-middle">Status</span><span class="sort sort--down"></span>
+                                            class="align-middle">{{ _("Status") }}</span><span class="sort sort--down"></span>
                                     </th>
                                     <th class="table__actions"></th>
                                 </tr>
@@ -191,37 +171,27 @@
 {#                    </div>#}
                     <div class="table-wrapper__footer">
                         <div class="row">
-{#                            <div class="table-wrapper__show-result col text-grey"><span#}
-{#                                    class="d-none d-sm-inline-block">Showing</span> 1 to 10 <span#}
-{#                                    class="d-none d-sm-inline-block">of 50 items</span>#}
-{#                            </div>#}
-{#                            <div class="table-wrapper__pagination col-auto">#}
-{#                                <ol class="pagination">#}
-{#                                    <li class="pagination__item">#}
-{#                                        <a class="pagination__arrow pagination__arrow--prev" href="#">#}
-{#                                            <svg class="icon-icon-keyboard-left">#}
-{#                                                <use xlink:href="#icon-keyboard-left"></use>#}
-{#                                            </svg>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item active"><a class="pagination__link" href="#">1</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">2</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">3</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item pagination__item--dots">...</li>#}
-{#                                    <li class="pagination__item"><a class="pagination__link" href="#">10</a>#}
-{#                                    </li>#}
-{#                                    <li class="pagination__item">#}
-{#                                        <a class="pagination__arrow pagination__arrow--next" href="#">#}
-{#                                            <svg class="icon-icon-keyboard-right">#}
-{#                                                <use xlink:href="#icon-keyboard-right"></use>#}
-{#                                            </svg>#}
-{#                                        </a>#}
-{#                                    </li>#}
-{#                                </ol>#}
-{#                            </div>#}
+                            <div class="table-wrapper__pagination col-auto">
+                                <ol class="pagination">
+                                    <li class="pagination__item">
+                                        <a onclick="next_page()" class="pagination__arrow pagination__arrow--prev" href="#">
+                                            <svg class="icon-icon-keyboard-left">
+                                                <use xlink:href="#icon-keyboard-left"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li class="pagination__item active">
+                                        <a id="cur_page_num" class="pagination__link" style="background-color: white; color: black;" href="#">2/10</a>
+                                    </li>
+                                    <li class="pagination__item">
+                                        <a onclick="prev_page()" class="pagination__arrow pagination__arrow--next" href="#">
+                                            <svg class="icon-icon-keyboard-right">
+                                                <use xlink:href="#icon-keyboard-right"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -240,7 +210,7 @@
                     </div>
                     <div class="modal__body">
                         <div class="modal__container">
-                            <form action="{{ url_for('manager.add_tour') }}" method="POST" enctype="multipart/form-data">
+                            <form id="modify_form" action="{{ url_for('manager.add_tour') }}" method="POST" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="user-profile-card add-listing">
                                         <h4 class="user-profile-card-title">Modify Tour</h4>
@@ -249,6 +219,19 @@
                                                 <h5 class="mb-4">Basic Information</h5>
 {#                                                <form action="#">#}
                                                     <div class="row align-items-center">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label>Priority</label>
+                                                                <select class="select" name="pri" id="m_pri" required>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
                                                                 <label>Official Tour Name</label>
@@ -260,7 +243,6 @@
                                                             <div class="form-group">
                                                                 <label>Tour Category</label>
                                                                 <select class="select" name="category" id="modify_category">
-                                                                    <option value="1">Select Category</option>
                                                                     <option value="Cultural tourism">Cultural tourism</option>
                                                                     <option value="Wildlife observation">Wildlife observation</option>
                                                                     <option value="Cruises">Cruises</option>
@@ -275,48 +257,45 @@
                                                                     placeholder="Enter price" required>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Price Currency</label>#}
-{#                                                                <select class="select">#}
-{#                                                                    <option value="">Select Currency</option>#}
-{#                                                                    <option value="1">USD</option>#}
-{#                                                                    <option value="2">GBP</option>#}
-{#                                                                    <option value="3">EUR</option>#}
-{#                                                                    <option value="4">CAD</option>#}
-{#                                                                    <option value="5">AUD</option>#}
-{#                                                                </select>#}
-{#                                                            </div>#}
-                                                        </div>
                                                         <h5 class="my-4">Location</h5>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>City</label>
-                                                                <input type="text" class="form-control" name="city" id="m_city"
+                                                                <input id="m_city" type="text" class="form-control" name="city"
                                                                     placeholder="Enter city" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>State</label>
-                                                                <input type="text" class="form-control" name="state" id="m_state"
+                                                                <input id="m_state" type="text" class="form-control" name="state"
                                                                     placeholder="Enter state" required>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter zip code">
-                                                            </div>
-                                                        </div> -->
+
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <label>Address</label>
-                                                                <input type="text" class="form-control" name="address" id="m_address"
-                                                                    placeholder="Enter address" required>
+                                                                <input id="m_address" type="text" class="form-control" name="address"
+                                                                    placeholder="paste address" required>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>Longitude</label>
+                                                                <input type="number" id="modify_citylong" class="form-control" name="lon1"
+                                                                    placeholder="longitude" step="0.00001" max="180" min="-180" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>latitude</label>
+                                                                <input type="number" id="modify_citylati" class="form-control" name="lat1"
+                                                                    placeholder="latitude" step="0.00001" max="90" min="-90" required>
+                                                            </div>
+                                                        </div>
+                                                        <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+                                                    </div>
                                                         <h5 class="my-4">Your Tour Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                             <div class="col-lg-12">
@@ -343,7 +322,6 @@
                                                             <div class="form-group">
                                                                 <label>Group Size</label>
                                                                 <select class="select" name="group_size" id="modify_group_size" style="padding-left: -14px;margin-left: -15px;">
-                                                                    <option value="">Select Group Size</option>
                                                                     <option value="10">10 People</option>
                                                                     <option value="20">20 People</option>
                                                                     <option value="30">30 People</option>
@@ -377,7 +355,7 @@
                                                             <label class="form-label">Product Images</label>
                                                             <div class="image-upload">
                                                                 <div class="image-upload__drop">
-                                                                    <input class="image-upload__input" type="file" name="images"
+                                                                    <input id="modify-image-input" class="image-upload__input" type="file" name="images"
                                                                          accept="image/png, image/jpeg" multiple required>
                                                                     <div class="image-upload__drop-text">
                                                                         <svg class="icon-icon-upload">
@@ -461,7 +439,7 @@
                                                             <div class="col-6 col-md-3">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" name="included1"
-                                                                        type="checkbox" value="Airfare" id="included1" style="-webkit-appearance:checkbox;">
+                                                                        type="checkbox" value="Airfare" id="m_included1" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included1">
                                                                         Airfare
                                                                     </label>
@@ -472,7 +450,7 @@
                                                             <div class="col-6 col-md-3">
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" name="included2"
-                                                                        type="checkbox" value="Local Transportation" id="included2" style="-webkit-appearance:checkbox;">
+                                                                        type="checkbox" value="Local Transportation" id="m_included2" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included2">
                                                                         Local Transportation
                                                                     </label>
@@ -483,7 +461,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="included3"
-                                                                    type="checkbox" value="Accommodation" id="included3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Accommodation" id="m_included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included3">
                                                                     Accommodation
                                                                 </label>
@@ -492,7 +470,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="included4"
-                                                                    type="checkbox" value="Tour Guide" id="included4" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Tour Guide" id="m_included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included4">
                                                                     <span>Tour Guide</span>
                                                                 </label>
@@ -508,7 +486,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included1"
-                                                                    type="checkbox" value="Entrance Fees" id="not-included1" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Entrance Fees" id="m_not-included1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included1">
                                                                     Entrance Fees
                                                                 </label>
@@ -517,7 +495,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included2"
-                                                                    type="checkbox" value="Guide Gratuity" id="not-included2" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Guide Gratuity" id="m_not-included2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included2">
                                                                     Guide Gratuity
                                                                 </label>
@@ -526,7 +504,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included3"
-                                                                    type="checkbox" value="Lunch" id="not-included3" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Lunch" id="m_not-included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included3">
                                                                     Lunch
                                                                 </label>
@@ -535,7 +513,7 @@
                                                         <div class="col-6 col-md-3">
                                                             <div class="form-check">
                                                                 <input class="form-check-input" name="not-included4"
-                                                                    type="checkbox" value="Dinner" id="not-included4" style="-webkit-appearance:checkbox;">
+                                                                    type="checkbox" value="Dinner" id="m_not-included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included4">
                                                                     Dinner
                                                                 </label>
@@ -591,8 +569,7 @@
                                                                 <input class="form-check-input" name="agree"
                                                                     type="checkbox" value="" id="agree" disabled checked style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="agree">
-                                                                    I Agree With Your Terms Of Services And Privacy
-                                                                    Policy.
+                                                                     {{ _("I Agree With Your Terms Of Services And Privacy Policy.") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -633,7 +610,7 @@
                 <div class="modal__content">
                     <div class="modal__header">
                         <div class="modal__container">
-                            <h2 class="modal__title">Add Product</h2>
+                            <h2 class="modal__title">{{ _("Add Product") }}</h2>
                         </div>
                     </div>
                     <div class="modal__body">
@@ -641,52 +618,51 @@
                             <form action="{{ url_for('manager.add_tour') }}" method="POST" enctype="multipart/form-data">
                                 <div class="row row--md">
                                     <div class="user-profile-card add-listing">
-                                        <h4 class="user-profile-card-title">Add Tour</h4>
+                                        <h4 class="user-profile-card-title">{{ _("Add Tour") }}</h4>
                                         <div class="col-lg-12">
                                             <div class="add-listing-form">
-                                                <h5 class="mb-4">Basic Information</h5>
+                                                <h5 class="mb-4">{{ _("Basic Information") }}</h5>
 {#                                                <form action="#">#}
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
-                                                                <label>Official Tour Name</label>
+                                                                <label>{{ _("Priority") }}</label>
+                                                                <select class="select" name="pri" id="pri" required>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label>{{ _("Official Tour Name") }}</label>
                                                                 <input type="text" class="form-control" name="name"
                                                                     placeholder="Enter tour name" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
-                                                                <label>Tour Category</label>
+                                                                <label>{{ _("Tour Category") }}</label>
                                                                 <select class="select" name="category">
-                                                                    <option value="1">Select Category</option>
-                                                                    <option value="Cultural tourism">Cultural tourism</option>
-                                                                    <option value="Wildlife observation">Wildlife observation</option>
-                                                                    <option value="Cruises">Cruises</option>
-                                                                    <option value="Grass Skyline">Grass Skyline</option>
+                                                                    <option value="Cultural tourism">{{ _("Cultural tourism") }}</option>
+                                                                    <option value="Wildlife observation">{{ _("Wildlife observation") }}</option>
+                                                                    <option value="Cruises">{{ _("Cruises") }}</option>
+                                                                    <option value="Grass Skyline">{{ _("Grass Skyline") }}</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
-                                                                <label>Price</label>
+                                                                <label>{{ _("Price") }}</label>
                                                                 <input type="number" class="form-control" name="price" min="0"
                                                                     placeholder="Enter price" required>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-6">
-{#                                                            <div class="form-group">#}
-{#                                                                <label>Price Currency</label>#}
-{#                                                                <select class="select">#}
-{#                                                                    <option value="">Select Currency</option>#}
-{#                                                                    <option value="1">USD</option>#}
-{#                                                                    <option value="2">GBP</option>#}
-{#                                                                    <option value="3">EUR</option>#}
-{#                                                                    <option value="4">CAD</option>#}
-{#                                                                    <option value="5">AUD</option>#}
-{#                                                                </select>#}
-{#                                                            </div>#}
-                                                        </div>
-                                                        <h5 class="my-4">Location</h5>
+                                                        <h5 class="my-4">{{ _("Location") }}</h5>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
                                                                 <label>City</label>
@@ -696,30 +672,40 @@
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>State</label>
+                                                                <label>{{ _("State") }}</label>
                                                                 <input type="text" class="form-control" name="state"
                                                                     placeholder="Enter state" required>
                                                             </div>
                                                         </div>
-                                                        <!-- <div class="col-lg-4">
-                                                            <div class="form-group">
-                                                                <label>Zip Code</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Enter zip code">
-                                                            </div>
-                                                        </div> -->
+
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
-                                                                <label>Address</label>
+                                                                <label>{{ _("Address") }}</label>
                                                                 <input type="text" class="form-control" name="address"
-                                                                    placeholder="Enter address" required>
+                                                                    placeholder="address" required>
                                                             </div>
                                                         </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>{{ _("Longitude") }}</label>
+                                                                <input type="number" class="form-control" name="lon"
+                                                                    placeholder="longitude" step="0.00001" max="180" min="-180" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="form-group">
+                                                                <label>{{ _("Latitude") }}</label>
+                                                                <input class="form-control" name="lat"
+                                                                    placeholder="latitude" required>
+                                                            </div>
+                                                        </div>
+                                                        <a href="{{ url_for('customer.get_location') }}" target="_blank" style="text-decoration: underline; color:blue; font-size: 0.8em;">Click here to get your longitude and latitude</a>
+
                                                         <h5 class="my-4">Your Tour Information</h5>
                                                         <div style="display: grid; grid-template-columns: 1fr 1fr;white-space: nowrap;">
                                                             <div class="col-lg-12">
                                                             <div class="form-group">
-                                                               <label>Duration</label>
+                                                               <label>{{ _("Duration") }}</label>
                                                                <input type="number" class="form-control" min="0" max="7" name="duration"
                                                                    placeholder="Enter Duration" id="inputNumber" required>
                                                            </div>
@@ -739,9 +725,8 @@
                                                         </div> -->
                                                         <div class="col-lg-4" style="max-width: none;">
                                                             <div class="form-group">
-                                                                <label>Group Size</label>
+                                                                <label>{{ _("Group Size") }}</label>
                                                                 <select class="select" name="group_size" style="padding-left: -14px;margin-left: -15px;">
-                                                                    <option value="">Select Group Size</option>
                                                                     <option value="10">10 People</option>
                                                                     <option value="20">20 People</option>
                                                                     <option value="30">30 People</option>
@@ -752,7 +737,7 @@
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>From Date</label>
+                                                                <label>{{ _("From Date") }}</label>
                                                                 <div class="form-group-icon">
                                                                     <input type="date" class="form-control date-picker" name="start_time"
                                                                         placeholder="MM/DD/YY" style="width: auto;height: 56px;" required>
@@ -762,7 +747,7 @@
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>To Date</label>
+                                                                <label>{{ _("To Date") }}</label>
                                                                 <div class="form-group-icon">
                                                                     <input type="date" class="form-control date-picker" name="end_time"
                                                                         placeholder="MM/DD/YY" style="width: auto;height: 56px;" required>
@@ -772,7 +757,7 @@
                                                         </div>
                                                         </div>
                                                         <div class="col-12 form-group form-group--lg">
-                                                            <label class="form-label">Product Images</label>
+                                                            <label class="form-label">{{ _("Product Images") }}</label>
                                                             <div class="image-upload">
                                                                 <div class="image-upload__drop">
                                                                     <input class="image-upload__input" type="file" name="images"
@@ -780,7 +765,7 @@
                                                                     <div class="image-upload__drop-text">
                                                                         <svg class="icon-icon-upload">
                                                                             <use xlink:href="#icon-upload"></use>
-                                                                        </svg> <span>Drag and Drop or </span> <span
+                                                                        </svg> <span>{{ _("Drag and Drop or") }} </span> <span
                                                                             class="image-upload__drop-action text-blue">Browse</span>
                                                                         <span>to upload</span>
                                                                     </div>
@@ -839,10 +824,10 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <h5 class="my-4">Detailed Information</h5>
+                                                        <h5 class="my-4">{{ _("Detailed Information") }}</h5>
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
-                                                                <label>Description</label>
+                                                                <label>{{ _("Description") }}</label>
                                                                 <textarea class="form-control" name="description"
                                                                     placeholder="Write description" cols="30"
                                                                     rows="5"></textarea>
@@ -850,7 +835,7 @@
                                                         </div>
                                                         <div style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%; padding-top: 15px;">
                                                             <div>
-                                                                <h5 class="my-4">Included</h5>
+                                                                <h5 class="my-4">{{ _("Included") }}</h5>
                                                             </div>
                                                            
                                                         
@@ -861,7 +846,7 @@
                                                                     <input class="form-check-input" name="included1"
                                                                         type="checkbox" value="Airfare" id="included1" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included1">
-                                                                        Airfare
+                                                                        {{ _("Airfare") }}
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -872,7 +857,7 @@
                                                                     <input class="form-check-input" name="included2"
                                                                         type="checkbox" value="Local Transportation" id="included2" style="-webkit-appearance:checkbox;">
                                                                     <label class="form-check-label" for="included2">
-                                                                        Local Transportation
+                                                                        {{ _("Local Transportation") }}
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -883,7 +868,7 @@
                                                                 <input class="form-check-input" name="included3"
                                                                     type="checkbox" value="Accommodation" id="included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included3">
-                                                                    Accommodation
+                                                                    {{ _("Accommodation") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -892,7 +877,7 @@
                                                                 <input class="form-check-input" name="included4"
                                                                     type="checkbox" value="Tour Guide" id="included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="included4">
-                                                                    <span>Tour Guide</span>
+                                                                    <span>{{ _("Tour Guide") }}</span>
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -900,7 +885,7 @@
                                                     </div>
                                                     <div style="display: grid;grid-template-columns: 1fr 1fr; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;">
                                                         <div>
-                                                            <h5 class="my-4">Not Included</h5>
+                                                            <h5 class="my-4">{{ _("Not Included") }}</h5>
                                                         </div>
                                                         <div>
                                                         <div class="col-6 col-md-3">
@@ -908,7 +893,7 @@
                                                                 <input class="form-check-input" name="not-included1"
                                                                     type="checkbox" value="Entrance Fees" id="not-included1" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included1">
-                                                                    Entrance Fees
+                                                                    {{ _("Entrance Fees") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -917,7 +902,7 @@
                                                                 <input class="form-check-input" name="not-included2"
                                                                     type="checkbox" value="Guide Gratuity" id="not-included2" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included2">
-                                                                    Guide Gratuity
+                                                                    {{ _("Guide Gratuity") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -926,7 +911,7 @@
                                                                 <input class="form-check-input" name="not-included3"
                                                                     type="checkbox" value="Lunch" id="not-included3" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included3">
-                                                                    Lunch
+                                                                    {{ _("Lunch") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -935,25 +920,25 @@
                                                                 <input class="form-check-input" name="not-included4"
                                                                     type="checkbox" value="Dinner" id="not-included4" style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="not-included4">
-                                                                    Dinner
+                                                                    {{ _("Dinner") }}
                                                                 </label>
                                                             </div>
                                                         </div>
                                                         </div>
                                                     </div>
 
-                                                    <h5 class="my-4">Itinerary</h5>
+                                                    <h5 class="my-4">{{ _("Itinerary") }}</h5>
                                                     <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;" id="divContainer">
 
                                                     <div class="col-lg-12">
                                                     <div class="form-group">
-                                                    <label>Itinerary Name</label>
+                                                    <label>{{ _("Itinerary Name") }}</label>
                                                     <input type="text" class="form-control" placeholder="Enter itinerary name" required>
                                                     </div>
                                                     </div>
                                                     <div class="col-lg-12">
                                                     <div class="form-group">
-                                                    <label>Itinerary Description</label>
+                                                    <label>{{ _("Itinerary Description") }}</label>
                                                     <textarea class="form-control" placeholder="Write itinerary description" cols="30" rows="5"></textarea>
                                                     </div>
                                                     </div>
@@ -961,25 +946,25 @@
                                                    
 
 
-                                                        <h5 class="my-4">Contact Information</h5>
+                                                        <h5 class="my-4">{{ _("Contact Information") }}</h5>
                                                         <div style="display: grid;grid-template-columns: auto; border-bottom: 1px solid lightgray;white-space: nowrap;width: 100%;padding-top: 15px;">
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Name</label>
+                                                                <label>{{ _("Name") }}</label>
                                                                 <input type="text" class="form-control" name="contact_name"
                                                                     placeholder="Enter name" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Email</label>
+                                                                <label>{{ _("Email") }}</label>
                                                                 <input type="text" class="form-control" name="contact_email"
                                                                     placeholder="Enter email" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4">
                                                             <div class="form-group">
-                                                                <label>Phone</label>
+                                                                <label>{{ _("Phone") }}</label>
                                                                 <input type="text" class="form-control" name="contact_phone"
                                                                     placeholder="Enter phone" required>
                                                             </div>
@@ -989,8 +974,7 @@
                                                                 <input class="form-check-input" name="agree"
                                                                     type="checkbox" value="" id="agree" disabled checked style="-webkit-appearance:checkbox;">
                                                                 <label class="form-check-label" for="agree">
-                                                                    I Agree With Your Terms Of Services And Privacy
-                                                                    Policy.
+                                                                     {{ _("I Agree With Your Terms Of Services And Privacy Policy.") }}
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -1056,6 +1040,7 @@
 
 <!-- jQuery and JavaScript Bundle with Popper -->
 {% block jsLink %}
+<script src="{{ url_for('node_file_for_search', filename='node_modules/fuse.js/dist/fuse.basic.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/load_tour.js') }}"></script>
     <script>
 		var input = document.getElementById("inputNumber");
@@ -1077,6 +1062,28 @@
 				container.appendChild(div);
 			}
 		});
+
+        {#  modify dynamic itinerary  #}
+        var input_modify = document.getElementById("inputNumber_modify");
+        var container_modify = document.getElementById("divContainer_modify");
+        {# listen to change #}
+        input_modify.addEventListener("blur", function () {
+            var num = input_modify.value;
+            num = parseInt(num);
+            if (isNaN(num)) {
+				alert("please input a number");
+				input_modify.focus();
+				return;
+			}
+            container_modify.innerHTML = "";
+            for (var i = 0; i < num; i++) {
+                console.log(i)
+				var div = document.createElement("div");
+                div.innerHTML = "<div class='col-lg-12'><div class='form-group'><label>"+"Itinerary Name" + " - DAY"+(i+1) + "</label><input name='itinerary_name_" + (i+1) + "' type='text' class='form-control' placeholder='Enter itinerary name'></div></div> <div class='col-lg-12'><div class='form-group'><label>Itinerary Description</label><textarea name='itinerary_desc_" + (i+1) + "' class='form-control' placeholder='Write itinerary description' cols='30' rows='5'></textarea></div></div>"
+				container_modify.appendChild(div);
+			}
+        })
+
 	</script>
 {% endblock %}
 

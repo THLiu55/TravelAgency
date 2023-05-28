@@ -61,7 +61,7 @@
                                                     <i class="far fa-plane-up"></i>
                                                 </div>
                                                 <div class="listing-feature-content">
-                                                    <h6>Airline</h6>
+                                                    <h6>{{ _("Company") }}</h6>
                                                     <span>{{ flight.company }}</span>
                                                 </div>
                                             </div>
@@ -461,7 +461,7 @@
                                                                 <div class="search-form-journey">
                                                                     <label>{{ _("Journey Date") }}</label>
                                                                     <div class="form-group-icon">
-                                                                        <input type="text" name="journey-date"
+                                                                        <input id="flight-choose" type="text" name="journey-date"
                                                                                class="form-control date-picker journey-date flight-special-date">
                                                                         <i class="fal fa-calendar-days"></i>
                                                                     </div>
@@ -472,14 +472,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="listing-side-btn">
-                                                    <button type="submit" class="theme-btn"><span
-                                                            class="far fa-shopping-bag"></span>{{ _("Book Now") }}
+                                                    <button id="button_bookNow" type="submit" class="theme-btn"><span
+                                                            class="far fa-shopping-bag" ></span>{{ _("Book Now") }}
                                                     </button>
                                                    {% if logged %}
                                                     {% if added %}
                                                         <a href="{{ url_for('flight.remove_wishlist', flight_id=flight.id) }}" class="border-btn"  style="background-color:red"><i class="far fa-heart"></i> {{ _("Remove From Wishlist") }}</a>
                                                     {% else %}
-                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn" style="background-color:greenyellow"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
+                                                        <a href="{{ url_for('flight.add_wishlist', flight_id=flight.id) }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
                                                     {% endif %}
                                                 {% else %}
                                                     <a href="{{ url_for('customer.re_jump') }}" class="border-btn"><i class="far fa-heart"></i> {{ _("Add To Wishlist") }}</a>
@@ -489,42 +489,26 @@
                                         </form>
                                     </div>
                                     <div class="listing-side-share">
-                                        <a href="#"><i class="far fa-share-nodes"></i> {{ _("Share") }}</a>
                                         <span><i class="far fa-eye"></i> 250 {{ _("Views") }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="booking-sidebar listing-side-content mt-4">
                                 <h4 class="booking-title">{{ _("Get A Question?") }}</h4>
-                                <p>{{ _("t is a long-established fact that a reader will be distracted by the readable
-                                    content
-                                    layout.") }}</p>
                                 <ul class="listing-side-list">
-                                    <li><i class="far fa-phone"></i><a href="tel:+21234567897">+2 123 4567 897</a></li>
+                                    <li><i class="far fa-phone"></i><a href="#">{{ flight.contact_phone }}</a></li>
                                     <li><i class="far fa-envelope"></i><a
-                                            href="/cdn-cgi/l/email-protection#3c55525a537c59445d514c5059125f5351"><span
-                                            class="__cf_email__" data-cfemail="1970777f76597c61787469757c377a7674">[email&#160;protected]</span></a>
+                                            href="#"><span
+                                            class="__cf_email__" data-cfemail="1970777f76597c61787469757c377a7674">{{ flight.contact_email }}</span></a>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="booking-sidebar listing-side-content mt-4">
-                                <h4 class="booking-title">{{ _("Organized By") }}</h4>
-                                <div class="listing-side-organizer">
-                                    <div class="listing-side-organizer-img">
-                                        <img src="assets/img/account/01.jpg" alt="">
-                                    </div>
-                                    <div class="listing-side-organizer-info">
-                                        <h5 class="listing-side-organizer-name">{{ _("Roltak Travel Agency") }}</h5>
-                                        <p>{{ _("Member Since 2021") }}</p>
-                                        <a href="#" class="theme-btn"><span class="far fa-paper-plane"></span>{{ _("Send Message") }} </a>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    <input id="allowedDates" value="{{ day_of_week }}" hidden>
 
     </main>
 {% endblock %}
@@ -546,4 +530,5 @@
     <script src="{{ url_for('static', filename='css/assets/js/jquery.timepicker.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/wow.min.js') }}"></script>
     <script src="{{ url_for('static', filename='css/assets/js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/flight_date.js') }}"></script>
 {% endblock %}

@@ -10,6 +10,9 @@ from sqlalchemy import or_
 
 bp = Blueprint("flight", __name__, url_prefix="/flight")
 
+@bp.route('/')
+def main():
+    return redirect(url_for("flight.flightList", page_num=1))
 
 @bp.route('/<page_num>', methods=['POST', 'GET'])
 def flightList(page_num):
@@ -61,6 +64,13 @@ def flightDetail(flight_id):
     for review in reviews:
         review.customerID = Customer.query.get(review.customerID).nickname
         review.issueTime = review.issueTime.strftime("%Y-%m-%d %H:%M")
+    start_date = date.today()
+    end_date = start_date + timedelta(days=5 * 30)
+    week_days = []
+    while start_date <= end_date:
+        if start_date.weekday() == int(flight.week_day) - 1:
+            week_days.append(start_date.strftime("%Y-%m-%d") + ',')
+        start_date += timedelta(days=1)
     return render_template("flight-detail.html", logged=logged, flight=flight, images=images, wifi=wifi,
                            air_condition=air_condition, coffee=coffee
                            , entertainment=entertainment, food=food, drink=drink, wines=wines, comfort=comfort,
@@ -76,10 +86,16 @@ def order_confirm():
     if customer_id:
         flight_id = request.form.get("flight_id")
         to_confirmed = Flight.query.get(flight_id)
-        order_date = request.form.get("journey-date")
+        order_date = datetime.datetime.strptime(request.form.get("journey-date"), '%m/%d/%Y').strftime(
+            '%Y/%m/%d') + ' ' + to_confirmed.takeoff_time.strftime('%H:%M')
+        date_arg = datetime.datetime.strptime(request.form.get("journey-date"), '%m/%d/%Y').strftime(
+            '%Y/%m/%d')
         customer = Customer.query.get(customer_id)
+        arrive_time = datetime.datetime.strptime(request.form.get("journey-date"), '%m/%d/%Y') + timedelta(
+            days=to_confirmed.total_time // 24)
+        arrive_time = arrive_time.strftime('%Y/%m/%d') + ' ' + to_confirmed.landing_time.strftime('%H:%M')
         return render_template("flight-booking-confirm.html", flight=to_confirmed, customer=customer,
-                               order_date=order_date, logged=True)
+                               order_date=order_date, arrive_time=arrive_time, logged=True, date_arg=date_arg)
     else:
         url = request.referrer
         return render_template("SignInUp.html", url=url)
@@ -105,18 +121,29 @@ def order_success():
         flight_order.productID = request.args.get("flight_id")
         flight_order.cost = cost
         customer.wallet = customer.wallet - cost
-        db.session.add(flight_order)
-        db.session.commit()
+        one_hour_ago = datetime.datetime.now() - timedelta(hours=1)
+        last_order = FlightOrder.query.filter_by(customerID=customer.id, productID=flight_order.productID).filter(
+            FlightOrder.startTime >= one_hour_ago).all()
+        if len(last_order) == 0:
+            db.session.add(flight_order)
+            db.session.commit()
         return render_template("booking-success.html", name=request.args.get("name"), logged=True)
     else:
-        flash("Insufficient balance in your wallet, please top up first")
-        return redirect(url_for('customer.profile', page='/wallet'))
+        return redirect(url_for('customer.wallet_re_jump', id=request.args.get("flight_id"), type="flight"))
 
 
 @bp.route('/flight_filter', methods=['GET', 'POST'])
 def flight_filter():
     class_type = request.form.get('class_type').split(",")
     to_sort = request.form.get('sort_by')
+    if 'language' in session:
+        if session.get("language") == 'zh':
+            key_word = request.form.get('key-word')
+            key_word = translator(key_word, 'zh', 'en')
+        else:
+            key_word = request.form.get('key-word')
+    else:
+        key_word = request.form.get('key-word')
     if class_type[0] == '':
         class_type = ['Economy', 'Business', 'First Class']
     flight_price = request.form.get('flightPrice')

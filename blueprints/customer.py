@@ -1,9 +1,9 @@
 import os.path
 from datetime import datetime, timedelta
 import json
-
+from io import BytesIO
 import requests
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, g, session, current_app
+from flask import Blueprint, flash, render_template, request, jsonify, redirect, url_for, g, session, current_app
 from model import *
 from werkzeug.security import generate_password_hash, check_password_hash
 from exts import db, mail, socketio
@@ -12,12 +12,21 @@ from utils.generate_hash import check_hash_time, get_hash_time
 from flask_babel import Babel, gettext as _, refresh
 from utils.decorators import login_required
 from recognize import main
+from translations.translator import translator
+from sqlalchemy.exc import IntegrityError
+from utils.toys import (
+    get_cipher,
+    decrypt_cdkey,
+    validate_decrypted_attrs,
+)
 
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "admin")
 bp = Blueprint("customer", __name__, url_prefix="/")
 
 
 @bp.route("/get_lang", methods=["POST"])
 def get_language():
+    session.setdefault("language", "en")
     lang = session.get("language", "en")
     return jsonify({"code": 200, "lang": lang})
 
@@ -31,34 +40,35 @@ def lang_switch():
 
 @bp.route("/", methods=["GET", "POST"])
 def homepage():
+    page_num = 1
     logged = False if session.get('customer_id') is None else True
     total_activities = Activity.query.count()
-    paginationActivity = Activity.query.paginate(page=int(1), per_page=9, error_out=False)
-    activities = paginationActivity.items
+    pagination = Activity.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    activities = pagination.items
     for activity in activities:
         # noinspection PyTypeChecker
         activity.images = json.loads(activity.images)['images']
         activity.images[0] = activity.images[0][activity.images[0].index('static'):].lstrip('static')
 
     total_flights = Flight.query.count()
-    paginationFlight = Flight.query.paginate(page=int(1), per_page=9, error_out=False)
-    flights = paginationFlight.items
+    pagination = Flight.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    flights = pagination.items
     for flight in flights:
         # noinspection PyTypeChecker
         flight.images = json.loads(flight.images)['images']
         flight.images[0] = flight.images[0][flight.images[0].index('static'):].lstrip('static')
 
     total_hotels = Hotel.query.count()
-    paginationHotel = Hotel.query.paginate(page=int(1), per_page=9, error_out=False)
-    hotels = paginationHotel.items
+    pagination = Hotel.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    hotels = pagination.items
     for hotel in hotels:
         # noinspection PyTypeChecker
         hotel.images = json.loads(hotel.images)['images']
         hotel.images[0] = hotel.images[0][hotel.images[0].index('static'):].lstrip('static')
 
     total_tours = Tour.query.count()
-    paginationTour = Tour.query.paginate(page=int(1), per_page=9, error_out=False)
-    tours = paginationTour.items
+    pagination = Tour.query.filter_by(status="published").paginate(page=int(page_num), per_page=18, error_out=False)
+    tours = pagination.items
     for tour in tours:
         # noinspection PyTypeChecker
         tour.images = json.loads(tour.images)['images']
@@ -121,15 +131,26 @@ def register():
         return jsonify({"code": 400, "message": "captcha wrong"})
     password = request.form.get("signup-password")
     nickname = request.form.get("signup-username")
-    new_customer = Customer()
-    new_customer.email = email
-    new_customer.nickname = nickname
-    new_customer.password = generate_password_hash(password)
-    new_customer.join_date = datetime.now()
-    new_customer.wallet = 0
-    db.session.add(new_customer)
-    db.session.commit()
-    return jsonify({"code": 200})
+    if check_nickname_legality(nickname):
+        new_customer = Customer()
+        new_customer.email = email
+        new_customer.nickname = nickname
+        new_customer.password = generate_password_hash(password)
+        new_customer.join_date = datetime.now()
+        new_customer.wallet = 0
+        db.session.add(new_customer)
+        db.session.commit()
+        return jsonify({"code": 200})
+    else:
+        return jsonify({"code": 400, "message": "nickname illegal"})
+
+
+def check_nickname_legality(nickname):
+    if nickname in ["", None, " ", ADMIN_USERNAME]:
+        return False
+    elif (len(nickname) > 20):
+        return False
+    return True
 
 
 @bp.route("/captcha", methods=["POST"])
@@ -181,6 +202,7 @@ def resetPassword():
 
 
 @bp.route("/profile")
+@login_required
 def profile():
     customer = Customer.query.get(session.get('customer_id'))
     customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
@@ -190,6 +212,15 @@ def profile():
     else:
         page = "/profilepage"
     return render_template("profile-base.html", customer=customer, logged=True, page=page)
+
+
+@bp.route("/wallet_re_jump")
+def wallet_re_jump():
+    id_ = request.args.get("id")
+    type_ = request.args.get("type")
+    customer = Customer.query.get(session.get('customer_id'))
+    customer.join_date = customer.join_date.strftime("%Y-%m-%d %H:%M")
+    return render_template('profile-base.html', page='wallet', id_=id_, type_=type_, logged=True, customer=customer)
 
 
 @bp.route("/profilepage")
@@ -202,9 +233,9 @@ def profilepage():
 @bp.route("/plan_events_wishlist", methods=["GET"])
 def plan_events_wishlist(flightlist, hotelList, tourList, activityList):
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
@@ -290,10 +321,10 @@ def plan_events_wishlist(flightlist, hotelList, tourList, activityList):
 @bp.route("/plan_events")
 def plan_events():
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
@@ -356,10 +387,10 @@ def plan_obj_serializer(plan_obj):
 @bp.route("/booking")
 def booking():
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    flight_orders = FlightOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     order_list = []
     for hotel_i in hotel_orders:
         order_object = OrderObject()
@@ -472,16 +503,20 @@ def plan_wishlist():
         order = HotelOrder.query.get(order_id)
         hotelList.append(order)
     elif order_type == "Tour":
-        order = TourOrder.query.get(order_id)
+        ordertemp = TourOrder.query.get(order_id)
+        temp = ordertemp.productID
+        order = Tour.query.get(temp)
         tourList.append(order)
     elif order_type == "Activity":
-        order = ActivityOrder.query.get(order_id)
+        # ordertemp = ActivityOrder.query.get(order_id)
+        # temp = ordertemp.productID
+        order = Activity.query.get(order_id)
         activityList.append(order)
     # print(flightList, hotelList, tourList, activityList,"flightList, hotelList, tourList, activityList")
     customer = Customer.query.get(session.get('customer_id'))
-    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True).all()
-    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True).all()
+    hotel_orders = HotelOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    tour_orders = TourOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
+    activity_orders = ActivityOrder.query.filter_by(customerID=customer.id, purchased=True, deleted=False).all()
     plan_list = []
     for hotel_i in hotel_orders:
         plan_object = PlanObj()
@@ -526,26 +561,26 @@ def plan_wishlist():
         plan_object.end = hotel_ii.checkOutTime
         plan_list.append(plan_object)
     for tour_ii in tourList:
-        tour_obj = Tour.query.get(tour_ii.productID)
+        tour_obj = Tour.query.get(tour_ii.id)
         plan_object = PlanObj()
-        plan_object.title = Tour.query.get(tour_ii.productID).name
-        if tour_ii.endTime > datetime.now():
+        plan_object.title = Tour.query.get(tour_ii.id).name
+        if tour_ii.start_time > datetime.now():
             plan_object.color = '#009378'
         else:
             plan_object.color = '#ea5050'
-        plan_object.start = tour_ii.startTime
-        plan_object.end = tour_ii.endTime + timedelta(days=tour_obj.duration)
+        plan_object.start = tour_ii.start_time
+        plan_object.end = tour_ii.end_time + timedelta(days=tour_obj.duration)
         print(plan_object.start, plan_object.end)
         plan_list.append(plan_object)
     for activity_ii in activityList:
         plan_object = PlanObj()
-        plan_object.title = Activity.query.get(activity_ii.productID).name
-        if activity_ii.endTime > datetime.now():
+        plan_object.title = Activity.query.get(activity_ii.id).name
+        if activity_ii.end_time > datetime.now():
             plan_object.color = '#2bb3c0'  # #e16123
         else:
             plan_object.color = '#ea5050'
-        plan_object.start = activity_ii.startTime
-        plan_object.end = activity_ii.endTime
+        plan_object.start = activity_ii.start_time
+        plan_object.end = activity_ii.end_time
         print(plan_object.start, plan_object.end)
         plan_list.append(plan_object)
 
@@ -562,19 +597,64 @@ def plan_wishlist():
 @bp.route("/wallet")
 def wallet():
     customer = Customer.query.get(session.get('customer_id'))
+    id_ = request.args.get("id_")
+    back = request.args.get("jump")
+    if back:
+        back_url = request.args.get("url_next")
+        return render_template("profile-wallet.html", logged=True, customer=customer, jump='jump', back_url=back_url)
+    if id_ != 'undefined':
+        type_ = request.args.get("type_")
+        if type_ == "activity":
+            url_next = url_for('activity.activityDetail', activity_id=id_)
+        elif type_ == "hotel":
+            url_next = url_for('hotel.hotelDetail', hotel_id=id_)
+        elif type_ == "flight":
+            url_next = url_for('flight.flightDetail', flight_id=id_)
+        else:
+            url_next = url_for('tour.tourDetail', tour_id=id_)
+        customer = Customer.query.get(session.get('customer_id'))
+        return render_template("profile-wallet.html", logged=True, customer=customer, url_next=url_next)
     return render_template("profile-wallet.html", logged=True, customer=customer)
 
 
-@bp.route("/top_up", methods=['POST'])
+@bp.route("/top_up", methods=["POST"])
 def top_up():
     cdk = request.form.get("cdk-number")
-    customer = Customer.query.get(session.get('customer_id'))
-    if cdk == "ZXCV-0205-BNML-0375":
-        customer.wallet = customer.wallet + 50000
-    elif cdk == "POIU-1998-YTRE-2580":
-        customer.wallet = customer.wallet + 10000
-    db.session.commit()
-    return redirect(url_for('customer.profile', page='/wallet'))
+    url = request.form.get('url_next')
+    if not cdk:
+        flash("Please enter a CDK", "error")
+        return redirect(url_for("customer.profile", page="wallet"))
+    customer = Customer.query.get(session.get("customer_id"))
+    dec_date_str, dec_serial_str, dec_value_str = "", "", ""
+    try:
+        dec_date_str, dec_serial_str, dec_value_str = decrypt_cdkey(get_cipher(), cdk)
+    except ValueError:
+        flash("CDK invalid", "error")
+        return redirect(url_for("customer.profile", page="wallet"))
+    if validate_decrypted_attrs(dec_date_str, dec_serial_str, dec_value_str):
+        redeem_history = RedeemHistory(
+            cdk_generate_date=datetime.strptime(dec_date_str, "%Y%m%d"),
+            cdk_serial=int(dec_serial_str),
+            cdk_value=int(dec_value_str),
+            customerID=customer.id,
+            redeem_time=datetime.now(),
+        )
+        # use try to avoid duplicate cdk
+        try:
+            db.session.add(redeem_history)
+            customer.wallet += int(dec_value_str)
+            db.session.commit()
+        except IntegrityError:
+            flash("CDK used", "error")
+            return redirect(url_for("customer.profile", page="wallet"))
+    else:
+        flash("CDK invalid", "error")
+    if not url:
+        flash("Top Up Successfully", "success")
+        return redirect(url_for("customer.profile", page="wallet"))
+    else:
+        return render_template("profile-base.html", customer=Customer.query.get(session.get('customer_id')),
+                               logged=True, page="wallet", back_url=url, jump="jump")
 
 
 @bp.route("/setting")
@@ -589,17 +669,36 @@ def about_us():
 
 
 @bp.route("/update-profile", methods=['POST'])
+@login_required
 def update_profile():
     customer = Customer.query.get(session.get("customer_id"))
-    customer.email = request.form.get("email")
-    customer.nickname = request.form.get("name")
-    customer.phone_number = request.form.get("phone")
-    customer.address = request.form.get("address")
-    db.session.commit()
-    return redirect(url_for('customer.profile'))
+    nickname_to_check = request.form.get("name")
+    if check_nickname_legality(nickname_to_check):
+        customer.nickname = nickname_to_check
+        customer.email = request.form.get("email")
+        customer.phone_number = request.form.get("phone")
+        customer.address = request.form.get("address")
+        db.session.commit()
+        return redirect(url_for('customer.profile'))
+    else:
+        return redirect(url_for('customer.profile', page='/setting'))
 
 
 @bp.route("/recognize", methods=['POST'])
 def recognize():
+    name = request.form.get('category-name')
     photo = request.files['photo-to-recognize']
-    return jsonify({"result":main(photo)})
+    photo_data = photo.read()
+    if len(photo_data) > 4194304:
+        return redirect(url_for(name, page_num=1, result='The picture size should be less than 4MB'))
+    results = json.loads(main(BytesIO(photo_data)))['result'][:3]
+    keywords = ''
+    if session.get("language") != 'zh':
+        for result in results[:-1]:
+            keywords = keywords + translator(result['keyword'], 'zh', 'en') + ', '
+        keywords += translator(results[-1]['keyword'], 'zh', 'en')
+    else:
+        for result in results[:-1]:
+            keywords = keywords + result['keyword'] + ', '
+        keywords += results[-1]['keyword']
+    return redirect(url_for(name, page_num=1, result=keywords))

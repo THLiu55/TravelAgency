@@ -172,7 +172,7 @@ preloader
   position: fixed;
   width: 100%;
   height: 100%;
-  background: #7167FF;
+  background: #0e71c8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,7 +322,7 @@ site title css
   font-weight: 600;
   color: #fff;
   position: relative;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 50px;
   padding: 5px 20px;
 }
@@ -337,7 +337,7 @@ site title css
 }
 
 .site-title span {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .site-heading p {
@@ -351,7 +351,7 @@ site title css
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  background-color: #7167FF;
+  background-color: #0e71c8;
   width: 90px;
   overflow: hidden;
 }
@@ -676,7 +676,7 @@ theme button
 }
 
 .theme-btn2::before {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .theme-btn2:hover {
@@ -752,7 +752,7 @@ header top css
 }
 
 .top-contact-info ul li a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .top-contact-info ul li a i {
@@ -772,7 +772,7 @@ header top css
 }
 
 .top-social a:hover {
-  color: #7167FF;
+  color: #0e71c8;
   background: #fff;
 }
 
@@ -811,7 +811,7 @@ header top css
 .header-top-right .nice-select .option.selected.focus,
 .header-top-right .nice-select .option:hover {
   background: #F6F6F6;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .header-top-right .account {
@@ -828,7 +828,7 @@ header top css
 }
 
 .header-top-right .account a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .header-top-right .account a i {
@@ -920,7 +920,7 @@ nav menu css
 
   .navbar .nav-item .dropdown-menu .dropdown-item:hover {
     background: transparent;
-    color: #7167FF;
+    color: #0e71c8;
     padding-left: 30px;
   }
 
@@ -930,7 +930,7 @@ nav menu css
     font-family: "Font Awesome 6 pro";
     left: 12px;
     top: 20.5px;
-    color: #7167FF;
+    color: #0e71c8;
     font-weight: bold;
     font-size: 6px;
     transform: scale(0, 0);
@@ -994,7 +994,7 @@ nav menu css
   }
 
   .header-nav-link:hover {
-    color: #7167FF;
+    color: #0e71c8;
   }
 
   .header-nav-link.search-box-outer {
@@ -1194,7 +1194,7 @@ button.navbar-toggler:focus {
   }
 
   .navbar .nav-item .nav-link:hover {
-    color: #7167FF !important;
+    color: #0e71c8 !important;
   }
 
   .navbar-toggler {
@@ -1217,7 +1217,7 @@ button.navbar-toggler:focus {
   }
 
   .mobile-menu-link:hover {
-    color: #7167FF;
+    color: #0e71c8;
   }
 
   .navbar-toggler-btn-icon {
@@ -1299,7 +1299,7 @@ multi level dropdown menu
   }
 
   .navbar .nav-item .dropdown-submenu a:hover {
-    color: #7167FF;
+    color: #0e71c8;
   }
 }
 
@@ -1354,7 +1354,7 @@ hero css
 }
 
 .hero-single .hero-content .hero-title span {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .hero-single .hero-content p {
@@ -1378,7 +1378,7 @@ hero css
 }
 
 .hero-slider.owl-theme .owl-nav [class*=owl-] {
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 22px;
   margin: 0;
   padding: 0;
@@ -1394,7 +1394,7 @@ hero css
 }
 
 .hero-slider.owl-theme .owl-nav [class*=owl-]:hover {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -1510,7 +1510,7 @@ search css
 
 .search-nav .nav-link i{
   margin-right: 8px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .search-nav .nav-link.active i{
@@ -1518,7 +1518,7 @@ search css
 }
 
 .search-nav .nav-link.active {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .search-wrapper .tab-content{
@@ -1595,7 +1595,7 @@ search css
   line-height: 35px;
   border-radius: 50%;
   border: 3px solid #fff;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .search-form-date{
@@ -1787,7 +1787,7 @@ date picker
 }
 
 .ui-datepicker .ui-widget-header{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -1840,7 +1840,7 @@ date picker
 
 .ui-state-active,
 .ui-widget-content .ui-state-active{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -1870,7 +1870,7 @@ time picker css
 
 .ui-timepicker-standard a#ui-active-item,
 .ui-timepicker-standard a:hover{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -2076,7 +2076,7 @@ destination css
   line-height: 55px;
   text-align: center;
   background: #fff;
-  color: #7167FF !important;
+  color: #0e71c8 !important;
   border-radius: 50px;
   opacity: 0;
   visibility: hidden;
@@ -2122,7 +2122,7 @@ destination css
 }
 
 .destination-slider.owl-theme .owl-nav button{
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 20px;
   margin: 0;
   padding: 0;
@@ -2142,7 +2142,7 @@ destination css
 }
 
 .destination-slider.owl-theme .owl-nav button:hover{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -2162,7 +2162,7 @@ destination css
 .destination-slider .owl-dots .owl-dot span {
   background: transparent;
   margin: 5px;
-  border: 2px solid #7167FF;
+  border: 2px solid #0e71c8;
   border-radius: 50px;
   width: 12px;
   height: 12px;
@@ -2171,7 +2171,7 @@ destination css
 }
 
 .destination-slider .owl-dots .owl-dot.active span {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 
@@ -2247,7 +2247,7 @@ flight css
   width: 35px;
   height: 35px;
   line-height: 35px;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border-radius: 50px;
   text-align: center;
@@ -2280,7 +2280,7 @@ flight css
 }
 
 .flight-title-info a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .flight-title-info a i{
@@ -2328,7 +2328,7 @@ flight css
 }
 
 .flight-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -2412,7 +2412,7 @@ hotel css
 }
 
 .hotel-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .hotel-content p{
@@ -2468,7 +2468,7 @@ hotel css
 }
 
 .hotel-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .hotel-slider .hotel-item{
@@ -2482,7 +2482,7 @@ hotel css
 }
 
 .hotel-slider.owl-theme .owl-nav button{
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 20px;
   margin: 0;
   padding: 0;
@@ -2502,7 +2502,7 @@ hotel css
 }
 
 .hotel-slider.owl-theme .owl-nav button:hover{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -2522,7 +2522,7 @@ hotel css
 .hotel-slider .owl-dots .owl-dot span {
   background: transparent;
   margin: 5px;
-  border: 2px solid #7167FF;
+  border: 2px solid #0e71c8;
   border-radius: 50px;
   width: 12px;
   height: 12px;
@@ -2531,7 +2531,7 @@ hotel css
 }
 
 .hotel-slider .owl-dots .owl-dot.active span {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 /* hotel list */
@@ -2648,7 +2648,7 @@ room css
   width: 35px;
   height: 35px;
   line-height: 35px;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border-radius: 50px;
   text-align: center;
@@ -2667,7 +2667,7 @@ room css
 }
 
 .room-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .room-content p{
@@ -2682,7 +2682,7 @@ room css
 }
 
 .room-rate-type{
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
   margin: 0 5px;
 }
@@ -2703,14 +2703,14 @@ room css
 }
 
 .room-info-list i{
-  color: #7167FF;
+  color: #0e71c8;
   margin-right: 6px;
 }
 
 .room-detail-btn a{
   margin-top: 8px;
   text-decoration: underline;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .room-detail-btn a:hover{
@@ -2748,7 +2748,7 @@ room css
 }
 
 .room-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .room-select-btn{
@@ -2931,7 +2931,7 @@ tour css
   height: 35px;
   line-height: 35px;
   text-align: center;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border-radius: 50px;
   position: absolute;
@@ -2954,11 +2954,11 @@ tour css
 }
 
 .tour-top i{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .tour-top a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .tour-content{
@@ -2966,7 +2966,7 @@ tour css
 }
 
 .tour-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .tour-content p{
@@ -2981,7 +2981,7 @@ tour css
 }
 
 .tour-rate-type{
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
   margin: 0 5px;
 }
@@ -3027,7 +3027,7 @@ tour css
 }
 
 .tour-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -3052,7 +3052,7 @@ tour css
 }
 
 .filter-btns li.active{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -3130,7 +3130,7 @@ car css
   width: 35px;
   height: 35px;
   line-height: 35px;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border-radius: 50px;
   text-align: center;
@@ -3149,7 +3149,7 @@ car css
 }
 
 .car-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .car-content p{
@@ -3164,7 +3164,7 @@ car css
 }
 
 .car-rate-type{
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
   margin: 0 5px;
 }
@@ -3185,7 +3185,7 @@ car css
 }
 
 .car-info-list i{
-  color: #7167FF;
+  color: #0e71c8;
   margin-right: 6px;
 }
 
@@ -3220,7 +3220,7 @@ car css
 }
 
 .car-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .car-slider .car-item{
@@ -3234,7 +3234,7 @@ car css
 }
 
 .car-slider.owl-theme .owl-nav button{
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 20px;
   margin: 0;
   padding: 0;
@@ -3254,7 +3254,7 @@ car css
 }
 
 .car-slider.owl-theme .owl-nav button:hover{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -3274,7 +3274,7 @@ car css
 .car-slider .owl-dots .owl-dot span {
   background: transparent;
   margin: 5px;
-  border: 2px solid #7167FF;
+  border: 2px solid #0e71c8;
   border-radius: 50px;
   width: 12px;
   height: 12px;
@@ -3283,7 +3283,7 @@ car css
 }
 
 .car-slider .owl-dots .owl-dot.active span {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 /* car list */
@@ -3382,7 +3382,7 @@ activity css
 }
 
 .activity-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .activity-content p{
@@ -3423,7 +3423,7 @@ activity css
 }
 
 .activity-text-btn a {
-  color: #4F4B8B;
+  color: #13318d;
   font-weight: 500;
 }
 
@@ -3432,7 +3432,7 @@ activity css
 }
 
 .activity-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 /* activity list */
@@ -3510,7 +3510,7 @@ cruise css
   width: 35px;
   height: 35px;
   line-height: 35px;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border-radius: 50px;
   text-align: center;
@@ -3529,7 +3529,7 @@ cruise css
 }
 
 .cruise-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .cruise-content p{
@@ -3544,7 +3544,7 @@ cruise css
 }
 
 .cruise-rate-type{
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
   margin: 0 5px;
 }
@@ -3565,7 +3565,7 @@ cruise css
 }
 
 .cruise-info-list i{
-  color: #7167FF;
+  color: #0e71c8;
   margin-right: 6px;
 }
 
@@ -3600,7 +3600,7 @@ cruise css
 }
 
 .cruise-text-btn a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -3712,7 +3712,7 @@ listing single css
   position: absolute;
   font-family: "Font Awesome 6 pro";
   font-size: 10px;
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: bold;
   top: 6.7px;
   left: 0;
@@ -3950,7 +3950,7 @@ listing single css
 
 .listing-baggage-check .form-control:focus,
 .listing-baggage-check .nice-select:focus{
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .listing-baggage-check .nice-select .list{
@@ -3982,7 +3982,7 @@ listing single css
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 20px;
   margin: 0;
   padding: 0;
@@ -3999,7 +3999,7 @@ listing single css
 
 .listing-slider.owl-theme .owl-nav .owl-prev:hover,
 .listing-slider.owl-theme .owl-nav .owl-next:hover {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -4135,7 +4135,7 @@ listing single css
 }
 
 .listing-review-reply a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .review-reaction .active{
@@ -4169,7 +4169,7 @@ listing single css
 }
 
 .listing-review-form .form-control:focus{
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .listing-info-card{
@@ -4187,7 +4187,7 @@ listing single css
 }
 
 .listing-info-card-body i{
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 30px;
 }
 
@@ -4240,7 +4240,7 @@ listing single css
   position: absolute;
   content: '';
   width: 1px;
-  border-left: 2px dashed #7167FF;
+  border-left: 2px dashed #0e71c8;
   height: 100%;
   left: 31px;
   top: 10px;
@@ -4267,7 +4267,7 @@ listing single css
   line-height: 50px;
   font-size: 18px;
   color: #ffffff;
-  background: #7167FF;
+  background: #0e71c8;
   font-weight: 500;
   text-align: center;
   border-radius: 15px;
@@ -4292,7 +4292,7 @@ listing single css
   line-height: 28px;
   font-weight: 500;
   margin-bottom: 5px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .itinerary-single-box h3 {
@@ -4367,7 +4367,7 @@ listing single css
 }
 
 .listing-side-share a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .listing-side-list li{
@@ -4391,7 +4391,7 @@ listing single css
 }
 
 .listing-side-list li a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .listing-side-organizer{
@@ -4538,7 +4538,7 @@ deal css
 }
 
 .deal-2 .deal-title a:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .deal-2 .deal-price span{
@@ -4592,7 +4592,7 @@ download css
   height: 30px;
   line-height: 30px;
   text-align: center;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   border-radius: 50px;
   margin-right: 10px;
@@ -4658,7 +4658,7 @@ booking sidebar
 }
 
 .booking-sidebar .form-check-input:focus{
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .booking-sidebar .form-check-label{
@@ -4731,7 +4731,7 @@ booking sort
 
 .booking-sort .form-control:focus,
 .booking-sort .nice-select:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .booking-sort .nice-select .list {
@@ -4746,7 +4746,7 @@ booking sort
 .booking-sort .nice-select .option.selected.focus,
 .booking-sort .nice-select .option:hover {
   background: #F6F6F6;
-  color: #7167FF;
+  color: #0e71c8;
   border-radius: 8px;
 }
 
@@ -4959,8 +4959,8 @@ flight booking css
 }
 
 .flight-booking-detail-wrapper .nav-tabs .nav-link.active{
-  border-color: #7167FF;
-  color: #7167FF;
+  border-color: #0e71c8;
+  color: #0e71c8;
 }
 
 .flight-booking-detail-left .flight-booking-airline{
@@ -5201,7 +5201,7 @@ cart css
 ====================== */
 
 .cart-area thead tr {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -5239,7 +5239,7 @@ cart css
 }
 
 .cart-product-title:hover{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .cart-img {
@@ -5333,7 +5333,7 @@ cart css
 }
 
 .coupon-btn:hover {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .cart-summary li {
@@ -5408,7 +5408,7 @@ booking css
 
 .booking-form .form-group .nice-select:focus,
 .booking-form .form-group .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .booking-form .form-group .nice-select:after{
@@ -5466,7 +5466,7 @@ booking css
 }
 
 .booking-property-title p i {
-  color: #7167FF;
+  color: #0e71c8;
   margin-right: 5px;
 }
 
@@ -5475,7 +5475,7 @@ booking css
   height: 32px;
   line-height: 30px;
   text-align: center;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 8px;
   color: #fff;
 }
@@ -5499,7 +5499,7 @@ booking css
 }
 
 .rate-type {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .booking-info-summary{
@@ -5572,7 +5572,7 @@ booking css
   font-family: "Font Awesome 6 Pro";
   font-weight: bold;
   font-size: 20px;
-  color: #7167FF;
+  color: #0e71c8;
   transform: scale(0);
   opacity: 0;
   visibility: hidden;
@@ -5605,7 +5605,7 @@ booking css
 }
 
 .booking-payment-area .nav-link.active{
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 
@@ -5708,7 +5708,7 @@ about css
   position: absolute;
   width: 70%;
   height: 70%;
-  border: 8px solid #7167FF;
+  border: 8px solid #0e71c8;
   border-radius: 0 0 0 20px;
   left: -20px;
   bottom: -20px;
@@ -5724,7 +5724,7 @@ about css
 }
 
 .about-experience {
-  background: #7167FF;
+  background: #0e71c8;
   position: absolute;
   border-radius: 15px 15px 0 0;
   left: 50px;
@@ -5776,7 +5776,7 @@ about css
 
 .about-list li .about-icon span {
   font-size: 20px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .about-bottom {
@@ -5814,7 +5814,7 @@ about css
 }
 
 .about-call-number a {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -5871,7 +5871,7 @@ service css
   align-items: center;
   width: 80px;
   height: 80px;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 50px;
   left: 50%;
   transform: translateX(-50%);
@@ -5902,7 +5902,7 @@ service css
 }
 
 .service-title a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .service-arrow a {
@@ -5910,8 +5910,8 @@ service css
   height: 50px;
   line-height: 43px;
   border-radius: 50px;
-  border: 3px solid #7167FF;
-  color: #7167FF;
+  border: 3px solid #0e71c8;
+  color: #0e71c8;
   font-size: 20px;
   text-align: center;
   position: relative;
@@ -5920,7 +5920,7 @@ service css
 }
 
 .service-item:hover .service-arrow a {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .service-item .service-arrow a i {
@@ -5942,12 +5942,12 @@ service single
 }
 
 .service-single-list i {
-  color: #7167FF;
+  color: #0e71c8;
   margin-right: 10px;
 }
 
 .service-download a {
-  border: 2px solid #7167FF;
+  border: 2px solid #0e71c8;
   padding: 10px 20px;
   color: #4F4B8B;
   display: block;
@@ -5962,7 +5962,7 @@ service single
 }
 
 .service-download a:hover {
-  background-color: #7167FF;
+  background-color: #0e71c8;
   color: #fff;
 }
 
@@ -5998,7 +5998,7 @@ feature css
 .feature-icon {
   width: 80px;
   height: 80px;
-  background: #7167FF;
+  background: #0e71c8;
   font-size: 40px;
   color: #fff;
   margin: 0 auto 20px auto;
@@ -6017,7 +6017,7 @@ feature css
   right: -8px;
   bottom: -8px;
   border-radius: 50%;
-  border: 2px dashed #7167FF;
+  border: 2px dashed #0e71c8;
 }
 
 .feature-title {
@@ -6124,7 +6124,7 @@ step/process css
   border-radius: 50px;
   font-size: 37px;
   color: #fff;
-  background: #7167FF;
+  background: #0e71c8;
   padding: 5px;
   margin-bottom: 30px;
   box-shadow: 0 3px 24px rgb(0 0 0 / 10%);
@@ -6138,7 +6138,7 @@ step/process css
   top: -10px;
   bottom: -10px;
   border-radius: 50%;
-  border: 2px dashed #7167FF;
+  border: 2px dashed #0e71c8;
 }
 
 .process-single .icon img {
@@ -6243,7 +6243,7 @@ testimonial css
 }
 
 .testimonial-author-info p {
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
 }
 
@@ -6256,7 +6256,7 @@ testimonial css
 }
 
 .testimonial-rate {
-  color: #7167FF;
+  color: #0e71c8;
   margin-top: 10px;
 }
 
@@ -6265,7 +6265,7 @@ testimonial css
 }
 
 .testimonial-slider.owl-theme .owl-nav button{
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 20px;
   margin: 0;
   margin-top: -10px;
@@ -6286,7 +6286,7 @@ testimonial css
 }
 
 .testimonial-slider.owl-theme .owl-nav button:hover{
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -6305,7 +6305,7 @@ testimonial css
 .testimonial-area .owl-dots .owl-dot span {
   background: transparent;
   margin: 5px;
-  border: 2px solid #7167FF;
+  border: 2px solid #0e71c8;
   border-radius: 50px;
   width: 12px;
   height: 12px;
@@ -6314,7 +6314,7 @@ testimonial css
 }
 
 .testimonial-area .owl-dots .owl-dot.active span {
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 
@@ -6361,7 +6361,7 @@ counter css
   height: 80px;
   line-height: 78px;
   text-align: center;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 30px;
   color: #fff;
 }
@@ -6447,7 +6447,7 @@ cta-area css
 }
 
 .cta-text span {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .cta-text p {
@@ -6491,7 +6491,7 @@ gallery css
   top: 10px;
   right: 10px;
   bottom: 10px;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 12px;
   opacity: 0;
   visibility: hidden;
@@ -6519,7 +6519,7 @@ gallery css
   opacity: 0;
   visibility: hidden;
   font-size: 25px;
-  color: #7167FF;
+  color: #0e71c8;
   margin-top: 50px;
 }
 
@@ -6535,7 +6535,7 @@ gallery css
 }
 
 .gallery-link:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .gallery-content:hover .gallery-link {
@@ -6634,7 +6634,7 @@ career css
 }
 
 .job-time{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .job-time i{
@@ -6687,7 +6687,7 @@ career css
 }
 
 .career-promo-single span{
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 35px;
   margin-bottom: 20px;
 }
@@ -6725,7 +6725,7 @@ career single css
 
 .job-single-list li i{
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 12px;
 }
 
@@ -6739,7 +6739,7 @@ career single css
 .job-overview-list li i {
   margin-right: 15px;
   font-size: 22px;
-  color: #7167FF;
+  color: #0e71c8;
   margin-top: -4px;
 }
 
@@ -6796,11 +6796,11 @@ blog css
 
 .blog-item-meta ul li i {
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .blog-item-meta a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .blog-title {
@@ -6818,7 +6818,7 @@ blog css
 }
 
 .blog-item-info h4 a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -6855,7 +6855,7 @@ blog single css
 
 .blog-meta i {
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .blog-meta a {
@@ -6864,7 +6864,7 @@ blog single css
 }
 
 .blog-meta a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .blog-details-title {
@@ -6874,7 +6874,7 @@ blog single css
 
 .blockqoute {
   background: #F5F7FC;
-  border-left: 5px solid #7167FF;
+  border-left: 5px solid #0e71c8;
   padding: 30px;
   font-size: 17px;
   font-style: italic;
@@ -6894,7 +6894,7 @@ blog single css
   position: absolute;
   height: 2px;
   width: 40px;
-  background: #7167FF;
+  background: #0e71c8;
   left: 0;
   top: 10px;
 }
@@ -6925,7 +6925,7 @@ blog single css
 }
 
 .blog-details-tags ul a:hover {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -6960,7 +6960,7 @@ blog single css
 
 .author-name {
   font-size: 22px;
-  color: #7167FF;
+  color: #0e71c8;
   margin: 8px 0;
 }
 
@@ -6977,16 +6977,16 @@ blog single css
   height: 35px;
   line-height: 32px;
   text-align: center;
-  border: 2px solid #7167FF;
+  border: 2px solid #0e71c8;
   border-radius: 50px;
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
   transition: all .5s ease-in-out;
 }
 
 .author-social a:hover {
   color: #fff;
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .blog-comments {
@@ -7024,14 +7024,14 @@ blog single css
 
 .blog-comments-content span {
   font-size: 14px;
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
 }
 
 .blog-comments-content a {
   font-weight: 600;
   margin-top: 5px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .blog-comments-content a:hover {
@@ -7071,7 +7071,7 @@ blog single css
 }
 
 .blog-comments-form .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 
@@ -7144,7 +7144,7 @@ sidebar css
   position: absolute;
   content: '';
   width: 15px;
-  border-bottom: 3px solid #7167FF;
+  border-bottom: 3px solid #0e71c8;
   bottom: 0;
   left: 0;
 }
@@ -7153,7 +7153,7 @@ sidebar css
   position: absolute;
   content: '';
   width: 30px;
-  border-bottom: 3px solid #7167FF;
+  border-bottom: 3px solid #0e71c8;
   bottom: 0;
   left: 22px;
 }
@@ -7169,7 +7169,7 @@ sidebar css
 }
 
 .widget .blog-search-form .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .widget .blog-search-form button {
@@ -7180,7 +7180,7 @@ sidebar css
   padding: 8px 18px 6px 18px;
   background: transparent;
   border: none;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .widget .category-list a {
@@ -7198,12 +7198,12 @@ sidebar css
 
 .widget .category-list a:hover {
   padding-left: 10px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .widget .category-list a i {
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .widget .category-list a span {
@@ -7232,7 +7232,7 @@ sidebar css
 
 .widget .recent-post-bio span {
   font-size: 14px;
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
 }
 
@@ -7241,15 +7241,15 @@ sidebar css
 }
 
 .widget .recent-post-bio h6 a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .widget .social-share-link a {
   width: 35px;
   height: 35px;
   line-height: 30px;
-  border: 2px solid #7167FF;
-  color: #7167FF;
+  border: 2px solid #0e71c8;
+  color: #0e71c8;
   text-align: center;
   margin-right: 5px;
   border-radius: 50px;
@@ -7257,7 +7257,7 @@ sidebar css
 }
 
 .widget .social-share-link a:hover {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -7273,7 +7273,7 @@ sidebar css
 }
 
 .widget .tag-list a:hover {
-  background-color: #7167FF;
+  background-color: #0e71c8;
   color: #fff;
 }
 
@@ -7331,7 +7331,7 @@ contact us css
 }
 
 .contact-form .form-group .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .contact-map {
@@ -7359,7 +7359,7 @@ contact us css
   top: 30px;
   bottom: 30px;
   width: 3px;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 50px;
 }
 
@@ -7378,7 +7378,7 @@ contact us css
   line-height: 60px;
   text-align: center;
   border-radius: 50px;
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .contact-info h5 {
@@ -7445,14 +7445,14 @@ team css
 }
 
 .team-bio span {
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 16px;
   font-weight: 500;
   text-transform: capitalize;
 }
 
 .team-bio h5 a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .team-social-btn {
@@ -7474,7 +7474,7 @@ team css
   width: 45px;
   height: 45px;
   line-height: 45px;
-  background: #7167FF;
+  background: #0e71c8;
   border-radius: 50px;
   color: #fff;
   text-align: center;
@@ -7579,7 +7579,7 @@ pricing css
 
 .pricing-content h4 {
   margin-bottom: 10px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .pricing-amount {
@@ -7612,7 +7612,7 @@ pricing css
   position: absolute;
   width: 13px;
   height: 13px;
-  border: 3px solid #7167FF;
+  border: 3px solid #0e71c8;
   border-radius: 50px;
   left: 0;
   top: 8px;
@@ -7644,13 +7644,13 @@ faq css
   height: 45px;
   line-height: 45px;
   border-radius: 50px;
-  background: #7167FF;
+  background: #0e71c8;
   text-align: center;
   color: #fff;
 }
 
 .faq-area .accordion-button:not(.collapsed) {
-  color: #7167FF;
+  color: #0e71c8;
   background: transparent;
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
@@ -7665,7 +7665,7 @@ faq css
 }
 
 .accordion-button:not(.collapsed) {
-  border-bottom: 1px dashed #7167FF;
+  border-bottom: 1px dashed #0e71c8;
 }
 
 .accordion-button:not(.collapsed)::after {
@@ -7762,11 +7762,11 @@ breadcrumb css
 }
 
 .site-breadcrumb .breadcrumb-menu li a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .site-breadcrumb .breadcrumb-menu li.active {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 @media (max-width: 991px) {
@@ -7840,7 +7840,7 @@ auth css
 }
 
 .login-form .login-header h3 {
-  color: #7167FF;
+  color: #0e71c8;
   margin-bottom: 5px;
   font-weight: 800;
 }
@@ -7858,12 +7858,12 @@ auth css
 }
 
 .login-form .login-footer a {
-  color: #7167FF;
+  color: #0e71c8;
   transition: .5s;
 }
 
 .login-form .login-footer a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .login-form .form-group {
@@ -7894,7 +7894,7 @@ auth css
 }
 
 .login-form .form-group .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .login-form .form-check-input {
@@ -7902,12 +7902,12 @@ auth css
 }
 
 .login-form .forgot-pass {
-  color: #7167FF;
+  color: #0e71c8;
   transition: .5s;
 }
 
 .login-form .forgot-pass:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .login-form .theme-btn {
@@ -8032,7 +8032,7 @@ user profile css
 
 .header-account .dropdown-menu .dropdown-item:hover {
   background: transparent;
-  color: #7167FF;
+  color: #0e71c8;
   padding-left: 25px;
 }
 
@@ -8084,7 +8084,7 @@ user profile css
 .user-profile-img button {
   position: absolute;
   border-radius: 50px;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   width: 30px;
   height: 30px;
@@ -8152,7 +8152,7 @@ user profile css
   font-family: "Font Awesome 6 Pro";
   left: 0px;
   top: 13px;
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 8px;
   font-weight: bold;
 }
@@ -8173,7 +8173,7 @@ user profile css
 }
 
 .user-profile-card .text-success {
-  color: #7167FF !important;
+  color: #0e71c8 !important;
 }
 
 .user-profile-card-header {
@@ -8208,7 +8208,7 @@ user profile css
 }
 
 .user-profile-search .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .user-profile-search i {
@@ -8248,7 +8248,7 @@ user profile css
 }
 
 .user-profile-form .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .user-profile-form .theme-btn {
@@ -8289,15 +8289,15 @@ user profile css
 
 .dashboard-widget-color-1 {
   background: rgba(113, 103, 255, .2);
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .dashboard-widget-color-1 h1 {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .dashboard-widget-color-1 .dashboard-widget-icon {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -8357,7 +8357,7 @@ user profile css
   height: 30px;
   line-height: 30px;
   border-radius: 50px;
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
   margin-top: 5px;
   text-align: center;
@@ -8386,7 +8386,7 @@ user profile css
 }
 
 .table-property-info:hover h6 {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .table-property-info img {
@@ -8411,7 +8411,7 @@ user profile css
 
 .user-profile-card .badge-warning{
   background: rgba(113, 103, 255, .2);
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .user-profile-card .badge-danger{
@@ -8459,7 +8459,7 @@ user profile css
 }
 
 .user-profile-listing .bg-success {
-  background: #7167FF !important;
+  background: #0e71c8 !important;
 }
 
 .user-profile-listing .table tbody tr td {
@@ -8503,7 +8503,7 @@ user profile css
 
 .add-listing-form .form-control:focus,
 .add-listing-form .nice-select:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .add-listing-form .nice-select .list {
@@ -8518,7 +8518,7 @@ user profile css
 .add-listing-form .nice-select .option.selected.focus,
 .add-listing-form .nice-select .option:hover {
   background: #F6F6F6;
-  color: #7167FF;
+  color: #0e71c8;
   border-radius: 8px;
 }
 
@@ -8563,7 +8563,7 @@ user profile css
 }
 
 .add-listing-form .form-check-input:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .add-listing-form .form-check label {
@@ -8628,7 +8628,7 @@ user profile css
 }
 
 .profile-message-inbox ul li.message-active {
-  border-left: 3px solid #7167FF;
+  border-left: 3px solid #0e71c8;
 }
 
 .profile-message-inbox ul li {
@@ -8759,7 +8759,7 @@ user profile css
 }
 
 .message-item.me .message-description {
-  color: #7167FF;
+  color: #0e71c8;
   background-color: rgba(9, 195, 152, 0.1);
   margin-left: 0;
   margin-right: 70px;
@@ -8790,7 +8790,7 @@ user profile css
 }
 
 .message-reply .form-control:focus {
-  border-color: #7167FF;
+  border-color: #0e71c8;
 }
 
 .message-reply .theme-btn {
@@ -8937,7 +8937,7 @@ coming soon css
   height: auto;
   border: none;
   border-radius: 50px;
-  background: #7167FF;
+  background: #0e71c8;
   display: inline-block;
   color: #fff;
   padding-left: 30px;
@@ -8947,7 +8947,7 @@ coming soon css
 }
 
 .coming-soon .newsletter-form button:hover {
-  background-color: #7167FF;
+  background-color: #0e71c8;
   color: #fff;
 }
 
@@ -8970,8 +8970,8 @@ coming soon css
 }
 
 .coming-social a:hover {
-  background: #7167FF;
-  border-color: #7167FF;
+  background: #0e71c8;
+  border-color: #0e71c8;
 }
 
 .countdown-wrap {
@@ -8979,7 +8979,7 @@ coming soon css
 }
 
 .countdown-single {
-  border: 10px solid #7167FF;
+  border: 10px solid #0e71c8;
   background: #fff;
   padding: 15px 20px;
   margin: 10px;
@@ -8990,11 +8990,11 @@ coming soon css
 }
 
 .countdown-single h2 {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .countdown-single h5 {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 
@@ -9012,7 +9012,7 @@ error css
   font-size: 250px;
   letter-spacing: 5px;
   font-weight: bold;
-  color: #7167FF;
+  color: #0e71c8;
   line-height: 1;
 }
 
@@ -9147,7 +9147,7 @@ footer css
 }
 
 .copyright .footer-menu li a:hover {
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .copyright .copyright-text {
@@ -9157,7 +9157,7 @@ footer css
 }
 
 .copyright .copyright-text a {
-  color: #7167FF;
+  color: #0e71c8;
   font-weight: 500;
 }
 
@@ -9177,7 +9177,7 @@ footer css
   z-index: -1;
   width: 30px;
   height: 2.5px;
-  background-color: #7167FF;
+  background-color: #0e71c8;
   bottom: 0;
   left: 0;
 }
@@ -9188,7 +9188,7 @@ footer css
   z-index: -1;
   width: 10px;
   height: 2.5px;
-  background-color: #7167FF;
+  background-color: #0e71c8;
   bottom: 0;
   left: 35px;
 }
@@ -9206,13 +9206,13 @@ footer css
 
 .footer-list li a i {
   margin-right: 5px;
-  color: #7167FF;
+  color: #0e71c8;
   font-size: 13px;
 }
 
 .footer-list li a:hover {
   padding-left: 10px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .footer-widget-box p {
@@ -9234,12 +9234,12 @@ footer css
   text-align: center;
   border-radius: 50px;
   background: rgba(114, 103, 255, .1);
-  color: #7167FF;
+  color: #0e71c8;
   transition: all .5s ease-in-out;
 }
 
 .footer-social li a i:hover {
-  background: #7167FF;
+  background: #0e71c8;
   color: #fff;
 }
 
@@ -9266,7 +9266,7 @@ footer css
   font-size: 16px;
   margin-right: 15px;
   border-radius: 8px;
-  background: #7167FF;
+  background: #0e71c8;
   text-align: center;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -9283,7 +9283,7 @@ footer css
 .footer-call-icon i{
   background: transparent !important;
   font-size: 45px !important;
-  color: #7167FF !important;
+  color: #0e71c8 !important;
 }
 
 .footer-call-info h6{
@@ -9292,7 +9292,7 @@ footer css
 }
 
 .footer-call-info a{
-  color: #7167FF !important;
+  color: #0e71c8 !important;
   font-size: 20px;
   font-weight: 700;
 }
@@ -9400,7 +9400,7 @@ home-2
 }
 
 .home-2 .header-top{
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .home-2 .navbar{
@@ -9428,7 +9428,7 @@ home-2
 }
 
 .home-2 .search-nav .nav-link.active{
-  background: #7167FF;
+  background: #0e71c8;
 }
 
 .home-2 .search-form .form-group{
@@ -9463,7 +9463,7 @@ home-2
 .home-2 .feature-color-1 .feature-icon{
   background: rgba(113, 103, 255, .2);
   border-radius: 20px;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .home-2 .feature-color-2 .feature-icon{
@@ -9594,11 +9594,11 @@ home-3
 
 .home-3 .search-nav .nav-link.active{
   background: #fff;
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .home-3 .search-nav .nav-link.active i{
-  color: #7167FF;
+  color: #0e71c8;
 }
 
 .home-3 .search-form .search-btn .theme-btn{
